@@ -11,7 +11,13 @@
             "name": "icon"
         },
         {
-            "name": "primed"
+            "name": "primed",
+            "delays": [
+                [
+                    0.1,
+                    0.1
+                ]
+            ]
         },
         {
             "name": "inhand-left",
