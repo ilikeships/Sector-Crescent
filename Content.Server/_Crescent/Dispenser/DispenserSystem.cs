@@ -44,6 +44,7 @@ namespace Content.Server.Dispenser
                 && TryGetDispenseItem(component, prototype.ID, out string itemId))
             {
                 args.Handled = true;
+                QueueDel(args.Used);
                 TryDispenseItem(uid, component, itemId);
             }
             else
