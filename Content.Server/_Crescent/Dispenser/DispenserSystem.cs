@@ -55,12 +55,18 @@ namespace Content.Server.Dispenser
 
         public bool TryGetDispenseItem(DispenserComponent component, string itemId, out string dispenseItemId)
         {
+            if (string.IsNullOrEmpty(itemId))
+            {
+                dispenseItemId = string.Empty;
+                return false;
+            }
+
             foreach (var kvp in component.Inventory)
             {
                 if (kvp.Key == itemId)
                 {
                     dispenseItemId = kvp.Value;
-                    return true;
+                    return !string.IsNullOrEmpty(dispenseItemId);
                 }
             }
 
