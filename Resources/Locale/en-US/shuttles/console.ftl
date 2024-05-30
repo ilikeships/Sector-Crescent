@@ -1,9 +1,9 @@
-shuttle-pilot-start = Piloting ship
-shuttle-pilot-end = Stopped piloting
+shuttle-pilot-start = Piloting vessel.
+shuttle-pilot-end = Disengaging from console.
 
-shuttle-console-in-ftl = Currently in FTL
-shuttle-console-mass = Too large to FTL
-shuttle-console-prevent = You are unable to pilot this ship
+shuttle-console-in-ftl = Currently in FTL.
+shuttle-console-mass = Too large to FTL!
+shuttle-console-prevent = You are unable to pilot this ship.
 
 # NAV
 
