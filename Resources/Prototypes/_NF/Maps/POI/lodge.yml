@@ -21,3 +21,7 @@
             AdjutantDSM: [ -1, -1 ]
             GovernorDSM: [ -1, -1 ]
             TenderSRM: [ -1, -1 ]
+            AcolyteSRM: [ -1, -1 ]
+            HunterSRM: [ -1, -1 ]
+            MontagneSRM: [ -1, -1 ]
+            OverseerSRM: [ -1, -1 ]

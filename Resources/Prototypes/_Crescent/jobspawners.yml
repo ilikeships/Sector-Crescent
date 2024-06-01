@@ -294,3 +294,51 @@
     layers:
       - state: green
       - state: passenger
+
+- type: entity
+  id: SpawnPointAcolyte
+  parent: SpawnPointJobBase
+  name: apprentice hunter
+  components:
+  - type: SpawnPoint
+    job_id: AcolyteSRM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointHunter
+  parent: SpawnPointJobBase
+  name: hunter
+  components:
+  - type: SpawnPoint
+    job_id: HunterSRM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointMontagne
+  parent: SpawnPointJobBase
+  name: hunter montagne
+  components:
+  - type: SpawnPoint
+    job_id: MontagneSRM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointOverseer
+  parent: SpawnPointJobBase
+  name: overseer
+  components:
+  - type: SpawnPoint
+    job_id: OverseerSRM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger

@@ -1,12 +1,12 @@
 - type: job
-  id: AcolyteSRM
-  name: job-name-acolyte
-  description: job-description-apprenticehunter
-  playTimeTracker: JobAcolyteSRM
+  id: HunterSRM
+  name: job-name-hunter
+  description: job-description-hunter
+  playTimeTracker: JobHunterSRM
   weight: 22
-  startingGear: AcolyteGear
+  startingGear: HunterGear
   alwaysUseSpawner: true
-  icon: "JobIconAcolyte"
+  icon: "JobIconHunter"
   requireAdminNotify: false
   supervisors: job-supervisors-imperial 
   canBeAntag: false
@@ -20,11 +20,12 @@
   - Captain # Frontier
 
 - type: startingGear
-  id: AcolyteGear
+  id: HunterGear
   equipment:
-    id: AcolytePDA
+    id: HunterPDA
     ears: ClothingHeadsetHunter
-    jumpsuit: ClothingUniformJumpsuitHunterAcolyte
+    jumpsuit: ClothingUniformJumpsuitHunter
+    head: ClothingHeadHatHunter
     shoes: ClothingShoesBootsHunter
-    outerClothing: ClothingOuterArmorHunterVest
+    outerClothing: ClothingOuterArmorHunterDuster
     gloves: ClothingHandsGlovesHunter

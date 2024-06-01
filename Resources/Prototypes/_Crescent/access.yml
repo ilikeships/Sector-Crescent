@@ -89,3 +89,21 @@
 - type: accessLevel
   id: HunterOverseer
   name: id-card-access-level-srmoverseer
+
+#shi
+
+- type: accessLevel
+  id: Shinohara
+  name: id-card-access-level-shi
+
+- type: accessLevel
+  id: ShinoharaOfficer
+  name: id-card-access-level-shiofficer
+
+- type: accessLevel
+  id: ShinoharaSecurity
+  name: id-card-access-level-shisec
+
+- type: accessLevel
+  id: ShinoharaExecutive
+  name: id-card-access-level-shiexec

@@ -1,18 +1,19 @@
 - type: job
-  id: AcolyteSRM
-  name: job-name-acolyte
-  description: job-description-apprenticehunter
-  playTimeTracker: JobAcolyteSRM
+  id: MontagneSRM
+  name: job-name-montagne
+  description: job-description-montagne
+  playTimeTracker: JobMontagneSRM
   weight: 22
-  startingGear: AcolyteGear
+  startingGear: MontagneGear
   alwaysUseSpawner: true
-  icon: "JobIconAcolyte"
+  icon: "JobIconMontagne"
   requireAdminNotify: false
   supervisors: job-supervisors-imperial 
   canBeAntag: false
   access:
   - Command
   - Hunter
+  - HunterSenior
   - Maintenance
   - Service
   - External
@@ -20,11 +21,12 @@
   - Captain # Frontier
 
 - type: startingGear
-  id: AcolyteGear
+  id: MontagneGear
   equipment:
-    id: AcolytePDA
+    id: MontagnePDA
     ears: ClothingHeadsetHunter
-    jumpsuit: ClothingUniformJumpsuitHunterAcolyte
+    jumpsuit: ClothingUniformJumpsuitHunter
+    head: ClothingHeadHelmetHunterBasic
     shoes: ClothingShoesBootsHunter
-    outerClothing: ClothingOuterArmorHunterVest
+    outerClothing: ClothingOuterArmorHunterDusterMontagne
     gloves: ClothingHandsGlovesHunter

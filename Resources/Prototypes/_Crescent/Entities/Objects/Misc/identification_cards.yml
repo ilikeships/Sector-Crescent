@@ -281,3 +281,51 @@
     - state: idbotanist
   - type: PresetIdCard
     job: TenderSRM
+
+- type: entity
+  parent: IDCardStandard
+  id: SRMIDCardAcolyte
+  name: hunter ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idbotanist
+  - type: PresetIdCard
+    job: AcolyteSRM
+
+- type: entity
+  parent: IDCardStandard
+  id: SRMIDCardHunter
+  name: hunter ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idbotanist
+  - type: PresetIdCard
+    job: HunterSRM
+
+- type: entity
+  parent: IDCardStandard
+  id: SRMIDCardOverseer
+  name: overseer ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idbotanist
+  - type: PresetIdCard
+    job: OverseerSRM
+
+- type: entity
+  parent: IDCardStandard
+  id: SRMIDCardMontagne
+  name: hunter montagne's ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idbotanist
+  - type: PresetIdCard
+    job: MontagneSRM

@@ -23,3 +23,16 @@
     stampState: "paper_stamp-empire"
   - type: Sprite
     state: empire
+
+- type: entity
+  name: overseer's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampHunters
+  suffix: DO NOT MAP
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-hunters
+    stampedColor: "#4a6741"
+    stampState: "paper_stamp-hunter"
+  - type: Sprite
+    state: empire

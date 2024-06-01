@@ -181,3 +181,29 @@
   groups:
   - ContractorTrinkets
   - SRMBackpacks
+
+- type: roleLoadout
+  id: JobAcolyteSRM
+  groups:
+  - ContractorTrinkets
+  - SRMBackpacks
+
+- type: roleLoadout
+  id: JobHunterSRM
+  groups:
+  - ContractorTrinkets
+  - SRMBackpacks
+
+- type: roleLoadout
+  id: JobMontagneSRM
+  groups:
+  - ContractorTrinkets
+  - SRMBackpacks
+
+- type: roleLoadout
+  id: JobOverseerSRM
+  groups:
+  - ContractorTrinkets
+  - SRMBackpacks
+
+#SHI

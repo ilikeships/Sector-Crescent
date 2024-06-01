@@ -179,4 +179,8 @@
   weight: 80
   roles:
   - TenderSRM
+  - AcolyteSRM
+  - HunterSRM
+  - MontagneSRM
+  - OverseerSRM
   enabled: true

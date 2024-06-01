@@ -367,3 +367,59 @@
     borderColor: "#ffffff"
   - type: Icon
     state: hunter
+
+- type: entity
+  parent: BasePDA
+  id: AcolytePDA
+  name: acolyte's PDA
+  description: Decorated for the Hunt.
+  components:
+  - type: Pda
+    id: SRMIDCardAcolyte
+    state: hunter
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+  - type: Icon
+    state: hunter
+
+- type: entity
+  parent: BasePDA
+  id: HunterPDA
+  name: hunter's PDA
+  description: Decorated for the Hunt.
+  components:
+  - type: Pda
+    id: SRMIDCardHunter
+    state: hunter
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+  - type: Icon
+    state: hunter
+
+- type: entity
+  parent: BasePDA
+  id: MontagnePDA
+  name: hunter montagne's PDA
+  description: Decorated for the Hunt.
+  components:
+  - type: Pda
+    id: SRMIDCardMontagne
+    state: hunter
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+  - type: Icon
+    state: hunter
+
+- type: entity
+  parent: BasePDA
+  id: OverseerPDA
+  name: overseer's PDA
+  description: Decorated for the Hunt.
+  components:
+  - type: Pda
+    id: SRMIDCardOverseer
+    state: hunter
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+  - type: Icon
+    state: hunter

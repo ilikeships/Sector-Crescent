@@ -352,4 +352,60 @@
     containers:
       board: [ DoorElectronicsDSMEmpireGovernor ]
 
-#shi
+#srm
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockCommandLockedHunter
+  suffix: SRM, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunter ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockCommandLockedHunterSenior
+  suffix: SRM Senior, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunterSenior ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockCommandLockedHunterOverseer
+  suffix: SRM Overseer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunterOverseer ]
+
+#srm horizontal
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedSRMHorizontal
+  suffix: SRM, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunter ]
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedSRMSeniorHorizontal
+  suffix: SRM Senior, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunterSenior ]
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedSRMOverseerHorizontal
+  suffix: SRM Overseer, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSRMHunterOverseer ]

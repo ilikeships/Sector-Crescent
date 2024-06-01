@@ -148,4 +148,29 @@
   - type: AccessReader
     access: [["EmpireGovernor"]]
 
-#shi
+#srm
+
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSRMHunter
+  suffix: Hunter, Locked
+  components:
+  - type: AccessReader
+    access: [["Hunter"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSRMHunterSenior
+  suffix: Hunter Senior, Locked
+  components:
+  - type: AccessReader
+    access: [["HunterSenior"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSRMHunterOverseer
+  suffix: Hunter Overseer, Locked
+  components:
+  - type: AccessReader
+    access: [["HunterOverseer"]]
