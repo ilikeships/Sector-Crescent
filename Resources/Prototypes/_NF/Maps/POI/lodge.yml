@@ -8,20 +8,11 @@
       stationProto: StandardFrontierOutpost
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'DSM Countsman'
+          mapNameTemplate: 'Expeditionary Lodge'
         - type: StationJobs
           overflowJobs:
           - Pilot
           - Mercenary
           availableJobs:
-            LevymanDSM: [ -1, -1 ]
-            FreeholderDSM: [ -1, -1 ]
-            KnightDSM: [ -1, -1 ]
-            CourtierDSM: [ -1, -1 ]
-            AdjutantDSM: [ -1, -1 ]
-            GovernorDSM: [ -1, -1 ]
-            TenderSRM: [ -1, -1 ]
-            AcolyteSRM: [ -1, -1 ]
-            HunterSRM: [ -1, -1 ]
-            MontagneSRM: [ -1, -1 ]
-            OverseerSRM: [ -1, -1 ]
+            Pilot: [ -1, -1 ]
+            Mercenary: [ -1, -1 ]
