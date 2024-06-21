@@ -13,12 +13,15 @@ If you want to learn more about these kinds of things, check out Microsoft's off
 https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild
 -->
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SixLabors.ImageSharp.3.1.4\build\SixLabors.ImageSharp.props" Condition="Exists('..\packages\SixLabors.ImageSharp.3.1.4\build\SixLabors.ImageSharp.props')" />
   <PropertyGroup>
     <Python>python3</Python>
     <Python Condition="'$(OS)'=='Windows_NT' Or '$(OS)'=='Windows'">py -3</Python>
     <ProjectGuid>{C899FCA4-7037-4E49-ABC2-44DE72487110}</ProjectGuid>
     <TargetFrameworkMoniker>.NETFramework, Version=v4.7.2</TargetFrameworkMoniker>
     <RestorePackages>false</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -38,6 +41,9 @@ https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugOpt|AnyCPU' ">
     <OutputPath>bin\DebugOpt\</OutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Target Name="Build">
     <Exec Command="$(Python) git_helper.py" CustomErrorRegularExpression="^Error" />
   </Target>
@@ -48,5 +54,11 @@ https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild
   <Target Name="Compile">
   </Target>
   <Target Name="CoreCompile">
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SixLabors.ImageSharp.3.1.4\build\SixLabors.ImageSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SixLabors.ImageSharp.3.1.4\build\SixLabors.ImageSharp.props'))" />
   </Target>
 </Project>
