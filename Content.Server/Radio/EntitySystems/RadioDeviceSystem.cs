@@ -282,7 +282,7 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnToggleHandheldRadioMic(Entity<RadioMicrophoneComponent> microphone, ref ToggleHandheldRadioMicMessage args)
     {
-        if (args.Session.AttachedEntity is not { } user)
+        if (args.Actor is not { Valid: true } user)
             return;
 
         SetMicrophoneEnabled(microphone, user, args.Enabled, true);
@@ -291,7 +291,7 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnToggleHandheldRadioSpeaker(Entity<RadioMicrophoneComponent> microphone, ref ToggleHandheldRadioSpeakerMessage args)
     {
-        if (args.Session.AttachedEntity is not { } user)
+        if (args.Actor is not { Valid: true } user)
             return;
 
         SetSpeakerEnabled(microphone, user, args.Enabled, true);
@@ -300,7 +300,7 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnChangeHandheldRadioFrequency(Entity<RadioMicrophoneComponent> microphone, ref SelectHandheldRadioFrequencyMessage args)
     {
-        if (args.Session.AttachedEntity is not { })
+        if (args.Actor is not { Valid: true } user)
             return;
 
         microphone.Comp.Frequency = args.Frequency;
@@ -316,7 +316,7 @@ public sealed class RadioDeviceSystem : EntitySystem
         var micEnabled = micComp?.Enabled ?? false;
         var speakerEnabled = speakerComp?.Enabled ?? false;
         var state = new HandheldRadioBoundUIState(micEnabled, speakerEnabled, frequency);
-        _ui.TrySetUiState(radio, HandheldRadioUiKey.Key, state);
+        _ui.SetUiState(radio.Owner, HandheldRadioUiKey.Key, state);
     }
 
     #endregion
