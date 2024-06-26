@@ -29,6 +29,7 @@
   components:
   - type: ShipyardListing
     shuttles:
+    - auberon
     - Nemesis
     - Ibis
     - Imp
