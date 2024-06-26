@@ -45,6 +45,7 @@
     doAfterDelay: 8
   - type: WiresPanel
   - type: Wires
+
     boardName: wires-board-name-dispenser
     layoutId: Dispenser
   - type: Anchorable
@@ -92,10 +93,10 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash550
-      TradeDeedNormal: SpaceCash750
-      TradeDeedHigh: SpaceCash1000
-      TradeDeedVeryHigh: SpaceCash1250
+      TradeDeedLow: SpaceCash750
+      TradeDeedNormal: SpaceCash1000
+      TradeDeedHigh: SpaceCash1500
+      TradeDeedVeryHigh: SpaceCash2000
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
@@ -208,10 +209,10 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      CrashAutoinjector: SpaceCash750
-      ExileAutoinjector: SpaceCash1000
-      KaiserAutoinjector: SpaceCash1500
-      BloodeyeAutoinjector: SpaceCash1750
+      CrashAutoinjector: SpaceCash2500
+      ExileAutoinjector: SpaceCash3500
+      KaiserAutoinjector: SpaceCash4500
+      BloodeyeAutoinjector: SpaceCash4000
       MechaniteAutoinjector: SpaceCash2500
       RadioJammer: SpaceCash1000
       FreedomImplanter: SpaceCash1000
@@ -245,6 +246,105 @@
       TradeGoodGunparts: TradeDeedNormal
       TradeGoodAntibiotics: TradeDeedHigh
       TradeGoodFlour: TradeDeedNormal
+      TradeGoodSugar: TradeDeedLow
+  - type: Sprite
+    sprite: _Crescent/Structures/cargochute.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: BaseCargoChute
+  name: cargo turn-in chute
+  description: A machine with piping systems that lead deep into the bowels of the station, accepting trade goods for deeds.
+  components:
+  - type: Dispenser
+    defaultItem: TradeDeedStub
+    inventory:
+      TradeGoodAmmo: TradeDeedNormal
+      TradeGoodAlcohol: TradeDeedNormal
+      TradeGoodCybernetics: TradeDeedNormal
+      TradeGoodGunparts: TradeDeedNormal
+      TradeGoodScrap: TradeDeedNormal
+      TradeGoodAntibiotics: TradeDeedNormal
+      TradeGoodRice: TradeDeedLow
+      TradeGoodFlour: TradeDeedLow
+      TradeGoodSugar: TradeDeedLow
+  - type: Sprite
+    sprite: _Crescent/Structures/cargochute.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: InterdyneCargoChute
+  name: hayes cargo turn-in chute
+  description: A machine with piping systems that lead deep into the bowels of the station, accepting trade goods for deeds.
+  components:
+  - type: Dispenser
+    defaultItem: TradeDeedStub
+    inventory:
+      TradeGoodAmmo: TradeDeedHigh
+      TradeGoodGunparts: TradeDeedVeryHigh
+      TradeGoodScrap: TradeDeedNormal
+      TradeGoodRice: TradeDeedNormal
+      TradeGoodFlour: TradeDeedLow
+      TradeGoodSugar: TradeDeedLow
+  - type: Sprite
+    sprite: _Crescent/Structures/cargochute.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: SawsCargoChute
+  name: dochenskaya cargo turn-in chute
+  description: A machine with piping systems that lead deep into the bowels of the station, accepting trade goods for deeds.
+  components:
+  - type: Dispenser
+    defaultItem: TradeDeedStub
+    inventory:
+      TradeGoodAlcohol: TradeDeedVeryHigh
+      TradeGoodCybernetics: TradeDeedLow
+      TradeGoodAntibiotics: TradeDeedLow
+      TradeGoodRice: TradeDeedLow
+      TradeGoodFlour: TradeDeedNormal
+      TradeGoodSugar: TradeDeedNormal
+  - type: Sprite
+    sprite: _Crescent/Structures/cargochute.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: SHICargoChute
+  name: tatsumoto cargo turn-in chute
+  description: A machine with piping systems that lead deep into the bowels of the station, accepting trade goods for deeds.
+  components:
+  - type: Dispenser
+    defaultItem: TradeDeedStub
+    inventory:
+      TradeGoodAmmo: TradeDeedHigh
+      TradeGoodAlcohol: TradeDeedLow
+      TradeGoodScrap: TradeDeedVeryHigh
+      TradeGoodAntibiotics: TradeDeedLow
+      TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi

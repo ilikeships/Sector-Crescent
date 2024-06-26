@@ -3,8 +3,8 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitTraumasec
-  name: shinohara traumasec hardsuit
-  description: A modular hardsuit produced by Shinohara Heavy Industries, made for TraumaSec officers.
+  name: interdyne traumasec hardsuit
+  description: A modular hardsuit produced by Shinohara Heavy Industries, made for Interdyne TraumaSec officers.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/SHI/OuterClothing/traumasec.rsi

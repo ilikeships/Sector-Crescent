@@ -165,6 +165,50 @@
 
 - type: entity
   parent: SpaceCash
+  id: SpaceCash2000
+  suffix: 2000
+  components:
+  - type: Icon
+    sprite: Objects/Economy/cash.rsi
+    state: cash_1000
+  - type: Stack
+    count: 2000
+
+- type: entity
+  parent: SpaceCash
+  id: SpaceCash3500
+  suffix: 3500
+  components:
+  - type: Icon
+    sprite: Objects/Economy/cash.rsi
+    state: cash_1000
+  - type: Stack
+    count: 3500
+
+- type: entity
+  parent: SpaceCash
+  id: SpaceCash4000
+  suffix: 4000
+  components:
+  - type: Icon
+    sprite: Objects/Economy/cash.rsi
+    state: cash_1000
+  - type: Stack
+    count: 4000
+
+- type: entity
+  parent: SpaceCash
+  id: SpaceCash4500
+  suffix: 4500
+  components:
+  - type: Icon
+    sprite: Objects/Economy/cash.rsi
+    state: cash_1000
+  - type: Stack
+    count: 4500
+
+- type: entity
+  parent: SpaceCash
   id: SpaceCash2500
   suffix: 2500
   components:
@@ -184,6 +228,8 @@
     state: cash_1000
   - type: Stack
     count: 5000
+
+
 
 - type: entity
   parent: SpaceCash

@@ -164,7 +164,7 @@
   parent: BaseItem
   id: TradeDeedLow
   name: deed of delivery
-  description: A printed deed of delivery. Blocky letting informs that this deed is worth five hundred and fifty Union credits to an official chartered station.
+  description: A printed deed of delivery. Blocky letting informs that this deed is worth seven hundred and fifty Union credits to an official chartered station.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/deed.rsi
@@ -175,7 +175,7 @@
   parent: BaseItem
   id: TradeDeedNormal
   name: deed of delivery
-  description: A printed deed of delivery. Blocky letting informs that this deed is worth seven hundred and fifty Union credits to an official chartered station.
+  description: A printed deed of delivery. Blocky letting informs that this deed is worth one thousand Union credits to an official chartered station.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/deed.rsi
@@ -186,7 +186,7 @@
   parent: BaseItem
   id: TradeDeedHigh
   name: deed of delivery
-  description: A printed deed of delivery. Blocky letting informs that this deed is worth one thousand Union credits to an official chartered station.
+  description: A printed deed of delivery. Blocky letting informs that this deed is worth one thousand and five hundred Union credits to an official chartered station.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/deed.rsi
@@ -197,7 +197,7 @@
   parent: BaseItem
   id: TradeDeedVeryHigh
   name: deed of delivery
-  description: A printed deed of delivery. Blocky letting informs that this deed is worth one thousand and two hundred and fifty Union credits to an official chartered station.
+  description: A printed deed of delivery. Blocky letting informs that this deed is worth two thousand Union credits to an official chartered station.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/deed.rsi
