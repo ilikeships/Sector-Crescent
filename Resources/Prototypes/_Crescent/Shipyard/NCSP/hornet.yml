@@ -1,0 +1,32 @@
+# Author Info
+# Discord: @amnotakidnapper
+
+- type: vessel
+  id: hornet
+  name: NCSP Hornet
+  description: A Syndicate target-extraction shuttle with a newly welded holding cell, and some weapons. Fit for all your pirating needs.
+  price: 10000
+  category: Small
+  group: None
+  shuttlePath: /Maps/_Crescent/Shuttles/NCSP/hornet.yml
+
+- type: gameMap
+  id: hornet
+  mapName: 'NCSP Hornet'
+  mapPath: /Maps/_Crescent/Shuttles/NCSP/hornet.yml
+  minPlayers: 0
+  stations: 
+    hornet:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Hornet {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            InfanteerNCSP: [2, 2]
+            ShipbreakerNCSP: [ 1, 1 ]
+            

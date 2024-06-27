@@ -1,0 +1,31 @@
+# Author Info
+# Discord: @amnotakidnapper
+
+- type: vessel
+  id: chameleon
+  name: ICM Chameleon
+  description: The ICM Chameleon, THE fastest civilian cargo ship, that is currently in the market.
+  price: 42500
+  category: Small
+  group: Civilian
+  shuttlePath: /Maps/_Crescent/Shuttles/Civilian/chameleon.yml
+
+- type: gameMap
+  id: chameleon
+  mapName: 'ICM Chameleon'
+  mapPath: /Maps/_Crescent/Shuttles/Civilian/chameleon.yml
+  minPlayers: 0
+  stations:
+    chameleon:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Chameleon {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            Pilot: [ 1, 1 ]
+            StationEngineer: [ 1, 1 ]

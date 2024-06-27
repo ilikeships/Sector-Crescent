@@ -1,0 +1,31 @@
+# Author Info
+# Discord: @amnotakidnapper
+
+- type: vessel
+  id: borediver
+  name: SHI Borediver
+  description: The SHI Borediver, a cost-effective mining ship for one pilot, and one miner.
+  price: 6990
+  category: Small
+  group: Scrap
+  shuttlePath: /Maps/_Crescent/Shuttles/SHI/borediver.yml
+
+- type: gameMap
+  id: borediver
+  mapName: 'SHI Borediver'
+  mapPath: /Maps/_Crescent/Shuttles/SHI/borediver.yml
+  minPlayers: 0
+  stations:
+    borediver:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Borediver {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            Pilot: [ 1, 1 ]
+            SalvageSpecialist: [ 1, 1 ]
