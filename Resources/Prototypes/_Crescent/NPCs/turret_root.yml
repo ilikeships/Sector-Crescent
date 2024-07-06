@@ -9,7 +9,7 @@
       tasks:
         - !type:HTNPrimitiveTask
           operator: !type:UtilityOperator
-            proto: NearbyGunTargets
+            proto: NearbyPDTTargets
 
         - !type:HTNPrimitiveTask
           preconditions:
@@ -32,7 +32,7 @@
           services:
             - !type:UtilityService
               id: RangedService
-              proto: NearbyGunTargets
+              proto: NearbyPDTTargets
               key: Target
 
     - preconditions:
