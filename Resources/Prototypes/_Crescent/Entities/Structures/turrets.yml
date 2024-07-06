@@ -310,3 +310,161 @@
     - type: NpcFactionMember
       factions:
         - NCWLWarship
+
+#swarmer missiles - warship
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretSwarmer
+  name: swarmer missile launcher
+  abstract: true
+  components:
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/swarmermissile.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: InteractionPopup
+      interactDelay: 0.2
+      successChance: 0.8
+      interactSuccessString: petting-success-generic
+      interactFailureString: petting-failure-generic
+      interactSuccessSound:
+        path: /Audio/Effects/double_beep.ogg
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: Gun
+      fireRate: 1
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+    # TODO: Power ammo provider?
+    - type: BallisticAmmoProvider
+      proto: SwarmerRocketCartridge
+      capacity: 25000
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          2.141
+        RangedRange: !type:Single
+          85
+        VisionRadius: !type:Single
+          85
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: SignalControl
+      isOnByDefault: true
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 2500
+    - type: DeviceLinkSink
+      ports:
+        - Toggle
+        - On
+        - Off
+    - type: ApcPowerReceiver
+      powerLoad: 3500
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+
+#faction variants
+
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: CMM 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerCMM
+  suffix: CMM SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMWarship
+
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: SRM 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerSRM
+  suffix: SRM SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
+
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: NCWL 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerNCWL
+  suffix: NCWL SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: NCSP 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerNCSP
+  suffix: NCSP SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship

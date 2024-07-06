@@ -729,6 +729,8 @@
     damage:
       types:
         Structural: 75
+        Blunt: 30
+        Piercing: 30
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
     lifetime: 55
@@ -740,9 +742,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 3
-    intensitySlope: 3
-    totalIntensity: 3
+    maxIntensity: 4
+    intensitySlope: 5
+    totalIntensity: 4
     maxTileBreak: 3
   - type: PointLight
     radius: 3.5
@@ -769,3 +771,56 @@
   - type: SpentAmmoVisuals
   - type: SpaceGarbage
 
+
+# rocket - swarmer
+
+- type: entity
+  id: SwarmerMissile
+  name: shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 75
+        Blunt: 30
+        Piercing: 30
+        #currently explosion deals roughly 60 damage
+  - type: TimedDespawn
+    lifetime: 75
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/swarmermissile.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 8
+    intensitySlope: 9
+    totalIntensity: 8
+    maxTileBreak: 4
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+
+- type: entity
+  id: SwarmerRocketCartridge
+  name: 38mm 'Swarmer' rocket
+  parent: BaseItem
+  description: A *currently* disarmed rocket.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: SwarmerMissile
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/swarmermissile.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
