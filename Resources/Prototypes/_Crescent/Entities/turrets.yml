@@ -282,7 +282,7 @@
 - type: entity
   parent: BaseWeaponTurretVulcan
   name: SRM 23mm automated turret
-  id: WeaponTurretVulcanCMM
+  id: WeaponTurretVulcanSRM
   suffix: SRM VLCN
   components:
     - type: NpcFactionMember
@@ -292,7 +292,7 @@
 - type: entity
   parent: BaseWeaponTurretVulcan
   name: NCSP 23mm automated turret
-  id: WeaponTurretVulcanCMM
+  id: WeaponTurretVulcanNCSP
   suffix: NCSP VLCN
   components:
     - type: NpcFactionMember
@@ -302,7 +302,7 @@
 - type: entity
   parent: BaseWeaponTurretVulcan
   name: NCWL 23mm automated turret
-  id: WeaponTurretVulcanCMM
+  id: WeaponTurretVulcanNCWL
   suffix: NCWL VLCN
   components:
     - type: NpcFactionMember

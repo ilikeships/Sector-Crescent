@@ -195,10 +195,6 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: PointLight
-    radius: 3.5
-    color: orange
-    energy: 0.5
   - type: TimedDespawn
     lifetime: 20
   - type: Sprite
