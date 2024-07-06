@@ -19,7 +19,6 @@
               key: Target
             - !type:TargetInRangePrecondition
               targetKey: Target
-              # TODO: Non-scuffed
               rangeKey: PDTRange
             - !type:TargetInLOSPrecondition
               targetKey: Target

@@ -77,7 +77,7 @@
       capacity: 25000
     - type: HTN
       rootTask:
-        task: PDTTurretCompound #npcroot
+        task: PDTTurretCompound #turret_root
       blackboard:
         RotateSpeed: !type:Single
           3.141
