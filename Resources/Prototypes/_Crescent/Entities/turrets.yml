@@ -23,6 +23,7 @@
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
+    - type: MobState
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/lightautoturret.rsi
       drawdepth: Mobs
@@ -266,6 +267,7 @@
     - type: NoRotateOnMove
     - type: Input
       context: "human"
+    - type: MobState
 
 #faction-flagged variants
 
