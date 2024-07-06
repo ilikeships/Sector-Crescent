@@ -119,40 +119,43 @@ public sealed partial class NPCCombatSystem
                 continue;
             }
 
-            comp.LOSAccumulator -= frameTime;
-
             var worldPos = _transform.GetWorldPosition(xform);
             var targetPos = _transform.GetWorldPosition(targetXform);
 
             // We'll work out the projected spot of the target and shoot there instead of where they are.
             var distance = (targetPos - worldPos).Length();
-            var oldInLos = comp.TargetInLOS;
 
-            // TODO: Should be doing these raycasts in parallel
-            // Ideally we'd have 2 steps, 1. to go over the normal details for shooting and then 2. to handle beep / rotate / shoot
-            if (comp.LOSAccumulator < 0f)
+            if (!comp.IgnoreLOS)
             {
-                comp.LOSAccumulator += UnoccludedCooldown;
-                // For consistency with NPC steering.
-                comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, Transform(comp.Target).Coordinates, distance + 0.1f);
-            }
+                var oldInLos = comp.TargetInLOS;
 
-            if (!comp.TargetInLOS)
-            {
-                comp.ShootAccumulator = 0f;
-                comp.Status = CombatStatus.NotInSight;
-
-                if (TryComp(uid, out steering))
+                // TODO: Should be doing these raycasts in parallel
+                // Ideally we'd have 2 steps, 1. to go over the normal details for shooting and then 2. to handle beep / rotate / shoot
+                comp.LOSAccumulator -= frameTime;
+                if (comp.LOSAccumulator < 0f)
                 {
-                    steering.ForceMove = true;
+                    comp.LOSAccumulator += UnoccludedCooldown;
+                    // For consistency with NPC steering.
+                    comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, Transform(comp.Target).Coordinates, distance + 0.1f);
                 }
 
-                continue;
-            }
+                if (!comp.TargetInLOS)
+                {
+                    comp.ShootAccumulator = 0f;
+                    comp.Status = CombatStatus.NotInSight;
 
-            if (!oldInLos && comp.SoundTargetInLOS != null)
-            {
-                _audio.PlayPvs(comp.SoundTargetInLOS, uid);
+                    if (TryComp(uid, out steering))
+                    {
+                        steering.ForceMove = true;
+                    }
+
+                    continue;
+                }
+
+                if (!oldInLos && comp.SoundTargetInLOS != null)
+                {
+                    _audio.PlayPvs(comp.SoundTargetInLOS, uid);
+                }
             }
 
             comp.ShootAccumulator += frameTime;
