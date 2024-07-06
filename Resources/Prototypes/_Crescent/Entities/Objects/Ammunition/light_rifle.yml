@@ -170,3 +170,54 @@
   - type: Sprite
     sprite: _Crescent/Ammunition/vulcan.rsi
     state: base
+
+#warship vulcan
+
+- type: entity
+  id: BulletMachineGunVulcanTurret
+  name: 23mm uranium-tipped vulcan bullet
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 60
+        Piercing: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 4
+    intensitySlope: 3
+    totalIntensity: 3
+    maxTileBreak: 2
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+      - state: base-projectile
+
+- type: entity
+  id: CartridgeVulcanStandardTurret
+  name: 23mm surplus casing
+  parent: BaseItem
+  description: Ammunition for turrets.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunVulcanTurret
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
