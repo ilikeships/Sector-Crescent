@@ -33,6 +33,9 @@ public sealed partial class GunOperator : HTNOperator, IHtnConditionalShutdown
     [DataField("requireLOS")]
     public bool RequireLOS = false;
 
+    [DataField("ignoreLOS")]
+    public bool IgnoreLOS = false;
+
     // Like movement we add a component and pass it off to the dedicated system.
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(NPCBlackboard blackboard,
@@ -58,6 +61,7 @@ public sealed partial class GunOperator : HTNOperator, IHtnConditionalShutdown
         base.Startup(blackboard);
         var ranged = _entManager.EnsureComponent<NPCRangedCombatComponent>(blackboard.GetValue<EntityUid>(NPCBlackboard.Owner));
         ranged.Target = blackboard.GetValue<EntityUid>(TargetKey);
+        ranged.IgnoreLOS = IgnoreLOS;
 
         if (blackboard.TryGetValue<float>(NPCBlackboard.RotateSpeed, out var rotSpeed, _entManager))
         {
@@ -103,7 +107,7 @@ public sealed partial class GunOperator : HTNOperator, IHtnConditionalShutdown
                         status = HTNOperatorStatus.Failed;
                         break;
                     case CombatStatus.NotInSight:
-                        if (RequireLOS)
+                        if (RequireLOS && !IgnoreLOS)
                             status = HTNOperatorStatus.Failed;
                         else
                             status = HTNOperatorStatus.Continuing;

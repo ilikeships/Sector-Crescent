@@ -5,7 +5,6 @@
   parent: Thruster
   suffix: NCSP, Fighter
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
@@ -15,7 +14,6 @@
   parent: Thruster
   suffix: CMM, Fighter
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -25,7 +23,6 @@
   parent: Thruster
   suffix: NCWL, Fighter
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -35,7 +32,6 @@
   parent: Thruster
   suffix: SRM, Fighter
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -45,7 +41,6 @@
   parent: Thruster
   suffix: NCSP, Warship
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPWarship
@@ -55,7 +50,6 @@
   parent: Thruster
   suffix: NCWL, Warship
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLWarship
@@ -65,7 +59,6 @@
   parent: Thruster
   suffix: CMM, Warship
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMWarship
@@ -75,7 +68,6 @@
   parent: Thruster
   suffix: SRM, Warship
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMWarship

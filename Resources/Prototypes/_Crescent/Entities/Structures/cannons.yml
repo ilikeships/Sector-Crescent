@@ -826,7 +826,6 @@
   id: SHISlugthrowerTurretNCSP
   suffix: NCSP
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
@@ -836,7 +835,6 @@
   id: SHISlugthrowerTurretNCWL
   suffix: NCWL
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -846,7 +844,6 @@
   id: SHISlugthrowerTurretCMM
   suffix: CMM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -856,7 +853,6 @@
   id: SHISlugthrowerTurretSRM
   suffix: SRM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -868,7 +864,6 @@
   id: ShuttleGunMissileRackNCSP
   suffix: NCSP
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
@@ -878,7 +873,6 @@
   id: ShuttleGunMissileRackNCWL
   suffix: NCWL
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -888,7 +882,6 @@
   id: ShuttleGunMissileRackCMM
   suffix: CMM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -898,7 +891,6 @@
   id: ShuttleGunMissileRackSRM
   suffix: SRM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -908,7 +900,6 @@
   id: ShuttleGunKurosawaSRM
   suffix: SRM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -918,7 +909,6 @@
   id: ShuttleGunKurosawaCMM
   suffix: CMM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -928,7 +918,6 @@
   id: ShuttleGunKurosawaNCWL
   suffix: NCWL
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -938,7 +927,6 @@
   id: ShuttleGunKurosawaNCSP
   suffix: NCSP
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
@@ -950,7 +938,6 @@
   id: Type99ArtilleryNCWL
   suffix: NCWL
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -960,7 +947,6 @@
   id: Type99ArtilleryNCSP
   suffix: NCSP
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
@@ -970,7 +956,6 @@
   id: Type99ArtilleryCMM
   suffix: CMM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -980,7 +965,6 @@
   id: Type99ArtillerySRM
   suffix: SRM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -992,7 +976,6 @@
   id: NTVulcanTurretSRM
   suffix: SRM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - SRMFighter
@@ -1002,7 +985,6 @@
   id: NTVulcanTurretNCWL
   suffix: NCWL
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCWLFighter
@@ -1012,7 +994,6 @@
   id: NTVulcanTurretCMM
   suffix: CMM
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - CMMFighter
@@ -1022,7 +1003,6 @@
   id: NTVulcanTurretNCSP
   suffix: NCSP
   components:
-    - type: MobState # fleshangel: they wont be counted as valid targets by the AI otherwise
     - type: NpcFactionMember
       factions:
         - NCSPFighter
