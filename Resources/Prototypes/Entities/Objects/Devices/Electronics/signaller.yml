@@ -40,6 +40,6 @@
       right:
       - state: advanced-inhand-right
   - type: WirelessNetworkConnection
-    range: 50
+    range: 2050
   - type: StaticPrice
     price: 30
