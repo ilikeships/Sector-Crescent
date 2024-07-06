@@ -321,6 +321,14 @@ entities:
     - type: Transform
       pos: 0.5,4.5
       parent: 1
+- proto: MagazineGrenadeBlast
+  entities:
+  - uid: 71
+    components:
+    - type: Transform
+      parent: 29
+    - type: Physics
+      canCollide: False
 - proto: PortableGeneratorSuperPacmanShuttle
   entities:
   - uid: 36
@@ -370,7 +378,7 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        invalid:
+        29:
         - Pressed: Trigger
   - uid: 43
     components:
@@ -393,9 +401,24 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,2.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 71
     - type: DeviceLinkSink
       links:
       - 43
+      - 42
 - proto: ShuttleGunPlasmaRepeater
   entities:
   - uid: 30
@@ -421,6 +444,15 @@ entities:
     - type: DeviceLinkSink
       links:
       - 43
+- proto: SmallGyroscope
+  entities:
+  - uid: 72
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 200
 - proto: SpawnPointLatejoin
   entities:
   - uid: 39

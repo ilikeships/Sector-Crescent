@@ -337,7 +337,7 @@ entities:
       pos: 0.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 149400
+      startingCharge: 148800
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -352,6 +352,8 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+    - type: SpaceArtillery
+      coolantStored: 90
     - type: ApcPowerReceiver
       powerLoad: 3600
     - type: BatterySelfRecharger

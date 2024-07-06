@@ -162,6 +162,16 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
+  - uid: 10
+    components:
+    - type: Transform
+      pos: -0.5,4.5
+      parent: 1
+  - uid: 11
+    components:
+    - type: Transform
+      pos: 1.5,4.5
+      parent: 1
 - proto: CableApcExtension
   entities:
   - uid: 40
@@ -271,13 +281,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,4.5
       parent: 1
-- proto: ClothingHeadHatSyndicatePilot
-  entities:
-  - uid: 30
-    components:
-    - type: Transform
-      pos: 1.4650218,2.3917875
-      parent: 1
 - proto: ComputerShuttle
   entities:
   - uid: 26
@@ -290,12 +293,12 @@ entities:
   - uid: 28
     components:
     - type: Transform
-      pos: 1.3312647,2.7634425
+      pos: 0.2378242,2.5244327
       parent: 1
   - uid: 29
     components:
     - type: Transform
-      pos: 1.5690563,2.7039776
+      pos: 0.20810008,2.8217564
       parent: 1
 - proto: NTVulcanTurretNCWL
   entities:
@@ -306,7 +309,7 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 22
@@ -346,7 +349,7 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 22
@@ -419,7 +422,7 @@ entities:
     - type: MetaData
       name: fire vulcans
     - type: Transform
-      pos: 1.1529584,2.4426093
+      pos: 0.56478834,2.6136298
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -427,6 +430,16 @@ entities:
         - Pressed: Toggle
         23:
         - Pressed: Toggle
+- proto: SmallGyroscope
+  entities:
+  - uid: 60
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,2.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 200
 - proto: SmallLight
   entities:
   - uid: 56
@@ -459,13 +472,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,3.5
-      parent: 1
-- proto: TableReinforced
-  entities:
-  - uid: 27
-    components:
-    - type: Transform
-      pos: 1.5,2.5
       parent: 1
 - proto: ThrusterNCWLFighter
   entities:
@@ -548,6 +554,20 @@ entities:
     - type: Transform
       pos: 0.5,3.5
       parent: 1
+- proto: WindoorSecure
+  entities:
+  - uid: 27
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,4.5
+      parent: 1
+  - uid: 30
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,4.5
+      parent: 1
 - proto: WindowReinforcedDirectional
   entities:
   - uid: 9
@@ -555,18 +575,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,2.5
-      parent: 1
-  - uid: 10
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,4.5
-      parent: 1
-  - uid: 11
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,4.5
       parent: 1
   - uid: 12
     components:
