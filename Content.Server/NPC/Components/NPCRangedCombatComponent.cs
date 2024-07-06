@@ -29,6 +29,12 @@ public sealed partial class NPCRangedCombatComponent : Component
     public Angle AccuracyThreshold = Angle.FromDegrees(30);
 
     /// <summary>
+    /// Ignore line of sight and shoot through obstruction.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool IgnoreLOS;
+
+    /// <summary>
     /// How long until the last line of sight check.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]

@@ -9,7 +9,7 @@
       tasks:
         - !type:HTNPrimitiveTask
           operator: !type:UtilityOperator
-            proto: NearbyGunTargets
+            proto: NearbyPDTTargets
 
         - !type:HTNPrimitiveTask
           preconditions:
@@ -19,10 +19,6 @@
               key: Target
             - !type:TargetInRangePrecondition
               targetKey: Target
-              # TODO: Non-scuffed
-              rangeKey: PDTRange
-            - !type:TargetInLOSPrecondition
-              targetKey: Target
               rangeKey: PDTRange
           operator: !type:GunOperator
             preconditions:
@@ -30,10 +26,11 @@
               - !type:SignalControlPrecondition
             targetKey: Target
             requireLOS: false
+            ignoreLOS: true
           services:
             - !type:UtilityService
               id: RangedService
-              proto: NearbyGunTargets
+              proto: NearbyPDTTargets
               key: Target
 
     - preconditions:
