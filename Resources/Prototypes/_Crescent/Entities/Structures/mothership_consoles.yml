@@ -84,3 +84,14 @@
     - buffalo
     - gazpachov
     - Musinyane
+
+- type: entity
+  id: ZhipovMothershipComputer
+  parent: BaseMothershipComputer
+  name: zhipov internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Khopesh
+    - Broadsword
+    - Sabre
