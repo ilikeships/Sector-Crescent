@@ -9,7 +9,6 @@
     - Bogatyr
     - Vanguard
     - Vasinya
-    - Sasha
 
 - type: entity
   id: JackalMothershipComputer
@@ -85,3 +84,14 @@
     - buffalo
     - gazpachov
     - Musinyane
+
+- type: entity
+  id: ZhipovMothershipComputer
+  parent: BaseMothershipComputer
+  name: zhipov internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Khopesh
+    - Broadsword
+    - Sabre

@@ -683,7 +683,7 @@
   unit: materials-unit-bill
   stackEntity: CoolantCartridge
   icon: { sprite: _Crescent/Objects/Misc/coolant.rsi, state: icon }
-  price: 500
+  price: 15
 
 - type: stack
   id: Coolant
