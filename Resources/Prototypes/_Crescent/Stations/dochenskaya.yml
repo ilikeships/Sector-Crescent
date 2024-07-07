@@ -1,6 +1,6 @@
 - type: gameMap
   id: Dochenskaya
-  mapName: 'Dochenskaya Refueling Port'
+  mapName: 'Dochenskaya Engineering Platform'
   mapPath: /Maps/_Crescent/Stations/dochenskaya.yml
   minPlayers: 0
   stations:
@@ -8,9 +8,13 @@
       stationProto: StandardFrontierOutpost
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Dochenskaya Refueling Port'
+          mapNameTemplate: 'Dochenskaya Engineering Platform'
         - type: StationJobs
           overflowJobs: []
           availableJobs:
+            RingleaderNCSP: [ 0, 1 ]
+            LieutenantNCSP: [ 0, 1 ]
+            InfanteerNCSP: [ 10, 10 ]
+            TechnicianNCSP: [ 5, 5 ]
             ForemanNCSP: [ 0, 1 ]
-            ShipbreakerNCSP: [ 0, 3 ]
+            ShipbreakerNCSP: [ 0, 5 ]
