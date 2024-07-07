@@ -1,6 +1,8 @@
 using Content.Server.NPC.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Interaction;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -13,6 +15,7 @@ public sealed partial class NPCCombatSystem
 {
     [Dependency] private readonly SharedCombatModeSystem _combat = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
+    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
 
     private EntityQuery<CombatModeComponent> _combatQuery;
     private EntityQuery<NPCSteeringComponent> _steeringQuery;
@@ -136,7 +139,15 @@ public sealed partial class NPCCombatSystem
                 {
                     comp.LOSAccumulator += UnoccludedCooldown;
                     // For consistency with NPC steering.
-                    comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, Transform(comp.Target).Coordinates, distance + 0.1f);
+                    if (comp.IgnoreHostileObstruction && TryComp<NpcFactionMemberComponent>(uid, out var member))
+                    {
+                        var entityMember = new Entity<NpcFactionMemberComponent?>(uid, member);
+                        comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, Transform(comp.Target).Coordinates, distance + 0.1f, predicate: other => TryComp<NpcFactionMemberComponent>(other, out var otherMember) && !_npcFaction.IsEntityFriendly(entityMember, (other, otherMember)));
+                    }
+                    else
+                    {
+                        comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, Transform(comp.Target).Coordinates, distance + 0.1f);
+                    }
                 }
 
                 if (!comp.TargetInLOS)

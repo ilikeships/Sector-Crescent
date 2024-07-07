@@ -35,6 +35,12 @@ public sealed partial class NPCRangedCombatComponent : Component
     public bool IgnoreLOS;
 
     /// <summary>
+    /// Ignore line of sight obstruction if it is from a hostile faction.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool IgnoreHostileObstruction = false;
+
+    /// <summary>
     /// How long until the last line of sight check.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
