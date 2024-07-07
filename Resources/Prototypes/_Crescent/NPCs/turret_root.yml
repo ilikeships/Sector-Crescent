@@ -20,13 +20,17 @@
             - !type:TargetInRangePrecondition
               targetKey: Target
               rangeKey: PDTRange
+            - !type:TargetInLOSPrecondition
+              targetKey: Target
+              rangeKey: PDTRange
+              ignoreHostileObstruction: true
           operator: !type:GunOperator
             preconditions:
               - !type:PoweredPrecondition
               - !type:SignalControlPrecondition
             targetKey: Target
             requireLOS: false
-            ignoreLOS: true
+            ignoreHostileObstruction: true
           services:
             - !type:UtilityService
               id: RangedService
