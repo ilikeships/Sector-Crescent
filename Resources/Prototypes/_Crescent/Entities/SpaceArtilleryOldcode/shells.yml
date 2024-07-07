@@ -824,3 +824,56 @@
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: SpaceGarbage
+
+# long gun
+
+- type: entity
+  id: LonggunShell
+  name: shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 70
+        Blunt: 40
+        Piercing: 10
+        #currently explosion deals roughly 60 damage
+  - type: TimedDespawn
+    lifetime: 120
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/630_highexplosive_shell_casing.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 25
+    intensitySlope: 15
+    totalIntensity: 120
+    maxTileBreak: 7
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+
+- type: entity
+  id: LonggunCartridge
+  name: 80mm coilgun shell
+  parent: BaseItem
+  description: A high-explosive cannon shell for ship weapons.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: LonggunShell
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/630_highexplosive_shell_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
