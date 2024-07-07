@@ -20,6 +20,7 @@
     shuttles:
     - Reaver
     - Corvax
+    - Jackal
 
 - type: entity
   id: CountsmanMothershipComputer
@@ -96,3 +97,14 @@
     - Khopesh
     - Broadsword
     - Sabre
+
+- type: entity
+  id: JackalCarrierMothershipComputer
+  parent: BaseMothershipComputer
+  name: jackal internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Reaver
+    - Piranha
+    - Scuttlefish
