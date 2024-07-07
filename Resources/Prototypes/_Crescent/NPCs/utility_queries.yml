@@ -9,3 +9,5 @@
     - !type:TargetHealthCon
       curve: !type:PresetCurve
         preset: TargetHealth
+    - !type:TargetInLOSOrCurrentCon
+      curve: !type:BoolCurve
