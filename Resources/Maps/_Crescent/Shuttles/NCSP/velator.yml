@@ -483,6 +483,17 @@ entities:
     - type: DeviceLinkSink
       links:
       - 287
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 106
+    components:
+    - type: Transform
+      pos: 19.5,0.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: BreachingCharge
   entities:
   - uid: 160
@@ -1202,20 +1213,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 6.4822927,2.5555236
       parent: 1
-- proto: CartridgeShellHighExplosive
-  entities:
-  - uid: 104
-    components:
-    - type: Transform
-      parent: 103
-    - type: Physics
-      canCollide: False
-  - uid: 105
-    components:
-    - type: Transform
-      parent: 103
-    - type: Physics
-      canCollide: False
 - proto: ChairFolding
   entities:
   - uid: 230
@@ -1622,18 +1619,6 @@ entities:
       parent: 1
 - proto: MagazineLightRifleBoxSlugEMP
   entities:
-  - uid: 108
-    components:
-    - type: Transform
-      parent: 107
-    - type: Physics
-      canCollide: False
-  - uid: 112
-    components:
-    - type: Transform
-      parent: 111
-    - type: Physics
-      canCollide: False
   - uid: 215
     components:
     - type: Transform
@@ -1716,17 +1701,6 @@ entities:
     - type: Transform
       pos: -0.5,4.5
       parent: 1
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 106
-    components:
-    - type: Transform
-      pos: 19.5,0.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredLEDSmallLight
   entities:
   - uid: 256
@@ -1935,45 +1909,43 @@ entities:
       parent: 1
 - proto: RemoteSignallerAdvanced
   entities:
-  - uid: 191
+  - uid: 48
     components:
     - type: MetaData
-      name: fire slugthrowers
+      name: fire slugthrower
     - type: Transform
-      pos: 1.7284105,2.5919685
+      pos: 1.433749,2.638882
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        111:
+        8:
         - Pressed: Toggle
-        107:
+        7:
         - Pressed: Toggle
-  - uid: 194
+  - uid: 49
     components:
     - type: MetaData
-      name: fire 120mm cannon
+      name: fire artillery
     - type: Transform
-      pos: 1.4277298,2.57039
+      pos: 1.6554515,2.6686141
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        103:
+        12:
         - Pressed: SpaceArtilleryFire
-- proto: SHISlugthrowerTurret
+- proto: SHISlugthrowerTurretNCSP
   entities:
-  - uid: 107
+  - uid: 7
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
-      - 191
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
+      - 48
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1983,7 +1955,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 108
+          ent: null
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -2001,19 +1973,17 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
-  - uid: 111
+  - uid: 8
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
-      - 191
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
+      - 48
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -2023,7 +1993,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 112
+          ent: null
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -2236,9 +2206,9 @@ entities:
     - type: Transform
       pos: 4.5,-0.5
       parent: 1
-- proto: Thruster
+- proto: ThrusterNCSPWarship
   entities:
-  - uid: 109
+  - uid: 54
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2246,7 +2216,7 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 110
+  - uid: 55
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2254,7 +2224,21 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 113
+  - uid: 64
+    components:
+    - type: Transform
+      pos: 3.5,2.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 65
+    components:
+    - type: Transform
+      pos: 4.5,2.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 69
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2262,21 +2246,7 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 114
-    components:
-    - type: Transform
-      pos: 3.5,2.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 115
-    components:
-    - type: Transform
-      pos: 4.5,2.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 123
+  - uid: 110
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2296,28 +2266,22 @@ entities:
     - type: Transform
       pos: 4.496961,-0.4880163
       parent: 1
-- proto: Type99Artillery
+- proto: Type99ArtilleryNCSP
   entities:
-  - uid: 103
+  - uid: 12
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 994000
-    - type: BallisticAmmoProvider
-      entities:
-      - 104
-      - 105
+      startingCharge: 997000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 104
-          - 105
+          ents: []
         machine_board: !type:Container
           showEnts: False
           occludes: True
@@ -2328,7 +2292,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
-      - 194
+      - 49
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -2357,16 +2321,6 @@ entities:
     - type: Transform
       pos: -1.5,0.5
       parent: 1
-  - uid: 7
-    components:
-    - type: Transform
-      pos: -1.5,-0.5
-      parent: 1
-  - uid: 8
-    components:
-    - type: Transform
-      pos: -1.5,-1.5
-      parent: 1
   - uid: 9
     components:
     - type: Transform
@@ -2381,11 +2335,6 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-4.5
-      parent: 1
-  - uid: 12
-    components:
-    - type: Transform
-      pos: 1.5,-4.5
       parent: 1
   - uid: 13
     components:
@@ -2507,16 +2456,6 @@ entities:
     - type: Transform
       pos: 6.5,3.5
       parent: 1
-  - uid: 48
-    components:
-    - type: Transform
-      pos: 9.5,3.5
-      parent: 1
-  - uid: 49
-    components:
-    - type: Transform
-      pos: 7.5,3.5
-      parent: 1
   - uid: 50
     components:
     - type: Transform
@@ -2537,21 +2476,6 @@ entities:
     - type: Transform
       pos: 11.5,2.5
       parent: 1
-  - uid: 54
-    components:
-    - type: Transform
-      pos: 12.5,2.5
-      parent: 1
-  - uid: 55
-    components:
-    - type: Transform
-      pos: 13.5,2.5
-      parent: 1
-  - uid: 56
-    components:
-    - type: Transform
-      pos: 14.5,2.5
-      parent: 1
   - uid: 57
     components:
     - type: Transform
@@ -2566,16 +2490,6 @@ entities:
     components:
     - type: Transform
       pos: 20.5,0.5
-      parent: 1
-  - uid: 64
-    components:
-    - type: Transform
-      pos: 21.5,0.5
-      parent: 1
-  - uid: 65
-    components:
-    - type: Transform
-      pos: 22.5,0.5
       parent: 1
   - uid: 66
     components:
@@ -2592,25 +2506,10 @@ entities:
     - type: Transform
       pos: 24.5,-0.5
       parent: 1
-  - uid: 69
-    components:
-    - type: Transform
-      pos: 25.5,-0.5
-      parent: 1
-  - uid: 70
-    components:
-    - type: Transform
-      pos: 25.5,-1.5
-      parent: 1
   - uid: 71
     components:
     - type: Transform
       pos: 19.5,1.5
-      parent: 1
-  - uid: 73
-    components:
-    - type: Transform
-      pos: 25.5,-2.5
       parent: 1
   - uid: 74
     components:
@@ -2641,36 +2540,6 @@ entities:
     components:
     - type: Transform
       pos: 20.5,-2.5
-      parent: 1
-  - uid: 80
-    components:
-    - type: Transform
-      pos: 19.5,-2.5
-      parent: 1
-  - uid: 81
-    components:
-    - type: Transform
-      pos: 18.5,-2.5
-      parent: 1
-  - uid: 82
-    components:
-    - type: Transform
-      pos: 17.5,-2.5
-      parent: 1
-  - uid: 83
-    components:
-    - type: Transform
-      pos: 16.5,-2.5
-      parent: 1
-  - uid: 84
-    components:
-    - type: Transform
-      pos: 15.5,-2.5
-      parent: 1
-  - uid: 85
-    components:
-    - type: Transform
-      pos: 14.5,-2.5
       parent: 1
   - uid: 86
     components:
@@ -2852,6 +2721,122 @@ entities:
     components:
     - type: Transform
       pos: 12.5,-3.5
+      parent: 1
+- proto: WallPlastitaniumNCSP
+  entities:
+  - uid: 56
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.5,-0.5
+      parent: 1
+  - uid: 70
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 19.5,-2.5
+      parent: 1
+  - uid: 73
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 25.5,-2.5
+      parent: 1
+  - uid: 80
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 18.5,-2.5
+      parent: 1
+  - uid: 81
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 17.5,-2.5
+      parent: 1
+  - uid: 82
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 16.5,-2.5
+      parent: 1
+  - uid: 83
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 25.5,-1.5
+      parent: 1
+  - uid: 84
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 22.5,0.5
+      parent: 1
+  - uid: 85
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 25.5,-0.5
+      parent: 1
+  - uid: 103
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 15.5,-2.5
+      parent: 1
+  - uid: 104
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 14.5,-2.5
+      parent: 1
+  - uid: 105
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 14.5,2.5
+      parent: 1
+  - uid: 107
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 21.5,0.5
+      parent: 1
+  - uid: 108
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 13.5,2.5
+      parent: 1
+  - uid: 109
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 12.5,2.5
+      parent: 1
+  - uid: 111
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 9.5,3.5
+      parent: 1
+  - uid: 112
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 1.5,-4.5
+      parent: 1
+  - uid: 113
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 7.5,3.5
+      parent: 1
+  - uid: 114
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.5,-1.5
       parent: 1
 - proto: WarpPointShip
   entities:
