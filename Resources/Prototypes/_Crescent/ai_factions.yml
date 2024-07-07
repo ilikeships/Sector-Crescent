@@ -42,7 +42,7 @@
 - type: npcFaction
   id: NCSPWarship
   hostile:
-    - NCSPWarship
+    - NCWLWarship
     - SRMWarship
     - CMMWarship
 

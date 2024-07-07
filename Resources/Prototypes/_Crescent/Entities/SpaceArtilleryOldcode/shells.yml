@@ -783,9 +783,9 @@
   - type: Projectile
     damage:
       types:
-        Structural: 75
-        Blunt: 30
-        Piercing: 30
+        Structural: 30
+        Blunt: 10
+        Piercing: 10
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
     lifetime: 75
@@ -796,9 +796,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 8
-    intensitySlope: 9
-    totalIntensity: 8
+    maxIntensity: 12
+    intensitySlope: 8
+    totalIntensity: 80
     maxTileBreak: 4
   - type: PointLight
     radius: 3.5
