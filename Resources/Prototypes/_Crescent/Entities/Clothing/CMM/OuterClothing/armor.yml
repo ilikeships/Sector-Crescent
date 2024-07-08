@@ -72,3 +72,69 @@
   - type: ExplosionResistance
     damageCoefficient: 0.90
   - type: GroupExamine
+
+#hardsuit
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitMidshipman
+  name: minuteman midshipman armored hardsuit
+  description: A modular hardsuit, color faded with age and UV radiation. A military surplus used by the Minutemen.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/CMM/OuterClothing/midshipman.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/CMM/OuterClothing/midshipman.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.9
+        Radiation: 0.8
+        Caustic: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.9
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMidshipman
+  - type: StaticPrice
+    price: 1250
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitCMMPatrol
+  name: minuteman's ballistic-reinforced patrolsuit
+  description: A bulky hardsuit, color faded with age and UV radiation. A military surplus used by the Minutemen.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/CMM/OuterClothing/patrol.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/CMM/OuterClothing/patrol.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.9
+        Radiation: 0.6
+        Caustic: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.9
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitCMMPatrol
+  - type: StaticPrice
+    price: 1500

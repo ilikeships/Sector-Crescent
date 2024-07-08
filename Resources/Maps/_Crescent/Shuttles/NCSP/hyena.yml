@@ -2170,6 +2170,11 @@ entities:
     - type: Transform
       pos: -4.5,15.5
       parent: 1
+  - uid: 64
+    components:
+    - type: Transform
+      pos: -2.5,13.5
+      parent: 1
   - uid: 87
     components:
     - type: Transform
@@ -2199,11 +2204,6 @@ entities:
     components:
     - type: Transform
       pos: -2.5,14.5
-      parent: 1
-  - uid: 94
-    components:
-    - type: Transform
-      pos: -2.5,13.5
       parent: 1
   - uid: 95
     components:
@@ -5146,6 +5146,25 @@ entities:
       parent: 1
 - proto: RemoteSignallerAdvanced
   entities:
+  - uid: 71
+    components:
+    - type: MetaData
+      name: front-facing artillery
+    - type: Transform
+      pos: -1.3644714,14.57609
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        306:
+        - Pressed: SpaceArtilleryFire
+        219:
+        - Pressed: SpaceArtilleryFire
+  - uid: 160
+    components:
+    - type: MetaData
+      name: portside artillery
+    - type: Transform
+      pos: -1.7281616,14.544924
   - uid: 160
     components:
     - type: MetaData
@@ -5170,6 +5189,13 @@ entities:
       range: 2500
       linkedPorts:
         201:
+        - Pressed: Trigger
+  - uid: 307
+    components:
+    - type: MetaData
+      name: rearm/disarm turrets
+    - type: Transform
+      pos: -1.3294309,14.522175
         - Pressed: Toggle
         973:
         - Pressed: Toggle
@@ -5187,7 +5213,29 @@ entities:
       pos: -1.3224823,14.59324
       parent: 1
     - type: DeviceLinkSource
+      range: 304
       linkedPorts:
+        976:
+        - Pressed: Toggle
+        63:
+        - Pressed: Toggle
+        973:
+        - Pressed: Toggle
+        131:
+        - Pressed: Toggle
+        158:
+        - Pressed: Toggle
+  - uid: 977
+    components:
+    - type: MetaData
+      name: starboard artillery
+    - type: Transform
+      pos: -1.4334122,14.590956
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        94:
+        - Pressed: Trigger
         307:
         - Pressed: SpaceArtilleryFire
         64:
@@ -5322,6 +5370,26 @@ entities:
     - type: DeviceLinkSink
       links:
       - 969
+- proto: ShuttleGunMissileRackNCSP
+  entities:
+  - uid: 94
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 9.5,1.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 977
+  - uid: 201
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,1.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 160
 - proto: SignalButton
   entities:
   - uid: 407
@@ -5856,6 +5924,13 @@ entities:
     - type: Transform
       pos: 3.4107206,-3.417344
       parent: 1
+- proto: Type99ArtilleryNCSP
+  entities:
+  - uid: 219
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 6.5,15.5
 - proto: Type99ArtilleryNCWL
   entities:
   - uid: 64
@@ -5882,12 +5957,18 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
+      - 71
       - 977
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
       autoRechargeRate: -3000
       autoRecharge: True
+  - uid: 306
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,15.5
   - uid: 71
     components:
     - type: Transform
@@ -5912,6 +5993,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
+      - 71
       - 160
     - type: ApcPowerReceiver
       powerLoad: 5000
@@ -7064,6 +7146,7 @@ entities:
     - type: DeviceLinkSink
       invokeCounter: 1
       links:
+      - 307
       - 306
   - uid: 158
     components:
@@ -7073,6 +7156,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
+      - 307
       - 306
   - uid: 973
     components:
@@ -7082,6 +7166,24 @@ entities:
     - type: DeviceLinkSink
       invokeCounter: 1
       links:
+      - 307
+- proto: WeaponTurretSwarmerNCSP
+  entities:
+  - uid: 976
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 10.5,18.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 307
+- proto: WeaponTurretVulcanNCSP
+  entities:
+  - uid: 131
+    components:
+    - type: Transform
+      pos: -0.5,-8.5
       - 306
 - proto: WeaponTurretVulcanNCSP
   entities:
@@ -7103,6 +7205,7 @@ entities:
     - type: DeviceLinkSink
       invokeCounter: 1
       links:
+      - 307
       - 306
 - proto: WeldingFuelTankFull
   entities:
