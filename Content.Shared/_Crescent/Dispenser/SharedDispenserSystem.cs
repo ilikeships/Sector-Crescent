@@ -1,6 +1,5 @@
-namespace Content.Shared.Dispenser
+namespace Content.Shared.Crescent.Dispenser;
+
+public abstract partial class SharedDispenserSystem : EntitySystem
 {
-    public abstract partial class SharedDispenserSystem : EntitySystem
-    {
-    }
 }

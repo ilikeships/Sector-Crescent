@@ -1,110 +1,109 @@
-using Content.Shared.Dispenser;
+using Content.Shared.Crescent.Dispenser;
 using Content.Shared.Interaction;
 using Robust.Shared.Audio.Systems;
 
-namespace Content.Server.Dispenser
+namespace Content.Server.Crescent.Dispenser;
+
+public sealed class DispenserSystem : SharedDispenserSystem
 {
-    public sealed class DispenserSystem : SharedDispenserSystem
+    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+
+    public override void Initialize()
     {
-        [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+        base.Initialize();
+        SubscribeLocalEvent<DispenserComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        SubscribeLocalEvent<DispenserComponent, InteractUsingEvent>(OnInteractUsing);
+    }
 
-        public override void Initialize()
+    private void OnActivateInWorld(EntityUid uid, DispenserComponent component, ActivateInWorldEvent args)
+    {
+        if (args.Handled || component.Dispensing)
         {
-            base.Initialize();
-            SubscribeLocalEvent<DispenserComponent, ActivateInWorldEvent>(OnActivateInWorld);
-            SubscribeLocalEvent<DispenserComponent, InteractUsingEvent>(OnInteractUsing);
+            return;
         }
 
-        private void OnActivateInWorld(EntityUid uid, DispenserComponent component, ActivateInWorldEvent args)
+        if (!string.IsNullOrEmpty(component.DefaultItem))
         {
-            if (args.Handled || component.Dispensing)
-            {
-                return;
-            }
+            args.Handled = true;
+            TryDispenseItem(uid, component, component.DefaultItem);
+        }
+        else
+        {
+            _audioSystem.PlayPvs(component.DenySound, uid);
+        }
+    }
 
-            if (!string.IsNullOrEmpty(component.DefaultItem))
-            {
-                args.Handled = true;
-                TryDispenseItem(uid, component, component.DefaultItem);
-            }
-            else
-            {
-                _audioSystem.PlayPvs(component.DenySound, uid);
-            }
+    private void OnInteractUsing(EntityUid uid, DispenserComponent component, InteractUsingEvent args)
+    {
+        if (args.Handled || component.Dispensing)
+        {
+            return;
         }
 
-        private void OnInteractUsing(EntityUid uid, DispenserComponent component, InteractUsingEvent args)
+        if (TryPrototype(args.Used, out var prototype)
+            && TryGetDispenseItem(component, prototype.ID, out string itemId))
         {
-            if (args.Handled || component.Dispensing)
-            {
-                return;
-            }
-
-            if (TryPrototype(args.Used, out var prototype)
-                && TryGetDispenseItem(component, prototype.ID, out string itemId))
-            {
-                args.Handled = true;
-                QueueDel(args.Used);
-                TryDispenseItem(uid, component, itemId);
-            }
-            else
-            {
-                _audioSystem.PlayPvs(component.DenySound, uid);
-            }
+            args.Handled = true;
+            QueueDel(args.Used);
+            TryDispenseItem(uid, component, itemId);
         }
-
-        public bool TryGetDispenseItem(DispenserComponent component, string itemId, out string dispenseItemId)
+        else
         {
-            if (string.IsNullOrEmpty(itemId))
-            {
-                dispenseItemId = string.Empty;
-                return false;
-            }
+            _audioSystem.PlayPvs(component.DenySound, uid);
+        }
+    }
 
-            foreach (var kvp in component.Inventory)
-            {
-                if (kvp.Key == itemId)
-                {
-                    dispenseItemId = kvp.Value;
-                    return !string.IsNullOrEmpty(dispenseItemId);
-                }
-            }
-
+    public bool TryGetDispenseItem(DispenserComponent component, string itemId, out string dispenseItemId)
+    {
+        if (string.IsNullOrEmpty(itemId))
+        {
             dispenseItemId = string.Empty;
             return false;
         }
 
-        public void TryDispenseItem(EntityUid uid, DispenserComponent component, string itemId)
+        foreach (var kvp in component.Inventory)
         {
-            component.Dispensing = true;
-            component.DispensingItemId = itemId;
-            component.DispenseTimer = 0f;
-
-            _audioSystem.PlayPvs(component.DispenseSound, uid);
-        }
-
-        public void Dispense(EntityUid uid, DispenserComponent component, string itemId)
-        {
-            var entity = Spawn(itemId, Transform(uid).Coordinates);
-        }
-
-        public override void Update(float frameTime)
-        {
-            base.Update(frameTime);
-
-            var query = EntityQueryEnumerator<DispenserComponent>();
-            while (query.MoveNext(out var uid, out var component))
+            if (kvp.Key == itemId)
             {
-                if (component.Dispensing)
-                {
-                    component.DispenseTimer += frameTime;
-                    if (component.DispenseTimer >= component.DispenseTime)
-                    {
-                        component.DispenseTimer = 0f;
-                        component.Dispensing = false;
+                dispenseItemId = kvp.Value;
+                return !string.IsNullOrEmpty(dispenseItemId);
+            }
+        }
 
-                        Dispense(uid, component, component.DispensingItemId);
-                    }
+        dispenseItemId = string.Empty;
+        return false;
+    }
+
+    public void TryDispenseItem(EntityUid uid, DispenserComponent component, string itemId)
+    {
+        component.Dispensing = true;
+        component.DispensingItemId = itemId;
+        component.DispenseTimer = 0f;
+
+        _audioSystem.PlayPvs(component.DispenseSound, uid);
+    }
+
+    public void Dispense(EntityUid uid, DispenserComponent component, string itemId)
+    {
+        var entity = Spawn(itemId, Transform(uid).Coordinates);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<DispenserComponent>();
+        while (query.MoveNext(out var uid, out var component))
+        {
+            if (component.Dispensing)
+            {
+                component.DispenseTimer += frameTime;
+                if (component.DispenseTimer >= component.DispenseTime)
+                {
+                    component.DispenseTimer = 0f;
+                    component.Dispensing = false;
+
+                    Dispense(uid, component, component.DispensingItemId);
                 }
             }
         }
