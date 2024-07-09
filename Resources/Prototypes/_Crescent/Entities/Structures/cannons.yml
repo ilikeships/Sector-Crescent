@@ -52,7 +52,6 @@
             - PowerCell
             - PowerCellSmall
   - type: MagazineAmmoProvider
-  - type: ProjectileIFF
 
 ##mining turret
 
@@ -107,7 +106,6 @@
     count: 10
   - type: Machine
     board: ShuttleGunKineticCircuitboard
-  - type: ProjectileIFF
 
 ## Missile Pods
 
@@ -163,7 +161,6 @@
     magState: mag
     steps: 8
     zeroVisible: false
-  - type: ProjectileIFF
 
 - type: entity
   id: ShuttleGunMissileRack
@@ -222,7 +219,6 @@
           params:
             pitch: 2
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
-  - type: ProjectileIFF
 
 #50 cal
 
@@ -355,7 +351,6 @@
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: ExtensionCableReceiver
-  - type: ProjectileIFF
 
 # laser
 
@@ -465,7 +460,6 @@
     powerLoad: 1000
   - type: ExtensionCableReceiver
   - type: BatterySelfRecharger
-  - type: ProjectileIFF
 
 #120mm
 
@@ -567,7 +561,6 @@
     powerLoad: 3000
   - type: ExtensionCableReceiver
   - type: BatterySelfRecharger
-  - type: ProjectileIFF
 
 #railgun
 
@@ -693,7 +686,6 @@
   - type: BatterySelfRecharger
   - type: RadiationBlocker
     resistance: 8
-  - type: ProjectileIFF
 
 #vulcan
 
@@ -826,7 +818,6 @@
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: ExtensionCableReceiver
-  - type: ProjectileIFF
 
 #Faction-tagged slugs
 

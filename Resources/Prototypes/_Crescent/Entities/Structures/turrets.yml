@@ -112,7 +112,6 @@
     - type: NoRotateOnMove
     - type: Input
       context: "human"
-    - type: ProjectileIFF
 
 
 - type: entity
@@ -269,7 +268,6 @@
     - type: Input
       context: "human"
     - type: MobState
-    - type: ProjectileIFF
 
 #faction-flagged variants
 
@@ -494,7 +492,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ProjectileIFF
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
