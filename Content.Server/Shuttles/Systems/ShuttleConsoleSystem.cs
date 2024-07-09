@@ -14,6 +14,7 @@ using Content.Shared.Tag;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Timing;
+using Content.Shared.Crescent.Radar;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.GameStates;
@@ -111,7 +112,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         foreach (var entity in _consoles)
         {
-            UpdateState(entity, ref dockState);
+            UpdateState(entity, entity.Comp, ref dockState);
         }
     }
 
@@ -125,9 +126,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var query = AllEntityQuery<ShuttleConsoleComponent>();
         DockingInterfaceState? dockState = null;
 
-        while (query.MoveNext(out var uid, out _))
+        while (query.MoveNext(out var uid, out var console))
         {
-            UpdateState(uid, ref dockState);
+            UpdateState(uid, console, ref dockState);
         }
     }
 
@@ -155,13 +156,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         ref AnchorStateChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, ref dockState);
+        UpdateState(uid, component, ref dockState);
     }
 
     private void OnConsolePowerChange(EntityUid uid, ShuttleConsoleComponent component, ref PowerChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, ref dockState);
+        UpdateState(uid, component, ref dockState);
     }
 
     private bool TryPilot(EntityUid user, EntityUid uid)
@@ -230,7 +231,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         return result;
     }
 
-    private void UpdateState(EntityUid consoleUid, ref DockingInterfaceState? dockState)
+    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console, ref DockingInterfaceState? dockState)
     {
         EntityUid? entity = consoleUid;
 
@@ -266,7 +267,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
-            _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, new ShuttleBoundUserInterfaceState(navState, mapState, dockState));
+            var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState);
+            console.LastUpdatedState = state;
+            _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, state);
         }
     }
 
@@ -291,6 +294,31 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         foreach (var (uid, comp) in toRemove)
         {
             RemovePilot(uid, comp);
+        }
+
+        var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+        while (consoleQuery.MoveNext(out var uid, out var console, out var transform))
+        {
+            if (console.LastUpdatedState == null || !_ui.IsUiOpen(uid, ShuttleConsoleUiKey.Key))
+            {
+                continue;
+            }
+
+            var iffState = GetIFFState(uid, transform);
+            var state = new ShuttleBoundUserInterfaceState(console.LastUpdatedState);
+            state.IFFState = iffState;
+
+            if (state.DirtyFlags < ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags |= ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+            else if (state.DirtyFlags > ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags = ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+
+            console.LastUpdatedState = state;
+            _ui.SetUiState(uid, ShuttleConsoleUiKey.Key, state);
         }
     }
 
@@ -430,5 +458,38 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             stateDuration,
             beacons ?? new List<ShuttleBeaconObject>(),
             exclusions ?? new List<ShuttleExclusionObject>());
+    }
+
+    public IFFInterfaceState GetIFFState(EntityUid consoleUid, TransformComponent? consoleTransform)
+    {
+        var projectiles = GetProjectilesInRange(consoleUid, consoleTransform);
+        return new IFFInterfaceState(projectiles);
+    }
+
+    public List<ProjectileState> GetProjectilesInRange(EntityUid consoleUid, TransformComponent? consoleTransform)
+    {
+        var projectiles = new List<ProjectileState>();
+
+        if (!Resolve(consoleUid, ref consoleTransform))
+        {
+            return projectiles;
+        }
+
+        var consolePosition = _transform.GetMapCoordinates(consoleTransform);
+        var range = SharedRadarConsoleSystem.DefaultMaxRange;
+
+        var query = EntityQueryEnumerator<ProjectileIFFComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        {
+            if (!consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
+            {
+                continue;
+            }
+
+            var projectile = new ProjectileState { Coordinates = GetNetCoordinates(_transform.GetMoverCoordinates(uid, transform)) };
+            projectiles.Add(projectile);
+        }
+
+        return projectiles;
     }
 }
