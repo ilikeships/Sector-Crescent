@@ -9,7 +9,7 @@
     - Bogatyr
     - Vanguard
     - Vasinya
-    - Sasha
+    - Zhipov
 
 - type: entity
   id: JackalMothershipComputer
@@ -20,6 +20,7 @@
     shuttles:
     - Reaver
     - Corvax
+    - Jackal
 
 - type: entity
   id: CountsmanMothershipComputer
@@ -85,3 +86,25 @@
     - buffalo
     - gazpachov
     - Musinyane
+
+- type: entity
+  id: ZhipovMothershipComputer
+  parent: BaseMothershipComputer
+  name: zhipov internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Khopesh
+    - Broadsword
+    - Sabre
+
+- type: entity
+  id: JackalCarrierMothershipComputer
+  parent: BaseMothershipComputer
+  name: jackal internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Reaver
+    - Piranha
+    - Scuttlefish

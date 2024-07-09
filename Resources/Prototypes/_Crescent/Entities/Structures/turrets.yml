@@ -378,7 +378,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 1
+      fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -468,3 +468,160 @@
     - type: NpcFactionMember
       factions:
         - NCSPWarship
+
+# long gun
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretArtillery
+  name: long distance artillery
+  abstract: true
+  components:
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/longgun.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: InteractionPopup
+      interactDelay: 0.2
+      successChance: 0.8
+      interactSuccessString: petting-success-generic
+      interactFailureString: petting-failure-generic
+      interactSuccessSound:
+        path: /Audio/Effects/double_beep.ogg
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: Gun
+      fireRate: 0.1
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+    # TODO: Power ammo provider?
+    - type: BallisticAmmoProvider
+      proto: LonggunCartridge
+      capacity: 25000
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          2.041
+        RangedRange: !type:Single
+          110
+        VisionRadius: !type:Single
+          110
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: SignalControl
+      isOnByDefault: true
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 2500
+    - type: DeviceLinkSink
+      ports:
+        - Toggle
+        - On
+        - Off
+    - type: ApcPowerReceiver
+      powerLoad: 3000
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+# faction-flagged
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: NCSP 80mm long-distance coilgun
+  id: WeaponTurretCoilgunNCSP
+  suffix: NCSP CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: NCWL 80mm long-distance coilgun
+  id: WeaponTurretCoilgunNCWL
+  suffix: NCWL CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: CMM 80mm long-distance coilgun
+  id: WeaponTurretCoilgunCMM
+  suffix: CMM CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMWarship
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: SRM 80mm long-distance coilgun
+  id: WeaponTurretCoilgunSRM
+  suffix: SRM CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
