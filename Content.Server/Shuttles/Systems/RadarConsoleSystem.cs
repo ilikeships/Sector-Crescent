@@ -62,7 +62,38 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
                 state = _console.GetNavState(uid, docks);
             }
 
-            _uiSystem.SetUiState(uid, RadarConsoleUiKey.Key, new NavBoundUserInterfaceState(state));
+            component.LastUpdatedState = new NavBoundUserInterfaceState(state);
+            _uiSystem.SetUiState(uid, RadarConsoleUiKey.Key, component.LastUpdatedState);
+        }
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<RadarConsoleComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var console, out var transform))
+        {
+            if (console.LastUpdatedState == null || !_uiSystem.IsUiOpen(uid, RadarConsoleUiKey.Key))
+            {
+                continue;
+            }
+
+            var iffState = _console.GetIFFState(uid, transform);
+            var state = new NavBoundUserInterfaceState(console.LastUpdatedState);
+            state.IFFState = iffState;
+
+            if (state.DirtyFlags < NavBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags |= NavBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+            else if (state.DirtyFlags > NavBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags = NavBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+
+            console.LastUpdatedState = state;
+            _uiSystem.SetUiState(uid, RadarConsoleUiKey.Key, state);
         }
     }
 }
