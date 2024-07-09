@@ -112,6 +112,7 @@
     - type: NoRotateOnMove
     - type: Input
       context: "human"
+    - type: ProjectileIFF
 
 
 - type: entity
@@ -268,6 +269,7 @@
     - type: Input
       context: "human"
     - type: MobState
+    - type: ProjectileIFF
 
 #faction-flagged variants
 
@@ -377,6 +379,7 @@
                 SheetSteel1:
                   min: 3
                   max: 5
+    - type: ProjectileIFF
     - type: Gun
       fireRate: 0.2
       selectedMode: FullAuto
@@ -491,6 +494,7 @@
             - MachineMask
           layer:
             - MachineLayer
+    - type: ProjectileIFF
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

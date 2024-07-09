@@ -115,7 +115,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 55
+        Structural: 50
         Piercing: 25
   - type: PointLight
     radius: 3.5
@@ -128,6 +128,7 @@
     layers:
       - state: base-projectile
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeVulcanStandard
