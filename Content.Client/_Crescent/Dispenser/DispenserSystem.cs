@@ -1,8 +1,7 @@
-using Content.Shared.Dispenser;
+using Content.Shared.Crescent.Dispenser;
 
-namespace Content.Client.Dispenser
+namespace Content.Client.Crescent.Dispenser;
+
+public sealed class DispenserSystem : SharedDispenserSystem
 {
-    public sealed class DispenserSystem : SharedDispenserSystem
-    {
-    }
 }
