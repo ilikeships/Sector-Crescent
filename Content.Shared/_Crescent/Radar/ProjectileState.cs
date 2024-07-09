@@ -4,7 +4,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Crescent.Radar;
 
 /// <summary>
-/// State of each individual docking port for interface purposes
+/// State of each individual projectile for interface purposes
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class ProjectileState
