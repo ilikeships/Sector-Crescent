@@ -84,8 +84,8 @@ public sealed partial class NavScreen : BoxContainer
 
     private void OnIFFTogglePressed(BaseButton.ButtonEventArgs args)
     {
-    NavRadar.ShowIFF ^= true;
-    args.Button.Pressed = NavRadar.ShowIFF;
+        NavRadar.ShowIFF ^= true;
+        args.Button.Pressed = NavRadar.ShowIFF;
     }
 
     private void OnIFFShuttleTogglePressed(BaseButton.ButtonEventArgs args)
