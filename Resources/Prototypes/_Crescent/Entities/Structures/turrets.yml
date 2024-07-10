@@ -65,6 +65,7 @@
                 SheetSteel1:
                   min: 3
                   max: 5
+    - type: TurretIFF
     - type: Gun
       fireRate: 7
       selectedMode: FullAuto
@@ -166,6 +167,7 @@
     - type: InteractionOutline
     - type: Actions
     - type: Fixtures
+    - type: TurretIFF
       fixtures:
         fix1:
           shape:
@@ -352,6 +354,7 @@
         path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
+    - type: TurretIFF
     - type: Damageable
       damageContainer: Inorganic
     - type: Destructible
@@ -513,6 +516,7 @@
       toggleMouseRotator: false
     - type: Damageable
       damageContainer: Inorganic
+    - type: TurretIFF
     - type: Destructible
       thresholds:
         - trigger:
@@ -626,3 +630,161 @@
     - type: NpcFactionMember
       factions:
         - SRMWarship
+
+#heavymortar
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretMortar
+  name: long distance mortar
+  abstract: true
+  components:
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/heavymortar.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: InteractionPopup
+      interactDelay: 0.2
+      successChance: 0.8
+      interactSuccessString: petting-success-generic
+      interactFailureString: petting-failure-generic
+      interactSuccessSound:
+        path: /Audio/Effects/double_beep.ogg
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: TurretIFF
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: Gun
+      fireRate: 0.1
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+    # TODO: Power ammo provider?
+    - type: BallisticAmmoProvider
+      proto: CartridgeMortarStandardTurret
+      capacity: 25000
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          1.841
+        RangedRange: !type:Single
+          150
+        VisionRadius: !type:Single
+          150
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: SignalControl
+      isOnByDefault: true
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 2500
+    - type: DeviceLinkSink
+      ports:
+        - Toggle
+        - On
+        - Off
+    - type: ApcPowerReceiver
+      powerLoad: 2000
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+#faction-flagged
+
+- type: entity
+  parent: BaseWeaponTurretMortar
+  name: SRM 90mm heavy mortar-pounder
+  id: WeaponTurretMortarSRM
+  suffix: SRM MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
+
+- type: entity
+  parent: BaseWeaponTurretMortar
+  name: CMM 90mm heavy mortar-pounder
+  id: WeaponTurretMortarCMM
+  suffix: CMM MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMWarship
+
+- type: entity
+  parent: BaseWeaponTurretMortar
+  name: NCWL 90mm heavy mortar-pounder
+  id: WeaponTurretMortarNCWL
+  suffix: NCWL MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretMortar
+  name: NCSP 90mm heavy mortar-pounder
+  id: WeaponTurretMortarNCSP
+  suffix: NCSP MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship
