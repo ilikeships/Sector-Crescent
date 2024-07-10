@@ -27,6 +27,11 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
+        _window.OnGroup1Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(1));
+        _window.OnGroup2Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(2));
+        _window.OnGroup3Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(3));
+        _window.OnGroup4Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(4));
+        _window.OnGroup5Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(5));
     }
 
     private void OnUndockRequest(NetEntity entity)

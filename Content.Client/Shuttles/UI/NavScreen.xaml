@@ -80,5 +80,26 @@
                         <controls:Label Text="{controls:Loc 'shuttle-console-iff-search'}"></controls:Label>
                         <controls:LineEdit Name="IffSearchCriteria" Access="Public" HorizontalExpand="True"></controls:LineEdit>
                     </controls:BoxContainer>
+                    <controls:Button Name="Group1"
+                            Text="{controls:Loc 'Use Group1'}"
+                            TextAlign="Center"
+                            ToggleMode="False"/>
+                    <controls:Button Name="Group2"
+                            Text="{controls:Loc 'Use Group2'}"
+                            TextAlign="Center"
+                            ToggleMode="False"/>
+                    <controls:Button Name="Group3"
+                            Text="{controls:Loc 'Use Group3'}"
+                            TextAlign="Center"
+                            ToggleMode="False"/>
+                    <controls:Button Name="Group4"
+                            Text="{controls:Loc 'Use Group4'}"
+                            TextAlign="Center"
+                            ToggleMode="False"/>
+                    <controls:Button Name="Group5"
+                            Text="{controls:Loc 'Use Group5'}"
+                            TextAlign="Center"
+                            ToggleMode="False"/>
                 </controls:BoxContainer>
             </controls:BoxContainer>
+

@@ -23,6 +23,11 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
 
+    public Action? OnGroup1Pressed;
+    public Action? OnGroup2Pressed;
+    public Action? OnGroup3Pressed;
+    public Action? OnGroup4Pressed;
+    public Action? OnGroup5Pressed;
     public ShuttleConsoleWindow()
     {
         RobustXamlLoader.Load(this);
@@ -62,6 +67,11 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         {
             UndockRequest?.Invoke(entity);
         };
+        NavContainer.OnGroup1Pressed += () => OnGroup1Pressed?.Invoke();
+        NavContainer.OnGroup2Pressed += () => OnGroup2Pressed?.Invoke();
+        NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();
+        NavContainer.OnGroup4Pressed += () => OnGroup4Pressed?.Invoke();
+        NavContainer.OnGroup5Pressed += () => OnGroup5Pressed?.Invoke();
     }
 
     private void ClearModes(ShuttleConsoleMode mode)

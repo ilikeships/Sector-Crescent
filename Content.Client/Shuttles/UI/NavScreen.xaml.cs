@@ -15,6 +15,12 @@ public sealed partial class NavScreen : BoxContainer
     [Dependency] private readonly IEntityManager _entManager = default!;
     private SharedTransformSystem _xformSystem;
 
+    public Action? OnGroup1Pressed;
+    public Action? OnGroup2Pressed;
+    public Action? OnGroup3Pressed;
+    public Action? OnGroup4Pressed;
+    public Action? OnGroup5Pressed;
+
     private EntityUid? _shuttleEntity;
 
     public NavScreen()
@@ -31,6 +37,12 @@ public sealed partial class NavScreen : BoxContainer
 
         DockToggle.OnToggled += OnDockTogglePressed;
         DockToggle.Pressed = NavRadar.ShowDocks;
+
+        Group1.OnPressed += _ => OnGroup1Pressed?.Invoke();
+        Group2.OnPressed += _ => OnGroup2Pressed?.Invoke();
+        Group3.OnPressed += _ => OnGroup3Pressed?.Invoke();
+        Group4.OnPressed += _ => OnGroup4Pressed?.Invoke();
+        Group5.OnPressed += _ => OnGroup5Pressed?.Invoke();
 
         // Frontier - IFF search
         IffSearchCriteria.OnTextChanged += args => OnIffSearchChanged(args.Text);
@@ -72,8 +84,8 @@ public sealed partial class NavScreen : BoxContainer
 
     private void OnIFFTogglePressed(BaseButton.ButtonEventArgs args)
     {
-        NavRadar.ShowIFF ^= true;
-        args.Button.Pressed = NavRadar.ShowIFF;
+    NavRadar.ShowIFF ^= true;
+    args.Button.Pressed = NavRadar.ShowIFF;
     }
 
     private void OnIFFShuttleTogglePressed(BaseButton.ButtonEventArgs args)

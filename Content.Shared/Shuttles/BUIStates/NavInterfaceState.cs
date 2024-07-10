@@ -1,3 +1,4 @@
+using Linguini.Syntax.Ast;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
@@ -37,4 +38,10 @@ public sealed class NavInterfaceState
 public enum RadarConsoleUiKey : byte
 {
     Key
+}
+
+[Serializable, NetSerializable]
+public sealed class NavConsoleGroupPressedMessage(int payload) : BoundUserInterfaceMessage
+{
+    public int Payload = payload;
 }

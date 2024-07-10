@@ -69,3 +69,10 @@ signal-port-description-power-charging = This port is invoked with HIGH when the
 
 signal-port-name-power-discharging = Discharging
 signal-port-description-power-discharging = This port is invoked with HIGH when the battery is losing charge and LOW when not.
+
+signal-port-name-group1 = "Group 1"
+signal-port-name-group2 = "Group 2"
+signal-port-name-group3 = "Group 3"
+signal-port-name-group4 = "Group 4"
+signal-port-name-group5 = "Group 5"
+signal-port-description-group = This port is invoked when the group button is pressed in the nav display

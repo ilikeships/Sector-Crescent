@@ -99,6 +99,13 @@
       state: generic_keys
   - type: Computer
     board: ShuttleConsoleCircuitboard
+  - type: DeviceLinkSource
+    ports:
+      - Group1
+      - Group2
+      - Group3
+      - Group4
+      - Group5
 
 - type: entity
   parent: BaseComputerShuttle

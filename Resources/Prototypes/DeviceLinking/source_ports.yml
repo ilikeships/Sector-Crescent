@@ -154,3 +154,28 @@
   id: PowerDischarging
   name: signal-port-name-power-discharging
   description: signal-port-description-power-discharging
+
+- type: sourcePort
+  id: Group1
+  name: signal-port-name-group1
+  description: signal-port-description-group
+
+- type: sourcePort
+  id: Group2
+  name: signal-port-name-group2
+  description: signal-port-description-group
+
+- type: sourcePort
+  id: Group3
+  name: signal-port-name-group3
+  description: signal-port-description-group
+
+- type: sourcePort
+  id: Group4
+  name: signal-port-name-group4
+  description: signal-port-description-group
+
+- type: sourcePort
+  id: Group5
+  name: signal-port-name-group5
+  description: signal-port-description-group
