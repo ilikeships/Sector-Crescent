@@ -9,6 +9,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Content.Shared.PowerCell;
 using Content.Shared.Movement.Components;
+using Content.Shared.Crescent.Radar;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -26,6 +27,21 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
     private void OnRadarStartup(EntityUid uid, RadarConsoleComponent component, ComponentStartup args)
     {
         UpdateState(uid, component);
+    }
+
+    public void RefreshIFFState()
+    {
+        var turrets = _console.GetAllTurrets();
+        var query = AllEntityQuery<RadarConsoleComponent>();
+        while (query.MoveNext(out var uid, out var console))
+        {
+            if (console.LastUpdatedState == null || console.LastUpdatedState.IFFState == null)
+            {
+                continue;
+            }
+
+            console.LastUpdatedState.IFFState.Turrets = turrets;
+        }
     }
 
     protected override void UpdateState(EntityUid uid, RadarConsoleComponent component)
@@ -79,7 +95,8 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
                 continue;
             }
 
-            var iffState = _console.GetIFFState(uid, transform);
+            var turrets = console.LastUpdatedState.IFFState?.Turrets;
+            var iffState = _console.GetIFFState(uid, transform, turrets);
             var state = new NavBoundUserInterfaceState(console.LastUpdatedState);
             state.IFFState = iffState;
 
