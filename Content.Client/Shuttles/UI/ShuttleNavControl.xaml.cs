@@ -36,6 +36,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     private Dictionary<NetEntity, List<DockingPortState>> _docks = new();
 
     private List<ProjectileState> _projectiles = new();
+    private Dictionary<NetEntity, List<TurretState>> _turrets = new();
 
     public bool ShowIFF { get; set; } = true;
     public bool ShowIFFShuttles { get; set; } = true;
@@ -123,6 +124,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     public void UpdateState(IFFInterfaceState state)
     {
         _projectiles = state.Projectiles;
+        _turrets = state.Turrets;
     }
 
     protected override void Draw(DrawingHandleScreen handle)
@@ -170,8 +172,10 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
             DrawGrid(handle, matrix, (ourGridId.Value, ourGrid), color);
             DrawDocks(handle, ourGridId.Value, matrix);
-            DrawProjectiles(handle, ourWorldMatrixInvert);
+            DrawTurrets(handle, ourGridId.Value, matrix, true);
         }
+
+        DrawProjectiles(handle, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
         invertedPosition.Y = -invertedPosition.Y;
@@ -312,6 +316,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
             DrawGrid(handle, matty, grid, color);
             DrawDocks(handle, gUid, matty);
+            DrawTurrets(handle, gUid, matty, false);
         }
     }
 
@@ -382,6 +387,45 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             }
 
             handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, color);
+        }
+    }
+
+    private void DrawTurrets(DrawingHandleScreen handle, EntityUid uid, Matrix3 matrix, bool isSelf)
+    {
+        const float scale = 0.8f;
+
+        Color color = isSelf ? TurretIFFComponent.DefaultSelfColor : TurretIFFComponent.DefaultColor;
+
+        var netEntity = EntManager.GetNetEntity(uid);
+        if (_turrets.TryGetValue(netEntity, out var turrets))
+        {
+            foreach (var turret in turrets)
+            {
+                var position = turret.Coordinates.Position;
+                var uiPosition = matrix.Transform(position);
+
+                if (uiPosition.Length() > (WorldRange * 2f) - scale)
+                {
+                    continue;
+                }
+
+                var verts = new[]
+                {
+                    position + new Vector2(-scale, -scale),
+                    position + new Vector2(scale, -scale),
+                    position + new Vector2(scale, scale),
+                    position + new Vector2(-scale, scale),
+                };
+
+                for (var i = 0; i < verts.Length; i++)
+                {
+                    var vert = matrix.Transform(verts[i]);
+                    vert.Y = -vert.Y;
+                    verts[i] = ScalePosition(vert);
+                }
+
+                handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, color);
+            }
         }
     }
 
