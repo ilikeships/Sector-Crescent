@@ -6,9 +6,11 @@ namespace Content.Shared.Crescent.Radar;
 public sealed class IFFInterfaceState
 {
     public List<ProjectileState> Projectiles;
+    public Dictionary<NetEntity, List<TurretState>> Turrets;
 
-    public IFFInterfaceState(List<ProjectileState> projectiles)
+    public IFFInterfaceState(List<ProjectileState> projectiles, Dictionary<NetEntity, List<TurretState>> turrets)
     {
         Projectiles = projectiles;
+        Turrets = turrets;
     }
 }

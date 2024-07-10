@@ -21,6 +21,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
+using Content.Server.DeviceLinking.Systems;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -37,6 +38,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
+    [Dependency] private readonly DeviceLinkSystem _link = default!;
 
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -75,6 +77,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         SubscribeLocalEvent<FTLDestinationComponent, ComponentStartup>(OnFtlDestStartup);
         SubscribeLocalEvent<FTLDestinationComponent, ComponentShutdown>(OnFtlDestShutdown);
+        SubscribeLocalEvent<ShuttleConsoleComponent, NavConsoleGroupPressedMessage>(OnGroupPressed);
 
         InitializeFTL();
     }
@@ -109,10 +112,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _consoles.Clear();
         _lookup.GetChildEntities(gridUid, _consoles);
         DockingInterfaceState? dockState = null;
+        IFFInterfaceState? iffState = null;
 
         foreach (var entity in _consoles)
         {
-            UpdateState(entity, entity.Comp, ref dockState);
+            UpdateState(entity, entity.Comp, ref dockState, ref iffState);
         }
     }
 
@@ -125,10 +129,26 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         GetExclusions(ref exclusions);
         var query = AllEntityQuery<ShuttleConsoleComponent>();
         DockingInterfaceState? dockState = null;
+        IFFInterfaceState? iffState = null;
 
         while (query.MoveNext(out var uid, out var console))
         {
-            UpdateState(uid, console, ref dockState);
+            UpdateState(uid, console, ref dockState, ref iffState);
+        }
+    }
+
+    public void RefreshIFFState()
+    {
+        var turrets = GetAllTurrets();
+        var query = AllEntityQuery<ShuttleConsoleComponent>();
+        while (query.MoveNext(out var uid, out var console))
+        {
+            if (console.LastUpdatedState == null || console.LastUpdatedState.IFFState == null)
+            {
+                continue;
+            }
+
+            console.LastUpdatedState.IFFState.Turrets = turrets;
         }
     }
 
@@ -156,13 +176,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         ref AnchorStateChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, component, ref dockState);
+        IFFInterfaceState? iffState = null;
+        UpdateState(uid, component, ref dockState, ref iffState);
     }
 
     private void OnConsolePowerChange(EntityUid uid, ShuttleConsoleComponent component, ref PowerChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, component, ref dockState);
+        IFFInterfaceState? iffState = null;
+        UpdateState(uid, component, ref dockState, ref iffState);
     }
 
     private bool TryPilot(EntityUid user, EntityUid uid)
@@ -231,7 +253,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         return result;
     }
 
-    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console, ref DockingInterfaceState? dockState)
+    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console, ref DockingInterfaceState? dockState, ref IFFInterfaceState? iffState)
     {
         EntityUid? entity = consoleUid;
 
@@ -249,6 +271,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         NavInterfaceState navState;
         ShuttleMapInterfaceState mapState;
         dockState ??= GetDockState();
+        iffState ??= GetIFFState(consoleUid, consoleXform, null);
 
         if (shuttleGridUid != null && entity != null)
         {
@@ -268,6 +291,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
             var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState);
+            state.IFFState = iffState;
             console.LastUpdatedState = state;
             _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, state);
         }
@@ -304,7 +328,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 continue;
             }
 
-            var iffState = GetIFFState(uid, transform);
+            var turrets = console.LastUpdatedState.IFFState.Turrets;
+            var iffState = GetIFFState(uid, transform, turrets);
             var state = new ShuttleBoundUserInterfaceState(console.LastUpdatedState);
             state.IFFState = iffState;
 
@@ -460,10 +485,26 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             exclusions ?? new List<ShuttleExclusionObject>());
     }
 
-    public IFFInterfaceState GetIFFState(EntityUid consoleUid, TransformComponent? consoleTransform)
+    public void OnGroupPressed(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole, NavConsoleGroupPressedMessage args)
+    {
+        switch (args.Payload)
+        {
+            case 1: _link.InvokePort(consoleUid, "Group1"); break;
+            case 2: _link.InvokePort(consoleUid, "Group2"); break;
+            case 3: _link.InvokePort(consoleUid, "Group3"); break;
+            case 4: _link.InvokePort(consoleUid, "Group4"); break;
+            case 5: _link.InvokePort(consoleUid, "Group5"); break;
+            default:
+                break;
+        };
+    }
+
+
+    public IFFInterfaceState GetIFFState(EntityUid consoleUid, TransformComponent? consoleTransform, Dictionary<NetEntity, List<TurretState>>? turrets)
     {
         var projectiles = GetProjectilesInRange(consoleUid, consoleTransform);
-        return new IFFInterfaceState(projectiles);
+        turrets ??= GetAllTurrets();
+        return new IFFInterfaceState(projectiles, turrets);
     }
 
     public List<ProjectileState> GetProjectilesInRange(EntityUid consoleUid, TransformComponent? consoleTransform)
@@ -491,5 +532,34 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
 
         return projectiles;
+    }
+
+    public Dictionary<NetEntity, List<TurretState>> GetAllTurrets()
+    {
+        var turrets = new Dictionary<NetEntity, List<TurretState>>();
+
+        var query = EntityQueryEnumerator<TurretIFFComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        {
+            if (transform.ParentUid != transform.GridUid)
+            {
+                continue;
+            }
+
+            var netEntity = GetNetEntity(transform.GridUid.Value);
+            var turret = new TurretState { Coordinates = GetNetCoordinates(transform.Coordinates) };
+
+            if (turrets.TryGetValue(netEntity, out var gridTurrets))
+            {
+                gridTurrets.Add(turret);
+            }
+            else
+            {
+                gridTurrets = new List<TurretState> { turret };
+                turrets.Add(netEntity, gridTurrets);
+            }
+        }
+
+        return turrets;
     }
 }
