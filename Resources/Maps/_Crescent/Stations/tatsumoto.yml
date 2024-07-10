@@ -25,7 +25,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.4777069,-0.64122903
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -6218,8 +6217,6 @@ entities:
       pos: 1.5,13.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1704
@@ -6229,8 +6226,6 @@ entities:
       pos: 8.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1705
@@ -6240,8 +6235,6 @@ entities:
       pos: -7.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1706
@@ -6250,8 +6243,6 @@ entities:
       pos: 9.5,17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1760
@@ -6260,8 +6251,6 @@ entities:
       pos: 2.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
 - proto: GasVentScrubber
@@ -6273,8 +6262,6 @@ entities:
       pos: -7.5,1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1758
@@ -6284,8 +6271,6 @@ entities:
       pos: 8.5,1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1759
@@ -6294,8 +6279,6 @@ entities:
       pos: -1.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1820
@@ -6305,8 +6288,6 @@ entities:
       pos: -0.5,13.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
   - uid: 1821
@@ -6316,8 +6297,6 @@ entities:
       pos: 7.5,17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1852
 - proto: GeneratorBasic15kW
