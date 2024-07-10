@@ -23,11 +23,16 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
 
+
     public Action? OnGroup1Pressed;
     public Action? OnGroup2Pressed;
     public Action? OnGroup3Pressed;
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
+
+    private bool _updatedOnce;
+
+
     public ShuttleConsoleWindow()
     {
         RobustXamlLoader.Load(this);
@@ -146,12 +151,26 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     public void UpdateState(EntityUid owner, ShuttleBoundUserInterfaceState cState)
     {
+        if (_updatedOnce)
+        {
+            if (cState.DirtyFlags == ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                NavContainer.UpdateState(cState.IFFState);
+                return;
+            }
+        }
+        else
+        {
+            _updatedOnce = true;
+        }
+
         var coordinates = _entManager.GetCoordinates(cState.NavState.Coordinates);
         NavContainer.SetShuttle(coordinates?.EntityId);
         MapContainer.SetShuttle(coordinates?.EntityId);
         MapContainer.SetConsole(owner);
 
         NavContainer.UpdateState(cState.NavState);
+        NavContainer.UpdateState(cState.IFFState);
         MapContainer.UpdateState(cState.MapState);
         DockContainer.UpdateState(coordinates?.EntityId, cState.DockState);
     }

@@ -14,6 +14,7 @@ using Content.Shared.Tag;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Timing;
+using Content.Shared.Crescent.Radar;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.GameStates;
@@ -111,10 +112,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _consoles.Clear();
         _lookup.GetChildEntities(gridUid, _consoles);
         DockingInterfaceState? dockState = null;
+        IFFInterfaceState? iffState = null;
 
         foreach (var entity in _consoles)
         {
-            UpdateState(entity, ref dockState);
+            UpdateState(entity, entity.Comp, ref dockState, ref iffState);
         }
     }
 
@@ -127,10 +129,26 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         GetExclusions(ref exclusions);
         var query = AllEntityQuery<ShuttleConsoleComponent>();
         DockingInterfaceState? dockState = null;
+        IFFInterfaceState? iffState = null;
 
-        while (query.MoveNext(out var uid, out _))
+        while (query.MoveNext(out var uid, out var console))
         {
-            UpdateState(uid, ref dockState);
+            UpdateState(uid, console, ref dockState, ref iffState);
+        }
+    }
+
+    public void RefreshIFFState()
+    {
+        var turrets = GetAllTurrets();
+        var query = AllEntityQuery<ShuttleConsoleComponent>();
+        while (query.MoveNext(out var uid, out var console))
+        {
+            if (console.LastUpdatedState == null || console.LastUpdatedState.IFFState == null)
+            {
+                continue;
+            }
+
+            console.LastUpdatedState.IFFState.Turrets = turrets;
         }
     }
 
@@ -158,13 +176,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         ref AnchorStateChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, ref dockState);
+        IFFInterfaceState? iffState = null;
+        UpdateState(uid, component, ref dockState, ref iffState);
     }
 
     private void OnConsolePowerChange(EntityUid uid, ShuttleConsoleComponent component, ref PowerChangedEvent args)
     {
         DockingInterfaceState? dockState = null;
-        UpdateState(uid, ref dockState);
+        IFFInterfaceState? iffState = null;
+        UpdateState(uid, component, ref dockState, ref iffState);
     }
 
     private bool TryPilot(EntityUid user, EntityUid uid)
@@ -233,7 +253,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         return result;
     }
 
-    private void UpdateState(EntityUid consoleUid, ref DockingInterfaceState? dockState)
+    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console, ref DockingInterfaceState? dockState, ref IFFInterfaceState? iffState)
     {
         EntityUid? entity = consoleUid;
 
@@ -251,6 +271,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         NavInterfaceState navState;
         ShuttleMapInterfaceState mapState;
         dockState ??= GetDockState();
+        iffState ??= GetIFFState(consoleUid, consoleXform, null);
 
         if (shuttleGridUid != null && entity != null)
         {
@@ -269,7 +290,10 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
-            _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, new ShuttleBoundUserInterfaceState(navState, mapState, dockState));
+            var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState);
+            state.IFFState = iffState;
+            console.LastUpdatedState = state;
+            _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, state);
         }
     }
 
@@ -294,6 +318,32 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         foreach (var (uid, comp) in toRemove)
         {
             RemovePilot(uid, comp);
+        }
+
+        var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+        while (consoleQuery.MoveNext(out var uid, out var console, out var transform))
+        {
+            if (console.LastUpdatedState == null || !_ui.IsUiOpen(uid, ShuttleConsoleUiKey.Key))
+            {
+                continue;
+            }
+
+            var turrets = console.LastUpdatedState.IFFState.Turrets;
+            var iffState = GetIFFState(uid, transform, turrets);
+            var state = new ShuttleBoundUserInterfaceState(console.LastUpdatedState);
+            state.IFFState = iffState;
+
+            if (state.DirtyFlags < ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags |= ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+            else if (state.DirtyFlags > ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                state.DirtyFlags = ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF;
+            }
+
+            console.LastUpdatedState = state;
+            _ui.SetUiState(uid, ShuttleConsoleUiKey.Key, state);
         }
     }
 
@@ -434,6 +484,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             beacons ?? new List<ShuttleBeaconObject>(),
             exclusions ?? new List<ShuttleExclusionObject>());
     }
+
     public void OnGroupPressed(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole, NavConsoleGroupPressedMessage args)
     {
         switch (args.Payload)
@@ -446,6 +497,69 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             default:
                 break;
         };
-
     }
-}
+
+
+    public IFFInterfaceState GetIFFState(EntityUid consoleUid, TransformComponent? consoleTransform, Dictionary<NetEntity, List<TurretState>>? turrets)
+    {
+        var projectiles = GetProjectilesInRange(consoleUid, consoleTransform);
+        turrets ??= GetAllTurrets();
+        return new IFFInterfaceState(projectiles, turrets);
+    }
+
+    public List<ProjectileState> GetProjectilesInRange(EntityUid consoleUid, TransformComponent? consoleTransform)
+    {
+        var projectiles = new List<ProjectileState>();
+
+        if (!Resolve(consoleUid, ref consoleTransform))
+        {
+            return projectiles;
+        }
+
+        var consolePosition = _transform.GetMapCoordinates(consoleTransform);
+        var range = SharedRadarConsoleSystem.DefaultMaxRange;
+
+        var query = EntityQueryEnumerator<ProjectileIFFComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        {
+            if (!consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
+            {
+                continue;
+            }
+
+            var projectile = new ProjectileState { Coordinates = GetNetCoordinates(_transform.GetMoverCoordinates(uid, transform)) };
+            projectiles.Add(projectile);
+        }
+
+        return projectiles;
+    }
+
+    public Dictionary<NetEntity, List<TurretState>> GetAllTurrets()
+    {
+        var turrets = new Dictionary<NetEntity, List<TurretState>>();
+
+        var query = EntityQueryEnumerator<TurretIFFComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        {
+            if (transform.ParentUid != transform.GridUid)
+            {
+                continue;
+            }
+
+            var netEntity = GetNetEntity(transform.GridUid.Value);
+            var turret = new TurretState { Coordinates = GetNetCoordinates(transform.Coordinates) };
+
+            if (turrets.TryGetValue(netEntity, out var gridTurrets))
+            {
+                gridTurrets.Add(turret);
+            }
+            else
+            {
+                gridTurrets = new List<TurretState> { turret };
+                turrets.Add(netEntity, gridTurrets);
+            }
+        }
+
+        return turrets;
+    }
+

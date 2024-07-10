@@ -11,13 +11,29 @@ namespace Content.Client.Shuttles.UI;
 public sealed partial class RadarConsoleWindow : FancyWindow,
     IComputerWindow<NavInterfaceState>
 {
+    private bool _updatedOnce;
+
     public RadarConsoleWindow()
     {
         RobustXamlLoader.Load(this);
     }
 
-    public void UpdateState(NavInterfaceState scc)
+    public void UpdateState(NavBoundUserInterfaceState cState)
     {
-        RadarScreen.UpdateState(scc);
+        if (_updatedOnce)
+        {
+            if (cState.DirtyFlags == NavBoundUserInterfaceState.StateDirtyFlags.IFF)
+            {
+                RadarScreen.UpdateState(cState.IFFState);
+                return;
+            }
+        }
+        else
+        {
+            _updatedOnce = true;
+        }
+
+        RadarScreen.UpdateState(cState.State);
+        RadarScreen.UpdateState(cState.IFFState);
     }
 }

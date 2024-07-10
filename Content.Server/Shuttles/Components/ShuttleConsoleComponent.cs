@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -36,5 +37,7 @@ namespace Content.Server.Shuttles.Components
 
         [DataField("disableDuration"), ViewVariables(VVAccess.ReadWrite)]
         public float DisableDuration = 60f;
+
+        public ShuttleBoundUserInterfaceState? LastUpdatedState = null;
     }
 }

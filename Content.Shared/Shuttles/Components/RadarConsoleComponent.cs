@@ -1,3 +1,4 @@
+using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.GameStates;
 
@@ -25,4 +26,6 @@ public sealed partial class RadarConsoleComponent : Component
     /// </summary>
     [DataField]
     public bool FollowEntity = false;
+
+    public NavBoundUserInterfaceState? LastUpdatedState = null;
 }
