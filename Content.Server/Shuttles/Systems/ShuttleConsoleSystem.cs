@@ -562,4 +562,4 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         return turrets;
     }
-
+}
