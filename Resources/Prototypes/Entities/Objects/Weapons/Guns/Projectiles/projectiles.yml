@@ -712,6 +712,7 @@
     totalIntensity: 60
     intensitySlope: 3
     maxIntensity: 5
+  - type: ProjectileIFF
 
 - type: entity
   id: BulletGrenadeBlast
@@ -729,6 +730,7 @@
     totalIntensity: 140
     intensitySlope: 4
     maxIntensity: 6
+  - type: ProjectileIFF
 
 - type: entity
   id: BulletGrenadeFlash
@@ -747,6 +749,7 @@
   - type: ActiveTimerTrigger
     timeRemaining: 0.3
   - type: DeleteOnTrigger
+  - type: ProjectileIFF
 
 # This is supposed to spawn shrapnel and stuff so uhh... TODO?
 - type: entity
@@ -765,6 +768,7 @@
     totalIntensity: 125 # about a ~6 tile radius
     intensitySlope: 1
     maxIntensity: 8
+  - type: ProjectileIFF
 
 - type: entity
   id: BulletGrenadeEMP
@@ -786,6 +790,7 @@
     radius: 3.5
     color: blue
     energy: 0.5
+  - type: ProjectileIFF
 
 - type: entity
   id: BulletCap

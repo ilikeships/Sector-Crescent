@@ -25,6 +25,7 @@
     energyConsumption: 90000
     disableDuration: 30
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeShellEmp
@@ -281,7 +282,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 35
+        Structural: 40
         #currently explosion deals 30 damage
   - type: TimedDespawn
     lifetime: 20
@@ -293,15 +294,16 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 1
-    intensitySlope: 1
-    totalIntensity: 3
-    maxTileBreak: 0
+    maxIntensity: 6
+    intensitySlope: 7
+    totalIntensity: 7
+    maxTileBreak: 1
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeMachineGunArmorPiercing
@@ -337,7 +339,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 24
+        Structural: 55
         #currently explosion deals 21 damage per tile in large AoE
   - type: TimedDespawn
     lifetime: 20
@@ -349,15 +351,16 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 1.3
-    intensitySlope: 0.5
+    maxIntensity: 4
+    intensitySlope: 9
     totalIntensity: 10
-    maxTileBreak: 0
+    maxTileBreak: 2
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeMachineGunHighExplosive
@@ -414,6 +417,7 @@
     color: orange
     energy: 0.5
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeMachineGunPractice
@@ -583,6 +587,7 @@
     color: orange
     energy: 0.5
   - type: SpaceArtilleryProjectile
+  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeRailHighExplosive
@@ -750,6 +755,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: ProjectileIFF
 
 - type: entity
   id: PDTBulletCase
@@ -804,6 +810,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: ProjectileIFF
 
 - type: entity
   id: SwarmerRocketCartridge
@@ -857,6 +864,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: ProjectileIFF
 
 - type: entity
   id: LonggunCartridge

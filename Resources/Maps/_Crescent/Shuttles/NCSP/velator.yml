@@ -441,6 +441,9 @@ entities:
     - type: Transform
       pos: 8.5,1.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 288
   - uid: 161
     components:
     - type: Transform
@@ -1942,7 +1945,7 @@ entities:
       pos: 9.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 48
@@ -1980,7 +1983,7 @@ entities:
       pos: 7.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 48
@@ -2032,6 +2035,10 @@ entities:
     - type: Transform
       pos: 7.5,1.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        102:
+        - Pressed: Toggle
   - uid: 289
     components:
     - type: Transform
@@ -2275,7 +2282,7 @@ entities:
       pos: 8.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 997000
+      startingCharge: 994000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
