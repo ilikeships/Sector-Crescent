@@ -288,6 +288,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 95
+      - 76
   - uid: 72
     components:
     - type: Transform
@@ -297,6 +298,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 95
+      - 76
   - uid: 73
     components:
     - type: Transform
@@ -306,6 +308,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 95
+      - 76
   - uid: 74
     components:
     - type: Transform
@@ -314,6 +317,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 95
+      - 76
   - uid: 75
     components:
     - type: Transform
@@ -322,6 +326,18 @@ entities:
     - type: DeviceLinkSink
       links:
       - 95
+      - 76
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 37
+    components:
+    - type: Transform
+      pos: 4.5,-5.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: BoxBodyBag
   entities:
   - uid: 157
@@ -759,6 +775,24 @@ entities:
     - type: Transform
       pos: 1.5,3.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        75:
+        - Group1: Toggle
+        74:
+        - Group1: Toggle
+        73:
+        - Group1: Toggle
+        72:
+        - Group1: Toggle
+        40:
+        - Group1: Toggle
+        88:
+        - Group2: Trigger
+        87:
+        - Group3: Toggle
+        - Group4: SpaceArtilleryOnSafety
+        - Group5: SpaceArtilleryOffSafety
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 93
@@ -1021,17 +1055,6 @@ entities:
     - type: Transform
       pos: 1.5,4.5
       parent: 1
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 37
-    components:
-    - type: Transform
-      pos: 4.5,-5.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredlightLED
   entities:
   - uid: 220
@@ -1140,10 +1163,11 @@ entities:
       pos: 3.5,1.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 152
+      - 76
     - type: ChamberMagazineAmmoProvider
       boltClosed: True
     - type: ContainerContainer
@@ -1198,6 +1222,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 154
+      - 76
 - proto: SignalButton
   entities:
   - uid: 95

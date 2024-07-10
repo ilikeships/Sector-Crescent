@@ -91,19 +91,19 @@ entities:
             color: '#EFB34196'
             id: ArrowsGreyscale
           decals:
-            228: -1,8
+            224: -1,8
         - node:
             color: '#EFB34196'
             id: ArrowsGreyscale
           decals:
-            225: -1,6
-            226: 1,6
+            221: -1,6
+            222: 1,6
         - node:
             angle: 1.5707963267948966 rad
             color: '#EFB34196'
             id: ArrowsGreyscale
           decals:
-            227: 1,8
+            223: 1,8
         - node:
             color: '#EFB34196'
             id: BoxGreyscale
@@ -114,120 +114,120 @@ entities:
             27: 0,-8
             28: 0,-7
             29: 0,-9
-            77: 4,0
-            78: 4,-1
-            217: -2,5
-            218: -1,5
-            219: 2,5
-            220: 1,5
-            221: 2,8
-            222: 2,9
-            223: -2,9
-            224: -2,8
+            73: 4,0
+            74: 4,-1
+            213: -2,5
+            214: -1,5
+            215: 2,5
+            216: 1,5
+            217: 2,8
+            218: 2,9
+            219: -2,9
+            220: -2,8
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerNe
           decals:
-            145: 5,-34
-            146: 5,-34
-            365: 8,-22
-            366: 8,-22
+            141: 5,-34
+            142: 5,-34
+            361: 8,-22
+            362: 8,-22
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerNw
           decals:
-            143: 6,-34
-            144: 6,-34
-            357: 5,-22
-            358: 5,-22
+            139: 6,-34
+            140: 6,-34
+            353: 5,-22
+            354: 5,-22
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerSe
           decals:
-            141: 5,-33
-            142: 5,-33
-            351: 8,-26
-            352: 8,-26
+            137: 5,-33
+            138: 5,-33
+            347: 8,-26
+            348: 8,-26
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerSw
           decals:
-            139: 6,-33
-            140: 6,-33
-            353: 6,-26
-            354: 6,-26
-            355: 5,-24
-            356: 5,-24
+            135: 6,-33
+            136: 6,-33
+            349: 6,-26
+            350: 6,-26
+            351: 5,-24
+            352: 5,-24
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteInnerSw
           decals:
-            377: 6,-24
-            378: 6,-24
+            373: 6,-24
+            374: 6,-24
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineE
           decals:
-            367: 8,-23
-            368: 8,-23
-            369: 8,-24
-            370: 8,-24
-            371: 8,-25
-            372: 8,-25
+            363: 8,-23
+            364: 8,-23
+            365: 8,-24
+            366: 8,-24
+            367: 8,-25
+            368: 8,-25
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineN
           decals:
-            361: 6,-22
-            362: 6,-22
-            363: 7,-22
-            364: 7,-22
+            357: 6,-22
+            358: 6,-22
+            359: 7,-22
+            360: 7,-22
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineS
           decals:
-            375: 7,-26
-            376: 7,-26
+            371: 7,-26
+            372: 7,-26
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineW
           decals:
-            359: 5,-23
-            360: 5,-23
-            373: 6,-25
-            374: 6,-25
+            355: 5,-23
+            356: 5,-23
+            369: 6,-25
+            370: 6,-25
         - node:
             color: '#EFB34196'
             id: FiveTest
           decals:
-            75: 2,-11
+            71: 2,-11
         - node:
             color: '#EFB34196'
             id: FourTest
           decals:
-            74: 2,-5
+            70: 2,-5
         - node:
             angle: -1.5707963267948966 rad
             color: '#EFB34196'
             id: LoadingAreaGreyscale
           decals:
-            251: 7,0
-            254: 7,-1
+            247: 7,0
+            250: 7,-1
         - node:
             color: '#EFB34196'
             id: OneTest
           decals:
-            71: -2.5148988,-4.979794
+            67: -2.5148988,-4.979794
         - node:
             color: '#EFB34196'
             id: SixTest
           decals:
-            76: 2,-17
+            72: 2,-17
         - node:
             color: '#EFB34196'
             id: ThreeTest
           decals:
-            73: -2.5297608,-17.00728
+            69: -2.5297608,-17.00728
         - node:
             angle: 3.141592653589793 rad
             color: '#EFB34196'
@@ -290,390 +290,390 @@ entities:
             color: '#EFB34196'
             id: TwoTest
           decals:
-            72: -2.544623,-11.025235
+            68: -2.544623,-11.025235
         - node:
             color: '#EFB34196'
             id: WarnBoxGreyscale
           decals:
-            34: 9,-36
-            35: -9,-36
-            36: -10,-47
-            37: 10,-47
-            58: -9,8
-            59: 9,8
-            95: -5,-39
-            96: -4,-39
-            97: -7,-38
-            98: -7,-37
-            99: -7,-42
-            100: -9,-43
-            101: -7,-48
-            102: -8,-48
-            103: -1,-50
-            104: -2,-50
-            105: 1,-50
-            106: 2,-50
-            107: 7,-48
-            108: 8,-48
-            109: 7,-42
-            110: 9,-43
-            111: 7,-38
-            112: 7,-37
-            113: 5,-39
-            114: 4,-39
-            379: -2,0
-            380: -1,0
-            381: 1,0
-            382: 2,0
-            383: -4,-14
-            384: -4,-8
-            385: 4,-8
-            386: 4,-14
+            30: 9,-36
+            31: -9,-36
+            32: -10,-47
+            33: 10,-47
+            54: -9,8
+            55: 9,8
+            91: -5,-39
+            92: -4,-39
+            93: -7,-38
+            94: -7,-37
+            95: -7,-42
+            96: -9,-43
+            97: -7,-48
+            98: -8,-48
+            99: -1,-50
+            100: -2,-50
+            101: 1,-50
+            102: 2,-50
+            103: 7,-48
+            104: 8,-48
+            105: 7,-42
+            106: 9,-43
+            107: 7,-38
+            108: 7,-37
+            109: 5,-39
+            110: 4,-39
+            375: -2,0
+            376: -1,0
+            377: 1,0
+            378: 2,0
+            379: -4,-14
+            380: -4,-8
+            381: 4,-8
+            382: 4,-14
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleNE
           decals:
-            48: 1,-25
-            60: -5,-22
-            64: 6,10
-            178: 3,-22
-            213: 7,-32
-            214: 7,-32
-            231: 7,8
-            249: -5,8
-            262: -5,0
-            295: -3,-28
-            299: 4,-28
+            44: 1,-25
+            56: -5,-22
+            60: 6,10
+            174: 3,-22
+            209: 7,-32
+            210: 7,-32
+            227: 7,8
+            245: -5,8
+            258: -5,0
+            291: -3,-28
+            295: 4,-28
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleNW
           decals:
-            47: -1,-25
-            63: -6,10
-            154: -7,-32
-            177: -3,-22
-            232: 4,8
-            250: -7,8
-            261: -7,0
-            296: -4,-28
-            300: 3,-28
-            309: -8,-22
-            316: -5,4
+            43: -1,-25
+            59: -6,10
+            150: -7,-32
+            173: -3,-22
+            228: 4,8
+            246: -7,8
+            257: -7,0
+            292: -4,-28
+            296: 3,-28
+            305: -8,-22
+            312: -5,4
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleSE
           decals:
-            46: 1,-27
-            61: -5,-24
-            152: -6,-35
-            174: -3,-26
-            175: 3,-23
-            211: 7,-35
-            212: 7,-35
-            230: 7,2
-            248: -5,6
-            298: 4,-30
-            302: 1,-32
-            307: -6,-26
+            42: 1,-27
+            57: -5,-24
+            148: -6,-35
+            170: -3,-26
+            171: 3,-23
+            207: 7,-35
+            208: 7,-35
+            226: 7,2
+            244: -5,6
+            294: 4,-30
+            298: 1,-32
+            303: -6,-26
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleSW
           decals:
-            45: -1,-27
-            151: -7,-35
-            173: 3,-26
-            176: -3,-23
-            209: 4,-35
-            210: 4,-35
-            229: 4,2
-            247: -7,6
-            297: -4,-30
-            301: -1,-32
-            308: -8,-26
+            41: -1,-27
+            147: -7,-35
+            169: 3,-26
+            172: -3,-23
+            205: 4,-35
+            206: 4,-35
+            225: 4,2
+            243: -7,6
+            293: -4,-30
+            297: -1,-32
+            304: -8,-26
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleNE
           decals:
-            127: -2,-39
-            166: -6,-34
-            171: 3,-26
-            294: -3,-29
+            123: -2,-39
+            162: -6,-34
+            167: 3,-26
+            290: -3,-29
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleNW
           decals:
-            128: 2,-39
-            172: -3,-26
-            293: 3,-29
+            124: 2,-39
+            168: -3,-26
+            289: 3,-29
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleSE
           decals:
-            125: -2,-34
-            164: -6,-34
-            165: -6,-32
-            258: -7,0
-            283: 1,-30
-            305: -6,-24
+            121: -2,-34
+            160: -6,-34
+            161: -6,-32
+            254: -7,0
+            279: 1,-30
+            301: -6,-24
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleSW
           decals:
-            126: 2,-34
-            215: 4,-32
-            216: 4,-32
-            257: -5,0
-            282: -1,-30
+            122: 2,-34
+            211: 4,-32
+            212: 4,-32
+            253: -5,0
+            278: -1,-30
         - node:
             color: '#EFB34196'
             id: WarnEndGreyscaleE
           decals:
-            153: -3,-32
-            163: -5,-34
-            168: 4,-26
+            149: -3,-32
+            159: -5,-34
+            164: 4,-26
         - node:
             color: '#EFB34196'
             id: WarnEndGreyscaleN
           decals:
-            169: -3,-25
-            170: 3,-25
-            269: 0,3
-            273: -6,-28
-            274: 6,-28
+            165: -3,-25
+            166: 3,-25
+            265: 0,3
+            269: -6,-28
+            270: 6,-28
         - node:
             color: '#EFB34196'
             id: WarnEndGreyscaleS
           decals:
-            40: 0,-52
-            255: -5,-1
-            256: -7,-1
-            270: 0,2
-            271: -6,-30
-            272: 6,-30
+            36: 0,-52
+            251: -5,-1
+            252: -7,-1
+            266: 0,2
+            267: -6,-30
+            268: 6,-30
         - node:
             color: '#EFB34196'
             id: WarnEndGreyscaleW
           decals:
-            167: -4,-26
-            189: 3,-32
-            190: 3,-32
+            163: -4,-26
+            185: 3,-32
+            186: 3,-32
         - node:
             color: '#EFB34196'
             id: WarnFullGreyscale
           decals:
-            252: 8,0
-            253: 8,-1
-            263: -6,-1
-            320: -9,-21
-            321: -9,-20
-            322: -8,-20
-            323: 8,-20
-            324: 9,-20
-            325: 9,-21
-            326: -9,1
-            327: -9,2
-            328: -10,-2
-            329: -10,-1
-            330: 10,-2
-            331: 10,-1
-            332: 9,1
-            333: 9,2
+            248: 8,0
+            249: 8,-1
+            259: -6,-1
+            316: -9,-21
+            317: -9,-20
+            318: -8,-20
+            319: 8,-20
+            320: 9,-20
+            321: 9,-21
+            322: -9,1
+            323: -9,2
+            324: -10,-2
+            325: -10,-1
+            326: 10,-2
+            327: 10,-1
+            328: 9,1
+            329: 9,2
         - node:
             color: '#EFB34196'
             id: WarnLineE
+          decals:
+            82: -3,7
+            83: -3,6
+            84: 3,7
+            85: 3,6
+            143: -5,-29
+            144: 5,-29
+            330: 9,-28
+            331: 9,-30
+            335: 7,-30
+            336: 7,-28
+            337: -7,-28
+            338: -7,-30
+            339: -9,-30
+            340: -9,-28
+        - node:
+            color: '#EFB34196'
+            id: WarnLineGreyscaleE
+          decals:
+            35: 0,-51
+            39: 1,-26
+            58: -5,-23
+            117: -2,-38
+            118: -2,-37
+            119: -2,-36
+            120: -2,-35
+            158: -6,-33
+            197: 7,-34
+            198: 7,-34
+            199: 7,-33
+            200: 7,-33
+            236: 7,3
+            237: 7,4
+            238: 7,5
+            239: 7,6
+            240: 7,7
+            273: -6,-29
+            274: 6,-29
+            275: 4,-29
+            276: 1,-31
+            302: -6,-25
+        - node:
+            color: '#EFB34196'
+            id: WarnLineGreyscaleN
+          decals:
+            40: 0,-25
+            50: -2,-3
+            51: -1,-3
+            52: 1,-3
+            53: 2,-3
+            61: -4,10
+            62: -3,10
+            63: -5,10
+            64: 3,10
+            65: 4,10
+            66: 5,10
+            125: -1,-39
+            126: 0,-39
+            127: 1,-39
+            153: -6,-32
+            154: -5,-32
+            155: -4,-32
+            175: -2,-22
+            176: -1,-22
+            177: 0,-22
+            178: 2,-22
+            179: 1,-22
+            187: 4,-32
+            188: 4,-32
+            189: 5,-32
+            190: 5,-32
+            191: 6,-32
+            192: 6,-32
+            241: 6,8
+            242: 5,8
+            256: -6,0
+            284: -2,-29
+            285: -1,-29
+            286: 0,-29
+            287: 1,-29
+            288: 2,-29
+            306: -7,-22
+            307: -6,-22
+            313: -4,4
+        - node:
+            color: '#EFB34196'
+            id: WarnLineGreyscaleS
+          decals:
+            37: 0,-27
+            45: -2,-20
+            46: -1,-20
+            47: 0,-20
+            48: 1,-20
+            49: 2,-20
+            132: -1,-34
+            133: 0,-34
+            134: 1,-34
+            156: -4,-32
+            157: -5,-32
+            180: -2,-23
+            181: 0,-23
+            182: 1,-23
+            183: 2,-23
+            184: -1,-23
+            201: 5,-35
+            202: 5,-35
+            203: 6,-35
+            204: 6,-35
+            234: 5,2
+            235: 6,2
+            255: -6,0
+            260: -2,-1
+            261: -1,-1
+            262: 0,-1
+            263: 1,-1
+            264: 2,-1
+            280: 2,-30
+            281: 3,-30
+            282: -3,-30
+            283: -2,-30
+            299: 0,-32
+            311: -7,-26
+        - node:
+            color: '#EFB34196'
+            id: WarnLineGreyscaleW
+          decals:
+            34: 0,-51
+            38: -1,-26
+            128: 2,-38
+            129: 2,-37
+            130: 2,-36
+            131: 2,-35
+            151: -7,-34
+            152: -7,-33
+            193: 4,-33
+            194: 4,-33
+            195: 4,-34
+            196: 4,-34
+            229: 4,7
+            230: 4,6
+            231: 4,5
+            232: 4,4
+            233: 4,3
+            271: -6,-29
+            272: 6,-29
+            277: -1,-31
+            300: -4,-29
+            308: -8,-23
+            309: -8,-24
+            310: -8,-25
+            314: -5,3
+            315: -5,2
+        - node:
+            color: '#EFB34196'
+            id: WarnLineN
+          decals:
+            78: -6,1
+            79: 0,1
+            80: 6,1
+            81: 0,4
+            114: 0,-21
+            115: -1,-21
+            116: 1,-21
+            346: 0,-40
+        - node:
+            color: '#EFB34196'
+            id: WarnLineS
           decals:
             86: -3,7
             87: -3,6
             88: 3,7
             89: 3,6
-            147: -5,-29
-            148: 5,-29
-            334: 9,-28
-            335: 9,-30
-            339: 7,-30
-            340: 7,-28
-            341: -7,-28
-            342: -7,-30
-            343: -9,-30
-            344: -9,-28
-        - node:
-            color: '#EFB34196'
-            id: WarnLineGreyscaleE
-          decals:
-            39: 0,-51
-            43: 1,-26
-            62: -5,-23
-            121: -2,-38
-            122: -2,-37
-            123: -2,-36
-            124: -2,-35
-            162: -6,-33
-            201: 7,-34
-            202: 7,-34
-            203: 7,-33
-            204: 7,-33
-            240: 7,3
-            241: 7,4
-            242: 7,5
-            243: 7,6
-            244: 7,7
-            277: -6,-29
-            278: 6,-29
-            279: 4,-29
-            280: 1,-31
-            306: -6,-25
-        - node:
-            color: '#EFB34196'
-            id: WarnLineGreyscaleN
-          decals:
-            44: 0,-25
-            54: -2,-3
-            55: -1,-3
-            56: 1,-3
-            57: 2,-3
-            65: -4,10
-            66: -3,10
-            67: -5,10
-            68: 3,10
-            69: 4,10
-            70: 5,10
-            129: -1,-39
-            130: 0,-39
-            131: 1,-39
-            157: -6,-32
-            158: -5,-32
-            159: -4,-32
-            179: -2,-22
-            180: -1,-22
-            181: 0,-22
-            182: 2,-22
-            183: 1,-22
-            191: 4,-32
-            192: 4,-32
-            193: 5,-32
-            194: 5,-32
-            195: 6,-32
-            196: 6,-32
-            245: 6,8
-            246: 5,8
-            260: -6,0
-            288: -2,-29
-            289: -1,-29
-            290: 0,-29
-            291: 1,-29
-            292: 2,-29
-            310: -7,-22
-            311: -6,-22
-            317: -4,4
-        - node:
-            color: '#EFB34196'
-            id: WarnLineGreyscaleS
-          decals:
-            41: 0,-27
-            49: -2,-20
-            50: -1,-20
-            51: 0,-20
-            52: 1,-20
-            53: 2,-20
-            136: -1,-34
-            137: 0,-34
-            138: 1,-34
-            160: -4,-32
-            161: -5,-32
-            184: -2,-23
-            185: 0,-23
-            186: 1,-23
-            187: 2,-23
-            188: -1,-23
-            205: 5,-35
-            206: 5,-35
-            207: 6,-35
-            208: 6,-35
-            238: 5,2
-            239: 6,2
-            259: -6,0
-            264: -2,-1
-            265: -1,-1
-            266: 0,-1
-            267: 1,-1
-            268: 2,-1
-            284: 2,-30
-            285: 3,-30
-            286: -3,-30
-            287: -2,-30
-            303: 0,-32
-            315: -7,-26
-        - node:
-            color: '#EFB34196'
-            id: WarnLineGreyscaleW
-          decals:
-            38: 0,-51
-            42: -1,-26
-            132: 2,-38
-            133: 2,-37
-            134: 2,-36
-            135: 2,-35
-            155: -7,-34
-            156: -7,-33
-            197: 4,-33
-            198: 4,-33
-            199: 4,-34
-            200: 4,-34
-            233: 4,7
-            234: 4,6
-            235: 4,5
-            236: 4,4
-            237: 4,3
-            275: -6,-29
-            276: 6,-29
-            281: -1,-31
-            304: -4,-29
-            312: -8,-23
-            313: -8,-24
-            314: -8,-25
-            318: -5,3
-            319: -5,2
-        - node:
-            color: '#EFB34196'
-            id: WarnLineN
-          decals:
-            82: -6,1
-            83: 0,1
-            84: 6,1
-            85: 0,4
-            118: 0,-21
-            119: -1,-21
-            120: 1,-21
-            350: 0,-40
-        - node:
-            color: '#EFB34196'
-            id: WarnLineS
-          decals:
-            90: -3,7
-            91: -3,6
-            92: 3,7
-            93: 3,6
-            149: -5,-29
-            150: 5,-29
-            336: 9,-30
-            337: 7,-30
-            338: 7,-28
-            345: -9,-30
-            346: -9,-28
-            347: -7,-28
-            348: -7,-30
+            145: -5,-29
+            146: 5,-29
+            332: 9,-30
+            333: 7,-30
+            334: 7,-28
+            341: -9,-30
+            342: -9,-28
+            343: -7,-28
+            344: -7,-30
         - node:
             color: '#EFB34196'
             id: WarnLineW
           decals:
-            79: 0,1
-            80: 0,4
-            81: -6,1
-            94: 6,1
-            115: -1,-21
-            116: 1,-21
-            117: 0,-21
-            349: 0,-40
+            75: 0,1
+            76: 0,4
+            77: -6,1
+            90: 6,1
+            111: -1,-21
+            112: 1,-21
+            113: 0,-21
+            345: 0,-40
     - type: GridAtmosphere
       version: 2
       data:
@@ -1717,6 +1717,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 928
+      - 626
   - uid: 207
     components:
     - type: Transform
@@ -1726,6 +1727,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 928
+      - 626
   - uid: 208
     components:
     - type: Transform
@@ -1735,6 +1737,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 928
+      - 626
   - uid: 209
     components:
     - type: Transform
@@ -1744,6 +1747,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 927
+      - 626
   - uid: 210
     components:
     - type: Transform
@@ -1753,6 +1757,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 927
+      - 626
   - uid: 211
     components:
     - type: Transform
@@ -1762,6 +1767,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 927
+      - 626
   - uid: 212
     components:
     - type: Transform
@@ -1771,6 +1777,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 932
+      - 626
   - uid: 213
     components:
     - type: Transform
@@ -1780,6 +1787,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 932
+      - 626
   - uid: 214
     components:
     - type: Transform
@@ -1789,6 +1797,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 932
+      - 626
   - uid: 215
     components:
     - type: Transform
@@ -1798,6 +1807,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 931
+      - 626
   - uid: 216
     components:
     - type: Transform
@@ -1807,6 +1817,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 931
+      - 626
   - uid: 217
     components:
     - type: Transform
@@ -1816,6 +1827,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 931
+      - 626
   - uid: 218
     components:
     - type: Transform
@@ -1825,6 +1837,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 930
+      - 626
   - uid: 219
     components:
     - type: Transform
@@ -1834,6 +1847,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 930
+      - 626
   - uid: 220
     components:
     - type: Transform
@@ -1843,6 +1857,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 930
+      - 626
   - uid: 221
     components:
     - type: Transform
@@ -1852,6 +1867,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 929
+      - 626
   - uid: 222
     components:
     - type: Transform
@@ -1861,6 +1877,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 929
+      - 626
   - uid: 223
     components:
     - type: Transform
@@ -1870,6 +1887,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 929
+      - 626
   - uid: 669
     components:
     - type: Transform
@@ -5802,6 +5820,84 @@ entities:
     - type: Transform
       pos: 0.5,-24.5
       parent: 2
+    - type: DeviceLinkSource
+      range: 3000
+      linkedPorts:
+        836:
+        - Group1: Toggle
+        837:
+        - Group1: Toggle
+        835:
+        - Group1: Toggle
+        218:
+        - Group2: Toggle
+        219:
+        - Group2: Toggle
+        220:
+        - Group2: Toggle
+        215:
+        - Group2: Toggle
+        216:
+        - Group2: Toggle
+        217:
+        - Group2: Toggle
+        214:
+        - Group2: Toggle
+        213:
+        - Group1: Toggle
+        212:
+        - Group2: Toggle
+        223:
+        - Group3: Toggle
+        222:
+        - Group3: Toggle
+        221:
+        - Group3: Toggle
+        206:
+        - Group3: Toggle
+        207:
+        - Group3: Toggle
+        208:
+        - Group3: Toggle
+        211:
+        - Group3: Toggle
+        210:
+        - Group3: Toggle
+        209:
+        - Group3: Toggle
+        117:
+        - Group4: Off
+        - Group5: On
+        115:
+        - Group4: Off
+        - Group5: On
+        116:
+        - Group4: Off
+        - Group5: On
+        118:
+        - Group4: Off
+        - Group5: On
+        1694:
+        - Group4: Off
+        - Group5: On
+        1695:
+        - Group4: Off
+        - Group5: On
+        1692:
+        - Group4: Off
+        - Group5: On
+        1693:
+        - Group4: Off
+        - Group5: On
+        1691:
+        - Group4: Off
+        - Group5: On
+        1690:
+        - Group4: Off
+        - Group5: On
+        1689:
+        - Group4: Off
+        - Group5: On
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 627
@@ -9118,6 +9214,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 834
+      - 626
   - uid: 836
     components:
     - type: Transform
@@ -9126,6 +9223,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 834
+      - 626
   - uid: 837
     components:
     - type: Transform
@@ -9134,6 +9232,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 834
+      - 626
   - uid: 1079
     components:
     - type: Transform
@@ -11957,6 +12056,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 118
     components:
     - type: Transform
@@ -11966,6 +12066,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1689
     components:
     - type: Transform
@@ -11975,6 +12076,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1690
     components:
     - type: Transform
@@ -11984,6 +12086,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1691
     components:
     - type: Transform
@@ -11993,6 +12096,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1692
     components:
     - type: Transform
@@ -12002,6 +12106,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1693
     components:
     - type: Transform
@@ -12010,6 +12115,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
 - proto: WeaponTurretSwarmerNCWL
   entities:
   - uid: 115
@@ -12021,6 +12127,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 116
     components:
     - type: Transform
@@ -12030,6 +12137,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
 - proto: WeaponTurretVulcanNCWL
   entities:
   - uid: 1694
@@ -12041,6 +12149,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
   - uid: 1695
     components:
     - type: Transform
@@ -12050,6 +12159,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1697
+      - 626
 - proto: WeldingFuelTankFull
   entities:
   - uid: 954

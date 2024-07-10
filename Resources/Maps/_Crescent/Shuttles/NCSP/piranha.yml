@@ -285,6 +285,14 @@ entities:
     - type: Transform
       pos: 0.5,4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        29:
+        - Group1: Toggle
+        - Group3: SpaceArtilleryOnSafety
+        - Group4: SpaceArtilleryOffSafety
+        34:
+        - Group2: Trigger
 - proto: PortableGeneratorSuperPacmanShuttle
   entities:
   - uid: 31
@@ -324,30 +332,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,0.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 41
-    components:
-    - type: MetaData
-      name: fire plasma repeater
-    - type: Transform
-      pos: 0.48115808,0.78346014
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        34:
-        - Pressed: Toggle
-  - uid: 42
-    components:
-    - type: MetaData
-      name: fire slugthrower
-    - type: Transform
-      pos: 0.5108822,1.4821715
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        29:
-        - Pressed: Toggle
 - proto: SHISlugthrowerTurretNCSP
   entities:
   - uid: 29
@@ -357,10 +341,10 @@ entities:
       pos: -0.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
-      - 42
+      - 36
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -412,7 +396,7 @@ entities:
           ent: 35
     - type: DeviceLinkSink
       links:
-      - 41
+      - 36
 - proto: SmallGyroscope
   entities:
   - uid: 30
