@@ -20,6 +20,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
+using Content.Server.DeviceLinking.Systems;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -36,6 +37,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
+    [Dependency] private readonly DeviceLinkSystem _link = default!;
 
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -74,6 +76,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         SubscribeLocalEvent<FTLDestinationComponent, ComponentStartup>(OnFtlDestStartup);
         SubscribeLocalEvent<FTLDestinationComponent, ComponentShutdown>(OnFtlDestShutdown);
+        SubscribeLocalEvent<ShuttleConsoleComponent, NavConsoleGroupPressedMessage>(OnGroupPressed);
 
         InitializeFTL();
     }
@@ -430,5 +433,19 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             stateDuration,
             beacons ?? new List<ShuttleBeaconObject>(),
             exclusions ?? new List<ShuttleExclusionObject>());
+    }
+    public void OnGroupPressed(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole, NavConsoleGroupPressedMessage args)
+    {
+        switch (args.Payload)
+        {
+            case 1: _link.InvokePort(consoleUid, "Group1"); break;
+            case 2: _link.InvokePort(consoleUid, "Group2"); break;
+            case 3: _link.InvokePort(consoleUid, "Group3"); break;
+            case 4: _link.InvokePort(consoleUid, "Group4"); break;
+            case 5: _link.InvokePort(consoleUid, "Group5"); break;
+            default:
+                break;
+        };
+
     }
 }
