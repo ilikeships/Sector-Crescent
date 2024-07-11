@@ -1,5 +1,4 @@
 ## UI
-playtime-deny-reason-not-whitelisted = You need to be whitelisted.
 adventure-list-start = NCWL State Bank
 adventure-mode-profit-text = made a total profit of: {" "}
 adventure-mode-loss-text = lost a total of: {" "}

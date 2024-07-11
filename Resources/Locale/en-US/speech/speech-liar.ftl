@@ -31,9 +31,6 @@ liar-word-replacement-10 = wasnt
 liar-word-11 = is
 liar-word-replacement-11 = isnt
 
-liar-word-12 = will
-liar-word-replacement-12 = wont
-
 liar-word-12 = not
 liar-word-replacement-12 = ""
 
@@ -124,9 +121,6 @@ liar-word-replacement-40 = don't like
 
 liar-word-41 = good
 liar-word-replacement-41 = bad
-
-liar-word-42 = bad
-liar-word-replacement-42 = good
 
 liar-word-42 = want
 liar-word-replacement-42 = "don't want"
