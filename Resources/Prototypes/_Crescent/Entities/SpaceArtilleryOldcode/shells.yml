@@ -20,6 +20,7 @@
     sprite: _NF/Objects/SpaceArtillery/630_emp_shell_casing.rsi
     layers:
       - state: base-projectile
+  - type: ProjectileIFF
   - type: EmpOnTrigger
     range: 12
     energyConsumption: 90000
@@ -58,6 +59,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -114,6 +116,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -170,6 +173,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -226,6 +230,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
