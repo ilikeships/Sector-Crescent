@@ -23,7 +23,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.5625,-0.53125
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -4483,8 +4482,6 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4495,8 +4492,6 @@ entities:
       pos: 2.5,-4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4507,8 +4502,6 @@ entities:
       pos: 5.5,-14.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4526,8 +4519,6 @@ entities:
       pos: -1.5,-4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4539,8 +4530,6 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4551,8 +4540,6 @@ entities:
       pos: 1.5,-14.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057
@@ -4563,8 +4550,6 @@ entities:
       pos: -2.5,-7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1058
       - 1057

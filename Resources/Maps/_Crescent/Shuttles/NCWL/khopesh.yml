@@ -165,12 +165,8 @@ entities:
   - uid: 10
     components:
     - type: Transform
-      pos: -0.5,4.5
-      parent: 1
-  - uid: 11
-    components:
-    - type: Transform
-      pos: 1.5,4.5
+      rot: 3.141592653589793 rad
+      pos: 0.5,4.5
       parent: 1
 - proto: CableApcExtension
   entities:
@@ -273,14 +269,6 @@ entities:
     - type: Transform
       pos: -0.5,3.5
       parent: 1
-- proto: ChairPilotSeat
-  entities:
-  - uid: 25
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,4.5
-      parent: 1
 - proto: ComputerShuttle
   entities:
   - uid: 26
@@ -288,6 +276,16 @@ entities:
     - type: Transform
       pos: 0.5,5.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        8:
+        - Group1: Toggle
+        - Group2: SpaceArtilleryOnSafety
+        - Group3: SpaceArtilleryOffSafety
+        23:
+        - Group1: Toggle
+        - Group2: SpaceArtilleryOnSafety
+        - Group3: SpaceArtilleryOffSafety
 - proto: MagazineVulcan
   entities:
   - uid: 28
@@ -309,10 +307,10 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
-      - 22
+      - 26
     - type: ChamberMagazineAmmoProvider
       boltClosed: True
     - type: ContainerContainer
@@ -349,10 +347,10 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
-      - 22
+      - 26
     - type: ChamberMagazineAmmoProvider
       boltClosed: True
     - type: ContainerContainer
@@ -415,21 +413,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,4.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 22
-    components:
-    - type: MetaData
-      name: fire vulcans
-    - type: Transform
-      pos: 0.56478834,2.6136298
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        8:
-        - Pressed: Toggle
-        23:
-        - Pressed: Toggle
 - proto: SmallGyroscope
   entities:
   - uid: 60

@@ -22,7 +22,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.453125,-0.640625
-      parent: invalid
     - type: Shuttle
     - type: MapGrid
       chunks:
@@ -4877,8 +4876,6 @@ entities:
       pos: 0.5,-10.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4893,8 +4890,6 @@ entities:
       pos: -8.5,-9.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4910,8 +4905,6 @@ entities:
       pos: 6.5,-14.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4927,8 +4920,6 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4946,8 +4937,6 @@ entities:
       pos: -6.5,-12.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4962,8 +4951,6 @@ entities:
       pos: -8.5,-7.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4978,8 +4965,6 @@ entities:
       pos: -6.5,-2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -4995,8 +4980,6 @@ entities:
       pos: 6.5,-17.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -5012,8 +4995,6 @@ entities:
       pos: -0.5,-18.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -5029,8 +5010,6 @@ entities:
       pos: -5.5,-17.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153
@@ -5045,8 +5024,6 @@ entities:
       pos: 0.5,-7.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1152
       - 1153

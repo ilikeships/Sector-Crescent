@@ -8,6 +8,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -25,7 +26,6 @@
     energyConsumption: 90000
     disableDuration: 30
   - type: SpaceArtilleryProjectile
-  - type: ProjectileIFF
 
 - type: entity
   id: CartridgeShellEmp
@@ -58,6 +58,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -114,6 +115,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -170,6 +172,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
@@ -226,6 +229,7 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:

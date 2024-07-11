@@ -933,6 +933,15 @@ entities:
     - type: DeviceLinkSink
       links:
       - 362
+- proto: BoriaticFuelTankFull
+  entities:
+  - uid: 996
+    components:
+    - type: MetaData
+      name: Boriatic fuel tank
+    - type: Transform
+      pos: 1.5,4.5
+      parent: 2
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 267
@@ -2947,6 +2956,29 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 2
+    - type: DeviceLinkSource
+      range: 3000
+      linkedPorts:
+        102:
+        - Group1: SpaceArtilleryFire
+        10:
+        - Group1: SpaceArtilleryFire
+        187:
+        - Group3: Toggle
+        186:
+        - Group3: Toggle
+        185:
+        - Group4: Trigger
+        184:
+        - Group4: Trigger
+        989:
+        - Group5: Toggle
+        988:
+        - Group5: Toggle
+        574:
+        - Group5: Toggle
+        580:
+        - Group5: Toggle
 - proto: ComputerStationRecords
   entities:
   - uid: 366
@@ -2998,8 +3030,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -3016,8 +3048,19 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 430
+          - 483
+          - 482
+          - 484
+          - 485
+          - 755
+          - 990
+          - 991
+          - 992
           - 431
+          - 993
+          - 430
+          - 994
+          - 995
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -3810,6 +3853,85 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -5.5,-11.5
       parent: 2
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 482
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 483
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 484
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 485
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 755
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 990
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 991
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 992
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 993
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 994
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 995
+    components:
+    - type: Transform
+      parent: 429
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MagazineRifle
   entities:
   - uid: 435
@@ -4455,75 +4577,6 @@ entities:
     - type: Transform
       pos: -4.333141,-14.535783
       parent: 2
-- proto: RemoteSignaller
-  entities:
-  - uid: 483
-    components:
-    - type: MetaData
-      name: fire slugthrower
-    - type: Transform
-      pos: -1.6844311,-1.4066544
-      parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        186:
-        - Pressed: Toggle
-        187:
-        - Pressed: Toggle
-  - uid: 484
-    components:
-    - type: MetaData
-      name: fire portside cannon
-    - type: Transform
-      pos: -0.3649643,-1.4887536
-      parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        102:
-        - Pressed: SpaceArtilleryFire
-  - uid: 485
-    components:
-    - type: MetaData
-      name: fire starboard cannon
-    - type: Transform
-      pos: -0.5878952,-1.3995564
-      parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        10:
-        - Pressed: SpaceArtilleryFire
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 482
-    components:
-    - type: MetaData
-      name: fire missiles
-    - type: Transform
-      pos: -1.4614272,-1.4999723
-      parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        184:
-        - Pressed: Toggle
-        185:
-        - Pressed: Toggle
-  - uid: 755
-    components:
-    - type: MetaData
-      name: toggle ballistic safeties
-    - type: Transform
-      pos: -1.0487878,-1.3981864
-      parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        102:
-        - Pressed: SpaceArtilleryToggleSafety
-        10:
-        - Pressed: SpaceArtilleryToggleSafety
-        186:
-        - Pressed: SpaceArtilleryToggleSafety
-        187:
-        - Pressed: SpaceArtilleryFire
 - proto: SalvageTechfabNF
   entities:
   - uid: 395
@@ -4540,11 +4593,10 @@ entities:
       pos: -2.5,13.5
       parent: 2
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
-      - 483
-      - 755
+      - 353
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -4579,11 +4631,10 @@ entities:
       pos: 3.5,13.5
       parent: 2
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
-      - 483
-      - 755
+      - 353
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -4685,7 +4736,7 @@ entities:
       parent: 2
     - type: DeviceLinkSink
       links:
-      - 482
+      - 353
   - uid: 185
     components:
     - type: Transform
@@ -4694,7 +4745,7 @@ entities:
       parent: 2
     - type: DeviceLinkSink
       links:
-      - 482
+      - 353
 - proto: SignalButton
   entities:
   - uid: 360
@@ -5313,7 +5364,7 @@ entities:
       pos: 8.5,-2.5
       parent: 2
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5330,8 +5381,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
-      - 485
-      - 755
+      - 353
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -5344,7 +5394,7 @@ entities:
       pos: -7.5,-2.5
       parent: 2
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5361,8 +5411,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
-      - 484
-      - 755
+      - 353
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -6468,12 +6517,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,-13.5
       parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 353
   - uid: 580
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,-13.5
       parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 353
 - proto: WeaponTurretSwarmerNCWL
   entities:
   - uid: 988
@@ -6482,12 +6537,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: -5.5,11.5
       parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 353
   - uid: 989
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,11.5
       parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 353
 - proto: WindoorSecure
   entities:
   - uid: 130

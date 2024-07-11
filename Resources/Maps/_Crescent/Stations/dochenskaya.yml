@@ -26,7 +26,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.34394836,-0.7006938
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -5186,8 +5185,6 @@ entities:
       pos: -4.5,17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1449
 - proto: GasVentScrubber
@@ -5210,8 +5207,6 @@ entities:
       pos: -2.5,17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1449
 - proto: GeneratorBasic15kW

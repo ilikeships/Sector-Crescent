@@ -196,7 +196,7 @@
     color: orange
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 15
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
@@ -215,6 +215,57 @@
     deleteOnSpawn: true
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+# heavy mortar bullet
+
+- type: entity
+  id: BulletMachineGunMortarTurret
+  name: 90mm heavy mortar shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 75
+        Piercing: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 19
+    intensitySlope: 26
+    totalIntensity: 32
+    maxTileBreak: 5
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 75
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
+    layers:
+      - state: base-projectile
+
+- type: entity
+  id: CartridgeMortarStandardTurret
+  name: 80mm surplus shell
+  parent: BaseItem
+  description: Ammunition for turrets.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunMortarTurret
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
