@@ -444,3 +444,87 @@
     layers:
       - state: green
       - state: passenger
+
+- type: entity
+  id: SpawnPointPhysicianCMM
+  parent: SpawnPointJobBase
+  name: PhysicianCMM
+  components:
+  - type: SpawnPoint
+    job_id: PhysicianCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointDeputyMarshalCMM
+  parent: SpawnPointJobBase
+  name: DeputyMarshalCMM
+  components:
+  - type: SpawnPoint
+    job_id: DeputyMarshalCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointMachinistCMM
+  parent: SpawnPointJobBase
+  name: MachinistCMM
+  components:
+  - type: SpawnPoint
+    job_id: MachinistCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointMarshalCMM
+  parent: SpawnPointJobBase
+  name: MarshalCMM
+  components:
+  - type: SpawnPoint
+    job_id: MarshalCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointMinutemanCMM
+  parent: SpawnPointJobBase
+  name: MinutemanCMM
+  components:
+  - type: SpawnPoint
+    job_id: MinutemanCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointOrdnancemanCMM
+  parent: SpawnPointJobBase
+  name: OrdnancemanCMM
+  components:
+  - type: SpawnPoint
+    job_id: OrdnancemanCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointWatchmasterCMM
+  parent: SpawnPointJobBase
+  name: WatchmasterCMM
+  components:
+  - type: SpawnPoint
+    job_id: WatchmasterCMM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
