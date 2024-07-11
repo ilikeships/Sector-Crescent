@@ -34,6 +34,5 @@ public sealed partial class RadarConsoleWindow : FancyWindow,
         }
 
         RadarScreen.UpdateState(cState.State);
-        RadarScreen.UpdateState(cState.IFFState);
     }
 }
