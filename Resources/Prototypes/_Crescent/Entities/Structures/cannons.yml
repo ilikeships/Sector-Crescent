@@ -28,6 +28,7 @@
           node: machineFrame
         - !type:DoActsBehavior
           acts: ["Destruction"]
+  - type: TurretIFF
   - type: Gun
     fireRate: 3
     useKey: false
@@ -70,6 +71,7 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
+  - type: TurretIFF
   - type: Destructible
     thresholds:
     - trigger:
@@ -115,6 +117,7 @@
   name: NT-3 48mm "Kurosawa" rocket pod
   description: A small fixedpoint rocketpod with a capacity of two rockets. Must be reloaded by hand.
   components:
+  - type: TurretIFF
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/cheapmissile.rsi
     layers:
@@ -168,6 +171,7 @@
   name: NT-6 48mm "Sumitomo" missile rack
   description: A massive, ship-mounted missile rack with a unique feeding mechanism. Requires a rocket magazine to operate.
   components:
+  - type: TurretIFF
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/missile.rsi
     layers:
@@ -230,6 +234,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: TurretIFF
   - type: Clickable
   - type: InteractionOutline
   - type: Physics
@@ -362,6 +367,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: TurretIFF
   - type: Clickable
   - type: Destructible
     thresholds:
@@ -471,6 +477,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: TurretIFF
   - type: Destructible
     thresholds:
     - trigger:
@@ -572,6 +579,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: TurretIFF
   - type: Clickable
   - type: InteractionOutline
   - type: Destructible
@@ -697,6 +705,7 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: TurretIFF
   - type: Clickable
   - type: InteractionOutline
   - type: Physics

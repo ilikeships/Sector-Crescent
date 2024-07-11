@@ -61,14 +61,14 @@ entities:
             color: '#DE3A3A96'
             id: WarnEndGreyscaleN
           decals:
-            8: 0,0
-            9: 0,0
+            6: 0,0
+            7: 0,0
         - node:
             color: '#DE3A3A96'
             id: WarnEndGreyscaleS
           decals:
-            6: 0,-1
-            7: 0,-1
+            4: 0,-1
+            5: 0,-1
         - node:
             color: '#FFFFFFFF'
             id: WarnLineE
@@ -539,6 +539,32 @@ entities:
     - type: Transform
       pos: 0.5,2.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        91:
+        - Group5: Toggle
+        92:
+        - Group5: Toggle
+        97:
+        - Group5: Toggle
+        96:
+        - Group5: Toggle
+        95:
+        - Group5: Toggle
+        93:
+        - Group5: Toggle
+        94:
+        - Group5: Toggle
+        174:
+        - Group5: Toggle
+        173:
+        - Group5: Toggle
+        90:
+        - Group1: Toggle
+        - Group3: SpaceArtilleryOnSafety
+        - Group4: SpaceArtilleryOffSafety
+        89:
+        - Group2: Trigger
 - proto: ComputerStationRecords
   entities:
   - uid: 77
@@ -694,6 +720,16 @@ entities:
     - type: Transform
       pos: 1.1443768,-1.4307764
       parent: 1
+  - uid: 177
+    components:
+    - type: Transform
+      pos: 1.0410829,-1.2986534
+      parent: 1
+  - uid: 178
+    components:
+    - type: Transform
+      pos: 0.9519105,-1.3432524
+      parent: 1
 - proto: NTVulcanTurretNCSP
   entities:
   - uid: 90
@@ -703,10 +739,12 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
-      - 178
+      - 76
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -819,36 +857,6 @@ entities:
     - type: Transform
       pos: 5.5,0.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 177
-    components:
-    - type: MetaData
-      name: fire missile
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.38962364,-1.4049621
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        invalid:
-        - Pressed: Trigger
-        89:
-        - Pressed: Trigger
-  - uid: 178
-    components:
-    - type: MetaData
-      name: fire gatling
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.8206222,-1.4049621
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        invalid:
-        - Pressed: Toggle
-        90:
-        - Pressed: Toggle
 - proto: ShuttersNormalOpen
   entities:
   - uid: 91
@@ -859,6 +867,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 92
     components:
     - type: Transform
@@ -867,6 +876,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 93
     components:
     - type: Transform
@@ -875,6 +885,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 94
     components:
     - type: Transform
@@ -883,6 +894,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 95
     components:
     - type: Transform
@@ -891,6 +903,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 96
     components:
     - type: Transform
@@ -899,6 +912,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 97
     components:
     - type: Transform
@@ -907,6 +921,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 173
     components:
     - type: Transform
@@ -916,6 +931,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
   - uid: 174
     components:
     - type: Transform
@@ -925,6 +941,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 172
+      - 76
 - proto: ShuttleGunMissileRackNCSP
   entities:
   - uid: 89
@@ -935,7 +952,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 177
+      - 76
 - proto: SignalButton
   entities:
   - uid: 172
@@ -1084,6 +1101,13 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: ToolboxMechanicalFilled
+  entities:
+  - uid: 192
+    components:
+    - type: Transform
+      pos: 0.47632718,-1.3432524
+      parent: 1
 - proto: WallPlastitanium
   entities:
   - uid: 2

@@ -153,6 +153,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,1.5
       parent: 1
+  - uid: 42
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,2.5
+      parent: 1
 - proto: CableApcExtension
   entities:
   - uid: 53
@@ -321,6 +327,13 @@ entities:
     - type: Transform
       pos: 0.5,4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        29:
+        - Group1: Trigger
+        30:
+        - Group2: Toggle
+        17: []
 - proto: MagazineGrenadeBlast
   entities:
   - uid: 71
@@ -367,32 +380,6 @@ entities:
     - type: Transform
       pos: 1.5,0.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 42
-    components:
-    - type: MetaData
-      name: fire missiles
-    - type: Transform
-      pos: 0.42201,2.4915044
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        29:
-        - Pressed: Trigger
-  - uid: 43
-    components:
-    - type: MetaData
-      name: fire plasma repeater
-    - type: Transform
-      pos: 0.57062936,2.4915044
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        30:
-        - Pressed: Toggle
-        29:
-        - Pressed: Toggle
 - proto: ShuttleGunMissileRackNCWL
   entities:
   - uid: 29
@@ -417,8 +404,7 @@ entities:
           ent: 71
     - type: DeviceLinkSink
       links:
-      - 43
-      - 42
+      - 32
 - proto: ShuttleGunPlasmaRepeater
   entities:
   - uid: 30
@@ -443,7 +429,7 @@ entities:
           ent: 31
     - type: DeviceLinkSink
       links:
-      - 43
+      - 32
 - proto: SmallGyroscope
   entities:
   - uid: 72
