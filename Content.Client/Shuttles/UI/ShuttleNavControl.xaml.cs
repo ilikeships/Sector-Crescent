@@ -361,7 +361,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
     }
 
-    private void DrawProjectiles(DrawingHandleScreen handle, Matrix3 matrix)
+    private void DrawProjectiles(DrawingHandleScreen handle, Matrix3x2 matrix)
     {
         const float scale = 0.4f;
 
@@ -381,7 +381,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
             for (var i = 0; i < verts.Length; i++)
             {
-                var vert = matrix.Transform(verts[i]);
+                var vert = Vector2.Transform(verts[i], matrix);
                 vert.Y = -vert.Y;
                 verts[i] = ScalePosition(vert);
             }
@@ -390,7 +390,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
     }
 
-    private void DrawTurrets(DrawingHandleScreen handle, EntityUid uid, Matrix3 matrix, bool isSelf)
+    private void DrawTurrets(DrawingHandleScreen handle, EntityUid uid, Matrix3x2 matrix, bool isSelf)
     {
         const float scale = 0.8f;
 
@@ -402,7 +402,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             foreach (var turret in turrets)
             {
                 var position = turret.Coordinates.Position;
-                var uiPosition = matrix.Transform(position);
+                var uiPosition = Vector2.Transform(position, matrix);
 
                 if (uiPosition.Length() > (WorldRange * 2f) - scale)
                 {
@@ -419,7 +419,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
                 for (var i = 0; i < verts.Length; i++)
                 {
-                    var vert = matrix.Transform(verts[i]);
+                    var vert = Vector2.Transform(verts[i], matrix);
                     vert.Y = -vert.Y;
                     verts[i] = ScalePosition(vert);
                 }

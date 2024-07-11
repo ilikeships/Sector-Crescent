@@ -234,7 +234,7 @@ public sealed partial class DungeonJob
                         var indices = new Vector2i(x + room.Offset.X, y + room.Offset.Y);
                         var tileRef = templateGrid.GetTileRef(indices);
 
-                        var tilePos = dungeonMatty.Transform(indices + tileOffset);
+                        var tilePos = Vector2.Transform(indices + tileOffset, dungeonMatty);
                         var rounded = tilePos.Floored();
                         tiles.Add((rounded, tileRef.Tile));
                         roomTiles.Add(rounded);
@@ -290,7 +290,7 @@ public sealed partial class DungeonJob
                 foreach (var templateEnt in _lookup.GetEntitiesIntersecting(templateMapUid, bounds, LookupFlags.Uncontained))
                 {
                     var templateXform = xformQuery.GetComponent(templateEnt);
-                    var childPos = dungeonMatty.Transform(templateXform.LocalPosition - roomCenter);
+                    var childPos = Vector2.Transform(templateXform.LocalPosition - roomCenter, dungeonMatty);
                     var childRot = templateXform.LocalRotation + finalRoomRotation;
                     var protoId = metaQuery.GetComponent(templateEnt).EntityPrototype?.ID;
 
@@ -319,7 +319,7 @@ public sealed partial class DungeonJob
                         // Offset by 0.5 because decals are offset from bot-left corner
                         // So we convert it to center of tile then convert it back again after transform.
                         // Do these shenanigans because 32x32 decals assume as they are centered on bottom-left of tiles.
-                        var position = dungeonMatty.Transform(decal.Coordinates + Vector2Helpers.Half - roomCenter);
+                        var position = Vector2.Transform(decal.Coordinates + Vector2Helpers.Half - roomCenter, dungeonMatty);
                         position -= Vector2Helpers.Half;
 
                         // Umm uhh I love decals so uhhhh idk what to do about this
