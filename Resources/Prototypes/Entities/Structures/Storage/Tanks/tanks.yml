@@ -60,6 +60,13 @@
         reagents:
         - ReagentId: BoriaticFuel
           Quantity: 1500
+  - type: Sprite
+    sprite: _Crescent/Structures/fuelcan.rsi
+    layers:
+      - state: fueltank-2
+      - state: fueltank-2-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
 
 - type: entity
   parent: [StorageTankBig, WeldingFuelTank] # StorageTankBig must come first, or else the desnity won't get inherited.
