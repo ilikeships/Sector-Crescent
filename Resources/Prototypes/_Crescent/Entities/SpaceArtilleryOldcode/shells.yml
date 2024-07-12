@@ -22,9 +22,9 @@
     layers:
       - state: base-projectile
   - type: EmpOnTrigger
-    range: 12
-    energyConsumption: 90000
-    disableDuration: 30
+    range: 8
+    energyConsumption: 10000
+    disableDuration: 15
   - type: SpaceArtilleryProjectile
 
 - type: entity
@@ -244,8 +244,8 @@
       - state: base-projectile
   - type: EmpOnTrigger
     range: 3
-    energyConsumption: 2000
-    disableDuration: 3
+    energyConsumption: 400
+    disableDuration: 1
   - type: PointLight
     radius: 3.5
     color: orange

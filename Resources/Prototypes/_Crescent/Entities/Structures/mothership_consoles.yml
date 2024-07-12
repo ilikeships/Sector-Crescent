@@ -21,6 +21,7 @@
     shuttles:
     - Reaver
     - Corvax
+    - Wolf
     - Jackal
 
 - type: entity
