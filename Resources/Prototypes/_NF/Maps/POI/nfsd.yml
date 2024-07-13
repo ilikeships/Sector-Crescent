@@ -14,7 +14,7 @@
           availableJobs:
             MarshalCMM: [ 1, 1 ]
             DeputyMarshalCMM: [ 1, 1 ]
-            MinutemanCMM: [ 5, 5 ]
-            MachinistCMM: [ 1, 1 ]
-            OrdnancemanCMM: [ 2, 2 ]
-            PhysicianCMM: [ 2, 2 ]
+            MinutemanCMM: [ 8, 8 ]
+            MachinistCMM: [ 2, 2 ]
+            OrdnancemanCMM: [ 4, 4 ]
+            PhysicianCMM: [ 3, 3 ]
