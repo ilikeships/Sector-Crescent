@@ -1,6 +1,6 @@
 - type: gameMap
   id: Frontier
-  mapName: 'Nova Belraska'
+  mapName: 'Fort Sevetsk'
   mapPath: /Maps/_NF/Outpost/frontier.yml
   minPlayers: 0
   maxPlayers: 100
@@ -9,7 +9,7 @@
       stationProto: StandardFrontierStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Nova Belraska'
+          mapNameTemplate: 'Fort Sevetsk'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -21,15 +21,10 @@
           availableJobs:
             KommissarNCWL: [ 1, 1 ]
             AdministratorNCWL: [ 1, 1 ]
-            KapitanNCWL: [ 1, 5 ]
-            ArtificerNCWL: [ 3, 5 ]
-            DoktorNCWL: [ 3, 5 ]
-            SanitarNCWL: [ 3, 5 ]
-            KadetNCWL: [ 5, 10 ]
-            BoardSHI: [ 1, 1 ]
-            EmployeeSHI: [ 5, 10 ]
-            Contractor: [ -1, -1 ]
-            MailCarrier: [ 1, 1 ]
+            KapitanNCWL: [ 3, 3 ]
+            ArtificerNCWL: [ 5, 5 ]
+            DoktorNCWL: [ 5, 5 ]
+            SanitarNCWL: [ 7, 7 ]
+            KadetNCWL: [ 10, 10 ]
             Bartender: [ 1, 1 ]
-            Antiquarian: [ 1, 1 ]
 
