@@ -1,6 +1,6 @@
 - type: gameMap
   id: Nfsd
-  mapName: 'NFSD Outpost'
+  mapName: 'Precinct 9'
   mapPath: /Maps/_NF/POI/nfsd.yml
   minPlayers: 0
   stations:
@@ -12,12 +12,9 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            Sheriff: [ 1, 1 ]
-            Bailiff: [ 0, 0 ]
-            SeniorOfficer: [ 0, 0 ]
-            Brigmedic: [ 0, 0 ]
-            DetectiveNF: [ 0, 0 ]
-            Deputy: [ 0, 0 ]
-            Cadet: [ 0, 0 ]
-            # Others:
-            Lawyer: [ 0, 0 ]
+            MarshalCMM: [ 1, 1 ]
+            DeputyMarshalCMM: [ 1, 1 ]
+            MinutemanCMM: [ 5, 5 ]
+            MachinistCMM: [ 1, 1 ]
+            OrdnancemanCMM: [ 2, 2 ]
+            PhysicianCMM: [ 2, 2 ]

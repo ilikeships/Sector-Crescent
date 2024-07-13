@@ -18,6 +18,7 @@
   minLimit: 0
   loadouts:
   - SanitarNCWLClothingOuterArmorBulletproof
+  - SanitarNCWLClothingOuterArmorNCWLHeavyCarapace
 
 - type: loadoutGroup
   id: NCWLShoes
@@ -33,6 +34,8 @@
   loadouts:
   - SanitarNCWLClothingHeadHatNCWLCapsoft
   - SanitarNCWLClothingHeadHelmetNCWLBasic
+  - SanitarNCWLClothingHeadHatNCWLTanker
+  - SanitarNCWLClothingHeadHelmetNCWLHeavy
   
 - type: loadoutGroup
   id: NCWLGloves

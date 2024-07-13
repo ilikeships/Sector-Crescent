@@ -27,6 +27,33 @@
 
 - type: entity
   parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorNCWLHeavyCarapace
+  name: communard's heavy carapace
+  description: A steel-beaten juggernaut's carapace in communard orange.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/NCWL/OuterClothing/heavy.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/NCWL/OuterClothing/heavy.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.70
+        Piercing: 0.65
+        Heat: 0.90
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: GroupExamine
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: ClothingOuterBaseLarge
   id: ClothingOuterArmorNCWLCarapaceKapitan
   name: kapitan's armored overcoat
   description: A communard overcoat overlaid with a kevlar vest.

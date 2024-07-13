@@ -110,3 +110,13 @@
     - Reaver
     - Piranha
     - Scuttlefish
+
+- type: entity
+  id: CMMMothershipComputer
+  parent: BaseMothershipComputer
+  name: CMM internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Justiciar
+    - Templar

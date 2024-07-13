@@ -10,6 +10,24 @@
   - type: Clothing
     sprite: _Crescent/Clothing/NCWL/Head/ncwlhelmet.rsi
 
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetNCWLHeavy
+  name: homeguard heavy-plate helmet
+  description: A kevlar-plated nanoweave juggernaut helmet. Standard issue for communards.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/NCWL/Head/ncwlheavyhelmet.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/NCWL/Head/ncwlheavyhelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
 ## hardsuit helmets
 
 - type: entity

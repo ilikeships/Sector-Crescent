@@ -1,0 +1,29 @@
+- type: vessel
+  id: Justiciar
+  name: CMM Justiciar
+  description: A salvaged evacuation shuttle retrofitted with Vulcan armaments.
+  price: 24000
+  category: Small
+  group: None
+  shuttlePath: /Maps/_Crescent/Shuttles/CMM/justiciar.yml
+
+- type: gameMap
+  id: Justiciar
+  mapName: 'CMM Justiciar'
+  mapPath: /Maps/_Crescent/Shuttles/CMM/justiciar.yml
+  minPlayers: 0
+  stations:
+    Justiciar:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Justiciar {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            MinutemanCMM: [4, 4]
+            WatchmasterCMM: [1, 1]
+
