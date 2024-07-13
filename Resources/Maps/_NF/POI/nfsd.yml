@@ -748,7 +748,7 @@ entities:
           -2,3:
             0: 4093
           -2,-1:
-            0: 61439
+            0: 61166
           -2,4:
             1: 3114
             0: 512
@@ -985,7 +985,7 @@ entities:
       pos: 5.5,5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10454.503
+      secondsUntilStateChange: -10473.45
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4043,6 +4043,24 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: CMMMothershipComputer
+  entities:
+  - uid: 666
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -8.5,5.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        ShipyardConsole-targetId: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: ComputerBankATM
   entities:
   - uid: 665
@@ -4077,14 +4095,6 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ComputerBroken
-  entities:
-  - uid: 666
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.5,5.5
-      parent: 1
 - proto: ComputerCargoOrders
   entities:
   - uid: 1032
@@ -9190,6 +9200,24 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -6.5,10.5
+      parent: 1
+  - uid: 1014
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-1.5
+      parent: 1
+  - uid: 1015
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-3.5
+      parent: 1
+  - uid: 1477
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-2.5
       parent: 1
 - proto: WallReinforcedCMM
   entities:

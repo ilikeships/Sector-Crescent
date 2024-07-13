@@ -2,7 +2,7 @@
   id: Templar
   name: CMM Templar
   description: A frontliner assault corvette.
-  price: 55000
+  price: 62500
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/CMM/templar.yml
@@ -13,7 +13,7 @@
   mapPath: /Maps/_Crescent/Shuttles/CMM/templar.yml
   minPlayers: 0
   stations:
-    Justiciar:
+    Templar:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup

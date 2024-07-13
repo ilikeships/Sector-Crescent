@@ -136,7 +136,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var factionColor = new Color(255, 165, 0);
         var mapId = GameTicker.DefaultMap;
         var depotOffset = _random.NextVector2(4500f, 6000f);
-        var tinniaOffset = _random.NextVector2(1100f, 2800f);
+        var tinniaOffset = _random.NextVector2(6100f, 5800f);
         var caseysOffset = _random.NextVector2(2250f, 4600f);
         //var tradeOffset = _random.NextVector2(1500f, 2500f);
 
@@ -177,15 +177,15 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
         }
 
-        //if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
-        //    {
-        //        Offset = tinniaOffset
-        //    }))
-        //{
-        //    var meta = EnsureComp<MetaDataComponent>(depotUid2s[0]);
-        //    _meta.SetEntityName(depotUid2s[0], "Tinnia's Rest", meta);
-        //    _shuttle.SetIFFColor(depotUid2s[0], factionColor);
-        //}
+        if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
+            {
+                Offset = tinniaOffset
+            }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid2s[0]);
+            _meta.SetEntityName(depotUid2s[0], "Navbeacon X-39", meta);
+            _shuttle.SetIFFColor(depotUid2s[0], factionColor);
+        }
 
      //   if (_map.TryLoad(mapId, church, out var churchUids, new MapLoadOptions
      //       {
