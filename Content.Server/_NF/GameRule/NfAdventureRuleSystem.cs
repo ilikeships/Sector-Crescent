@@ -126,7 +126,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
         var grifty = "Maps/_NF/POI/grifty.yml";
-        // var nfsdStation = "/Maps/_NF/POI/nfsd.yml";
+        var nfsdStation = "/Maps/_NF/POI/nfsd.yml";
         // var trade = "/Maps/_NF/POI/trade.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
@@ -160,22 +160,22 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
         }
 
-     //   if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
-     //       {
-     //           Offset = _random.NextVector2(500f, 700f)
-     //       }))
-     //   {
+        if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
+            {
+                Offset = _random.NextVector2(500f, 700f)
+            }))
+        {
             // We should figure out if it is possible to add this grid to the latejoin listing.
             // Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-     //       if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
-     //       {
-     //           _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
-     //       }
-     //
-     //       var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
-     //       _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
-     //       _shuttle.SetIFFColor(nfsdUids[0], new Color(1f, 0.2f, 0.2f));
-     //   }
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
+            }
+     
+            var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
+            _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
+            _shuttle.SetIFFColor(nfsdUids[0], new Color(173f, 198f, 230f));
+        }
 
         if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
             {
