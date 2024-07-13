@@ -7,3 +7,13 @@
   id: SanitarNCWLClothingOuterArmorBulletproof
   equipment:
     outerClothing: ClothingOuterArmorBulletproof
+
+- type: loadout
+  id: SanitarNCWLClothingOuterArmorNCWLHeavyCarapace
+  equipment: SanitarNCWLClothingOuterArmorNCWLHeavyCarapace
+  price: 1250
+
+- type: startingGear
+  id: SanitarNCWLClothingOuterArmorNCWLHeavyCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorNCWLHeavyCarapace
