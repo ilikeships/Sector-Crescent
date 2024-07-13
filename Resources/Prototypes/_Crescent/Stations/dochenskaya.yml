@@ -14,7 +14,7 @@
           availableJobs:
             RingleaderNCSP: [ 0, 1 ]
             LieutenantNCSP: [ 0, 1 ]
-            InfanteerNCSP: [ 10, 10 ]
+            InfanteerNCSP: [ 13, 13 ]
             TechnicianNCSP: [ 5, 5 ]
             ForemanNCSP: [ 0, 1 ]
             ShipbreakerNCSP: [ 0, 5 ]
