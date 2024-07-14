@@ -298,6 +298,17 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,7.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 38
+    components:
+    - type: Transform
+      pos: 5.5,-0.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: ButtonFrameCaution
   entities:
   - uid: 100
@@ -839,25 +850,6 @@ entities:
     - type: Transform
       pos: 5.360843,5.533509
       parent: 1
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 38
-    components:
-    - type: Transform
-      pos: 5.5,-0.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
-- proto: PowerCellMicroreactor
-  entities:
-  - uid: 91
-    components:
-    - type: Transform
-      parent: 90
-    - type: Physics
-      canCollide: False
 - proto: PoweredlightLED
   entities:
   - uid: 161
@@ -930,10 +922,6 @@ entities:
     - type: Transform
       pos: 0.7622194,-0.27678537
       parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        90:
-        - Pressed: Toggle
 - proto: ShuttersNormal
   entities:
   - uid: 40
@@ -963,31 +951,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 104
-- proto: ShuttleGunPlasmaRepeater
-  entities:
-  - uid: 90
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 8.5,6.5
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 91
-    - type: DeviceLinkSink
-      links:
-      - 171
 - proto: SignalButton
   entities:
   - uid: 104

@@ -1,0 +1,288 @@
+#vulcan bullets
+
+- type: entity
+  id: BulletMachineGunVulcan
+  name: 20mm vulcan bullet
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 40
+        Piercing: 25
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+      - state: base-projectile
+  - type: SpaceArtilleryProjectile
+
+- type: entity
+  id: CartridgeVulcanStandard
+  name: 20mm surplus casing
+  parent: BaseItem
+  description: Ammunition for turrets.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunVulcan
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+#vulcan
+
+- type: entity
+  id: MagazineVulcan
+  name: "20mm vulcan ammunition box"
+  parent: BaseMagazineLightRifle
+  components:
+  - type: Tag
+    tags:
+      - VulcanCartridgeBox
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - VulcanCartridgeBox
+    proto: CartridgeVulcanStandard
+    capacity: 1000
+  - type: Item
+  - type: Sprite
+    sprite: _Crescent/Ammunition/vulcan.rsi
+    state: base
+
+#warship vulcan
+
+- type: entity
+  id: BulletMachineGunVulcanTurret
+  name: 23mm uranium-tipped vulcan bullet
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Structural: 40
+        Piercing: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 2
+    intensitySlope: 1
+    totalIntensity: 1
+    maxTileBreak: 1
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 15
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+      - state: base-projectile
+
+- type: entity
+  id: CartridgeVulcanStandardTurret
+  name: 23mm surplus casing
+  parent: BaseItem
+  description: Ammunition for turrets.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunVulcanTurret
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+# heavy mortar bullet
+
+- type: entity
+  id: BulletMachineGunMortarTurret
+  name: 90mm heavy mortar shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Structural: 75
+        Piercing: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 19
+    intensitySlope: 26
+    totalIntensity: 32
+    maxTileBreak: 5
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 150
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
+    layers:
+      - state: base-projectile
+
+- type: entity
+  id: CartridgeMortarStandardTurret
+  name: 80mm surplus shell
+  parent: BaseItem
+  description: Ammunition for turrets.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunMortarTurret
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+# TurretLaserProjectile
+
+- type: entity
+  id: BulletMachineGunPlasmaTurret
+  name: plasma bolt
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Structural: 75
+        Radiation: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 7
+    intensitySlope: 8
+    totalIntensity: 9
+    maxTileBreak: 5
+  - type: PointLight
+    radius: 3.5
+    color: red
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 100
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/laserturret.rsi
+    layers:
+      - state: base-projectile
+
+- type: entity
+  id: CartridgePlasmaStandardTurret
+  name: plasma ball casing
+  parent: BaseItem
+  description: A compact titanium ball containing concentrated plasma matter.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: BulletMachineGunPlasmaTurret
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/laserturret.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+#plasma repeater projectile
+
+- type: entity
+  id: BulletMachineGunPlasmaShuttle
+  name: plasma bolt
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Structural: 30
+        Radiation: 10
+        Heat: 25
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 6
+    intensitySlope: 5
+    totalIntensity: 4
+    maxTileBreak: 2
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 60
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/plasmahardpoint.rsi
+    layers:
+      - state: icon
+
+#bigcannon projectile
+
+- type: entity
+  id: BulletMachineGunPlasmaShuttleLarge
+  name: plasma ball
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Structural: 50
+        Radiation: 25
+        Heat: 35
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 8
+    intensitySlope: 12
+    totalIntensity: 18
+    maxTileBreak: 3
+  - type: PointLight
+    radius: 3.5
+    color: red
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 80
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/plasmaheavy.rsi
+    layers:
+      - state: icon
