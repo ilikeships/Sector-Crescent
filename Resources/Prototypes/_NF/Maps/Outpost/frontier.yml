@@ -22,7 +22,7 @@
             KommissarNCWL: [ 1, 1 ]
             AdministratorNCWL: [ 1, 1 ]
             KapitanNCWL: [ 1, 1 ]
-            ArtificerNCWL: [ 10, 10 ]
+            ArtificerNCWL: [ 5, 5 ]
             DoktorNCWL: [ 5, 5 ]
             SanitarNCWL: [ 5, 5 ]
             KadetNCWL: [ 10, 10 ]
