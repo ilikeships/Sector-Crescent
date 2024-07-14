@@ -3,56 +3,53 @@
 - type: entity
   id: ShuttleGunPlasmaRepeater
   parent: [ ShuttleGunBase, ConstructibleMachine]
-  name: SHI-L 400c plasma bolt repeater
-  description: A stationary shuttle weapon commonly found on civilian models, boasts an extremely high rate of fire. Effective against organic targets and electronics.
+  name: SHI 400c plasma bolt repeater
+  description: A fixedpoint self-defense tool based on recovered NT technology, subpar in terms of power use to firepower ratio - mostly seen on civilian models.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/lasersmall.rsi
     layers:
     - state: lse-400c
     - state: mag-unshaded-9
-      map: ["enum.GunVisualLayers.MagUnshaded"]
-      shader: unshaded
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
-      gun_magazine: !type:ContainerSlot
+  - type: TurretIFF
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 100
       behaviors:
         - !type:ChangeConstructionNodeBehavior
           node: machineFrame
         - !type:DoActsBehavior
           acts: ["Destruction"]
-  - type: TurretIFF
   - type: Gun
-    fireRate: 3
-    useKey: false
+    projectileSpeed: 20
+    fireRate: 1.2
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    angleDecay: 45
+    minAngle: 5
+    maxAngle: 15
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ship_svalinn.ogg
       params:
-        variation: 0.05
-  - type: MagazineVisuals
-    magState: mag
-    steps: 10
-    zeroVisible: true
-  - type: Machine
-    board: ShuttleGunSvalinnMachineGunCircuitboard
-  - type: ItemSlots
-    slots:
-      gun_magazine:
-        name: Magazine
-        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
-        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
-        whitelist:
-          tags:
-            - PowerCell
-            - PowerCellSmall
-  - type: MagazineAmmoProvider
+        variation: 0.12
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.6
+    rechargeSound:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        pitch: 1.2
+        variation: 0.08
+  - type: BasicEntityAmmoProvider
+    proto: BulletMachineGunPlasmaShuttle
+    capacity: 30
+    count: 10
 
 ##mining turret
 
@@ -412,8 +409,8 @@
     maxCharge: 150000
     startingCharge: 150000
   - type: ExaminableBattery
-  - type: HitscanBatteryAmmoProvider
-    proto: Military_Laser
+  - type: BasicEntityAmmoProvider
+    proto: BulletMachineGunPlasmaShuttleLarge
     fireCost: 15000
   - type: ItemSlots
   - type: ContainerContainer
@@ -429,14 +426,15 @@
   - type: GunSignalControl
     ports:
       - Toggle
+      - Trigger
   - type: DeviceLinkSource
     ports:
       - SpaceArtilleryDetectedFiring
       - SpaceArtilleryDetectedMalfunction
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
-    fireRate: 2
-    projectileSpeed: 70
+    fireRate: 3
+    projectileSpeed: 40
     selectedMode: FullAuto
     availableModes:
     - SemiAuto

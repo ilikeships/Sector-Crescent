@@ -3,6 +3,7 @@
   hostile:
     - NCSPFighter
     - SRMFighter
+    - DSMFighter
 
 - type: npcFaction
   id: SRMFighter
@@ -10,6 +11,7 @@
     - NCSPFighter
     - NCWLFighter
     - CMMFighter
+    - SHIFighter
 
 - type: npcFaction
   id: NCSPFighter
@@ -17,12 +19,30 @@
     - NCWLFighter
     - SRMFighter
     - CMMFighter
+    - SHIFighter
+    - DSMFighter
 
 - type: npcFaction
   id: CMMFighter
   hostile:
     - NCSPFighter
     - SRMFighter
+    - DSMFighter
+
+- type: npcFaction
+  id: SHIFighter
+  hostile:
+    - NCSPFighter
+    - SRMFighter
+    - DSMFighter
+
+- type: npcFaction
+  id: DSMighter
+  hostile:
+    - NCSPFighter
+    - SHIFighter
+    - CMMFighter
+    - NCWLFighter
 
 #
 
@@ -51,3 +71,18 @@
   hostile:
     - NCSPWarship
     - SRMWarship
+
+- type: npcFaction
+  id: DSMWarship
+  hostile:
+    - NCSPWarship
+    - CMMWarship
+    - NCWLWarship
+    - SHIWarship
+
+- type: npcFaction
+  id: SHIWarship
+  hostile:
+    - NCSPWarship
+    - SRMWarship
+    - DSMWarship

@@ -155,6 +155,28 @@
       factions:
         - CMMFighter
 
+- type: entity
+  parent: BaseWeaponTurretPDT
+  name: SHI 40mm 'Tsui' point defense turret
+  id: WeaponTurretPDTSHI
+  suffix: SHI PDT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
+  parent: BaseWeaponTurretPDT
+  name: DSM 40mm 'Lady' point defense turret
+  id: WeaponTurretPDTDSM
+  suffix: DSM PDT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+
+
 # VULCAN AUTOTURRET - WARSHIP
 
 - type: entity
@@ -313,6 +335,26 @@
       factions:
         - NCWLWarship
 
+- type: entity
+  parent: BaseWeaponTurretVulcan
+  name: DSM 23mm automated turret
+  id: WeaponTurretVulcanDSM
+  suffix: DSM VLCN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: BaseWeaponTurretVulcan
+  name: SHI 23mm automated turret
+  id: WeaponTurretVulcanSHI
+  suffix: SHI VLCN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
 #swarmer missiles - warship
 
 - type: entity
@@ -382,7 +424,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      fireRate: 0.2
+      fireRate: 0.5
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -473,6 +515,26 @@
       factions:
         - NCSPWarship
 
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: SHI 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerSHI
+  suffix: SHI SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  parent: BaseWeaponTurretSwarmer
+  name: DSM 'Swarmer' autorocket pod
+  id: WeaponTurretSwarmerDSM
+  suffix: DSM SWRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
 # long gun
 
 - type: entity
@@ -541,7 +603,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 0.1
+      fireRate: 0.4
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -631,6 +693,26 @@
       factions:
         - SRMWarship
 
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: SHI 80mm long-distance coilgun
+  id: WeaponTurretCoilgunSHI
+  suffix: SHI CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
+  name: DSM 80mm long-distance coilgun
+  id: WeaponTurretCoilgunDSM
+  suffix: DSM CLGN
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
 #heavymortar
 
 - type: entity
@@ -699,7 +781,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 0.1
+      fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -715,9 +797,9 @@
         RotateSpeed: !type:Single
           1.841
         RangedRange: !type:Single
-          150
+          200
         VisionRadius: !type:Single
-          150
+          200
         SoundTargetInLOS: !type:SoundPathSpecifier
           path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
@@ -761,6 +843,26 @@
 
 - type: entity
   parent: BaseWeaponTurretMortar
+  name: SHI 90mm heavy mortar-pounder
+  id: WeaponTurretMortarSHI
+  suffix: SHI MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  parent: BaseWeaponTurretMortar
+  name: DSM 90mm heavy mortar-pounder
+  id: WeaponTurretMortarDSM
+  suffix: DSM MRTR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: BaseWeaponTurretMortar
   name: CMM 90mm heavy mortar-pounder
   id: WeaponTurretMortarCMM
   suffix: CMM MRTR
@@ -788,3 +890,196 @@
     - type: NpcFactionMember
       factions:
         - NCSPWarship
+
+# PLASMA LASER
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretLaser
+  name: laser gatling
+  abstract: true
+  components:
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/plasmacannonnormal.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: InteractionPopup
+      interactDelay: 0.2
+      successChance: 0.8
+      interactSuccessString: petting-success-generic
+      interactFailureString: petting-failure-generic
+      interactSuccessSound:
+        path: /Audio/Effects/double_beep.ogg
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: TurretIFF
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: Gun
+      fireRate: 3
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/lasergatling.ogg
+    # TODO: Power ammo provider?
+    - type: BallisticAmmoProvider
+      proto: CartridgePlasmaStandardTurret
+      capacity: 99999
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          2.841
+        RangedRange: !type:Single
+          125
+        VisionRadius: !type:Single
+          125
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: SignalControl
+      isOnByDefault: true
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 2500
+    - type: DeviceLinkSink
+      ports:
+        - Toggle
+        - On
+        - Off
+    - type: ApcPowerReceiver
+      powerLoad: 3000
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: NCSP 'Pointer' plasma gatling autoturret
+  id: BaseWeaponTurretLaserNCSP
+  suffix: NCSP PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: DSM 'Flare' plasma gatling autoturret
+  id: BaseWeaponTurretLaserDSM
+  suffix: DSM PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/imperialplasmacannon.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          2.841
+        RangedRange: !type:Single
+          130
+        VisionRadius: !type:Single
+          130
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: SRM 'Pointer' plasma gatling autoturret
+  id: BaseWeaponTurretLaserSRM
+  suffix: SRM PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: CMM 'Pointer' plasma gatling autoturret
+  id: BaseWeaponTurretLaserCMM
+  suffix: CMM PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMWarship
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: NCWL 'Pointer' plasma gatling autoturret
+  id: BaseWeaponTurretLaserNCWL
+  suffix: NCWL PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretLaser
+  name: SHI 'Pointer' plasma gatling autoturret
+  id: BaseWeaponTurretLaserSHI
+  suffix: SHI PLAS
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
