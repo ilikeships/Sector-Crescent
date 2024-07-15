@@ -14,6 +14,24 @@
 
 - type: entity
   parent: WallPlastitanium
+  id: WallPlastitaniumSHI
+  suffix: SHI Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  parent: WallPlastitanium
+  id: WallPlastitaniumDSM
+  suffix: DSM Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: WallPlastitanium
   id: WallPlastitaniumCMM
   suffix: CMM Warship
   components:
@@ -49,6 +67,24 @@
     - type: NpcFactionMember
       factions:
         - NCSPWarship
+
+- type: entity
+  parent: WallReinforced
+  id: WallReinforcedDSM
+  suffix: DSM Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: WallReinforced
+  id: WallReinforcedSHI
+  suffix: SHI Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
 
 - type: entity
   parent: WallReinforced
@@ -90,6 +126,26 @@
 
 - type: entity
   parent: WallShuttle
+  id: WallShuttleDSM
+  suffix: DSM Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+
+- type: entity
+  parent: WallShuttle
+  id: WallShuttleSHI
+  suffix: SHI Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+
+- type: entity
+  parent: WallShuttle
   id: WallShuttleSRM
   suffix: SRM Warship
   components:
@@ -114,3 +170,14 @@
     - type: NpcFactionMember
       factions:
         - NCSPWarship
+
+#Mining
+
+- type: entity
+  parent: WallMining
+  id: WallMiningSHI
+  suffix: SHI Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship

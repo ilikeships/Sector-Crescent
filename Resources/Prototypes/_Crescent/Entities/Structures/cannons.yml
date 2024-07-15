@@ -866,7 +866,7 @@
 
 - type: entity
   parent: SHISlugthrowerTurret
-  id: SHISlugthrowerTurretSRM
+  id: SHISlugthrowerTurretSHI
   suffix: SHI
   components:
     - type: NpcFactionMember
@@ -967,7 +967,7 @@
 
 - type: entity
   parent: ShuttleGunKurosawa
-  id: ShuttleGunKurosawaNCSP
+  id: ShuttleGunKurosawaDSM
   suffix: DSM
   components:
     - type: NpcFactionMember

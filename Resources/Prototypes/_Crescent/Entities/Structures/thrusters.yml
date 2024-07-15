@@ -19,6 +19,24 @@
         - CMMFighter
 
 - type: entity
+  id: ThrusterDSMFighter
+  parent: Thruster
+  suffix: DSM, Fighter
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+- type: entity
+  id: ThrusterSHIFighter
+  parent: Thruster
+  suffix: SHI, Fighter
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
   id: ThrusterNCWLFighter
   parent: Thruster
   suffix: NCWL, Fighter
@@ -62,6 +80,24 @@
     - type: NpcFactionMember
       factions:
         - CMMWarship
+
+- type: entity
+  id: ThrusterSHIWarship
+  parent: Thruster
+  suffix: SHI, Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  id: ThrusterDSMWarship
+  parent: Thruster
+  suffix: DSM, Warship
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
 
 - type: entity
   id: ThrusterSRMWarship

@@ -337,7 +337,7 @@ entities:
       pos: 0.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 148800
+      startingCharge: 148200
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -364,7 +364,7 @@ entities:
   - uid: 7
     components:
     - type: Transform
-      pos: 1.2925997,1.6705837
+      pos: 1.360104,1.7073689
       parent: 1
 - proto: PaperOffice
   entities:
