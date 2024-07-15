@@ -29,9 +29,11 @@ namespace Content.Server.Chat.Managers
         private static readonly Dictionary<string, string> PatronOocColors = new()
         {
             // I had plans for multiple colors and those went nowhere so...
-            { "nuclear_operative", "#aa00ff" },
-            { "syndicate_agent", "#aa00ff" },
-            { "revolutionary", "#aa00ff" }
+            { "Hyena", "#aa00ff" },
+            { "Nemesis", "#aa00ff" },
+            { "Jackal", "#aa00ff" },
+            { "Shanty", "#aa00ff" },
+            { "Reaver", "#aa00ff" }
         };
 
         [Dependency] private readonly IReplayRecordingManager _replay = default!;

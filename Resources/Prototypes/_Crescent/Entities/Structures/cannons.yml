@@ -28,7 +28,7 @@
           acts: ["Destruction"]
   - type: Gun
     projectileSpeed: 20
-    fireRate: 1.2
+    fireRate: 1.4
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -40,7 +40,7 @@
       params:
         variation: 0.12
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 0.6
+    rechargeCooldown: 2
     rechargeSound:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
       params:
@@ -411,7 +411,7 @@
   - type: ExaminableBattery
   - type: BasicEntityAmmoProvider
     proto: BulletMachineGunPlasmaShuttleLarge
-    fireCost: 15000
+    fireCost: 25000
   - type: ItemSlots
   - type: ContainerContainer
     containers:
@@ -433,7 +433,7 @@
       - SpaceArtilleryDetectedMalfunction
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
-    fireRate: 3
+    fireRate: 2
     projectileSpeed: 40
     selectedMode: FullAuto
     availableModes:
@@ -446,7 +446,7 @@
   - type: SpaceArtillery
     isArmed: true
     isCoolantRequiredToFire: true
-    coolantConsumed: 3
+    coolantConsumed: 5
     isPowerRequiredToFire: true
     SpaceArtillery-CoolantSlot:
             name:  SpaceArtillery-CoolantSlot
@@ -864,6 +864,24 @@
       factions:
         - SRMFighter
 
+- type: entity
+  parent: SHISlugthrowerTurret
+  id: SHISlugthrowerTurretSHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
+  parent: SHISlugthrowerTurret
+  id: SHISlugthrowerTurretDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
 # Faction-tagged missiles
 
 - type: entity
@@ -938,6 +956,24 @@
       factions:
         - NCSPFighter
 
+- type: entity
+  parent: ShuttleGunKurosawa
+  id: ShuttleGunKurosawaSHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
+  parent: ShuttleGunKurosawa
+  id: ShuttleGunKurosawaDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
 #120mm faction-flagged
 
 - type: entity
@@ -976,6 +1012,24 @@
       factions:
         - SRMFighter
 
+- type: entity
+  parent: Type99Artillery
+  id: Type99ArtilleryDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+- type: entity
+  parent: Type99Artillery
+  id: Type99ArtillerySHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
 #vulcan
 
 - type: entity
@@ -1013,3 +1067,21 @@
     - type: NpcFactionMember
       factions:
         - NCSPFighter
+
+- type: entity
+  parent: NTVulcanTurret
+  id: NTVulcanTurretDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+- type: entity
+  parent: NTVulcanTurret
+  id: NTVulcanTurretSHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter

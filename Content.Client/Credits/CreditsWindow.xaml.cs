@@ -29,9 +29,11 @@ namespace Content.Client.Credits
 
         private static readonly Dictionary<string, int> PatronTierPriority = new()
         {
-            ["Nuclear Operative"] = 1,
-            ["Syndicate Agent"] = 2,
-            ["Revolutionary"] = 3
+            ["Nemesis"] = 1,
+            ["Jackal"] = 2,
+            ["Hyena"] = 3,
+            ["Reaver"] = 4,
+            ["Shanty"] = 5
         };
 
         public CreditsWindow()
