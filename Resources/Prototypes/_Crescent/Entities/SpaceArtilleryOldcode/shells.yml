@@ -860,9 +860,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 25
-    intensitySlope: 15
-    totalIntensity: 120
+    maxIntensity: 20
+    intensitySlope: 12
+    totalIntensity: 100
     maxTileBreak: 7
   - type: PointLight
     radius: 3.5
@@ -889,3 +889,56 @@
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: SpaceGarbage
+
+#missile turret
+
+- type: entity
+  id: SmartBomb
+  name: 50mm high-explosive smart-bomb
+  parent: BaseItem
+  description: A high-explosive cannon shell for ship weapons.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: SmartBombBase
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/smartbomb.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: SmartBombBase
+  name: shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 70
+        Blunt: 40
+  - type: TimedDespawn
+    lifetime: 200
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/smartbomb.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 26
+    intensitySlope: 16
+    totalIntensity: 110
+    maxTileBreak: 7
+  - type: HeatSeeking
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
