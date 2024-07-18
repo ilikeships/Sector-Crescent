@@ -203,3 +203,14 @@
     sprite: _Crescent/Objects/TradeGoods/deed.rsi
     layers:
     - state: icon
+
+- type: entity
+  parent: BaseItem
+  id: HuntersPermit
+  name: hunter's permit of capture
+  description: A printed, stamped sheet of paper that "permits" the bearer to "reclaim" assets of the Imperial regime. Fine writing informs you that this means pretty much everyone in the local Sector cluster.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/TradeGoods/deed.rsi
+    layers:
+    - state: icon
