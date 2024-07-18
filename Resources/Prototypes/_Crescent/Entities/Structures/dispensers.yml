@@ -196,6 +196,48 @@
 
 - type: entity
   parent: BaseDispenser
+  id: HuntersBounty
+  name: hunter's bounty
+  description: A near-derelict machine that accepts ID cards for cold, hard credits.
+  components:
+  - type: Dispenser
+    defaultItem: HuntersPermit
+    inventory:
+      NCWLIDCardAdministrator: SpaceCash30000
+      NCWLIDCardKommissar: SpaceCash20000
+      NCWLIDCardKapitan: SpaceCash10000
+      NCWLIDCardSanitar: SpaceCash5000
+      NCWLIDCardArtificer: SpaceCash5000
+      NCWLIDCardDoktor: SpaceCash5000
+      NCWLIDCardKadet: SpaceCash2500
+      NCSPIDCardRingleader: SpaceCash30000
+      NCSPIDCardLieutenant: SpaceCash20000
+      NCSPIDCardInfanteer: SpaceCash5000
+      NCSPIDCardRipperdoc: SpaceCash5000
+      NCSPIDCardChemcook: SpaceCash5000
+      NCSPIDCardOperative: SpaceCash5000
+      NCSPIDCardIntelligenceOfficer: SpaceCash10000
+      NCSPIDCardForeman: SpaceCash10000
+      NCSPIDCardShipbreaker: SpaceCash5000
+      IDCardAntiquarian: SpaceCash1000
+      CMMIDCardMinuteman: SpaceCash5000
+      CMMIDCardPhysician: SpaceCash5000
+      CMMIDCardMachinist: SpaceCash5000
+      CMMIDCardOrdnanceman: SpaceCash5000
+      CMMIDCardWatchmaster: SpaceCash10000
+      CMMIDCardDeputyMarshal: SpaceCash20000
+      CMMIDCardMarshal: SpaceCash30000
+  - type: Sprite
+    sprite: _Crescent/Structures/hunter.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
   id: OnionWallchute
   name: ONION cargo chute
   description: A chute that leads into the bowels of the station and delivers cargo to a place unknown.
