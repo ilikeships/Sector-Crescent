@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
+using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Random;
@@ -42,18 +43,49 @@ public sealed class HeatSeekingSystem : EntitySystem
                 _physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
                 return;
             }
+            else
+            {
+                GetNewTarget(uid, comp, xform);
+            }
+        }
+    }
 
-            var ray = new CollisionRay(_transform.GetMapCoordinates(uid, xform).Position,
-                xform.LocalRotation.ToWorldVec(),
-                (int) (CollisionGroup.Impassable | CollisionGroup.BulletImpassable));
-            var results = _physics.IntersectRay(xform.MapID, ray, comp.DefaultSeekingRange, uid).ToList();
-            if (results.Count <= 0)
-                return; // nothing to heatseek ykwim
+    public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform)
+    {
+        var ray = new CollisionRay(_transform.GetMapCoordinates(uid, transform).Position,
+            transform.LocalRotation.ToWorldVec(),
+            (int) (CollisionGroup.Impassable | CollisionGroup.BulletImpassable));
 
-            if (comp is { LockedIn: true, TargetEntity: not null })
-                return; // Don't reassign target entity if we have one AND we have the LockedIn property
+        var results = _physics.IntersectRay(transform.MapID, ray, component.DefaultSeekingRange, uid).ToList();
 
-            comp.TargetEntity = results[0].HitEntity;
+        if (results.Count <= 0)
+            return; // nothing to heatseek ykwim
+
+        if (component is { LockedIn: true, TargetEntity: not null })
+            return; // Don't reassign target entity if we have one AND we have the LockedIn property
+
+        if (TryComp<ProjectileComponent>(uid, out var projectile)
+            && TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform))
+        {
+            var shooterGridUid = shooterTransform.GridUid;
+            for (int i = 0; i < results.Count; i++)
+            {
+                var hitEntity = results[i].HitEntity;
+                if (TryComp<TransformComponent>(hitEntity, out var hitTransform))
+                {
+                    if (shooterGridUid == hitTransform.GridUid)
+                    {
+                        continue;
+                    }
+
+                    component.TargetEntity = hitEntity;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            component.TargetEntity = results[0].HitEntity;
         }
     }
 }
