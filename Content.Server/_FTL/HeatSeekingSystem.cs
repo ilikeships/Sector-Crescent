@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
+using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Random;
@@ -53,7 +54,29 @@ public sealed class HeatSeekingSystem : EntitySystem
             if (comp is { LockedIn: true, TargetEntity: not null })
                 return; // Don't reassign target entity if we have one AND we have the LockedIn property
 
-            comp.TargetEntity = results[0].HitEntity;
+            if (TryComp<ProjectileComponent>(uid, out var projectile)
+                && TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform))
+            {
+                var shooterGridUid = shooterTransform.GridUid;
+                for (int i = 0; i < results.Count; i++)
+                {
+                    var hitEntity = results[i].HitEntity;
+                    if (TryComp<TransformComponent>(hitEntity, out var hitTransform))
+                    {
+                        if (shooterGridUid == hitTransform.GridUid)
+                        {
+                            continue;
+                        }
+
+                        comp.TargetEntity = hitEntity;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                comp.TargetEntity = results[0].HitEntity;
+            }
         }
     }
 }
