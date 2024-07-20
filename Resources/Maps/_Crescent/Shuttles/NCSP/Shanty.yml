@@ -298,6 +298,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,7.5
       parent: 1
+- proto: BoriaticFuelTankFull
+  entities:
+  - uid: 91
+    components:
+    - type: Transform
+      pos: 4.5,-1.5
+      parent: 1
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 38
@@ -698,6 +705,10 @@ entities:
     - type: Transform
       pos: -0.5,1.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        61:
+        - Group1: Toggle
 - proto: ComputerStationRecords
   entities:
   - uid: 55
@@ -836,6 +847,18 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 171
+    components:
+    - type: Transform
+      pos: 5.4071636,-0.47972023
+      parent: 1
+  - uid: 175
+    components:
+    - type: Transform
+      pos: 5.644955,-0.46485436
+      parent: 1
 - proto: MiningDrill
   entities:
   - uid: 95
@@ -913,15 +936,6 @@ entities:
     - type: Transform
       pos: -0.5,2.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 171
-    components:
-    - type: MetaData
-      name: fire plasma repeater
-    - type: Transform
-      pos: 0.7622194,-0.27678537
-      parent: 1
 - proto: ShuttersNormal
   entities:
   - uid: 40
@@ -951,6 +965,17 @@ entities:
     - type: DeviceLinkSink
       links:
       - 104
+- proto: ShuttleGunPlasmaRepeater
+  entities:
+  - uid: 61
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 8.5,6.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 7
 - proto: SignalButton
   entities:
   - uid: 104
@@ -1023,9 +1048,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,-0.5
       parent: 1
-- proto: Thruster
+- proto: ThrusterNCSPFighter
   entities:
-  - uid: 61
+  - uid: 62
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1033,18 +1058,10 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 62
-    components:
-    - type: Transform
-      pos: 1.5,7.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
   - uid: 63
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,7.5
+      pos: 1.5,7.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1053,6 +1070,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,-1.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 90
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,7.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500

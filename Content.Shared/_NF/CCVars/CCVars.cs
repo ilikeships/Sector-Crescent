@@ -15,7 +15,7 @@ public sealed class NF14CVars
     /// Respawn time, how long the player has to wait in seconds after death.
     /// </summary>
     public static readonly CVarDef<float> RespawnTime =
-        CVarDef.Create("nf14.respawn.time", 300.0f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("nf14.respawn.time", 1200.0f, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// Whether or not returning from cryosleep is enabled.
@@ -36,7 +36,7 @@ public sealed class NF14CVars
     /// Whether public transit is enabled.
     /// </summary>
     public static readonly CVarDef<bool> PublicTransit =
-        CVarDef.Create("nf14.publictransit.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("nf14.publictransit.enabled", false, CVar.SERVERONLY);
 
     /// <summary>
     /// The map to use for the public bus.

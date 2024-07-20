@@ -361,6 +361,49 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,-4.5
       parent: 2
+- proto: BoriaticFuelTankFull
+  entities:
+  - uid: 259
+    components:
+    - type: Transform
+      pos: 0.5,11.5
+      parent: 2
+  - uid: 393
+    components:
+    - type: Transform
+      pos: -2.5,12.5
+      parent: 2
+  - uid: 394
+    components:
+    - type: Transform
+      pos: -1.5,12.5
+      parent: 2
+  - uid: 395
+    components:
+    - type: Transform
+      pos: -1.5,11.5
+      parent: 2
+  - uid: 435
+    components:
+    - type: Transform
+      pos: -2.5,6.5
+      parent: 2
+  - uid: 468
+    components:
+    - type: Transform
+      pos: -2.5,7.5
+      parent: 2
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 441
+    components:
+    - type: Transform
+      pos: 3.5,-7.5
+      parent: 2
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: BoxFlare
   entities:
   - uid: 276
@@ -1867,6 +1910,10 @@ entities:
     - type: Transform
       pos: -4.5,-2.5
       parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        143:
+        - Group1: Toggle
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 430
@@ -2341,9 +2388,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-1.5
       parent: 2
-- proto: Gyroscope
+- proto: GyroscopeSecurity
   entities:
-  - uid: 435
+  - uid: 27
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -2351,6 +2398,48 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 46
+    components:
+    - type: Transform
+      pos: 2.2399049,-7.4480724
+      parent: 2
+  - uid: 127
+    components:
+    - type: Transform
+      pos: 2.5520067,-7.4629393
+      parent: 2
+  - uid: 135
+    components:
+    - type: Transform
+      pos: 2.3142152,-7.4332066
+      parent: 2
+  - uid: 140
+    components:
+    - type: Transform
+      pos: 2.254767,-7.4629393
+      parent: 2
+  - uid: 469
+    components:
+    - type: Transform
+      pos: 2.6709032,-7.4629393
+      parent: 2
+  - uid: 470
+    components:
+    - type: Transform
+      pos: 2.7006273,-7.4629393
+      parent: 2
+  - uid: 471
+    components:
+    - type: Transform
+      pos: 2.7006273,-7.4629393
+      parent: 2
+  - uid: 569
+    components:
+    - type: Transform
+      pos: 2.7006273,-7.4629393
+      parent: 2
 - proto: LockerSyndicate
   entities:
   - uid: 412
@@ -2503,17 +2592,6 @@ entities:
     - type: Transform
       pos: 0.5,15.5
       parent: 2
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 441
-    components:
-    - type: Transform
-      pos: 3.5,-7.5
-      parent: 2
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: Poweredlight
   entities:
   - uid: 168
@@ -2677,30 +2755,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -6.5,-4.5
       parent: 2
-- proto: SheetUranium
-  entities:
-  - uid: 468
-    components:
-    - type: Transform
-      pos: 2.345096,-7.345889
-      parent: 2
-- proto: SheetUranium1
-  entities:
-  - uid: 469
-    components:
-    - type: Transform
-      pos: 2.563846,-7.580264
-      parent: 2
-  - uid: 470
-    components:
-    - type: Transform
-      pos: 2.845096,-7.611514
-      parent: 2
-  - uid: 471
-    components:
-    - type: Transform
-      pos: 2.641971,-7.283389
-      parent: 2
 - proto: ShuttersNormalOpen
   entities:
   - uid: 234
@@ -2820,6 +2874,17 @@ entities:
     - type: DeviceLinkSink
       links:
       - 125
+- proto: ShuttleGunPlasmaRepeater
+  entities:
+  - uid: 143
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,15.5
+      parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 428
 - proto: SignalButton
   entities:
   - uid: 125
@@ -3031,45 +3096,17 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.5,-3.5
       parent: 2
-- proto: Thruster
+- proto: ThrusterSHIWarship
   entities:
-  - uid: 46
-    components:
-    - type: Transform
-      pos: 3.5,8.5
-      parent: 2
-    - type: Thruster
-      enabled: False
-      originalPowerLoad: 1500
-    - type: ApcPowerReceiver
-      powerLoad: 1
-  - uid: 127
-    components:
-    - type: Transform
-      pos: 4.5,8.5
-      parent: 2
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 345
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 5.5,3.5
-      parent: 2
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 393
+  - uid: 221
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-7.5
       parent: 2
     - type: Thruster
-      enabled: False
       originalPowerLoad: 1500
-    - type: ApcPowerReceiver
-      powerLoad: 1
-  - uid: 394
+  - uid: 222
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3077,7 +3114,15 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 395
+  - uid: 223
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.5,3.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 224
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3085,7 +3130,22 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 569
+  - uid: 225
+    components:
+    - type: Transform
+      pos: 3.5,8.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 255
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,-9.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 256
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3093,17 +3153,13 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 570
+  - uid: 345
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,-9.5
+      pos: 4.5,8.5
       parent: 2
     - type: Thruster
-      enabled: False
       originalPowerLoad: 1500
-    - type: ApcPowerReceiver
-      powerLoad: 1
 - proto: TwoWayLever
   entities:
   - uid: 59

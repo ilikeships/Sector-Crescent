@@ -798,7 +798,7 @@
         Piercing: 10
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
-    lifetime: 75
+    lifetime: 40
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/swarmermissile.rsi
     layers:
@@ -852,7 +852,7 @@
         Piercing: 10
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
-    lifetime: 120
+    lifetime: 80
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/630_highexplosive_shell_casing.rsi
     layers:
@@ -932,13 +932,69 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 26
-    intensitySlope: 16
-    totalIntensity: 110
+    maxIntensity: 40
+    intensitySlope: 35
+    totalIntensity: 145
     maxTileBreak: 7
   - type: HeatSeeking
+    rotationSpeed: 50
+    acceleration: 155
+    seekRange: 1000
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
   - type: ProjectileIFF
+
+#needler
+
+- type: entity
+  id: NeedlerBase
+  name: shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 80
+        Blunt: 40
+  - type: TimedDespawn
+    lifetime: 200
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/needler.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 15
+    intensitySlope: 15
+    totalIntensity: 75
+    maxTileBreak: 4
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
+
+
+- type: entity
+  id: Needler
+  name: 60mm needler shell
+  parent: BaseItem
+  description: A high-explosive cannon shell for ship weapons.
+  components:
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: NeedlerBase
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/needler.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage

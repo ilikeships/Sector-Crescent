@@ -177,6 +177,17 @@ entities:
     - type: Transform
       pos: 2.5,4.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 65
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: ButtonFrameCaution
   entities:
   - uid: 87
@@ -526,6 +537,10 @@ entities:
     - type: Transform
       pos: 4.5,3.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        32:
+        - Group1: Trigger
 - proto: ComputerStationRecords
   entities:
   - uid: 73
@@ -695,6 +710,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-2.5
       parent: 1
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 48
+    components:
+    - type: Transform
+      pos: 1.3032551,1.5847759
+      parent: 1
+  - uid: 49
+    components:
+    - type: Transform
+      pos: 1.5559087,1.5996423
+      parent: 1
 - proto: MedkitCombatFilled
   entities:
   - uid: 81
@@ -745,17 +772,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 1.5,-1.5
       parent: 1
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 65
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredLEDSmallLight
   entities:
   - uid: 163
@@ -821,26 +837,6 @@ entities:
     - type: Transform
       pos: 6.5,2.5
       parent: 1
-- proto: RemoteSignallerAdvanced
-  entities:
-  - uid: 86
-    components:
-    - type: MetaData
-      name: fire missile
-    - type: Transform
-      pos: 4.6311054,1.4611712
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        32:
-        - Pressed: Trigger
-- proto: SheetUranium
-  entities:
-  - uid: 85
-    components:
-    - type: Transform
-      pos: 1.4090271,1.5853257
-      parent: 1
 - proto: ShuttersNormal
   entities:
   - uid: 33
@@ -861,7 +857,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 86
+      - 46
 - proto: SignalButton
   entities:
   - uid: 88
@@ -959,17 +955,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-1.5
       parent: 1
-- proto: Thruster
+- proto: ThrusterDSMFighter
   entities:
-  - uid: 48
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,-3.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 49
+  - uid: 50
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -977,7 +965,22 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 50
+  - uid: 51
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,-2.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 56
+    components:
+    - type: Transform
+      pos: 0.5,4.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 85
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -985,18 +988,11 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 51
+  - uid: 86
     components:
     - type: Transform
-      pos: 0.5,4.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 56
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,-2.5
+      rot: 3.141592653589793 rad
+      pos: 1.5,-3.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1162,7 +1158,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -225.81918
+      secondsUntilStateChange: -380.43222
       state: Opening
   - uid: 79
     components:
