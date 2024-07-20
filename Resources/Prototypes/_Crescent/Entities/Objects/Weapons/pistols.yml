@@ -15,6 +15,7 @@
     sprite: _Crescent/Objects/Weapons/hkusp.rsi
   - type: Gun
     fireRate: 5
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -43,6 +44,7 @@
     angleIncrease: 8
     angleDecay: 9
     fireRate: 4
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -85,6 +87,7 @@
     sprite: _Crescent/Objects/Weapons/himehabu.rsi
   - type: Gun
     fireRate: 5
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -109,6 +112,7 @@
     sprite: _Crescent/Objects/Weapons/compliance.rsi
   - type: Gun
     fireRate: 4
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -137,6 +141,7 @@
     angleIncrease: 6
     angleDecay: 7
     fireRate: 4
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     - FullAuto
@@ -182,6 +187,7 @@
     sprite: _Crescent/Objects/Weapons/disposableguns/red.rsi
   - type: Gun
     fireRate: 4
+    selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -193,7 +199,7 @@
 
 - type: entity
   name: SHI Blastpop 'Lavender Purple'
-  parent: BaseWeaponPistol
+  parent: WeaponPistolBlastpopRed
   id: WeaponPistolBlastpopPurple
   description: A mass-produced, 3D printed sidearm. Unable to be reloaded after use. Just twist the plastic key on top to rack the first round, and blast away.
   components:
@@ -219,7 +225,7 @@
 
 - type: entity
   name: SHI Blastpop 'Lethal Gray'
-  parent: BaseWeaponPistol
+  parent: WeaponPistolBlastpopRed
   id: WeaponPistolBlastpopGray
   description: A mass-produced, 3D printed sidearm. Unable to be reloaded after use. Just twist the plastic key on top to rack the first round, and blast away.
   components:
@@ -245,7 +251,7 @@
 
 - type: entity
   name: SHI Blastpop 'Poison Green'
-  parent: BaseWeaponPistol
+  parent: WeaponPistolBlastpopRed
   id: WeaponPistolBlastpopGreen
   description: A mass-produced, 3D printed sidearm. Unable to be reloaded after use. Just twist the plastic key on top to rack the first round, and blast away.
   components:
@@ -271,7 +277,7 @@
 
 - type: entity
   name: SHI Blastpop 'Royal Gold'
-  parent: BaseWeaponPistol
+  parent: WeaponPistolBlastpopRed
   id: WeaponPistolBlastpopGold
   description: A mass-produced, 3D printed sidearm. Unable to be reloaded after use. Just twist the plastic key on top to rack the first round, and blast away.
   components:
@@ -297,7 +303,7 @@
 
 - type: entity
   name: SHI Blastpop 'Fresh Blue'
-  parent: BaseWeaponPistol
+  parent: WeaponPistolBlastpopRed
   id: WeaponPistolBlastpopBlue
   description: A mass-produced, 3D printed sidearm. Unable to be reloaded after use. Just twist the plastic key on top to rack the first round, and blast away.
   components:

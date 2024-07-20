@@ -121,3 +121,12 @@
     shuttles:
     - Justiciar
     - Templar
+
+- type: entity
+  id: RefugeMothershipComputer
+  parent: BaseMothershipComputer
+  name: refuge shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Saintsfall
