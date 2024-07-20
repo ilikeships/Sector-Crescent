@@ -1,19 +1,19 @@
-#- type: guideEntry
-#  id: Antagonists
-#  name: guide-entry-antagonists
-#  text: "/ServerInfo/Guidebook/Antagonist/Antagonists.xml"
-#  children:
-#  - Traitors
+- type: guideEntry
+  id: Antagonists
+  name: guide-entry-antagonists
+  text: "/ServerInfo/Guidebook/Antagonist/Antagonists.xml"
+  children:
+  - Traitors
 #  - NuclearOperatives
 #  - Zombies
 #  - Revolutionaries
 #  - MinorAntagonists
 #  - SpaceNinja
 
-#- type: guideEntry
-#  id: Traitors
-#  name: guide-entry-traitors
-#  text: "/ServerInfo/Guidebook/Antagonist/Traitors.xml"
+- type: guideEntry
+  id: Traitors
+  name: guide-entry-traitors
+  text: "/ServerInfo/Guidebook/Antagonist/Traitors.xml"
 
 #- type: guideEntry
 #  id: NuclearOperatives

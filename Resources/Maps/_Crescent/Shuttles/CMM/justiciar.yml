@@ -68,34 +68,34 @@ entities:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNE
           decals:
-            26: 1,5
+            25: 1,5
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNW
           decals:
-            25: -1,5
+            24: -1,5
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleSE
           decals:
-            24: 1,4
+            23: 1,4
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleSW
           decals:
-            23: -1,4
+            22: -1,4
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleN
           decals:
-            15: -3,2
-            16: 3,2
+            14: -3,2
+            15: 3,2
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleS
           decals:
-            17: -3,0
-            18: 3,0
+            16: -3,0
+            17: 3,0
         - node:
             color: '#52B4E996'
             id: WarnFullGreyscale
@@ -108,31 +108,31 @@ entities:
             color: '#52B4E996'
             id: WarnLineGreyscaleE
           decals:
-            13: -2,-2
-            14: -2,-3
-            20: -3,1
-            21: 3,1
+            12: -2,-2
+            13: -2,-3
+            19: -3,1
+            20: 3,1
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
           decals:
-            8: -1,-4
-            9: 0,-4
-            10: 1,-4
-            28: 0,5
+            7: -1,-4
+            8: 0,-4
+            9: 1,-4
+            27: 0,5
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleS
           decals:
-            27: 0,4
+            26: 0,4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
           decals:
-            11: 2,-2
-            12: 2,-3
-            19: -3,1
-            22: 3,1
+            10: 2,-2
+            11: 2,-3
+            18: -3,1
+            21: 3,1
     - type: GridAtmosphere
       version: 2
       data:
@@ -847,6 +847,7 @@ entities:
         68:
         - Group2: SpaceArtilleryOnSafety
         - Group3: SpaceArtilleryOffSafety
+        - Group1: Toggle
         137:
         - Group4: Toggle
         136:
@@ -1232,7 +1233,7 @@ entities:
       pos: 3.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 139
@@ -1272,7 +1273,7 @@ entities:
       pos: -2.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 139

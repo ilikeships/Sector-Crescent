@@ -18,6 +18,28 @@
         amount: 6
 
 - type: entity
+  id: CrateBoriatic
+  parent: CrateSecgear
+  name: boriatic crate
+  description: Fuel for Boriatic-powered engines.
+  components:
+  - type: StorageFill
+    contents:
+      - id: FuelCan
+        amount: 10
+
+- type: entity
+  id: CrateVulcanAmmo
+  parent: CrateSecgear
+  name: vulcan crate
+  description: Ammunition for the NT Vulcan.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineVulcan
+        amount: 10
+
+- type: entity
   id: CrateSlugthrowerAmmo
   parent: CrateSecgear
   name: slug cartridge crate
