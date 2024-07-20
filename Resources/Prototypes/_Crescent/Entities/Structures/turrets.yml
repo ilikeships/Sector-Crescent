@@ -797,9 +797,9 @@
         RotateSpeed: !type:Single
           1.841
         RangedRange: !type:Single
-          200
+          230
         VisionRadius: !type:Single
-          200
+          230
         SoundTargetInLOS: !type:SoundPathSpecifier
           path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
@@ -1152,8 +1152,8 @@
                   min: 3
                   max: 5
     - type: Gun
-      projectileSpeed: 10
-      fireRate: 0.2
+      projectileSpeed: 3
+      fireRate: 0.09
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -1210,3 +1210,223 @@
     - type: NpcFactionMember
       factions:
         - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretSmartbomb
+  name: NCSP 'Pilum' smartbomb missile rack
+  id: BaseWeaponTurretSmartbombNCSP
+  suffix: NCSP SMRT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship
+
+- type: entity
+  parent: BaseWeaponTurretSmartbomb
+  name: DSM 'Pilum' smartbomb missile rack
+  id: BaseWeaponTurretSmartbombDSM
+  suffix: DSM SMRT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: BaseWeaponTurretSmartbomb
+  name: SHI 'Pilum' smartbomb missile rack
+  id: BaseWeaponTurretSmartbombSHI
+  suffix: SHI SMRT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship
+
+- type: entity
+  parent: BaseWeaponTurretSmartbomb
+  name: SRM 'Pilum' smartbomb missile rack
+  id: BaseWeaponTurretSmartbombSRM
+  suffix: SRM SMRT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
+
+- type: entity
+  parent: BaseWeaponTurretSmartbomb
+  name: CMM 'Pilum' smartbomb missile rack
+  id: BaseWeaponTurretSmartbombCMM
+  suffix: CMM SMRT
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMWarship
+
+#needler
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretNeedler
+  name: needler artillery
+  abstract: true
+  components:
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/needler.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: TurretIFF
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: Gun
+      projectileSpeed: 7
+      fireRate: 0.6
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+    # TODO: Power ammo provider?
+    - type: BallisticAmmoProvider
+      proto: Needler
+      capacity: 99999
+    - type: HTN
+      rootTask:
+        task: PDTTurretCompound #npcroot
+      blackboard:
+        RotateSpeed: !type:Single
+          2.241
+        RangedRange: !type:Single
+          150
+        VisionRadius: !type:Single
+          150
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: SignalControl
+      isOnByDefault: true
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: BasicDevice
+    - type: WirelessNetworkConnection
+      range: 2500
+    - type: DeviceLinkSink
+      ports:
+        - Toggle
+        - On
+        - Off
+    - type: ApcPowerReceiver
+      powerLoad: 3500
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerSRM
+  suffix: SRM NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMWarship
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerDSM
+  suffix: DSM NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMWarship
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerNCSP
+  suffix: NCSP NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPWarship
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerNCWL
+  suffix: NCWL NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLWarship
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerCMM
+  suffix: CMM NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMMWarship
+
+- type: entity
+  parent: BaseWeaponTurretNeedler
+  name: 60mm 'Needler' heavy precision autogun
+  id: BaseWeaponTurretNeedlerSHI
+  suffix: SHI NDLR
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIWarship

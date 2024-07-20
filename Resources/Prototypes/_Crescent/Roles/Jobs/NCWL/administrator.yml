@@ -64,6 +64,7 @@
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadHatNCWLBeretAdmiral
     id: AdministratorPDA
+    neck: ClothingNeckAdminCapelet
     ears: ClothingHeadsetNCWL
     belt: WeaponRevolverPythonAP
     pocket1: NCWLPassportAccepted

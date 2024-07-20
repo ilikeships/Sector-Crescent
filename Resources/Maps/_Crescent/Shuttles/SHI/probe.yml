@@ -302,7 +302,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -2469.9978
+      secondsUntilStateChange: -2643.4402
       state: Opening
   - uid: 166
     components:
@@ -1331,6 +1331,24 @@ entities:
     - type: Transform
       pos: 8.5,-2.5
       parent: 2
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: ClosetWall
   entities:
   - uid: 292
@@ -1476,6 +1494,12 @@ entities:
     - type: Transform
       pos: -1.5,4.5
       parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        176:
+        - Group1: Toggle
+        170:
+        - Group2: Toggle
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 199
@@ -1489,13 +1513,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,3.5
-      parent: 2
-- proto: CrateMaterialUranium
-  entities:
-  - uid: 190
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
       parent: 2
 - proto: DrinkGlass
   entities:
@@ -1871,6 +1888,32 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 190
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.41149986,-3.5019484
+      parent: 2
+  - uid: 488
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.60470533,-3.5019484
+      parent: 2
+  - uid: 489
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.7384639,-3.4722161
+      parent: 2
+  - uid: 490
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.20343232,-3.4127514
+      parent: 2
 - proto: Lamp
   entities:
   - uid: 232
@@ -2249,6 +2292,12 @@ entities:
       parent: 2
 - proto: Rack
   entities:
+  - uid: 188
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,-3.5
+      parent: 2
   - uid: 209
     components:
     - type: Transform
@@ -2335,6 +2384,18 @@ entities:
     - type: DeviceLinkSink
       links:
       - 225
+      - 198
+- proto: ShuttleGunPlasmaRepeater
+  entities:
+  - uid: 176
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,5.5
+      parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 198
 - proto: SignalButton
   entities:
   - uid: 224
@@ -2684,7 +2745,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 10.5,-3.5
       parent: 2
-- proto: Thruster
+- proto: ThrusterSHIWarship
   entities:
   - uid: 11
     components:
@@ -2693,27 +2754,8 @@ entities:
       pos: 3.5,-6.5
       parent: 2
     - type: Thruster
-      enabled: False
-      originalPowerLoad: 1500
-    - type: ApcPowerReceiver
-      powerLoad: 1
-  - uid: 176
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 7.5,-6.5
-      parent: 2
-    - type: Thruster
       originalPowerLoad: 1500
   - uid: 177
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -3.5,-0.5
-      parent: 2
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 178
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -2721,7 +2763,7 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 179
+  - uid: 178
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2729,7 +2771,7 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 180
+  - uid: 179
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2737,10 +2779,26 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 181
+  - uid: 180
     components:
     - type: Transform
       pos: 12.5,2.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 181
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-0.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 187
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 7.5,-6.5
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500

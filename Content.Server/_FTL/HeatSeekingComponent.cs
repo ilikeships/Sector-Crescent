@@ -37,5 +37,5 @@ public sealed partial class HeatSeekingComponent : Component
     /// How fast does the missile accelerate?
     /// </summary>
     [DataField]
-    public float Acceleration = 40f;
+    public float Acceleration = 200f;
 }

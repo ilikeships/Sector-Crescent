@@ -2,7 +2,7 @@
   id: Imp
   name: DSM Imp
   description: An Imperial salvaging and mining shuttle with a large cargohold.
-  price: 23000
+  price: 24500
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/imp.yml

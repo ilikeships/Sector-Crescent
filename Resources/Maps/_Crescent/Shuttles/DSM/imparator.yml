@@ -199,7 +199,7 @@ entities:
       pos: -1.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -53.713406
+      secondsUntilStateChange: -194.91718
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -266,6 +266,24 @@ entities:
     - type: DeviceLinkSink
       links:
       - 176
+- proto: BoriaticFuelTankFull
+  entities:
+  - uid: 59
+    components:
+    - type: Transform
+      pos: 0.5,-4.5
+      parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      pos: -3.5,-7.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: ButtonFrameCaution
   entities:
   - uid: 86
@@ -625,6 +643,16 @@ entities:
     - type: Transform
       pos: 0.5,-5.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        72:
+        - Group1: SpaceArtilleryFire
+        - Group2: SpaceArtilleryOnSafety
+        - Group3: SpaceArtilleryOffSafety
+        189:
+        - Group4: Trigger
+        91:
+        - Group5: Toggle
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 88
@@ -661,13 +689,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CrateMaterialUranium
-  entities:
-  - uid: 105
-    components:
-    - type: Transform
-      pos: 0.5,-4.5
-      parent: 1
 - proto: FaxMachineShip
   entities:
   - uid: 89
@@ -849,17 +870,23 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: BoriaticGeneratorHerculesShuttle
+- proto: JugBoriaticFuel
   entities:
-  - uid: 77
+  - uid: 105
     components:
     - type: Transform
-      pos: -3.5,-7.5
+      pos: -2.8656983,-7.4610877
       parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
+  - uid: 199
+    components:
+    - type: Transform
+      pos: -2.6279068,-7.49082
+      parent: 1
+  - uid: 200
+    components:
+    - type: Transform
+      pos: -2.7468033,-7.565151
+      parent: 1
 - proto: PoweredlightLED
   entities:
   - uid: 190
@@ -968,6 +995,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 175
+      - 87
 - proto: ShuttleGunKurosawa
   entities:
   - uid: 189
@@ -979,6 +1007,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 179
+      - 87
 - proto: SignalButton
   entities:
   - uid: 174
@@ -1102,21 +1131,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,-6.5
       parent: 1
-- proto: Thruster
+- proto: ThrusterDSMFighter
   entities:
-  - uid: 59
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-9.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
   - uid: 60
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-9.5
+      pos: 2.5,1.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1124,19 +1144,34 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 3.5,-9.5
+      pos: -3.5,-9.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 62
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 4.5,-9.5
+      pos: -1.5,1.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 63
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,-9.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 64
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-9.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 65
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -1144,7 +1179,7 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 64
+  - uid: 66
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -1152,17 +1187,11 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
-  - uid: 65
+  - uid: 201
     components:
     - type: Transform
-      pos: -1.5,1.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 66
-    components:
-    - type: Transform
-      pos: 2.5,1.5
+      rot: 3.141592653589793 rad
+      pos: 4.5,-9.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1175,7 +1204,7 @@ entities:
       pos: 0.5,-1.5
       parent: 1
     - type: Battery
-      startingCharge: 988000
+      startingCharge: 985000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1193,6 +1222,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 178
+      - 87
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger

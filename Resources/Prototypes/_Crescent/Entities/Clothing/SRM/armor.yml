@@ -31,6 +31,36 @@
     clothingPrototype: ClothingHeadHelmetHardsuitHunter
 
 - type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitHunterElite
+  name: sixth subjugation fireteam hardsuit
+  description: A pristine battle-ready hardsuit printed fresh from a nanoforge. Still bears the House Romaine colors.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/SRM/OuterClothing/hardsuitelite.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/SRM/OuterClothing/hardsuitelite.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.4
+        Heat: 0.7
+        Radiation: 0.4
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.80
+    sprintModifier: 0.85
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitHunterElite
+
+- type: entity
   parent: ClothingOuterBaseLarge
   id: ClothingOuterArmorHunterDuster
   name: hunter's reinforced duster

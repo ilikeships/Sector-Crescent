@@ -2,7 +2,7 @@
   id: Raider
   name: DSM Raider
   description: A light Imperial transport shuttle. Made for expeditions.
-  price: 15000
+  price: 20500
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/raider.yml
