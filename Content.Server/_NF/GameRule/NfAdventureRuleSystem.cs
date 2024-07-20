@@ -268,7 +268,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(12000f, 16000f)
+            Offset = _random.NextVector2(8000f, 9000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("lpramzi", out var stationProto))
@@ -284,7 +284,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, dochenskaya, out var depotUid9s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(20000f, 16000f)
+            Offset = _random.NextVector2(10000f, 4000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Dochenskaya", out var stationProto))
@@ -314,7 +314,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(15000f, 18000f)
+            Offset = _random.NextVector2(9000f, 12000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))

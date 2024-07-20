@@ -17,6 +17,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.421875,-0.671875
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -661,7 +662,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 2.5,-0.5
       parent: 1
-    - type: DeviceNetwork
 - proto: GasVentScrubber
   entities:
   - uid: 62
@@ -670,7 +670,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,-0.5
       parent: 1
-    - type: DeviceNetwork
 - proto: GravityGeneratorMini
   entities:
   - uid: 66
@@ -718,7 +717,7 @@ entities:
       pos: 4.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 65
@@ -756,7 +755,7 @@ entities:
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 65
@@ -787,6 +786,38 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
+- proto: PoweredSmallLight
+  entities:
+  - uid: 79
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,1.5
+      parent: 1
+  - uid: 84
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.5,1.5
+      parent: 1
+  - uid: 87
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-1.5
+      parent: 1
+  - uid: 101
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 2.5,2.5
+      parent: 1
+  - uid: 108
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 4.5,2.5
+      parent: 1
 - proto: ShuttersNormal
   entities:
   - uid: 33
