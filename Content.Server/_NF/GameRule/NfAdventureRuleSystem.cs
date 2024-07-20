@@ -312,6 +312,22 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
         }
 
+        if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(15000f, 18000f)
+        }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
+            }
+
+            var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
+            _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
+            _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
+            _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
+        }
+
         // if (_map.TryLoad(mapId, lodge, out var lodgeUids, new MapLoadOptions
         //     {
         //         Offset = _random.NextVector2(1650f, 3400f)
