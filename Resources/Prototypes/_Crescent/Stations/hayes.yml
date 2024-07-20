@@ -12,5 +12,5 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            RipperdocNCSP: [ 2, 2 ]
-            ChemcookNCSP: [ 5, 5 ]
+            RipperdocNCSP: [ 1, 1 ]
+            ChemcookNCSP: [ 3, 3 ]

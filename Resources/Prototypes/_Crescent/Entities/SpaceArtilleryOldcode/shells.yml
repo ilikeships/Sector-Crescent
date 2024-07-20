@@ -937,7 +937,7 @@
     totalIntensity: 145
     maxTileBreak: 7
   - type: HeatSeeking
-    rotationSpeed: 50
+    rotationSpeed: 75
     acceleration: 155
     seekRange: 1000
   - type: PointLight
