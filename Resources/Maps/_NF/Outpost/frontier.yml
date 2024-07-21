@@ -1021,32 +1021,32 @@ entities:
             322: -2,12
             323: -2,12
             324: -2,12
-            765: -10,12
-            766: -10,6
-            767: 12,67
-            768: 6,84
-            769: -6,90
-            770: -20,105
-            771: -34,37
-            773: 11,-7
-            774: 19,-7
-            775: 46,3
-            776: 51,3
-            777: 51,13
-            778: 46,13
-            779: 29,26
-            780: -28,79
-            781: -38,67
-            782: -48,58
-            783: -45,58
-            784: -46,51
-            785: -46,47
-            786: -46,46
-            787: -46,42
-            788: -48,35
-            789: -45,35
-            790: 15,52
-            791: -8,1
+            763: -10,12
+            764: -10,6
+            765: 12,67
+            766: 6,84
+            767: -6,90
+            768: -20,105
+            769: -34,37
+            770: 11,-7
+            771: 19,-7
+            772: 46,3
+            773: 51,3
+            774: 51,13
+            775: 46,13
+            776: 29,26
+            777: -28,79
+            778: -38,67
+            779: -48,58
+            780: -45,58
+            781: -46,51
+            782: -46,47
+            783: -46,46
+            784: -46,42
+            785: -48,35
+            786: -45,35
+            787: 15,52
+            788: -8,1
         - node:
             color: '#FFFFFFFF'
             id: WarnLineE
@@ -2240,7 +2240,7 @@ entities:
       pos: 9.5,6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -76922.96
+      secondsUntilStateChange: -76950.48
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2785,7 +2785,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -90107.71
+      secondsUntilStateChange: -90135.23
       state: Opening
   - uid: 155
     components:
@@ -7661,11 +7661,6 @@ entities:
     components:
     - type: Transform
       pos: -30.5,54.5
-      parent: 1
-  - uid: 6759
-    components:
-    - type: Transform
-      pos: 11.5,27.5
       parent: 1
 - proto: Barricade
   entities:
@@ -21049,7 +21044,7 @@ entities:
       pos: 2.5,5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -63575.543
+      secondsUntilStateChange: -63603.06
       state: Closing
   - uid: 446
     components:
@@ -21839,6 +21834,18 @@ entities:
     components:
     - type: Transform
       pos: 12.465079,2.8435698
+      parent: 1
+- proto: GarbageOre5
+  entities:
+  - uid: 7006
+    components:
+    - type: Transform
+      pos: 11.564923,29.337051
+      parent: 1
+  - uid: 7007
+    components:
+    - type: Transform
+      pos: 11.535199,29.515446
       parent: 1
 - proto: GasPassiveVent
   entities:
@@ -26545,7 +26552,7 @@ entities:
       pos: -22.5,84.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -63408
+      secondsUntilStateChange: -63435.516
       state: Closing
   - uid: 3816
     components:
@@ -31228,6 +31235,13 @@ entities:
     components:
     - type: Transform
       pos: -6.6137004,84.08948
+      parent: 1
+- proto: ScrapRefiner
+  entities:
+  - uid: 6759
+    components:
+    - type: Transform
+      pos: 11.5,27.5
       parent: 1
 - proto: SecBreachingHammer
   entities:

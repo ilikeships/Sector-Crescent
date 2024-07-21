@@ -299,7 +299,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(10000f, 9500f)
+            Offset = _random.NextVector2(3000f, 4500f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))

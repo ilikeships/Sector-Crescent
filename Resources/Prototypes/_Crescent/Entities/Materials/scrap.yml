@@ -5,25 +5,17 @@
   description: Scraps of steel blasted off larger structures.
   suffix: Full
   components:
+  - type: Stack
+    stackType: SteelScrapOre
   - type: Tag
     tags:
     - RawMaterial
-  - type: Stack
-    stackType: SteelScrapOre
   - type: Sprite
     state: icon-scrap
   - type: Material
   - type: PhysicalComposition
     materialComposition:
       ScrapSteel: 500
-  - type: Extractable
-    grindableSolutionName: ironore
-  - type: SolutionContainerManager
-    solutions:
-      ironore:
-        reagents:
-        - ReagentId: Iron
-          Quantity: 10
 
 - type: entity
   id: SteelScrap1
@@ -87,14 +79,6 @@
   - type: PhysicalComposition
     materialComposition:
       ScrapTitanium: 500
-  - type: Extractable
-    grindableSolutionName: ironore
-  - type: SolutionContainerManager
-    solutions:
-      ironore:
-        reagents:
-        - ReagentId: Iron
-          Quantity: 10
 
 - type: entity
   id: TitaniumScrap1
@@ -212,14 +196,6 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapSteel: 500
-  - type: Extractable
-    grindableSolutionName: ironore
-  - type: SolutionContainerManager
-    solutions:
-      ironore:
-        reagents:
-        - ReagentId: Iron
-          Quantity: 10
 
 - type: entity
   id: RefinedSteelScrap1
@@ -244,14 +220,6 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapTitanium: 500
-  - type: Extractable
-    grindableSolutionName: ironore
-  - type: SolutionContainerManager
-    solutions:
-      ironore:
-        reagents:
-        - ReagentId: Iron
-          Quantity: 10
 
 - type: entity
   id: RefinedTitaniumScrap1
