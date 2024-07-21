@@ -164,7 +164,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 190
+    price: 250
 
 - type: entity
   parent: BaseItem
@@ -177,7 +177,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 1000
+    price: 2500
 
 #refined scrap
 
@@ -213,7 +213,7 @@
   suffix: Full
   components:
   - type: Stack
-    stackType: RefinedSteelScrapOre
+    stackType: RefinedTitaniumScrapOre
   - type: Sprite
     state: icon-titta
   - type: Material
