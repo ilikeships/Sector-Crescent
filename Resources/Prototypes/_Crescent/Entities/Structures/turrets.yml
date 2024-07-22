@@ -1152,7 +1152,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      projectileSpeed: 9
+      projectileSpeed: 13
       fireRate: 0.09
       selectedMode: FullAuto
       availableModes:
@@ -1322,7 +1322,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      projectileSpeed: 7
+      projectileSpeed: 40
       fireRate: 0.6
       selectedMode: FullAuto
       availableModes:

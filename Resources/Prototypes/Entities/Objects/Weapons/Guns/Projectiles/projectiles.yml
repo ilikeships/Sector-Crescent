@@ -435,12 +435,12 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 8
-        Structural: 5
+        Blunt: 15
+        Structural: 25
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: TimedDespawn
-    lifetime: 1.5
+    lifetime: 2.5
   - type: PointLight
     radius: 2.5
     color: white
@@ -710,8 +710,8 @@
   - type: Explosive
     explosionType: Default
     totalIntensity: 60
-    intensitySlope: 3
-    maxIntensity: 5
+    intensitySlope: 7
+    maxIntensity: 9
   - type: ProjectileIFF
 
 - type: entity
@@ -781,9 +781,9 @@
     layers:
       - state: frag
   - type: EmpOnTrigger
-    range: 8
-    energyConsumption: 50000
-    disableDuration: 10
+    range: 5
+    energyConsumption: 5000
+    disableDuration: 8
   - type: Ammo
     muzzleFlash: null
   - type: PointLight
