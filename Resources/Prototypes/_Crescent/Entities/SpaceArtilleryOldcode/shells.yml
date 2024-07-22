@@ -23,8 +23,8 @@
       - state: base-projectile
   - type: EmpOnTrigger
     range: 8
-    energyConsumption: 10000
-    disableDuration: 15
+    energyConsumption: 1000
+    disableDuration: 10
   - type: SpaceArtilleryProjectile
 
 - type: entity
@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 125
+        Structural: 325
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
     lifetime: 40
@@ -74,8 +74,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 9
-    intensitySlope: 7
+    maxIntensity: 14
+    intensitySlope: 15
     totalIntensity: 15
     maxTileBreak: 5
   - type: PointLight
@@ -131,10 +131,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 12
-    intensitySlope: 12
+    maxIntensity: 25
+    intensitySlope: 28
     totalIntensity: 110
-    maxTileBreak: 5
+    maxTileBreak: 6
   - type: PointLight
     radius: 3.5
     color: red
@@ -244,7 +244,7 @@
       - state: base-projectile
   - type: EmpOnTrigger
     range: 3
-    energyConsumption: 400
+    energyConsumption: 200
     disableDuration: 1
   - type: PointLight
     radius: 3.5
@@ -298,7 +298,7 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 6
+    maxIntensity: 9
     intensitySlope: 7
     totalIntensity: 7
     maxTileBreak: 1
@@ -355,10 +355,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 4
-    intensitySlope: 9
-    totalIntensity: 10
-    maxTileBreak: 2
+    maxIntensity: 10
+    intensitySlope: 11
+    totalIntensity: 12
+    maxTileBreak: 3
   - type: PointLight
     radius: 3.5
     color: orange
@@ -938,7 +938,7 @@
     maxTileBreak: 7
   - type: HeatSeeking
     rotationSpeed: 75
-    acceleration: 155
+    acceleration: 90
     seekRange: 1000
   - type: PointLight
     radius: 3.5

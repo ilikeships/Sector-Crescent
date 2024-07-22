@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 40
+        Structural: 60
         Piercing: 25
   - type: PointLight
     radius: 3.5
@@ -134,9 +134,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 19
-    intensitySlope: 26
-    totalIntensity: 32
+    maxIntensity: 25
+    intensitySlope: 35
+    totalIntensity: 40
     maxTileBreak: 5
   - type: PointLight
     radius: 3.5
@@ -233,16 +233,16 @@
   - type: ProjectileIFF
     damage:
       types:
-        Structural: 30
+        Structural: 50
         Radiation: 10
         Heat: 25
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 6
-    intensitySlope: 5
-    totalIntensity: 4
-    maxTileBreak: 2
+    maxIntensity: 10
+    intensitySlope: 15
+    totalIntensity: 10
+    maxTileBreak: 5
   - type: PointLight
     radius: 3.5
     color: orange
@@ -272,10 +272,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 8
-    intensitySlope: 12
-    totalIntensity: 18
-    maxTileBreak: 3
+    maxIntensity: 25
+    intensitySlope: 25
+    totalIntensity: 30
+    maxTileBreak: 7
   - type: PointLight
     radius: 3.5
     color: red

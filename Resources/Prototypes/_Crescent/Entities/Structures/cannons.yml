@@ -27,8 +27,8 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 20
-    fireRate: 1.4
+    projectileSpeed: 40
+    fireRate: 0.9
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -137,7 +137,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 80
+    projectileSpeed: 120
     fireRate: 1
     angleDecay: 45
     minAngle: 0
@@ -191,7 +191,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 40
+    projectileSpeed: 90
     fireRate: 0.3
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
@@ -326,7 +326,7 @@
         ents: []
   - type: Gun
     fireRate: 3
-    projectileSpeed: 70
+    projectileSpeed: 80
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/50cal.ogg
     soundEmpty:
@@ -433,7 +433,7 @@
       - SpaceArtilleryDetectedMalfunction
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
-    fireRate: 2
+    fireRate: 0.7
     projectileSpeed: 40
     selectedMode: FullAuto
     availableModes:
