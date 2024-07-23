@@ -716,7 +716,7 @@
 - type: entity
   id: SecurityTechFab
   parent: BaseLathe
-  name: security techfab
+  name: military techfab
   description: Prints equipment for use by security crew.
   components:
   - type: Sprite

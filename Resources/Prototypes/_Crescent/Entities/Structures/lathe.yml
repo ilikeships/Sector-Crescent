@@ -32,6 +32,8 @@
     - TitaniumScrap
     - Garbage
 
+#drugs
+
 - type: entity
   parent: BaseLathe
   id: DrugLathe
@@ -64,3 +66,52 @@
     - Kaiser
     - Mechanite
     - Bloodeye
+
+#microforge
+
+- type: entity
+  id: MicroforgeCircuitboard
+  parent: BaseMachineCircuitboard
+  name: microforge circuit
+  description: A machine printed circuit board for a microforge.
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: PristineMicroforge
+      requirements:
+        MatterBin: 2
+        Manipulator: 2
+
+- type: entity
+  id: PristineMicroforge
+  parent: BaseLathe
+  name: pristine microforge
+  description: Used to print equipment discovered through techdisks, or researched.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon2
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: microforge
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: microforge
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Lathe
+    idleState: icon2
+    runningState: icon2
+    staticRecipes:
+      - Brutepack
+    dynamicRecipes:
+      - WeaponRifleM90GrenadeLauncherNT
+      - WeaponSubMachineGunMP5NT
+      - WeaponShotgunSpasNT
+      - WeaponRevolverSnubnoseNT
+      - WeaponPistolHKUSPNT
+  - type: Machine
+    board: MicroforgeCircuitboard

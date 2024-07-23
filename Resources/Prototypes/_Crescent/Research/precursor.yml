@@ -1,0 +1,26 @@
+- type: technology
+  id: PrecursorNTWeapons
+  name: research-technology-weaponsnanolarge
+  icon:
+    sprite: Objects/Weapons/Guns/Rifles/carbine.rsi
+    state: icon
+  discipline: Precursor
+  tier: 1
+  cost: 25000
+  recipeUnlocks:
+  - WeaponRifleM90GrenadeLauncherNT
+  - WeaponSubMachineGunMP5NT
+  - WeaponShotgunSpasNT
+
+- type: technology
+  id: PrecursorNTWeaponsSmall
+  name: research-technology-weaponsnanosmall
+  icon:
+    sprite: _Crescent/Objects/Weapons/hkusp.rsi
+    state: icon
+  discipline: Precursor
+  tier: 1
+  cost: 15000
+  recipeUnlocks:
+  - WeaponRevolverSnubnoseNT
+  - WeaponPistolHKUSPNT

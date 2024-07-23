@@ -82,7 +82,7 @@
   name: C-20r sub machine gun
   parent: [BaseWeaponSubMachineGun, BaseGunWieldable]
   id: WeaponSubMachineGunC20r
-  description: An illegal firearm that is often used by the infamous nuclear operatives. Uses .35 auto ammo.
+  description: An illegal firearm that is often used by the infamous Imperial Knight corps. Uses .35 auto ammo.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
@@ -111,6 +111,8 @@
     zeroVisible: true
   - type: Appearance
   - type: Contraband #frontier
+  - type: StaticPrice
+    price: 1250
 
 - type: entity
   name: Drozd
@@ -159,6 +161,8 @@
       steps: 1
       zeroVisible: true
     - type: Appearance
+    - type: StaticPrice
+      price: 1000
 
 - type: entity
   name: Vector
