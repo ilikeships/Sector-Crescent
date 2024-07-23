@@ -117,7 +117,7 @@ entities:
           version: 6
         0,-2:
           ind: 0,-2
-          tiles: ggAAAAAAAQAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAABAAAAAAABAAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAAwAAAAAABAAAAAAABAAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAA
+          tiles: ggAAAAAAAQAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAABAAAAAAABAAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAAwAAAAAABAAAAAAABAAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAggAAAAAAAwAAAAAAggAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAAwAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAwAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAAQAAAAAAggAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAggAAAAAAggAAAAAAggAAAAAAAQAAAAAAAQAAAAAA
           version: 6
         -2,-3:
           ind: -2,-3
@@ -219,6 +219,24 @@ entities:
             689: 23,-38
         - node:
             color: '#D381C996'
+            id: BrickTileSteelEndS
+          decals:
+            961: 4,-24
+            962: 6,-24
+        - node:
+            color: '#D381C996'
+            id: BrickTileSteelInnerSe
+          decals:
+            958: 6,-23
+            960: 4,-23
+        - node:
+            color: '#D381C996'
+            id: BrickTileSteelInnerSw
+          decals:
+            957: 4,-23
+            959: 6,-23
+        - node:
+            color: '#D381C996'
             id: BrickTileSteelLineE
           decals:
             685: 24,-36
@@ -227,6 +245,9 @@ entities:
             id: BrickTileSteelLineN
           decals:
             683: 23,-35
+            954: 4,-22
+            955: 5,-22
+            956: 6,-22
         - node:
             color: '#D381C996'
             id: BrickTileSteelLineS
@@ -304,8 +325,6 @@ entities:
             622: -8,-24
             718: 22,-18
             721: 21,-19
-            891: 4,-24
-            895: 7,-24
         - node:
             color: '#D381C996'
             id: ConcreteTrimCornerSw
@@ -328,8 +347,6 @@ entities:
             719: 14,-18
             720: 15,-19
             872: 9,-24
-            890: 3,-24
-            894: 6,-24
         - node:
             color: '#D381C996'
             id: ConcreteTrimInnerNe
@@ -369,7 +386,6 @@ entities:
             495: 17,-34
             722: 21,-18
             728: 18,-19
-            900: 4,-22
         - node:
             color: '#D381C996'
             id: ConcreteTrimInnerSw
@@ -387,7 +403,6 @@ entities:
             636: -13,-22
             723: 15,-18
             729: 18,-19
-            901: 6,-22
         - node:
             color: '#D381C996'
             id: ConcreteTrimLineE
@@ -543,8 +558,6 @@ entities:
             861: 10,-19
             862: 10,-18
             863: 10,-17
-            892: 4,-23
-            896: 7,-23
         - node:
             color: '#D381C996'
             id: ConcreteTrimLineN
@@ -641,8 +654,6 @@ entities:
             715: 16,-12
             716: 20,-12
             717: 21,-12
-            897: 6,-22
-            898: 4,-22
         - node:
             color: '#D381C996'
             id: ConcreteTrimLineS
@@ -735,7 +746,6 @@ entities:
             725: 17,-19
             726: 19,-19
             727: 20,-19
-            899: 5,-22
         - node:
             color: '#D381C996'
             id: ConcreteTrimLineW
@@ -891,8 +901,6 @@ entities:
             869: 9,-21
             870: 9,-22
             871: 9,-23
-            889: 3,-23
-            893: 6,-23
         - node:
             color: '#D381C996'
             id: StandClearGreyscale
@@ -1033,6 +1041,7 @@ entities:
             874: 5,-19
             875: 5,-19
             905: 1,1
+            965: 7,-23
         - node:
             color: '#D381C996'
             id: WarnCornerGreyscaleSW
@@ -1043,6 +1052,7 @@ entities:
             855: 24,-32
             904: -1,1
             909: -6,0
+            964: 3,-23
         - node:
             color: '#FFFFFFFF'
             id: WarnCornerNE
@@ -1232,7 +1242,6 @@ entities:
             832: 16,-19
             838: 20,-19
             840: 22,-28
-            886: 5,-22
             913: -4,4
             914: 4,4
         - node:
@@ -1255,6 +1264,7 @@ entities:
             878: 3,-19
             879: 3,-19
             906: 0,1
+            963: 5,-23
         - node:
             color: '#D381C996'
             id: WarnLineGreyscaleW
@@ -1836,7 +1846,7 @@ entities:
           1,-7:
             1: 4080
           1,-6:
-            1: 12285
+            1: 12287
           2,-7:
             1: 4080
           2,-6:
@@ -1890,7 +1900,7 @@ entities:
       pos: -7.5,-6.5
       parent: 1
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 928000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1925,7 +1935,7 @@ entities:
       pos: 8.5,-6.5
       parent: 1
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 928000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -3733,15 +3743,22 @@ entities:
       parent: 1
 - proto: BoxBreachingCharges
   entities:
-  - uid: 2592
+  - uid: 493
     components:
     - type: Transform
-      pos: 3.6537323,-22.52012
+      pos: 4.5302534,-23.454275
       parent: 1
-  - uid: 2593
+  - uid: 494
     components:
     - type: Transform
-      pos: 3.6693573,-22.23887
+      pos: 4.292462,-23.51374
+      parent: 1
+- proto: BoxFlashBangGrenades
+  entities:
+  - uid: 907
+    components:
+    - type: Transform
+      pos: 4.5451155,-23.498875
       parent: 1
 - proto: BoxHandcuff
   entities:
@@ -3755,6 +3772,13 @@ entities:
     - type: Transform
       pos: 6.4130745,-19.446379
       parent: 1
+- proto: BoxIncendiaryGrenades
+  entities:
+  - uid: 906
+    components:
+    - type: Transform
+      pos: 4.470805,-23.55834
+      parent: 1
 - proto: BoxPillCanister
   entities:
   - uid: 2237
@@ -3762,12 +3786,26 @@ entities:
     - type: Transform
       pos: 14.508526,-28.31277
       parent: 1
+- proto: BoxSmokeGrenades
+  entities:
+  - uid: 908
+    components:
+    - type: Transform
+      pos: 4.5153913,-23.409678
+      parent: 1
 - proto: BoxSyringe
   entities:
   - uid: 2239
     components:
     - type: Transform
       pos: 14.524151,-28.609646
+      parent: 1
+- proto: BoxTeargasGrenades
+  entities:
+  - uid: 909
+    components:
+    - type: Transform
+      pos: 4.7829075,-23.498875
       parent: 1
 - proto: Bucket
   entities:
@@ -20700,6 +20738,23 @@ entities:
       parent: 2000
     - type: Physics
       canCollide: False
+- proto: ImperialArmoryVendory
+  entities:
+  - uid: 197
+    components:
+    - type: Transform
+      pos: 5.5,-23.5
+      parent: 1
+  - uid: 391
+    components:
+    - type: Transform
+      pos: 3.5,-23.5
+      parent: 1
+  - uid: 492
+    components:
+    - type: Transform
+      pos: 7.5,-23.5
+      parent: 1
 - proto: ImperialCargoDispenser
   entities:
   - uid: 2696
@@ -21996,12 +22051,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 3.5,-21.5
       parent: 1
-  - uid: 2628
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 6.5,-23.5
-      parent: 1
   - uid: 2629
     components:
     - type: Transform
@@ -22424,35 +22473,15 @@ entities:
       parent: 1
 - proto: Rack
   entities:
-  - uid: 197
-    components:
-    - type: Transform
-      pos: 3.5,-23.5
-      parent: 1
   - uid: 431
-    components:
-    - type: Transform
-      pos: 3.5,-22.5
-      parent: 1
-  - uid: 494
     components:
     - type: Transform
       pos: 4.5,-23.5
       parent: 1
-  - uid: 2045
+  - uid: 490
     components:
     - type: Transform
       pos: 6.5,-23.5
-      parent: 1
-  - uid: 2046
-    components:
-    - type: Transform
-      pos: 7.5,-23.5
-      parent: 1
-  - uid: 2068
-    components:
-    - type: Transform
-      pos: 7.5,-22.5
       parent: 1
 - proto: RagItem
   entities:
@@ -24797,6 +24826,30 @@ entities:
     - type: Transform
       pos: 4.5,-47.5
       parent: 1
+- proto: RiotBulletShield
+  entities:
+  - uid: 502
+    components:
+    - type: Transform
+      pos: 6.2096586,-23.424543
+      parent: 1
+  - uid: 536
+    components:
+    - type: Transform
+      pos: 6.3880024,-23.424543
+      parent: 1
+- proto: RiotShield
+  entities:
+  - uid: 856
+    components:
+    - type: Transform
+      pos: 6.685242,-23.43941
+      parent: 1
+  - uid: 898
+    components:
+    - type: Transform
+      pos: 6.8190007,-23.424543
+      parent: 1
 - proto: RubberStampApproved
   entities:
   - uid: 2523
@@ -24828,15 +24881,20 @@ entities:
       parent: 1
 - proto: SecBreachingHammer
   entities:
-  - uid: 2594
+  - uid: 498
     components:
     - type: Transform
-      pos: 3.3881073,-22.33262
+      pos: 6.67038,-23.43941
       parent: 1
-  - uid: 2595
+  - uid: 499
     components:
     - type: Transform
-      pos: 3.2474823,-22.30137
+      pos: 6.4474506,-23.43941
+      parent: 1
+  - uid: 500
+    components:
+    - type: Transform
+      pos: 6.2393827,-23.43941
       parent: 1
 - proto: ShuttersNormal
   entities:
@@ -26257,16 +26315,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,-21.5
-      parent: 1
-- proto: SyndicateBomb
-  entities:
-  - uid: 536
-    components:
-    - type: MetaData
-      desc: A saboteur's bomb with a volatile payload. Explodes when the timer reaches zero. Can be wrenched to secure and unsecure.
-      name: imperial explosive payload
-    - type: Transform
-      pos: 5.5,-22.5
       parent: 1
 - proto: Table
   entities:
@@ -30553,11 +30601,6 @@ entities:
     - type: Transform
       pos: 3.5,-32.5
       parent: 1
-  - uid: 2041
-    components:
-    - type: Transform
-      pos: 5.5,-23.5
-      parent: 1
   - uid: 2352
     components:
     - type: Transform
@@ -31152,28 +31195,6 @@ entities:
     - type: Transform
       pos: 7.5,-19.5
       parent: 1
-- proto: WeaponDisablerSMG
-  entities:
-  - uid: 492
-    components:
-    - type: Transform
-      pos: 4.5131073,-23.379496
-      parent: 1
-  - uid: 493
-    components:
-    - type: Transform
-      pos: 4.5287323,-23.20762
-      parent: 1
-  - uid: 498
-    components:
-    - type: Transform
-      pos: 4.5287323,-23.48887
-      parent: 1
-  - uid: 502
-    components:
-    - type: Transform
-      pos: 4.5287323,-23.64512
-      parent: 1
 - proto: WeaponPistolComplianceImperial
   entities:
   - uid: 169
@@ -31204,11 +31225,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 391
-    components:
-    - type: Transform
-      pos: 6.6702294,-23.660746
-      parent: 1
   - uid: 422
     components:
     - type: Transform
@@ -31223,31 +31239,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 898
-    components:
-    - type: Transform
-      pos: 6.6858544,-23.441996
-      parent: 1
-  - uid: 906
-    components:
-    - type: Transform
-      pos: 6.2952294,-23.285746
-      parent: 1
-  - uid: 907
-    components:
-    - type: Transform
-      pos: 6.2952294,-23.45762
-      parent: 1
-  - uid: 908
-    components:
-    - type: Transform
-      pos: 6.2952294,-23.660746
-      parent: 1
-  - uid: 909
-    components:
-    - type: Transform
-      pos: 6.6858544,-23.30137
-      parent: 1
 - proto: WeaponRevolverInspector
   entities:
   - uid: 725
@@ -31257,77 +31248,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: WeaponRifleMiller
-  entities:
-  - uid: 490
-    components:
-    - type: Transform
-      pos: 7.508843,-22.179863
-      parent: 1
-  - uid: 499
-    components:
-    - type: Transform
-      pos: 7.508843,-22.298794
-      parent: 1
-  - uid: 500
-    components:
-    - type: Transform
-      pos: 7.508843,-22.417723
-      parent: 1
-  - uid: 910
-    components:
-    - type: Transform
-      pos: 7.508843,-22.566385
-      parent: 1
-- proto: WeaponShotgunSpas
-  entities:
-  - uid: 856
-    components:
-    - type: Transform
-      pos: 7.538567,-23.309696
-      parent: 1
-  - uid: 911
-    components:
-    - type: Transform
-      pos: 7.523705,-23.190765
-      parent: 1
-  - uid: 934
-    components:
-    - type: Transform
-      pos: 7.523705,-23.458357
-      parent: 1
-  - uid: 935
-    components:
-    - type: Transform
-      pos: 7.523705,-23.651619
-      parent: 1
-- proto: WeaponSubMachineGunDrozd
-  entities:
-  - uid: 913
-    components:
-    - type: Transform
-      pos: 3.555551,-23.354294
-      parent: 1
-  - uid: 914
-    components:
-    - type: Transform
-      pos: 3.555551,-23.146168
-      parent: 1
-  - uid: 915
-    components:
-    - type: Transform
-      pos: 3.555551,-23.205631
-      parent: 1
-  - uid: 936
-    components:
-    - type: Transform
-      pos: 3.555551,-23.458357
-      parent: 1
-  - uid: 937
-    components:
-    - type: Transform
-      pos: 3.540689,-23.592154
-      parent: 1
 - proto: WeaponTurretMortarDSM
   entities:
   - uid: 1894
@@ -31517,6 +31437,18 @@ entities:
       parent: 1
 - proto: WindoorSecure
   entities:
+  - uid: 915
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,-23.5
+      parent: 1
+  - uid: 934
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 6.5,-23.5
+      parent: 1
   - uid: 966
     components:
     - type: Transform
@@ -31561,7 +31493,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -4354.9917
+      secondsUntilStateChange: -4744.571
       state: Opening
   - uid: 1420
     components:
@@ -31603,18 +31535,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -9.5,-13.5
       parent: 1
-  - uid: 2070
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 5.5,-22.5
-      parent: 1
-    - type: DeviceLinkSource
-      lastSignals:
-        DoorStatus: True
-    - type: Door
-      secondsUntilStateChange: -2255.2068
-      state: Opening
   - uid: 2347
     components:
     - type: Transform
@@ -31634,17 +31554,29 @@ entities:
       parent: 1
 - proto: WindowReinforcedDirectional
   entities:
-  - uid: 2047
+  - uid: 910
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 5.5,-22.5
+      pos: 4.5,-23.5
       parent: 1
-  - uid: 2069
+  - uid: 911
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 5.5,-22.5
+      pos: 4.5,-23.5
+      parent: 1
+  - uid: 913
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 6.5,-23.5
+      parent: 1
+  - uid: 914
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,-23.5
       parent: 1
   - uid: 2346
     components:

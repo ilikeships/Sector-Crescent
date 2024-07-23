@@ -1,8 +1,8 @@
 - type: entity
-  name: H&K USP 9x19mm
+  name: NT USP 9x19mm
   parent: BaseWeaponPistol
   id: WeaponPistolHKUSP
-  description: A cheap, civilian grade, ubiquitous sidearm, produced by a Shinohara subsidiary. Uses .35 auto ammo.
+  description: A cheap, civilian grade, ubiquitous sidearm, produced from old NanoTrasen documentation. Uses .35 auto ammo.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Weapons/hkusp.rsi
@@ -118,7 +118,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/hpistol.ogg
   - type: StaticPrice
-    price: 2000
+    price: 1000
 
 - type: entity
   name: SHI Shinobi 9x19mm

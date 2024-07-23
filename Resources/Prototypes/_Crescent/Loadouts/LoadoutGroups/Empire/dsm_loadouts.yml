@@ -47,7 +47,6 @@
 - type: loadoutGroup
   id: DSMSoldierBags
   name: loadout-group-contractor-backpack
-  minLimit: 0
   loadouts:
   - LevymanDSMClothingBackpackDSMSatchelFilledSoldier
   - LevymanDSMClothingBackpackDSMFilledSoldier

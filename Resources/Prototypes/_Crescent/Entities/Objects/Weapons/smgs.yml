@@ -24,7 +24,7 @@
     price: 600
 
 - type: entity
-  name: H&K MP5 9x19mm
+  name: NT MP5 9x19mm
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunMP5
   description: A light Terran submachine gun often seen with various security forces around the Sector.
@@ -183,7 +183,7 @@
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/beetle.rsi
   - type: Gun
-    fireRate: 5
+    fireRate: 3
     selectedMode: FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/atreides.ogg

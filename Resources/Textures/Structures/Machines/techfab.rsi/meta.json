@@ -6,57 +6,63 @@
     "x": 32,
     "y": 32
   },
-  "states": [
-    {
-      "name": "icon"
-    },
-    {
-      "name": "med"
-    },
-    {
-      "name": "sec"
-    },
-    {
-      "name": "sci"
-    },
-    {
-      "name": "eng"
-    },
-    {
-      "name": "engi"
-    },
-    {
-      "name": "service"
-    },
-    {
-      "name": "cargo"
-    },
-    {
-      "name": "nfsd"
-    },
-    {
-      "name": "ammo"
-    },
-    {
-      "name": "panel"
-    },
-    {
-      "name": "unlit"
-    },
-    {
-      "name": "inserting",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    }
-  ]
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "med"
+        },
+        {
+            "name": "icon2"
+        },
+        {
+            "name": "microforge"
+        },
+        {
+            "name": "sec"
+        },
+        {
+            "name": "sci"
+        },
+        {
+            "name": "eng"
+        },
+        {
+            "name": "engi"
+        },
+        {
+            "name": "service"
+        },
+        {
+            "name": "cargo"
+        },
+        {
+            "name": "nfsd"
+        },
+        {
+            "name": "ammo"
+        },
+        {
+            "name": "panel"
+        },
+        {
+            "name": "unlit"
+        },
+        {
+            "name": "inserting",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
 }

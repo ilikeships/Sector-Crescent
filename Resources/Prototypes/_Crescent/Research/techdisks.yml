@@ -1,0 +1,34 @@
+- type: entity
+  parent: BaseItem
+  id: NanotrasenFabdiskWeapons
+  name: nanotrasen fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'NT #012 - LONG ARMS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk
+    recipes:
+      - WeaponRifleM90GrenadeLauncherNT
+      - WeaponSubMachineGunMP5NT
+      - WeaponShotgunSpasNT
+  - type: StaticPrice
+    price: 12500
+
+- type: entity
+  parent: BaseItem
+  id: NanotrasenFabdiskWeaponsSmall
+  name: nanotrasen fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'NT #013 - SMALL ARMS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk
+    recipes:
+      - WeaponRevolverSnubnoseNT
+      - WeaponPistolHKUSPNT
+  - type: StaticPrice
+    price: 5000

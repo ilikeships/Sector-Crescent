@@ -1,3 +1,4 @@
+#vendors
 
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
@@ -30,6 +31,35 @@
 
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
+  id: ImperialArmoryVendory
+  name: imperial armory vendor
+  description: Here, you can tithe credits to the House for equipment. Sweet, sweet feudalism.
+  components:
+  - type: VendingMachine
+    pack: ImperialArmoryInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: AmmoVendAds
+  - type: SpeakOnUIClosed
+    pack: GenericVendGoodbyes
+  - type: Speech
+  - type: Sprite
+    sprite: _Crescent/Structures/armory.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: MarketModifier
+    mod: 1.5
+
+- type: entity
+  parent: [BaseStructureUnanchorable, VendingMachine]
   id: NCWLArmoryVendory
   name: union armory vendor
   description: Weapons to fuel the liberation of this system.
@@ -56,6 +86,8 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: MarketModifier
     mod: 1.5
+
+#cargo
 
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
