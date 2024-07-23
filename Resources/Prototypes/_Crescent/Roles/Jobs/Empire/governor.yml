@@ -71,6 +71,7 @@
     shoes: ClothingShoesBootsImperialGovernorBoots
     head: ClothingHeadHatImperialBicorne
     outerClothing: ClothingOuterCoatImperialGovernor
+    belt: ClothingBeltSheathFilled
     id: GovernorPDA
     ears: ClothingHeadsetEmpire
     gloves: ClothingHandsGlovesImperialGovernorGloves
