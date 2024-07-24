@@ -298,10 +298,10 @@
     price: 2000
 
 - type: entity
-  name: SHI Mayflower 7.62x39mm
+  name: NCSP Mayflower 7.62x39mm
   parent: BaseWeaponRifle
   id: WeaponRifleMayflower
-  description: A heavy battle carbine, mass-produced by Shinohara for export.
+  description: A heavy battle carbine, mass-produced by the Gorlex for export.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Weapons/mayflower.rsi

@@ -1,0 +1,105 @@
+- type: technology
+  id: SyndicateHardsuit
+  name: research-technology-syndiehards
+  icon:
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndicatesbg.rsi
+    state: icon
+  discipline: Pirate
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - ClothingOuterHardsuitSyndicateBGNCSP
+  - ClothingOuterHardsuitRamziNCSP
+
+- type: technology
+  id: SyndicateClothes
+  name: research-technology-syndieclothes
+  icon:
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndiearmor.rsi
+    state: icon
+  discipline: Pirate
+  tier: 1
+  cost: 8000
+  recipeUnlocks:
+  - ClothingHeadHelmetSyndicateBasicNCSP
+  - ClothingHeadHelmetSyndicateBasicInterdyneNCSP
+  - ClothingOuterArmorSyndicateArmorvestNCSP
+  - ClothingOuterArmorSyndicateArmorvestInterdyneNCSP
+  - ClothingUniformJumpsuitSyndicateNCSP
+  - ClothingUniformJumpsuitSyndicateInterdyneNCSP
+  - ClothingUniformJumpsuitSyndicateSawsNCSP
+  - ClothingNeckScarfSyndicateShemaghNCSP
+
+- type: technology
+  id: SyndicateSmallArms
+  name: research-technology-syndiesmallarms
+  icon:
+    sprite: Objects/Weapons/Guns/Pistols/cobra.rsi
+    state: icon
+  discipline: Pirate
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  - WeaponPistolCobraNCSP
+  - WeaponSubMachineGunAtreidesNCSP
+  - WeaponSubMachineGunDrozdNCSP
+
+- type: technology
+  id: SyndicateAviation
+  name: research-technology-syndieaviation
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: ame-part
+  discipline: Pirate
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - GyroscopeFlatpackLathe
+  - NCSPWarshipThrusterFlatpackNCSP
+  - NCSPFighterThrusterFlatpackNCSP
+
+- type: technology
+  id: SyndicateShuttleArmaments
+  name: research-technology-syndieshuttlearmaments
+  icon:
+    sprite: _Crescent/Ammunition/vulcan.rsi
+    state: base
+  discipline: Pirate
+  tier: 2
+  cost: 25000
+  recipeUnlocks:
+  - NCSPVulcanTurretFlatpackNCSP
+  - NCSPAnklebiterFlatpackNCSP
+  - PlasmaRepeaterFlatpackCraft
+
+- type: technology
+  id: SyndicateLongArms
+  name: research-technology-syndielongarms
+  icon:
+    sprite: _Crescent/Objects/Weapons/krinkov.rsi
+    state: base
+  discipline: Pirate
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - WeaponRifleKrinkovNCSP
+  - WeaponRifleMayflowerNCSP
+  - WeaponRifleAkNCSP
+  - WeaponLightMachineGunL6CNCSP
+  - MagazineLightRifleBoxNCSP
+
+- type: technology
+  id: SyndicateEwar
+  name: research-technology-syndieewar
+  icon:
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+  discipline: Pirate
+  tier: 3
+  cost: 35000
+  recipeUnlocks:
+  - EmagNCSP
+  - RadioJammerNCSP
+  - EmpGrenadeNCSP
+  - CartridgeShellEmpCraft
+  - GrenadeEMPCraft

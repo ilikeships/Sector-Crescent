@@ -53,13 +53,13 @@
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: StaticPrice
-    price: 500
+    price: 750
 
 - type: entity
-  name: Atreides
+  name: NCSP Atreides .35
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunAtreides
-  description: Pla-ket-ket-ket-ket! Uses .35 auto ammo. An illegal firearm often used by Syndicate agents.
+  description: Pla-ket-ket-ket-ket! Uses .35 auto ammo.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
@@ -79,7 +79,7 @@
   - type: Appearance
 
 - type: entity
-  name: C-20r sub machine gun
+  name: IRM C-20r .35
   parent: [BaseWeaponSubMachineGun, BaseGunWieldable]
   id: WeaponSubMachineGunC20r
   description: An illegal firearm that is often used by the infamous Imperial Knight corps. Uses .35 auto ammo.
@@ -115,10 +115,10 @@
     price: 1250
 
 - type: entity
-  name: Drozd
+  name: NCSP Drozd
   parent: [BaseWeaponSubMachineGun, BaseGunWieldable]
   id: WeaponSubMachineGunDrozd
-  description: An excellent fully automatic Heavy SMG. An illegal firearm often used by Syndicate agents.
+  description: A heavy submachine gun with robust rifling. Produced by and for the Gorlex Security Consulting elite.
   components:
     - type: Sprite
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
@@ -162,7 +162,7 @@
       zeroVisible: true
     - type: Appearance
     - type: StaticPrice
-      price: 1000
+      price: 2500
 
 - type: entity
   name: Vector
@@ -212,10 +212,10 @@
   - type: Appearance
 
 - type: entity
-  name: WT550
+  name: NT WT550
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunWt550
-  description: An excellent SMG, produced by NanoTrasen's Small Arms Division. Uses .35 auto ammo. On the receiver is a label that says 'for authorized use only.'
+  description: A light submachine gun reconstructed from outdated NanoTrasen diagrams.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
@@ -269,3 +269,6 @@
     steps: 6
     zeroVisible: true
   - type: Appearance
+  - type: StaticPrice
+    price: 4500
+

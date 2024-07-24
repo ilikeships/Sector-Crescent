@@ -1,14 +1,14 @@
 - type: entity
   id: ResearchAndDevelopmentServer
   parent: [ BaseMachinePowered, ConstructibleMachine ]
-  name: R&D server
+  name: data storage server
   description: Contains the collective knowledge of the station's scientists. Destroying it would send them back to the stone age. You don't want that do you?
   components:
   - type: Sprite
     sprite: Structures/Machines/server.rsi
     layers:
       - state: server
-      - state: variant-research
+      - state: variant-shi
       - state: server_o
         map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: ResearchServer
@@ -19,6 +19,7 @@
     - Experimental
     - CivilianServices
     - Precursor
+    - Shinohara
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver

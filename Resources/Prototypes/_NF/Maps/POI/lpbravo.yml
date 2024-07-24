@@ -15,5 +15,5 @@
           availableJobs:
             RingleaderNCSP: [ 1, 1 ]
             LieutenantNCSP: [ 1, 1 ]
-            InfanteerNCSP: [ 10, 10 ]
-            TechnicianNCSP: [ 3, 5 ]
+            InfanteerNCSP: [ 6, 6 ]
+            TechnicianNCSP: [ 3, 3 ]

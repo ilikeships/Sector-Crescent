@@ -12,9 +12,5 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            RingleaderNCSP: [ 0, 1 ]
-            LieutenantNCSP: [ 0, 1 ]
-            InfanteerNCSP: [ 6, 6 ]
-            TechnicianNCSP: [ 3, 3 ]
             ForemanNCSP: [ 0, 1 ]
             ShipbreakerNCSP: [ 0, 3 ]
