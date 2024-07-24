@@ -1,3 +1,5 @@
+#precursor
+
 - type: entity
   parent: BaseItem
   id: NanotrasenFabdiskWeapons
@@ -32,3 +34,111 @@
       - WeaponPistolHKUSPNT
   - type: StaticPrice
     price: 5000
+
+#syndicate
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskClothes
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The smart label on the front blares 'DATA CORRUPTION, %19', while a scrawl at the back reads, 'uniformz n' shit'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - ClothingHeadHelmetSyndicateBasicNCSP
+      - ClothingHeadHelmetSyndicateBasicInterdyneNCSP
+      - ClothingUniformJumpsuitSyndicateNCSP
+      - ClothingUniformJumpsuitSyndicateInterdyneNCSP
+      - ClothingOuterArmorSyndicateArmorvestNCSP
+      - ClothingOuterArmorSyndicateArmorvestInterdyneNCSP
+  - type: StaticPrice
+    price: 520
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskDrozd
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The label has been scrawled with 'DAKKA'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - WeaponSubMachineGunDrozdNCSP
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskCobra
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The label has been scrawled with 'spy gun'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - WeaponPistolCobraNCSP
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskAviation
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The label has been scrawled with 'FAMILY IFF CODE INSIDE. DO NOT SHARE OR I KILL U'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - GyroscopeFlatpackLathe
+      - NCSPWarshipThrusterFlatpackNCSP
+      - NCSPFighterThrusterFlatpackNCSP
+  - type: StaticPrice
+    price: 2750
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskShuttleWeapons
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The label has been scrawled with 'ship dakka'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - NCSPAnklebiterFlatpackNCSP
+      - NCSPVulcanTurretFlatpackNCSP
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  parent: BaseItem
+  id: SyndicateFabdiskMayflower
+  name: syndicate fabdisk
+  description: A disk for the R&D server containing research technology. The label has been scrawled with 'MAYFLOWER'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: syndicate
+  - type: TechnologyDisk
+    recipes:
+      - WeaponRifleMayflowerNCSP
+  - type: StaticPrice
+    price: 2000
+
+#ncwl

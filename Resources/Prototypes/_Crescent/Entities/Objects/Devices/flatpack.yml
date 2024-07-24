@@ -1,0 +1,69 @@
+- type: entity
+  parent: BaseFlatpack
+  id: NCSPWarshipThrusterFlatpack
+  name: syndicate warship thruster flatpack
+  description: A flatpack used for constructing warship thrusters with Syndicate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterNCSPWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCSPFighterThrusterFlatpack
+  name: syndicate fighter thruster flatpack
+  description: A flatpack used for constructing smallshuttle thrusters with Syndicate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterNCSPWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 400
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCSPVulcanTurretFlatpack
+  name: syndicate gatling autoturret flatpack
+  description: A flatpack used for constructing primitive gatling autoturrets with Syndicate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretVulcanNCSP
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCSPAnklebiterFlatpack
+  name: syndicate point defense turret flatpack
+  description: A flatpack used for constructing a ballistic point defense turret with Syndicate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretPDTNCSP
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseFlatpack
+  id: PlasmaRepeaterFlatpack
+  name: plasma repeater flatpack
+  description: A flatpack used for constructing a plasma repeater hardpoint weapon.
+  components:
+  - type: Flatpack
+    entity:  ShuttleGunPlasmaRepeater
+  - type: Sprite
+    layers:
+    - state: tesla-generator
+  - type: StaticPrice
+    price: 650
