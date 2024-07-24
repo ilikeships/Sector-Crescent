@@ -8,7 +8,7 @@
 # This is entirely a github default file, except for this comment, but it should be fine. -Tsjip
 
 name: Labeler
-on: [pull_request_target]
+on: 
 
 jobs:
   label:

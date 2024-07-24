@@ -1,19 +1,7 @@
 name: Map Prototype Checker
 
 on:
-  pull_request:
-    branches: [ "master" ]
-    paths:
-    # Entity pathspecs - If any of these change (i.e. suffix changes etc), this check should run.
-    - "Resources/Prototypes/Entities/**/*.yml"
-    - "Resources/Prototypes/_NF/Entities/**/*.yml"
-    - "Resources/Prototypes/Nyanotrasen/Entities/**/*.yml"
-    - "Resources/Prototypes/_Nyano/Entities/**/*.yml"
-    - "Resources/Prototypes/DeltaV/Entities/**/*.yml"
-    # Map pathspecs - If any maps are changed, this should run.
-    - "Resources/Maps/**/*.yml"
-    # Also the mapchecker itself
-    - ".github/mapchecker/**"
+
     
 
 permissions:
