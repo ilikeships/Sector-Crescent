@@ -1,0 +1,68 @@
+
+- type: latheRecipe
+  id: ClothingOuterHardsuitImperialWorkerCraft
+  result: ClothingOuterHardsuitImperialWorker
+  completetime: 4
+  materials:
+    Steel: 2250
+    Plastic: 500
+    Cloth: 1000
+
+
+- type: latheRecipe
+  id: ClothingOuterCoatImperialSoftsuitCraft
+  result: ClothingOuterCoatImperialSoftsuit
+  completetime: 4
+  materials:
+    Plastic: 1000
+    Cloth: 1250
+
+- type: latheRecipe
+  id: ClothingHeadHelmetImperialEVACraft
+  result: ClothingHeadHelmetImperialEVA
+  completetime: 4
+  materials:
+    Plastic: 450
+    Cloth: 500
+
+- type: latheRecipe
+  id: ClothingOuterCoatImperialParadeCraft
+  result: ClothingOuterCoatImperialParade
+  completetime: 4
+  materials:
+    Cloth: 750
+
+- type: latheRecipe
+  id: ClothingUniformJumpsuitImperialSoldierFormalCraft
+  result: ClothingUniformJumpsuitImperialSoldierFormal
+  completetime: 4
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: ClothingUniformJumpsuitImperialDoctorCraft
+  result: ClothingUniformJumpsuitImperialDoctor
+  completetime: 4
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: ClothingUniformJumpsuitImperialFreeholderCraft
+  result: ClothingUniformJumpsuitImperialFreeholder
+  completetime: 4
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: ClothingUniformJumpsuitImperialNobleMaleCraft
+  result: ClothingUniformJumpsuitImperialNobleMale
+  completetime: 4
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: ClothingUniformJumpsuitImperialNobleFemaleCraft
+  result: ClothingUniformJumpsuitImperialNobleFemale
+  completetime: 4
+  materials:
+    Cloth: 500

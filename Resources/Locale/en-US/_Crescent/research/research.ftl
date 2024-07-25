@@ -31,3 +31,29 @@ research-technology-syndielongarms = Privateer Longarms
 research-technology-syndieewar = Privateer Electronic Warfare
 
 research-technology-syndieshuttlearmaments = Privateer Shuttle Armaments
+
+#commie
+
+research-technology-commieclothes = Union Standard Textiles
+
+research-technology-commiearmor = Standard Union Armor Fabrication
+
+research-technology-heavycommiearmor = Heavy Union Armor Fabrication
+
+research-technology-commielightarms = Union Light Arms
+
+research-technology-commieavionics = Union Avionics
+
+research-technology-commieheavyarms = Union Longarms
+
+research-technology-commieshuttlearmaments = Union Shuttle Armaments
+
+research-technology-commiemissiles = Union Warhead Armaments
+
+research-technology-commieultraheavy = Union Ultraheavy Armaments
+
+#imperial
+
+research-technology-impsuit = Imperial Worksuit Patterns
+
+research-technology-impclothes = Imperial Standard Textiles

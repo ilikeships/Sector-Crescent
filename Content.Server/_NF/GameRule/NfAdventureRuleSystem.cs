@@ -113,7 +113,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var depotMap = "/Maps/_NF/POI/cargodepot.yml";
         var tinnia = "/Maps/_NF/POI/tinnia.yml";
         var caseys = "/Maps/_NF/POI/caseyscasino.yml";
-      //  var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
+        var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
         var hayes = "/Maps/_Crescent/Stations/hayes.yml";
         var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
@@ -199,21 +199,21 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
      //       _shuttle.SetIFFColor(churchUids[0], factionColor);
      //   }
 
-     //   if (_map.TryLoad(mapId, lpbravo, out var lpbravoUids, new MapLoadOptions
-     //       {
-     //           Offset = _random.NextVector2(5150f, 4850f)
-      //      }))
-      //  {
-      //      if (_prototypeManager.TryIndex<GameMapPrototype>("LPBravo", out var stationProto))
-      //      {
-     //           _station.InitializeNewStation(stationProto.Stations["LPBravo"], lpbravoUids);
-      //      }
-      //
-      //      var meta = EnsureComp<MetaDataComponent>(lpbravoUids[0]);
-       //     _meta.SetEntityName(lpbravoUids[0], "NCSP Grinning Jackal", meta);
-        //    _shuttle.SetIFFColor(lpbravoUids[0], lpbravoColor);
-       //     _shuttle.AddIFFFlag(lpbravoUids[0], IFFFlags.HideLabel);
-      //  }
+        if (_map.TryLoad(mapId, lpbravo, out var lpbravoUids, new MapLoadOptions
+            {
+                Offset = _random.NextVector2(5150f, 4850f)
+            }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("LPBravo", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["LPBravo"], lpbravoUids);
+            }
+      
+            var meta = EnsureComp<MetaDataComponent>(lpbravoUids[0]);
+            _meta.SetEntityName(lpbravoUids[0], "NCSP Grinning Jackal", meta);
+            _shuttle.SetIFFColor(lpbravoUids[0], lpbravoColor);
+            _shuttle.AddIFFFlag(lpbravoUids[0], IFFFlags.HideLabel);
+        }
 
         // if (_map.TryLoad(mapId, northpole, out var northpoleUids, new MapLoadOptions
         //     {

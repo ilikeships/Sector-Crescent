@@ -138,6 +138,9 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 32
 - proto: APCBasic
   entities:
   - uid: 35
@@ -159,6 +162,17 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,2.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 36
+    components:
+    - type: Transform
+      pos: -0.5,0.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: CableApcExtension
   entities:
   - uid: 53
@@ -342,17 +356,6 @@ entities:
       parent: 29
     - type: Physics
       canCollide: False
-- proto: PortableGeneratorSuperPacmanShuttle
-  entities:
-  - uid: 36
-    components:
-    - type: Transform
-      pos: -0.5,0.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PowerCellMicroreactor
   entities:
   - uid: 31

@@ -142,3 +142,107 @@
     price: 2000
 
 #ncwl
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskUniforms
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, UNIFORMS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - ClothingUniformJumpsuitNCWLCraft
+      - ClothingUniformJumpsuitNCWLMedicCraft
+      - ClothingUniformJumpsuitNCWLArtificerCraft
+      - ClothingHeadHatNCWLBeretCraft
+      - ClothingHeadHatNCWLTankerCraft
+      - ClothingHeadHatNCWLCapsoftCraft
+      - ClothingMaskNCWLBalaclavaCraft
+  - type: StaticPrice
+    price: 350
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskInfanteerSuit
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, INFANTEERSUIT'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - ClothingOuterHardsuitNCWLInfantryCraft
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskInfanteerSuit
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, SUBMACHINE RIFLING'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - WeaponSubMachineGunNCWLWatchdogCraft
+      - WeaponSubMachineGunBloodhoundCraft
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskJuggernaut
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, HERMES PROJECT'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - ClothingOuterHardsuitNCWLJuggernautCraft
+  - type: StaticPrice
+    price: 2500
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskBulldog
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, BULLDOG'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - WeaponShotgunBulldogCraft
+  - type: StaticPrice
+    price: 900
+
+- type: entity
+  parent: BaseItem
+  id: UnionFabdiskConscript
+  name: union fabdisk
+  description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, CONSCRIPT'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: ncwl
+  - type: TechnologyDisk
+    recipes:
+      - WeaponLightMachineGunConscriptCraft
+      - MagazineLightRifleBoxConscriptCraft
+      - type: StaticPrice
+    price: 900

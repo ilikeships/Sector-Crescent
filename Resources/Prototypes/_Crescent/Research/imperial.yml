@@ -1,0 +1,30 @@
+- type: technology
+  id: ImperialHardsuit
+  name: research-technology-impsuit
+  icon:
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandateworker.rsi
+    state: icon
+  discipline: Imperial
+  tier: 1
+  cost: 9000
+  recipeUnlocks:
+  - ClothingOuterHardsuitImperialWorkerCraft
+  - ClothingOuterCoatImperialSoftsuitCraft
+  - ClothingHeadHelmetImperialEVACraft
+
+- type: technology
+  id: ImperialClothes
+  name: research-technology-impclothes
+  icon:
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandateparade.rsi
+    state: icon
+  discipline: Imperial
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - ClothingOuterCoatImperialParadeCraft
+  - ClothingUniformJumpsuitImperialSoldierFormalCraft
+  - ClothingUniformJumpsuitImperialDoctorCraft
+  - ClothingUniformJumpsuitImperialFreeholderCraft
+  - ClothingUniformJumpsuitImperialNobleMaleCraft
+  - ClothingUniformJumpsuitImperialNobleFemaleCraft
