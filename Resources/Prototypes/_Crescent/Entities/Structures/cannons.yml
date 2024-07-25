@@ -111,7 +111,7 @@
 - type: entity
   id: ShuttleGunKurosawa
   parent: [ShuttleGunBase, ConstructibleMachine]
-  name: NT-3 48mm "Kurosawa" rocket pod
+  name: NCWL-3 48mm "Kurosawa" rocket pod
   description: A small fixedpoint rocketpod with a capacity of two rockets. Must be reloaded by hand.
   components:
   - type: TurretIFF

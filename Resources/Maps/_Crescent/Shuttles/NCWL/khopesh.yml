@@ -168,6 +168,17 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,4.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 11
+    components:
+    - type: Transform
+      pos: -0.5,2.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: CableApcExtension
   entities:
   - uid: 40
@@ -307,7 +318,7 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 26
@@ -347,7 +358,7 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 26
@@ -380,17 +391,6 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
-- proto: PortableGeneratorSuperPacmanShuttle
-  entities:
-  - uid: 24
-    components:
-    - type: Transform
-      pos: -0.5,2.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredLEDSmallLight
   entities:
   - uid: 55

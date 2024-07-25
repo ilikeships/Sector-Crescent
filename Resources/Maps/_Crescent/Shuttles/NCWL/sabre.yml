@@ -141,6 +141,17 @@ entities:
     - type: Transform
       pos: -0.5,2.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 10
+    components:
+    - type: Transform
+      pos: -0.5,1.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: CableApcExtension
   entities:
   - uid: 13
@@ -337,7 +348,7 @@ entities:
       pos: 0.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 148200
+      startingCharge: 147600
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -377,17 +388,6 @@ entities:
       parent: 1
     - type: Paper
       content: "                                           NCWL SABRE\n                                         MODEL 3Z-32A\n                              ARMAMENT INSTRUCTIONS\n \nGood evening, pilot. You reading this note means that you've purchased the experimental 32Z-32A, or, more affectionately known, the Sabre. This experimental weapons platform has to be linked by hand directly, via the network configurator provided. It's simple; take the configurator, link it with the turret, and then tap it gently against the signaller in your cockpit. The configuration device should give you some options. For semi-auto, link it to 'trigger'. For full auto, link it to 'toggle'.\n\n\n\nFly safe."
-- proto: PortableGeneratorPacmanShuttle
-  entities:
-  - uid: 10
-    components:
-    - type: Transform
-      pos: -0.5,1.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredSmallLight
   entities:
   - uid: 71

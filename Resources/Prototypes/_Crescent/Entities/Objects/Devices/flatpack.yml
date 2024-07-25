@@ -19,7 +19,7 @@
   description: A flatpack used for constructing smallshuttle thrusters with Syndicate IFF clearance.
   components:
   - type: Flatpack
-    entity: ThrusterNCSPWarship
+    entity: ThrusterNCSPFighter
   - type: Sprite
     layers:
     - state: ame-part
@@ -67,3 +67,129 @@
     - state: tesla-generator
   - type: StaticPrice
     price: 650
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLFighterThrusterFlatpack
+  name: union fighter thruster flatpack
+  description: A flatpack used for constructing smallshuttle thrusters with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterNCWLWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 400
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLWarshipThrusterFlatpack
+  name: union warship thruster flatpack
+  description: A flatpack used for constructing warship thrusters with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterNCWLWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLGranSudaruskaFlatpack
+  name: union point defense turret flatpack
+  description: A flatpack used for constructing a ballistic point defense turret with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretPDTNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLVulcanFlatpack
+  name: union gatling autoturret flatpack
+  description: A flatpack used for constructing a ballistic turret with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretVulcanNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLSwarmerFlatpack
+  name: union swarmer rocket autoturret flatpack
+  description: A flatpack used for constructing a cheap rocket pod with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretSwarmerNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 2500
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLKurosawaFlatpack
+  name: kurosawa rocket launcher flatpack
+  description: A flatpack used for constructing a cheap rocket pod with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ShuttleGunKurosawaNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLSlugthrowerFlatpack
+  name: slugthrower flatpack
+  description: A flatpack used for constructing a heavy slugthrower with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: SHISlugthrowerTurretNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 7500
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLAutomortarFlatpack
+  name: heavy automortar flatpack
+  description: A flatpack used for constructing a heavy automortar with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretMortarNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 8000
+
+- type: entity
+  parent: BaseFlatpack
+  id: NCWLNeedlerFlatpack
+  name: needler autogun flatpack
+  description: A flatpack used for constructing a heavy needler autogun with Union IFF clearance.
+  components:
+  - type: Flatpack
+    entity: BaseWeaponTurretNeedlerNCWL
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 8000

@@ -341,5 +341,49 @@
       - MagazineLightRifleBoxSlugEMPCraft
       - CartridgeShellEmpCraft
       - GrenadeEMPCraft
+      - ClothingUniformJumpsuitNCWLMedicCraft
+      - ClothingUniformJumpsuitNCWLCraft
+      - ClothingUniformJumpsuitNCWLArtificerCraft
+      - ClothingHeadHatNCWLBeretCraft
+      - ClothingHeadHatNCWLTankerCraft
+      - ClothingHeadHatNCWLCapsoftCraft
+      - ClothingMaskNCWLBalaclavaCraft
+      - ClothingOuterHardsuitNCWLInfantryCraft
+      - ClothingOuterNCWLEVACraft
+      - ClothingHeadHelmetNCWLEVACraft
+      - ClothingHeadHelmetNCWLBasicCraft
+      - ClothingOuterArmorNCWLCarapaceDoktorCraft
+      - ClothingOuterHardsuitNCWLJuggernautCraft
+      - ClothingOuterArmorNCWLHeavyCarapaceCraft
+      - ClothingHeadHelmetNCWLHeavyCraft
+      - WeaponSubMachineGunNCWLWatchdogCraft
+      - WeaponSubMachineGunBloodhoundCraft
+      - WeaponRevolverPythonCraft
+      - NCWLFighterThrusterFlatpackCraft
+      - NCWLWarshipThrusterFlatpackCraft
+      - WeaponRifleFALCraft
+      - WeaponRifleNCWLBatanyaCraft
+      - WeaponShotgunBulldogCraft
+      - NCWLGranSudaruskaFlatpackCraft
+      - NCWLVulcanFlatpackCraft
+      - NCWLSwarmerFlatpackCraft
+      - NCWLKurosawaFlatpackCraft
+      - GrenadeBatonCraft
+      - GrenadeBlastCraft
+      - GrenadeFlashCraft
+      - NCWLSlugthrowerFlatpackCraft
+      - NCWLAutomortarFlatpackCraft
+      - NCWLNeedlerFlatpackCraft
+      - WeaponLightMachineGunConscriptCraft
+      - MagazineLightRifleBoxConscriptCraft 
+      - ClothingOuterHardsuitImperialWorkerCraft
+      - ClothingOuterCoatImperialSoftsuitCraft
+      - ClothingHeadHelmetImperialEVACraft
+      - ClothingOuterCoatImperialParadeCraft
+      - ClothingUniformJumpsuitImperialSoldierFormalCraft
+      - ClothingUniformJumpsuitImperialDoctorCraft
+      - ClothingUniformJumpsuitImperialFreeholderCraft
+      - ClothingUniformJumpsuitImperialNobleMaleCraft
+      - ClothingUniformJumpsuitImperialNobleFemaleCraft
   - type: Machine
     board: MicroforgeCircuitboard

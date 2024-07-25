@@ -98,7 +98,7 @@
     zeroVisible: true
   - type: Appearance
   - type: StaticPrice
-    price: 500
+    price: 750
   - type: Contraband #frontier
 
 - type: entity
