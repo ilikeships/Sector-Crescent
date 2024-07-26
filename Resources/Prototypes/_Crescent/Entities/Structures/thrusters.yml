@@ -26,6 +26,21 @@
     - type: NpcFactionMember
       factions:
         - DSMFighter
+    - type: Sprite
+      sprite: _Crescent/Structures/thrusterempire.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
+
 
 - type: entity
   id: ThrusterSHIFighter
@@ -98,6 +113,20 @@
     - type: NpcFactionMember
       factions:
         - DSMWarship
+    - type: Sprite
+      sprite: _Crescent/Structures/thrusterempire.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
 
 - type: entity
   id: ThrusterSRMWarship

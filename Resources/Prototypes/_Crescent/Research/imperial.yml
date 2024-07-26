@@ -28,3 +28,98 @@
   - ClothingUniformJumpsuitImperialFreeholderCraft
   - ClothingUniformJumpsuitImperialNobleMaleCraft
   - ClothingUniformJumpsuitImperialNobleFemaleCraft
+
+- type: technology
+  id: ImperialLightArms
+  name: research-technology-implightweapons
+  icon:
+    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    state: icon
+  discipline: Imperial
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  - WeaponSubMachineGunC20rCraft
+  - WeaponPistolComplianceImperialCraft
+  - WeaponSubMachineGunBeetleCraft
+
+- type: technology
+  id: ImperialAvionics
+  name: research-technology-impavionics
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: ame-part
+  discipline: Imperial
+  tier: 1
+  cost: 8000
+  recipeUnlocks:
+  - GyroscopeFlatpackLathe
+  - DSMWarshipThrusterFlatpackCraft
+  - DSMFighterThrusterFlatpackCraft
+
+- type: technology
+  id: ImperialShuttleArmaments
+  name: research-technology-impshuttleweapons
+  icon:
+    sprite: _Crescent/Ammunition/vulcan.rsi
+    state: base
+  discipline: Imperial
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - DSMVulcanFlatpackCraft
+  - DSMLadyFlatpackCraft
+  - PlasmaRepeaterFlatpackCraft
+
+- type: technology
+  id: ImperialLongarms
+  name: research-technology-impheavyweapons
+  icon:
+    sprite: _Crescent/Objects/Weapons/miller.rsi
+    state: icon
+  discipline: Imperial
+  tier: 2
+  cost: 20000
+  recipeUnlocks:
+  - WeaponRifleHunterCraft
+  - WeaponRifleMillerCraft
+
+- type: technology
+  id: ImperialArmor
+  name: research-technology-imparmor
+  icon:
+    sprite: _Crescent/Clothing/Empire/Head/mandatecommanderhelmet.rsi
+    state: icon
+  discipline: Imperial
+  tier: 2
+  cost: 20000
+  recipeUnlocks:
+  - ClothingOuterHardsuitImperialSoldierCraft
+  - ClothingOuterArmorImperialTrooperArmorCraft
+  - ClothingOuterArmorImperialArmorPrestigeCraft
+  - ClothingHeadHelmetImperialTrooperHelmetCraft
+  - ClothingHeadHelmetImperialKnightCommanderHelmetCraft
+
+- type: technology
+  id: ImperialLaserguns
+  name: research-technology-implasershuttleguns
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: ame-part
+  discipline: Imperial
+  tier: 3
+  cost: 30000
+  recipeUnlocks:
+  - DSMPlasmaTurretFlatpackCraft
+
+- type: technology
+  id: ImperialSword
+  name: research-technology-impkhopesh
+  icon:
+    sprite: _Crescent/Objects/Weapons/vibrokhopesh.rsi
+    state: icon
+  discipline: Imperial
+  tier: 3
+  cost: 40000
+  recipeUnlocks:
+  - SRMKhopeshCraft

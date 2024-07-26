@@ -42,7 +42,7 @@ research-technology-heavycommiearmor = Heavy Union Armor Fabrication
 
 research-technology-commielightarms = Union Light Arms
 
-research-technology-commieavionics = Union Avionics
+research-technology-commieavionics = Union Aviation
 
 research-technology-commieheavyarms = Union Longarms
 
@@ -57,3 +57,25 @@ research-technology-commieultraheavy = Union Ultraheavy Armaments
 research-technology-impsuit = Imperial Worksuit Patterns
 
 research-technology-impclothes = Imperial Standard Textiles
+
+research-technology-implightweapons = Imperial Light Arms
+
+research-technology-impavionics = Imperial Aviation
+
+research-technology-impshuttleweapons = Standard Imperial Armament Patterns
+
+research-technology-impheavyweapons = Imperial Longarms
+
+research-technology-imparmor = Imperial Armor Patterns
+
+research-technology-implasershuttleguns = Imperial Plasma Artillery Patterns
+
+research-technology-impkhopesh = Imperial Ornate Vibroblade Patterns
+
+#shi
+
+research-technology-corpavionics = Corporate Aviation
+
+research-technology-corbudgetarms = Budget Arms Line
+
+research-technology-corpmining = Corporate Harvest Solutions

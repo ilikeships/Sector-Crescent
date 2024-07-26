@@ -50,7 +50,7 @@
 
 
 - type: entity
-  name: IMA Miller 5.56x45mm
+  name: IRM Miller 5.56x45mm
   parent: BaseWeaponRifle
   id: WeaponRifleMiller
   description: A high-end 5.56x45mm military carbine used and manufactured by the Mandate.

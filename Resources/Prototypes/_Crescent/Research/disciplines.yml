@@ -37,7 +37,7 @@
 - type: techDiscipline
   id: Imperial
   name: research-discipline-empire
-  color: "#e68422"
+  color: "#eebc1d"
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: imperial

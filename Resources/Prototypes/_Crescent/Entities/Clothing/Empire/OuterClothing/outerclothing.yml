@@ -4,7 +4,7 @@
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitImperialWorker
   name: imperial mining hardsuit
-  description: A modular worker's hardsuit, bears the colors of the Kaiser and House von Ferrok.
+  description: A modular worker's hardsuit, bears the colors of the Kaiser and House Olywir.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandateworker.rsi
@@ -86,7 +86,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.80
   - type: StaticPrice
-    price: 2500
+    price: 1500
 
 - type: entity
   parent: ClothingOuterArmorBasic
