@@ -385,5 +385,28 @@
       - ClothingUniformJumpsuitImperialFreeholderCraft
       - ClothingUniformJumpsuitImperialNobleMaleCraft
       - ClothingUniformJumpsuitImperialNobleFemaleCraft
+      - WeaponSubMachineGunC20rCraft
+      - WeaponPistolComplianceImperialCraft
+      - WeaponSubMachineGunBeetleCraft
+      - DSMLadyFlatpackCraft
+      - DSMVulcanFlatpackCraft
+      - DSMFighterThrusterFlatpackCraft
+      - DSMWarshipThrusterFlatpackCraft
+      - WeaponRifleMillerCraft
+      - WeaponRifleHunterCraft
+      - ClothingOuterHardsuitImperialSoldierCraft
+      - ClothingOuterArmorImperialTrooperArmorCraft
+      - ClothingOuterArmorImperialArmorPrestigeCraft
+      - ClothingHeadHelmetImperialTrooperHelmetCraft
+      - ClothingHeadHelmetImperialKnightCommanderHelmetCraft
+      - DSMPlasmaTurretFlatpackCraft
+      - SRMKhopeshCraft
+      - SHIFighterThrusterFlatpackCraft
+      - SHIWarshipThrusterFlatpackCraft
+      - WeaponPistolBlastpopGrayCraft
+      - WeaponPistolBlastpopRedCraft
+      - WeaponPistolBlastpopBlueCraft
+      - WeaponPistolBlastpopGoldCraft
+      - SHIExhumerFlatpackCraft
   - type: Machine
     board: MicroforgeCircuitboard

@@ -1,0 +1,53 @@
+
+- type: latheRecipe
+  id: SHIFighterThrusterFlatpackCraft
+  result: SHIFighterThrusterFlatpack
+  completetime: 5
+  materials:
+    Steel: 3250
+    Plastic: 1000
+
+
+- type: latheRecipe
+  id: SHIWarshipThrusterFlatpackCraft
+  result: SHIWarshipThrusterFlatpack
+  completetime: 5
+  materials:
+    Steel: 3250
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponPistolBlastpopBlueCraft
+  result: WeaponPistolBlastpopBlue
+  completetime: 5
+  materials:
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponPistolBlastpopRedCraft
+  result: WeaponPistolBlastpopRed
+  completetime: 5
+  materials:
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponPistolBlastpopGoldCraft
+  result: WeaponPistolBlastpopGold
+  completetime: 5
+  materials:
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponPistolBlastpopGrayCraft
+  result: WeaponPistolBlastpopGray
+  completetime: 5
+  materials:
+    Plastic: 1000
+
+- type: latheRecipe
+  id: SHIExhumerFlatpackCraft
+  result: SHIExhumerFlatpack
+  completetime: 5
+  materials:
+    Steel: 2500
+    Plastic: 500

@@ -193,3 +193,115 @@
     - state: ame-part
   - type: StaticPrice
     price: 8000
+
+- type: entity
+  parent: BaseFlatpack
+  id: DSMLadyFlatpack
+  name: imperial point defense turret flatpack
+  description: A flatpack used for constructing a ballistic point defense turret with Imperial IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretPDTDSM
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseFlatpack
+  id: DSMVulcanFlatpack
+  name: imperial gatling autoturret flatpack
+  description: A flatpack used for constructing a ballistic turret with Imperial IFF clearance.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretVulcanDSM
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseFlatpack
+  id: DSMWarshipThrusterFlatpack
+  name: imperial warship thruster flatpack
+  description: A flatpack used for constructing warship thrusters with Imperial IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterDSMWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: DSMFighterThrusterFlatpack
+  name: imperial fighter thruster flatpack
+  description: A flatpack used for constructing smallshuttle thrusters with Imperial IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterDSMFighter
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 400
+
+- type: entity
+  parent: BaseFlatpack
+  id: DSMPlasmaTurretFlatpack
+  name: imperial plasma gatling turret flatpack
+  description: A flatpack used for constructing a plasma gatling turret with Imperial IFF clearance.
+  components:
+  - type: Flatpack
+    entity: BaseWeaponTurretLaserDSM
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 2500
+
+- type: entity
+  parent: BaseFlatpack
+  id: SHIWarshipThrusterFlatpack
+  name: SHI warship thruster flatpack
+  description: A flatpack used for constructing warship thrusters with corporate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterSHIWarship
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: SHIFighterThrusterFlatpack
+  name: SHI fighter thruster flatpack
+  description: A flatpack used for constructing smallship thrusters with corporate IFF clearance.
+  components:
+  - type: Flatpack
+    entity: ThrusterSHIFighter
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseFlatpack
+  id: SHIExhumerFlatpack
+  name: SHI exhumer mining turret flatpack
+  description: A flatpack used for constructing mining laser turrets.
+  components:
+  - type: Flatpack
+    entity: ShuttleGunExhumer
+  - type: Sprite
+    layers:
+    - state: ame-part
+  - type: StaticPrice
+    price: 1500

@@ -183,7 +183,7 @@
 
 - type: entity
   parent: BaseItem
-  id: UnionFabdiskInfanteerSuit
+  id: UnionFabdiskSMG
   name: union fabdisk
   description: A disk for the R&D server containing research technology. The label has been printed with blocky letters, 'HOMEGUARD, SUBMACHINE RIFLING'.
   components:
@@ -244,5 +244,108 @@
     recipes:
       - WeaponLightMachineGunConscriptCraft
       - MagazineLightRifleBoxConscriptCraft
-      - type: StaticPrice
+  - type: StaticPrice
+    price: 1500
+
+#imperial
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskKhopesh
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'OLYWIR FOUNDRY - VIBROBLADE'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - SRMKhopeshCraft
+  - type: StaticPrice
+    price: 12500
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskPlasmaGatling
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'OLYWIR FOUNDRY - PLASMA ARTILLERY'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - DSMPlasmaTurretFlatpackCraft
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskCompliance
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'OLYWIR FOUNDRY - COMPLIANCE'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - WeaponPistolComplianceImperialCraft
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskAvionics
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'OLYWIR FOUNDRY - AVIATION SOLUTIONS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - GyroscopeFlatpackLathe
+      - DSMWarshipThrusterFlatpackCraft
+      - DSMFighterThrusterFlatpackCraft
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskTurrets
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'OLYWIR FOUNDRY - BALLISTIC ARTILLERY'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - DSMVulcanFlatpackCraft
+      - DSMLadyFlatpackCraft
+  - type: StaticPrice
     price: 900
+
+- type: entity
+  parent: BaseItem
+  id: ImperialFabdiskArmor
+  name: imperial fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'ARMORY'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - ClothingOuterHardsuitImperialSoldierCraft
+  - type: StaticPrice
+    price: 2000
+
+#shi
