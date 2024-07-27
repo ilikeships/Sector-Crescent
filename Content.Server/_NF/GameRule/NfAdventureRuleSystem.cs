@@ -131,7 +131,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         // var trade = "/Maps/_NF/POI/trade.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
-        var lpbravoColor = new Color(200, 55, 55);
+       // var lpbravoColor = new Color(200, 55, 55);
         var coveColor = new Color(203, 195, 227);
         var tatsumotoColor = new Color(128, 128, 128);
         var factionColor = new Color(255, 165, 0);
@@ -395,31 +395,31 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.SetIFFColor(tradeUids[0], depotColor);
         //}
 
-        var dungenTypes = _prototypeManager.EnumeratePrototypes<DungeonConfigPrototype>();
-
-        foreach (var dunGen in dungenTypes)
-        {
-
-            var seed = _random.Next();
-            var offset = _random.NextVector2(3000f, 8500f);
-            if (!_map.TryLoad(mapId, "/Maps/spaceplatform.yml", out var grids, new MapLoadOptions
-                {
-                    Offset = offset
-                }))
-            {
-                continue;
-            }
-
-            var mapGrid = EnsureComp<MapGridComponent>(grids[0]);
-            _shuttle.AddIFFFlag(grids[0], IFFFlags.HideLabel);
-            _console.WriteLine(null, $"dungeon spawned at {offset}");
-            offset = new Vector2i(0, 0);
+      //  var dungenTypes = _prototypeManager.EnumeratePrototypes<DungeonConfigPrototype>();
+//
+     //   foreach (var dunGen in dungenTypes)
+      //  {
+//
+      //      var seed = _random.Next();
+       //     var offset = _random.NextVector2(3000f, 8500f);
+      //      if (!_map.TryLoad(mapId, "/Maps/spaceplatform.yml", out var grids, new MapLoadOptions
+       //         {
+       //             Offset = offset
+       //         }))
+       //     {
+        //        continue;
+        //    }
+//
+     //       var mapGrid = EnsureComp<MapGridComponent>(grids[0]);
+     //       _shuttle.AddIFFFlag(grids[0], IFFFlags.HideLabel);
+      //      _console.WriteLine(null, $"dungeon spawned at {offset}");
+      //      offset = new Vector2i(0, 0);
 
             //pls fit the grid I beg, this is so hacky
             //its better now but i think i need to do a normalization pass on the dungeon configs
             //because they are all offset. confirmed good size grid, just need to fix all the offsets.
-            _dunGen.GenerateDungeon(dunGen, grids[0], mapGrid, (Vector2i) offset, seed);
-        }
+       //     _dunGen.GenerateDungeon(dunGen, grids[0], mapGrid, (Vector2i) offset, seed);
+     //   }
     }
 
     private async Task ReportRound(String message,  int color = 0x77DDE7)
