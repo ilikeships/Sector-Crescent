@@ -9,4 +9,7 @@ public sealed partial class ShipVoucherComponent : Component
 {
     [DataField("ship", customTypeSerializer: typeof(PrototypeIdSerializer<VesselPrototype>))]
     public string Ship;
+
+    [DataField("requiresShipInConsole")]
+    public bool RequiresShipInConsole;
 }
