@@ -6,6 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Shared.Shipyard.Components;
 using Content.Shared.Shipyard;
 using Content.Shared.GameTicking;
+using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
 using Robust.Server.Maps;
 using Robust.Shared.Map;
@@ -54,6 +55,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         SubscribeLocalEvent<ShipyardConsoleComponent, EntRemovedFromContainerMessage>(OnItemSlotChanged);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeLocalEvent<StationDeedSpawnerComponent, MapInitEvent>(OnInitDeedSpawner);
+        SubscribeLocalEvent<ShipyardConsoleComponent, InteractUsingEvent>(OnInteractUsing);
     }
     public override void Shutdown()
     {
