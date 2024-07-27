@@ -8,6 +8,20 @@
     - type: NpcFactionMember
       factions:
         - NCSPFighter
+    - type: Sprite
+      sprite: _Crescent/Structures/thrustersyn.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
 
 - type: entity
   id: ThrusterCMMFighter
@@ -59,6 +73,20 @@
     - type: NpcFactionMember
       factions:
         - NCWLFighter
+    - type: Sprite
+      sprite: _Crescent/Structures/thrusterncwl.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
 
 - type: entity
   id: ThrusterSRMFighter
@@ -77,6 +105,20 @@
     - type: NpcFactionMember
       factions:
         - NCSPWarship
+    - type: Sprite
+      sprite: _Crescent/Structures/thrustersyn.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
 
 - type: entity
   id: ThrusterNCWLWarship
@@ -86,6 +128,20 @@
     - type: NpcFactionMember
       factions:
         - NCWLWarship
+    - type: Sprite
+      sprite: _Crescent/Structures/thrusterncwl.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
 
 - type: entity
   id: ThrusterCMMWarship
