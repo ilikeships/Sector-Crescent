@@ -771,7 +771,7 @@
     size: Normal
   - type: CartridgeAmmo
     proto: PDTBullet
-    deleteOnSpawn: false
+    deleteOnSpawn: true
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
