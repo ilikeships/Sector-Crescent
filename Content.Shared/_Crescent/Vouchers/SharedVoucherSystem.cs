@@ -1,9 +1,13 @@
 using Content.Shared.Examine;
+using Content.Shared.Shipyard.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Crescent.Vouchers;
 
 public abstract partial class SharedVoucherSystem : EntitySystem
 {
+    [Dependency] private readonly PrototypeManager _prototype = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -13,6 +17,9 @@ public abstract partial class SharedVoucherSystem : EntitySystem
 
     private void OnShipVoucherExamined(EntityUid uid, ShipVoucherComponent component, ExaminedEvent args)
     {
-        args.PushMarkup(Loc.GetString("ship-voucher-examine", ("ship", component.Ship)));
+        if (!string.IsNullOrEmpty(component.Ship) && _prototype.TryIndex<VesselPrototype>(component.Ship, out var prototype))
+        {
+            args.PushMarkup(Loc.GetString("ship-voucher-examine", ("ship", prototype.Name)));
+        }
     }
 }
