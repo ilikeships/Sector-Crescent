@@ -25,5 +25,4 @@
           overflowJobs: []
           availableJobs:
             EmployeeSHI: [1, 2]
-            CorpsecSHI: [1, 2]
 

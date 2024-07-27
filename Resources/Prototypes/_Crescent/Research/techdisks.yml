@@ -420,7 +420,7 @@
 
 - type: entity
   parent: BaseItem
-  id: CorporateFabdiskHimehabu
+  id: CorporateFabdiskSabre
   name: shinohara fabdisk
   description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - SABRE'.
   components:
