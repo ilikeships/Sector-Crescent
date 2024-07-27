@@ -3,6 +3,11 @@
   name: job-name-overseer
   description: job-description-overseer
   playTimeTracker: JobOverseerSRM
+  requirements:
+    - !type:WhitelistRequirement
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
   weight: 27
   startingGear: OverseerGear
   alwaysUseSpawner: true

@@ -3,6 +3,10 @@
   name: job-name-acolyte
   description: job-description-apprenticehunter
   playTimeTracker: JobAcolyteSRM
+  requirements:
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
   weight: 22
   startingGear: AcolyteGear
   alwaysUseSpawner: true

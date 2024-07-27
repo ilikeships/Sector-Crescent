@@ -349,3 +349,87 @@
     price: 2000
 
 #shi
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskDisposable
+  name: shinohara fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - DISPOSABLE ARMAMENTS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - WeaponPistolBlastpopGrayCraft
+      - WeaponPistolBlastpopGoldCraft
+      - WeaponPistolBlastpopBlueCraft
+      - WeaponPistolBlastpopRedCraft
+  - type: StaticPrice
+    price: 250
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskHEV
+  name: shinohara fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - HAZARDOUS ENVIRONMENT HARDSUIT'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - ClothingOuterHardsuitHEVCraft
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskHimehabu
+  name: shinohara fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - HIMEHABU SIDEARM'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - WeaponPistolHimehabuCraft
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskShinobu
+  name: shinohara fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - SHINOBU PROJECT'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - WeaponPistolSmartpistolCraft
+      - MagazinePistolSmartgunCraft
+  - type: StaticPrice
+    price: 2500
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskSabre
+  name: shinohara fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - SABRE'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - WeaponSubMachineGunSabreCraft
+  - type: StaticPrice
+    price: 2500

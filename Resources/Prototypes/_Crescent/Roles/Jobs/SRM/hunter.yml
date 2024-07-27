@@ -3,6 +3,10 @@
   name: job-name-hunter
   description: job-description-hunter
   playTimeTracker: JobHunterSRM
+  requirements:
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
   weight: 22
   startingGear: HunterGear
   alwaysUseSpawner: true

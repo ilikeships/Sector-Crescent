@@ -337,6 +337,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
       - id: FrontierUplinkCoin
@@ -348,6 +349,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
       - id: FrontierUplinkCoin
@@ -359,6 +361,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
       - id: FrontierUplinkCoin
