@@ -1,0 +1,18 @@
+
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherVanguard
+  name: NCWL 'Vanguard' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a communard Vanguard-class gunship. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/TradeGoods/alcohol.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 500
+  - type: ShipVoucher
+    ship: Vanguard
