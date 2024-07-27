@@ -408,5 +408,28 @@
       - WeaponPistolBlastpopBlueCraft
       - WeaponPistolBlastpopGoldCraft
       - SHIExhumerFlatpackCraft
+      - SHISlugthrowerFlatpackCraft
+      - SHITsuiFlatpackCraft
+      - SHIVulcanFlatpackCraft
+      - ClothingOuterHardsuitHEVCraft
+      - ClothingOuterHardsuitHighsecCraft
+      - ClothingOuterArmorShinoharaArmorCraft
+      - ClothingHeadHatShinoharaBeretCraft
+      - ClothingUniformJumpsuitShinoharaSecurityCraft
+      - WeaponPistolHimehabuCraft
+      - WeaponSubMachineGunSabreCraft
+      - WeaponPistolViperCraft
+      - WeaponPistolMk58Craft
+      - SHIArtilleryFlatpackCraft
+      - SHIMortarFlatpackCraft
+      - SHINeedlerFlatpackCraft
+      - ClothingOuterArmorShinoharaArmorHighsecCraft
+      - ClothingHeadHatShinoharaHelmetCraft
+      - WeaponPistolSmartpistolCraft
+      - MagazinePistolSmartgunCraft
+      - EnergyKatanaCraft
+      - MissileRackFlatpackCraft
+      - VulcanFlatpackCraft
+      - HardlineBeamPulserFlatpackCraft
   - type: Machine
     board: MicroforgeCircuitboard

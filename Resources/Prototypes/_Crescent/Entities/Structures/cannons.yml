@@ -358,7 +358,7 @@
 
 - type: entity
   id: HardlineBeamPulser
-  name: NT-9 3100c 'Hardliner' beam pulser turret 
+  name: NT-9 3100c 'Hardliner' plasma lance turret 
   parent: ConstructibleMachine
   description: A ship-mounted, fixed-point artillery turret using military laser technology as a base - an outdated model from the now-defunct NanoTrasen, although tried and tested in many battles. Requires upkeep in the form of liquid coolant to stay operational.
   placement:
