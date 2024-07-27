@@ -3,6 +3,10 @@
   name: job-name-tender
   description: job-description-tender
   playTimeTracker: JobTenderSRM
+  requirements:
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
   weight: 20
   startingGear: TenderGear
   alwaysUseSpawner: true
