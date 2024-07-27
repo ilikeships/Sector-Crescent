@@ -65,27 +65,6 @@
 
 - type: entity
   parent: BaseDispenser
-  id: TestDispenser
-  name: test dispenser
-  description: Test Dispenser
-  components:
-  - type: Dispenser
-    defaultItem: SpoonPlastic
-    inventory:
-      SpoonPlastic: ForkPlastic
-      ForkPlastic: KnifePlastic
-      FoodPlatePlastic: FoodCondimentPacketHotsauce
-  - type: Sprite
-    sprite: Structures/Machines/VendingMachines/vendomat.rsi
-    layers:
-    - state: "off"
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
-    color: "#9dc5c9"
-
-- type: entity
-  parent: BaseDispenser
   id: DeedConsole
   name: deed console
   description: A machine that reads cargo deeds and dispenses money accordingly.

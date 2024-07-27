@@ -10,6 +10,8 @@ using Content.Shared.Shipyard.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Shipyard;
+using Content.Shared.Interaction;
+using Content.Shared.Crescent.Vouchers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
@@ -595,5 +597,192 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var deedID = EnsureComp<ShuttleDeedComponent>(uid);
         AssignShuttleDeedProperties(deedID, shuttleDeed.ShuttleUid, shuttleDeed.ShuttleName, shuttleDeed.ShuttleOwner);
+    }
+
+    private void OnInteractUsing(EntityUid uid, ShipyardConsoleComponent component, InteractUsingEvent args)
+    {
+        if (args.Handled)
+        {
+            return;
+        }
+
+        if (TryComp<ShipVoucherComponent>(args.Used, out var voucher) && !string.IsNullOrEmpty(voucher.Ship))
+        {
+            args.Handled = true;
+            if (TryRedeemShip(uid, component, args.User, voucher))
+            {
+                QueueDel(args.Used);
+            }
+        }
+    }
+
+    private bool TryRedeemShip(EntityUid uid, ShipyardConsoleComponent component, EntityUid user, ShipVoucherComponent voucher)
+    {
+        if (!TryComp<ActivatableUIComponent>(uid, out var ui) || ui.Key == null)
+        {
+            return false;
+        }
+
+        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (!TryComp<IdCardComponent>(targetId, out var idCard))
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (HasComp<ShuttleDeedComponent>(targetId))
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-already-deeded"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(user, uid, accessReaderComponent))
+        {
+            ConsolePopup(user, Loc.GetString("comms-console-permission-denied"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (!_prototypeManager.TryIndex<VesselPrototype>(voucher.Ship, out var vessel))
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-invalid-vessel", ("vessel", voucher.Ship)));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (!GetAvailableShuttles(uid).Contains(vessel.ID))
+        {
+            PlayDenySound(uid, component);
+            _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} tried to redeem a vessel that was never available.");
+            return false;
+        }
+
+        var name = vessel.Name;
+
+        if (_station.GetOwningStation(uid) is not { Valid: true } station)
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-invalid-station"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle))
+        {
+            PlayDenySound(uid, component);
+            return false;
+        }
+
+        EntityUid? shuttleStation = null;
+        // setting up any stations if we have a matching game map prototype to allow late joins directly onto the vessel
+        if (_prototypeManager.TryIndex<GameMapPrototype>(vessel.ID, out var stationProto))
+        {
+            List<EntityUid> gridUids = new()
+            {
+                shuttle.Owner
+            };
+            shuttleStation = _station.InitializeNewStation(stationProto.Stations[vessel.ID], gridUids);
+            var metaData = MetaData((EntityUid) shuttleStation);
+            name = metaData.EntityName;
+            _shuttle.SetIFFColor(shuttle.Owner, new Color
+            {
+                R = 10,
+                G = 50,
+                B = 100,
+                A = 100
+            });
+            _shuttle.AddIFFFlag(shuttle.Owner, IFFFlags.IsPlayerShuttle);
+        }
+
+        if (TryComp<AccessComponent>(targetId, out var newCap))
+        {
+            var newAccess = newCap.Tags.ToList();
+            newAccess.Add($"Captain");
+
+            if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) ui.Key)
+            {
+                newAccess.Add($"Security");
+                newAccess.Add($"Brig");
+            }
+
+            _accessSystem.TrySetTags(targetId, newAccess, newCap);
+        }
+
+        var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
+        AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
+
+        var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
+        AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
+
+        var channel = component.ShipyardChannel;
+
+        if (ShipyardConsoleUiKey.Security != (ShipyardConsoleUiKey) ui.Key)
+            _idSystem.TryChangeJobTitle(targetId, $"Captain", idCard, user);
+        else
+            channel = component.SecurityShipyardChannel;
+
+        // The following block of code is entirely to do with trying to sanely handle moving records from station to station.
+        // it is ass.
+        // This probably shouldnt be messed with further until station records themselves become more robust
+        // and not entirely dependent upon linking ID card entity to station records key lookups
+        // its just bad
+
+        var stationList = EntityQueryEnumerator<StationRecordsComponent>();
+
+        if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
+                && shuttleStation != null
+                && keyStorage.Key != null)
+        {
+            bool recSuccess = false;
+            while (stationList.MoveNext(out var stationUid, out var stationRecComp))
+            {
+                if (!_records.TryGetRecord<GeneralStationRecord>(keyStorage.Key.Value, out var record))
+                    continue;
+
+                //_records.RemoveRecord(keyStorage.Key.Value);
+                _records.AddRecordEntry((EntityUid) shuttleStation, record);
+                recSuccess = true;
+                break;
+            }
+
+            if (!recSuccess &&
+                _mind.TryGetMind(user, out var mindUid, out var mindComp)
+                && _prefManager.GetPreferences(_mind.GetSession(mindComp)!.UserId).SelectedCharacter is HumanoidCharacterProfile profile)
+            {
+                TryComp<FingerprintComponent>(user, out var fingerprintComponent);
+                TryComp<DnaComponent>(user, out var dnaComponent);
+                TryComp<StationRecordsComponent>(shuttleStation, out var stationRec);
+                _records.CreateGeneralRecord((EntityUid) shuttleStation, targetId, profile.Name, profile.Age, profile.Species, profile.Gender, $"Captain", fingerprintComponent!.Fingerprint, dnaComponent!.DNA, profile, stationRec!);
+            }
+        }
+        _records.Synchronize(shuttleStation!.Value);
+        _records.Synchronize(station);
+
+        int sellValue = 0;
+        if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
+            sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
+
+        if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) ui.Key || ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) ui.Key) // Unhardcode this please
+        {
+            var tax = (int) (sellValue * 0.30f);
+            sellValue -= tax;
+            channel = component.ShipyardChannel;
+
+            SendPurchaseMessage(uid, user, name, component.SecurityShipyardChannel, true);
+        }
+
+        SendPurchaseMessage(uid, user, name, channel, false);
+
+        PlayConfirmSound(uid, component);
+        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(user):actor} redeemed shuttle {ToPrettyString(shuttle.Owner)} with voucher via {ToPrettyString(component.Owner)}");
+
+        return true;
     }
 }
