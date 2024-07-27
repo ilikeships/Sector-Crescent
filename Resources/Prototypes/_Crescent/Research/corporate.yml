@@ -35,6 +35,115 @@
     state: icon
   discipline: Shinohara
   tier: 1
-  cost: 5000
+  cost: 7500
   recipeUnlocks:
   - SHIExhumerFlatpackCraft
+
+- type: technology
+  id: ShinoharaHEV
+  name: research-technology-corphev
+  icon:
+    sprite: _Crescent/Clothing/SHI/OuterClothing/shinoharahev.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 1
+  cost: 8000
+  recipeUnlocks:
+  - ClothingOuterHardsuitHEVCraft
+
+- type: technology
+  id: ShinoharaShipweapons
+  name: research-technology-corpshuttleweapons
+  icon:
+    sprite: _Crescent/Objects/Misc/laserdisplay.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - SHITsuiFlatpackCraft
+  - SHIVulcanFlatpackCraft
+  - PlasmaRepeaterFlatpackCraft
+  - SHISlugthrowerFlatpackCraft
+
+- type: technology
+  id: ShinoharaCorpsec
+  name: research-technology-corpcorpsec
+  icon:
+    sprite: _Crescent/Clothing/SHI/OuterClothing/securityvest.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 2
+  cost: 17500
+  recipeUnlocks:
+  - ClothingOuterArmorShinoharaArmorCraft
+  - ClothingHeadHatShinoharaBeretCraft
+  - ClothingUniformJumpsuitShinoharaSecurityCraft
+
+- type: technology
+  id: ShinoharaBallistics
+  name: research-technology-corpballistics
+  icon:
+    sprite: _Crescent/Objects/Weapons/himehabu.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 2
+  cost: 18000
+  recipeUnlocks:
+  - WeaponPistolHimehabuCraft
+  - WeaponSubMachineGunSabreCraft
+  - WeaponPistolViperCraft
+  - WeaponPistolMk58Craft
+
+- type: technology
+  id: ShinoharaArtillery
+  name: research-technology-corpartillery
+  icon:
+    sprite: _Crescent/Objects/Misc/artillerydisplay.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 2
+  cost: 20000
+  recipeUnlocks:
+  - SHIArtilleryFlatpackCraft
+  - SHINeedlerFlatpackCraft
+  - SHIMortarFlatpackCraft
+
+- type: technology
+  id: ShinoharaHighsec
+  name: research-technology-corphighsec
+  icon:
+    sprite:  _Crescent/Clothing/SHI/OuterClothing/corpsec.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - ClothingHeadHatShinoharaHelmetCraft
+  - ClothingOuterArmorShinoharaArmorHighsecCraft
+  - ClothingOuterHardsuitHighsecCraft
+
+- type: technology
+  id: ShinoharaSmartgun
+  name: research-technology-corpsmartgun
+  icon:
+    sprite:  _Crescent/Objects/Weapons/smartgun.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 3
+  cost: 30000
+  recipeUnlocks:
+  - WeaponPistolSmartpistolCraft
+  - MagazinePistolSmartgunCraft
+
+- type: technology
+  id: ShinoharaSword
+  name: research-technology-corpsword
+  icon:
+    sprite:  Objects/Weapons/Melee/energykatana.rsi
+    state: icon
+  discipline: Shinohara
+  tier: 3
+  cost: 50000
+  recipeUnlocks:
+  - EnergyKatanaCraft

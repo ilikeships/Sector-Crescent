@@ -14,7 +14,7 @@ research-technology-weaponsnanolarge = NanoTrasen Large Armaments
 
 research-technology-weaponsnanosmall = NanoTrasen Small Armaments
 
-research-technology-weaponsnanoship = NanoTrasen Ship Armaments
+research-technology-shuttleweps = NanoTrasen Ship Armaments
 
 #syndicate
 
@@ -76,6 +76,22 @@ research-technology-impkhopesh = Imperial Ornate Vibroblade Patterns
 
 research-technology-corpavionics = Corporate Aviation
 
-research-technology-corbudgetarms = Budget Arms Line
+research-technology-corpbudgetarms = Budget Arms Line
 
 research-technology-corpmining = Corporate Harvest Solutions
+
+research-technology-corpshuttleweapons = Corporate Shuttle Armaments Line
+
+research-technology-corphev = Shinohara Hazardous Environment Suit
+
+research-technology-corpcorpsec = Shinohara CORPSEC Line
+
+research-technology-corpballistics = Shinohara Ballistics Line
+
+research-technology-corpartillery = Shinohara Heavy Artillery
+
+research-technology-corphighsec = Shinohara HIGHSEC Line
+
+research-technology-corpsmartgun = Shinohara Smartpistol Line
+
+research-technology-corpsword = Shinohara Shiverblade Line

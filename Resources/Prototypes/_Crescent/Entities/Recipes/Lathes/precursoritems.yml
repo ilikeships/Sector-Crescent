@@ -12,7 +12,7 @@
   result: WeaponSubMachineGunMP5
   completetime: 5
   materials:
-    Steel: 1250
+    Steel: 2250
     Plastic: 650
 
 - type: latheRecipe
@@ -23,8 +23,8 @@
     Steel: 1050
 
 - type: latheRecipe
-  id:  WeaponRevolverSnubnoseNT
-  result:  WeaponRevolverSnubnose
+  id: WeaponRevolverSnubnoseNT
+  result: WeaponRevolverSnubnose
   completetime: 5
   materials:
     Steel: 625
@@ -35,3 +35,30 @@
   completetime: 5
   materials:
     Steel: 750
+
+- type: latheRecipe
+  id: MissileRackFlatpackCraft
+  result: MissileRackFlatpack
+  completetime: 5
+  materials:
+    Steel: 5000
+    Silver: 1500
+    Uranium: 500
+
+- type: latheRecipe
+  id: VulcanFlatpackCraft
+  result: VulcanFlatpack
+  completetime: 5
+  materials:
+    Steel: 5000
+    Silver: 2500
+
+- type: latheRecipe
+  id: HardlineBeamPulserFlatpackCraft
+  result: HardlineBeamPulserFlatpack
+  completetime: 5
+  materials:
+    Steel: 5000
+    Silver: 2500
+    Glass: 1000
+    Plasma: 1500
