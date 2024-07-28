@@ -56,7 +56,7 @@
   - IbisLPC
 
 - type: technology
-  id: Fighters
+  id: Nemesis
   name: research-technology-nemesis
   icon:
     sprite: _Crescent/Objects/Misc/lpcchip.rsi
