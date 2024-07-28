@@ -464,6 +464,4 @@
     idleState: base_machine
     runningState: base_machine_processing
     staticRecipes:
-    - SteelScrap
-    - TitaniumScrap
-    - Garbage
+    - JugBoriaticFuelCraft
