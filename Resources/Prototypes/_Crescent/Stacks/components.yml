@@ -1,0 +1,25 @@
+#industry refactor, ship parts
+
+- type: stack
+  id: StarshipEngineComponents
+  name: shuttle engine components
+  icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: block }
+  spawn: StarshipEngineComponents1
+  maxCount: 50
+  itemSize: 2
+
+- type: stack
+  id: StarshipElectronics
+  name: shuttle electronics
+  icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: parts }
+  spawn: StarshipElectronics1
+  maxCount: 50
+  itemSize: 2
+
+- type: stack
+  id: StarshipHull
+  name: shuttle hull parts
+  icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: hull }
+  spawn: StarshipHull1
+  maxCount: 50
+  itemSize: 2
