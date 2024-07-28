@@ -178,9 +178,6 @@
       startChance: 1
       powerSupplyMultiplier: 1.25
       scaling: Exponential
-    - type: GeneratorExhaustGas
-      gasType: CarbonDioxide
-      moleRatio: 1
     - type: PowerMonitoringDevice
       group: Generator
       loadNodes:
