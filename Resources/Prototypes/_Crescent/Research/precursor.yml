@@ -35,6 +35,6 @@
   tier: 3
   cost: 80000
   recipeUnlocks:
-  - VulcanFlatpackCraftCraft
+  - VulcanFlatpackCraft
   - MissileRackFlatpackCraft
   - HardlineBeamPulserFlatpackCraft
