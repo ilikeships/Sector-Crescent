@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server._NF.Market.Components;
 using Content.Server.Bank;
 using Content.Server.Cargo.Systems;

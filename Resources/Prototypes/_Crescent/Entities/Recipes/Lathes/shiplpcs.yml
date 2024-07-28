@@ -1,0 +1,74 @@
+
+- type: latheRecipe
+  id: NemesisLPC
+  result: ShipVoucherNemesis
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 7250
+    ShipComponents: 4750
+    ShipHull: 15000
+
+- type: latheRecipe
+  id: IbisLPC
+  result: ShipVoucherIbis
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 3500
+    ShipComponents: 5000
+    ShipHull: 2500
+
+
+
+- type: latheRecipe
+  id: SashaLPC
+  result: ShipVoucherSasha
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 4250
+    ShipComponents: 2750
+    ShipHull: 8000
+
+- type: latheRecipe
+  id: ZhipovLPC
+  result: ShipVoucherZhipov
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 5000
+    ShipComponents: 3750
+    ShipHull: 12000
+
+- type: latheRecipe
+  id: GargutLPC
+  result: ShipVoucherGargut
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 6250
+    ShipComponents: 2750
+    ShipHull: 10000
+
+- type: latheRecipe
+  id: BogatyrLPC
+  result: ShipVoucherBogatyr
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 2250
+    ShipComponents: 6750
+    ShipHull: 4000
+
+- type: latheRecipe
+  id: BroadswordLPC
+  result: ShipVoucherBroadsword
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 250
+    ShipComponents: 300
+    ShipHull: 1000
+
+- type: latheRecipe
+  id: KhopeshLPC
+  result: ShipVoucherKhopesh
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 750
+    ShipComponents: 400
+    ShipHull: 850

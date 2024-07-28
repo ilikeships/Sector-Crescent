@@ -5,7 +5,7 @@
   id: Zhipov
   name: NCWL Zhipov
   description: A bulky, carrier-converted freighter and weapons platform.
-  price: 150000
+  price: 500000
   category: Large
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCWL/zhipov.yml

@@ -5,7 +5,7 @@
   id: Gargut
   name: NCWL Gargut
   description: A lumbering battle platform, converted from a derelict fabstation.
-  price: 95000
+  price: 320000
   category: Large
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCWL/gargut.yml

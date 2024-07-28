@@ -5,7 +5,7 @@
   id: Bogatyr
   name: NCWL Bogatyr
   description: A communard stealth bomber, sees use primarily in discreet naval operations.
-  price: 57500
+  price: 150000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCWL/bogatyr.yml

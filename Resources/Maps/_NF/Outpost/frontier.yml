@@ -896,12 +896,6 @@ entities:
           decals:
             111: -9,34
         - node:
-            angle: 4.71238898038469 rad
-            color: '#EFB34196'
-            id: LoadingArea
-          decals:
-            833: 4,58
-        - node:
             color: '#EFB34196'
             id: OneTest
           decals:
@@ -995,6 +989,7 @@ entities:
             808: 9,50
             821: 13,58
             838: 4,50
+            851: 7,58
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNW
@@ -1012,6 +1007,8 @@ entities:
             807: 8,50
             839: 1,50
             840: 0,49
+            852: 3,58
+            853: 0,57
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleSE
@@ -1025,6 +1022,7 @@ entities:
             819: 10,54
             820: 13,56
             837: 4,46
+            856: 7,54
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleSW
@@ -1039,6 +1037,8 @@ entities:
             818: 9,54
             835: 0,47
             836: 3,46
+            854: 0,55
+            855: 1,54
         - node:
             color: '#FFFFFFFF'
             id: WarnCornerNE
@@ -1064,6 +1064,7 @@ entities:
             id: WarnCornerSmallGreyscaleNW
           decals:
             841: 1,49
+            871: 3,57
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleSE
@@ -1074,6 +1075,7 @@ entities:
             id: WarnCornerSmallGreyscaleSW
           decals:
             842: 3,47
+            872: 1,55
         - node:
             color: '#FFFFFFFF'
             id: WarnCornerSmallSE
@@ -1198,6 +1200,9 @@ entities:
             845: 4,47
             846: 4,48
             847: 4,49
+            862: 7,55
+            863: 7,56
+            864: 7,57
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
@@ -1235,6 +1240,11 @@ entities:
             830: 10,58
             848: 2,50
             849: 3,50
+            865: 6,58
+            866: 5,58
+            867: 4,58
+            868: 1,57
+            869: 2,57
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleS
@@ -1268,6 +1278,11 @@ entities:
             826: 12,56
             843: 1,47
             844: 2,47
+            857: 2,54
+            858: 3,54
+            859: 4,54
+            860: 5,54
+            861: 6,54
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
@@ -1294,6 +1309,7 @@ entities:
             810: 8,48
             811: 8,47
             823: 9,55
+            870: 0,56
         - node:
             color: '#FFFFFFFF'
             id: WarnLineN
@@ -2173,6 +2189,7 @@ entities:
     - type: BecomesStation
       id: Frontier
     - type: IFF
+    - type: NavMap
 - proto: AcousticGuitarInstrument
   entities:
   - uid: 424
@@ -2348,7 +2365,7 @@ entities:
       pos: 9.5,6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -77997.57
+      secondsUntilStateChange: -78133.14
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2852,7 +2869,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -91182.32
+      secondsUntilStateChange: -91317.89
       state: Opening
   - uid: 155
     components:
@@ -20223,15 +20240,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 2077
-  - uid: 2159
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 5.5,58.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 2077
   - uid: 2167
     components:
     - type: Transform
@@ -21100,7 +21108,7 @@ entities:
       pos: 2.5,5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -64650.15
+      secondsUntilStateChange: -64785.723
       state: Closing
   - uid: 446
     components:
@@ -26591,7 +26599,7 @@ entities:
       pos: -22.5,84.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -64482.605
+      secondsUntilStateChange: -64618.18
       state: Closing
   - uid: 3816
     components:
@@ -31401,6 +31409,13 @@ entities:
     - type: Transform
       pos: 11.506887,30.675226
       parent: 1
+- proto: ShipyardManufactorum
+  entities:
+  - uid: 2159
+    components:
+    - type: Transform
+      pos: 4.5,58.5
+      parent: 1
 - proto: ShotGunCabinetFilled
   entities:
   - uid: 6814
@@ -33756,7 +33771,7 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        2159:
+        invalid:
         - Left: Forward
         - Right: Reverse
         - Middle: Off

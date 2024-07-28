@@ -53,7 +53,7 @@
   - type: MaterialStorage
     dropOnDeconstruct: false #should drop ores instead of ingots/sheets
     ignoreColor: true
-    canEjectStoredMaterials: false
+    canEjectStoredMaterials: true
     whitelist:
     tags:
     - DrugComponent
@@ -431,5 +431,79 @@
       - MissileRackFlatpackCraft
       - VulcanFlatpackCraft
       - HardlineBeamPulserFlatpackCraft
+      - BogatyrLPC
+      - BroadswordLPC
+      - KhopeshLPC
+      - SashaLPC
+      - GargutLPC
+      - IbisLPC
+      - ZhipovLPC
+      - NemesisLPC
   - type: Machine
     board: MicroforgeCircuitboard
+
+#boriatic fuel thing
+
+- type: entity
+  parent: BaseLathe
+  id: BoriaticRefiner
+  name: SHI boriatic composter
+  description: An automated refinery and fabricator that purifies various minerals into usable boriatic fuels.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/purifier.rsi
+    layers:
+    - state: base_machine
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: buttons_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Machine
+    board: SheetifierMachineCircuitboard
+  - type: MaterialStorage
+    dropOnDeconstruct: false #should drop ores instead of ingots/sheets
+    ignoreColor: true
+    canEjectStoredMaterials: true
+    whitelist:
+    tags:
+    - Sheet
+    - Metal
+  - type: Lathe
+    idleState: base_machine
+    runningState: base_machine_processing
+    staticRecipes:
+    - JugBoriaticFuelCraft
+
+#ship parts
+
+- type: entity
+  parent: BaseLathe
+  id: ShipyardManufactorum
+  name: SHI shipyard manufactorum
+  description: An automated assembler, constructing vessel components out of minerals.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/shipfab.rsi
+    layers:
+    - state: base_machine
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: buttons_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Machine
+    board: SheetifierMachineCircuitboard
+  - type: MaterialStorage
+    dropOnDeconstruct: false #should drop ores instead of ingots/sheets
+    ignoreColor: true
+    canEjectStoredMaterials: true
+    whitelist:
+    tags:
+    - Sheet
+    - Metal
+  - type: Lathe
+    idleState: base_machine
+    runningState: base_machine_processing
+    staticRecipes:
+    - ShipHull
+    - ShipElectronics
+    - ShipEngine

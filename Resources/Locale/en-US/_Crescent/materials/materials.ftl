@@ -9,3 +9,9 @@ materials-mechanites = inert mechanites
 materials-isotopes = volatile plasma isotopes
 materials-galine = galine-5 gas
 materials-chemphoron = deactivated phoron isotopes
+
+##starship parts
+
+materials-engine = shuttle engine components
+materials-hull = shuttle hull plating
+materials-electronicship = shuttle electronics
