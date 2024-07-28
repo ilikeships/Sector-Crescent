@@ -16,7 +16,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.5222931,-0.6709614
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -548,8 +547,6 @@ entities:
       pos: 1.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 96
 - proto: GasVentScrubber
@@ -560,8 +557,6 @@ entities:
       pos: 0.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 96
 - proto: GravityGeneratorMini
