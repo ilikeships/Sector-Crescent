@@ -658,11 +658,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (!GetAvailableShuttles(uid).Contains(vessel.ID))
+        if (voucher.RequiresShipInConsole)
         {
-            PlayDenySound(uid, component);
-            _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} tried to redeem a vessel that was never available.");
-            return false;
+            if (!GetAvailableShuttles(uid).Contains(vessel.ID))
+            {
+                PlayDenySound(uid, component);
+                _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} tried to redeem a vessel that was never available.");
+                return false;
+            }
         }
 
         var name = vessel.Name;
