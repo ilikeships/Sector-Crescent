@@ -16,7 +16,6 @@
     price: 10000
   - type: ShipVoucher
     ship: Imparator
-    requiresShipInConsole: false
 
 - type: entity
   parent: BaseItem
@@ -34,7 +33,6 @@
     price: 25000
   - type: ShipVoucher
     ship: Ibis
-    requiresShipInConsole: false
 
 - type: entity
   parent: BaseItem
