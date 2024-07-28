@@ -77,14 +77,14 @@
   - type: ProjectileIFF
     damage:
       types:
-        Structural: 40
+        Structural: 90
         Piercing: 25
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 2
-    intensitySlope: 1
-    totalIntensity: 1
+    maxIntensity: 3
+    intensitySlope: 3
+    totalIntensity: 3
     maxTileBreak: 1
   - type: PointLight
     radius: 3.5

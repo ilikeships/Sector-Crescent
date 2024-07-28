@@ -88,7 +88,7 @@
   name: materials-engine
   unit: materials-unit-chunk
   icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: block }
-  price: 0.62
+  price: 0.92
 
 - type: material
   id: ShipComponents
@@ -96,7 +96,7 @@
   name: materials-electronicship
   unit: materials-unit-chunk
   icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: parts }
-  price: 0.82
+  price: 1.12
 
 - type: material
   id: ShipHull
@@ -104,4 +104,4 @@
   name: materials-hull
   unit: materials-unit-chunk
   icon: { sprite: _Crescent/Objects/Materials/shipconstruction.rsi, state: hull }
-  price: 0.32
+  price: 0.52

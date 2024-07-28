@@ -16,6 +16,7 @@
     price: 10000
   - type: ShipVoucher
     ship: Imparator
+    requiresShipInConsole: false
 
 - type: entity
   parent: BaseItem
@@ -33,6 +34,7 @@
     price: 25000
   - type: ShipVoucher
     ship: Ibis
+    requiresShipInConsole: false
 
 - type: entity
   parent: BaseItem
@@ -222,6 +224,24 @@
     price: 6000
   - type: ShipVoucher
     ship: Sabre
+    requiresShipInConsole: false
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherBogatyr
+  name: NCWL 'Bogatyr' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a communard Bogatyr-class stealth bomber pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 25000
+  - type: ShipVoucher
+    ship: Bogatyr
 
 - type: entity
   parent: BaseItem

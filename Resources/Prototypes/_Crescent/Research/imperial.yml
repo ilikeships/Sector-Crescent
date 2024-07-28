@@ -44,6 +44,30 @@
   - WeaponSubMachineGunBeetleCraft
 
 - type: technology
+  id: Ibis
+  name: research-technology-ibis
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Imperial
+  tier: 1
+  cost: 15000
+  recipeUnlocks:
+  - IbisLPC
+
+- type: technology
+  id: Fighters
+  name: research-technology-nemesis
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Imperial
+  tier: 2
+  cost: 25000
+  recipeUnlocks:
+  - NemesisLPC
+
+- type: technology
   id: ImperialAvionics
   name: research-technology-impavionics
   icon:

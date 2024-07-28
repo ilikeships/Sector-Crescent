@@ -431,6 +431,14 @@
       - MissileRackFlatpackCraft
       - VulcanFlatpackCraft
       - HardlineBeamPulserFlatpackCraft
+      - BogatyrLPC
+      - BroadswordLPC
+      - KhopeshLPC
+      - SashaLPC
+      - GargutLPC
+      - IbisLPC
+      - ZhipovLPC
+      - NemesisLPC
   - type: Machine
     board: MicroforgeCircuitboard
 

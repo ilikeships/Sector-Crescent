@@ -52,6 +52,16 @@ research-technology-commiemissiles = Union Warhead Armaments
 
 research-technology-commieultraheavy = Union Ultraheavy Armaments
 
+research-technology-sasha = Communard Battleship Technologies
+
+research-technology-gargut = Communard Converted Station
+
+research-technology-bogatyr = Communard Stealth Bomber
+
+research-technology-zhipov = Communard Converted Battlecarrier
+
+research-technology-fighter = Communard Fighters
+
 #imperial
 
 research-technology-impsuit = Imperial Worksuit Patterns
@@ -71,6 +81,10 @@ research-technology-imparmor = Imperial Armor Patterns
 research-technology-implasershuttleguns = Imperial Plasma Artillery Patterns
 
 research-technology-impkhopesh = Imperial Ornate Vibroblade Patterns
+
+research-technology-ibis = Imperial Heavy Fighter
+
+research-technology-nemesis = Imperial Artillery Frigate
 
 #shi
 
