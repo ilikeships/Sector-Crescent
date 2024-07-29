@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Serialization;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Market.Events;
 
@@ -9,7 +9,7 @@ namespace Content.Shared._NF.Market.Events;
 public sealed class CrateMachineCartMessage : BoundUserInterfaceMessage
 {
     public int Amount;
-    public string? ItemPrototype;
+    public string ItemPrototype;
 
     public CrateMachineCartMessage(int amount, string itemPrototype)
     {

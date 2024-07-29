@@ -1,13 +1,15 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Server._NF.Market.Components;
 using Content.Server.Bank;
+using Content.Server.Storage.Components;
 using Content.Shared._NF.Market;
 using Content.Shared._NF.Market.Components;
 using Content.Shared._NF.Market.Events;
 using Content.Shared.Bank.Components;
 using Content.Shared.Maps;
 using Content.Shared.Placeable;
+using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Microsoft.CodeAnalysis;
 using Robust.Server.GameObjects;
@@ -26,7 +28,7 @@ public sealed partial class MarketSystem
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;
+    [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
 
 
     private const int MaxCrateMachineDistance = 16;
@@ -84,6 +86,8 @@ public sealed partial class MarketSystem
             break;
         }
 
+        TryComp<BankAccountComponent>(args.Actor, out var bank);
+        RefreshState(consoleUid, bank?.Balance ?? 0, marketMod, _marketDataList, component.CartData, MarketConsoleUiKey.Default);
     }
 
     private void OnPurchaseCrateMessage(EntityUid crateMachineUid, SharedCrateMachineComponent component, MarketConsoleComponent consoleComponent, float marketMod, CrateMachinePurchaseMessage args)
@@ -126,22 +130,23 @@ public sealed partial class MarketSystem
         if (!(playerBank.Balance >= cartBalance))
             return;
 
-        var spawnList = new List<MarketData>();
-        for (int i = 0; i < 30 && consoleComponent.CartData.Count > 0; i++)
+        var spawnList = new List<string>();
+        int i = 0;
+        while (i++ < 30 && consoleComponent.CartData.Count > 0)
         {
-            var marketData = consoleComponent.CartData.First();
-
-            spawnList.Add(marketData);
-
-            if (marketData.Quantity > 1)
+            var marketData = consoleComponent.CartData[0];
+            if (marketData.Quantity > 0)
             {
-                consoleComponent.CartData.First().Quantity -= 1;
+                marketData.Quantity -= 1;
+                spawnList.Add(marketData.Prototype);
             }
-            else
+
+            if (marketData.Quantity <= 0)
             {
-                consoleComponent.CartData.Remove(marketData);
+                consoleComponent.CartData.RemoveAt(0);
             }
         }
+
         // Withdraw spesos from player
         //_bankSystem.TryBankWithdraw(player, );
         var spawnCost = GetMarketSelectionValue(spawnList, marketMod);
@@ -159,7 +164,7 @@ public sealed partial class MarketSystem
             await Task.Delay(3000);
             UpdateVisualState(crateMachineUid, component, true);
             Dirty(crateMachineUid, component);
-            await Task.Delay(3000);
+            await Task.Delay(1000);
             var targetCrate = Spawn(component.CratePrototype, xform.Coordinates);
             UpdateVisualState(crateMachineUid, component, false);
             Dirty(crateMachineUid, component);
@@ -168,12 +173,19 @@ public sealed partial class MarketSystem
         });
     }
 
-    private void SpawnCrateItems(List<MarketData> spawnList, EntityUid targetCrate)
+    private void SpawnCrateItems(List<string> spawnList, EntityUid targetCrate)
     {
-        foreach (var data in spawnList)
+        if (TryComp<EntityStorageComponent>(targetCrate, out var entityStorage))
         {
-            var spawn = Spawn(data.Prototype, Transform(targetCrate).Coordinates);
-            _storage.Insert(targetCrate, spawn, out _, playSound: false, stackAutomatically: true);
+            _entityStorage.OpenStorage(targetCrate, entityStorage);
+
+            foreach (var prototype in spawnList)
+            {
+                var spawn = Spawn(prototype, Transform(targetCrate).Coordinates);
+                _entityStorage.Insert(targetCrate, spawn, entityStorage);
+            }
+
+            _entityStorage.CloseStorage(targetCrate, entityStorage);
         }
     }
 
