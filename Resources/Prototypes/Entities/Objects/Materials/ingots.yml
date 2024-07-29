@@ -59,6 +59,8 @@
         reagents:
         - ReagentId: Gold
           Quantity: 10
+  - type: StaticPrice
+    price: 1800
 
 - type: entity
   parent: IngotGold
@@ -70,6 +72,8 @@
     state: gold
   - type: Stack
     count: 1
+  - type: StaticPrice
+    price: 60
 
 - type: entity
   parent: IngotBase
@@ -104,6 +108,8 @@
         reagents:
         - ReagentId: Silver
           Quantity: 10
+  - type: StaticPrice
+    price: 900
 
 - type: entity
   parent: IngotSilver
@@ -115,3 +121,5 @@
     state: silver
   - type: Stack
     count: 1
+  - type: StaticPrice
+    price: 30
