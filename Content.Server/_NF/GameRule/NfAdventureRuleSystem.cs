@@ -377,7 +377,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             }))
         {
             var meta = EnsureComp<MetaDataComponent>(labUids[0]);
-            _meta.SetEntityName(labUids[0], "Anomalous Laboratory", meta);
+            _meta.SetEntityName(labUids[0], "Derelict Research Outpost", meta);
             _shuttle.SetIFFColor(labUids[0], factionColor);
         }
 
