@@ -13,7 +13,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 10000
+    price: 8000
   - type: ShipVoucher
     ship: Imparator
 
@@ -30,7 +30,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 15000
   - type: ShipVoucher
     ship: Ibis
 
@@ -47,7 +47,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 30000
+    price: 20000
   - type: ShipVoucher
     ship: Imp
 
@@ -64,7 +64,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 80000
+    price: 60000
   - type: ShipVoucher
     ship: Nemesis
 
@@ -81,7 +81,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 20000
+    price: 12000
   - type: ShipVoucher
     ship: Jannissary
 
@@ -98,7 +98,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 22000
+    price: 13000
   - type: ShipVoucher
     ship: Raider
 
@@ -117,7 +117,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 10000
+    price: 9000
   - type: ShipVoucher
     ship: Vanguard
 
@@ -134,7 +134,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 35000
+    price: 25000
   - type: ShipVoucher
     ship: Vasinya
 
@@ -151,7 +151,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 40000
+    price: 30000
   - type: ShipVoucher
     ship: Sasha
 
@@ -168,7 +168,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 80000
+    price: 70000
   - type: ShipVoucher
     ship: Gargut
 
@@ -185,7 +185,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 100000
+    price: 80000
   - type: ShipVoucher
     ship: Zhipov
 
@@ -202,7 +202,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 5000
+    price: 3000
   - type: ShipVoucher
     ship: Broadsword
 
@@ -219,7 +219,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 6000
+    price: 4000
   - type: ShipVoucher
     ship: Sabre
     requiresShipInConsole: false
@@ -237,7 +237,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 18000
   - type: ShipVoucher
     ship: Bogatyr
 
@@ -273,7 +273,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 40000
+    price: 20000
   - type: ShipVoucher
     ship: Buffalo
 
@@ -307,7 +307,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 30000
+    price: 22000
   - type: ShipVoucher
     ship: Gazpachov
 
@@ -324,7 +324,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 30000
+    price: 24000
   - type: ShipVoucher
     ship: Probe
 
@@ -360,7 +360,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 70000
+    price: 50000
   - type: ShipVoucher
     ship: Hyena
 
@@ -377,7 +377,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 150000
+    price: 90000
   - type: ShipVoucher
     ship: Jackal
 
@@ -394,7 +394,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 30000
+    price: 20000
   - type: ShipVoucher
     ship: Jiuzhu
 
@@ -411,7 +411,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 10000
+    price: 9000
   - type: ShipVoucher
     ship: Meatwagon
 
@@ -462,7 +462,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 15000
+    price: 12000
   - type: ShipVoucher
     ship: Reaver
 
@@ -479,7 +479,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 70000
+    price: 50000
   - type: ShipVoucher
     ship: Wolf
 
@@ -496,7 +496,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 10000
+    price: 5000
   - type: ShipVoucher
     ship: Shanty
 
@@ -513,7 +513,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 22000
   - type: ShipVoucher
     ship: Velator
 
@@ -530,7 +530,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 10000
+    price: 9000
   - type: ShipVoucher
     ship: Wreck
 
@@ -549,7 +549,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 15000
+    price: 11000
   - type: ShipVoucher
     ship: Justiciar
 
@@ -566,7 +566,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 35000
+    price: 32000
   - type: ShipVoucher
     ship: Templar
 
@@ -604,7 +604,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 22000
   - type: ShipVoucher
     ship: Exhumer
 
@@ -621,7 +621,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 21000
   - type: ShipVoucher
     ship: Homesteader
 
@@ -638,7 +638,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 25000
+    price: 21000
   - type: ShipVoucher
     ship: Paracelsus
 
@@ -655,6 +655,6 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 5000
+    price: 3000
   - type: ShipVoucher
     ship: Termite

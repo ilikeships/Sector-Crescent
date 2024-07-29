@@ -48,16 +48,23 @@ public sealed partial class MarketSystem : SharedMarketSystem
                     continue; // Skip items without prototype id
 
                 var count = 1;
-
-                // Get amount of items in the stack if it's a stackable item.
-                if (_entityManager.TryGetComponent<StackComponent>(sold, out var stackComponent))
+                
+                if (entityPrototypeId == "SheetSteel")
                 {
-                    count = stackComponent.Count;
+                    TryUpdateMarketData(entityPrototypeId, 1, ev.Station);
                 }
+                else
+                {
+                    // Get amount of items in the stack if it's a stackable item.
+                    if (_entityManager.TryGetComponent<StackComponent>(sold, out var stackComponent))
+                    {
+                        count = stackComponent.Count;
+                    }
 
-                // Increase the count in the MarketData for this entity
-                // Assuming the quantity to increase is 1 for each sold entity
-                TryUpdateMarketData(entityPrototypeId, count, ev.Station);
+                    // Increase the count in the MarketData for this entity
+                    // Assuming the quantity to increase is 1 for each sold entity
+                    TryUpdateMarketData(entityPrototypeId, count, ev.Station);
+                }
             }
         }
     }
