@@ -75,27 +75,28 @@ public sealed partial class MarketSystem : SharedMarketSystem
             marketMultiplier = priceMod.Mod;
         }
 
-        if (!(_station.GetOwningStation(consoleUid) is {Valid: true} station))
+        var station = Transform(consoleUid).GridUid;
+        if (station == null)
             return;
 
-        if (TryUpdateMarketData(args.ItemPrototype!, args.Amount, station))
+        if (TryUpdateMarketData(args.ItemPrototype, -args.Amount, station.Value))
         {
-            var stationNetEntity = GetNetEntity(station);
+            var stationNetEntity = GetNetEntity(station.Value);
             var itemProto = args.ItemPrototype;
             // Find the MarketData for the given EntityPrototype
             var marketData = consoleComponent.CartData.FirstOrDefault(md => md.Prototype == itemProto && md.StationUid == stationNetEntity);
-            if (marketData != null && (marketData.Quantity - args.Amount) >= 0)
+            if (marketData != null)
             {
                 // If it exists, change the count
-                marketData.Quantity -= args.Amount;
+                marketData.Quantity += args.Amount;
                 if (marketData.Quantity <= 0)
                 {
                     consoleComponent.CartData.Remove(marketData);
                 }
             }
-            else if (args.Amount < 0)
+            else if (args.Amount > 0)
             {
-                consoleComponent.CartData.Add(new MarketData(args.ItemPrototype!, args.Amount, stationNetEntity));
+                consoleComponent.CartData.Add(new MarketData(args.ItemPrototype, args.Amount, stationNetEntity));
             }
         }
         RefreshState(consoleUid, bank.Balance, marketMultiplier, _marketDataList, consoleComponent.CartData, MarketConsoleUiKey.Default);
@@ -113,7 +114,7 @@ public sealed partial class MarketSystem : SharedMarketSystem
         // Find the MarketData for the given EntityPrototype
         var marketData = _marketDataList.FirstOrDefault(md => md.Prototype == entityPrototypeId && md.StationUid == stationNetEntity);
 
-        if (marketData != null && (marketData.Quantity + increaseAmount) >= 0)
+        if (marketData != null)
         {
             // If it exists, change the count
             marketData.Quantity += increaseAmount;
@@ -170,6 +171,32 @@ public sealed partial class MarketSystem : SharedMarketSystem
             var subTotal = (int) Math.Round(price * marketData.Quantity);
             cartBalance += subTotal;
         }
+        return cartBalance;
+    }
+
+    private int GetMarketSelectionValue(List<string> dataList, float marketModifier)
+    {
+        var cartBalance = 0;
+
+        if (dataList.Count <= 0)
+            return cartBalance;
+
+        foreach (var name in dataList)
+        {
+            if (!_prototypeManager.TryIndex<EntityPrototype>(name, out var prototype))
+            {
+                continue;
+            }
+            var price = 0f;
+            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice))
+            {
+                price = (float) (staticPrice.Price * marketModifier);
+            }
+
+            var subTotal = (int) Math.Round(price);
+            cartBalance += subTotal;
+        }
+
         return cartBalance;
     }
 
