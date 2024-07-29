@@ -107,6 +107,10 @@ public sealed partial class MarketSystem
     {
         if (isAnimationRunning)
             return;
+
+        if (consoleComponent.CartData.Count <= 0)
+            return;
+
         if (!TryComp<TransformComponent>(crateMachineUid, out var crateMachineTransform) ||
             !TryComp<MapGridComponent>(crateMachineTransform.GridUid, out var grid))
             return;
