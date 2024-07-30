@@ -103,8 +103,6 @@
     proto: BulletKineticShuttle
     capacity: 10
     count: 10
-  - type: Machine
-    board: ShuttleGunKineticCircuitboard
 
 ## Missile Pods
 
@@ -155,8 +153,6 @@
     capacity: 2
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
-  - type: Machine
-    board: ShuttleGunFriendshipCircuitboard
   - type: MagazineVisuals
     magState: mag
     steps: 8
@@ -200,8 +196,6 @@
         pitch: 0.8
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
-  - type: Machine
-    board: ShuttleGunDusterCircuitboard
   - type: MagazineAmmoProvider
   - type: MagazineVisuals
     magState: mag
