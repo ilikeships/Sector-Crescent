@@ -181,15 +181,17 @@
   - type: ProjectileIFF
     damage:
       types:
-        Structural: 75
-        Radiation: 25
+        Structural: 85
+        Radiation: 35
+        Heat: 40
+        Blunt: 20
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 7
-    intensitySlope: 8
-    totalIntensity: 9
-    maxTileBreak: 5
+    maxIntensity: 14
+    intensitySlope: 15
+    totalIntensity: 18
+    maxTileBreak: 6
   - type: PointLight
     radius: 3.5
     color: red
