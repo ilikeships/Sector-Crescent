@@ -91,7 +91,7 @@
   id: JugBoriaticFuel
   components:
     - type: Label
-      currentLabel: reagent-name-BoriaticFuel
+      currentLabel: reagent-name-Boriatic-fuel
     - type: SolutionContainerManager
       solutions:
         beaker:
