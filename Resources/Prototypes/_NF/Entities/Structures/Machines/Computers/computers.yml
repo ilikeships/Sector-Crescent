@@ -252,4 +252,4 @@
         enum.MarketConsoleUiKey.Default:
           type: MarketConsoleBoundUserInterface
     - type: MarketModifier
-      mod: 2.97
+      mod: 2.6
