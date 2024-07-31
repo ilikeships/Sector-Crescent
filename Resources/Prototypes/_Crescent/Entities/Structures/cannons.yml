@@ -104,6 +104,60 @@
     capacity: 10
     count: 10
 
+## Ion turret
+
+- type: entity
+  id: ShuttleGunBizmuth
+  parent: [ ShuttleGunBase, ConstructibleMachine]
+  name: 500i "Bizmuth" ion gatling
+  description: An interceptor's bread and butter, the Bizmuth fires supercharged balls of electricty to pelt the powergrids of unsuspecting targets. Most often seen on interceptor vessels.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/ioncannon.rsi
+    layers:
+    - state: base
+    - state: mag-7
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: TurretIFF
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 60
+    fireRate: 3
+    selectedMode: SemiAuto
+    angleDecay: 45
+    minAngle: 5
+    maxAngle: 15
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/fire1.ogg
+      params:
+        variation: 0.12
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 3
+    rechargeSound:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        pitch: 1.2
+        variation: 0.08
+  - type: BasicEntityAmmoProvider
+    proto: BulletMachineGunIon
+    capacity: 40
+    count: 25
+
+
 ## Missile Pods
 
 - type: entity
@@ -1079,3 +1133,59 @@
     - type: NpcFactionMember
       factions:
         - SHIFighter
+
+#bizmuth
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthSRM
+  suffix: SRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthNCWL
+  suffix: NCWL
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthSHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthNCSP
+  suffix: NCSP
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthCMM
+  suffix: CMM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMFighter

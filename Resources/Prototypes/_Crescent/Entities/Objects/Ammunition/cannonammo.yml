@@ -288,3 +288,32 @@
     sprite: _NF/Objects/SpaceArtillery/plasmaheavy.rsi
     layers:
       - state: icon
+
+#bizmuthprojectile
+
+- type: entity
+  id: BulletMachineGunIon
+  name: ion ray
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Radiation: 25
+        Heat: 35
+  - type: EmpOnTrigger
+    range: 7
+    energyConsumption: 1000
+    disableDuration: 10
+  - type: PointLight
+    radius: 3.5
+    color: blue
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 80
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/ion.rsi
+    layers:
+      - state: icon
