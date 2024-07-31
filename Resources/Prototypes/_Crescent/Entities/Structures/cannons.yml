@@ -104,6 +104,114 @@
     capacity: 10
     count: 10
 
+## Ion turret
+
+- type: entity
+  id: ShuttleGunBizmuth
+  parent: [ ShuttleGunBase, ConstructibleMachine]
+  name: 500i "Bizmuth" ion gatling
+  description: An interceptor's bread and butter, the Bizmuth fires supercharged balls of electricty to pelt the powergrids of unsuspecting targets. Most often seen on interceptor vessels.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/ioncannon.rsi
+    layers:
+    - state: base
+    - state: mag-7
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: TurretIFF
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 60
+    fireRate: 3
+    selectedMode: SemiAuto
+    angleDecay: 45
+    minAngle: 5
+    maxAngle: 15
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/fire1.ogg
+      params:
+        variation: 0.12
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 3
+    rechargeSound:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        pitch: 1.2
+        variation: 0.08
+  - type: BasicEntityAmmoProvider
+    proto: BulletMachineGunIon
+    capacity: 40
+    count: 25
+
+##Torpedo
+
+- type: entity
+  id: ShuttleGunTorpedo
+  parent: [ShuttleGunBase, ConstructibleMachine]
+  name: SHI 55mm "Idna" small torpedo pod
+  description: A small fixedpoint rocketpod with basic heatseeking function.
+  components:
+  - type: TurretIFF
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpedo.rsi
+    layers:
+    - state: base
+    - state: mag-7
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      ballistic-ammo: !type:Container
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 40
+    fireRate: 0.4
+    angleDecay: 45
+    minAngle: 0
+    maxAngle: 15
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+      params:
+        pitch: 0.8
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Torpedo
+    capacity: 1
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 8
+    zeroVisible: false
+
+
 ## Missile Pods
 
 - type: entity
@@ -1079,3 +1187,59 @@
     - type: NpcFactionMember
       factions:
         - SHIFighter
+
+#bizmuth
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthSRM
+  suffix: SRM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SRMFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthNCWL
+  suffix: NCWL
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCWLFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthDSM
+  suffix: DSM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - DSMFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthSHI
+  suffix: SHI
+  components:
+    - type: NpcFactionMember
+      factions:
+        - SHIFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthNCSP
+  suffix: NCSP
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NCSPFighter
+
+- type: entity
+  parent: ShuttleGunBizmuth
+  id: ShuttleGunBizmuthCMM
+  suffix: CMM
+  components:
+    - type: NpcFactionMember
+      factions:
+        - CMMFighter

@@ -1,3 +1,6 @@
+- type: Tag
+  id: Torpedo
+
 #vulcan bullets
 
 - type: entity
@@ -288,3 +291,94 @@
     sprite: _NF/Objects/SpaceArtillery/plasmaheavy.rsi
     layers:
       - state: icon
+
+#bizmuthprojectile
+
+- type: entity
+  id: BulletMachineGunIon
+  name: ion ray
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+  - type: ProjectileIFF
+    damage:
+      types:
+        Radiation: 25
+        Heat: 35
+  - type: EmpOnTrigger
+    range: 7
+    energyConsumption: 1000
+    disableDuration: 10
+  - type: PointLight
+    radius: 3.5
+    color: blue
+    energy: 0.5
+  - type: TimedDespawn
+    lifetime: 80
+  - type: Sprite
+    sprite: _NF/Objects/SpaceArtillery/ion.rsi
+    layers:
+      - state: icon
+
+#torpedo
+
+- type: entity
+  id: IdnaTorpedo
+  name: 55mm heat-guided torpedo
+  parent: BaseItem
+  description: A high-explosive cannon shell for ship weapons.
+  components:
+  - type: Tag
+    tags:
+      - Torpedo
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: TorpedoBase
+    deleteOnSpawn: false
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpedop.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: TorpedoBase
+  name: shell
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 70
+        Blunt: 40
+  - type: Tag
+    tags:
+      - Torpedo
+  - type: TimedDespawn
+    lifetime: 70
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpedop.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 75
+    intensitySlope: 55
+    totalIntensity: 190
+    maxTileBreak: 7
+  - type: HeatSeeking
+    rotationSpeed: 95
+    acceleration: 80
+    seekRange: 1000
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
