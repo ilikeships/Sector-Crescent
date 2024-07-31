@@ -2,7 +2,7 @@
   id: Justiciar
   name: CMM Justiciar
   description: A salvaged evacuation shuttle retrofitted with Vulcan armaments.
-  price: 24000
+  price: 30000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/CMM/justiciar.yml

@@ -157,6 +157,60 @@
     capacity: 40
     count: 25
 
+##Torpedo
+
+- type: entity
+  id: ShuttleGunTorpedo
+  parent: [ShuttleGunBase, ConstructibleMachine]
+  name: SHI 55mm "Idna" small torpedo pod
+  description: A small fixedpoint rocketpod with basic heatseeking function.
+  components:
+  - type: TurretIFF
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpedo.rsi
+    layers:
+    - state: base
+    - state: mag-7
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      ballistic-ammo: !type:Container
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 40
+    fireRate: 0.4
+    angleDecay: 45
+    minAngle: 0
+    maxAngle: 15
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+      params:
+        pitch: 0.8
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Torpedo
+    capacity: 1
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 8
+    zeroVisible: false
+
 
 ## Missile Pods
 
