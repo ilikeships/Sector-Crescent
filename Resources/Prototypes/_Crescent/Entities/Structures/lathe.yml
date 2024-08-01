@@ -439,6 +439,7 @@
       - IbisLPC
       - ZhipovLPC
       - NemesisLPC
+      - VanguardTwoLPC
   - type: Machine
     board: MicroforgeCircuitboard
 
