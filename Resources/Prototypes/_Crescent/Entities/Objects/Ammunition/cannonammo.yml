@@ -307,7 +307,7 @@
         Radiation: 25
         Heat: 35
   - type: EmpOnTrigger
-    range: 7
+    range: 3
     energyConsumption: 1000
     disableDuration: 10
   - type: PointLight
@@ -315,7 +315,7 @@
     color: blue
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 80
+    lifetime: 60
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/ion.rsi
     layers:

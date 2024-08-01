@@ -134,10 +134,10 @@
           acts: ["Destruction"]
   - type: Gun
     projectileSpeed: 60
-    fireRate: 3
+    fireRate: 2.4
     selectedMode: SemiAuto
     angleDecay: 45
-    minAngle: 5
+    minAngle: 8
     maxAngle: 15
     availableModes:
     - SemiAuto
