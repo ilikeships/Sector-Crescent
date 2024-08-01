@@ -162,7 +162,7 @@
 - type: entity
   id: ShuttleGunTorpedo
   parent: [ShuttleGunBase, ConstructibleMachine]
-  name: SHI 55mm "Idna" small torpedo pod
+  name: SHI 180mm "Idna" small torpedo pod
   description: A small fixedpoint rocketpod with basic heatseeking function.
   components:
   - type: TurretIFF
@@ -203,7 +203,7 @@
     whitelist:
       tags:
         - Torpedo
-    capacity: 1
+    capacity: 2
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: MagazineVisuals
