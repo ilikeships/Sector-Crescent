@@ -29,6 +29,15 @@
     ShipHull: 8000
 
 - type: latheRecipe
+  id: VanguardTwoLPC
+  result: ShipVoucherVanguardTwo
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 6250
+    ShipComponents: 7750
+    ShipHull: 4500
+
+- type: latheRecipe
   id: ZhipovLPC
   result: ShipVoucherZhipov
   completetime: 1

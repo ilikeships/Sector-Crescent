@@ -134,10 +134,10 @@
           acts: ["Destruction"]
   - type: Gun
     projectileSpeed: 60
-    fireRate: 3
+    fireRate: 2.4
     selectedMode: SemiAuto
     angleDecay: 45
-    minAngle: 5
+    minAngle: 8
     maxAngle: 15
     availableModes:
     - SemiAuto
@@ -146,7 +146,7 @@
       params:
         variation: 0.12
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 3
+    rechargeCooldown: 6
     rechargeSound:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
       params:
@@ -154,7 +154,7 @@
         variation: 0.08
   - type: BasicEntityAmmoProvider
     proto: BulletMachineGunIon
-    capacity: 40
+    capacity: 30
     count: 25
 
 ##Torpedo
@@ -162,7 +162,7 @@
 - type: entity
   id: ShuttleGunTorpedo
   parent: [ShuttleGunBase, ConstructibleMachine]
-  name: SHI 55mm "Idna" small torpedo pod
+  name: SHI 180mm "Idna" small torpedo pod
   description: A small fixedpoint rocketpod with basic heatseeking function.
   components:
   - type: TurretIFF
@@ -203,7 +203,7 @@
     whitelist:
       tags:
         - Torpedo
-    capacity: 1
+    capacity: 2
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: MagazineVisuals

@@ -307,7 +307,7 @@
         Radiation: 25
         Heat: 35
   - type: EmpOnTrigger
-    range: 7
+    range: 3
     energyConsumption: 1000
     disableDuration: 10
   - type: PointLight
@@ -315,7 +315,7 @@
     color: blue
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 80
+    lifetime: 60
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/ion.rsi
     layers:
@@ -325,7 +325,7 @@
 
 - type: entity
   id: IdnaTorpedo
-  name: 55mm heat-guided torpedo
+  name: 180mm heat-guided torpedo
   parent: BaseItem
   description: A high-explosive cannon shell for ship weapons.
   components:
@@ -369,13 +369,13 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 75
-    intensitySlope: 55
-    totalIntensity: 190
-    maxTileBreak: 7
+    maxIntensity: 95
+    intensitySlope: 85
+    totalIntensity: 210
+    maxTileBreak: 8
   - type: HeatSeeking
-    rotationSpeed: 95
-    acceleration: 80
+    rotationSpeed: 245
+    acceleration: 90
     seekRange: 1000
   - type: PointLight
     radius: 3.5

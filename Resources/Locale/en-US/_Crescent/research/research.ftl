@@ -52,6 +52,8 @@ research-technology-commiemissiles = Union Warhead Armaments
 
 research-technology-commieultraheavy = Union Ultraheavy Armaments
 
+research-technology-bogatyrtwo = Communard Elite Gunship
+
 research-technology-sasha = Communard Battleship Technologies
 
 research-technology-gargut = Communard Converted Station
