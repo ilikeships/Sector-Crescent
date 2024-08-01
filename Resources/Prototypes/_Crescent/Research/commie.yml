@@ -72,7 +72,7 @@
   - BogatyrLPC
 
 - type: technology
-  id: Bogatyr
+  id: VanguardTwo
   name: research-technology-bogatyrtwo
   icon:
     sprite: _Crescent/Objects/Misc/lpcchip.rsi
