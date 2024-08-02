@@ -75,3 +75,64 @@
   name: Which Side Are You On?
   path:
     path: /Audio/_Crescent/Jukebox/WhichSideAreYouOn.ogg
+
+- type: jukebox
+  id: Quake2QuadMachine
+  name: Quake 2 OST - Quad Machine
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20091006_Quake 2 OST - Quad Machine.ogg"
+
+- type: jukebox
+  id: PromethazineAndAnthrax
+  name: dj smokey - promethazine & anthrax
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20230127_dj smokey - promethazine & anthrax.ogg"
+
+- type: jukebox
+  id: NewDonkShitty
+  name: V Limo (New Donk Shitty)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_V Limo (New Donk Shitty).ogg"
+
+- type: jukebox
+  id: HorseWithNoName
+  name: A Horse with No Name
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20170329_A Horse with No Name.ogg"
+
+- type: jukebox
+  id: HitTheFloor
+  name: Hit the Floor
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_Hit the Floor.ogg"
+
+- type: jukebox
+  id: Untitled13SuperSlowed
+  name: Untitled #13 (Super Slowed)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20230808_Untitled #13 (Super Slowed).ogg"
+
+- type: jukebox
+  id: YoureMine
+  name: You're Mine
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20160713_You're Mine.ogg"
+
+- type: jukebox
+  id: NocturneJustinStander
+  name: Nocturne (Co-Composed by Justin Stander)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_Nocturne (Co-Composed by Justin Stander).ogg"
+
+- type: jukebox
+  id: DescentIntoCerberon
+  name: Descent Into Cerberon - Sonic Mayhem
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20080531_Descent Into Cerberon - Sonic Mayhem.ogg"
+
+- type: jukebox
+  id: XGonGiveItToYa
+  name: DMX - X Gon Give It To Ya (Dirty)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20120827_DMX - X Gon Give It To Ya (Dirty).ogg"
+
