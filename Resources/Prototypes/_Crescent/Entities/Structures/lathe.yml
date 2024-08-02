@@ -440,6 +440,8 @@
       - ZhipovLPC
       - NemesisLPC
       - VanguardTwoLPC
+      - ConquestLPC
+      - ValorLPC
   - type: Machine
     board: MicroforgeCircuitboard
 

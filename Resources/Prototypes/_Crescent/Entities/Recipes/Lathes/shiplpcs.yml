@@ -17,7 +17,23 @@
     ShipComponents: 5000
     ShipHull: 2500
 
+- type: latheRecipe
+  id: ValorLPC
+  result: ShipVoucherValor
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 2500
+    ShipComponents: 4000
+    ShipHull: 1500
 
+- type: latheRecipe
+  id: ConquestLPC
+  result: ShipVoucherConquest
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 2500
+    ShipComponents: 4000
+    ShipHull: 1500
 
 - type: latheRecipe
   id: SashaLPC

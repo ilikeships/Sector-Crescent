@@ -56,6 +56,20 @@
   - IbisLPC
 
 - type: technology
+  id: FightersImp
+  name: research-technology-impfighters
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Imperial
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  - ValorLPC
+  - ConquestLPC
+
+
+- type: technology
   id: Nemesis
   name: research-technology-nemesis
   icon:

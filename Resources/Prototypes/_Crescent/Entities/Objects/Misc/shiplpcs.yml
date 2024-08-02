@@ -19,6 +19,40 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherValor
+  name: DSM 'Valor' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Valor-class medium interceptor. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 5000
+  - type: ShipVoucher
+    ship: Valor
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherConquest
+  name: DSM 'Conquest' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Conquest-class light torpedo bomber. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 5000
+  - type: ShipVoucher
+    ship: Conquest
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherIbis
   name: DSM 'Ibis' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with an Imperial Ibis-class heavy fighter. Has to be redeemed at a shipyard console.
