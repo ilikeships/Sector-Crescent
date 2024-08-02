@@ -78,6 +78,8 @@ research-technology-impshuttleweapons = Standard Imperial Armament Patterns
 
 research-technology-impheavyweapons = Imperial Longarms
 
+research-technology-impfighters = Imperial Fighters
+
 research-technology-imparmor = Imperial Armor Patterns
 
 research-technology-implasershuttleguns = Imperial Plasma Artillery Patterns
