@@ -51,6 +51,7 @@
   hostile:
     - NCSPWarship
     - SRMWarship
+    - DSMWarship
 
 - type: npcFaction
   id: SRMWarship
