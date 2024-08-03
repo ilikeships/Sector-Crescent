@@ -36,13 +36,17 @@ public sealed class MarketConsoleInterfaceState : BoundUserInterfaceState
     /// </summary>
     public bool Enabled;
 
-    public MarketConsoleInterfaceState(int balance, float marketModifier, List<MarketData> marketDataList, List<MarketData> cartDataList, int cartBalance, bool enabled)
+
+    public int CostOfTransaction
+
+    public MarketConsoleInterfaceState(int _balance, float _marketModifier, List<MarketData> _marketDataList, List<MarketData> _cartDataList, int _cartBalance, bool _enabled, int _costOfTransaction)
     {
-        Balance = balance;
-        MarketModifier = marketModifier;
-        MarketDataList = marketDataList;
-        CartDataList = cartDataList;
-        CartBalance = cartBalance;
-        Enabled = enabled;
+        Balance = _balance;
+        MarketModifier = _marketModifier;
+        MarketDataList = _marketDataList;
+        CartDataList = _cartDataList;
+        CartBalance = _cartBalance;
+        Enabled = _enabled;
+        CostOfTransaction = _costOfTransaction;
     }
 }
