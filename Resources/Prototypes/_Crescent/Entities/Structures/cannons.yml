@@ -27,8 +27,8 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 40
-    fireRate: 0.9
+    projectileSpeed: 50
+    fireRate: 1.2
     selectedMode: FullAuto
     availableModes:
       - FullAuto
