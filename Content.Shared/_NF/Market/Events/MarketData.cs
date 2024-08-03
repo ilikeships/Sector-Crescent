@@ -7,12 +7,13 @@ public class MarketData
 {
     public string Prototype { get; set; }
     public int Quantity { get; set; }
-    public NetEntity StationUid { get; set; }
 
-    public MarketData(string prototype, int quantity, NetEntity stationUid)
+    public double Price { get; set; }
+
+    public MarketData(string prototype, int quantity, double price)
     {
         Prototype = prototype;
         Quantity = quantity;
-        StationUid = stationUid;
+        Price = price;
     }
 }

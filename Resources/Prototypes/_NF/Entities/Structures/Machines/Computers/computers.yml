@@ -195,7 +195,7 @@
   suffix: Normal
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
   id: ComputerMarketConsoleNFNormalMarket
-  description: Used to buy goods from the station's market system
+  description: Localized marketing terminal for the financially minded, allows trade. Capitalism, ho!
   placement:
     mode: SnapgridCenter
   components:
@@ -252,4 +252,4 @@
         enum.MarketConsoleUiKey.Default:
           type: MarketConsoleBoundUserInterface
     - type: MarketModifier
-      mod: 2.6
+      mod: 2.7

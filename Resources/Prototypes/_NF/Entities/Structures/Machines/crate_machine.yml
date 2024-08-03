@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: CrateMachine
   name: crate machine
-  description: Where do they come from?
+  description: The origin is unknown. Soor. Proceed.
   placement:
     mode: SnapgridCenter
   components:
@@ -13,6 +13,7 @@
     - type: Sprite
       sprite: _NF/Structures/Machines/crate_machine.rsi
       snapCardinals: true
+      drawdepth: FloorObjects
       layers:
         - state: background
           map: ["enum.CrateMachineVisualLayers.Base"]
