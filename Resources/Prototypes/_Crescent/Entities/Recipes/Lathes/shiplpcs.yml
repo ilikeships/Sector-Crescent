@@ -97,3 +97,30 @@
     StarshipEngineComponents: 750
     ShipComponents: 400
     ShipHull: 850
+
+- type: latheRecipe
+  id: RapierLPC
+  result: ShipVoucherRapier
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 850
+    ShipComponents: 700
+    ShipHull: 550
+
+- type: latheRecipe
+  id: IvarodLPC
+  result: ShipVoucherIvarod
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 8050
+    ShipComponents: 4750
+    ShipHull: 9000
+
+- type: latheRecipe
+  id: CherenzikovLPC
+  result: ShipVoucherCherenzikov
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 6050
+    ShipComponents: 3750
+    ShipHull: 6000

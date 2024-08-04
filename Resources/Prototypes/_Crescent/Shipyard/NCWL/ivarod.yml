@@ -2,25 +2,25 @@
 # Discord: @fleshangel
 
 - type: vessel
-  id: Gargut
-  name: NCWL Gargut
-  description: A lumbering battle platform, converted from a derelict fabstation.
-  price: 320000
+  id: Ivarod
+  name: NCWL Ivarod
+  description: A converted light destroyer, purpose-built with endurance in mind.
+  price: 190000
   category: Large
   group: None
-  shuttlePath: /Maps/_Crescent/Shuttles/NCWL/gargut.yml
+  shuttlePath: /Maps/_Crescent/Shuttles/NCWL/ivarod.yml
 
 - type: gameMap
-  id: Gargut
-  mapName: 'NCWL Gargut'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/gargut.yml
+  id: Ivarod
+  mapName: 'NCWL Ivarod'
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/Ivarod.yml
   minPlayers: 0
   stations: 
-    Gargut:
+    Ivarod:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Gargut {1}'
+          mapNameTemplate: 'Ivarod {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -29,5 +29,5 @@
           availableJobs:
             KapitanNCWL: [ 1, 1 ]
             SanitarNCWL: [ 4, 4 ]
-            ArtificerNCWL: [ 2, 4 ]  
-            DoktorNCWL: [ 2, 2 ]
+            ArtificerNCWL: [ 1, 1 ]  
+            KadetNCWL: [ 2, 2 ]
