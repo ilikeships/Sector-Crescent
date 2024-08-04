@@ -58,6 +58,7 @@
   recipeUnlocks:
   - KhopeshLPC
   - BroadswordLPC
+  - RapierLPC
 
 - type: technology
   id: Bogatyr
@@ -94,6 +95,7 @@
   cost: 17000
   recipeUnlocks:
   - SashaLPC
+  - IvarodLPC
 
 - type: technology
   id: Gargut
