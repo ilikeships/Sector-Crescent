@@ -11,39 +11,13 @@ public sealed partial class CrescentEMPTechnologyTierComponent : Component
 
     [DataField]
     [AutoNetworkedField]
-    public TechnologyLevel TechLevel = TechnologyLevel.MidTech;
+    public float EMPMultiplier = 1;
 
-    public float GetEMPDurationMultiplier{
-        get{
-        
-            switch (TechLevel){
-                case TechnologyLevel.LowTech:
-                return 0.8f;
-                break;
-                case TechnologyLevel.MidTech:
-                return 1.0f;
-                break;
-                case TechnologyLevel.HiTech:
-                return 1.5f;
-                break;
-                case TechnologyLevel.ClarkeTech:
-                return 0.2f;
-                break;
-            }
-            return 1f;
-        }
-    } 
+[DataField]
+    [AutoNetworkedField]
+    public float PowerLossMarkiplier = 1;
 
 }
 
 
-
-
-public enum TechnologyLevel : byte // Crescenteroni 
-{
-    LowTech,
-    MidTech,
-    HiTech,
-    ClarkeTech
-}
 
