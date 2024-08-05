@@ -95,7 +95,7 @@ public sealed class EmpSystem : SharedEmpSystem
         if (ev.Disabled)
         {
             var disabled = EnsureComp<EmpDisabledComponent>(uid);
-            disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration* factor);
+            disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration * factor);
         }
     }
 
