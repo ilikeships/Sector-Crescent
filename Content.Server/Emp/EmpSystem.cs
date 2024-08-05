@@ -15,7 +15,7 @@ namespace Content.Server.Emp;
 public sealed class EmpSystem : SharedEmpSystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-
+    [Dependency] private readonly IMapManager _mapMan = default!;
     public const string EmpPulseEffectPrototype = "EffectEmpPulse";
 
     public override void Initialize()
@@ -46,6 +46,8 @@ public sealed class EmpSystem : SharedEmpSystem
             // Block EMP on grid
             var gridUid = Transform(uid).GridUid;
             var attemptEv = new EmpAttemptEvent();
+
+           
             if (HasComp<StationEmpImmuneComponent>(gridUid))
                 continue;
 
@@ -81,12 +83,21 @@ public sealed class EmpSystem : SharedEmpSystem
 
         //crescenterinho - scales EMP by the tech level of the target grid. if it has one.
         float factor = 1f;
-        if (TryComp<CrescentEMPTechnologyTierComponent>(uid, out CrescentEMPTechnologyTierComponent? techtier))
-        {
-            factor = techtier.GetEMPDurationMultiplier;
+        float powerlossfactor = 1f;
+         var gridUid = Transform(uid).GridUid;
+         if (gridUid != null)
+         {
+            if (TryComp<CrescentEMPTechnologyTierComponent>(gridUid, out CrescentEMPTechnologyTierComponent? techtier))
+            {
+                factor = techtier.EMPMultiplier;
+                powerlossfactor = techtier.PowerLossMarkiplier;
+
+            }
         }
 
-        var ev = new EmpPulseEvent(energyConsumption, false, false, TimeSpan.FromSeconds(duration * factor));
+        //Robust.Shared.Log.Logger.Info("WARNING! THE EMP DURATION WAS = " + (factor*duration).ToString() + " meaning that the factor was " + factor.ToString());
+
+        var ev = new EmpPulseEvent(energyConsumption * powerlossfactor, false, false, TimeSpan.FromSeconds(duration * factor));
         RaiseLocalEvent(uid, ref ev);
         if (ev.Affected)
         {
