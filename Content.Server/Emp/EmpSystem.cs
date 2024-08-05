@@ -78,7 +78,15 @@ public sealed class EmpSystem : SharedEmpSystem
     /// <param name="duration">The duration of the EMP effects.</param>
     public void DoEmpEffects(EntityUid uid, float energyConsumption, float duration)
     {
-        var ev = new EmpPulseEvent(energyConsumption, false, false, TimeSpan.FromSeconds(duration));
+
+        //crescenterinho - scales EMP by the tech level of the target grid. if it has one.
+        float factor = 1f;
+        if (TryComp<CrescentEMPTechnologyTierComponent>(uid, out CrescentEMPTechnologyTierComponent? techtier))
+        {
+            factor = techtier.GetEMPDurationMultiplier;
+        }
+
+        var ev = new EmpPulseEvent(energyConsumption, false, false, TimeSpan.FromSeconds(duration * factor));
         RaiseLocalEvent(uid, ref ev);
         if (ev.Affected)
         {
