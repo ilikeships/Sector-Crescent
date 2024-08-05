@@ -1,22 +1,13 @@
 namespace Content.Server.Emp;
 
 /// <summary>
-/// Affects 
+/// Affects how long a grid (ship or station) is affected by an EMP. just add it as a component (CrescentEMPTechnologyTier) and add TechLevel as a field then follow with : LowTech or whatnot. add it on the grid via mapping
 /// </summary>
 [RegisterComponent]
 [Access(typeof(EmpSystem))]
 public sealed partial class CrescentEMPTechnologyTierComponent : Component
 {
-    [DataField("range"), ViewVariables(VVAccess.ReadWrite)]
-    public float Range = 1.0f;
 
-
-
-    /// <summary>
-    /// How long it disables targets in seconds
-    /// </summary>
-    [DataField("disableDuration"), ViewVariables(VVAccess.ReadWrite)]
-    public float DisableDuration = 60f;
 
     [DataField]
     [AutoNetworkedField]
@@ -24,6 +15,7 @@ public sealed partial class CrescentEMPTechnologyTierComponent : Component
 
     public float GetEMPDurationMultiplier{
         get{
+        
             switch (TechLevel){
                 case TechnologyLevel.LowTech:
                 return 0.8f;
