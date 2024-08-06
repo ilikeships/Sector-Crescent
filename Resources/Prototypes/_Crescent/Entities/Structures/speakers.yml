@@ -1,0 +1,15 @@
+- type: entity
+  parent: [BaseStructureUnanchorable]
+  id: BaseMusicSyndicate
+  name: NCSP propaganda speaker
+  description: Fills the emptiness and keeps your dopamine up, you sweet little killer.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/speakers.rsi/icon.png
+    state: icon
+  - type: AmbientSound
+    enabled: true
+    range: 80
+    volume: 1
+    sound:
+      path: /Audio/_Crescent/Ambience/ncsp_base.ogg
