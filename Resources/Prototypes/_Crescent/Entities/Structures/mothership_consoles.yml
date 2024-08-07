@@ -138,3 +138,15 @@
   - type: ShipyardListing
     shuttles:
     - Saintsfall
+
+- type: entity
+  id: AnathemaMothershipComputer
+  parent: BaseMothershipComputer
+  name: anathema internal shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Conquest
+    - Valor
+    - Imparator
+
