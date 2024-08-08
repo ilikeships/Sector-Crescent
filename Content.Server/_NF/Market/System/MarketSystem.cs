@@ -2,12 +2,12 @@ using System.Linq;
 using Content.Server._NF.Market.Components;
 using Content.Server.Bank;
 using Content.Server.Cargo.Systems;
-using Content.Server.Station.Systems;
 using Content.Shared._NF.Market;
 using Content.Shared._NF.Market.BUI;
 using Content.Shared._NF.Market.Events;
 using Content.Shared.Bank.Components;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -16,12 +16,9 @@ namespace Content.Server._NF.Market.Systems;
 
 public sealed partial class MarketSystem : SharedMarketSystem
 {
-    [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-
     private readonly List<MarketData> _marketDataList = [];
 
     public override void Initialize()
@@ -48,23 +45,31 @@ public sealed partial class MarketSystem : SharedMarketSystem
                     continue; // Skip items without prototype id
 
                 var count = 1;
-                
-                if (entityPrototypeId == "SheetSteel")
-                {
-                    TryUpdateMarketData(entityPrototypeId, 1, ev.Station);
-                }
-                else
-                {
-                    // Get amount of items in the stack if it's a stackable item.
-                    if (_entityManager.TryGetComponent<StackComponent>(sold, out var stackComponent))
-                    {
-                        count = stackComponent.Count;
-                    }
+                TryComp<StackComponent>(sold, out var stackComponent);
 
-                    // Increase the count in the MarketData for this entity
-                    // Assuming the quantity to increase is 1 for each sold entity
-                    TryUpdateMarketData(entityPrototypeId, count, ev.Station);
+                if (HasComp<MaterialComponent>(sold) && TryComp<PhysicalCompositionComponent>(sold, out var phys)) // special handling for mats
+                {
+                    var multiplier = stackComponent != null ? stackComponent.Count : 1; // handle material stacks
+
+                    foreach (var (material, volume) in phys.MaterialComposition)
+                    {
+                        // If it's a valid material, store it
+                        if (_prototypes.TryIndex<MaterialPrototype>(material, out var matProto))
+                        {
+                            TryUpdateMarketData('%' + material, MaterialVolumeToAmount(matProto, volume * multiplier), ev.Station);
+                        }
+                    }
+                    return;
                 }
+
+                if (stackComponent != null)
+                {
+                    count = stackComponent.Count;
+                }
+
+                // Increase the count in the MarketData for this entity
+                // Assuming the quantity to increase is 1 for each sold entity
+                TryUpdateMarketData(entityPrototypeId, count, ev.Station);
             }
         }
     }
@@ -158,25 +163,13 @@ public sealed partial class MarketSystem : SharedMarketSystem
     private int GetMarketSelectionValue(List<MarketData> dataList, float marketModifier)
     {
         var cartBalance = 0;
-        
+
         if (!(dataList.Count >= 1))
             return cartBalance;
 
         foreach (var marketData in dataList)
         {
-            // Try to get the EntityPrototype that matches marketData.Prototype
-            if (!_prototypeManager.TryIndex<EntityPrototype>(marketData.Prototype, out var prototype))
-            {
-                continue; // Skip this iteration if the prototype was not found
-            }
-            var price = 0f;
-            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice))
-            {
-                price = (float) (staticPrice.Price * marketModifier);
-            }
-
-            var subTotal = (int) Math.Round(price * marketData.Quantity);
-            cartBalance += subTotal;
+            cartBalance += GetEntryPrice(marketData.Prototype, marketModifier) * marketData.Quantity;
         }
         return cartBalance;
     }
@@ -190,22 +183,37 @@ public sealed partial class MarketSystem : SharedMarketSystem
 
         foreach (var name in dataList)
         {
-            if (!_prototypeManager.TryIndex<EntityPrototype>(name, out var prototype))
-            {
-                continue;
-            }
-            var price = 0f;
-            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice))
-            {
-                price = (float) (staticPrice.Price * marketModifier);
-            }
-
-            var subTotal = (int) Math.Round(price);
-            cartBalance += subTotal;
+            cartBalance += GetEntryPrice(name, marketModifier);
         }
 
         return cartBalance;
     }
+
+
+    private int GetEntryPrice(string entry, float marketModifier)
+    {
+        if (entry[0] == '%' && _prototypeManager.TryIndex<MaterialPrototype>(entry[1..], out var material))
+        {
+            return (int) Math.Round(material.Price * StandardMaterialAmount(material));
+        }
+
+        if (!_prototypeManager.TryIndex<EntityPrototype>(entry, out var prototype))
+        {
+            return 0;
+        }
+
+        var price = 0f;
+
+        // always respect static price for entities
+        if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice))
+        {
+            price = (float) (staticPrice.Price * marketModifier);
+        }
+
+        return (int) Math.Round(price);
+    }
+
+
 
     private void RefreshState(
         EntityUid uid,
