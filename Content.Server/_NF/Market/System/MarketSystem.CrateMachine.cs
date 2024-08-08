@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Content.Server._NF.Market.Components;
 using Content.Server.Bank;
@@ -8,14 +7,11 @@ using Content.Shared._NF.Market.Components;
 using Content.Shared._NF.Market.Events;
 using Content.Shared.Bank.Components;
 using Content.Shared.Maps;
-using Content.Shared.Placeable;
-using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Microsoft.CodeAnalysis;
+using Content.Shared.Materials;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics;
 using Robust.Shared.Prototypes;
 using static Content.Shared._NF.Market.Components.SharedCrateMachineComponent;
 
@@ -161,6 +157,7 @@ public sealed partial class MarketSystem
 
         isAnimationRunning = true;
 
+        // This task has no exception tolerance and should probably be rewritten -Rane
         Task.Run(async () =>
         {
             UpdateVisualState(crateMachineUid, component, true);
@@ -177,6 +174,8 @@ public sealed partial class MarketSystem
         });
     }
 
+    // This doesn't adding stacks but I CBA rewriting it now. Also the duplicated spawn calls are a waste -Rane
+    // Fixing that should also fix non-material stacks like cables
     private void SpawnCrateItems(List<string> spawnList, EntityUid targetCrate)
     {
         if (TryComp<EntityStorageComponent>(targetCrate, out var entityStorage))
@@ -185,7 +184,14 @@ public sealed partial class MarketSystem
 
             foreach (var prototype in spawnList)
             {
-                var spawn = Spawn(prototype, Transform(targetCrate).Coordinates);
+                var spawnedProto = prototype;
+
+                if (prototype[0] == '%' && _prototypeManager.TryIndex<MaterialPrototype>(prototype[1..], out var material))
+                {
+                    spawnedProto = material.StackEntity;
+                }
+
+                var spawn = Spawn(spawnedProto, Transform(targetCrate).Coordinates);
                 _entityStorage.Insert(targetCrate, spawn, entityStorage);
             }
 
