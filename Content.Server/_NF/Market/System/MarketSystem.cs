@@ -22,7 +22,7 @@ public sealed partial class MarketSystem : SharedMarketSystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-
+    private ISawmill _log = default!;
     private readonly List<MarketData> _marketDataList = [];
 
     public override void Initialize()
@@ -58,9 +58,9 @@ public sealed partial class MarketSystem : SharedMarketSystem
                     foreach (var (material, volume) in phys.MaterialComposition)
                     {
                         // If it's a valid material, store it
-                        if (_prototypes.TryIndex<MaterialPrototype>(material, out var _))
+                        if (_prototypes.TryIndex<MaterialPrototype>(material, out var matProto))
                         {
-                            TryUpdateMarketData('%' + material, volume, ev.Station);
+                            TryUpdateMarketData('%' + material, MaterialVolumeToAmount(matProto, volume * multiplier), ev.Station);
                         }
                     }
                     return;
@@ -216,6 +216,27 @@ public sealed partial class MarketSystem : SharedMarketSystem
         }
 
         return (int) Math.Round(price);
+    }
+
+    private int MaterialVolumeToAmount(MaterialPrototype material, int volume)
+    {
+        var ent = material.StackEntity;
+
+        if (!_prototypeManager.TryIndex<EntityPrototype>(material.StackEntity, out var entity))
+        {
+            _log.Error("Failed to index stack entity " + material.StackEntity + ". Check material prototype " + material.ID);
+            return 0;
+        }
+
+        if (!entity.TryGetComponent<PhysicalCompositionComponent>(out var physComp) || !physComp.MaterialComposition.ContainsKey(material.ID))
+        {
+            _log.Warning("Despite being a representative entity for a material, " + entity.ID + " does not have a physical composition containing that material.");
+            return volume;
+        }
+
+        var volumePerAmount = physComp.MaterialComposition[material.ID];
+
+        return (int) Math.Floor((float) volume / (float) volumePerAmount);
     }
 
     private void RefreshState(
