@@ -15,6 +15,7 @@ namespace Content.Client._NF.Market.UI;
 public sealed partial class MarketMenu : FancyWindow
 {
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
 
     public event Action<BaseButton.ButtonEventArgs>? OnPurchase;
     public event Action<BaseButton.ButtonEventArgs>? OnReturn;
@@ -51,17 +52,14 @@ public sealed partial class MarketMenu : FancyWindow
 
                 spawnedPrototype = materialPrototype.StackEntity;
                 price = (float) materialPrototype.Price;
-                Logger.Error("Extracted steel's stack entity....");
             }
             // Try to get the EntityPrototype that matches marketData.Prototype
             if (!_protoManager.TryIndex<EntityPrototype>(spawnedPrototype, out var prototype))
             {
-                Logger.Error("Indexed " + spawnedPrototype);
                 continue; // Skip this iteration if the prototype was not found
             }
             if (!prototype.TryGetComponent<SpriteComponent>(out var sprite))
             {
-                Logger.Error("Got sprite of " + spawnedPrototype);
                 continue; // Skip this iteration if the prototype was not found
             }
 
@@ -92,8 +90,9 @@ public sealed partial class MarketMenu : FancyWindow
             if (marketData.Prototype[0] == '%' && _protoManager.TryIndex<MaterialPrototype>(marketData.Prototype[1..], out var materialPrototype))
             {
                 spawnedPrototype = materialPrototype.StackEntity;
-                price = (float) materialPrototype.Price;
+                price = _entitySystem.GetEntitySystem<SharedMarketSystem>().StandardMaterialAmount(materialPrototype) * (float) materialPrototype.Price;
             }
+
             // Try to get the EntityPrototype that matches marketData.Prototype
             if (!_protoManager.TryIndex<EntityPrototype>(spawnedPrototype!, out var prototype))
             {
@@ -104,10 +103,12 @@ public sealed partial class MarketMenu : FancyWindow
                 continue; // Skip this iteration if the prototype was not found
             }
 
-            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice))
+            // respect static price except for mats
+            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticPrice) && marketData.Prototype[0] != '%')
             {
                 price = (float) (staticPrice.Price * marketModifier);
             }
+
             var roundedPrice = (int)Math.Round(price);
 
             var productRow = new MarketCartProductRow(marketData.Prototype)

@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Server._NF.Market.Components;
 using Content.Server.Bank;
 using Content.Server.Cargo.Systems;
-using Content.Server.Station.Systems;
 using Content.Shared._NF.Market;
 using Content.Shared._NF.Market.BUI;
 using Content.Shared._NF.Market.Events;
@@ -17,12 +16,9 @@ namespace Content.Server._NF.Market.Systems;
 
 public sealed partial class MarketSystem : SharedMarketSystem
 {
-    [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    private ISawmill _log = default!;
     private readonly List<MarketData> _marketDataList = [];
 
     public override void Initialize()
@@ -173,7 +169,7 @@ public sealed partial class MarketSystem : SharedMarketSystem
 
         foreach (var marketData in dataList)
         {
-            cartBalance += GetEntryPrice(marketData.Prototype, marketModifier);
+            cartBalance += GetEntryPrice(marketData.Prototype, marketModifier) * marketData.Quantity;
         }
         return cartBalance;
     }
@@ -196,10 +192,9 @@ public sealed partial class MarketSystem : SharedMarketSystem
 
     private int GetEntryPrice(string entry, float marketModifier)
     {
-
         if (entry[0] == '%' && _prototypeManager.TryIndex<MaterialPrototype>(entry[1..], out var material))
         {
-            return (int) Math.Round(material.Price);
+            return (int) Math.Round(material.Price * StandardMaterialAmount(material));
         }
 
         if (!_prototypeManager.TryIndex<EntityPrototype>(entry, out var prototype))
@@ -218,26 +213,7 @@ public sealed partial class MarketSystem : SharedMarketSystem
         return (int) Math.Round(price);
     }
 
-    private int MaterialVolumeToAmount(MaterialPrototype material, int volume)
-    {
-        var ent = material.StackEntity;
 
-        if (!_prototypeManager.TryIndex<EntityPrototype>(material.StackEntity, out var entity))
-        {
-            _log.Error("Failed to index stack entity " + material.StackEntity + ". Check material prototype " + material.ID);
-            return 0;
-        }
-
-        if (!entity.TryGetComponent<PhysicalCompositionComponent>(out var physComp) || !physComp.MaterialComposition.ContainsKey(material.ID))
-        {
-            _log.Warning("Despite being a representative entity for a material, " + entity.ID + " does not have a physical composition containing that material.");
-            return volume;
-        }
-
-        var volumePerAmount = physComp.MaterialComposition[material.ID];
-
-        return (int) Math.Floor((float) volume / (float) volumePerAmount);
-    }
 
     private void RefreshState(
         EntityUid uid,
