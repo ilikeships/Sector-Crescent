@@ -147,3 +147,9 @@
   name: SRM Romainic Hymn
   path:
     path: "/Audio/_Crescent/Jukebox/august2nd/20230505_Starsector OST - Luddite Shrine.ogg"
+
+- type: jukebox
+  id: StapleTapeWorms
+  name: I STAPLE TAPEWORMS ON MY PENIS
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/Passenger Of Shit - Staple Tapeworms On My Penis.ogg"
