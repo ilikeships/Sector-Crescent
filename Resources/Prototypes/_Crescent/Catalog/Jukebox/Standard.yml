@@ -136,3 +136,8 @@
   path:
     path: "/Audio/_Crescent/Jukebox/august2nd/20120827_DMX - X Gon Give It To Ya (Dirty).ogg"
 
+- type: jukebox
+  id: SuicidalIdol
+  name: SUICIDAL-IDOL - ecstacy (slowed)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20230717_SUICIDAL-IDOL - ecstacy (slowed).ogg"
