@@ -539,15 +539,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var turrets = new Dictionary<NetEntity, List<TurretState>>();
 
         var query = EntityQueryEnumerator<TurretIFFComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        while (query.MoveNext(out var uid, out var turretIFF, out var transform))
         {
-            if (transform.ParentUid != transform.GridUid)
-            {
+            if (transform?.GridUid == null)
                 continue;
-            }
 
             var netEntity = GetNetEntity(transform.GridUid.Value);
-            var turret = new TurretState { Coordinates = GetNetCoordinates(transform.Coordinates) };
+            var turret = new TurretState { Entity = GetNetEntity(uid), Coordinates = GetNetCoordinates(transform.Coordinates) };
 
             if (turrets.TryGetValue(netEntity, out var gridTurrets))
             {

@@ -9,5 +9,6 @@ namespace Content.Shared.Crescent.Radar;
 [Serializable, NetSerializable]
 public sealed class TurretState
 {
+    public NetEntity Entity;
     public NetCoordinates Coordinates;
 }
