@@ -42,6 +42,8 @@
     - Ibis
     - Imp
     - Imparator
+    - Laelaps
+    - Anathema
 
 - type: entity
   id: NemesisMothershipComputer
@@ -148,5 +150,4 @@
     shuttles:
     - Conquest
     - Valor
-    - Imparator
 
