@@ -36,6 +36,40 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherLaelaps
+  name: DSM 'Laelaps' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Laelaps-class assault frigate. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 80000
+  - type: ShipVoucher
+    ship: Laelaps
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherAnathema
+  name: DSM 'Anathema' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Anathema-class light battlecarrier. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 70000
+  - type: ShipVoucher
+    ship: Anathema
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherConquest
   name: DSM 'Conquest' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with an Imperial Conquest-class light torpedo bomber. Has to be redeemed at a shipyard console.

@@ -2219,6 +2219,11 @@ entities:
     - type: Transform
       pos: -3.5,28.5
       parent: 1
+  - uid: 566
+    components:
+    - type: Transform
+      pos: -3.5,15.5
+      parent: 1
   - uid: 569
     components:
     - type: Transform
@@ -5255,7 +5260,7 @@ entities:
       pos: 0.5,22.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
