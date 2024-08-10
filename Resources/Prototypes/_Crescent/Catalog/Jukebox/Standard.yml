@@ -136,3 +136,20 @@
   path:
     path: "/Audio/_Crescent/Jukebox/august2nd/20120827_DMX - X Gon Give It To Ya (Dirty).ogg"
 
+- type: jukebox
+  id: SuicidalIdol
+  name: SUICIDAL-IDOL - ecstacy (slowed)
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20230717_SUICIDAL-IDOL - ecstacy (slowed).ogg"
+
+- type: jukebox
+  id: SRMHymn
+  name: SRM Romainic Hymn
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/20230505_Starsector OST - Luddite Shrine.ogg"
+
+- type: jukebox
+  id: StapleTapeWorms
+  name: I STAPLE TAPEWORMS ON MY PENIS
+  path:
+    path: "/Audio/_Crescent/Jukebox/august2nd/Passenger Of Shit - Staple Tapeworms On My Penis.ogg"
