@@ -80,76 +80,22 @@
   id: Quake2QuadMachine
   name: Quake 2 OST - Quad Machine
   path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20091006_Quake 2 OST - Quad Machine.ogg"
+    path: "/Audio/_Crescent/Jukebox/august2nd/quad.ogg"
 
 - type: jukebox
   id: PromethazineAndAnthrax
   name: dj smokey - promethazine & anthrax
   path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20230127_dj smokey - promethazine & anthrax.ogg"
+    path: "/Audio/_Crescent/Jukebox/august2nd/anthrax.ogg"
 
 - type: jukebox
   id: NewDonkShitty
   name: V Limo (New Donk Shitty)
   path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_V Limo (New Donk Shitty).ogg"
+    path: "/Audio/_Crescent/Jukebox/august2nd/newdonk.ogg"
 
 - type: jukebox
   id: HorseWithNoName
   name: A Horse with No Name
   path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20170329_A Horse with No Name.ogg"
-
-- type: jukebox
-  id: HitTheFloor
-  name: Hit the Floor
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_Hit the Floor.ogg"
-
-- type: jukebox
-  id: Untitled13SuperSlowed
-  name: Untitled #13 (Super Slowed)
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20230808_Untitled #13 (Super Slowed).ogg"
-
-- type: jukebox
-  id: YoureMine
-  name: You're Mine
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20160713_You're Mine.ogg"
-
-- type: jukebox
-  id: NocturneJustinStander
-  name: Nocturne (Co-Composed by Justin Stander)
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20200213_Nocturne (Co-Composed by Justin Stander).ogg"
-
-- type: jukebox
-  id: DescentIntoCerberon
-  name: Descent Into Cerberon - Sonic Mayhem
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20080531_Descent Into Cerberon - Sonic Mayhem.ogg"
-
-- type: jukebox
-  id: XGonGiveItToYa
-  name: DMX - X Gon Give It To Ya (Dirty)
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20120827_DMX - X Gon Give It To Ya (Dirty).ogg"
-
-- type: jukebox
-  id: SuicidalIdol
-  name: SUICIDAL-IDOL - ecstacy (slowed)
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20230717_SUICIDAL-IDOL - ecstacy (slowed).ogg"
-
-- type: jukebox
-  id: SRMHymn
-  name: SRM Romainic Hymn
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/20230505_Starsector OST - Luddite Shrine.ogg"
-
-- type: jukebox
-  id: StapleTapeWorms
-  name: I STAPLE TAPEWORMS ON MY PENIS
-  path:
-    path: "/Audio/_Crescent/Jukebox/august2nd/Passenger Of Shit - Staple Tapeworms On My Penis.ogg"
+    path: "/Audio/_Crescent/Jukebox/august2nd/horse.ogg"
