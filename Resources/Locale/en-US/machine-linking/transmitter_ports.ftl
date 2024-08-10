@@ -76,3 +76,6 @@ signal-port-name-group3 = "Group 3"
 signal-port-name-group4 = "Group 4"
 signal-port-name-group5 = "Group 5"
 signal-port-description-group = This port is invoked when the group button is pressed in the nav display
+
+signal-port-name-targcon = Targeting Console
+signal-port-description-targcon = Link with any other port on the target turret to link it

@@ -14,7 +14,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Utility;
+using Robust.Client.GameObjects;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -30,13 +30,12 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     /// Used to transform all of the radar objects. Typically is a shuttle console parented to a grid.
     /// </summary>
     private EntityCoordinates? _coordinates;
-
     private Angle? _rotation;
 
     private Dictionary<NetEntity, List<DockingPortState>> _docks = new();
-
     private List<ProjectileState> _projectiles = new();
     private Dictionary<NetEntity, List<TurretState>> _turrets = new();
+    private List<Entity<MapGridComponent>> _grids = new();
 
     public bool ShowIFF { get; set; } = true;
     public bool ShowIFFShuttles { get; set; } = true;
@@ -48,11 +47,14 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     public Func<EntityUid, MapGridComponent, IFFComponent?, bool>? IFFFilter { get; set; } = null;
 
     /// <summary>
-    /// Raised if the user left-clicks on the radar control with the relevant entitycoordinates.
+    /// If set, turrets which aren't in this list will be drawn with default color even if they are on our grid
     /// </summary>
-    public Action<EntityCoordinates>? OnRadarClick;
+    public List<NetEntity>? ControlledTurrets; //todo: maybe it's better to move this to TurretState as a bool
 
-    private List<Entity<MapGridComponent>> _grids = new();
+    public Action<EntityCoordinates>? OnRadarClick;
+    public Action? OnRadarRelease;
+    public Action<EntityCoordinates>? OnRadarMouseMove;
+
 
     public ShuttleNavControl() : base(64f, 256f, 256f)
     {
@@ -67,21 +69,45 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         _rotation = angle;
     }
 
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (_coordinates == null || _rotation == null || args.Function != EngineKeyFunctions.UIClick)
+            return;
+
+        OnRadarClick?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+    }
+
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
         base.KeyBindUp(args);
 
-        if (_coordinates == null || _rotation == null || args.Function != EngineKeyFunctions.UIClick ||
-            OnRadarClick == null)
-        {
+        if (_coordinates == null || _rotation == null || args.Function != EngineKeyFunctions.UIClick)
             return;
-        }
 
-        var a = InverseScalePosition(args.RelativePosition);
+        OnRadarRelease?.Invoke();
+    }
+
+    protected override void MouseMove(GUIMouseMoveEventArgs args)
+    {
+        base.MouseMove(args);
+
+        if (_coordinates == null || _rotation == null)
+            return;
+
+        OnRadarMouseMove?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+    }
+
+    private EntityCoordinates RelativePositionToEntityCoords(Vector2 pos)
+    {
+        if (_coordinates == null || _rotation == null)
+            return EntityCoordinates.Invalid;
+
+        var a = InverseScalePosition(pos);
         var relativeWorldPos = a with { Y = -a.Y };
         relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
-        var coords = _coordinates.Value.Offset(relativeWorldPos);
-        OnRadarClick?.Invoke(coords);
+        return _coordinates.Value.Offset(relativeWorldPos);
     }
 
     /// <summary>
@@ -394,8 +420,6 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     {
         const float scale = 0.8f;
 
-        Color color = isSelf ? TurretIFFComponent.DefaultSelfColor : TurretIFFComponent.DefaultColor;
-
         var netEntity = EntManager.GetNetEntity(uid);
         if (_turrets.TryGetValue(netEntity, out var turrets))
         {
@@ -423,6 +447,10 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                     vert.Y = -vert.Y;
                     verts[i] = ScalePosition(vert);
                 }
+
+                Color color = TurretIFFComponent.DefaultColor;
+                if (isSelf && (ControlledTurrets == null || ControlledTurrets.Contains(turret.Entity)))
+                    color = TurretIFFComponent.DefaultSelfColor;
 
                 handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, color);
             }
