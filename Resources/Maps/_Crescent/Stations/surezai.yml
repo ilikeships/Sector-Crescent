@@ -1968,6 +1968,200 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Surezai
+- proto: AirAlarm
+  entities:
+  - uid: 3245
+    components:
+    - type: Transform
+      pos: 13.5,23.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3246
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,11.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3247
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,3.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3248
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 11.5,-5.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3249
+    components:
+    - type: Transform
+      pos: 20.5,-0.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3250
+    components:
+    - type: Transform
+      pos: 29.5,-15.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
+  - uid: 3251
+    components:
+    - type: Transform
+      pos: 20.5,-20.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 1578
+      - 1579
+      - 1649
+      - 1577
+      - 1576
+      - 1648
+      - 1731
+      - 1733
+      - 1581
+      - 1580
+      - 1742
+      - 1740
+      - 1741
+      - 1743
+      - 1794
+      - 1735
+      - 1739
+      - 1738
+      - 1736
+      - 1737
 - proto: AirCanister
   entities:
   - uid: 1401
@@ -2522,6 +2716,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 27.5,5.5
+      parent: 1
+  - uid: 3242
+    components:
+    - type: Transform
+      pos: 9.5,-10.5
       parent: 1
 - proto: BarSignMalteseFalcon
   entities:
@@ -6026,6 +6225,16 @@ entities:
     components:
     - type: Transform
       pos: 28.5,6.5
+      parent: 1
+  - uid: 3208
+    components:
+    - type: Transform
+      pos: 10.5,-15.5
+      parent: 1
+  - uid: 3209
+    components:
+    - type: Transform
+      pos: 10.5,-16.5
       parent: 1
 - proto: CableApcStack
   entities:
@@ -11535,24 +11744,68 @@ entities:
     - type: Transform
       pos: 15.5,18.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1578
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 11.5,21.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1580
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,1.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1648
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 8.5,8.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1664
     components:
     - type: Transform
@@ -11565,34 +11818,100 @@ entities:
       rot: 3.141592653589793 rad
       pos: 15.5,0.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1737
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 47.5,15.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1738
     components:
     - type: Transform
       pos: 47.5,-7.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1741
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,-4.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1743
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 22.5,-7.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1794
     components:
     - type: Transform
       pos: 26.5,0.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
 - proto: GasVentScrubber
   entities:
   - uid: 1576
@@ -11601,24 +11920,68 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 17.5,18.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1579
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 8.5,21.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1581
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,1.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1649
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,6.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1665
     components:
     - type: Transform
@@ -11631,33 +11994,99 @@ entities:
       rot: 3.141592653589793 rad
       pos: 16.5,2.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1735
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 27.5,2.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1736
     components:
     - type: Transform
       pos: 38.5,16.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1739
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 38.5,-8.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1740
     components:
     - type: Transform
       pos: 12.5,-3.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
   - uid: 1742
     components:
     - type: Transform
       pos: 15.5,-6.5
       parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
 - proto: GeneratorBasic15kW
   entities:
   - uid: 625
@@ -14960,6 +15389,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.5,-1.5
       parent: 1
+- proto: RandomCommandCorpseSpawner
+  entities:
+  - uid: 3243
+    components:
+    - type: Transform
+      pos: 8.5,-13.5
+      parent: 1
 - proto: RandomMedicCorpseSpawner
   entities:
   - uid: 1565
@@ -14967,6 +15403,11 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,0.5
+      parent: 1
+  - uid: 3231
+    components:
+    - type: Transform
+      pos: 32.5,-17.5
       parent: 1
 - proto: RandomSpawner
   entities:
@@ -15629,6 +16070,165 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 24.5,3.5
+      parent: 1
+- proto: SpawnMobRogueScapT1
+  entities:
+  - uid: 3207
+    components:
+    - type: Transform
+      pos: 3.5,33.5
+      parent: 1
+  - uid: 3210
+    components:
+    - type: Transform
+      pos: 3.5,1.5
+      parent: 1
+  - uid: 3211
+    components:
+    - type: Transform
+      pos: 8.5,7.5
+      parent: 1
+  - uid: 3212
+    components:
+    - type: Transform
+      pos: 2.5,10.5
+      parent: 1
+  - uid: 3213
+    components:
+    - type: Transform
+      pos: 6.5,17.5
+      parent: 1
+  - uid: 3214
+    components:
+    - type: Transform
+      pos: 9.5,21.5
+      parent: 1
+  - uid: 3215
+    components:
+    - type: Transform
+      pos: 17.5,26.5
+      parent: 1
+  - uid: 3216
+    components:
+    - type: Transform
+      pos: 4.5,37.5
+      parent: 1
+  - uid: 3217
+    components:
+    - type: Transform
+      pos: 2.5,37.5
+      parent: 1
+  - uid: 3218
+    components:
+    - type: Transform
+      pos: 17.5,37.5
+      parent: 1
+  - uid: 3219
+    components:
+    - type: Transform
+      pos: 1.5,12.5
+      parent: 1
+  - uid: 3220
+    components:
+    - type: Transform
+      pos: 26.5,12.5
+      parent: 1
+  - uid: 3221
+    components:
+    - type: Transform
+      pos: 22.5,12.5
+      parent: 1
+  - uid: 3222
+    components:
+    - type: Transform
+      pos: 24.5,6.5
+      parent: 1
+  - uid: 3223
+    components:
+    - type: Transform
+      pos: 27.5,2.5
+      parent: 1
+  - uid: 3224
+    components:
+    - type: Transform
+      pos: 34.5,3.5
+      parent: 1
+  - uid: 3225
+    components:
+    - type: Transform
+      pos: 35.5,6.5
+      parent: 1
+  - uid: 3226
+    components:
+    - type: Transform
+      pos: 34.5,7.5
+      parent: 1
+  - uid: 3227
+    components:
+    - type: Transform
+      pos: 35.5,15.5
+      parent: 1
+  - uid: 3228
+    components:
+    - type: Transform
+      pos: 45.5,16.5
+      parent: 1
+  - uid: 3229
+    components:
+    - type: Transform
+      pos: 31.5,-2.5
+      parent: 1
+  - uid: 3230
+    components:
+    - type: Transform
+      pos: 43.5,-8.5
+      parent: 1
+  - uid: 3233
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 21.5,-22.5
+      parent: 1
+  - uid: 3234
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 24.5,-26.5
+      parent: 1
+  - uid: 3235
+    components:
+    - type: Transform
+      pos: 23.5,-4.5
+      parent: 1
+  - uid: 3236
+    components:
+    - type: Transform
+      pos: 23.5,-0.5
+      parent: 1
+  - uid: 3237
+    components:
+    - type: Transform
+      pos: 20.5,2.5
+      parent: 1
+  - uid: 3238
+    components:
+    - type: Transform
+      pos: 10.5,1.5
+      parent: 1
+  - uid: 3239
+    components:
+    - type: Transform
+      pos: 4.5,8.5
+      parent: 1
+  - uid: 3240
+    components:
+    - type: Transform
+      pos: 0.5,10.5
+      parent: 1
+  - uid: 3241
+    components:
+    - type: Transform
+      pos: 1.5,9.5
       parent: 1
 - proto: StairDark
   entities:
@@ -20306,6 +20906,14 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 19.5,-14.5
       parent: 1
+- proto: WeaponPistolN1984
+  entities:
+  - uid: 3232
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 31.679781,-18.099672
+      parent: 1
 - proto: WeaponRevolverDeckard
   entities:
   - uid: 942
@@ -20315,6 +20923,14 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: WeaponRifleAk
+  entities:
+  - uid: 3244
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.14239,-12.887096
+      parent: 1
 - proto: WeaponRifleM90GrenadeLauncher
   entities:
   - uid: 1557
