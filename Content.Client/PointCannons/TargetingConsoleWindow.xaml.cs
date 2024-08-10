@@ -42,7 +42,7 @@ public sealed partial class TargetingConsoleWindow : FancyWindow, IComputerWindo
         foreach (string groupName in console.CannonGroups.Keys.ToList())
         {
             Button groupButton = new();
-            groupButton.Text = char.ToUpper(groupName[0]) + groupName.Substring(1); //capitalized name
+            groupButton.Text = string.Concat(char.ToUpper(groupName[0]), groupName.Substring(1)); //capitalized name
             groupButton.OnPressed += (_) =>
             {
                 OnCannonGroupChange?.Invoke(groupName);
