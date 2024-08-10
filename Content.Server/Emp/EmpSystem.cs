@@ -81,3 +81,85 @@ public sealed class EmpSystem : SharedEmpSystem
     public void DoEmpEffects(EntityUid uid, float energyConsumption, float duration)
     {
         var ev = new EmpPulseEvent(energyConsumption, false, false, TimeSpan.FromSeconds(duration));
+        RaiseLocalEvent(uid, ref ev);
+        if (ev.Affected)
+        {
+            Spawn(EmpDisabledEffectPrototype, Transform(uid).Coordinates);
+        }
+        if (ev.Disabled)
+        {
+            var disabled = EnsureComp<EmpDisabledComponent>(uid);
+            disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration);
+        }
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<EmpDisabledComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.DisabledUntil < Timing.CurTime)
+            {
+                RemComp<EmpDisabledComponent>(uid);
+                var ev = new EmpDisabledRemoved();
+                RaiseLocalEvent(uid, ref ev);
+            }
+        }
+    }
+
+    private void OnExamine(EntityUid uid, EmpDisabledComponent component, ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("emp-disabled-comp-on-examine"));
+    }
+
+    private void HandleEmpTrigger(EntityUid uid, EmpOnTriggerComponent comp, TriggerEvent args)
+    {
+        EmpPulse(Transform(uid).MapPosition, comp.Range, comp.EnergyConsumption, comp.DisableDuration);
+        args.Handled = true;
+    }
+
+    private void OnRadioSendAttempt(EntityUid uid, EmpDisabledComponent component, ref RadioSendAttemptEvent args)
+    {
+        args.Cancelled = true;
+    }
+
+    private void OnRadioReceiveAttempt(EntityUid uid, EmpDisabledComponent component, ref RadioReceiveAttemptEvent args)
+    {
+        args.Cancelled = true;
+    }
+
+    private void OnApcToggleMainBreaker(EntityUid uid, EmpDisabledComponent component, ref ApcToggleMainBreakerAttemptEvent args)
+    {
+        args.Cancelled = true;
+    }
+
+    private void OnCameraSetActive(EntityUid uid, EmpDisabledComponent component, ref SurveillanceCameraSetActiveAttemptEvent args)
+    {
+        args.Cancelled = true;
+    }
+
+    //private void OnThrusterToggle(EntityUid uid, EmpDisabledComponent component, ref ThrusterToggleAttemptEvent args)
+    //{
+    //    args.Cancelled = true;
+    //}
+
+    //private void OnShuttleConsoleToggle(EntityUid uid, EmpDisabledComponent component, ref ShuttleToggleAttemptEvent args)
+    //{
+    //    args.Cancelled = true;
+    //}
+}
+
+/// <summary>
+/// Raised on an entity before <see cref="EmpPulseEvent"/>. Cancel this to prevent the emp event being raised.
+/// </summary>
+public sealed partial class EmpAttemptEvent : CancellableEntityEventArgs
+{
+}
+
+[ByRefEvent]
+public record struct EmpPulseEvent(float EnergyConsumption, bool Affected, bool Disabled, TimeSpan Duration);
+
+[ByRefEvent]
+public record struct EmpDisabledRemoved();
