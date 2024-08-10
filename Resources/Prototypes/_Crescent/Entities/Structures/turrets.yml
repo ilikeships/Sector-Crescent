@@ -363,6 +363,7 @@
   name: swarmer missile launcher
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -543,6 +544,7 @@
   name: long distance artillery
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -721,6 +723,7 @@
   name: long distance mortar
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -899,6 +902,7 @@
   name: laser gatling
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -1269,6 +1273,7 @@
   name: needler artillery
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
