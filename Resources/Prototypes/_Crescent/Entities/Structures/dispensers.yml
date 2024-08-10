@@ -389,34 +389,3 @@
     radius: 1.5
     energy: 1.6
     color: "#9dc5c9"
-
-- type: entity
-  id: GrandforgeEvent
-  parent: [ BaseMachine, ConstructibleMachine ]
-  name: SSCA-9 'Grandforge' miniature psychofabricator
-  description: The machine hums and whirs with strange internal power. Your hand tingles as you brush fingers along it's unnaturally smooth surface.
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: _Crescent/Structures/eventitem.rsi
-    layers:
-    - state: "icon"
-  - type: Physics
-    bodyType: Static
-  - type: Transform
-    noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25,-0.45,0.25,0.45"
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
-        density: 200
-  - type: PointLight
-    radius: 4.5
-    energy: 3.6
-    color: "#ffcccb"
