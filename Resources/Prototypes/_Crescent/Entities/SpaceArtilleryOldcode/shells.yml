@@ -286,7 +286,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 40
+        Structural: 50
         #currently explosion deals 30 damage
   - type: TimedDespawn
     lifetime: 20
@@ -355,14 +355,14 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 10
-    intensitySlope: 11
-    totalIntensity: 12
+    maxIntensity: 15
+    intensitySlope: 16
+    totalIntensity: 18
     maxTileBreak: 3
   - type: PointLight
-    radius: 3.5
+    radius: 5
     color: orange
-    energy: 0.5
+    energy: 0.8
   - type: SpaceArtilleryProjectile
   - type: ProjectileIFF
 
@@ -582,10 +582,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 150
-    intensitySlope: 125
+    maxIntensity: 275
+    intensitySlope: 325
     totalIntensity: 750
-    maxTileBreak: 50
+    maxTileBreak: 53
   - type: PointLight
     radius: 3.5
     color: orange
