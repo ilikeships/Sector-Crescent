@@ -1,3 +1,4 @@
+using Content.Server._Crescent.Hullmods;
 using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Shared.Weapons.Ranged.Components;
@@ -27,6 +28,16 @@ public sealed partial class GunSignalControlSystem : EntitySystem
     {
         if (!TryComp<GunComponent>(gunControl, out var gun))
             return;
+
+        var gridUid = Transform(gunControl).GridUid;
+        if (gridUid != null)
+        {
+            if (TryComp<PacifistShipHullmodComponent>(gridUid, out PacifistShipHullmodComponent? paciship))
+            {
+                return;
+
+            }
+        }
 
         if (args.Port == gunControl.Comp.TriggerPort)
             _gun.AttemptShoot(gunControl, gun);
