@@ -27,8 +27,9 @@ job-name-freeholder = Freeholder
 job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-courtier = Imperial Courtier
-job-name-adjutant = Baronet Adjutant
-job-name-governor = Imperial Governor
+job-name-adjutant = Suzerain Adjutant
+job-name-governor = Imperial Baron
+job-name-logistics = Logistics Officer
 
 #srm
 
