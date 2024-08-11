@@ -112,8 +112,6 @@ entities:
           -1,1:
             0: 8
             1: 33856
-          0,2:
-            1: 4
           -1,-1:
             0: 2176
             1: 68
@@ -153,6 +151,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Flea
+    - type: PacifistShipHullmod
 - proto: AirAlarm
   entities:
   - uid: 96
