@@ -1,6 +1,6 @@
 - type: gameMap
   id: Frontier
-  mapName: 'Nova Balreska'
+  mapName: 'Kal Surezai'
   mapPath: /Maps/_NF/Outpost/frontier.yml
   minPlayers: 0
   maxPlayers: 100
@@ -9,7 +9,7 @@
       stationProto: StandardFrontierStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Nova Balreska'
+          mapNameTemplate: 'Kal Surezai'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -19,15 +19,10 @@
             - Pilot
             - Mercenary
           availableJobs:
-            KommissarNCWL: [ 1, 1 ]
-            AdministratorNCWL: [ 1, 1 ]
-            KapitanNCWL: [ 1, 1 ]
-            ArtificerNCWL: [ 5, 5 ]
-            DoktorNCWL: [ 5, 5 ]
-            SanitarNCWL: [ 5, 5 ]
-            KadetNCWL: [ 10, 10 ]
-            BoardSHI: [ 1, 1 ]
-            EmployeeSHI: [ 3, 3 ]
-            Antiquarian: [ 1, 1 ]
-            Bartender: [ 1, 1 ]
+            GovernorDSM: [ 1, 1 ]
+            AdjutantDSM: [ 1, 1 ]
+            CourtierDSM: [ 5, 5 ]
+            KnightDSM: [ 5, 5 ]
+            LevymanDSM: [ 8, 8 ]
+            FreeholderDSM: [ 15, 15 ]
 
