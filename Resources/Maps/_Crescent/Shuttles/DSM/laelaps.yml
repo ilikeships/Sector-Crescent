@@ -523,6 +523,9 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Laelaps
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 0.7
+      eMPMultiplier: 1.2
 - proto: AirAlarm
   entities:
   - uid: 994
