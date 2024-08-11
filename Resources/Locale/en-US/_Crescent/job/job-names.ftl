@@ -27,8 +27,8 @@ job-name-freeholder = Freeholder
 job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-courtier = Imperial Courtier
-job-name-adjutant = Baronet Adjutant
-job-name-governor = Imperial Governor
+job-name-adjutant = Baronet Marshal
+job-name-governor = Baron Commodore
 
 #srm
 
@@ -50,13 +50,13 @@ job-name-medtech = MedTech Specialist
 
 #cmm
 
-job-name-ordnanceman = Ordnanceman
-job-name-machinist = Engine Machinist
-job-name-physician = Combat Physician
-job-name-minuteman = Colonial Minuteman
-job-name-watchmaster = Colonial Watchmaster
-job-name-deputymarshal = Deputy Marshal
-job-name-marshal = Colonial Marshal
+job-name-ordnanceman = Kanonier
+job-name-machinist = Techniker
+job-name-physician = Kampfmediziner
+job-name-minuteman = Inspektor
+job-name-watchmaster = Polizeikommissar
+job-name-deputymarshal = Ersatz Officier
+job-name-marshal = Officier
 
 #misc
 
