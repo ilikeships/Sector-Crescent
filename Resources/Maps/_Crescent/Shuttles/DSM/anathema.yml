@@ -459,6 +459,9 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Anathema
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 0.7
+      eMPMultiplier: 1.2
 - proto: ActionToggleLight
   entities:
   - uid: 815
