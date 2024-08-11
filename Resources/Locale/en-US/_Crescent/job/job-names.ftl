@@ -51,13 +51,13 @@ job-name-medtech = MedTech Specialist
 
 #cmm
 
-job-name-ordnanceman = Ordnanceman
-job-name-machinist = Engine Machinist
-job-name-physician = Combat Physician
-job-name-minuteman = Colonial Minuteman
-job-name-watchmaster = Colonial Watchmaster
-job-name-deputymarshal = Deputy Marshal
-job-name-marshal = Colonial Marshal
+job-name-ordnanceman = Kanonier
+job-name-machinist = Machinist
+job-name-physician = Sanitier
+job-name-minuteman = Inspektor
+job-name-watchmaster = Polizeikommissar
+job-name-deputymarshal = Ersastz Marshallie
+job-name-marshal = Marshallie
 
 #misc
 
