@@ -806,8 +806,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 12
-    intensitySlope: 8
+    maxIntensity: 19
+    intensitySlope: 20
     totalIntensity: 80
     maxTileBreak: 4
   - type: PointLight
@@ -818,7 +818,7 @@
 
 - type: entity
   id: SwarmerRocketCartridge
-  name: 38mm 'Swarmer' rocket
+  name: 40mm 'Swarmer' rocket
   parent: BaseItem
   description: A *currently* disarmed rocket.
   components:
@@ -834,7 +834,36 @@
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals
+  - type: Tag
+    tags:
+      - SwarmRocket
   - type: SpaceGarbage
+
+- type: entity
+  id: MagazineSwarmer
+  name: "40mm 'Swarmer' minirocket bundle"
+  parent: BaseMagazineLightRifle
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - SwarmRocket
+    proto: SwarmerRocketCartridge
+    capacity: 60
+  - type: Item
+  - type: Sprite
+    sprite: _Crescent/Ammunition/coil.rsi
+    state: base
+  - type: Tag
+    tags:
+      - SwarmRocketBox
+
+- type: Tag
+  id: SwarmRocket
+
+- type: Tag
+  id: SwarmRocketBox
 
 # long gun
 
@@ -854,7 +883,7 @@
   - type: TimedDespawn
     lifetime: 80
   - type: Sprite
-    sprite: _NF/Objects/SpaceArtillery/630_highexplosive_shell_casing.rsi
+    sprite: _NF/Objects/SpaceArtillery/coilcasing.rsi
     layers:
       - state: base-projectile
   - type: ExplodeOnTrigger
@@ -869,26 +898,6 @@
     color: orange
     energy: 0.5
   - type: ProjectileIFF
-
-- type: entity
-  id: LonggunCartridge
-  name: 80mm coilgun shell
-  parent: BaseItem
-  description: A high-explosive cannon shell for ship weapons.
-  components:
-  - type: Item
-    size: Normal
-  - type: CartridgeAmmo
-    proto: LonggunShell
-    deleteOnSpawn: true
-  - type: Sprite
-    sprite: _NF/Objects/SpaceArtillery/630_highexplosive_shell_casing.rsi
-    layers:
-    - state: base
-      map: ["enum.AmmoVisualLayers.Base"]
-  - type: Appearance
-  - type: SpentAmmoVisuals
-  - type: SpaceGarbage
 
 #missile turret
 
@@ -924,7 +933,7 @@
         Structural: 70
         Blunt: 40
   - type: TimedDespawn
-    lifetime: 200
+    lifetime: 90
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/smartbomb.rsi
     layers:
@@ -949,6 +958,26 @@
 #needler
 
 - type: entity
+  id: MagazineNeedler
+  name: "60mm 'Needler' heavygun magazine"
+  parent: BaseMagazineLightRifle
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - NeedlerMag
+    proto: Needler
+    capacity: 120
+  - type: Item
+  - type: Sprite
+    sprite: _Crescent/Ammunition/needler.rsi
+    state: base
+  - type: Tag
+    tags:
+      - NeedlerMag
+
+- type: entity
   id: NeedlerBase
   name: shell
   parent: BaseBulletTrigger
@@ -960,7 +989,7 @@
         Structural: 80
         Blunt: 40
   - type: TimedDespawn
-    lifetime: 200
+    lifetime: 30
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/needler.rsi
     layers:
@@ -968,10 +997,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 15
-    intensitySlope: 15
+    maxIntensity: 22
+    intensitySlope: 25
     totalIntensity: 75
-    maxTileBreak: 4
+    maxTileBreak: 6
   - type: PointLight
     radius: 3.5
     color: orange
@@ -987,6 +1016,9 @@
   components:
   - type: Item
     size: Normal
+  - type: Tag
+    tags:
+      - NeedlerShell
   - type: CartridgeAmmo
     proto: NeedlerBase
     deleteOnSpawn: true
@@ -998,3 +1030,9 @@
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: SpaceGarbage
+
+- type: Tag
+  id: NeedlerShell
+
+- type: Tag
+  id: NeedlerMag

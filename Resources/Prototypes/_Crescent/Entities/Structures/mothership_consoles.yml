@@ -30,6 +30,9 @@
     - Corvax
     - Wolf
     - Hyena
+    - Reaver
+    - Piranha
+    - Scuttlefish
 
 - type: entity
   id: CountsmanMothershipComputer
