@@ -13,4 +13,5 @@ public sealed partial class TurretIFFComponent : Component
     /// </summary>
     public static readonly Color DefaultColor = Color.DarkOrange;
     public static readonly Color DefaultSelfColor = Color.Yellow;
+    public static readonly Color DefaultControlledColor = Color.YellowGreen;
 }

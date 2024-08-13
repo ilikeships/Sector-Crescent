@@ -22,6 +22,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
 using Content.Server.DeviceLinking.Systems;
+using Content.Server.PointCannons;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -139,7 +140,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     public void RefreshIFFState()
     {
-        var turrets = GetAllTurrets();
         var query = AllEntityQuery<ShuttleConsoleComponent>();
         while (query.MoveNext(out var uid, out var console))
         {
@@ -148,7 +148,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 continue;
             }
 
-            console.LastUpdatedState.IFFState.Turrets = turrets;
+            console.LastUpdatedState.IFFState.Turrets = GetAllTurrets(uid);
         }
     }
 
@@ -503,7 +503,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     public IFFInterfaceState GetIFFState(EntityUid consoleUid, TransformComponent? consoleTransform, Dictionary<NetEntity, List<TurretState>>? turrets)
     {
         var projectiles = GetProjectilesInRange(consoleUid, consoleTransform);
-        turrets ??= GetAllTurrets();
+        turrets ??= GetAllTurrets(consoleUid);
         return new IFFInterfaceState(projectiles, turrets);
     }
 
@@ -534,10 +534,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         return projectiles;
     }
 
-    public Dictionary<NetEntity, List<TurretState>> GetAllTurrets()
+    public Dictionary<NetEntity, List<TurretState>> GetAllTurrets(EntityUid consoleUid)
     {
-        var turrets = new Dictionary<NetEntity, List<TurretState>>();
+        List<EntityUid>? controlledUids = null;
+        if (TryComp<TargetingConsoleComponent>(consoleUid, out var targCon))
+            controlledUids = targCon.CurrentGroup;
 
+        var turrets = new Dictionary<NetEntity, List<TurretState>>();
         var query = EntityQueryEnumerator<TurretIFFComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var turretIFF, out var transform))
         {
@@ -545,7 +548,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 continue;
 
             var netEntity = GetNetEntity(transform.GridUid.Value);
-            var turret = new TurretState { Entity = GetNetEntity(uid), Coordinates = GetNetCoordinates(transform.Coordinates) };
+            var turret = new TurretState
+            {
+                IsControlled = controlledUids == null || controlledUids.Contains(uid),
+                Coordinates = GetNetCoordinates(transform.Coordinates)
+            };
 
             if (turrets.TryGetValue(netEntity, out var gridTurrets))
             {

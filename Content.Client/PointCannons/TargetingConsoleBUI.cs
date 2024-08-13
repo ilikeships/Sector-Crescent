@@ -3,8 +3,9 @@ using Content.Shared.PointCannons;
 using Timer = Robust.Shared.Timing.Timer;
 using JetBrains.Annotations;
 using System.Numerics;
-using Robust.Shared.Map;
 using Robust.Client.GameObjects;
+using Content.Shared.Weapons.Ranged.Events;
+using OpenToolkit.GraphicsLibraryFramework;
 
 namespace Content.Client.PointCannons;
 
@@ -12,33 +13,47 @@ namespace Content.Client.PointCannons;
 public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
 {
     private IEntityManager _entMan;
-    private IMapManager _mapMan;
     private TransformSystem _formSys;
 
     private TargetingConsoleWindow? _window;
     private bool _isFiring;
     private Vector2 _coords;
     private CancellationTokenSource _updTimerTok = new();
-    private TargetingConsoleComponent _console;
+    private List<NetEntity>? _controlled;
 
     public TargetingConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         _entMan = IoCManager.Resolve<IEntityManager>();
-        _mapMan = IoCManager.Resolve<IMapManager>();
         _formSys = _entMan.System<TransformSystem>();
         Timer.SpawnRepeating(100, Update, _updTimerTok.Token);
-        _console = _entMan.GetComponent<TargetingConsoleComponent>(owner);
     }
 
     private void Update()
     {
         if (_isFiring)
             SendMessage(new TargetingConsoleFireMessage(_coords));
+
+        if (_controlled == null || _window == null)
+            return;
+
+        var query = _entMan.EntityQueryEnumerator<PointCannonComponent>();
+        List<(int, int)> ammoValues = new();
+        while (query.MoveNext(out var uid, out var _))
+        {
+            if (_controlled.Contains(_entMan.GetNetEntity(uid)))
+            {
+                GetAmmoCountEvent ammoEv = new();
+                _entMan.EventBus.RaiseLocalEvent(uid, ref ammoEv);
+                ammoValues.Add((ammoEv.Count, ammoEv.Capacity));
+            }
+        }
+        _window.UpdateAmmoStatus(ammoValues);
     }
 
     protected override void Open()
     {
         base.Open();
+
         _window = new TargetingConsoleWindow();
         _window.OpenCentered();
         _window.OnClose += Close;
@@ -83,6 +98,7 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
         if (state is not TargetingConsoleBoundUserInterfaceState consoleState)
             return;
 
-        _window?.UpdateState(consoleState, _console);
+        _controlled = consoleState.ControlledCannons;
+        _window?.UpdateState(consoleState);
     }
 }
