@@ -8,13 +8,18 @@ namespace Content.Shared.PointCannons;
 [Serializable, NetSerializable]
 public sealed class TargetingConsoleBoundUserInterfaceState : BoundUserInterfaceState
 {
-    public NavInterfaceState? NavState;
-    public IFFInterfaceState? IFFState;
+    public NavInterfaceState NavState;
+    public IFFInterfaceState IFFState;
+    public List<string>? CannonGroups;
 
-    public TargetingConsoleBoundUserInterfaceState(NavInterfaceState? navState, IFFInterfaceState? iffState)
+    public TargetingConsoleBoundUserInterfaceState(
+        NavInterfaceState navState,
+        IFFInterfaceState iffState,
+        List<string>? groups)
     {
         NavState = navState;
         IFFState = iffState;
+        CannonGroups = groups;
     }
 }
 

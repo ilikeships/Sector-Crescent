@@ -1,15 +1,10 @@
 using System.Numerics;
-using Content.Server.UserInterface;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
 using Content.Shared.PowerCell;
-using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Content.Shared.PowerCell;
-using Content.Shared.Movement.Components;
-using Content.Shared.Crescent.Radar;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -31,7 +26,6 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
 
     public void RefreshIFFState()
     {
-        var turrets = _console.GetAllTurrets();
         var query = AllEntityQuery<RadarConsoleComponent>();
         while (query.MoveNext(out var uid, out var console))
         {
@@ -40,7 +34,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
                 continue;
             }
 
-            console.LastUpdatedState.IFFState.Turrets = turrets;
+            console.LastUpdatedState.IFFState.Turrets = _console.GetAllTurrets(uid);
         }
     }
 

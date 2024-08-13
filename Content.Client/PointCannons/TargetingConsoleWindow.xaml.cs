@@ -13,7 +13,6 @@ namespace Content.Client.PointCannons;
 [GenerateTypedNameReferences]
 public sealed partial class TargetingConsoleWindow : FancyWindow, IComputerWindow<ShuttleBoundUserInterfaceState>
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
     public ShuttleNavControl Radar => NavRadar;
     public Action<string>? OnCannonGroupChange;
 
@@ -21,33 +20,28 @@ public sealed partial class TargetingConsoleWindow : FancyWindow, IComputerWindo
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        NavRadar.ControlledTurrets = [];
     }
 
-    public void UpdateState(TargetingConsoleBoundUserInterfaceState state, TargetingConsoleComponent console)
+    public void UpdateState(TargetingConsoleBoundUserInterfaceState state)
     {
-        if (state.NavState != null && state.IFFState != null)
-        {
-            NavRadar.UpdateState(state.NavState);
-            NavRadar.UpdateState(state.IFFState);
-        }
+        NavRadar.UpdateState(state.NavState);
+        NavRadar.UpdateState(state.IFFState);
 
-        UpdateGroupSelector(console);
+        if (state.CannonGroups != null)
+            UpdateGroupSelector(state.CannonGroups);
     }
 
-    public void UpdateGroupSelector(TargetingConsoleComponent console)
+    public void UpdateGroupSelector(List<string> groups)
     {
         CannonGroupSelectorBox.DisposeAllChildren();
 
-        foreach (string groupName in console.CannonGroups.Keys.ToList())
+        foreach (string groupName in groups)
         {
             Button groupButton = new();
             groupButton.Text = string.Concat(char.ToUpper(groupName[0]), groupName.Substring(1)); //capitalized name
             groupButton.OnPressed += (_) =>
             {
                 OnCannonGroupChange?.Invoke(groupName);
-                console.CurrentGroupName = groupName;
-                NavRadar.ControlledTurrets = console.CurrentGroup;
             };
             CannonGroupSelectorBox.AddChild(groupButton);
         }
