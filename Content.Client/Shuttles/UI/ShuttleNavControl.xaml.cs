@@ -14,7 +14,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Client.GameObjects;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -45,11 +44,6 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     ///   If present, called for every IFF. Must determine if it should or should not be shown.
     /// </summary>
     public Func<EntityUid, MapGridComponent, IFFComponent?, bool>? IFFFilter { get; set; } = null;
-
-    /// <summary>
-    /// If set, turrets which aren't in this list will be drawn with default color even if they are on our grid
-    /// </summary>
-    public List<NetEntity>? ControlledTurrets; //todo: maybe it's better to move this to TurretState as a bool
 
     public Action<EntityCoordinates>? OnRadarClick;
     public Action? OnRadarRelease;
@@ -448,9 +442,19 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                     verts[i] = ScalePosition(vert);
                 }
 
-                Color color = TurretIFFComponent.DefaultColor;
-                if (isSelf && (ControlledTurrets == null || ControlledTurrets.Contains(turret.Entity)))
+                Color color;
+                if (!isSelf)
+                {
+                    color = TurretIFFComponent.DefaultColor;
+                }
+                else if (turret.IsControlled)
+                {
+                    color = TurretIFFComponent.DefaultControlledColor;
+                }
+                else
+                {
                     color = TurretIFFComponent.DefaultSelfColor;
+                }
 
                 handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, color);
             }

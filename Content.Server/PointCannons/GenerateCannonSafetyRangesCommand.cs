@@ -30,7 +30,7 @@ public sealed class GenerateCannonSafetyRangesCommand : IConsoleCommand
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            var query = entMan.EntityQueryEnumerator<TransformComponent, GunComponent, PointCannonComponent>();
+            var query = entMan.AllEntityQueryEnumerator<TransformComponent, GunComponent, PointCannonComponent>();
             while (query.MoveNext(out var uid, out var form, out var gun, out var cannon))
             {
                 if (form.ParentUid == gridUid)

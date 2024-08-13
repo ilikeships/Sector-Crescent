@@ -55,18 +55,21 @@ public sealed class SafetyRangesOverlay : Overlay
     {
         foreach ((var form, var cannon) in _entMan.EntityQuery<TransformComponent, PointCannonComponent>(true))
         {
-            Angle worldRot = _formSys.GetWorldRotation(form.ParentUid);
+            if (form.GridUid == null)
+                continue;
+
             Vector2 worldPos = _formSys.GetWorldPosition(form);
+            Angle worldRot = _formSys.GetWorldRotation(form.GridUid.Value);
 
             foreach ((Angle start, Angle width) in cannon.ObstructedRanges)
             {
-                Vector2 startVec = worldPos + (start + worldRot).ToVec() * 5;
-                Vector2 endVec = worldPos + (start + width + worldRot).ToVec() * 5;
+                Vector2 startVec = worldPos + (start + worldRot).ToVec() * 3;
+                Vector2 endVec = worldPos + (start + width + worldRot).ToVec() * 3;
 
                 args.WorldHandle.DrawCircle(worldPos, 0.1f, Color.Yellow);
                 args.WorldHandle.DrawLine(worldPos, startVec, Color.Red);
                 args.WorldHandle.DrawLine(worldPos, endVec, Color.Blue);
-                args.WorldHandle.DrawLine(worldPos, worldPos + (start + worldRot + width / 2).ToVec() * 5, Color.Yellow);
+                args.WorldHandle.DrawLine(worldPos, worldPos + (start + worldRot + width / 2).ToVec() * 3, Color.Yellow);
             }
         }
     }

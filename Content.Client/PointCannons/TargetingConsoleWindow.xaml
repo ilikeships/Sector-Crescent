@@ -14,7 +14,18 @@
                     Margin="5 5 5 5"
                     Orientation="Vertical">
             
-            <!-- todo: ammo status -->
+            <!-- Ammo status -->
+            <BoxContainer HorizontalAlignment="Left"
+                        MinWidth="295"
+                        MaxWidth="295"
+                        MinHeight="395"
+                        MaxHeight="395"
+                        Orientation="Vertical">
+                <controls:StripeBack>
+                    <Label Text="Ammo status" HorizontalAlignment="Center" />
+                </controls:StripeBack>
+                <BoxContainer Name="AmmoStatusBox" Orientation="Vertical"></BoxContainer>
+            </BoxContainer>
 
             <!-- Cannon groups -->
             <BoxContainer HorizontalAlignment="Left"
