@@ -14969,13 +14969,13 @@ entities:
     - type: Transform
       pos: 2.5,-30.5
       parent: 2
-- proto: JackalCarrierMothershipComputer
+- proto: JackalMothershipComputer
   entities:
   - uid: 3666
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: -3.5,-46.5
+      pos: -3.5,-47.5
       parent: 2
     - type: ContainerContainer
       containers:
@@ -14991,7 +14991,7 @@ entities:
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: -3.5,-47.5
+      pos: -3.5,-46.5
       parent: 2
     - type: ContainerContainer
       containers:
@@ -15757,7 +15757,7 @@ entities:
       pos: 13.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 197000
+      startingCharge: 196500
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -15787,7 +15787,7 @@ entities:
       pos: -12.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 197000
+      startingCharge: 196500
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -16222,7 +16222,7 @@ entities:
       pos: 17.5,-17.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 1387.5822264
+      nextDrop: 5373.6503111
 - proto: PosterContrabandInterdyne
   entities:
   - uid: 1235
@@ -20760,7 +20760,7 @@ entities:
       pos: 18.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 955000
+      startingCharge: 952000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20793,7 +20793,7 @@ entities:
       pos: 20.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 955000
+      startingCharge: 952000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20826,7 +20826,7 @@ entities:
       pos: -20.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 955000
+      startingCharge: 952000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20858,7 +20858,7 @@ entities:
       pos: -22.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 955000
+      startingCharge: 952000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20889,7 +20889,7 @@ entities:
       pos: 24.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 955000
+      startingCharge: 952000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -24073,6 +24073,20 @@ entities:
     - type: Transform
       pos: 24.5,-60.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24082,6 +24096,20 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -10.5,-39.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24090,6 +24118,20 @@ entities:
     - type: Transform
       pos: -23.5,-60.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24099,6 +24141,22 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 11.5,-45.5
       parent: 2
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24107,6 +24165,22 @@ entities:
     - type: Transform
       pos: 19.5,-23.5
       parent: 2
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24118,6 +24192,22 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -9.5,-3.5
       parent: 2
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24129,6 +24219,20 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -16.5,-35.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24139,6 +24243,20 @@ entities:
     - type: Transform
       pos: 11.5,-63.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74
@@ -24149,6 +24267,20 @@ entities:
     - type: Transform
       pos: -10.5,-63.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 74

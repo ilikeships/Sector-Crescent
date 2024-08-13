@@ -31,13 +31,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -185,6 +178,7 @@
   name: ballistic autogun
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -200,9 +194,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/vulcangatling.rsi
       drawdepth: Mobs
@@ -210,13 +201,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -245,15 +229,35 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 6
+      fireRate: 9.6
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
     # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
-      proto: CartridgeVulcanStandardTurret
-      capacity: 25000
+    - type: ChamberMagazineAmmoProvider
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazineVulcan
+          insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - VulcanCartridgeBox
+        gun_chamber:
+          name: Chamber
+          startingItem: CartridgeVulcanStandard
+          priority: 1
+          whitelist:
+            tags:
+              - VulcanCartridgeBox
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
     - type: HTN
       rootTask:
         task: PDTTurretCompound #npcroot
@@ -378,9 +382,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/swarmermissile.rsi
       drawdepth: Mobs
@@ -388,13 +389,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: TurretIFF
@@ -430,22 +424,29 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
-    # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
-      proto: SwarmerRocketCartridge
-      capacity: 25000
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          2.141
-        RangedRange: !type:Single
-          85
-        VisionRadius: !type:Single
-          85
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
+    - type: ChamberMagazineAmmoProvider
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazineSwarmer
+          insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - SwarmRocketBox
+        gun_chamber:
+          name: Chamber
+          startingItem: SwarmerRocketCartridge
+          priority: 1
+          whitelist:
+            tags:
+              - SwarmRocket
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -559,9 +560,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/longgun.rsi
       drawdepth: Mobs
@@ -569,13 +567,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -605,15 +596,22 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 0.4
+      fireRate: 0.34
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
-    # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
-      proto: LonggunCartridge
-      capacity: 25000
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+        params:
+          pitch: 1.2
+          variation: 0.08
+    - type: BasicEntityAmmoProvider
+      proto: LonggunShell
+      capacity: 40
+      count: 10
     - type: HTN
       rootTask:
         task: PDTTurretCompound #npcroot
@@ -738,9 +736,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/heavymortar.rsi
       drawdepth: Mobs
@@ -748,13 +743,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -789,22 +777,29 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
-    # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
-      proto: CartridgeMortarStandardTurret
-      capacity: 25000
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          1.841
-        RangedRange: !type:Single
-          230
-        VisionRadius: !type:Single
-          230
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
+    - type: ChamberMagazineAmmoProvider
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazineNeedler
+          insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - NeedlerMag
+        gun_chamber:
+          name: Chamber
+          startingItem: Needler
+          priority: 1
+          whitelist:
+            tags:
+              - NeedlerShell
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -927,13 +922,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -968,22 +956,17 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/lasergatling.ogg
-    # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 2
+      rechargeSound:
+        path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+        params:
+          pitch: 1.2
+          variation: 0.08
+    - type: BasicEntityAmmoProvider
       proto: CartridgePlasmaStandardTurret
-      capacity: 99999
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          2.841
-        RangedRange: !type:Single
-          125
-        VisionRadius: !type:Single
-          125
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
+      capacity: 80
+      count: 10
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -1096,6 +1079,7 @@
   name: smartbomb launcher
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -1120,13 +1104,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: CombatMode
       toggleMouseRotator: false
     - type: Damageable
@@ -1288,9 +1265,6 @@
             - MachineMask
           layer:
             - MachineLayer
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/needler.rsi
       drawdepth: Mobs
@@ -1333,22 +1307,29 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
-    # TODO: Power ammo provider?
-    - type: BallisticAmmoProvider
-      proto: Needler
-      capacity: 99999
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          2.241
-        RangedRange: !type:Single
-          150
-        VisionRadius: !type:Single
-          150
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
+    - type: ChamberMagazineAmmoProvider
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazineNeedler
+          insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - NeedlerMag
+        gun_chamber:
+          name: Chamber
+          startingItem: Needler
+          priority: 1
+          whitelist:
+            tags:
+              - NeedlerShell
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -1467,13 +1448,6 @@
         - state: syndie_lethal
     - type: WorldLoader
       radius: 256
-    - type: InteractionPopup
-      interactDelay: 0.2
-      successChance: 0.8
-      interactSuccessString: petting-success-generic
-      interactFailureString: petting-failure-generic
-      interactSuccessSound:
-        path: /Audio/Effects/double_beep.ogg
     - type: Damageable
       damageContainer: Inorganic
     - type: Destructible

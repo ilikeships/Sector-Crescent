@@ -122,31 +122,37 @@
 
 # heavy mortar bullet
 
+- type: Tag
+  id: MortarShell
+
+- type: Tag
+  id: MortarBox
+
 - type: entity
   id: BulletMachineGunMortarTurret
   name: 90mm heavy mortar shell
   parent: BaseBulletTrigger
   noSpawn: true
   components:
-  - type: Projectile
   - type: ProjectileIFF
+  - type: Projectile
     damage:
       types:
-        Structural: 75
+        Structural: 250
         Piercing: 25
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 25
-    intensitySlope: 35
-    totalIntensity: 40
-    maxTileBreak: 5
+    maxIntensity: 45
+    intensitySlope: 55
+    totalIntensity: 80
+    maxTileBreak: 12
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 150
+    lifetime: 90
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
     layers:
@@ -154,7 +160,7 @@
 
 - type: entity
   id: CartridgeMortarStandardTurret
-  name: 80mm surplus shell
+  name: 90mm surplus shell
   parent: BaseItem
   description: Ammunition for turrets.
   components:
@@ -171,6 +177,29 @@
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: SpaceGarbage
+  - type: Tag
+    tags:
+      - MortarShell
+
+- type: entity
+  id: MagazineMortar
+  name: "90mm automortar shellbox"
+  parent: BaseMagazineLightRifle
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - MortarShell
+    proto: BulletMachineGunMortarTurret
+    capacity: 40
+  - type: Item
+  - type: Sprite
+    sprite: _Crescent/Ammunition/mortar.rsi
+    state: base
+  - type: Tag
+    tags:
+      - MortarBox
 
 # TurretLaserProjectile
 
