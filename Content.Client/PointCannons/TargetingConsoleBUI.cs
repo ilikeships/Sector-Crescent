@@ -4,6 +4,8 @@ using Timer = Robust.Shared.Timing.Timer;
 using JetBrains.Annotations;
 using System.Numerics;
 using Robust.Client.GameObjects;
+using Content.Shared.Weapons.Ranged.Events;
+using OpenToolkit.GraphicsLibraryFramework;
 
 namespace Content.Client.PointCannons;
 
@@ -17,6 +19,7 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
     private bool _isFiring;
     private Vector2 _coords;
     private CancellationTokenSource _updTimerTok = new();
+    private List<NetEntity>? _controlled;
 
     public TargetingConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -29,6 +32,22 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
     {
         if (_isFiring)
             SendMessage(new TargetingConsoleFireMessage(_coords));
+
+        if (_controlled == null || _window == null)
+            return;
+
+        var query = _entMan.EntityQueryEnumerator<PointCannonComponent>();
+        List<(int, int)> ammoValues = new();
+        while (query.MoveNext(out var uid, out var _))
+        {
+            if (_controlled.Contains(_entMan.GetNetEntity(uid)))
+            {
+                GetAmmoCountEvent ammoEv = new();
+                _entMan.EventBus.RaiseLocalEvent(uid, ref ammoEv);
+                ammoValues.Add((ammoEv.Count, ammoEv.Capacity));
+            }
+        }
+        _window.UpdateAmmoStatus(ammoValues);
     }
 
     protected override void Open()
@@ -79,6 +98,7 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
         if (state is not TargetingConsoleBoundUserInterfaceState consoleState)
             return;
 
+        _controlled = consoleState.ControlledCannons;
         _window?.UpdateState(consoleState);
     }
 }

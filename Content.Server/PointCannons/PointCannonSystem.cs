@@ -148,7 +148,8 @@ public sealed class PointCannonSystem : EntitySystem
         TargetingConsoleBoundUserInterfaceState consoleState = new(
             navState,
             iffState,
-            console.RegenerateCannons ? console.CannonGroups.Keys.ToList() : null);
+            console.RegenerateCannons ? console.CannonGroups.Keys.ToList() : null,
+            GetNetEntityList(console.CurrentGroup));
 
         console.RegenerateCannons = false;
         console.PrevState = consoleState;

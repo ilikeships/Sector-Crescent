@@ -11,15 +11,18 @@ public sealed class TargetingConsoleBoundUserInterfaceState : BoundUserInterface
     public NavInterfaceState NavState;
     public IFFInterfaceState IFFState;
     public List<string>? CannonGroups;
+    public List<NetEntity>? ControlledCannons;
 
     public TargetingConsoleBoundUserInterfaceState(
         NavInterfaceState navState,
         IFFInterfaceState iffState,
-        List<string>? groups)
+        List<string>? groups,
+        List<NetEntity>? controlled)
     {
         NavState = navState;
         IFFState = iffState;
         CannonGroups = groups;
+        ControlledCannons = controlled;
     }
 }
 
