@@ -33,14 +33,20 @@ public sealed class PointCannonSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<TargetingConsoleComponent, ComponentInit>(OnConsoleInit);
+        SubscribeLocalEvent<TargetingConsoleComponent, BoundUIOpenedEvent>(OnConsoleOpened);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleFireMessage>(OnConsoleFire);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleGroupChangedMessage>(OnConsoleGroupChanged);
 
-        SubscribeLocalEvent<PointCannonComponent, ComponentShutdown>(OnCannonShutdown);
+        SubscribeLocalEvent<PointCannonComponent, EntityTerminatingEvent>(OnCannonTerminating);
 
         SubscribeLocalEvent<PointCannonLinkToolComponent, UseInHandEvent>(OnLinkToolHandUse);
         SubscribeLocalEvent<PointCannonComponent, InteractUsingEvent>(OnLinkToolUse);
+    }
+
+    private void OnConsoleOpened(Entity<TargetingConsoleComponent> uid, ref BoundUIOpenedEvent args)
+    {
+        uid.Comp.RegenerateCannons = true;
+        //UpdateConsoleState(uid, uid.Comp);
     }
 
     public override void Update(float frameTime)
@@ -56,12 +62,7 @@ public sealed class PointCannonSystem : EntitySystem
         }
     }
 
-    private void OnConsoleInit(Entity<TargetingConsoleComponent> uid, ref ComponentInit args)
-    {
-        UpdateConsoleState(uid, uid.Comp);
-    }
-
-    private void OnCannonShutdown(Entity<PointCannonComponent> uid, ref ComponentShutdown args)
+    private void OnCannonTerminating(Entity<PointCannonComponent> uid, ref EntityTerminatingEvent args)
     {
         EntityUid? gridUid = Transform(uid).GridUid;
         if (gridUid == null)
@@ -125,8 +126,12 @@ public sealed class PointCannonSystem : EntitySystem
         foreach (string group in console.CannonGroups.Keys.ToList())
         {
             console.CannonGroups[group].Remove(cannonUid);
-            if (console.CannonGroups[group].Count == 0)
+            if (console.CannonGroups[group].Count == 0 && console.CurrentGroupName != "all")
+            {
                 console.CannonGroups.Remove(group);
+                if (console.CurrentGroupName == group)
+                    console.CurrentGroupName = "all";
+            }
         }
 
         console.RegenerateCannons = true;

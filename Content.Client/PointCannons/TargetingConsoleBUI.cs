@@ -34,6 +34,7 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
     protected override void Open()
     {
         base.Open();
+
         _window = new TargetingConsoleWindow();
         _window.OpenCentered();
         _window.OnClose += Close;
