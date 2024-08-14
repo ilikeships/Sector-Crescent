@@ -6,6 +6,7 @@
   name: ballistic turret
   abstract: true
   components:
+    - type: PointCannon
     - type: Clickable
     - type: InteractionOutline
     - type: Actions
@@ -68,7 +69,7 @@
     # TODO: Power ammo provider?
     - type: BallisticAmmoProvider
       proto: PDTBulletCase
-      capacity: 25000
+      capacity: 5000
     - type: HTN
       rootTask:
         task: PDTTurretCompound #turret_root
@@ -235,7 +236,7 @@
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
     # TODO: Power ammo provider?
-    - type: ChamberMagazineAmmoProvider
+    - type: MagazineAmmoProvider
     - type: ItemSlots
       slots:
         gun_magazine:
@@ -424,7 +425,7 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
-    - type: ChamberMagazineAmmoProvider
+    - type: MagazineAmmoProvider
     - type: ItemSlots
       slots:
         gun_magazine:
@@ -772,30 +773,31 @@
                   min: 3
                   max: 5
     - type: Gun
+      projectileSpeed: 90
       fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
-    - type: ChamberMagazineAmmoProvider
+    - type: MagazineAmmoProvider
     - type: ItemSlots
       slots:
         gun_magazine:
           name: Magazine
-          startingItem: MagazineNeedler
+          startingItem: MagazineMortar
           insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
           ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
           priority: 2
           whitelist:
             tags:
-              - NeedlerMag
+              - MortarBox
         gun_chamber:
           name: Chamber
-          startingItem: Needler
+          startingItem: CartridgeMortarStandardTurret
           priority: 1
           whitelist:
             tags:
-              - NeedlerShell
+              - MortarShell
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1133,7 +1135,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      projectileSpeed: 13
+      projectileSpeed: 14
       fireRate: 0.09
       selectedMode: FullAuto
       availableModes:
@@ -1307,7 +1309,7 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
-    - type: ChamberMagazineAmmoProvider
+    - type: MagazineAmmoProvider
     - type: ItemSlots
       slots:
         gun_magazine:
