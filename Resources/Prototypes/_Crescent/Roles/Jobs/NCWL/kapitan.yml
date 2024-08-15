@@ -4,8 +4,9 @@
   description: job-description-kapitan
   playTimeTracker: JobKapitanNCWL
   requirements:
+    - !type:WhitelistRequirement
     - !type:OverallPlaytimeRequirement
-      time: 16000
+      time: 26000
   weight: 25
   startingGear: KapitanGear
   alwaysUseSpawner: true

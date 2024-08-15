@@ -394,6 +394,9 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Cherenzikov
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 1.2
+      eMPMultiplier: 0.7
 - proto: AirAlarm
   entities:
   - uid: 599
@@ -1912,6 +1915,12 @@ entities:
     - type: Transform
       pos: -2.90796,-7.478645
       parent: 1
+  - uid: 614
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5509555,5.6858344
+      parent: 1
 - proto: ChairPilotSeat
   entities:
   - uid: 221
@@ -2086,14 +2095,6 @@ entities:
         216:
         - Group4: On
         - Group5: Off
-- proto: ComputerStationRecords
-  entities:
-  - uid: 220
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,6.5
-      parent: 1
 - proto: ComputerTabletopAdvancedRadar
   entities:
   - uid: 311
@@ -2102,7 +2103,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,10.5
       parent: 1
-- proto: ComputerTabletopPowerMonitoring
+- proto: ComputerTabletopIFF
   entities:
   - uid: 253
     components:
@@ -2110,6 +2111,39 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.5,-8.5
       parent: 1
+- proto: ComputerTargeting
+  entities:
+  - uid: 220
+    components:
+    - type: MetaData
+      desc: Controls the shuttle's armaments.
+      name: gunnery console
+    - type: Transform
+      pos: 2.5,6.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 210
+        - 209
+        - 208
+        - 212
+        - 211
+        - 215
+        - 217
+        - 216
+        - 207
+        ballistic:
+        - 210
+        - 209
+        - 208
+        - 212
+        - 211
+        - 215
+        - 217
+        - 216
+        missile:
+        - 207
 - proto: CrateEngineeringAMEJar
   entities:
   - uid: 266
@@ -2988,7 +3022,7 @@ entities:
       pos: 1.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 213
@@ -4035,6 +4069,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.5,9.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 3.994533262085685 rad
     - type: DeviceLinkSink
       links:
       - 213
@@ -4044,6 +4081,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,-2.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.518659635244148 rad: 4.08384726365765 rad
     - type: DeviceLinkSink
       links:
       - 213
@@ -4053,6 +4093,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,-2.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.05965843709965 rad
     - type: DeviceLinkSink
       links:
       - 213
@@ -4061,6 +4104,9 @@ entities:
     - type: Transform
       pos: -2.5,-11.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.912213505522838 rad: 4.40268237376365 rad
     - type: DeviceLinkSink
       links:
       - 213
@@ -4069,6 +4115,9 @@ entities:
     - type: Transform
       pos: 1.5,-11.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.3930673886624785 rad: 4.40268237376365 rad
     - type: DeviceLinkSink
       links:
       - 213
@@ -4080,6 +4129,23 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,12.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 2.4237369352907883 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 213
@@ -4091,6 +4157,23 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.5,8.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.251474735072685 rad: 2.887384564252629 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 213
@@ -4102,6 +4185,23 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,6.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 3.994533262085685 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 213
@@ -4113,6 +4213,23 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 6.5,-4.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.622678443234531 rad: 3.9798284556672665 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: DeviceLinkSink
       links:
       - 213

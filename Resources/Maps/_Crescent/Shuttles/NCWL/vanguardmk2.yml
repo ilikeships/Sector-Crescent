@@ -678,6 +678,14 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,-8.5
       parent: 1
+- proto: ComputerIFF
+  entities:
+  - uid: 221
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,-7.5
+      parent: 1
 - proto: ComputerShuttle
   entities:
   - uid: 20
@@ -861,7 +869,7 @@ entities:
       pos: 3.5,-1.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -896,7 +904,7 @@ entities:
       pos: -2.5,-1.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

@@ -3,6 +3,9 @@
   name: job-name-artificer
   description: job-description-artificer
   playTimeTracker: JobArtificerNCWL
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 20000
   weight: 20
   startingGear: ArtificerGear
   alwaysUseSpawner: true

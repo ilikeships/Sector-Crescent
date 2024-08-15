@@ -3,6 +3,9 @@
   name: job-name-sanitar
   description: job-description-sanitar
   playTimeTracker: JobSanitarNCWL
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 20000
   weight: 20
   startingGear: SanitarGear
   alwaysUseSpawner: true
