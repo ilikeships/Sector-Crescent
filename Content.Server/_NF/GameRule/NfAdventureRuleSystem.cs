@@ -119,10 +119,11 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
         var refuge = "/Maps/_Crescent/Stations/refuge.yml";
+        var clementine = "/Maps/_Crescent/Stations/clementine.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         // var arena = "/Maps/_NF/POI/arena.yml";
-       // var cove = "/Maps/_NF/POI/cove.yml";
-       // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
+        // var cove = "/Maps/_NF/POI/cove.yml";
+        // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
         var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
@@ -328,6 +329,22 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
         }
 
+        if (_map.TryLoad(mapId, clementine, out var depotUid12s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(7000f, 6000f)
+        }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Clementine", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Clementine"], depotUid12s);
+            }
+
+            var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
+            _meta.SetEntityName(depotUid12s[0], "NCWL Dear Clementine", meta);
+            _shuttle.SetIFFColor(depotUid12s[0], factionColor);
+            _shuttle.AddIFFFlag(depotUid12s[0], IFFFlags.HideLabel);
+        }
+
         // if (_map.TryLoad(mapId, lodge, out var lodgeUids, new MapLoadOptions
         //     {
         //         Offset = _random.NextVector2(1650f, 3400f)
@@ -363,15 +380,15 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.SetIFFColor(griftyUids[0], factionColor);
         // }
 
-       // if (_map.TryLoad(mapId, courthouse, out var depotUid8s, new MapLoadOptions
-       //     {
-       //         Offset = _random.NextVector2(6150f, 7050f)
-       //     }))
-       // {
-       //     var meta = EnsureComp<MetaDataComponent>(depotUid8s[0]);
-       //     _meta.SetEntityName(depotUid8s[0], "Kal Surezai", meta);
-       //     _shuttle.SetIFFColor(depotUid8s[0], factionColor);
-       // }
+        // if (_map.TryLoad(mapId, courthouse, out var depotUid8s, new MapLoadOptions
+        //     {
+        //         Offset = _random.NextVector2(6150f, 7050f)
+        //     }))
+        // {
+        //     var meta = EnsureComp<MetaDataComponent>(depotUid8s[0]);
+        //     _meta.SetEntityName(depotUid8s[0], "Kal Surezai", meta);
+        //     _shuttle.SetIFFColor(depotUid8s[0], factionColor);
+        // }
 
         if (_map.TryLoad(mapId, lab, out var labUids, new MapLoadOptions
             {

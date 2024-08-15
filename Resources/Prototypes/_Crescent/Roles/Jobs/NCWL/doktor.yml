@@ -3,6 +3,9 @@
   name: job-name-doktor
   description: job-description-doktor
   playTimeTracker: JobDoktorNCWL
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 20000
   weight: 22
   startingGear: DoktorGear
   alwaysUseSpawner: true
