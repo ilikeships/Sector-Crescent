@@ -19,6 +19,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.515625,-0.46875
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -171,6 +172,9 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Imparator
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 1.2
+      eMPMultiplier: 0.7
 - proto: AirAlarm
   entities:
   - uid: 110
@@ -198,7 +202,7 @@ entities:
       pos: -1.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -194.91718
+      secondsUntilStateChange: -223.08246
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1199,7 +1203,7 @@ entities:
       pos: 0.5,-1.5
       parent: 1
     - type: Battery
-      startingCharge: 985000
+      startingCharge: 982000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

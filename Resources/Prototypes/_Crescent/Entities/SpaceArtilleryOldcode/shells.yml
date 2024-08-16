@@ -286,7 +286,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 50
+        Structural: 95
         #currently explosion deals 30 damage
   - type: TimedDespawn
     lifetime: 20
