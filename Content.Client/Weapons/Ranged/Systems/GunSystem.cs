@@ -267,6 +267,9 @@ public sealed partial class GunSystem : SharedGunSystem
         if (!Timing.IsFirstTimePredicted)
             return;
 
+        if (!gunUid.IsValid())
+            return;
+
         var gunXform = Transform(gunUid);
         var gridUid = gunXform.GridUid;
         EntityCoordinates coordinates;
