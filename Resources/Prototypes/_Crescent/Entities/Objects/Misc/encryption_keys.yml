@@ -22,7 +22,6 @@
   - type: EncryptionKey
     channels:
     - NCWL
-    - Nfsd
     - Common
     defaultChannel: Common
   - type: Sprite
@@ -54,6 +53,7 @@
   - type: EncryptionKey
     channels:
     - Imperial
+    - Nfsd
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -99,6 +99,7 @@
   - type: EncryptionKey
     channels:
     - Nfsd
+    - Imperial
     defaultChannel: Common
   - type: Sprite
     layers:
