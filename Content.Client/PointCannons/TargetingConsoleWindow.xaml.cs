@@ -47,11 +47,13 @@ public sealed partial class TargetingConsoleWindow : FancyWindow, IComputerWindo
         }
     }
 
-    public void UpdateAmmoStatus(List<(int, int)> values, List<EntityUid> uids)
+    public void UpdateAmmoStatus(List<(int, int)> values)
     {
         AmmoStatusBox.DisposeAllChildren();
         foreach ((int value, int max) in values)
         {
+            //funny, but it's important that max value is set before value 
+            //or it will get clamped to the default max of 100
             AmmoStatusBox.AddChild(new AmmoBar() { MaxValue = max, Value = value });
         }
     }

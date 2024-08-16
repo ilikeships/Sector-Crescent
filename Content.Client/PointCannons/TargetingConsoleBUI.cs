@@ -39,7 +39,6 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
 
         var query = _entMan.EntityQueryEnumerator<PointCannonComponent>();
         List<(int, int)> ammoValues = new();
-        List<EntityUid> uids = new();
         while (query.MoveNext(out var uid, out var _))
         {
             if (_controlled.Contains(_entMan.GetNetEntity(uid)))
@@ -47,10 +46,9 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
                 GetAmmoCountEvent ammoEv = new();
                 _entMan.EventBus.RaiseLocalEvent(uid, ref ammoEv);
                 ammoValues.Add((ammoEv.Count, ammoEv.Capacity));
-                uids.Add(uid);
             }
         }
-        _window.UpdateAmmoStatus(ammoValues, uids);
+        _window.UpdateAmmoStatus(ammoValues);
     }
 
     protected override void Open()
