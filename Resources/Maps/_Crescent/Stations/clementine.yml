@@ -569,14 +569,14 @@ entities:
             687: -4,16
             698: -6,33
             699: -6,33
-            728: -7,-2
-            729: -7,0
-            730: -7,0
-            731: -7,-2
-            732: 7,-2
-            733: 7,-2
-            734: 7,0
-            735: 7,0
+            726: -7,-2
+            727: -7,0
+            728: -7,0
+            729: -7,-2
+            730: 7,-2
+            731: 7,-2
+            732: 7,0
+            733: 7,0
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleE
@@ -906,14 +906,14 @@ entities:
             705: 5,31
             706: 5,30
             707: 5,30
-            736: -7,0
-            737: -7,0
-            738: -7,-2
-            739: -7,-2
-            740: 7,-2
-            741: 7,-2
-            742: 7,0
-            743: 7,0
+            734: -7,0
+            735: -7,0
+            736: -7,-2
+            737: -7,-2
+            738: 7,-2
+            739: 7,-2
+            740: 7,0
+            741: 7,0
         - node:
             color: '#EFB34196'
             id: WarnLineW
@@ -2219,6 +2219,42 @@ entities:
     components:
     - type: Transform
       pos: 2.5,2.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 144
+  - uid: 1600
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,1.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 144
+  - uid: 1613
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,-2.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 144
+  - uid: 1832
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -6.5,-2.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 144
+  - uid: 1834
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -6.5,1.5
       parent: 1
     - type: DeviceLinkSink
       links:
@@ -10664,6 +10700,28 @@ entities:
     - type: Transform
       pos: -7.5,-19.5
       parent: 1
+  - uid: 1303
+    components:
+    - type: Transform
+      pos: -7.5,2.5
+      parent: 1
+  - uid: 1304
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -7.5,-3.5
+      parent: 1
+  - uid: 1383
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 8.5,-3.5
+      parent: 1
+  - uid: 1384
+    components:
+    - type: Transform
+      pos: 8.5,2.5
+      parent: 1
   - uid: 2130
     components:
     - type: Transform
@@ -11187,6 +11245,14 @@ entities:
         787:
         - Pressed: Toggle
         786:
+        - Pressed: Toggle
+        1834:
+        - Pressed: Toggle
+        1832:
+        - Pressed: Toggle
+        1613:
+        - Pressed: Toggle
+        1600:
         - Pressed: Toggle
   - uid: 494
     components:
@@ -14986,7 +15052,7 @@ entities:
       parent: 1
     - type: PointCannon
       obstructedRanges:
-      - 0.9256570714046527 rad: 4.296343434731834 rad
+      - 0.48932475840607037 rad: 5.1690080607289985 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

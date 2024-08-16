@@ -34,6 +34,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.578125,-0.609375
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -1073,7 +1074,7 @@ entities:
       pos: 9.5,-21.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -14046.931
+      secondsUntilStateChange: -14265.627
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1591,12 +1592,20 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.5,9.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.674237386067222 rad: 0.5477631200692642 rad
+      - 1.8566836072677604 rad: 2.8038232566772945 rad
   - uid: 832
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 15.5,-2.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.952975805035855 rad: 0.3552890958590559 rad
+      - 2.15180606580645 rad: 3.205722169968483 rad
 - proto: Bed
   entities:
   - uid: 359
@@ -6381,12 +6390,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.221425,5.701519
       parent: 1
-  - uid: 630
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.4414356,9.954442
-      parent: 1
   - uid: 1956
     components:
     - type: Transform
@@ -6867,16 +6870,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 9.5,-19.5
       parent: 1
-  - uid: 566
-    components:
-    - type: Transform
-      pos: -2.5,10.5
-      parent: 1
-  - uid: 567
-    components:
-    - type: Transform
-      pos: -1.5,9.5
-      parent: 1
 - proto: ComputerCargoOrders
   entities:
   - uid: 865
@@ -6989,6 +6982,59 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: ComputerTargeting
+  entities:
+  - uid: 566
+    components:
+    - type: MetaData
+      desc: Controls the station's armaments.
+      name: gunnery terminal
+    - type: Transform
+      pos: -1.5,9.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 837
+        - 826
+        - 827
+        - 828
+        - 830
+        - 829
+        - 795
+        - 1921
+        - 836
+        - 832
+        - 831
+        - 298
+        - 835
+        - 834
+        - 833
+        - 293
+        - 561
+        coilgun:
+        - 837
+        mortar:
+        - 826
+        - 827
+        - 828
+        - 830
+        - 829
+        - 795
+        - 1921
+        missile:
+        - 836
+        - 829
+        plasma:
+        - 832
+        - 831
+        pd:
+        - 298
+        - 835
+        - 834
+        - 833
+        - 293
+        - 561
 - proto: CrashAutoinjector
   entities:
   - uid: 1963
@@ -13384,6 +13430,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -9.5,-4.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.7391298299791402 rad: 4.062969687555708 rad
 - proto: WeaponTurretMortarSRM
   entities:
   - uid: 795
@@ -13392,41 +13441,165 @@ entities:
       rot: 3.141592653589793 rad
       pos: 7.5,12.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.7323286182123256 rad: 3.8701782806894722 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 826
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -14.5,-27.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.148088725535614 rad: 3.667318297746944 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 827
     components:
     - type: Transform
       pos: -12.5,-29.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.751838051533677 rad: 2.348760402701342 rad
+      - 2.0064960719458207 rad: 0.699396836493048 rad
+      - 5.3217599178715105 rad: 0.3520544518212546 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 828
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 15.5,-20.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.291404368350992 rad: 3.031763010344583 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 829
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 10.5,5.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.094568458625648 rad: 0.35528909585905544 rad
+      - 1.5767337961402488 rad: 3.562125484336421 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 830
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 10.5,2.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.2686810147477143 rad: 0.6336339219220638 rad
+      - 1.7521280251654516 rad: 3.9500475430025808 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 1921
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.542848461802148 rad: 0.6730871203829923 rad
+      - 4.285918661444065 rad: 3.606214566847885 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: WeaponTurretPDTSRM
   entities:
   - uid: 293
@@ -13435,34 +13608,53 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,17.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.0064960719458207 rad: 3.3510321638291125 rad
   - uid: 298
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.5,-12.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.4274799340626565 rad: 4.333825898103963 rad
   - uid: 561
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,14.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.8394773415426107 rad: 4.852972001014443 rad
   - uid: 833
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 16.5,-11.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.432997021940785 rad: 0.3315286499946538 rad
+      - 1.3241795065343607 rad: 3.2266771824329 rad
   - uid: 834
     components:
     - type: Transform
       pos: 11.5,-26.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.8146797822542404 rad
   - uid: 835
     components:
     - type: Transform
       pos: 9.5,-30.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.814679763405596 rad
 - proto: WeaponTurretSwarmerSRM
   entities:
   - uid: 836
@@ -13470,6 +13662,24 @@ entities:
     - type: Transform
       pos: -5.5,-36.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.3821794782409582 rad: 1.7802358370342164 rad
+      - 2.1801672642817174 rad: 0.3520544518212546 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: WeldingFuelTankFull
   entities:
   - uid: 464

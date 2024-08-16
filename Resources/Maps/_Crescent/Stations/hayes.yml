@@ -22,6 +22,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.453125,-0.640625
+      parent: invalid
     - type: Shuttle
     - type: MapGrid
       chunks:
@@ -3532,6 +3533,21 @@ entities:
     - type: Transform
       pos: 21.5,-8.5
       parent: 2
+  - uid: 392
+    components:
+    - type: Transform
+      pos: 1.5,-9.5
+      parent: 2
+  - uid: 393
+    components:
+    - type: Transform
+      pos: 2.5,-9.5
+      parent: 2
+  - uid: 394
+    components:
+    - type: Transform
+      pos: 2.5,-10.5
+      parent: 2
   - uid: 451
     components:
     - type: Transform
@@ -4007,10 +4023,11 @@ entities:
       parent: 2
 - proto: ComputerTabletopCrewMonitoring
   entities:
-  - uid: 58
+  - uid: 55
     components:
     - type: Transform
-      pos: 1.5,1.5
+      rot: 1.5707963267948966 rad
+      pos: -1.5,0.5
       parent: 2
   - uid: 767
     components:
@@ -4026,14 +4043,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,0.5
       parent: 2
-- proto: ComputerTabletopRadar
-  entities:
-  - uid: 55
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -1.5,0.5
-      parent: 2
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 59
@@ -4041,6 +4050,32 @@ entities:
     - type: Transform
       pos: -0.5,1.5
       parent: 2
+- proto: ComputerTabletopTargeting
+  entities:
+  - uid: 58
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 2
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 12
+        - 14
+        - 391
+        - 8
+        - 73
+        - 74
+        - 4
+        artillery:
+        - 12
+        - 14
+        - 391
+        ballistic:
+        - 8
+        - 73
+        - 74
+        - 4
 - proto: ComputerWallmountBlackMarketBankATM
   entities:
   - uid: 710
@@ -5454,7 +5489,7 @@ entities:
       pos: -8.5,-5.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 6869.8616755
+      nextDrop: 7756.3568394
 - proto: PosterContrabandInterdyneDD
   entities:
   - uid: 535
@@ -5463,7 +5498,7 @@ entities:
       pos: -8.5,-11.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 7769.8616755
+      nextDrop: 3811.3568394
 - proto: PottedPlantRandom
   entities:
   - uid: 476
@@ -8141,6 +8176,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -12.5,-3.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 3.322924351960348 rad: 3.850378873736346 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8150,6 +8188,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -12.5,-13.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 5.174398438217069 rad: 4.069047824181756 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8159,6 +8200,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 11.5,-3.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 1.870968342307374 rad: 5.682841276154632 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8169,6 +8213,9 @@ entities:
     - type: Transform
       pos: 7.5,-20.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 0.18133169837055507 rad: 3.605400210609482 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8178,6 +8225,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 6.5,1.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 2.496453398199549 rad: 3.8388686005307853 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8187,6 +8237,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,1.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 3.44176466910227 rad: 3.4865598934675597 rad
     - type: DeviceLinkSink
       links:
       - 7
@@ -8195,6 +8248,9 @@ entities:
     - type: Transform
       pos: -6.5,-20.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 5.638046051789343 rad: 3.3510321638291125 rad
     - type: DeviceLinkSink
       links:
       - 7
