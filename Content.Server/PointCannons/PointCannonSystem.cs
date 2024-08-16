@@ -240,11 +240,11 @@ public sealed class PointCannonSystem : EntitySystem
         if (!Resolve(uid, ref form) || !Resolve(uid, ref gun) || !Resolve(uid, ref cannon))
             return;
 
-        cannon.ObstructedRanges = CalculateFiringRanges(form, gun);
+        cannon.ObstructedRanges = CalculateFiringRanges(form, gun, cannon);
         Dirty(uid, cannon);
     }
 
-    private List<(Angle, Angle)> CalculateFiringRanges(TransformComponent form, GunComponent gun)
+    private List<(Angle, Angle)> CalculateFiringRanges(TransformComponent form, GunComponent gun, PointCannonComponent cannon)
     {
         if (form.GridUid == null)
             return new();
@@ -289,11 +289,12 @@ public sealed class PointCannonSystem : EntitySystem
             ranges.Add((start2, width2));
         }
 
-        //subtracting spread from every range
         Angle maxSpread = gun.MaxAngle + Angle.FromDegrees(10);
+        Angle clearance = maxSpread + cannon.ClearanceAngle;
+
         for (int i = 0; i < ranges.Count; i++)
         {
-            ranges[i] = (CrescentHelpers.AngNormal(ranges[i].Item1 - maxSpread / 2), ranges[i].Item2 + maxSpread);
+            ranges[i] = (CrescentHelpers.AngNormal(ranges[i].Item1 - clearance / 2), ranges[i].Item2 + clearance);
         }
 
         return ranges;
