@@ -6,6 +6,7 @@ using System.Numerics;
 using Robust.Client.GameObjects;
 using Content.Shared.Weapons.Ranged.Events;
 using OpenToolkit.GraphicsLibraryFramework;
+using Content.Client.Weapons.Ranged.Systems;
 
 namespace Content.Client.PointCannons;
 
@@ -38,6 +39,7 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
 
         var query = _entMan.EntityQueryEnumerator<PointCannonComponent>();
         List<(int, int)> ammoValues = new();
+        List<EntityUid> uids = new();
         while (query.MoveNext(out var uid, out var _))
         {
             if (_controlled.Contains(_entMan.GetNetEntity(uid)))
@@ -45,9 +47,10 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
                 GetAmmoCountEvent ammoEv = new();
                 _entMan.EventBus.RaiseLocalEvent(uid, ref ammoEv);
                 ammoValues.Add((ammoEv.Count, ammoEv.Capacity));
+                uids.Add(uid);
             }
         }
-        _window.UpdateAmmoStatus(ammoValues);
+        _window.UpdateAmmoStatus(ammoValues, uids);
     }
 
     protected override void Open()

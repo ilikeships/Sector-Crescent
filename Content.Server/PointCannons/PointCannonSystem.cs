@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using Content.Server.Administration;
 using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
@@ -11,7 +12,9 @@ using Content.Shared.Physics;
 using Content.Shared.PointCannons;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Weapons.Ranged.Components;
+using Microsoft.CodeAnalysis.CSharp;
 using Robust.Server.GameObjects;
+using Robust.Server.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
@@ -27,6 +30,7 @@ public sealed class PointCannonSystem : EntitySystem
     [Dependency] private readonly QuickDialogSystem _dialogSys = default!;
     [Dependency] private readonly GunSystem _gunSys = default!;
     [Dependency] private readonly ShuttleConsoleSystem _shuttleConSys = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
 
     private const int MaxCollisionCheckDistance = 10;
 
@@ -34,6 +38,7 @@ public sealed class PointCannonSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<TargetingConsoleComponent, BoundUIOpenedEvent>(OnConsoleOpened);
+        SubscribeLocalEvent<TargetingConsoleComponent, BoundUIClosedEvent>(OnConsoleClosed);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleFireMessage>(OnConsoleFire);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleGroupChangedMessage>(OnConsoleGroupChanged);
 
@@ -41,12 +46,6 @@ public sealed class PointCannonSystem : EntitySystem
 
         SubscribeLocalEvent<PointCannonLinkToolComponent, UseInHandEvent>(OnLinkToolHandUse);
         SubscribeLocalEvent<PointCannonComponent, InteractUsingEvent>(OnLinkToolUse);
-    }
-
-    private void OnConsoleOpened(Entity<TargetingConsoleComponent> uid, ref BoundUIOpenedEvent args)
-    {
-        uid.Comp.RegenerateCannons = true;
-        //UpdateConsoleState(uid, uid.Comp);
     }
 
     public override void Update(float frameTime)
@@ -60,6 +59,20 @@ public sealed class PointCannonSystem : EntitySystem
                 continue;
             UpdateConsoleState(uid, console);
         }
+    }
+
+    private void OnConsoleOpened(Entity<TargetingConsoleComponent> uid, ref BoundUIOpenedEvent args)
+    {
+        uid.Comp.RegenerateCannons = true;
+
+        if (_playerMan.TryGetSessionByEntity(args.Actor, out var session))
+            TogglePvsOverride(uid.Comp.CurrentGroup, [session], true);
+    }
+
+    private void OnConsoleClosed(Entity<TargetingConsoleComponent> uid, ref BoundUIClosedEvent args)
+    {
+        if (_playerMan.TryGetSessionByEntity(args.Actor, out var session))
+            TogglePvsOverride(uid.Comp.CurrentGroup, [session], false);
     }
 
     private void OnCannonTerminating(Entity<PointCannonComponent> uid, ref EntityTerminatingEvent args)
@@ -119,6 +132,9 @@ public sealed class PointCannonSystem : EntitySystem
             console.CannonGroups["all"].Add(cannonUid);
 
         console.RegenerateCannons = true;
+
+        if (group == console.CurrentGroupName)
+            TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), true);
     }
 
     public void UnlinkCannon(EntityUid cannonUid, EntityUid consoleUid, TargetingConsoleComponent console)
@@ -133,8 +149,9 @@ public sealed class PointCannonSystem : EntitySystem
                     console.CurrentGroupName = "all";
             }
         }
-
         console.RegenerateCannons = true;
+
+        TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), false);
     }
 
     public void UpdateConsoleState(EntityUid uid, TargetingConsoleComponent console)
@@ -174,8 +191,13 @@ public sealed class PointCannonSystem : EntitySystem
 
     private void OnConsoleGroupChanged(Entity<TargetingConsoleComponent> uid, ref TargetingConsoleGroupChangedMessage args)
     {
+        string prevGroup = uid.Comp.CurrentGroupName;
         uid.Comp.CurrentGroupName = args.GroupName;
         uid.Comp.RegenerateCannons = true;
+
+        List<ICommonSession> sessions = GetUiSessions(uid, TargetingConsoleUiKey.Key);
+        TogglePvsOverride(uid.Comp.CannonGroups[prevGroup], sessions, false);
+        TogglePvsOverride(uid.Comp.CurrentGroup, sessions, true);
     }
 
     private bool TryFireCannon(
@@ -331,5 +353,34 @@ public sealed class PointCannonSystem : EntitySystem
         }
 
         return (start, width);
+    }
+
+    private List<ICommonSession> GetUiSessions(EntityUid uid, Enum key)
+    {
+        List<ICommonSession> sessions = new();
+        foreach (EntityUid actorUid in _uiSys.GetActors(uid, TargetingConsoleUiKey.Key))
+        {
+            if (_playerMan.TryGetSessionByEntity(actorUid, out var session))
+                sessions.Add(session);
+        }
+        return sessions;
+    }
+
+    private void TogglePvsOverride(IEnumerable<EntityUid> uids, IEnumerable<ICommonSession> sessions, bool enable)
+    {
+        foreach (ICommonSession session in sessions)
+        {
+            foreach (EntityUid uid in uids)
+            {
+                if (enable)
+                {
+                    _pvsSys.AddSessionOverride(uid, session);
+                }
+                else
+                {
+                    _pvsSys.RemoveSessionOverride(uid, session);
+                }
+            }
+        }
     }
 }

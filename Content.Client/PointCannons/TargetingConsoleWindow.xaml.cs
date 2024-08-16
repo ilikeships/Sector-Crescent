@@ -47,22 +47,12 @@ public sealed partial class TargetingConsoleWindow : FancyWindow, IComputerWindo
         }
     }
 
-    public void UpdateAmmoStatus(List<(int, int)> values)
+    public void UpdateAmmoStatus(List<(int, int)> values, List<EntityUid> uids)
     {
-        if (AmmoStatusBox.ChildCount != values.Count)
+        AmmoStatusBox.DisposeAllChildren();
+        foreach ((int value, int max) in values)
         {
-            AmmoStatusBox.DisposeAllChildren();
-            for (int i = 0; i < values.Count; i++)
-            {
-                AmmoStatusBox.AddChild(new AmmoBar());
-            }
-        }
-
-        int c = 0;
-        foreach (Control child in AmmoStatusBox.Children)
-        {
-            AmmoBar bar = (AmmoBar) child;
-            (bar.Value, bar.MaxValue) = values[c];
+            AmmoStatusBox.AddChild(new AmmoBar() { MaxValue = max, Value = value });
         }
     }
 }
