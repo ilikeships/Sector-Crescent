@@ -9,7 +9,7 @@
       containers:
         key_slots:
           - EncryptionKeyNfsd
-          - EncryptionKeyCommon
+          - EncryptionKeyEmpire
     - type: Sprite
       sprite: Clothing/Ears/Headsets/cmm.rsi
     - type: Clothing

@@ -8,7 +8,6 @@
       containers:
         key_slots:
           - EncryptionKeyNCWL
-          - EncryptionKeyMinutemen
     - type: Sprite
       sprite: _Crescent/Clothing/Headsets/ncwl.rsi
     - type: Clothing
@@ -39,7 +38,7 @@
       containers:
         key_slots:
           - EncryptionKeyEmpire
-          - EncryptionKeyHunter
+          - EncryptionKeyNfsd
     - type: Sprite
       sprite: Clothing/Ears/Headsets/brigmedic.rsi
     - type: Clothing
@@ -54,7 +53,6 @@
     - type: ContainerFill
       containers:
         key_slots:
-          - EncryptionKeyEmpire
           - EncryptionKeyHunter
     - type: Sprite
       sprite: _Crescent/Clothing/Headsets/hunter.rsi
