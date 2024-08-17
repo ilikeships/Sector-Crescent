@@ -1,5 +1,6 @@
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
+using System.Data.SqlTypes;
 
 namespace Content.Client.Preferences.UI
 {
@@ -21,7 +22,13 @@ namespace Content.Client.Preferences.UI
                 {
                     return HumanoidCharacterProfile.DefaultBalance;
                 }
-                return (Profile.BankBalance - 20000);
+
+                int mony = Profile.BankBalance - 20000;
+                if (mony < -2000)
+                {
+                    mony = -2000;
+                }
+                return (mony);
             }
         }
 
