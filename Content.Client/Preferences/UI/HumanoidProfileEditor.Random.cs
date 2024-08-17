@@ -7,9 +7,22 @@ namespace Content.Client.Preferences.UI
     {
         private void RandomizeEverything()
         {
-            Profile = HumanoidCharacterProfile.Random(balance : Profile?.BankBalance ?? HumanoidCharacterProfile.DefaultBalance);
+
+
+
+            Profile = HumanoidCharacterProfile.Random(balance : GetBalance());
             UpdateControls();
             IsDirty = true;
+
+
+            int GetBalance()
+            {
+                if (Profile == null)
+                {
+                    return HumanoidCharacterProfile.DefaultBalance;
+                }
+                return (Profile.BankBalance - 20000);
+            }
         }
 
         private void RandomizeName()
