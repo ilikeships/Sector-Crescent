@@ -27,4 +27,3 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            Pilot: [ 1, 1 ]
