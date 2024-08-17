@@ -1219,7 +1219,7 @@ entities:
       pos: -8.5,22.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1152.2896
+      secondsUntilStateChange: -1194.7892
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -5794,6 +5794,24 @@ entities:
     - type: Transform
       pos: -3.713718,-12.382755
       parent: 1
+- proto: ClothingHandsGlovesCombat
+  entities:
+  - uid: 1063
+    components:
+    - type: Transform
+      parent: 617
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingHeadHatShinoharaFacade
+  entities:
+  - uid: 1404
+    components:
+    - type: Transform
+      parent: 617
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingHeadHatWeldingMaskPainted
   entities:
   - uid: 2051
@@ -5873,6 +5891,24 @@ entities:
 - proto: ClothingOuterShinoharaExecSuitjacket
   entities:
   - uid: 621
+    components:
+    - type: Transform
+      parent: 617
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingOuterShinoharaOvercoat
+  entities:
+  - uid: 1092
+    components:
+    - type: Transform
+      parent: 617
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingShoesBootsCombatFilled
+  entities:
+  - uid: 1062
     components:
     - type: Transform
       parent: 617
@@ -8256,21 +8292,43 @@ entities:
     - type: Transform
       pos: 3.5,6.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 618
-          - 619
-          - 620
-          - 621
-          - 622
-          - 623
-          - 624
-          - 625
           - 626
+          - 625
+          - 624
+          - 623
+          - 621
+          - 620
+          - 619
+          - 618
+          - 1062
+          - 1063
+          - 1092
+          - 1404
+          - 622
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
