@@ -26,6 +26,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.578125,-0.609375
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -652,6 +653,7 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Nemesis
+    - type: CrescentEMPTechnologyTier
 - proto: AirAlarm
   entities:
   - uid: 1489
@@ -979,7 +981,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -3525.7842
+      secondsUntilStateChange: -3707.6765
       state: Opening
   - uid: 403
     components:
@@ -1290,6 +1292,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -12.5,-15.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 3.6495310938659427 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -1299,6 +1304,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -8.5,-9.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.08384726365765 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -1308,6 +1316,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 11.5,-26.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.8146797822542404 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -5228,13 +5239,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,-23.5
       parent: 1
-- proto: ComputerTabletopRadar
-  entities:
-  - uid: 747
-    components:
-    - type: Transform
-      pos: -1.5,9.5
-      parent: 1
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 633
@@ -5243,6 +5247,35 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 7.5,-18.5
       parent: 1
+- proto: ComputerTabletopTargeting
+  entities:
+  - uid: 747
+    components:
+    - type: MetaData
+      desc: Controls the shuttle's armaments.
+      name: gunnery terminal
+    - type: Transform
+      pos: -1.5,9.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 1378
+        - 42
+        - 1661
+        - 112
+        - 1660
+        - 1659
+        - 102
+        plasma:
+        - 1378
+        - 42
+        - 1661
+        ballistic:
+        - 112
+        - 1660
+        - 1659
+        - 102
 - proto: CrateArtilleryAmmo
   entities:
   - uid: 596
@@ -8967,7 +9000,7 @@ entities:
       pos: 6.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -8998,7 +9031,7 @@ entities:
       pos: 2.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -9029,7 +9062,7 @@ entities:
       pos: 4.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -10734,6 +10767,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 8.5,-2.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.518659635244148 rad: 4.328825926784514 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -10743,6 +10779,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.0257731027615495 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -10751,6 +10790,9 @@ entities:
     - type: Transform
       pos: 9.5,-30.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.814679763405596 rad
     - type: DeviceLinkSink
       links:
       - 588
@@ -10759,6 +10801,9 @@ entities:
     - type: Transform
       pos: -8.5,-30.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.929419789085995 rad: 3.814679763405596 rad
     - type: DeviceLinkSink
       links:
       - 588

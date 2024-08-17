@@ -322,6 +322,9 @@ entities:
       mobsToKill: []
     - type: BecomesStation
       id: Bison
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 0.6
+      eMPMultiplier: 1.5
 - proto: AirAlarm
   entities:
   - uid: 136
@@ -519,6 +522,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,11.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -527,6 +533,9 @@ entities:
     - type: Transform
       pos: 5.5,-6.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.994533262085685 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -535,6 +544,9 @@ entities:
     - type: Transform
       pos: -0.5,-9.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 5.3930673886624785 rad: 3.9096314724713395 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -544,6 +556,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,13.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -586,15 +601,6 @@ entities:
     - type: Transform
       pos: 3.6075773,6.6695137
       parent: 2
-- proto: BoxLethalshot
-  entities:
-  - uid: 117
-    components:
-    - type: Transform
-      parent: 114
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: BoxTeargasGrenades
   entities:
   - uid: 618
@@ -1821,6 +1827,14 @@ entities:
     - type: Transform
       pos: 2.5,-9.5
       parent: 2
+- proto: ChairOfficeDark
+  entities:
+  - uid: 115
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.970062,-3.239953
+      parent: 2
 - proto: ChairPilotSeat
   entities:
   - uid: 434
@@ -1845,26 +1859,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 115
-    components:
-    - type: Transform
-      parent: 114
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 572
     components:
     - type: Transform
       parent: 436
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: ClothingHeadHatShinoharaHelmet
-  entities:
-  - uid: 122
-    components:
-    - type: Transform
-      parent: 114
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -1884,26 +1882,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 132
-    components:
-    - type: Transform
-      parent: 114
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 580
     components:
     - type: Transform
       parent: 436
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: ClothingOuterArmorShinoharaArmorHighsec
-  entities:
-  - uid: 124
-    components:
-    - type: Transform
-      parent: 114
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -1930,15 +1912,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingShoesBootsCombatFilled
-  entities:
-  - uid: 129
-    components:
-    - type: Transform
-      parent: 114
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ClothingShoesBootsMagCombatFilled
   entities:
   - uid: 17
@@ -1959,15 +1932,6 @@ entities:
     components:
     - type: Transform
       parent: 436
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: ClothingUniformJumpsuitShinoharaHighsec
-  entities:
-  - uid: 118
-    components:
-    - type: Transform
-      parent: 114
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -2030,6 +1994,37 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -5.5,-3.5
       parent: 2
+- proto: ComputerTargeting
+  entities:
+  - uid: 114
+    components:
+    - type: MetaData
+      desc: Controls this shuttle's armaments.
+      name: gunnery console
+    - type: Transform
+      pos: -1.5,-2.5
+      parent: 2
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 34
+        - 420
+        - 341
+        - 109
+        - 323
+        - 33
+        - 324
+        - 35
+        plasma:
+        - 34
+        - 420
+        - 341
+        - 109
+        ballistic:
+        - 323
+        - 33
+        - 324
+        - 35
 - proto: ConveyorBelt
   entities:
   - uid: 57
@@ -2643,49 +2638,6 @@ entities:
     - type: Transform
       pos: 2.7006273,-7.4629393
       parent: 2
-- proto: LockerSyndicatePersonal
-  entities:
-  - uid: 114
-    components:
-    - type: Transform
-      pos: -1.5,-2.5
-      parent: 2
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 115
-          - 117
-          - 118
-          - 122
-          - 123
-          - 124
-          - 129
-          - 132
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: LuxuryPen
   entities:
   - uid: 432
@@ -4194,13 +4146,6 @@ entities:
       parent: 2
 - proto: WeaponShotgunEnforcer
   entities:
-  - uid: 123
-    components:
-    - type: Transform
-      parent: 114
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 620
     components:
     - type: Transform
@@ -4227,6 +4172,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,-7.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 5.3930673886624785 rad: 3.3510321638291116 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -4236,6 +4184,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,8.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 1.5326447324774293 rad: 4.069862166424369 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -4245,6 +4196,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,-9.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 3.3510321638291125 rad
     - type: DeviceLinkSink
       links:
       - 428
@@ -4254,6 +4208,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,15.5
       parent: 2
+    - type: PointCannon
+      obstructedRanges:
+      - 2.8394773415426107 rad: 4.333825884154083 rad
     - type: DeviceLinkSink
       links:
       - 428

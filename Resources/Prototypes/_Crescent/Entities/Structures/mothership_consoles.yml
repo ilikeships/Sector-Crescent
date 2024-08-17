@@ -143,6 +143,7 @@
   - type: ShipyardListing
     shuttles:
     - Saintsfall
+    - Spider
 
 - type: entity
   id: AnathemaMothershipComputer

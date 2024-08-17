@@ -87,6 +87,21 @@
     sprite: _Crescent/Clothing/SHI/Head/beret.rsi
 
 - type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatShinoharaFacade
+  name: executive's facade
+  description: A sleek, face-covering helmet that strips the wearer of identity.
+  components:
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: Sprite
+    sprite: _Crescent/Clothing/SHI/Head/execmask.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/SHI/Head/execmask.rsi
+
+- type: entity
   parent: ClothingHeadHelmetBasic
   id: ClothingHeadHatShinoharaHelmet
   name: highsec officer's helmet

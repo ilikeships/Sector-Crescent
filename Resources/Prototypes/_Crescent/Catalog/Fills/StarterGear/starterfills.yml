@@ -337,6 +337,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
@@ -349,6 +350,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
@@ -361,6 +363,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol

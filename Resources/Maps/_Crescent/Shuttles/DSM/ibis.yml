@@ -18,6 +18,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.453125,-0.640625
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -72,8 +73,8 @@ entities:
             color: '#D381C996'
             id: WarnBoxGreyscale
           decals:
-            24: -5,10
-            25: 5,10
+            20: -5,10
+            21: 5,10
         - node:
             color: '#D381C996'
             id: WarnLineGreyscaleE
@@ -322,6 +323,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,10.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.9842898349012223 rad: 2.618217064000575 rad
     - type: DeviceLinkSink
       links:
       - 137
@@ -331,6 +335,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,10.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 2.6182170640005755 rad
     - type: DeviceLinkSink
       links:
       - 137
@@ -1041,14 +1048,6 @@ entities:
         25:
         - Group4: On
         - Group5: Off
-- proto: ComputerStationRecords
-  entities:
-  - uid: 146
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-0.5
-      parent: 1
 - proto: ComputerTabletopIFF
   entities:
   - uid: 168
@@ -1057,6 +1056,24 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -5.5,3.5
       parent: 1
+- proto: ComputerTargeting
+  entities:
+  - uid: 69
+    components:
+    - type: MetaData
+      desc: Controls the shuttle's turrets.
+      name: gunnery console
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 25
+        - 64
+        plasma:
+        - 25
+        - 64
 - proto: CrateSlugthrowerAmmo
   entities:
   - uid: 170
@@ -1353,7 +1370,7 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 137
@@ -1393,7 +1410,7 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 137
