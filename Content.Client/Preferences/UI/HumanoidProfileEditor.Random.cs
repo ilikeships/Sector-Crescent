@@ -1,5 +1,6 @@
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
+using System.Data.SqlTypes;
 
 namespace Content.Client.Preferences.UI
 {
@@ -7,9 +8,28 @@ namespace Content.Client.Preferences.UI
     {
         private void RandomizeEverything()
         {
-            Profile = HumanoidCharacterProfile.Random(balance : Profile?.BankBalance ?? HumanoidCharacterProfile.DefaultBalance);
+
+
+
+            Profile = HumanoidCharacterProfile.Random(balance : GetBalance());
             UpdateControls();
             IsDirty = true;
+
+
+            int GetBalance()
+            {
+                if (Profile == null)
+                {
+                    return HumanoidCharacterProfile.DefaultBalance;
+                }
+
+                int mony = Profile.BankBalance - 20000;
+                if (mony < -2000)
+                {
+                    mony = -2000;
+                }
+                return (mony);
+            }
         }
 
         private void RandomizeName()
