@@ -113,6 +113,9 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Saintsfall
+    - type: CrescentEMPTechnologyTier
+      powerLossMarkiplier: 0.7
+      eMPMultiplier: 0.5
 - proto: AirAlarm
   entities:
   - uid: 64
