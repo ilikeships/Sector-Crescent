@@ -27,7 +27,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.5222931,-0.5817642
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -14057,8 +14056,6 @@ entities:
       pos: 0.5,-55.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3517
   - uid: 2405
@@ -14068,8 +14065,6 @@ entities:
       pos: 0.5,-49.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14080,8 +14075,6 @@ entities:
       pos: 3.5,-50.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14113,8 +14106,6 @@ entities:
       pos: 15.5,-59.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3525
       - 3516
@@ -14126,8 +14117,6 @@ entities:
       pos: 21.5,-57.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14144,8 +14133,6 @@ entities:
       pos: -15.5,-57.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3513
       - 3504
@@ -14159,8 +14146,6 @@ entities:
       pos: -21.5,-55.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3513
       - 3504
@@ -14370,8 +14355,6 @@ entities:
       pos: -0.5,-64.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3504
       - 3525
@@ -14391,8 +14374,6 @@ entities:
       pos: -1.5,-55.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3517
   - uid: 2404
@@ -14402,8 +14383,6 @@ entities:
       pos: -1.5,-49.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14413,8 +14392,6 @@ entities:
       pos: 3.5,-47.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14445,8 +14422,6 @@ entities:
       pos: 15.5,-56.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3525
       - 3516
@@ -14458,8 +14433,6 @@ entities:
       pos: 23.5,-57.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3516
       - 3517
@@ -14476,8 +14449,6 @@ entities:
       pos: -13.5,-57.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3513
       - 3504
@@ -14491,8 +14462,6 @@ entities:
       pos: -20.5,-57.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3513
       - 3504
@@ -14706,8 +14675,6 @@ entities:
       pos: 1.5,-64.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3504
       - 3525
@@ -16034,7 +16001,7 @@ entities:
       pos: 13.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 195500
+      startingCharge: 195000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -16064,7 +16031,7 @@ entities:
       pos: -12.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 195500
+      startingCharge: 195000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -16499,7 +16466,7 @@ entities:
       pos: 17.5,-17.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 5021.530091
+      nextDrop: 4376.3131033
 - proto: PosterContrabandInterdyne
   entities:
   - uid: 1235
@@ -19196,6 +19163,25 @@ entities:
     - type: Transform
       pos: 5.5,-55.5
       parent: 2
+  - uid: 3749
+    components:
+    - type: Transform
+      pos: 3.5,-25.5
+      parent: 2
+- proto: SpawnPointLieutenant
+  entities:
+  - uid: 3750
+    components:
+    - type: Transform
+      pos: 3.5,-7.5
+      parent: 2
+- proto: SpawnPointRingleader
+  entities:
+  - uid: 3751
+    components:
+    - type: Transform
+      pos: 3.5,-5.5
+      parent: 2
 - proto: SpawnPointTechnician
   entities:
   - uid: 1428
@@ -21063,7 +21049,7 @@ entities:
       pos: 18.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 946000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21096,7 +21082,7 @@ entities:
       pos: 20.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 946000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21129,7 +21115,7 @@ entities:
       pos: -20.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 946000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21161,7 +21147,7 @@ entities:
       pos: -22.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 946000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21192,7 +21178,7 @@ entities:
       pos: 24.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 946000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

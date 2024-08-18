@@ -1,32 +1,13 @@
 - type: entity
-  name: "trade item"
+  # This means that it's not anchored on spawn.
   id: BaseTradeItem
+  parent: BaseStructureDynamic
   abstract: true
   components:
-  - type: PlaceableSurface
-    isPlaceable: false # defaults to closed.
-  - type: Clickable
+  - type: Transform
+    noRot: true
   - type: InteractionOutline
-  - type: MultiHandedItem
-  - type: MovedByPressure
-  - type: EmitSoundOnCollide
-    sound:
-      collection: WeakHit
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Effects/drop.ogg
-      params:
-        volume: 2
-  - type: DamageOnHighSpeedImpact
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
-      collection: MetalThud
-  - type: CollisionWake
   - type: Physics
-    bodyType: Dynamic
-    fixedRotation: true
   - type: Fixtures
     fixtures:
       fix1:
@@ -38,15 +19,23 @@
         - CrateMask #this is so they can go under plastic flaps
         layer:
         - MachineLayer
-  - type: Sprite
-    drawdepth: Items
-    noRot: false
+  - type: PlaceableSurface
+    isPlaceable: false # defaults to closed.
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Pullable
-  - type: DamageExaminable
-  - type: Anchorable
-  - type: Tag
-    tags:
-      - Structure
 
 - type: entity
   parent: BaseTradeItem
@@ -79,8 +68,6 @@
   name: sealed ammunition crate
   description: A hermetically sealed crate of pre-war munitions. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/ammo.rsi
     layers:
@@ -94,8 +81,6 @@
   name: sealed antibiotics case
   description: A hermetically sealed case of high-grade antibiotics. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/antibiotics.rsi
     layers:
@@ -110,8 +95,6 @@
   name: sealed crate of cybernetic parts
   description: A hermetically sealed case of high-grade prosthetics and spare parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/cybernetics.rsi
     layers:
@@ -125,8 +108,6 @@
   name: sealed scrap crate
   description: A hermetically sealed case of assorted scrap parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/scrap.rsi
     layers:
@@ -140,8 +121,6 @@
   name: sealed crate of gun parts
   description: A hermetically sealed case of assorted armament parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/gunparts.rsi
     layers:
@@ -155,8 +134,6 @@
   name: bag of export flour
   description: A bag of export-grade flour.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/flour.rsi
     layers:
@@ -170,8 +147,6 @@
   name: bag of export rice
   description: A bag of export-grade rice.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/rice.rsi
     layers:
@@ -185,8 +160,6 @@
   name: bag of export sugar
   description: A bag of export-grade sugar.
   components:
-  - type: Item
-    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/sugar.rsi
     layers:
