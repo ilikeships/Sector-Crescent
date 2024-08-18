@@ -83,3 +83,36 @@
         amount: 10
       - id: CartridgeShellPractice
         amount: 5
+
+- type: entity
+  id: CrateAutogunAmmo
+  parent: CrateSecgear
+  name: autogun crate
+  description: Ammunition for autogun artilleries.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineNeedler
+        amount: 5
+
+- type: entity
+  id: CrateMortarAmmo
+  parent: CrateSecgear
+  name: automortar crate
+  description: Ammunition for automortar artilleries.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineMortar
+        amount: 5
+
+- type: entity
+  id: CrateSwarmerAmmo
+  parent: CrateSecgear
+  name: swarmer rocket crate
+  description: Ammunition for swarmer rocket artilleries.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineSwarmer
+        amount: 5

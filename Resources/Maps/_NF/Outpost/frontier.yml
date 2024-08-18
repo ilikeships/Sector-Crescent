@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -580.339
+      secondsUntilStateChange: -629.1561
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10894,7 +10894,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2449.732
+      secondsUntilStateChange: -2498.549
       state: Opening
   - uid: 1418
     components:
@@ -14623,7 +14623,7 @@ entities:
   - uid: 539
     components:
     - type: Transform
-      pos: -0.84235275,-8.383741
+      pos: -0.4448711,-8.307918
       parent: 1
   - uid: 1365
     components:
@@ -17275,6 +17275,27 @@ entities:
     - type: Transform
       pos: 20.5,-27.5
       parent: 1
+- proto: RubberStampApproved
+  entities:
+  - uid: 3466
+    components:
+    - type: Transform
+      pos: -1.470349,-6.85103
+      parent: 1
+- proto: RubberStampDenied
+  entities:
+  - uid: 3465
+    components:
+    - type: Transform
+      pos: -1.6784164,-6.85103
+      parent: 1
+- proto: RubberStampEmpire
+  entities:
+  - uid: 3467
+    components:
+    - type: Transform
+      pos: -1.2622806,-6.8361635
+      parent: 1
 - proto: SawImprov
   entities:
   - uid: 1573
@@ -17336,6 +17357,39 @@ entities:
     components:
     - type: Transform
       pos: 19.367186,-16.325144
+      parent: 1
+- proto: ShipVoucherAnathema
+  entities:
+  - uid: 3468
+    components:
+    - type: Transform
+      pos: -0.8600007,-8.496376
+      parent: 1
+- proto: ShipVoucherConquest
+  entities:
+  - uid: 3469
+    components:
+    - type: Transform
+      pos: -0.59248483,-8.481509
+      parent: 1
+  - uid: 3470
+    components:
+    - type: Transform
+      pos: -0.81541455,-8.377446
+      parent: 1
+- proto: ShipVoucherLaelaps
+  entities:
+  - uid: 3472
+    components:
+    - type: Transform
+      pos: -0.8748628,-8.407179
+      parent: 1
+- proto: ShipVoucherValor
+  entities:
+  - uid: 3471
+    components:
+    - type: Transform
+      pos: -0.81541455,-8.570707
       parent: 1
 - proto: ShipyardManufactorum
   entities:
@@ -22873,6 +22927,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 3464
+      - 3212
   - uid: 3300
     components:
     - type: Transform

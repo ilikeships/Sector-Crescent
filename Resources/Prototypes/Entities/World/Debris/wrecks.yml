@@ -23,6 +23,10 @@
             prob: 0.3
           - id: ScrapSalvageRandomSpawner
             prob: 0.6
+          - id: DelamDisk
+            prob: 0.1
+          - id: DelamDiskThumb
+            prob: 0.1
           - id: SalvageCanisterSpawner
             prob: 0.3
           - id: SalvageTankSpawner
@@ -107,6 +111,10 @@
             prob: 0.4
           - id: RandomAmmoBox
             prob: 0.2
+          - id: DelamDisk
+            prob: 0.2
+          - id: DelamDiskThumb
+            prob: 0.3
           - id: ChairFolding
             prob: 0.05
           - id: ChairWood
