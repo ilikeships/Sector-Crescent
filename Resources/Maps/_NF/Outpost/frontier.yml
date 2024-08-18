@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -629.1561
+      secondsUntilStateChange: -643.4725
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -9655,6 +9655,13 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: ComputerTabletopAdvancedRadar
+  entities:
+  - uid: 1373
+    components:
+    - type: Transform
+      pos: 7.5,-13.5
+      parent: 1
 - proto: ComputerTabletopAnalysisConsole
   entities:
   - uid: 641
@@ -9676,11 +9683,6 @@ entities:
       parent: 1
 - proto: ComputerTabletopCriminalRecords
   entities:
-  - uid: 1373
-    components:
-    - type: Transform
-      pos: 7.5,-13.5
-      parent: 1
   - uid: 1676
     components:
     - type: Transform
@@ -10894,7 +10896,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2498.549
+      secondsUntilStateChange: -2512.8655
       state: Opening
   - uid: 1418
     components:
