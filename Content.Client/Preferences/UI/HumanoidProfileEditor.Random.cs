@@ -20,7 +20,8 @@ namespace Content.Client.Preferences.UI
             {
                 if (Profile == null)
                 {
-                    return HumanoidCharacterProfile.DefaultBalance;
+                    Random b = new Random();
+                    return HumanoidCharacterProfile.DefaultBalance + b.Next(0, 1000);
                 }
 
                 int mony = Profile.BankBalance - 20000;
