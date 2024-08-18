@@ -433,3 +433,53 @@
       - WeaponSubMachineGunSabreCraft
   - type: StaticPrice
     price: 2500
+
+#civ
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskTermite
+  name: shuttle pattern fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'SHINOHARA LABS - TERMITE'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - TermiteLPC
+  - type: StaticPrice
+    price: 2000
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskParacelsus
+  name: shuttle pattern fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'IHIKERJA CIVILIAN MANUFACTURING - PARACELSUS'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - ParacelsusLPC
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: BaseItem
+  id: CorporateFabdiskExhumer
+  name: shuttle pattern fabdisk
+  description: A disk for the R&D server containing research technology. A label reads, 'IHIKERJA CIVILIAN MANUFACTURING - EXHUMER'.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/techdisks.rsi
+    layers:
+    - state: iconnanotrasen
+  - type: TechnologyDisk 
+    recipes:
+      - ExhumerLPC
+  - type: StaticPrice
+    price: 7500

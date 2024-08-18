@@ -445,6 +445,9 @@
       - RapierLPC
       - IvarodLPC
       - CherenzikovLPC
+      - TermiteLPC
+      - ParacelsusLPC
+      - ExhumerLPC
   - type: Machine
     board: MicroforgeCircuitboard
 

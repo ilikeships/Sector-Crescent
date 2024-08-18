@@ -113,3 +113,11 @@ research-technology-corphighsec = Shinohara HIGHSEC Line
 research-technology-corpsmartgun = Shinohara Smartpistol Line
 
 research-technology-corpsword = Shinohara Shiverblade Line
+
+#civ
+
+research-technology-termite = Civilian Miner Pod
+
+research-technology-paracelsus = Civilian Hospital Shuttle
+
+research-technology-exhumer = Civilian Mining Barge
