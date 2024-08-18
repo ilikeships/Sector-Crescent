@@ -1,5 +1,6 @@
 using Content.Shared.Crescent.Dispenser;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory.VirtualItem;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Crescent.Dispenser;
@@ -7,6 +8,7 @@ namespace Content.Server.Crescent.Dispenser;
 public sealed class DispenserSystem : SharedDispenserSystem
 {
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private readonly SharedVirtualItemSystem _virtualItemSystem = default!;
 
     public override void Initialize()
     {
@@ -40,12 +42,27 @@ public sealed class DispenserSystem : SharedDispenserSystem
             return;
         }
 
-        if (TryPrototype(args.Used, out var prototype)
+        EntityUid used;
+        if (TryComp<VirtualItemComponent>(args.Used, out var virtualItem))
+        {
+            used = virtualItem.BlockingEntity;
+        }
+        else
+        {
+            used = args.Used;
+        }
+
+        if (TryPrototype(used, out var prototype)
             && TryGetDispenseItem(component, prototype.ID, out string itemId))
         {
             args.Handled = true;
-            QueueDel(args.Used);
             TryDispenseItem(uid, component, itemId);
+
+            if (virtualItem != null)
+            {
+                _virtualItemSystem.DeleteVirtualItem((args.Used, virtualItem), args.User);
+            }
+            QueueDel(used);
         }
         else
         {
