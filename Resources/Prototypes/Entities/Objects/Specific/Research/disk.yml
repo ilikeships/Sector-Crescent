@@ -1,5 +1,39 @@
 - type: entity
   parent: BaseItem
+  id: DelamDisk
+  name: delaminated survey data
+  description: A harddrive. Preliminary scans suggest survey data of celestial bodies and basic information about other systems and this one. It's probably worth money. Or you could put it into your research server and see if it can make sense of it.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/salvagedisk.rsi
+    state: icon
+  - type: ResearchDisk
+    points: 3000
+  - type: StaticPrice
+    price: 750
+  - type: GuideHelp
+    guides:
+    - Science
+
+- type: entity
+  parent: BaseItem
+  id: DelamDiskThumb
+  name: damaged thumbdrive
+  description: A worn-down thumbdrive. A label on the broad side reads 'SURVEY DATA'. You could probably harvest the research if you put this into your research server. Or you could sell it for money.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/salvagedisksmall.rsi
+    state: icon
+  - type: ResearchDisk
+    points: 1000
+  - type: StaticPrice
+    price: 300
+  - type: GuideHelp
+    guides:
+    - Science
+
+- type: entity
+  parent: BaseItem
   id: ResearchDisk
   name: research point disk (1000)
   description: A disk for the R&D server containing 1000 points.

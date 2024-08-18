@@ -1,13 +1,71 @@
-
+- type: entity
+  name: "trade item"
+  id: BaseTradeItem
+  abstract: true
+  components:
+  - type: PlaceableSurface
+    isPlaceable: false # defaults to closed.
+  - type: Clickable
+  - type: InteractionOutline
+  - type: MultiHandedItem
+  - type: MovedByPressure
+  - type: EmitSoundOnCollide
+    sound:
+      collection: WeakHit
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/drop.ogg
+      params:
+        volume: 2
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: CollisionWake
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: Sprite
+    drawdepth: Items
+    noRot: false
+  - type: Pullable
+  - type: DamageExaminable
+  - type: Anchorable
+  - type: Tag
+    tags:
+      - Structure
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodAlcohol
   name: alcohol crate
   description: A sealed crate of distilled potato vodka - Chengridz brand. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: Pullable
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/alcohol.rsi
     layers:
@@ -22,7 +80,7 @@
   description: A hermetically sealed crate of pre-war munitions. A sticker on the side identifies the export console this was bought from.
   components:
   - type: Item
-    size: Ginormous
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/ammo.rsi
     layers:
@@ -37,7 +95,7 @@
   description: A hermetically sealed case of high-grade antibiotics. A sticker on the side identifies the export console this was bought from.
   components:
   - type: Item
-    size: Ginormous
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/antibiotics.rsi
     layers:
@@ -53,7 +111,7 @@
   description: A hermetically sealed case of high-grade prosthetics and spare parts. A sticker on the side identifies the export console this was bought from.
   components:
   - type: Item
-    size: Ginormous
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/cybernetics.rsi
     layers:
@@ -68,7 +126,7 @@
   description: A hermetically sealed case of assorted scrap parts. A sticker on the side identifies the export console this was bought from.
   components:
   - type: Item
-    size: Ginormous
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/scrap.rsi
     layers:
@@ -83,7 +141,7 @@
   description: A hermetically sealed case of assorted armament parts. A sticker on the side identifies the export console this was bought from.
   components:
   - type: Item
-    size: Ginormous
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/gunparts.rsi
     layers:
@@ -98,7 +156,7 @@
   description: A bag of export-grade flour.
   components:
   - type: Item
-    size: Huge
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/flour.rsi
     layers:
@@ -113,7 +171,7 @@
   description: A bag of export-grade rice.
   components:
   - type: Item
-    size: Huge
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/rice.rsi
     layers:
@@ -128,7 +186,7 @@
   description: A bag of export-grade sugar.
   components:
   - type: Item
-    size: Huge
+    size: Massive
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/sugar.rsi
     layers:
