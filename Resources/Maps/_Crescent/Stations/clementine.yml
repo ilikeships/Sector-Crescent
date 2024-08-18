@@ -9809,6 +9809,27 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: NCWLPoster1
+  entities:
+  - uid: 2168
+    components:
+    - type: Transform
+      pos: -1.5,13.5
+      parent: 1
+- proto: NCWLPoster2
+  entities:
+  - uid: 2167
+    components:
+    - type: Transform
+      pos: 2.5,13.5
+      parent: 1
+- proto: NCWLPoster3
+  entities:
+  - uid: 2166
+    components:
+    - type: Transform
+      pos: -3.5,5.5
+      parent: 1
 - proto: NetworkConfigurator
   entities:
   - uid: 1860
@@ -11383,6 +11404,13 @@ entities:
       linkedPorts:
         2152:
         - Pressed: Toggle
+- proto: SignLastIdiot
+  entities:
+  - uid: 2169
+    components:
+    - type: Transform
+      pos: -3.5,29.5
+      parent: 1
 - proto: SignSpace
   entities:
   - uid: 1291
