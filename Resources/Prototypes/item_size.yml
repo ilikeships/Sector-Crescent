@@ -45,3 +45,11 @@
   name: item-component-size-Ginormous
   defaultShape:
   - 0,0,5,5
+
+# too big
+- type: itemSize
+  id: Massive
+  weight: 70
+  name: item-component-size-Massive
+  defaultShape:
+  - 0,0,8,8
