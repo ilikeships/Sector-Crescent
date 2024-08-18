@@ -124,3 +124,30 @@
     StarshipEngineComponents: 6050
     ShipComponents: 3750
     ShipHull: 6000
+
+- type: latheRecipe
+  id: TermiteLPC
+  result: ShipVoucherTermite
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 1000
+    ShipComponents: 250
+    ShipHull: 1000
+
+- type: latheRecipe
+  id: ParacelsusLPC
+  result: ShipVoucherParacelsus
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 3000
+    ShipComponents: 750
+    ShipHull: 3000
+
+- type: latheRecipe
+  id: ExhumerLPC
+  result: ShipVoucherExhumer
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 4000
+    ShipComponents: 1000
+    ShipHull: 3500

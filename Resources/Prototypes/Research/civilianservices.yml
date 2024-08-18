@@ -1,6 +1,30 @@
 # Tier 1
 
 - type: technology
+  id: MinerPod
+  name: research-technology-termite
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 1
+  cost: 3000
+  recipeUnlocks:
+  - TermiteLPC
+
+- type: technology
+  id: Paracelsus
+  name: research-technology-paracelsus
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 1
+  cost: 6000
+  recipeUnlocks:
+  - ParacelsusLPC
+
+- type: technology
   id: Hydroponics
   name: research-technology-basic-hydroponics
   icon:
@@ -117,6 +141,18 @@
   - BiomassReclaimerMachineCircuitboard
 
 # Tier 2
+
+- type: technology
+  id: Exhumer
+  name: research-technology-exhumer
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 1
+  cost: 9000
+  recipeUnlocks:
+  - ExhumerLPC
 
 - type: technology
   id: FauxAstroTiles
