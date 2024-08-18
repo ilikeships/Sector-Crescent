@@ -1,7 +1,7 @@
 - type: loadout
   id: CourtierDSMClothingHeadHatImperialHat
   equipment: CourtierDSMClothingHeadHatImperialHat
-  price: 125
+  price: 50
 
 - type: startingGear
   id: CourtierDSMClothingHeadHatImperialHat

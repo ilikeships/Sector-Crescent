@@ -3309,6 +3309,31 @@ entities:
     - type: Transform
       pos: 1.5,6.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+- proto: CrateAutogunAmmo
+  entities:
+  - uid: 498
+    components:
+    - type: Transform
+      pos: 1.5,7.5
+      parent: 1
 - proto: CrateEmergencyAdvancedKit
   entities:
   - uid: 494
@@ -3323,6 +3348,24 @@ entities:
     - type: Transform
       pos: -1.5,6.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
   - uid: 108
@@ -5758,7 +5801,7 @@ entities:
       pos: -0.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5788,7 +5831,7 @@ entities:
       pos: 2.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

@@ -72,10 +72,10 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash750
-      TradeDeedNormal: SpaceCash1000
-      TradeDeedHigh: SpaceCash1500
-      TradeDeedVeryHigh: SpaceCash2000
+      TradeDeedLow: SpaceCash550
+      TradeDeedNormal: SpaceCash750
+      TradeDeedHigh: SpaceCash1250
+      TradeDeedVeryHigh: SpaceCash1500
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
@@ -183,29 +183,35 @@
     defaultItem: HuntersPermit
     inventory:
       NCWLIDCardAdministrator: SpaceCash30000
-      NCWLIDCardKommissar: SpaceCash20000
-      NCWLIDCardKapitan: SpaceCash10000
-      NCWLIDCardSanitar: SpaceCash5000
-      NCWLIDCardArtificer: SpaceCash5000
-      NCWLIDCardDoktor: SpaceCash5000
-      NCWLIDCardKadet: SpaceCash2500
+      NCWLIDCardKommissar: SpaceCash30000
+      NCWLIDCardKapitan: SpaceCash20000
+      NCWLIDCardSanitar: SpaceCash10000
+      NCWLIDCardArtificer: SpaceCash10000
+      NCWLIDCardDoktor: SpaceCash10000
+      NCWLIDCardKadet: SpaceCash5000
       NCSPIDCardRingleader: SpaceCash30000
-      NCSPIDCardLieutenant: SpaceCash20000
-      NCSPIDCardInfanteer: SpaceCash5000
-      NCSPIDCardRipperdoc: SpaceCash5000
-      NCSPIDCardChemcook: SpaceCash5000
-      NCSPIDCardOperative: SpaceCash5000
-      NCSPIDCardIntelligenceOfficer: SpaceCash10000
-      NCSPIDCardForeman: SpaceCash10000
-      NCSPIDCardShipbreaker: SpaceCash5000
-      IDCardAntiquarian: SpaceCash1000
-      CMMIDCardMinuteman: SpaceCash5000
-      CMMIDCardPhysician: SpaceCash5000
-      CMMIDCardMachinist: SpaceCash5000
-      CMMIDCardOrdnanceman: SpaceCash5000
-      CMMIDCardWatchmaster: SpaceCash10000
-      CMMIDCardDeputyMarshal: SpaceCash20000
+      NCSPIDCardLieutenant: SpaceCash30000
+      NCSPIDCardInfanteer: SpaceCash10000
+      NCSPIDCardRipperdoc: SpaceCash10000
+      NCSPIDCardChemcook: SpaceCash10000
+      NCSPIDCardOperative: SpaceCash10000
+      NCSPIDCardIntelligenceOfficer: SpaceCash20000
+      NCSPIDCardForeman: SpaceCash20000
+      NCSPIDCardShipbreaker: SpaceCash10000
+      IDCardAntiquarian: SpaceCash10000
+      CMMIDCardMinuteman: SpaceCash10000
+      CMMIDCardPhysician: SpaceCash10000
+      CMMIDCardMachinist: SpaceCash10000
+      CMMIDCardOrdnanceman: SpaceCash10000
+      CMMIDCardWatchmaster: SpaceCash20000
+      CMMIDCardDeputyMarshal: SpaceCash30000
       CMMIDCardMarshal: SpaceCash30000
+      DSMIDCardFreeholder: SpaceCash5000
+      DSMIDCardLevyman: SpaceCash10000
+      DSMIDCardKnight: SpaceCash20000
+      DSMIDCardCourtier: SpaceCash20000
+      DSMIDCardAdjutant: SpaceCash30000
+      DSMIDCardGovernor: SpaceCash30000
   - type: Sprite
     sprite: _Crescent/Structures/hunter.rsi
     layers:
@@ -232,7 +238,7 @@
     inventory:
       CrashAutoinjector: SpaceCash2500
       ExileAutoinjector: SpaceCash3500
-      KaiserAutoinjector: SpaceCash6000
+      KaiserAutoinjector: SpaceCash5000
       BloodeyeAutoinjector: SpaceCash4000
       MechaniteAutoinjector: SpaceCash5000
       RadioJammer: SpaceCash1000
@@ -253,10 +259,10 @@
       WeaponRifleHunter: SpaceCash2500
       WeaponRifleMayflower: SpaceCash3500
       WeaponRevolverSnubnose: SpaceCash1500
-      WeaponPistolHKUSP: SpaceCash1000
-      WeaponPistolT91: SpaceCash1500
-      WeaponPistolHimehabu: SpaceCash1000
-      WeaponPistolComplianceImperial: SpaceCash1500
+      WeaponPistolHKUSP: SpaceCash2000
+      WeaponPistolT91: SpaceCash2500
+      WeaponPistolHimehabu: SpaceCash2500
+      WeaponPistolComplianceImperial: SpaceCash2500
       WeaponPistolSmartpistol: SpaceCash2500
   - type: Sprite
     sprite: _Crescent/Structures/onionchute.rsi
@@ -277,9 +283,9 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodCybernetics: TradeDeedHigh
+      TradeGoodCybernetics: TradeDeedNormal
       TradeGoodGunparts: TradeDeedNormal
-      TradeGoodAntibiotics: TradeDeedHigh
+      TradeGoodAntibiotics: TradeDeedNormal
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedLow
   - type: Sprite
@@ -328,7 +334,7 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAmmo: TradeDeedHigh
-      TradeGoodGunparts: TradeDeedVeryHigh
+      TradeGoodGunparts: TradeDeedHigh
       TradeGoodScrap: TradeDeedNormal
       TradeGoodRice: TradeDeedNormal
       TradeGoodFlour: TradeDeedLow
@@ -351,7 +357,7 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeGoodAlcohol: TradeDeedVeryHigh
+      TradeGoodAlcohol: TradeDeedHigh
       TradeGoodCybernetics: TradeDeedLow
       TradeGoodAntibiotics: TradeDeedLow
       TradeGoodRice: TradeDeedLow
@@ -377,7 +383,7 @@
     inventory:
       TradeGoodAmmo: TradeDeedHigh
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodScrap: TradeDeedVeryHigh
+      TradeGoodScrap: TradeDeedHigh
       TradeGoodAntibiotics: TradeDeedLow
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow

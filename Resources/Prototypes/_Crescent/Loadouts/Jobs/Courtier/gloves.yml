@@ -2,7 +2,7 @@
 - type: loadout
   id: CourtierDSMClothingHandsGlovesImperialLonggloves
   equipment: CourtierDSMClothingHandsGlovesImperialLonggloves
-  price: 150
+  price: 50
 
 - type: startingGear
   id: CourtierDSMClothingHandsGlovesImperialLonggloves

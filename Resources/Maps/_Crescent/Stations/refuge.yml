@@ -1074,7 +1074,7 @@ entities:
       pos: 9.5,-21.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -14265.627
+      secondsUntilStateChange: -14314.876
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2078,12 +2078,12 @@ entities:
   - uid: 1879
     components:
     - type: Transform
-      pos: 11.144884,-5.435273
+      pos: 10.282761,-2.7902899
       parent: 1
   - uid: 1902
     components:
     - type: Transform
-      pos: 11.144884,-5.197414
+      pos: 10.639448,-2.7308252
       parent: 1
   - uid: 1981
     components:
@@ -10307,6 +10307,23 @@ entities:
     - type: Transform
       pos: 10.371758,-6.2883596
       parent: 1
+- proto: ShipVoucherSaintsfall
+  entities:
+  - uid: 567
+    components:
+    - type: Transform
+      pos: -3.5551295,5.5063267
+      parent: 1
+  - uid: 630
+    components:
+    - type: Transform
+      pos: -3.3916476,5.6252556
+      parent: 1
+  - uid: 2114
+    components:
+    - type: Transform
+      pos: -3.6888876,5.669854
+      parent: 1
 - proto: ShotGunCabinetFilled
   entities:
   - uid: 206
@@ -11298,7 +11315,14 @@ entities:
   - uid: 1606
     components:
     - type: Transform
-      pos: 11.486408,-5.366655
+      pos: 11.010998,-5.287812
+      parent: 1
+- proto: TurboItemRecharger
+  entities:
+  - uid: 2115
+    components:
+    - type: Transform
+      pos: 11.5,-5.5
       parent: 1
 - proto: VendingMachineChemicals
   entities:
