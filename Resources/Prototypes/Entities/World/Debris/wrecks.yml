@@ -25,8 +25,6 @@
             prob: 0.6
           - id: DelamDisk
             prob: 0.1
-          - id: TechminingSpawner
-            prob: 0.32
           - id: SalvageCanisterSpawner
             prob: 0.3
           - id: TechminingSpawner
@@ -95,8 +93,6 @@
             prob: 0.05
           - id: ScrapSalvageRandomSpawner
             prob: 0.2
-          - id: TechminingSpawner
-            prob: 0.1
         Lattice:
           - prob: 2
           - id: Grille
@@ -105,8 +101,6 @@
             prob: 0.3
           - id: SalvageCanisterSpawner
             prob: 0.2
-          - id: TechminingSpawner
-            prob: 0.32
         FloorSteel:
           - prob: 3 # Intentional blank.
           - id: CrateFilledSpawner
