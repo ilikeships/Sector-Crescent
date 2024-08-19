@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -167.17383
+      secondsUntilStateChange: -668.9559
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2916,52 +2916,116 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 35.5,-16.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6093709374868209 rad: 4.155154734448617 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3291
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -2.5,15.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.285918661444065 rad: 3.185883494289459 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3292
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,36.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.094568458625648 rad: 0.4247972083877084 rad
+      - 2.0863260784447557 rad: 2.678199593490682 rad
+      - 5.3217599178715105 rad: 1.5600865012365095 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3293
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 23.5,20.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 6.119709729125447 rad: 0.3269511561082782 rad
+      - 1.952975805035855 rad: 4.344269366689927 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3294
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 27.5,-30.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.5772923987407172 rad: 0.699396836493048 rad
+      - 3.1034410592723254 rad: 0.36967020419234864 rad
+      - 0.21703078985266083 rad: 2.9525097287298805 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3296
     components:
     - type: Transform
       pos: 17.5,-33.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 6.237221374994406 rad: 0.3480792442323629 rad
+      - 0.2858872804728637 rad: 2.1037194940481734 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3297
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 6.5,-19.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.213213900179186 rad: 3.6960343089403342 rad
+    - type: DeviceLinkSink
+      links:
+      - 3212
+      - 3464
   - uid: 3298
     components:
     - type: Transform
       pos: -3.5,-11.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.7878271354962012 rad: 1.1367347093922875 rad
+      - 5.47620862055092 rad: 2.4057208784163113 rad
+    - type: DeviceLinkSink
+      links:
+      - 3212
+      - 3464
   - uid: 3443
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 28.5,19.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.005937469345352039 rad: 0.5036740564064448 rad
+      - 2.715122353497813 rad: 3.5161808372421386 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
 - proto: Bed
   entities:
   - uid: 978
@@ -9591,6 +9655,13 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: ComputerTabletopAdvancedRadar
+  entities:
+  - uid: 1373
+    components:
+    - type: Transform
+      pos: 7.5,-13.5
+      parent: 1
 - proto: ComputerTabletopAnalysisConsole
   entities:
   - uid: 641
@@ -9612,11 +9683,6 @@ entities:
       parent: 1
 - proto: ComputerTabletopCriminalRecords
   entities:
-  - uid: 1373
-    components:
-    - type: Transform
-      pos: 7.5,-13.5
-      parent: 1
   - uid: 1676
     components:
     - type: Transform
@@ -9683,6 +9749,21 @@ entities:
       rot: 3.141592653589793 rad
       pos: 8.5,-16.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        3297:
+        - Group1: On
+        - Group2: Off
+        3302:
+        - Group1: On
+        - Group2: Off
+        3298:
+        - Group1: On
+        - Group2: Off
+        3303:
+        - Group1: On
+        - Group2: Off
+        3299: []
 - proto: ComputerTabletopStationAdminBankATM
   entities:
   - uid: 3214
@@ -9701,14 +9782,6 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ComputerTabletopStationRecords
-  entities:
-  - uid: 3215
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 9.5,-16.5
-      parent: 1
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 1059
@@ -9740,6 +9813,58 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 17.5,-9.5
       parent: 1
+- proto: ComputerTabletopTargeting
+  entities:
+  - uid: 3215
+    components:
+    - type: MetaData
+      desc: Controls the station's armaments.
+      name: station defense console
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 9.5,-16.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 3302
+        - 3303
+        - 3299
+        - 3444
+        - 3295
+        - 3300
+        - 1357
+        - 3301
+        - 3429
+        - 3291
+        - 3292
+        - 3293
+        - 3443
+        - 3290
+        - 3294
+        - 3296
+        - 3297
+        - 3298
+        ballistic:
+        - 3302
+        - 3303
+        - 3299
+        - 3444
+        - 3295
+        - 3300
+        - 1357
+        - 3301
+        - 3429
+        plasma:
+        - 3291
+        - 3292
+        - 3293
+        - 3443
+        - 3290
+        - 3294
+        - 3296
+        - 3297
+        - 3298
 - proto: ComputerTechnologyDiskTerminal
   entities:
   - uid: 873
@@ -10771,7 +10896,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2036.5669
+      secondsUntilStateChange: -2538.3489
       state: Opening
   - uid: 1418
     components:
@@ -14500,7 +14625,7 @@ entities:
   - uid: 539
     components:
     - type: Transform
-      pos: -0.84235275,-8.383741
+      pos: -0.4448711,-8.307918
       parent: 1
   - uid: 1365
     components:
@@ -14678,6 +14803,20 @@ entities:
     components:
     - type: Transform
       pos: 14.505083,9.734279
+      parent: 1
+- proto: NCWLPoster2
+  entities:
+  - uid: 3474
+    components:
+    - type: Transform
+      pos: 17.5,10.5
+      parent: 1
+- proto: NCWLPoster3
+  entities:
+  - uid: 3473
+    components:
+    - type: Transform
+      pos: 29.5,6.5
       parent: 1
 - proto: NetworkConfigurator
   entities:
@@ -17098,12 +17237,80 @@ entities:
       rot: 3.141592653589793 rad
       pos: 28.5,0.5
       parent: 1
+- proto: RemoteSignallerAdvanced
+  entities:
+  - uid: 3464
+    components:
+    - type: MetaData
+      name: disarm/rearm station point defense
+    - type: Transform
+      pos: 7.879355,-16.419853
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        3297:
+        - Pressed: Toggle
+        3302:
+        - Pressed: Toggle
+        3298:
+        - Pressed: Toggle
+        3303:
+        - Pressed: Toggle
+        3299:
+        - Pressed: Toggle
+        3291:
+        - Pressed: Toggle
+        3444:
+        - Pressed: Toggle
+        3292:
+        - Pressed: Toggle
+        3295:
+        - Pressed: Toggle
+        3293:
+        - Pressed: Toggle
+        3443:
+        - Pressed: Toggle
+        3300:
+        - Pressed: Toggle
+        1357:
+        - Pressed: Toggle
+        3290:
+        - Pressed: Toggle
+        3294:
+        - Pressed: Toggle
+        3301:
+        - Pressed: Toggle
+        3429:
+        - Pressed: Toggle
+        3296:
+        - Pressed: Toggle
 - proto: ResearchAndDevelopmentServerImperial
   entities:
   - uid: 1528
     components:
     - type: Transform
       pos: 20.5,-27.5
+      parent: 1
+- proto: RubberStampApproved
+  entities:
+  - uid: 3466
+    components:
+    - type: Transform
+      pos: -1.470349,-6.85103
+      parent: 1
+- proto: RubberStampDenied
+  entities:
+  - uid: 3465
+    components:
+    - type: Transform
+      pos: -1.6784164,-6.85103
+      parent: 1
+- proto: RubberStampEmpire
+  entities:
+  - uid: 3467
+    components:
+    - type: Transform
+      pos: -1.2622806,-6.8361635
       parent: 1
 - proto: SawImprov
   entities:
@@ -17166,6 +17373,39 @@ entities:
     components:
     - type: Transform
       pos: 19.367186,-16.325144
+      parent: 1
+- proto: ShipVoucherAnathema
+  entities:
+  - uid: 3468
+    components:
+    - type: Transform
+      pos: -0.8600007,-8.496376
+      parent: 1
+- proto: ShipVoucherConquest
+  entities:
+  - uid: 3469
+    components:
+    - type: Transform
+      pos: -0.59248483,-8.481509
+      parent: 1
+  - uid: 3470
+    components:
+    - type: Transform
+      pos: -0.81541455,-8.377446
+      parent: 1
+- proto: ShipVoucherLaelaps
+  entities:
+  - uid: 3472
+    components:
+    - type: Transform
+      pos: -0.8748628,-8.407179
+      parent: 1
+- proto: ShipVoucherValor
+  entities:
+  - uid: 3471
+    components:
+    - type: Transform
+      pos: -0.81541455,-8.570707
       parent: 1
 - proto: ShipyardManufactorum
   entities:
@@ -22670,51 +22910,119 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 35.5,-12.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.15260396288522549 rad: 4.80640183776 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3295
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,36.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.9054122937560227 rad: 0.4247972083877084 rad
+      - 2.54293154166136 rad: 1.5600865012365086 rad
+      - 4.660252288833941 rad: 2.678199593490683 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3299
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -2.5,13.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.1443260078542725 rad: 0.8529406378812482 rad
+      - 4.285918661444065 rad: 3.185883494289459 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
+      - 3212
   - uid: 3300
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 32.5,20.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.978117075535654 rad: 1.572739613431607 rad
+      - 4.541101064462838 rad: 1.589480279831523 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3301
     components:
     - type: Transform
       pos: 25.5,-32.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.0956287214046125 rad: 0.3480792442323627 rad
+      - 2.715122353497813 rad: 0.4405301646381755 rad
+      - 0.3821794782409582 rad: 2.473525894875971 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3302
     components:
     - type: Transform
       pos: 3.5,-16.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.227918732034549 rad: 3.5161808204570417 rad
+      - 2.3227822058636525 rad: 0.3831107025752162 rad
+    - type: DeviceLinkSink
+      links:
+      - 3212
+      - 3464
   - uid: 3303
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -4.5,-10.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.929419789085995 rad: 2.7719578820032624 rad
+    - type: DeviceLinkSink
+      links:
+      - 3212
+      - 3464
   - uid: 3429
     components:
     - type: Transform
       pos: 20.5,-31.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 6.245033712862119 rad: 0.36967020419234886 rad
+      - 3.44176466910227 rad: 0.5899459030046309 rad
+      - 5.856715007087606 rad: 0.4405301646381755 rad
+      - 0.16153229141742903 rad: 2.510475293004649 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
   - uid: 3444
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,17.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.3586234434424536 rad: 0.5079384720365182 rad
+      - 3.697916041182454 rad: 4.208202284342778 rad
+    - type: DeviceLinkSink
+      links:
+      - 3464
 - proto: WindoorSecure
   entities:
   - uid: 267

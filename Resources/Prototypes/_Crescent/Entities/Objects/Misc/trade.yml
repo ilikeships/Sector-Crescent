@@ -1,13 +1,60 @@
-
+- type: entity
+  # This means that it's not anchored on spawn.
+  id: BaseTradeItem
+  parent: BaseStructureDynamic
+  abstract: true
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: PlaceableSurface
+    isPlaceable: false # defaults to closed.
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Pullable
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodAlcohol
   name: alcohol crate
   description: A sealed crate of distilled potato vodka - Chengridz brand. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: Pullable
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/alcohol.rsi
     layers:
@@ -16,13 +63,11 @@
     price: 500
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodAmmo
   name: sealed ammunition crate
   description: A hermetically sealed crate of pre-war munitions. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/ammo.rsi
     layers:
@@ -31,13 +76,11 @@
     price: 500
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodAntibiotics
   name: sealed antibiotics case
   description: A hermetically sealed case of high-grade antibiotics. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/antibiotics.rsi
     layers:
@@ -47,13 +90,11 @@
 
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodCybernetics
   name: sealed crate of cybernetic parts
   description: A hermetically sealed case of high-grade prosthetics and spare parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/cybernetics.rsi
     layers:
@@ -62,13 +103,11 @@
     price: 500
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodScrap
   name: sealed scrap crate
   description: A hermetically sealed case of assorted scrap parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/scrap.rsi
     layers:
@@ -77,13 +116,11 @@
     price: 500
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodGunparts
   name: sealed crate of gun parts
   description: A hermetically sealed case of assorted armament parts. A sticker on the side identifies the export console this was bought from.
   components:
-  - type: Item
-    size: Ginormous
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/gunparts.rsi
     layers:
@@ -92,13 +129,11 @@
     price: 500
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodFlour
   name: bag of export flour
   description: A bag of export-grade flour.
   components:
-  - type: Item
-    size: Huge
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/flour.rsi
     layers:
@@ -107,13 +142,11 @@
     price: 300
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodRice
   name: bag of export rice
   description: A bag of export-grade rice.
   components:
-  - type: Item
-    size: Huge
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/rice.rsi
     layers:
@@ -122,13 +155,11 @@
     price: 300
 
 - type: entity
-  parent: BaseItem
+  parent: BaseTradeItem
   id: TradeGoodSugar
   name: bag of export sugar
   description: A bag of export-grade sugar.
   components:
-  - type: Item
-    size: Huge
   - type: Sprite
     sprite: _Crescent/Objects/TradeGoods/sugar.rsi
     layers:

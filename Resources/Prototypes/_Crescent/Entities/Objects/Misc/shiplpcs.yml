@@ -725,6 +725,23 @@
   - type: ShipVoucher
     ship: Saintsfall
 
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherSpider
+  name: SRM 'Spider' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Sixth St. Romaine's Militia Spider-class stealth shuttle pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 19000
+  - type: ShipVoucher
+    ship: Spider
+
 # INDIE
 
 - type: entity

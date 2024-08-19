@@ -50,8 +50,8 @@
 - type: entity
   parent: BaseItem
   id: BaseSecurityUplinkRadio
-  name: nfsd uplink
-  description: Retro looking old radio...
+  name: tele-order uplink
+  description: A requisitions console that uses bluespace slipstreams to deliver goods to the user.
   suffix: Empty
   noSpawn: true
   components:

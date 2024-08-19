@@ -19,16 +19,6 @@
   group: market
 
 - type: cargoProduct
-  id: CrateBoriatic
-  icon:
-    sprite: _Crescent/Objects/Misc/fuelcan.rsi
-    state: jug
-  product: CrateBoriatic
-  cost: 7500
-  category: cargoproduct-category-name-shuttle
-  group: market
-
-- type: cargoProduct
   id: CrateVulcanAmmo
   icon:
     sprite: _NF/Objects/SpaceArtillery/50_armorpiercing_machinegun_casing.rsi
@@ -54,6 +44,36 @@
     sprite: _NF/Objects/SpaceArtillery/630_armorpiercing_shell_casing.rsi 
     state: base
   product: CrateArtilleryAmmo
+  cost: 2500
+  category: cargoproduct-category-name-shuttle
+  group: market
+
+- type: cargoProduct
+  id: ShuttleNeedlerAmmo
+  icon:
+    sprite: _Crescent/Ammunition/needler.rsi
+    state: base
+  product: CrateAutogunAmmo
+  cost: 2500
+  category: cargoproduct-category-name-shuttle
+  group: market
+
+- type: cargoProduct
+  id: ShuttleMortarAmmo
+  icon:
+    sprite: _Crescent/Ammunition/mortar.rsi
+    state: base
+  product: CrateMortarAmmo
+  cost: 2500
+  category: cargoproduct-category-name-shuttle
+  group: market
+
+- type: cargoProduct
+  id: ShuttleSwarmerAmmo
+  icon:
+    sprite: _Crescent/Objects/ShuttleWeapons/swarmermissile.rsi
+    state: base
+  product: CrateSwarmerAmmo
   cost: 2500
   category: cargoproduct-category-name-shuttle
   group: market

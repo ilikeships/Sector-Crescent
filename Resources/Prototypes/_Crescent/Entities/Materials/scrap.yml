@@ -125,7 +125,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 90
+    price: 250
 
 - type: entity
   parent: BaseItem
@@ -138,7 +138,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 125
+    price: 325
 
 - type: entity
   parent: BaseItem
@@ -151,7 +151,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 165
+    price: 565
 
 - type: entity
   parent: BaseItem
@@ -164,7 +164,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 250
+    price: 850
 
 - type: entity
   parent: BaseItem
@@ -177,7 +177,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 2500
+    price: 3500
 
 #refined scrap
 

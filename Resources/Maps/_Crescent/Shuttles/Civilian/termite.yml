@@ -16,6 +16,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.5222931,-0.6709614
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -192,6 +193,17 @@ entities:
     - type: Transform
       pos: 2.5,0.5
       parent: 1
+- proto: BoriaticGeneratorHerculesShuttle
+  entities:
+  - uid: 56
+    components:
+    - type: Transform
+      pos: -0.5,-1.5
+      parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: ButtonFrameCaution
   entities:
   - uid: 72
@@ -613,17 +625,6 @@ entities:
     - type: Transform
       pos: 1.4884579,5.6540236
       parent: 1
-- proto: BoriaticGeneratorHerculesShuttle
-  entities:
-  - uid: 56
-    components:
-    - type: Transform
-      pos: -0.5,-1.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PoweredSmallLight
   entities:
   - uid: 90
@@ -740,6 +741,27 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 200
+- proto: SpawnPointContractor
+  entities:
+  - uid: 141
+    components:
+    - type: Transform
+      pos: 0.5,4.5
+      parent: 1
+- proto: SpawnPointLatejoin
+  entities:
+  - uid: 143
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+- proto: SpawnPointPassenger
+  entities:
+  - uid: 142
+    components:
+    - type: Transform
+      pos: 0.5,5.5
+      parent: 1
 - proto: SubstationWallBasic
   entities:
   - uid: 98

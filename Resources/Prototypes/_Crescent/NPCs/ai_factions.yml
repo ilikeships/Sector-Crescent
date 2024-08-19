@@ -39,7 +39,6 @@
   id: DSMighter
   hostile:
     - NCSPFighter
-    - SHIFighter
     - SRMFighter
     - NCWLFighter
 
@@ -81,7 +80,6 @@
     - NCSPWarship
     - SRMWarship
     - NCWLWarship
-    - SHIWarship
 
 - type: npcFaction
   id: SHIWarship

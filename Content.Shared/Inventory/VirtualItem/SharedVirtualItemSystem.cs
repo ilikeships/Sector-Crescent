@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Popups;
+using Content.Shared.Crescent.Dispenser;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -68,7 +69,16 @@ public abstract class SharedVirtualItemSystem : EntitySystem
 
     private void OnBeforeRangedInteract(Entity<VirtualItemComponent> ent, ref BeforeRangedInteractEvent args)
     {
-        // No interactions with a virtual item, please.
+        // No interactions with a virtual item, unless interacting with a Dispenser while on server.
+        if (_netManager.IsServer)
+        {
+            if (TryComp<DispenserComponent>(args.Target, out var dispenser))
+            {
+                args.Handled = false;
+                return;
+            }
+        }
+
         args.Handled = true;
     }
 

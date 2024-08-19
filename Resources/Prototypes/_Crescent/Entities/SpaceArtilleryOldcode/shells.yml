@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 325
+        Structural: 700
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
     lifetime: 40
@@ -74,9 +74,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 14
-    intensitySlope: 15
-    totalIntensity: 15
+    maxIntensity: 16
+    intensitySlope: 26
+    totalIntensity: 23
     maxTileBreak: 5
   - type: PointLight
     radius: 3.5
@@ -131,8 +131,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 25
-    intensitySlope: 28
+    maxIntensity: 50
+    intensitySlope: 67
     totalIntensity: 110
     maxTileBreak: 6
   - type: PointLight
@@ -286,7 +286,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 50
+        Structural: 95
         #currently explosion deals 30 damage
   - type: TimedDespawn
     lifetime: 20
@@ -298,9 +298,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 9
-    intensitySlope: 7
-    totalIntensity: 7
+    maxIntensity: 12
+    intensitySlope: 10
+    totalIntensity: 9
     maxTileBreak: 1
   - type: PointLight
     radius: 3.5
@@ -355,9 +355,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 15
-    intensitySlope: 16
-    totalIntensity: 18
+    maxIntensity: 16
+    intensitySlope: 19
+    totalIntensity: 19
     maxTileBreak: 3
   - type: PointLight
     radius: 5
@@ -793,7 +793,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 30
+        Structural: 90
         Blunt: 10
         Piercing: 10
         #currently explosion deals roughly 60 damage
@@ -806,7 +806,7 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 19
+    maxIntensity: 30
     intensitySlope: 20
     totalIntensity: 80
     maxTileBreak: 4
@@ -986,7 +986,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 80
+        Structural: 150
         Blunt: 40
   - type: TimedDespawn
     lifetime: 30
@@ -997,7 +997,7 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 22
+    maxIntensity: 42
     intensitySlope: 25
     totalIntensity: 75
     maxTileBreak: 6

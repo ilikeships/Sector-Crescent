@@ -1,12 +1,12 @@
 #ncwl#
 
 job-name-kommissar = Kommissar
-job-name-sanitar = Efreitor
+job-name-sanitar = Union Corpsman
 job-name-artificer = Artificer
-job-name-doktor = Doktor
-job-name-administrator = Union Administrator
-job-name-kapitan = Unionkapitan
-job-name-kadet = Cadet
+job-name-doktor = Sanitar
+job-name-administrator = Admiral Opreme
+job-name-kapitan = Fleetkapitan
+job-name-kadet = Citizen Soldat
 
 #syndicate#
 
