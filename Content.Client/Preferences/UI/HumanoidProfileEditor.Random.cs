@@ -24,12 +24,12 @@ namespace Content.Client.Preferences.UI
                     return HumanoidCharacterProfile.DefaultBalance + b.Next(0, 1000);
                 }
 
-                int mony = Profile.BankBalance - 20000;
-                if (mony < -2000)
+                int moneyAfterDebt = Profile.BankBalance - 20000;
+                if (moneyAfterDebt < -2000)
                 {
-                    mony = -2000;
+                    moneyAfterDebt = -2000;
                 }
-                return (mony);
+                return (moneyAfterDebt);
             }
         }
 
