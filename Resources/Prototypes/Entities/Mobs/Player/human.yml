@@ -3,6 +3,20 @@
   name: Urist McHands
   parent: BaseMobHuman
   id: MobHuman
+  components:
+    - type: Butcherable
+      butcheringType: Knife
+      spawned:
+      - id: OrganHumanEyes
+        amount: 1
+      - id: OrganHumanLungs
+        amount: 1
+      - id: OrganHumanHeart
+        amount: 1
+      - id: OrganHumanKidneys
+        amount: 1
+      - id: OrganHumanLiver
+        amount: 1
 
 #Syndie
 - type: entity

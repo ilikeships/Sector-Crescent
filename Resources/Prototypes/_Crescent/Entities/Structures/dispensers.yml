@@ -241,7 +241,7 @@
       KaiserAutoinjector: SpaceCash5000
       BloodeyeAutoinjector: SpaceCash4000
       MechaniteAutoinjector: SpaceCash5000
-      RadioJammer: SpaceCash1000
+      RadioJammer: SpaceCash5000
       FreedomImplanter: SpaceCash1000
       StorageImplanter: SpaceCash1000
       RitualDagger: SpaceCash500
@@ -264,6 +264,13 @@
       WeaponPistolHimehabu: SpaceCash2500
       WeaponPistolComplianceImperial: SpaceCash2500
       WeaponPistolSmartpistol: SpaceCash2500
+      OrganHumanEyes: SpaceCash500
+      OrganHumanLungs: SpaceCash1000
+      OrganHumanHeart: SpaceCash1000
+      OrganHumanStomach: SpaceCash500
+      OrganHumanKidneys: SpaceCash1000
+      OrganHumanLiver: SpaceCash1000
+      
   - type: Sprite
     sprite: _Crescent/Structures/onionchute.rsi
     layers:
