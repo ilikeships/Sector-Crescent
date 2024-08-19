@@ -72,10 +72,10 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash550
-      TradeDeedNormal: SpaceCash750
-      TradeDeedHigh: SpaceCash1250
-      TradeDeedVeryHigh: SpaceCash1500
+      TradeDeedLow: SpaceCash750
+      TradeDeedNormal: SpaceCash1250
+      TradeDeedHigh: SpaceCash1750
+      TradeDeedVeryHigh: SpaceCash2000
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
@@ -241,7 +241,7 @@
       KaiserAutoinjector: SpaceCash5000
       BloodeyeAutoinjector: SpaceCash4000
       MechaniteAutoinjector: SpaceCash5000
-      RadioJammer: SpaceCash1000
+      RadioJammer: SpaceCash5000
       FreedomImplanter: SpaceCash1000
       StorageImplanter: SpaceCash1000
       RitualDagger: SpaceCash500
@@ -264,6 +264,13 @@
       WeaponPistolHimehabu: SpaceCash2500
       WeaponPistolComplianceImperial: SpaceCash2500
       WeaponPistolSmartpistol: SpaceCash2500
+      OrganHumanEyes: SpaceCash500
+      OrganHumanLungs: SpaceCash1000
+      OrganHumanHeart: SpaceCash1000
+      OrganHumanStomach: SpaceCash500
+      OrganHumanKidneys: SpaceCash1000
+      OrganHumanLiver: SpaceCash1000
+      
   - type: Sprite
     sprite: _Crescent/Structures/onionchute.rsi
     layers:
@@ -283,9 +290,9 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodCybernetics: TradeDeedNormal
+      TradeGoodCybernetics: TradeDeedHigh
       TradeGoodGunparts: TradeDeedNormal
-      TradeGoodAntibiotics: TradeDeedNormal
+      TradeGoodAntibiotics: TradeDeedVeryHigh
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedLow
   - type: Sprite
@@ -334,7 +341,7 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAmmo: TradeDeedHigh
-      TradeGoodGunparts: TradeDeedHigh
+      TradeGoodGunparts: TradeDeedVeryHigh
       TradeGoodScrap: TradeDeedNormal
       TradeGoodRice: TradeDeedNormal
       TradeGoodFlour: TradeDeedLow
@@ -383,7 +390,7 @@
     inventory:
       TradeGoodAmmo: TradeDeedHigh
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodScrap: TradeDeedHigh
+      TradeGoodScrap: TradeDeedVeryHigh
       TradeGoodAntibiotics: TradeDeedLow
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow

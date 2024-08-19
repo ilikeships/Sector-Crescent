@@ -79,6 +79,7 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
+  - type: Contraband
 
 - type: entity
   id: OrganHumanTongue
@@ -142,6 +143,7 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  - type: Contraband
 
 - type: entity
   id: OrganHumanHeart
@@ -161,6 +163,7 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
+  - type: Contraband
 
 - type: entity
   id: OrganHumanStomach
@@ -190,6 +193,7 @@
     groups:
     - id: Food
     - id: Drink
+  - type: Contraband
 
 - type: entity
   id: OrganHumanLiver
@@ -205,6 +209,7 @@
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
+  - type: Contraband
 
 - type: entity
   id: OrganHumanKidneys
@@ -221,3 +226,4 @@
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
+  - type: Contraband
