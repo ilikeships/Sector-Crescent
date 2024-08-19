@@ -32,7 +32,7 @@ namespace Content.Shared.Preferences
         public const int MaxNameLength = 32;
         public const int MaxDescLength = 512;
 
-        public const int DefaultBalance = 0;
+        public const int DefaultBalance = 20000;
 
         private readonly Dictionary<string, JobPriority> _jobPriorities;
         private readonly List<string> _antagPreferences;
