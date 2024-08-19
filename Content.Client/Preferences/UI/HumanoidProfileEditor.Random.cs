@@ -21,15 +21,16 @@ namespace Content.Client.Preferences.UI
                 if (Profile == null)
                 {
                     Random b = new Random();
-                    return HumanoidCharacterProfile.DefaultBalance + b.Next(0, 1000);
+                    return b.Next(HumanoidCharacterProfile.DefaultBalance - 1000, HumanoidCharacterProfile.DefaultBalance + 1000);
                 }
+                int MONEY_AFTER_DEBT = Profile.BankBalance - 500; //under 0, death fee is 500
+                if (Profile.BankBalance > 0) MONEY_AFTER_DEBT = Profile.BankBalance - ((Profile.BankBalance / 100) * 10); //over 0, death fee is 10 percent. Minimum is 1 since its an int
 
-                int moneyAfterDebt = Profile.BankBalance - 20000;
-                if (moneyAfterDebt < -2000)
+                if (MONEY_AFTER_DEBT < -2000)
                 {
-                    moneyAfterDebt = -2000;
+                    MONEY_AFTER_DEBT = -2000;
                 }
-                return (moneyAfterDebt);
+                return (MONEY_AFTER_DEBT);
             }
         }
 
