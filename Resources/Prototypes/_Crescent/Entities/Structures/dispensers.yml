@@ -72,10 +72,10 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash550
-      TradeDeedNormal: SpaceCash750
-      TradeDeedHigh: SpaceCash1250
-      TradeDeedVeryHigh: SpaceCash1500
+      TradeDeedLow: SpaceCash750
+      TradeDeedNormal: SpaceCash1250
+      TradeDeedHigh: SpaceCash1750
+      TradeDeedVeryHigh: SpaceCash2000
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
@@ -290,9 +290,9 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodCybernetics: TradeDeedNormal
+      TradeGoodCybernetics: TradeDeedHigh
       TradeGoodGunparts: TradeDeedNormal
-      TradeGoodAntibiotics: TradeDeedNormal
+      TradeGoodAntibiotics: TradeDeedVeryHigh
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedLow
   - type: Sprite
@@ -341,7 +341,7 @@
     defaultItem: TradeDeedStub
     inventory:
       TradeGoodAmmo: TradeDeedHigh
-      TradeGoodGunparts: TradeDeedHigh
+      TradeGoodGunparts: TradeDeedVeryHigh
       TradeGoodScrap: TradeDeedNormal
       TradeGoodRice: TradeDeedNormal
       TradeGoodFlour: TradeDeedLow
@@ -390,7 +390,7 @@
     inventory:
       TradeGoodAmmo: TradeDeedHigh
       TradeGoodAlcohol: TradeDeedLow
-      TradeGoodScrap: TradeDeedHigh
+      TradeGoodScrap: TradeDeedVeryHigh
       TradeGoodAntibiotics: TradeDeedLow
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow
