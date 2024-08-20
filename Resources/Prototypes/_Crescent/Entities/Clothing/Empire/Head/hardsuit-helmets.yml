@@ -14,6 +14,7 @@
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -40,6 +41,7 @@
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -106,6 +108,7 @@
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -116,6 +119,11 @@
   - type: Tag
     tags:
     - HidesHair
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
 
 - type: entity
   parent: ClothingHeadBase
@@ -137,6 +145,11 @@
   - type: Tag
     tags:
     - HidesHair
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
 
 - type: entity
   parent: ClothingHeadBase
@@ -158,6 +171,11 @@
   - type: Tag
     tags:
     - HidesHair
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
 
 - type: entity
   parent: ClothingHeadEVAHelmetBase
@@ -170,6 +188,11 @@
     sprite: _Crescent/Clothing/Empire/Head/mandateeva.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandateeva.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
 
 - type: entity
   parent: ClothingHeadBase
