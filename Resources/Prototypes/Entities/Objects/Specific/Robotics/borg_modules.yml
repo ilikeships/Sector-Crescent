@@ -521,7 +521,7 @@
       - state: icon-syndicate
     - type: ItemBorgModule
       items:
-      - Crowbar
+      - SyndicateJawsOfLife
       - Emag
       - PinpointerSyndicateNuclear
 

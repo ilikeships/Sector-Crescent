@@ -246,8 +246,13 @@
     tags:
     - NuclearOperative
     - SyndicateAgent
+    - SyndicateBasic
+    - SyndicateGorlex
+    - SyndicateRamzi
+    - SyndicateInterdyne
+    - SyndicateSaws
   - type: AccessReader
-    access: [["SyndicateAgent"], ["NuclearOperative"]]
+    access: [["SyndicateAgent"], ["NuclearOperative"], ["SyndicateBasic"], ["SyndicateSaws"]]
   - type: SiliconLawProvider
     laws: SyndicateStatic
   - type: IntrinsicRadioTransmitter
