@@ -1630,6 +1630,16 @@ entities:
     - type: Transform
       pos: 6.5,-9.5
       parent: 1
+  - uid: 618
+    components:
+    - type: Transform
+      pos: 9.5,-5.5
+      parent: 1
+  - uid: 619
+    components:
+    - type: Transform
+      pos: 8.5,-5.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 417
@@ -2334,8 +2344,6 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
-    - type: GasFilter
-      enabled: True
 - proto: GasPassiveVent
   entities:
   - uid: 414
@@ -2473,8 +2481,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,-2.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
 - proto: GasVentPump
   entities:
   - uid: 423
@@ -3425,7 +3431,7 @@ entities:
       pos: 0.5,6.5
       parent: 1
     - type: Battery
-      startingCharge: 997000
+      startingCharge: 994000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
