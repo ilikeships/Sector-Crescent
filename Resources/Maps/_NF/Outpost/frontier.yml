@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -668.9559
+      secondsUntilStateChange: -705.191
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10896,7 +10896,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2538.3489
+      secondsUntilStateChange: -2574.584
       state: Opening
   - uid: 1418
     components:
@@ -17376,36 +17376,29 @@ entities:
       parent: 1
 - proto: ShipVoucherAnathema
   entities:
-  - uid: 3468
-    components:
-    - type: Transform
-      pos: -0.8600007,-8.496376
-      parent: 1
-- proto: ShipVoucherConquest
-  entities:
-  - uid: 3469
-    components:
-    - type: Transform
-      pos: -0.59248483,-8.481509
-      parent: 1
   - uid: 3470
     components:
     - type: Transform
-      pos: -0.81541455,-8.377446
+      pos: -0.7607938,-8.427259
       parent: 1
-- proto: ShipVoucherLaelaps
+- proto: ShipVoucherIbis
   entities:
-  - uid: 3472
+  - uid: 3468
     components:
     - type: Transform
-      pos: -0.8748628,-8.407179
+      pos: -0.43382993,-8.293464
       parent: 1
-- proto: ShipVoucherValor
+  - uid: 3469
+    components:
+    - type: Transform
+      pos: -0.67162144,-8.382661
+      parent: 1
+- proto: ShipVoucherLaelaps
   entities:
   - uid: 3471
     components:
     - type: Transform
-      pos: -0.81541455,-8.570707
+      pos: -0.56758845,-8.471858
       parent: 1
 - proto: ShipyardManufactorum
   entities:
