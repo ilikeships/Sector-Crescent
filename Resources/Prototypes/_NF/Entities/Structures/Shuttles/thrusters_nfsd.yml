@@ -28,6 +28,19 @@
     snapCardinals: true
   - type: Machine
     board: GyroscopeNfsdMachineCircuitboard
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              ScrapComponent:
+                min: 1
+                max: 2
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
 
 - type: entity
   id: DebugGyroscopeNfsd

@@ -151,7 +151,7 @@
     layers:
     - state: icon
   - type: StaticPrice
-    price: 565
+    price: 500
 
 - type: entity
   parent: BaseItem
