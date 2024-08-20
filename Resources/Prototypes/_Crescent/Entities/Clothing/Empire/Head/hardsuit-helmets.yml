@@ -108,7 +108,6 @@
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
-  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
