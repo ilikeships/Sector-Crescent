@@ -112,7 +112,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: NCWL 40mm 'Gran Sudaruska' point defense turret
+  name: NCWL 30mm 'Gran Sudaruska' point defense turret
   id: WeaponTurretPDTNCWL
   suffix: NCWL PDT
   components:
@@ -122,7 +122,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: NCSP 40mm 'Anklebiter' point defense turret
+  name: NCSP 30mm 'Anklebiter' point defense turret
   id: WeaponTurretPDTNCSP
   suffix: NCSP PDT
   components:
@@ -132,7 +132,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: SRM 40mm 'Acolyte' point defense turret
+  name: SRM 30mm 'Acolyte' point defense turret
   id: WeaponTurretPDTSRM
   suffix: SRM PDT
   components:
@@ -142,7 +142,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: CMM 40mm 'Justiciar' point defense turret
+  name: CMM 30mm 'Justiciar' point defense turret
   id: WeaponTurretPDTCMM
   suffix: CMM PDT
   components:
@@ -152,7 +152,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: SHI 40mm 'Tsui' point defense turret
+  name: SHI 30mm 'Tsui' point defense turret
   id: WeaponTurretPDTSHI
   suffix: SHI PDT
   components:
@@ -162,7 +162,7 @@
 
 - type: entity
   parent: BaseWeaponTurretPDT
-  name: DSM 40mm 'Lady' point defense turret
+  name: DSM 30mm 'Lady' point defense turret
   id: WeaponTurretPDTDSM
   suffix: DSM PDT
   components:
