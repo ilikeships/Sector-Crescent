@@ -6,7 +6,7 @@
     state: ame-part
   discipline: Shinohara
   tier: 1
-  cost: 8000
+  cost: 7000
   recipeUnlocks:
   - SHIFighterThrusterFlatpackCraft
   - SHIWarshipThrusterFlatpackCraft
@@ -20,7 +20,7 @@
     state: base
   discipline: Shinohara
   tier: 1
-  cost: 5000
+  cost: 3000
   recipeUnlocks:
   - WeaponPistolBlastpopGrayCraft
   - WeaponPistolBlastpopGoldCraft
@@ -35,7 +35,7 @@
     state: icon
   discipline: Shinohara
   tier: 1
-  cost: 7500
+  cost: 4000
   recipeUnlocks:
   - SHIExhumerFlatpackCraft
 
@@ -47,7 +47,7 @@
     state: icon
   discipline: Shinohara
   tier: 1
-  cost: 8000
+  cost: 4500
   recipeUnlocks:
   - ClothingOuterHardsuitHEVCraft
 
@@ -59,7 +59,7 @@
     state: icon
   discipline: Shinohara
   tier: 2
-  cost: 15000
+  cost: 10000
   recipeUnlocks:
   - SHITsuiFlatpackCraft
   - SHIVulcanFlatpackCraft
@@ -74,7 +74,7 @@
     state: icon
   discipline: Shinohara
   tier: 2
-  cost: 17500
+  cost: 12500
   recipeUnlocks:
   - ClothingOuterArmorShinoharaArmorCraft
   - ClothingHeadHatShinoharaBeretCraft
@@ -88,7 +88,7 @@
     state: icon
   discipline: Shinohara
   tier: 2
-  cost: 18000
+  cost: 12000
   recipeUnlocks:
   - WeaponPistolHimehabuCraft
   - WeaponSubMachineGunSabreCraft
@@ -103,7 +103,7 @@
     state: icon
   discipline: Shinohara
   tier: 2
-  cost: 20000
+  cost: 14000
   recipeUnlocks:
   - SHIArtilleryFlatpackCraft
   - SHINeedlerFlatpackCraft
@@ -117,7 +117,7 @@
     state: icon
   discipline: Shinohara
   tier: 3
-  cost: 25000
+  cost: 20000
   recipeUnlocks:
   - ClothingHeadHatShinoharaHelmetCraft
   - ClothingOuterArmorShinoharaArmorHighsecCraft
@@ -131,7 +131,7 @@
     state: icon
   discipline: Shinohara
   tier: 3
-  cost: 30000
+  cost: 22500
   recipeUnlocks:
   - WeaponPistolSmartpistolCraft
   - MagazinePistolSmartgunCraft
@@ -144,6 +144,6 @@
     state: icon
   discipline: Shinohara
   tier: 3
-  cost: 50000
+  cost: 25000
   recipeUnlocks:
   - EnergyKatanaCraft

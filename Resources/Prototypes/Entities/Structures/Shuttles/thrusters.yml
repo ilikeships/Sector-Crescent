@@ -42,6 +42,17 @@
           - !type:PlaySoundBehavior
             sound:
               collection: MetalBreak
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              ScrapComponent:
+                min: 1
+                max: 1
+              ScrapPlasma:
+                min: 1
+                max: 2
+              SteelScrap1:
+                min: 0
+                max: 1
     - type: StaticPrice
       price: 300
     - type: Fixtures
@@ -188,6 +199,11 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ScrapComponent:
+              min: 1
+              max: 1
         - !type:DoActsBehavior
           acts: ["Destruction"]
         - !type:PlaySoundBehavior

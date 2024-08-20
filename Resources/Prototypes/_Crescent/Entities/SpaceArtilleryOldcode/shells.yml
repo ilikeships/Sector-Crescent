@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 700
+        Structural: 1000
         #currently explosion deals roughly 60 damage
   - type: TimedDespawn
     lifetime: 40
@@ -74,7 +74,7 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 16
+    maxIntensity: 30
     intensitySlope: 26
     totalIntensity: 23
     maxTileBreak: 5
@@ -119,7 +119,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 150
+        Structural: 250
         #currently explosion deals roughly 30 damage per tile in large AoE
   - type: TimedDespawn
     lifetime: 60
@@ -131,9 +131,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 50
-    intensitySlope: 67
-    totalIntensity: 110
+    maxIntensity: 65
+    intensitySlope: 95
+    totalIntensity: 120
     maxTileBreak: 6
   - type: PointLight
     radius: 3.5
@@ -737,7 +737,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 75
+        Structural: 90
         Blunt: 30
         Piercing: 30
         #currently explosion deals roughly 60 damage
@@ -749,12 +749,6 @@
     layers:
       - state: base-projectile
   - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 6
-    intensitySlope: 6
-    totalIntensity: 6
-    maxTileBreak: 4
   - type: PointLight
     radius: 3.5
     color: orange
@@ -763,7 +757,7 @@
 
 - type: entity
   id: PDTBulletCase
-  name: 40mm pdt shell
+  name: 30mm pdt shell
   parent: BaseItem
   description: Ammunition for turrets.
   components:
@@ -793,7 +787,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 90
+        Structural: 150
         Blunt: 10
         Piercing: 10
         #currently explosion deals roughly 60 damage
@@ -806,8 +800,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 30
-    intensitySlope: 20
+    maxIntensity: 45
+    intensitySlope: 30
     totalIntensity: 80
     maxTileBreak: 4
   - type: PointLight
@@ -968,7 +962,7 @@
       tags:
         - NeedlerMag
     proto: Needler
-    capacity: 120
+    capacity: 80
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/needler.rsi
@@ -986,7 +980,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 150
+        Structural: 250
         Blunt: 40
   - type: TimedDespawn
     lifetime: 30
@@ -997,10 +991,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 42
-    intensitySlope: 25
-    totalIntensity: 75
-    maxTileBreak: 6
+    maxIntensity: 38
+    intensitySlope: 30
+    totalIntensity: 55
+    maxTileBreak: 5
   - type: PointLight
     radius: 3.5
     color: orange

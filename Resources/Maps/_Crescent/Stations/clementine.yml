@@ -11134,29 +11134,29 @@ entities:
       parent: 1
 - proto: ShipVoucherCherenzikov
   entities:
-  - uid: 1863
-    components:
-    - type: Transform
-      pos: -0.5529501,-10.409385
-      parent: 1
-- proto: ShipVoucherIvarod
-  entities:
-  - uid: 1945
-    components:
-    - type: Transform
-      pos: -0.34488243,-10.34992
-      parent: 1
-- proto: ShipVoucherVanguard
-  entities:
   - uid: 1992
     components:
     - type: Transform
-      pos: -0.34488243,-10.528315
+      pos: -0.33119482,-10.368597
       parent: 1
+- proto: ShipVoucherIvarod
+  entities:
   - uid: 2005
     components:
     - type: Transform
-      pos: -0.47864097,-10.23099
+      pos: -0.47981495,-10.249668
+      parent: 1
+- proto: ShipVoucherVanguard
+  entities:
+  - uid: 1863
+    components:
+    - type: Transform
+      pos: -0.39064258,-10.457795
+      parent: 1
+  - uid: 1945
+    components:
+    - type: Transform
+      pos: -0.59871095,-10.368597
       parent: 1
 - proto: ShipyardManufactorum
   entities:
@@ -14828,6 +14828,15 @@ entities:
     - type: Transform
       pos: 10.5,-15.5
       parent: 1
+- proto: WarpPoint
+  entities:
+  - uid: 2172
+    components:
+    - type: Transform
+      pos: 0.5,-3.5
+      parent: 1
+    - type: WarpPoint
+      location: Dear Clementine
 - proto: WaterCooler
   entities:
   - uid: 115

@@ -6,7 +6,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 9000
+  cost: 6000
   recipeUnlocks:
   - ClothingOuterHardsuitImperialWorkerCraft
   - ClothingOuterCoatImperialSoftsuitCraft
@@ -20,7 +20,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 5000
+  cost: 3000
   recipeUnlocks:
   - ClothingOuterCoatImperialParadeCraft
   - ClothingUniformJumpsuitImperialSoldierFormalCraft
@@ -37,7 +37,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 10000
+  cost: 8000
   recipeUnlocks:
   - WeaponSubMachineGunC20rCraft
   - WeaponPistolComplianceImperialCraft
@@ -51,7 +51,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 15000
+  cost: 11000
   recipeUnlocks:
   - IbisLPC
 
@@ -63,7 +63,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 10000
+  cost: 6000
   recipeUnlocks:
   - ValorLPC
   - ConquestLPC
@@ -77,7 +77,7 @@
     state: icon
   discipline: Imperial
   tier: 2
-  cost: 25000
+  cost: 17500
   recipeUnlocks:
   - NemesisLPC
 
@@ -89,7 +89,7 @@
     state: ame-part
   discipline: Imperial
   tier: 1
-  cost: 8000
+  cost: 6000
   recipeUnlocks:
   - GyroscopeFlatpackLathe
   - DSMWarshipThrusterFlatpackCraft
@@ -103,7 +103,7 @@
     state: base
   discipline: Imperial
   tier: 2
-  cost: 15000
+  cost: 12500
   recipeUnlocks:
   - DSMVulcanFlatpackCraft
   - DSMLadyFlatpackCraft
@@ -117,7 +117,7 @@
     state: icon
   discipline: Imperial
   tier: 2
-  cost: 20000
+  cost: 10000
   recipeUnlocks:
   - WeaponRifleHunterCraft
   - WeaponRifleMillerCraft
@@ -130,7 +130,7 @@
     state: icon
   discipline: Imperial
   tier: 2
-  cost: 20000
+  cost: 10000
   recipeUnlocks:
   - ClothingOuterHardsuitImperialSoldierCraft
   - ClothingOuterArmorImperialTrooperArmorCraft
@@ -146,7 +146,7 @@
     state: ame-part
   discipline: Imperial
   tier: 3
-  cost: 30000
+  cost: 15000
   recipeUnlocks:
   - DSMPlasmaTurretFlatpackCraft
 
@@ -158,6 +158,6 @@
     state: icon
   discipline: Imperial
   tier: 3
-  cost: 40000
+  cost: 25000
   recipeUnlocks:
   - SRMKhopeshCraft
