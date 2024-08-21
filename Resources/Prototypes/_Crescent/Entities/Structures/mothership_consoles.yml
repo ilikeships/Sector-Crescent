@@ -79,6 +79,7 @@
     shuttles:
     - Shanty
     - Hyena
+    - Wisp
 
 - type: entity
   id: RamziMothershipComputer
@@ -88,6 +89,7 @@
   - type: ShipyardListing
     shuttles:
     - Velator
+    - Wisp
     - Wreck
 
 - type: entity

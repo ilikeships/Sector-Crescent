@@ -13,6 +13,21 @@
     price: 250
 
 - type: entity
+  id: NCSPSmugglerCircuitBoard
+  parent: BaseMachineCircuitboard
+  name: syndicate smuggler thruster circuit board
+  components:
+  - type: MachineBoard
+    prototype: ThrusterNCSPSmuggler
+    requirements:
+      Capacitor: 4
+    materialRequirements:
+      Steel: 5
+  - type: StaticPrice
+    price: 250
+
+
+- type: entity
   id: CMMFighterCircuitBoard
   parent: BaseMachineCircuitboard
   name: minuteman fighter circuit board

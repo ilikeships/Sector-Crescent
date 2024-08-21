@@ -26,6 +26,28 @@
       board: NCSPFighterCircuitBoard
 
 - type: entity
+  id: ThrusterNCSPSmuggler
+  parent: Thruster
+  suffix: NCSP, Smuggler
+  components:
+    - type: Sprite
+      sprite: _Crescent/Structures/thrustersyn.rsi
+      layers:
+      - state: base
+        map: ["enum.ThrusterVisualLayers.Base"]
+      - state: thrust
+        map: ["enum.ThrusterVisualLayers.ThrustOn"]
+        shader: unshaded
+        visible: false
+      - state: thrust_burn_unshaded
+        map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+        shader: unshaded
+        visible: false
+        offset: 0, 1
+    - type: Machine
+      board: NCSPSmugglerCircuitBoard
+
+- type: entity
   id: ThrusterCMMFighter
   parent: Thruster
   suffix: CMM, Fighter
