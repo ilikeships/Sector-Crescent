@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1027.2664
+      secondsUntilStateChange: -1066.2787
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10888,6 +10888,8 @@ entities:
     - type: Transform
       pos: 23.5,0.5
       parent: 1
+    - type: FaxMachine
+      name: Kal Surezai - Eastern Checkpoint
   - uid: 2076
     components:
     - type: Transform
@@ -10911,7 +10913,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2896.6594
+      secondsUntilStateChange: -2935.6716
       state: Opening
   - uid: 1418
     components:
