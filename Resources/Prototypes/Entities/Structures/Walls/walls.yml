@@ -1038,8 +1038,8 @@
   - type: IconSmooth
     key: walls
     base: state
-#  - type: Reflect # Frontier
-#    reflectProb: 0.1 # Frontier
+  - type: Reflect
+    reflectProb: 0.1
 
 - type: entity
   parent: BaseWall
