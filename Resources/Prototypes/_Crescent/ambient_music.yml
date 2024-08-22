@@ -34,3 +34,24 @@
   id: AmbienceTestBiome
   files:
    - /Audio/Jukebox/sector11.ogg
+
+#imperial
+
+- type: ambientMusic
+  id: ImperialBiome
+  sound:
+    collection: ImperialBiome
+  rules: InImperialAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InImperialAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: imperialbiome
+
+- type: soundCollection
+  id: ImperialBiome
+  files:
+   - /Audio/_Crescent/the_insulindan_miracle.ogg

@@ -1,7 +1,7 @@
 #fallback, don't remove
 - type: biome
   id: default
-  name: Space
+  name: Taypan Wilds
   swapDuration: 2
   parallax: Default
 
@@ -19,3 +19,19 @@
   - type: SpaceBiomeSource
     biome: test
     swapDistance: 1000
+
+#imperial
+
+- type: biome
+  id: imperialbiome
+  name: Kal Surezai, Imperial Airspace
+  swapDuration: 2
+  parallax: KettleStation
+
+- type: entity
+  id: ImperialBiomeSource
+  name: imperial source
+  components:
+  - type: SpaceBiomeSource
+    biome: imperialbiome
+    swapDistance: 2500
