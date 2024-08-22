@@ -1,6 +1,8 @@
+using System.Numerics;
+
 public static class CrescentHelpers
 {
-    #region Angles
+    #region Geometry
 
     /// <summary>
     /// Returns value of angle in 0~2pi range
@@ -37,6 +39,22 @@ public static class CrescentHelpers
         disthigh = AngNormal(starthigh + widthhigh) > startlow ? starthigh + widthhigh - startlow : Math.Tau - startlow + AngNormal(starthigh + widthhigh);
 
         return (startlow, Math.Min(Math.Max(widthlow, disthigh), Math.Tau));
+    }
+
+    public static bool RectCircleIntersect(Box2 rect, Vector2 circPos, float circRadius)
+    {
+        Vector2 delta = circPos - rect.Center;
+
+        if (delta.X > rect.Width / 2 + circRadius || delta.Y > rect.Height / 2 + circRadius)
+            return false;
+
+        if (delta.X < rect.Width / 2 || delta.Y < rect.Height / 2)
+            return true;
+
+        delta.X -= rect.Width / 2;
+        delta.Y -= rect.Height / 2;
+
+        return delta.Length() < circRadius;
     }
 
     #endregion

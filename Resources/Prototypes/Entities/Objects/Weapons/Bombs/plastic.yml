@@ -7,8 +7,8 @@
   - type: Item
     size: Small
   - type: Sticky
-    stickDelay: 5
-    unstickDelay: 5
+    stickDelay: 0
+    unstickDelay: 0
     stickPopupStart: comp-sticky-start-stick-bomb
     stickPopupSuccess: comp-sticky-success-stick-bomb
     unstickPopupStart: comp-sticky-start-unstick-bomb

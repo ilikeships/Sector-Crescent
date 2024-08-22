@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CombatMode;
+using Content.Shared.SpaceBiomes;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -241,11 +242,20 @@ public sealed class RulesSystem : EntitySystem
                 {
                     if (TryComp<CombatModeComponent>(uid, out var combatModeComponent) && combatModeComponent.IsInCombatMode)
                     {
-                        return true;
+                        break;
                     }
 
                     return false;
-                }
+            	}
+				case InSpaceBiomeRule inSpaceBiome:
+				{
+					if (TryComp<SpaceBiomeTrackerComponent>(uid, out var tracker) && tracker.Biome == inSpaceBiome.Biome)
+					{
+						break;
+					}
+
+					return false;
+				}
                 default:
                     throw new NotImplementedException();
             }
