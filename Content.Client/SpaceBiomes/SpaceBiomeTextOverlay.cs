@@ -53,7 +53,13 @@ public sealed class SpaceBiomeTextOverlay : Overlay
             return;
 
         if (!Reverse && Index == Text.Length)
+        {
             Reverse = true;
+
+            //delay before text is erased
+            _nextUpd += TimeSpan.FromSeconds(2);
+            Index++;
+        }
 
         if (Reverse && Index == 0)
         {
