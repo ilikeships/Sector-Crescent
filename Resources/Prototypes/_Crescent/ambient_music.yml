@@ -14,3 +14,23 @@
   id: AmbienceCombatMode
   files:
     - /Audio/_Crescent/Ambience/CombatMode/awakening.ogg
+
+#example
+- type: ambientMusic
+  id: TestBiome
+  sound:
+    collection: AmbienceTestBiome
+  rules: InTestBiome
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InTestBiome
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: test
+
+- type: soundCollection
+  id: AmbienceTestBiome
+  files:
+   - /Audio/Jukebox/sector11.ogg

@@ -1,7 +1,9 @@
 using System.Numerics;
 using Content.Client.Parallax.Managers;
 using Content.Shared.CCVar;
+using Content.Shared.Parallax;
 using Content.Shared.Parallax.Biomes;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -20,14 +22,18 @@ public sealed class ParallaxOverlay : Overlay
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IParallaxManager _manager = default!;
     private readonly ParallaxSystem _parallax;
+    private readonly MapSystem _map;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowWorld;
+
+    private TimeSpan _lastUpdate = TimeSpan.Zero;
 
     public ParallaxOverlay()
     {
         ZIndex = ParallaxSystem.ParallaxZIndex;
         IoCManager.InjectDependencies(this);
         _parallax = _entManager.System<ParallaxSystem>();
+        _map = _entManager.System<MapSystem>();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -40,16 +46,41 @@ public sealed class ParallaxOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (args.MapId == MapId.Nullspace)
+        TimeSpan lastUpdate = _lastUpdate == TimeSpan.Zero ? _timing.CurTime : _lastUpdate;
+        float deltaTime = (float) (_timing.CurTime - lastUpdate).TotalSeconds;
+        _lastUpdate = _timing.CurTime;
+
+        if (args.MapId == MapId.Nullspace || !_map.TryGetMap(args.MapId, out var mapUid))
             return;
 
         if (!_configurationManager.GetCVar(CCVars.ParallaxEnabled))
             return;
 
+        if (!_entManager.TryGetComponent<ParallaxComponent>(mapUid, out var parallax))
+        {
+            DrawLayers(args, _parallax.GetParallaxLayers(ParallaxSystem.Fallback), 1);
+            return;
+        }
+
+        float alpha = parallax.IsSwapping ? parallax.SwapTimer / parallax.SwapDuration : 1f;
+        DrawLayers(args, _parallax.GetParallaxLayers(parallax.Parallax), alpha);
+        if (parallax.IsSwapping)
+        {
+            DrawLayers(args, _parallax.GetParallaxLayers(parallax.SwappedParallax!), 1f - alpha);
+            parallax.SwapTimer += deltaTime;
+
+            if (parallax.SwapTimer > parallax.SwapDuration)
+            {
+                parallax.SwappedParallax = null;
+                parallax.SwapTimer = parallax.SwapDuration = 0;
+            }
+        }
+    }
+
+    private void DrawLayers(OverlayDrawArgs args, ParallaxLayerPrepared[] layers, float alpha)
+    {
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
         var worldHandle = args.WorldHandle;
-
-        var layers = _parallax.GetParallaxLayers(args.MapId);
         var realTime = (float) _timing.RealTime.TotalSeconds;
 
         foreach (var layer in layers)
@@ -102,13 +133,13 @@ public sealed class ParallaxOverlay : Overlay
                 {
                     for (var y = flooredBL.Y; y < args.WorldAABB.Top; y += size.Y)
                     {
-                        worldHandle.DrawTextureRect(tex, Box2.FromDimensions(new Vector2(x, y), size));
+                        worldHandle.DrawTextureRect(tex, Box2.FromDimensions(new Vector2(x, y), size), Color.White.WithAlpha(alpha));
                     }
                 }
             }
             else
             {
-                worldHandle.DrawTextureRect(tex, Box2.FromDimensions(originBL, size));
+                worldHandle.DrawTextureRect(tex, Box2.FromDimensions(originBL, size), Color.White.WithAlpha(alpha));
             }
         }
 

@@ -1,0 +1,21 @@
+#fallback, don't remove
+- type: biome
+  id: default
+  name: Space
+  swapDuration: 2
+  parallax: Default
+
+#example
+- type: biome
+  id: test
+  name: Test zone
+  swapDuration: 2
+  parallax: Sky
+
+- type: entity
+  id: TestBiomeSource
+  name: test source
+  components:
+  - type: SpaceBiomeSource
+    biome: test
+    swapDistance: 1000
