@@ -13,6 +13,18 @@ public sealed partial class ParallaxComponent : Component
     [DataField, AutoNetworkedField]
     public string Parallax = "Default";
 
+    //for smooth change between old and new parallax
+    [DataField, AutoNetworkedField]
+    public string? SwappedParallax;
+
+    [AutoNetworkedField]
+    public float SwapDuration; //in seconds
+
+    [AutoNetworkedField]
+    public float SwapTimer;
+
+    public bool IsSwapping => SwappedParallax != null;
+
     [UsedImplicitly, ViewVariables(VVAccess.ReadWrite)]
     // ReSharper disable once InconsistentNaming
     public string ParallaxVV

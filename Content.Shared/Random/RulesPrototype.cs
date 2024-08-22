@@ -144,3 +144,9 @@ public sealed partial class NearbyComponentsRule : RulesRule
 public sealed partial class InCombatModeRule : RulesRule
 {
 }
+
+public sealed partial class InSpaceBiomeRule : RulesRule
+{
+    [DataField]
+    public string Biome;
+}
