@@ -675,8 +675,8 @@
 - type: entity
   parent: BaseItem
   id: ShipVoucherJusticiar
-  name: CMM 'Justiciar' pattern LPC fabprint disk
-  description: An LPC fabprint disk loaded with a Colonial Minutemen Justiciar-class gunship pattern. Has to be redeemed at a shipyard console.
+  name: TSP 'Justiciar' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Taypan Sektor Polizei Justiciar-class gunship pattern. Has to be redeemed at a shipyard console.
   components:
   - type: Item
     size: Small
@@ -691,9 +691,26 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherCourageous
+  name: TSP 'Courageous' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Taypan Sektor Polizei Courageous-class assault cruiser pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 50000
+  - type: ShipVoucher
+    ship: Courageous
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherTemplar
-  name: CMM 'Templar' pattern LPC fabprint disk
-  description: An LPC fabprint disk loaded with a Colonial Minutemen Templar-class patrol corvette pattern. Has to be redeemed at a shipyard console.
+  name: TSP 'Templar' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Taypan Sektor Polizei Templar-class patrol corvette pattern. Has to be redeemed at a shipyard console.
   components:
   - type: Item
     size: Small

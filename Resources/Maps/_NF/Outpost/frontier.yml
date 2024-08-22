@@ -2266,7 +2266,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1066.2787
+      secondsUntilStateChange: -1088.8119
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10913,7 +10913,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2935.6716
+      secondsUntilStateChange: -2958.2048
       state: Opening
   - uid: 1418
     components:
@@ -14369,6 +14369,13 @@ entities:
     components:
     - type: Transform
       pos: 14.5,-10.5
+      parent: 1
+- proto: ImperialBiomeSource
+  entities:
+  - uid: 3477
+    components:
+    - type: Transform
+      pos: 16.522902,5.322556
       parent: 1
 - proto: ImperialCargoDispenser
   entities:

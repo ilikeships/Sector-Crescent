@@ -27,7 +27,7 @@ public sealed class SpaceBiomeTextOverlay : Overlay
     public SpaceBiomeTextOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _font = _cache.GetFont("/Fonts/porscha.ttf", 30);
+        _font = _cache.GetFont("/Fonts/nulshock.ttf", 25);
     }
 
     public void Reset()
@@ -86,7 +86,7 @@ public sealed class SpaceBiomeTextOverlay : Overlay
             }
         }
 
-        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 10);
+        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 65);
         return pos;
     }
 }
