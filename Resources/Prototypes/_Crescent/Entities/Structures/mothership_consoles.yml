@@ -137,6 +137,7 @@
     shuttles:
     - Justiciar
     - Templar
+    - Courageous
 
 - type: entity
   id: RefugeMothershipComputer
