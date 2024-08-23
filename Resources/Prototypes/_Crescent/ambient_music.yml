@@ -59,7 +59,7 @@
 #hunter
 
 - type: ambientMusic
-  id: ImperialBiome
+  id: HunterBiome
   sound:
     collection: HunterBiome
   rules: InHunterAirspace
