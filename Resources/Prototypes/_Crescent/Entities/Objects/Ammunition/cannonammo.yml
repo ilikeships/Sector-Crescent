@@ -411,3 +411,200 @@
     color: orange
     energy: 0.5
   - type: ProjectileIFF
+
+#gargoyle
+
+- type: entity
+  id: TorpedoGargoyle
+  name: 240mm heatseeking cruise missile
+  description: Shit.
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 5000
+        Blunt: 40
+  - type: Tag
+    tags:
+      - TorpedoGarg
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torp.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 120
+    intensitySlope: 120
+    totalIntensity: 210
+    maxTileBreak: 8
+  - type: HeatSeeking
+    rotationSpeed: 250
+    acceleration: 100
+    seekRange: 1000
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
+
+- type: entity
+  id: TorpGarg
+  name: 240mm heat-guided high-explosive cruise missile
+  parent: BaseItem
+  description: A bulky missile with an HE charge. Bad news.
+  components:
+  - type: Tag
+    tags:
+      - TorpedoGarg
+  - type: MultiHandedItem
+  - type: Item
+    size: Normal
+  - type: CartridgeAmmo
+    proto: TorpedoGargoyle
+    deleteOnSpawn: false
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torp.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: Tag
+  id: TorpedoGarg
+
+#emp
+
+- type: entity
+  id: TorpGargEMP
+  name: 240mm heat-guided electromagnetic cruise missile
+  parent: BaseItem
+  description: A bulky missile with an EMP charge. Bad news.
+  components:
+  - type: Tag
+    tags:
+      - TorpedoGarg
+  - type: MultiHandedItem
+  - type: Item
+    size: Large
+  - type: CartridgeAmmo
+    proto: TorpedoGargoyleEMP
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpemp.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: TorpedoGargoyleEMP
+  name: 240mm heatseeking cruise missile
+  description: Shit.
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 500
+        Blunt: 40
+  - type: Tag
+    tags:
+      - TorpedoGarg
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/torpemp.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: EmpOnTrigger
+    range: 8
+    energyConsumption: 3000
+    disableDuration: 14
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 60
+    intensitySlope: 60
+    totalIntensity: 120
+    maxTileBreak: 5
+  - type: HeatSeeking
+    rotationSpeed: 250
+    acceleration: 100
+    seekRange: 1000
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
+
+#lance
+
+- type: Tag
+  id: LanceRocket
+
+- type: entity
+  id: LanceRocketCartridge
+  name: 100mm high-explosive fragmentation rocket
+  parent: BaseItem
+  description: A fragmentation rocket with an HE payload.
+  components:
+  - type: Tag
+    tags:
+      - LanceRocket
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: LanceRocketProjectile
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/lance.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: LanceRocketProjectile
+  name: 100mm high-explosive fragmentation rocket
+  description: Shit.
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 300
+        Blunt: 40
+  - type: Tag
+    tags:
+      - LanceRocket
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/lance.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 85
+    intensitySlope: 80
+    totalIntensity: 120
+    maxTileBreak: 6
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
