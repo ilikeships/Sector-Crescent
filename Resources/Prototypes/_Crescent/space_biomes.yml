@@ -35,3 +35,19 @@
   - type: SpaceBiomeSource
     biome: imperialbiome
     swapDistance: 2500
+
+#hunter
+
+- type: entity
+  id: HunterBiomeSource
+  name: hunter source
+  components:
+  - type: SpaceBiomeSource
+    biome: hunterbiome
+    swapDistance: 1500
+
+- type: biome
+  id: hunterbiome
+  name: The Hunter's Prowl
+  swapDuration: 2
+  parallax: AspidParallax

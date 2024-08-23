@@ -585,7 +585,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 300
+        Structural: 125
         Blunt: 40
   - type: Tag
     tags:
@@ -599,10 +599,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 85
-    intensitySlope: 80
-    totalIntensity: 120
-    maxTileBreak: 6
+    maxIntensity: 55
+    intensitySlope: 50
+    totalIntensity: 80
+    maxTileBreak: 4
   - type: PointLight
     radius: 3.5
     color: orange

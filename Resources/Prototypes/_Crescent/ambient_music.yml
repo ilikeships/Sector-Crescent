@@ -55,3 +55,24 @@
   id: ImperialBiome
   files:
    - /Audio/_Crescent/duduk.ogg
+
+#hunter
+
+- type: ambientMusic
+  id: ImperialBiome
+  sound:
+    collection: HunterBiome
+  rules: InHunterAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InHunterAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: hunterbiome
+
+- type: soundCollection
+  id: HunterBiome
+  files:
+   - /Audio/_Crescent/ludd.ogg
