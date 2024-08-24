@@ -405,6 +405,16 @@ entities:
             316: 7,-18
         - node:
             color: '#DE3A3A96'
+            id: WarnBox
+          decals:
+            393: 8,-15
+            394: 8,-15
+            395: 8,-16
+            396: 8,-16
+            397: 8,-16
+            398: 8,-15
+        - node:
+            color: '#DE3A3A96'
             id: WarnBoxGreyscale
           decals:
             25: 0,-18
@@ -1284,18 +1294,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 11.5,-8.5
       parent: 2
-- proto: BedsheetMedical
-  entities:
-  - uid: 561
-    components:
-    - type: Transform
-      pos: 8.5,-14.5
-      parent: 2
-  - uid: 562
-    components:
-    - type: Transform
-      pos: 8.5,-16.5
-      parent: 2
 - proto: BenchRedComfy
   entities:
   - uid: 477
@@ -1347,6 +1345,13 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-14.5
+      parent: 2
+- proto: BioprocessorInterdyne
+  entities:
+  - uid: 395
+    components:
+    - type: Transform
+      pos: 8.5,-15.5
       parent: 2
 - proto: BlastDoor
   entities:
@@ -3774,6 +3779,13 @@ entities:
     - type: Transform
       pos: 4.5,-3.5
       parent: 2
+- proto: ClothingBackpackDuffelSurgeryAdvancedFilled
+  entities:
+  - uid: 397
+    components:
+    - type: Transform
+      pos: 8.482127,-17.311443
+      parent: 2
 - proto: ClothingBeltSyndicateWebbingMedFilled
   entities:
   - uid: 745
@@ -5251,13 +5263,6 @@ entities:
     - type: Transform
       pos: 2.3943653,-9.350662
       parent: 2
-- proto: HandheldHealthAnalyzerUnpowered
-  entities:
-  - uid: 542
-    components:
-    - type: Transform
-      pos: 8.404853,-15.263728
-      parent: 2
 - proto: InterdyneCargoChute
   entities:
   - uid: 490
@@ -5390,18 +5395,6 @@ entities:
     - type: Transform
       pos: -4.7768764,-17.607523
       parent: 2
-- proto: MedicalBed
-  entities:
-  - uid: 559
-    components:
-    - type: Transform
-      pos: 8.5,-14.5
-      parent: 2
-  - uid: 560
-    components:
-    - type: Transform
-      pos: 8.5,-16.5
-      parent: 2
 - proto: MedicalScanner
   entities:
   - uid: 693
@@ -5414,11 +5407,6 @@ entities:
       - 697
 - proto: MedkitCombatFilled
   entities:
-  - uid: 541
-    components:
-    - type: Transform
-      pos: 8.499339,-17.366505
-      parent: 2
   - uid: 556
     components:
     - type: Transform
@@ -5435,6 +5423,20 @@ entities:
     components:
     - type: Transform
       pos: -4.7471523,-17.443995
+      parent: 2
+- proto: OperatingTable
+  entities:
+  - uid: 541
+    components:
+    - type: Transform
+      pos: 8.5,-16.5
+      parent: 2
+- proto: OrganPrinter
+  entities:
+  - uid: 396
+    components:
+    - type: Transform
+      pos: 8.5,-14.5
       parent: 2
 - proto: PaperBin20
   entities:
@@ -5489,7 +5491,7 @@ entities:
       pos: -8.5,-5.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 7756.3568394
+      nextDrop: 2741.5104014
 - proto: PosterContrabandInterdyneDD
   entities:
   - uid: 535
@@ -5498,7 +5500,7 @@ entities:
       pos: -8.5,-11.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 3811.3568394
+      nextDrop: 2269.5104014
 - proto: PottedPlantRandom
   entities:
   - uid: 476
@@ -5520,13 +5522,6 @@ entities:
     components:
     - type: Transform
       pos: -9.5,-10.5
-      parent: 2
-- proto: PowerCellRecharger
-  entities:
-  - uid: 547
-    components:
-    - type: Transform
-      pos: 8.5,-15.5
       parent: 2
 - proto: PoweredLEDLightPostSmall
   entities:
@@ -7010,12 +7005,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 8.5,-17.5
-      parent: 2
-  - uid: 553
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 8.5,-15.5
       parent: 2
 - proto: TableReinforced
   entities:

@@ -22,8 +22,8 @@ public sealed partial class ShipyardConsoleComponent : Component
         new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
 
     [DataField("shipyardChannel")]
-    public string ShipyardChannel = "Traffic";
+    public string ShipyardChannel = "CentCom";
 
     [DataField("securityShipyardChannel")]
-    public string SecurityShipyardChannel = "Nfsd";
+    public string SecurityShipyardChannel = "CentCom";
 }

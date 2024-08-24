@@ -72,10 +72,11 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash750
+      TradeDeedLow: SpaceCash1000
       TradeDeedNormal: SpaceCash1250
       TradeDeedHigh: SpaceCash1750
       TradeDeedVeryHigh: SpaceCash2000
+      TradeDeedExotic: SpaceCash5000
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
@@ -236,11 +237,11 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      CrashAutoinjector: SpaceCash2500
-      ExileAutoinjector: SpaceCash3500
-      KaiserAutoinjector: SpaceCash5000
-      BloodeyeAutoinjector: SpaceCash4000
-      MechaniteAutoinjector: SpaceCash5000
+      CrashAutoinjector: SpaceCash1000
+      ExileAutoinjector: SpaceCash2500
+      KaiserAutoinjector: SpaceCash3500
+      BloodeyeAutoinjector: SpaceCash2500
+      MechaniteAutoinjector: SpaceCash3500
       RadioJammer: SpaceCash5000
       FreedomImplanter: SpaceCash1000
       StorageImplanter: SpaceCash1000
@@ -264,13 +265,8 @@
       WeaponPistolHimehabu: SpaceCash2500
       WeaponPistolComplianceImperial: SpaceCash2500
       WeaponPistolSmartpistol: SpaceCash2500
-      OrganHumanEyes: SpaceCash500
-      OrganHumanLungs: SpaceCash1000
-      OrganHumanHeart: SpaceCash1000
-      OrganHumanStomach: SpaceCash500
-      OrganHumanKidneys: SpaceCash1000
-      OrganHumanLiver: SpaceCash1000
-      
+      TradeGoodOrgans: SpaceCash10000
+      TradeGoodDrugs: SpaceCash8000
   - type: Sprite
     sprite: _Crescent/Structures/onionchute.rsi
     layers:
@@ -295,6 +291,10 @@
       TradeGoodAntibiotics: TradeDeedVeryHigh
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedLow
+      TradeGoodMiltech: TradeDeedVeryHigh
+      TradeGoodAlloys: TradeDeedExotic
+      TradeGoodGoodScrap: TradeDeedVeryHigh
+      TradeGoodPlasma: TradeDeedExotic
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
     layers:
@@ -346,6 +346,12 @@
       TradeGoodRice: TradeDeedNormal
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow
+      TradeGoodFabrics: TradeDeedVeryHigh
+      TradeGoodMiltech: TradeDeedExotic
+      TradeGoodAlloys: TradeDeedHigh
+      TradeGoodGoodScrap: TradeDeedVeryHigh
+      TradeGoodPlasma: TradeDeedVeryHigh
+      TradeGoodWine: TradeDeedVeryHigh
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
     layers:
@@ -370,6 +376,10 @@
       TradeGoodRice: TradeDeedLow
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedNormal
+      TradeGoodFabrics: TradeDeedVeryHigh
+      TradeGoodMiltech: TradeDeedVeryHigh
+      TradeGoodAlloys: TradeDeedExotic
+      TradeGoodWine: TradeDeedExotic
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
     layers:
@@ -394,8 +404,80 @@
       TradeGoodAntibiotics: TradeDeedLow
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow
+      TradeGoodGoodScrap: TradeDeedExotic
+      TradeGoodFabrics: TradeDeedExotic
+      TradeGoodWine: TradeDeedVeryHigh
+      TradeGoodPlasma: TradeDeedExotic
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: BioprocessorInterdyne
+  name: interdyne exotic bioprocessor
+  description: A machine that mulches scrap muscle and protein into usable exotic particles.
+  components:
+  - type: Dispenser
+    defaultItem: OrganStub
+    inventory:
+      OrganArachnidStomach: ProteinCan1
+      OrganArachnidLungs: ProteinCan1
+      OrganArachnidHeart: ProteinCan5
+      OrganArachnidLiver: ProteinCan5
+      OrganArachnidKidneys: ProteinCan5
+      OrganArachnidEyes: ProteinCan1
+      OrganReptilianStomach: ProteinCan1
+      OrganMothStomach: ProteinCan1
+      OrganHumanEyes: ProteinCan1
+      OrganHumanLungs: ProteinCan1
+      OrganHumanHeart: ProteinCan5
+      OrganHumanStomach: ProteinCan1
+      OrganHumanKidneys: ProteinCan5
+      OrganHumanLiver: ProteinCan5
+      OrganHumanBrain: ProteinCan5
+  - type: Sprite
+    sprite: _Crescent/Structures/bioprocessor.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: TSPBountyTerminal
+  name: sector bounty terminal
+  description: A bounty terminal. It accepts the ID cards of the terrorist group 'New Crescent Worker's League' and proof of kills for any pirates in return for cold, hard credits.
+  components:
+  - type: Dispenser
+    defaultItem: BountyHuntersPermit
+    inventory:
+      NCWLIDCardAdministrator: SpaceCash30000
+      NCWLIDCardKommissar: SpaceCash30000
+      NCWLIDCardKapitan: SpaceCash20000
+      NCWLIDCardSanitar: SpaceCash10000
+      NCWLIDCardArtificer: SpaceCash10000
+      NCWLIDCardDoktor: SpaceCash10000
+      NCWLIDCardKadet: SpaceCash5000
+      NCSPIDCardRingleader: SpaceCash30000
+      NCSPIDCardLieutenant: SpaceCash30000
+      NCSPIDCardInfanteer: SpaceCash10000
+      NCSPIDCardRipperdoc: SpaceCash10000
+      NCSPIDCardChemcook: SpaceCash10000
+      NCSPIDCardOperative: SpaceCash10000
+      NCSPIDCardIntelligenceOfficer: SpaceCash20000
+      NCSPIDCardForeman: SpaceCash20000
+      NCSPIDCardShipbreaker: SpaceCash10000
+      IDCardAntiquarian: SpaceCash10000
+  - type: Sprite
+    sprite: _Crescent/Structures/deedsmachine.rsi
     layers:
     - state: "icon"
   - type: PointLight

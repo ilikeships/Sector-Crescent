@@ -86,7 +86,7 @@ public sealed class SpaceBiomeTextOverlay : Overlay
             }
         }
 
-        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 65);
+        Vector2 pos = new Vector2((viewport.X - strSize.X) / 2, strSize.Y + 110);
         return pos;
     }
 }

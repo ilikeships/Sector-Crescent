@@ -27,6 +27,10 @@
   - type: Tag
     tags:
       - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: BaseHumanOrgan
@@ -54,6 +58,7 @@
   - type: Tag
     tags:
       - Meat
+      - OrganMaterial
   - type: SolutionContainerManager
     solutions:
       organ:
@@ -80,6 +85,13 @@
       - state: eyeball-l
       - state: eyeball-r
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanTongue
@@ -89,6 +101,13 @@
   components:
   - type: Sprite
     state: tongue
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanAppendix
@@ -100,6 +119,13 @@
     - state: appendix
     - state: appendix-inflamed
       visible: false
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanEars
@@ -109,6 +135,13 @@
   components:
   - type: Sprite
     state: ears
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanLungs
@@ -144,6 +177,13 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - Organ
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanHeart
@@ -164,6 +204,13 @@
     - id: Poison
     - id: Narcotic
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanStomach
@@ -194,6 +241,13 @@
     - id: Food
     - id: Drink
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanLiver
@@ -210,6 +264,13 @@
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - Organ
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
 
 - type: entity
   id: OrganHumanKidneys
@@ -227,3 +288,10 @@
     metabolizerTypes: [Human]
     removeEmpty: true
   - type: Contraband
+  - type: Tag
+    tags:
+      - Meat
+      - OrganMaterial
+  - type: PhysicalComposition
+    materialComposition:
+      ExoticProteins: 500
