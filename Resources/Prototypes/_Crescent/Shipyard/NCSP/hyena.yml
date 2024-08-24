@@ -20,7 +20,7 @@
       stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Hyena {1}'
+          mapNameTemplate: 'SAW Hyena {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

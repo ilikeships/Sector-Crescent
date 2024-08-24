@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Paracelsus {1}'
+          mapNameTemplate: 'ICM Paracelsus {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

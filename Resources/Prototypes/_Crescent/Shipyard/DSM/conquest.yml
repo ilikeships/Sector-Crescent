@@ -17,7 +17,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Conquest {1}'
+          mapNameTemplate: 'DSM Conquest {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

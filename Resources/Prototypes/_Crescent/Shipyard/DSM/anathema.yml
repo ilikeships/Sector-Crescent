@@ -17,7 +17,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Anathema {1}'
+          mapNameTemplate: 'DSM Anathema {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

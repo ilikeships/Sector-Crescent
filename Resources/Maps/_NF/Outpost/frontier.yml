@@ -124,8 +124,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 0.05
-      linearDamping: 0.05
+      angularDamping: 555555
+      linearDamping: 555555
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -133,6 +133,8 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      angularDamping: 555555
+      linearDamping: 555555
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -14976,7 +14978,7 @@ entities:
     - type: Transform
       pos: 28.68467,16.607422
       parent: 1
-- proto: PlastitaniumWindow
+- proto: PlastitaniumWindowStation
   entities:
   - uid: 854
     components:
@@ -16648,7 +16650,7 @@ entities:
     - type: Transform
       pos: 2.5,1.5
       parent: 1
-- proto: ReinforcedPlasmaWindow
+- proto: ReinforcedPlasmaWindowStation
   entities:
   - uid: 123
     components:
@@ -19318,7 +19320,7 @@ entities:
     - type: Transform
       pos: 29.5,-11.5
       parent: 1
-- proto: WallReinforced
+- proto: WallReinforcedStation
   entities:
   - uid: 2
     components:

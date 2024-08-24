@@ -14,8 +14,8 @@
           availableJobs:
             AdministratorNCWL: [ 1, 1 ]
             KommissarNCWL: [ 1, 1 ]
-            KapitanNCWL: [ 2, 2 ]
-            SanitarNCWL: [ 6, 6 ]
-            KadetNCWL: [ 3, 3 ]
-            ArtificerNCWL: [ 2, 2 ]
-            DoktorNCWL: [ 2, 2 ]
+            KapitanNCWL: [ 3, 3 ]
+            SanitarNCWL: [ 12, 12 ]
+            KadetNCWL: [ 7, 7 ]
+            ArtificerNCWL: [ 4, 4 ]
+            DoktorNCWL: [ 4, 4 ]

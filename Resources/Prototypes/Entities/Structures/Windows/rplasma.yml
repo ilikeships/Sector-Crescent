@@ -57,6 +57,41 @@
     price: 65
 
 - type: entity
+  id: ReinforcedPlasmaWindowStation
+  name: reinforced plasma window
+  parent: ReinforcedPlasmaWindow
+  suffix: Station
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25000
+      behaviors: #excess damage, don't spawn entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+    - trigger:
+        !type:DamageTrigger
+        damage: 25000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlassPlasma:
+            min: 1
+            max: 2
+          PartRodMetal:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
   id: PlasmaReinforcedWindowDirectional
   parent: WindowDirectionalRCDResistant
   name: directional reinforced plasma window

@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Velator {1}'
+          mapNameTemplate: 'RC Velator {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -113,13 +113,14 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var depotMap = "/Maps/_NF/POI/cargodepot.yml";
         var tinnia = "/Maps/_NF/POI/tinnia.yml";
         //var caseys = "/Maps/_NF/POI/caseyscasino.yml";
-        var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
+       // var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
         var hayes = "/Maps/_Crescent/Stations/hayes.yml";
-        var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
+        //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
-        var refuge = "/Maps/_Crescent/Stations/refuge.yml";
+       // var refuge = "/Maps/_Crescent/Stations/refuge.yml";
         var clementine = "/Maps/_Crescent/Stations/clementine.yml";
+        var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         // var arena = "/Maps/_NF/POI/arena.yml";
         // var cove = "/Maps/_NF/POI/cove.yml";
@@ -180,41 +181,61 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
         }
 
+        if (_map.TryLoad(mapId, defensebattery, out var depotUid15s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(300f, 1600f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid15s[0]);
+            _meta.SetEntityName(depotUid15s[0], "Defense Battery Henrietta", meta);
+            _shuttle.SetIFFColor(depotUid15s[0], coveColor);
+        }
+
+        if (_map.TryLoad(mapId, defensebattery, out var depotUid16s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(1600f, 300f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid16s[0]);
+            _meta.SetEntityName(depotUid16s[0], "Defense Battery Soga", meta);
+            _shuttle.SetIFFColor(depotUid16s[0], coveColor);
+        }
+
         if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
-            {
-                Offset = tinniaOffset
-            }))
+        {
+            Offset = tinniaOffset
+        }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid2s[0]);
             _meta.SetEntityName(depotUid2s[0], "Faint Signal", meta);
             _shuttle.SetIFFColor(depotUid2s[0], factionColor);
         }
 
-     //   if (_map.TryLoad(mapId, church, out var churchUids, new MapLoadOptions
-     //       {
-     //           Offset = -tinniaOffset
-     //       }))
-     //   {
-     //       var meta = EnsureComp<MetaDataComponent>(churchUids[0]);
-     //       _meta.SetEntityName(churchUids[0], "Omnichurch Beacon", meta);
-     //       _shuttle.SetIFFColor(churchUids[0], factionColor);
-     //   }
+        //   if (_map.TryLoad(mapId, church, out var churchUids, new MapLoadOptions
+        //       {
+        //           Offset = -tinniaOffset
+        //       }))
+        //   {
+        //       var meta = EnsureComp<MetaDataComponent>(churchUids[0]);
+        //       _meta.SetEntityName(churchUids[0], "Omnichurch Beacon", meta);
+        //       _shuttle.SetIFFColor(churchUids[0], factionColor);
+        //   }
 
-        if (_map.TryLoad(mapId, lpbravo, out var lpbravoUids, new MapLoadOptions
-            {
-                Offset = _random.NextVector2(5150f, 4850f)
-            }))
-        {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("LPBravo", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["LPBravo"], lpbravoUids);
-            }
-      
-            var meta = EnsureComp<MetaDataComponent>(lpbravoUids[0]);
-            _meta.SetEntityName(lpbravoUids[0], "NCSP Grinning Jackal", meta);
-            _shuttle.SetIFFColor(lpbravoUids[0], lpbravoColor);
-            _shuttle.AddIFFFlag(lpbravoUids[0], IFFFlags.HideLabel);
-        }
+     //   if (_map.TryLoad(mapId, lpbravo, out var lpbravoUids, new MapLoadOptions
+    //        {
+    //            Offset = _random.NextVector2(5150f, 4850f)
+    //        }))
+    //    {
+    //        if (_prototypeManager.TryIndex<GameMapPrototype>("LPBravo", out var stationProto))
+    //        {
+     //           _station.InitializeNewStation(stationProto.Stations["LPBravo"], lpbravoUids);
+     //       }
+      //
+      //      var meta = EnsureComp<MetaDataComponent>(lpbravoUids[0]);
+      //      _meta.SetEntityName(lpbravoUids[0], "NCSP Grinning Jackal", meta);
+       //     _shuttle.SetIFFColor(lpbravoUids[0], lpbravoColor);
+       //     _shuttle.AddIFFFlag(lpbravoUids[0], IFFFlags.HideLabel);
+       // }
 
         // if (_map.TryLoad(mapId, northpole, out var northpoleUids, new MapLoadOptions
         //     {
@@ -267,21 +288,21 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
         }
 
-        if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
-        {
-            Offset = _random.NextVector2(8000f, 9000f)
-        }))
-        {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("lpramzi", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["lpramzi"], depotUid8s);
-            }
-
-            var meta = EnsureComp<MetaDataComponent>(depotUid8s[0]);
-            _meta.SetEntityName(depotUid8s[0], "Listening Post 5", meta);
-            _shuttle.SetIFFColor(depotUid8s[0], lpbravoColor);
-            _shuttle.AddIFFFlag(depotUid8s[0], IFFFlags.HideLabel);
-        }
+     //   if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
+     //   {
+      //      Offset = _random.NextVector2(8000f, 9000f)
+      //  }))
+      //  {
+      //      if (_prototypeManager.TryIndex<GameMapPrototype>("lpramzi", out var stationProto))
+      //      {
+      //          _station.InitializeNewStation(stationProto.Stations["lpramzi"], depotUid8s);
+       //     }
+//
+       //     var meta = EnsureComp<MetaDataComponent>(depotUid8s[0]);
+      //      _meta.SetEntityName(depotUid8s[0], "Listening Post 5", meta);
+       //     _shuttle.SetIFFColor(depotUid8s[0], lpbravoColor);
+       //     _shuttle.AddIFFFlag(depotUid8s[0], IFFFlags.HideLabel);
+       // }
 
         if (_map.TryLoad(mapId, dochenskaya, out var depotUid9s, new MapLoadOptions
         {
@@ -313,21 +334,21 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
         }
 
-        if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
-        {
-            Offset = _random.NextVector2(9000f, 12000f)
-        }))
-        {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
-            }
-      
-            var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
-            _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
-            _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
-            _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
-        }
+      //  if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
+      //  {
+      //      Offset = _random.NextVector2(9000f, 12000f)
+      //  }))
+       // {
+       //     if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))
+      //      {
+      //          _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
+      //      }
+      //
+      //      var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
+      //      _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
+      //      _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
+      //      _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
+      //  }
 
         if (_map.TryLoad(mapId, clementine, out var depotUid12s, new MapLoadOptions
         {

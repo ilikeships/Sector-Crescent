@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Vasinya {1}'
+          mapNameTemplate: 'NCWL Vasinya {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

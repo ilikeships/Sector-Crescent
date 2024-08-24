@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Scuttlefish {1}'
+          mapNameTemplate: 'GSC Scuttlefish {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -17,7 +17,7 @@
       stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Raider {1}'
+          mapNameTemplate: 'DSM Raider {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

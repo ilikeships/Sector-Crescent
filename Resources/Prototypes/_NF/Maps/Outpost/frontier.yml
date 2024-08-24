@@ -24,6 +24,6 @@
             CourtierDSM: [ 5, 5 ]
             KnightDSM: [ 5, 5 ]
             LevymanDSM: [ 8, 8 ]
-            FreeholderDSM: [ 15, 15 ]
+            FreeholderDSM: [ -1, -1 ]
             Antiquarian: [ 1, 1 ]
 

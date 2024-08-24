@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Piranha {1}'
+          mapNameTemplate: 'GSC Piranha {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
