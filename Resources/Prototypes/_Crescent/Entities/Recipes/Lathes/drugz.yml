@@ -47,3 +47,14 @@
     Galine: 550
     DeactivatedPhoron: 1000
     RefinedGarbage: 1000
+
+- type: latheRecipe
+  id: PartyDrugs
+  result: TradeGoodDrugs
+  applyMaterialDiscount: false
+  completetime: 2
+  materials:
+    PlasmaIsotope: 1000
+    Galine: 500
+    DeactivatedPhoron: 1500
+    RefinedGarbage: 1500
