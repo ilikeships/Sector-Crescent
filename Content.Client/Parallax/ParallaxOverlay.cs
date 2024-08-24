@@ -5,6 +5,7 @@ using Content.Shared.Parallax;
 using Content.Shared.Parallax.Biomes;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
@@ -15,6 +16,7 @@ namespace Content.Client.Parallax;
 
 public sealed class ParallaxOverlay : Overlay
 {
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -56,7 +58,10 @@ public sealed class ParallaxOverlay : Overlay
         if (!_configurationManager.GetCVar(CCVars.ParallaxEnabled))
             return;
 
-        if (!_entManager.TryGetComponent<ParallaxComponent>(mapUid, out var parallax))
+        ParallaxComponent? parallax = _entManager.GetComponentOrNull<ParallaxComponent>(_playerManager.LocalEntity);
+        parallax ??= _entManager.GetComponentOrNull<ParallaxComponent>(mapUid);
+
+        if (parallax == null)
         {
             DrawLayers(args, _parallax.GetParallaxLayers(ParallaxSystem.Fallback), 1);
             return;
