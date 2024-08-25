@@ -76,3 +76,24 @@
   id: HunterBiome
   files:
    - /Audio/_Crescent/ludd.ogg
+
+#syndie
+
+- type: ambientMusic
+  id: SyndieBiome
+  sound:
+    collection: SyndicateBiome
+  rules: InSyndicateAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InSyndicateAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: syndicatebiome
+
+- type: soundCollection
+  id: SyndicateBiome
+  files:
+   - /Audio/_Crescent/syndies.ogg

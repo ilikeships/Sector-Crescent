@@ -1,7 +1,7 @@
 #ncwl#
 
 job-name-kommissar = Kommissar
-job-name-sanitar = Union Corpsman
+job-name-sanitar = Partisan
 job-name-artificer = Artificer
 job-name-doktor = Sanitar
 job-name-administrator = Admiral Opreme
