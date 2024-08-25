@@ -1200,6 +1200,8 @@ entities:
     - type: GasTileOverlay
     - type: BecomesStation
       id: Clementine
+    - type: StationCargoOrderDatabase
+      orders: []
 - proto: AirAlarm
   entities:
   - uid: 2145
@@ -2100,11 +2102,17 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,10.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 494
   - uid: 479
     components:
     - type: Transform
       pos: -5.5,8.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 495
   - uid: 2152
     components:
     - type: Transform
@@ -2278,15 +2286,6 @@ entities:
     - type: Transform
       pos: 3.5,21.5
       parent: 1
-- proto: BoxFolderQmClipboard
-  entities:
-  - uid: 123
-    components:
-    - type: Transform
-      parent: 117
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: Bucket
   entities:
   - uid: 1094
@@ -9488,6 +9487,24 @@ entities:
     - type: Transform
       pos: 1.5,-10.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14926
+        moles:
+        - 1.8856695
+        - 7.0937095
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -9499,7 +9516,6 @@ entities:
           - 120
           - 121
           - 122
-          - 123
           - 124
           - 125
         paper_label: !type:ContainerSlot
@@ -11310,12 +11326,20 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        478:
+        - Pressed: Toggle
   - uid: 495
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        479:
+        - Pressed: Toggle
   - uid: 529
     components:
     - type: MetaData
