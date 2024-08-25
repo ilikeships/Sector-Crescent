@@ -97,3 +97,25 @@
   id: SyndicateBiome
   files:
    - /Audio/_Crescent/syndies.ogg
+
+#corpie
+
+- type: ambientMusic
+  id: CorpieBiome
+  sound:
+    collection: CorpieBiome
+  rules: InCorpieAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InCorpieAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: corpiebiome
+
+- type: soundCollection
+  id: CorpieBiome
+  files:
+   - /Audio/_Crescent/the_insulindan_miracle.ogg
+

@@ -74,52 +74,52 @@ entities:
             color: '#EFB34196'
             id: DeliveryGreyscale
           decals:
-            287: -5,-7
-            288: -5,-5
-            289: 6,-8
-            290: 7,-8
-            291: 9,-8
-            292: 10,-8
+            275: -5,-7
+            276: -5,-5
+            277: 6,-8
+            278: 7,-8
+            279: 9,-8
+            280: 10,-8
         - node:
             color: '#52B4E996'
             id: MiniTileCornerOverlayNE
           decals:
-            272: -1,-15
+            260: -1,-15
         - node:
             color: '#52B4E996'
             id: MiniTileCornerOverlayNW
           decals:
-            273: -3,-15
+            261: -3,-15
         - node:
             color: '#52B4E996'
             id: MiniTileCornerOverlaySE
           decals:
-            275: -1,-17
+            263: -1,-17
         - node:
             color: '#52B4E996'
             id: MiniTileCornerOverlaySW
           decals:
-            274: -3,-17
+            262: -3,-17
         - node:
             color: '#52B4E996'
             id: MiniTileLineOverlayE
           decals:
-            277: -1,-16
+            265: -1,-16
         - node:
             color: '#52B4E996'
             id: MiniTileLineOverlayN
           decals:
-            278: -2,-15
+            266: -2,-15
         - node:
             color: '#52B4E996'
             id: MiniTileLineOverlayS
           decals:
-            276: -2,-17
+            264: -2,-17
         - node:
             color: '#52B4E996'
             id: MiniTileLineOverlayW
           decals:
-            279: -3,-16
+            267: -3,-16
         - node:
             color: '#FFFFFFFF'
             id: TechCornerE
@@ -159,20 +159,20 @@ entities:
             color: '#FFFFFFFF'
             id: TechS
           decals:
-            282: 1,-20
-            283: 2,-20
+            270: 1,-20
+            271: 2,-20
         - node:
             color: '#FFFFFFFF'
             id: TechSE
           decals:
             120: -6,-11
-            280: 3,-20
+            268: 3,-20
         - node:
             color: '#FFFFFFFF'
             id: TechSW
           decals:
             116: -7,-12
-            281: 0,-20
+            269: 0,-20
         - node:
             color: '#FFFFFFFF'
             id: TechW
@@ -248,14 +248,14 @@ entities:
             color: '#EFB34196'
             id: WarnCornerSmallSE
           decals:
-            315: 8,-7
-            316: 8,-7
+            303: 8,-7
+            304: 8,-7
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallSW
           decals:
-            317: 8,-7
-            318: 8,-7
+            305: 8,-7
+            306: 8,-7
         - node:
             color: '#EFB34196'
             id: WarnEndE
@@ -267,28 +267,28 @@ entities:
             id: WarnEndGreyscaleE
           decals:
             192: 10,-12
-            254: 11,-10
-            271: 4,-7
+            242: 11,-10
+            259: 4,-7
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleN
           decals:
-            264: 4,-3
+            252: 4,-3
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleS
           decals:
             193: 9,-13
             194: 7,-13
-            265: 4,-5
+            253: 4,-5
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleW
           decals:
             195: 6,-12
-            255: 6,-10
-            270: 3,-7
-            286: 0,-4
+            243: 6,-10
+            258: 3,-7
+            274: 0,-4
         - node:
             color: '#EFB34196'
             id: WarnEndW
@@ -325,8 +325,8 @@ entities:
             133: 7,-20
             220: 5,-7
             221: 5,-7
-            311: 8,-8
-            312: 8,-8
+            299: 8,-8
+            300: 8,-8
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleE
@@ -357,7 +357,7 @@ entities:
             189: 2,-15
             190: 2,-16
             212: 1,-8
-            266: 4,-4
+            254: 4,-4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
@@ -371,12 +371,12 @@ entities:
             167: 1,-12
             210: 3,-9
             211: 2,-9
-            256: 7,-10
-            257: 8,-10
-            258: 9,-10
-            259: 10,-10
-            268: 2,-4
-            284: 1,-4
+            244: 7,-10
+            245: 8,-10
+            246: 9,-10
+            247: 10,-10
+            256: 2,-4
+            272: 1,-4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleS
@@ -390,12 +390,12 @@ entities:
             205: 1,-10
             206: 2,-10
             207: 3,-10
-            260: 7,-10
-            261: 8,-10
-            262: 9,-10
-            263: 10,-10
-            269: 2,-4
-            285: 1,-4
+            248: 7,-10
+            249: 8,-10
+            250: 9,-10
+            251: 10,-10
+            257: 2,-4
+            273: 1,-4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
@@ -426,7 +426,7 @@ entities:
             191: -4,-10
             208: 0,-8
             209: 0,-9
-            267: 4,-4
+            255: 4,-4
         - node:
             color: '#EFB34196'
             id: WarnLineN
@@ -469,14 +469,14 @@ entities:
             231: 1,-1
             232: 2,-1
             233: 2,-1
-            303: 6,-7
-            304: 6,-7
-            305: 7,-7
-            306: 7,-7
-            307: 9,-7
-            308: 9,-7
-            309: 10,-7
-            310: 10,-7
+            291: 6,-7
+            292: 6,-7
+            293: 7,-7
+            294: 7,-7
+            295: 9,-7
+            296: 9,-7
+            297: 10,-7
+            298: 10,-7
         - node:
             color: '#EFB34196'
             id: WarnLineS
@@ -507,8 +507,8 @@ entities:
             129: 7,-20
             218: 5,-7
             219: 5,-7
-            313: 8,-8
-            314: 8,-8
+            301: 8,-8
+            302: 8,-8
         - node:
             color: '#EFB34196'
             id: WarnLineW
@@ -539,16 +539,16 @@ entities:
             239: 1,-1
             240: 2,-1
             241: 2,-1
-            293: 6,-7
-            294: 6,-7
-            295: 7,-7
-            296: 7,-7
-            297: 8,-7
-            298: 8,-7
-            299: 9,-7
-            300: 9,-7
-            301: 10,-7
-            302: 10,-7
+            281: 6,-7
+            282: 6,-7
+            283: 7,-7
+            284: 7,-7
+            285: 8,-7
+            286: 8,-7
+            287: 9,-7
+            288: 9,-7
+            289: 10,-7
+            290: 10,-7
     - type: RadiationGridResistance
     - type: GridAtmosphere
       version: 2
@@ -1186,6 +1186,9 @@ entities:
     - type: Transform
       pos: 8.5,-5.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 481
   - uid: 150
     components:
     - type: Transform
@@ -1199,6 +1202,9 @@ entities:
     - type: Transform
       pos: 10.5,-5.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 481
   - uid: 154
     components:
     - type: Transform
@@ -1212,6 +1218,9 @@ entities:
     - type: Transform
       pos: 6.5,-5.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 481
   - uid: 158
     components:
     - type: Transform
@@ -2332,6 +2341,11 @@ entities:
     components:
     - type: Transform
       pos: 2.5,1.5
+      parent: 1
+  - uid: 1037
+    components:
+    - type: Transform
+      pos: 9.5,-9.5
       parent: 1
 - proto: CableHV
   entities:
@@ -3642,8 +3656,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,-18.5
       parent: 1
-    - type: GasFilter
-      enabled: True
 - proto: GasPassiveVent
   entities:
   - uid: 561
@@ -3974,8 +3986,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,-22.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
 - proto: GasVentPump
   entities:
   - uid: 552
@@ -5030,6 +5040,14 @@ entities:
     - type: Transform
       pos: 7.5,-5.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        155:
+        - Pressed: Toggle
+        149:
+        - Pressed: Toggle
+        151:
+        - Pressed: Toggle
   - uid: 633
     components:
     - type: Transform

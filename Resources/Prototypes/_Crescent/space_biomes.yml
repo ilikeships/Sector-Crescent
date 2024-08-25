@@ -67,3 +67,19 @@
   name: The Devil's Maw
   swapDuration: 2
   parallax: SyndieParallax
+
+#corpie
+
+- type: entity
+  id: CorpieBiomeSource
+  name: corpie source
+  components:
+  - type: SpaceBiomeSource
+    biome: corpiebiome
+    swapDistance: 1000
+
+- type: biome
+  id: corpiebiome
+  name: Corporate Demilitarized Zone
+  swapDuration: 2
+  parallax: CorpieParallax
