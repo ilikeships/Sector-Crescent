@@ -2047,6 +2047,12 @@ entities:
       _recentlyAccessed: []
       keys: []
     - type: CriminalRecord
+    - type: IFF
+      color: '#CBC3E3FF'
+      flags: IsPlayerShuttle
+    - type: StationCargoBountyDatabase
+      checkedBounties: []
+      bounties: []
 - proto: ActionToggleInternals
   entities:
   - uid: 1531
@@ -2268,7 +2274,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1127.091
+      secondsUntilStateChange: -1215.5028
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -9586,6 +9592,13 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: ComputerCargoBounty
+  entities:
+  - uid: 3478
+    components:
+    - type: Transform
+      pos: 9.5,4.5
+      parent: 1
 - proto: ComputerCargoOrders
   entities:
   - uid: 113
@@ -10884,7 +10897,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2996.484
+      secondsUntilStateChange: -3084.8958
       state: Opening
   - uid: 1418
     components:

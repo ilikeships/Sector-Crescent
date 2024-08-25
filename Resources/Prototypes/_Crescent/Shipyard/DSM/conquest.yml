@@ -2,7 +2,7 @@
   id: Conquest
   name: DSM Conquest
   description: A medium interceptor purpose-built for mayhem.
-  price: 9500
+  price: 10000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/conquest.yml
