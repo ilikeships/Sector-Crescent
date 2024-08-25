@@ -14,7 +14,7 @@
           availableJobs:
             ExecutiveSHI: [ 1, 1 ]
             HighsecSHI: [ 4, 4 ]
-            BoardSHI: [ 2, 2 ]
-            CorpsecSHI: [ 4, 4 ]
-            EmployeeSHI: [ 5, 5 ]
+            BoardSHI: [ 3, 3 ]
+            CorpsecSHI: [ 6, 6 ]
+            EmployeeSHI: [ 6, 6 ]
             MedtechSHI: [ 2, 2 ]

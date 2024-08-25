@@ -20,7 +20,7 @@
       stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Zhipov {1}'
+          mapNameTemplate: 'NCWL Zhipov {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

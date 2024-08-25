@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Vanguard Mk.II {1}'
+          mapNameTemplate: 'NCWL Vanguard Mk.II {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

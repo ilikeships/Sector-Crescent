@@ -20,7 +20,7 @@
       stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Sasha {1}'
+          mapNameTemplate: 'NCWL Sasha {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

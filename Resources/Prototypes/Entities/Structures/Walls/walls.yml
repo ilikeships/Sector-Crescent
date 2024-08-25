@@ -759,6 +759,40 @@
 
 - type: entity
   parent: WallReinforced
+  id: WallReinforcedStation
+  name: reinforced wall
+  suffix: Station
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 50000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SteelScrap1:
+            min: 3
+            max: 5
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: WallReinforced
   id: WallReinforcedRust
   name: reinforced wall
   suffix: rusted

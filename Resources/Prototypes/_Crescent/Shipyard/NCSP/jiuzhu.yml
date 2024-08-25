@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Jiuzhu {1}'
+          mapNameTemplate: 'IPM Jiuzhu {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

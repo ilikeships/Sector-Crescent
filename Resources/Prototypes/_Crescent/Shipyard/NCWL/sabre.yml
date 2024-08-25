@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Sabre {1}'
+          mapNameTemplate: 'NCWL Sabre {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

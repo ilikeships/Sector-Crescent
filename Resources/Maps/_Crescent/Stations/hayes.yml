@@ -24,6 +24,8 @@ entities:
       pos: -0.453125,-0.640625
       parent: invalid
     - type: Shuttle
+      angularDamping: 555555
+      linearDamping: 555555
     - type: MapGrid
       chunks:
         0,0:
@@ -69,8 +71,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 0.05
-      linearDamping: 0.05
+      angularDamping: 555555
+      linearDamping: 555555
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -6068,7 +6070,7 @@ entities:
     - type: Transform
       pos: 0.5,-17.5
       parent: 2
-- proto: ReinforcedWindow
+- proto: ReinforcedWindowStation
   entities:
   - uid: 28
     components:
@@ -7209,7 +7211,7 @@ entities:
     - type: Transform
       pos: 5.5,-14.5
       parent: 2
-- proto: WallReinforced
+- proto: WallReinforcedStation
   entities:
   - uid: 5
     components:

@@ -828,3 +828,37 @@
     price: 3000
   - type: ShipVoucher
     ship: Termite
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherMercury
+  name: ICM 'Mercury' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Ihikerja Civilian Manufacturing Mercury-class salvage shuttle pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 5000
+  - type: ShipVoucher
+    ship: Mercury
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherKite
+  name: ICM 'Kite' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Ihikerja Civilian Manufacturing Kite-class civilain shuttle pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 12000
+  - type: ShipVoucher
+    ship: Kite

@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Wreck {1}'
+          mapNameTemplate: 'RC Wreck {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

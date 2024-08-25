@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Reaver {1}'
+          mapNameTemplate: 'GSC Reaver {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

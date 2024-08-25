@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Meatwagon {1}'
+          mapNameTemplate: 'IPM Meatwagon {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

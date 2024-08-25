@@ -37,7 +37,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 8000
+  cost: 6000
   recipeUnlocks:
   - WeaponSubMachineGunC20rCraft
   - WeaponPistolComplianceImperialCraft
@@ -51,7 +51,7 @@
     state: icon
   discipline: Imperial
   tier: 1
-  cost: 11000
+  cost: 8000
   recipeUnlocks:
   - IbisLPC
 
@@ -77,7 +77,7 @@
     state: icon
   discipline: Imperial
   tier: 2
-  cost: 17500
+  cost: 12500
   recipeUnlocks:
   - NemesisLPC
 
@@ -89,7 +89,7 @@
     state: ame-part
   discipline: Imperial
   tier: 1
-  cost: 6000
+  cost: 5000
   recipeUnlocks:
   - GyroscopeFlatpackLathe
   - DSMWarshipThrusterFlatpackCraft
@@ -103,7 +103,7 @@
     state: base
   discipline: Imperial
   tier: 2
-  cost: 12500
+  cost: 8500
   recipeUnlocks:
   - DSMVulcanFlatpackCraft
   - DSMLadyFlatpackCraft
@@ -117,7 +117,7 @@
     state: icon
   discipline: Imperial
   tier: 2
-  cost: 10000
+  cost: 8500
   recipeUnlocks:
   - WeaponRifleHunterCraft
   - WeaponRifleMillerCraft
@@ -146,7 +146,7 @@
     state: ame-part
   discipline: Imperial
   tier: 3
-  cost: 15000
+  cost: 12500
   recipeUnlocks:
   - DSMPlasmaTurretFlatpackCraft
 
@@ -158,6 +158,6 @@
     state: icon
   discipline: Imperial
   tier: 3
-  cost: 25000
+  cost: 20000
   recipeUnlocks:
   - SRMKhopeshCraft

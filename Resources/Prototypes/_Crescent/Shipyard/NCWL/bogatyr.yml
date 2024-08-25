@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Bogatyr {1}'
+          mapNameTemplate: 'NCWL Bogatyr {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

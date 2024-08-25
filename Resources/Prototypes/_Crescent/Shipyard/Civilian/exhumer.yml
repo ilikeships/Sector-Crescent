@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Exhumer {1}'
+          mapNameTemplate: 'ICM Exhumer {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

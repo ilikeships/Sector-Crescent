@@ -80,6 +80,9 @@
     - Shanty
     - Hyena
     - Wisp
+    - Sinn
+    - Piranha
+    - Scuttlefish
 
 - type: entity
   id: RamziMothershipComputer

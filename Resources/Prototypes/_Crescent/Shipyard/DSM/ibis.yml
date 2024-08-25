@@ -17,7 +17,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Ibis {1}'
+          mapNameTemplate: 'DSM Ibis {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

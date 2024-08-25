@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Homesteader {1}'
+          mapNameTemplate: 'ICM Homesteader {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

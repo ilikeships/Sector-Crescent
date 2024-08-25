@@ -20,7 +20,7 @@
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Cherenzikov {1}'
+          mapNameTemplate: 'NCWL Cherenzikov {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
