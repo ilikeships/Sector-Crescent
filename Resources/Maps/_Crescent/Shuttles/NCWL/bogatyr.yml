@@ -1514,13 +1514,6 @@ entities:
     - type: Transform
       pos: -6.5,5.5
       parent: 2
-- proto: CrateTrashCart
-  entities:
-  - uid: 308
-    components:
-    - type: Transform
-      pos: -0.5,-1.5
-      parent: 2
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
   - uid: 243
@@ -1547,6 +1540,13 @@ entities:
     components:
     - type: Transform
       pos: 5.3427744,-3.2522461
+      parent: 2
+- proto: EwarDevice
+  entities:
+  - uid: 308
+    components:
+    - type: Transform
+      pos: -0.5,-1.5
       parent: 2
 - proto: FaxMachineShip
   entities:
@@ -2235,7 +2235,7 @@ entities:
       pos: -2.5,3.5
       parent: 2
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 302
@@ -2274,7 +2274,7 @@ entities:
       pos: 3.5,3.5
       parent: 2
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 302

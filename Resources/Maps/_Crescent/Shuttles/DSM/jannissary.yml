@@ -17,6 +17,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.421875,-0.671875
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -548,7 +549,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 5.5,1.5
       parent: 1
-- proto: CrateSumitomoAmmo
+- proto: EwarDevice
   entities:
   - uid: 69
     components:
@@ -1153,7 +1154,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -380.43222
+      secondsUntilStateChange: -398.3051
       state: Opening
   - uid: 79
     components:

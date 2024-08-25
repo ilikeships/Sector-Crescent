@@ -5428,6 +5428,13 @@ entities:
     - type: Transform
       pos: -19.5,9.5
       parent: 1
+- proto: SyndicateBiomeSource
+  entities:
+  - uid: 1025
+    components:
+    - type: Transform
+      pos: -12.565706,1.3876581
+      parent: 1
 - proto: SyndicateFabdiskAviation
   entities:
   - uid: 281

@@ -570,7 +570,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -9347.994
+      secondsUntilStateChange: -9372.419
       state: Opening
 - proto: AirTankFilled
   entities:
@@ -3532,7 +3532,7 @@ entities:
       pos: 5.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 147000
+      startingCharge: 146400
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -3561,7 +3561,7 @@ entities:
       pos: -4.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 147000
+      startingCharge: 146400
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot

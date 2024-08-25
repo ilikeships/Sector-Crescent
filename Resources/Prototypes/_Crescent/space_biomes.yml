@@ -34,7 +34,7 @@
   components:
   - type: SpaceBiomeSource
     biome: imperialbiome
-    swapDistance: 2500
+    swapDistance: 2000
 
 #hunter
 
@@ -51,3 +51,35 @@
   name: The Hunter's Prowl
   swapDuration: 2
   parallax: AspidParallax
+
+#syndie
+
+- type: entity
+  id: SyndicateBiomeSource
+  name: syndicate source
+  components:
+  - type: SpaceBiomeSource
+    biome: syndicatebiome
+    swapDistance: 1000
+
+- type: biome
+  id: syndicatebiome
+  name: The Devil's Maw
+  swapDuration: 2
+  parallax: SyndieParallax
+
+#corpie
+
+- type: entity
+  id: CorpieBiomeSource
+  name: corpie source
+  components:
+  - type: SpaceBiomeSource
+    biome: corpiebiome
+    swapDistance: 1000
+
+- type: biome
+  id: corpiebiome
+  name: Corporate Demilitarized Zone
+  swapDuration: 2
+  parallax: CorpieParallax
