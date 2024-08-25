@@ -34,6 +34,38 @@
 
 - type: entity
   parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitImperialCommand
+  name: imperial command hardsuit
+  description: A modular commander's hardsuit, bearing the colors of House Olywir.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandatecommand.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandatecommand.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.7
+        Radiation: 0.2
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.9
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitImperialCommand
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitImperialSoldier
   name: imperial 'JANNISSARY' mk I combat hardsuit
   description: A modular soldier's hardsuit, bears the colors of the Kaiser and House Olywir.
