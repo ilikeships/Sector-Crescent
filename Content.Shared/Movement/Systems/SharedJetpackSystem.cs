@@ -60,7 +60,7 @@ public abstract class SharedJetpackSystem : EntitySystem
             {
                 _popup.PopupClient(Loc.GetString("jetpack-to-grid"), uid, uid);
 
-                SetEnabled(user.Jetpack, jetpack, false, uid);
+                //SetEnabled(user.Jetpack, jetpack, false, uid);
             }
         }
     }
