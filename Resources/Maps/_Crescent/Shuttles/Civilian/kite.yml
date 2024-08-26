@@ -235,7 +235,6 @@ entities:
       eMPMultiplier: 0.5
     - type: BecomesStation
       id: Kite
-    - type: PacifistShipHullmod
 - proto: AirAlarm
   entities:
   - uid: 278

@@ -134,13 +134,14 @@
 - type: entity
   id: CMMMothershipComputer
   parent: BaseMothershipComputer
-  name: CMM internal shipyard
+  name: TSP internal shipyard
   components:
   - type: ShipyardListing
     shuttles:
     - Justiciar
     - Templar
     - Courageous
+    - Provost
 
 - type: entity
   id: RefugeMothershipComputer

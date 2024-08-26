@@ -17,7 +17,7 @@
   minPlayers: 0
   stations: 
     Kite:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'ICM Kite {1}'

@@ -1081,13 +1081,6 @@ entities:
     - type: Transform
       pos: -3.5,6.5
       parent: 1
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 171
-    components:
-    - type: Transform
-      pos: 5.5,6.5
-      parent: 1
 - proto: FaxMachineShip
   entities:
   - uid: 147
@@ -1370,7 +1363,7 @@ entities:
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 137
@@ -1410,7 +1403,7 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 137

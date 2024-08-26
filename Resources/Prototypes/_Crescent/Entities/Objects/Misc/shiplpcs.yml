@@ -691,6 +691,23 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherProvost
+  name: TSP 'Provost' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Taypan Sektor Polizei Provost-class gunship pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 8000
+  - type: ShipVoucher
+    ship: Provost
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherCourageous
   name: TSP 'Courageous' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with a Taypan Sektor Polizei Courageous-class assault cruiser pattern. Has to be redeemed at a shipyard console.
