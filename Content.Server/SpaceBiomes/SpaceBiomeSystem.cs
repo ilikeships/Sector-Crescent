@@ -76,7 +76,7 @@ public sealed class SpaceBiomeSystem : EntitySystem
             tracker.Source = newSource;
             tracker.Biome = newSource?.Biome ?? "default";
             Dirty(session.AttachedEntity.Value, tracker);
-            SwapBiome(session, newSource);
+            SwapBiome(session, session.AttachedEntity.Value, newSource);
         }
     }
 
@@ -122,14 +122,14 @@ public sealed class SpaceBiomeSystem : EntitySystem
         }
     }
 
-    private void SwapBiome(ICommonSession session, SpaceBiomeSourceComponent? source)
+    private void SwapBiome(ICommonSession session, EntityUid uid, SpaceBiomeSourceComponent? source)
     {
         EntityUid? mapUid = _formSys.GetMap(session.AttachedEntity ?? EntityUid.Invalid);
         if (mapUid == null)
             return;
 
         SpaceBiomePrototype biome = _protMan.Index<SpaceBiomePrototype>(source?.Biome ?? "default");
-        _parallaxSys.SwapParallax(mapUid.Value, EnsureComp<ParallaxComponent>(mapUid.Value), biome.Parallax, biome.SwapDuration);
+        _parallaxSys.SwapParallax(uid, EnsureComp<ParallaxComponent>(uid), biome.Parallax, biome.SwapDuration);
 
         SpaceBiomeSwapMessage msg = new() { Biome = source?.Biome ?? "default" };
         RaiseNetworkEvent(msg, session);
