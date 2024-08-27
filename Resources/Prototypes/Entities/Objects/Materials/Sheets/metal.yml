@@ -10,7 +10,7 @@
     sprite: Objects/Materials/Sheets/metal.rsi
     size: Normal
   - type: StaticPrice
-    price: 0
+    price: 25
   - type: Tag
     tags:
     - Sheet

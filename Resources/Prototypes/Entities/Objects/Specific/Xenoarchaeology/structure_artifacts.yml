@@ -65,6 +65,8 @@
   id: SimpleXenoArtifact
   suffix: Simple
   components:
+  - type: StaticPrice
+    price: 400
   - type: Artifact
     nodesMin: 2
     nodesMax: 5
@@ -74,6 +76,8 @@
   id: MediumXenoArtifact
   suffix: Medium
   components:
+  - type: StaticPrice
+    price: 900
   - type: Artifact
     nodesMin: 5
     nodesMax: 9
@@ -83,6 +87,8 @@
   id: ComplexXenoArtifact
   suffix: Complex
   components:
+  - type: StaticPrice
+    price: 1200
   - type: Artifact
     nodesMin: 9
     nodesMax: 13
