@@ -157,7 +157,7 @@
       maxTargetPower: 50000
       targetPower: 20000
       optimalPower: 20000
-      optimalBurnRate: 0.36
+      optimalBurnRate: 0.18
       fuelEfficiencyConstant: 0.95
     - type: Explosive
       explosionType: Default
