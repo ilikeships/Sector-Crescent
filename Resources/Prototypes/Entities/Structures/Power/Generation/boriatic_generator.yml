@@ -157,7 +157,7 @@
       maxTargetPower: 50000
       targetPower: 20000
       optimalPower: 20000
-      optimalBurnRate: 8
+      optimalBurnRate: 0.36
       fuelEfficiencyConstant: 0.95
     - type: Explosive
       explosionType: Default
@@ -171,7 +171,7 @@
     - type: SolutionContainerManager
       solutions:
         tank:
-          maxVol: 1500 
+          maxVol: 500 
     - type: RefillableSolution
       solution: tank
       maxRefill: 100
