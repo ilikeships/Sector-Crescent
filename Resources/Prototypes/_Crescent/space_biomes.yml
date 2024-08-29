@@ -1,7 +1,7 @@
 #fallback, don't remove
 - type: biome
   id: default
-  name: Taypan Wilds
+  name: Hadal Deadspace
   swapDuration: 2
   parallax: Default
 
@@ -19,6 +19,7 @@
   - type: SpaceBiomeSource
     biome: test
     swapDistance: 1000
+    priority: 1500
 
 #imperial
 
@@ -35,6 +36,7 @@
   - type: SpaceBiomeSource
     biome: imperialbiome
     swapDistance: 2000
+    priority: 2500
 
 #hunter
 
@@ -45,6 +47,7 @@
   - type: SpaceBiomeSource
     biome: hunterbiome
     swapDistance: 1500
+    priority: 2400
 
 - type: biome
   id: hunterbiome
@@ -61,6 +64,7 @@
   - type: SpaceBiomeSource
     biome: syndicatebiome
     swapDistance: 1000
+    priority: 2300
 
 - type: biome
   id: syndicatebiome
@@ -77,9 +81,61 @@
   - type: SpaceBiomeSource
     biome: corpiebiome
     swapDistance: 1000
+    priority: 2200
 
 - type: biome
   id: corpiebiome
   name: Corporate Demilitarized Zone
   swapDuration: 2
   parallax: CorpieParallax
+
+# wilds
+
+- type: entity
+  id: WildBiomeSource
+  name: wild source
+  components:
+  - type: SpaceBiomeSource
+    biome: wildbiome
+    swapDistance: 25000
+    priority: 2450
+
+- type: biome
+  id: wildbiome
+  name: Taypan Wilds
+  swapDuration: 2
+  parallax: WildParallax
+
+#deepwilds
+
+- type: entity
+  id: DeepWildBiomeSource
+  name: deepwild source
+  components:
+  - type: SpaceBiomeSource
+    biome: deepwildbiome
+    swapDistance: 30000
+    priority: 2420
+
+- type: biome
+  id: deepwildbiome
+  name: The Deepwilds
+  swapDuration: 2
+  parallax: WildParallax
+
+# breach
+
+- type: entity
+  id: RuptureSource
+  name: the rupture
+  components:
+  - type: SpaceBiomeSource
+    biome: hadalbiome
+    swapDistance: 2000
+    priority: 2500
+
+- type: biome
+  id: hadalbiome
+  name: Abyssal Rupture
+  swapDuration: 2
+  parallax: Hadal

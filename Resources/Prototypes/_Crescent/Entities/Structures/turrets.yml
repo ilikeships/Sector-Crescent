@@ -775,7 +775,7 @@
                   min: 3
                   max: 5
     - type: Gun
-      projectileSpeed: 100
+      projectileSpeed: 70
       fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
@@ -1546,7 +1546,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      projectileSpeed: 75
+      projectileSpeed: 50
       fireRate: 0.4
       selectedMode: FullAuto
       availableModes:
@@ -1645,11 +1645,102 @@
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     - type: BallisticAmmoProvider
       autoCycle: true
-      capacity: 25
+      capacity: 20
       proto: LanceRocketCartridge
       whitelist:
         tags:
         - LanceRocket
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
+    - type: ApcPowerReceiver
+      powerLoad: 4000
+    - type: ExtensionCableReceiver
+    - type: LightningTarget
+      priority: 1
+    - type: MouseRotator
+      angleTolerance: 5
+      rotationSpeed: 180
+      simple4DirMode: false
+    - type: NoRotateOnInteract
+    - type: NoRotateOnMove
+    - type: Input
+      context: "human"
+    - type: MobState
+
+#battlemortar
+
+- type: entity
+  parent: BaseStructure
+  id: BaseWeaponTurretBattlemortar
+  name: heavy 'Hephaeustus' assault artillery platform
+  components:
+    - type: PointCannon
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Actions
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: Sprite
+      sprite: _Crescent/Objects/Autoturrets/battlemortar.rsi
+      drawdepth: Mobs
+      layers:
+        - state: syndie_lethal
+    - type: WorldLoader
+      radius: 256
+    - type: CombatMode
+      toggleMouseRotator: false
+    - type: TurretIFF
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 800
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 500
+          # TODO: Construction graph
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 3
+                  max: 5
+    - type: ProjectileIFF
+    - type: Gun
+      projectileSpeed: 90
+      fireRate: 0.2
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+    - type: BallisticAmmoProvider
+      autoCycle: true
+      capacity: 6
+      proto: HeavyMortarCartridge
+      whitelist:
+        tags:
+        - HeavyMortarShell
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
