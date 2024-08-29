@@ -155,8 +155,8 @@
     - type: FuelGenerator
       minTargetPower: 1000
       maxTargetPower: 50000
-      targetPower: 20000
-      optimalPower: 20000
+      targetPower: 40000
+      optimalPower: 40000
       optimalBurnRate: 0.18
       fuelEfficiencyConstant: 0.95
     - type: Explosive
