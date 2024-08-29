@@ -27,7 +27,7 @@ public sealed class SpaceBiomeTextOverlay : Overlay
     public SpaceBiomeTextOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _font = _cache.GetFont("/Fonts/nulshock.ttf", 25);
+        _font = _cache.GetFont("/Fonts/Fondamento-Regular.ttf", 25);
     }
 
     public void Reset()

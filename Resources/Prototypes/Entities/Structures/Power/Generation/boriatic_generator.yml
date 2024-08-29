@@ -127,7 +127,7 @@
         enabled: false
 
 - type: entity
-  name: Boriatic Generator -Hercules
+  name: Boriatic Generator 'Hercules'
   description: |-
     A loud, foulsmelling, toxic generator.
     Runs off corrosive Boriatic fuel and is rated for up to 50 kW.
@@ -154,11 +154,11 @@
             False: { visible: false }
     - type: FuelGenerator
       minTargetPower: 1000
-      maxTargetPower: 50000
-      targetPower: 20000
-      optimalPower: 20000
-      optimalBurnRate: 0.045
-      fuelEfficiencyConstant: 0.95
+      maxTargetPower: 60000
+      targetPower: 30000
+      optimalPower: 30000
+      optimalBurnRate: 0.035
+      fuelEfficiencyConstant: 0.75
     - type: Explosive
       explosionType: Default
       totalIntensity: 2000 # ~15 tile radius.
@@ -171,7 +171,7 @@
     - type: SolutionContainerManager
       solutions:
         tank:
-          maxVol: 1500 
+          maxVol: 600 
     - type: RefillableSolution
       solution: tank
       maxRefill: 100
@@ -187,3 +187,68 @@
       state: portgen0
     - type: MaterialStorageMagnetPickup # Frontier
       range: 0.30
+
+- type: entity
+  name: Boriatic Generator 'Einstein'
+  description: |-
+    A gargantuan, loud, foulsmelling, toxic generator.
+    Runs off corrosive Boriatic fuel and is rated for up to 95 kW.
+  parent: BoriaticGeneratorSwitchableBase
+  id: BoriaticGeneratorEinstein
+  suffix: BoriaticFuel, 95 kW
+  components:
+    - type: Sprite
+      sprite: _Crescent/Structures/boriatic_reactor.rsi
+      layers:
+        - state: portgen0
+          map: [ "enum.GeneratorVisualLayers.Body" ]
+        - state: portgen_on_unlit
+          map: [ "enum.GeneratorVisualLayers.Unlit" ]
+          shader: unshaded
+          visible: false
+    - type: GenericVisualizer
+      visuals:
+        enum.GeneratorVisuals.Running:
+          enum.GeneratorVisualLayers.Body:
+            True: { state: portgen0on }
+            False: { state: portgen0 }
+          enum.GeneratorVisualLayers.Unlit:
+            True: { visible: true }
+            False: { visible: false }
+    - type: FuelGenerator
+      minTargetPower: 25000
+      maxTargetPower: 95000
+      targetPower: 80000
+      optimalPower: 80000
+      optimalBurnRate: 0.045
+      fuelEfficiencyConstant: 1.5
+    - type: Explosive
+      explosionType: Default
+      totalIntensity: 4000 # ~15 tile radius.
+      intensitySlope: 5
+      maxIntensity: 350 
+    - type: ChemicalFuelGeneratorAdapter
+      solution: tank
+      reagents:
+        BoriaticFuel: 1
+    - type: SolutionContainerManager
+      solutions:
+        tank:
+          maxVol: 2500 
+    - type: RefillableSolution
+      solution: tank
+      maxRefill: 100
+      startChance: 1
+      powerSupplyMultiplier: 1.5
+      scaling: Exponential
+    - type: PowerMonitoringDevice
+      group: Generator
+      loadNodes:
+        - output_hv
+        - output_mv
+      sprite: Structures/Power/Generation/portable_generator.rsi
+      state: portgen0
+    - type: MaterialStorageMagnetPickup # Frontier
+      range: 0.30
+    - type: StaticPrice
+      price: 2500

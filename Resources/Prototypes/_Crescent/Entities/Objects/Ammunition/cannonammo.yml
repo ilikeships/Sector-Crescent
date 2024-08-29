@@ -144,9 +144,9 @@
   - type: Explosive
     explosionType: Default
     maxIntensity: 85
-    intensitySlope: 75
-    totalIntensity: 120
-    maxTileBreak: 9
+    intensitySlope: 85
+    totalIntensity: 90
+    maxTileBreak: 6
   - type: PointLight
     radius: 3.5
     color: orange
@@ -440,8 +440,8 @@
     explosionType: Default
     maxIntensity: 120
     intensitySlope: 120
-    totalIntensity: 210
-    maxTileBreak: 8
+    totalIntensity: 500
+    maxTileBreak: 12
   - type: HeatSeeking
     rotationSpeed: 250
     acceleration: 100
@@ -521,7 +521,7 @@
     tags:
       - TorpedoGarg
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 30
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/torpemp.rsi
     layers:
@@ -533,8 +533,8 @@
     disableDuration: 14
   - type: Explosive
     explosionType: Default
-    maxIntensity: 60
-    intensitySlope: 60
+    maxIntensity: 50
+    intensitySlope: 50
     totalIntensity: 120
     maxTileBreak: 5
   - type: HeatSeeking
@@ -591,7 +591,7 @@
     tags:
       - LanceRocket
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 9
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/lance.rsi
     layers:
@@ -603,6 +603,68 @@
     intensitySlope: 50
     totalIntensity: 80
     maxTileBreak: 4
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
+
+# battlemortar
+
+- type: Tag
+  id: HeavyMortarShell
+
+- type: entity
+  id: HeavyMortarCartridge
+  name: 230mm high-explosive heavy mortar shell
+  parent: BaseItem
+  description: An unyieldy mortar shell with an explosive payload.
+  components:
+  - type: Tag
+    tags:
+      - HeavyMortarShell
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: BattlemortarProjectile
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/battleshell.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: BattlemortarProjectile
+  name: 230mm high-explosive heavy mortar shell
+  description: Shit.
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Structural: 900
+        Blunt: 40
+  - type: Tag
+    tags:
+      - HeavyMortarShell
+  - type: TimedDespawn
+    lifetime: 20
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/battleshell.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 240
+    intensitySlope: 160
+    totalIntensity: 600
+    maxTileBreak: 12
   - type: PointLight
     radius: 3.5
     color: orange
