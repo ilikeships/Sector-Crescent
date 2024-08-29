@@ -58,9 +58,9 @@ public abstract class SharedJetpackSystem : EntitySystem
             if (transform.GridUid == gridUid && ev.HasGravity &&
                 jetpackQuery.TryGetComponent(user.Jetpack, out var jetpack))
             {
-                _popup.PopupClient(Loc.GetString("jetpack-to-grid"), uid, uid);
+               // _popup.PopupClient(Loc.GetString("jetpack-to-grid"), uid, uid);
 
-                SetEnabled(user.Jetpack, jetpack, false, uid);
+                //SetEnabled(user.Jetpack, jetpack, false, uid);
             }
         }
     }
