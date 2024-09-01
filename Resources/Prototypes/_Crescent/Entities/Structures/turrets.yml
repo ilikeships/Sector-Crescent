@@ -235,7 +235,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/vulcan.ogg
     # TODO: Power ammo provider?
     - type: MagazineAmmoProvider
     - type: ItemSlots
@@ -603,7 +603,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/ship_friendship.ogg
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 2
       rechargeSound:
@@ -1310,7 +1310,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/needler.ogg
     - type: MagazineAmmoProvider
     - type: ItemSlots
       slots:
@@ -1525,13 +1525,13 @@
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 800
+            damage: 1600
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
         - trigger:
             !type:DamageTrigger
-            damage: 500
+            damage: 1600
           # TODO: Construction graph
           behaviors:
             - !type:DoActsBehavior
@@ -1707,13 +1707,13 @@
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 800
+            damage: 3000
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
         - trigger:
             !type:DamageTrigger
-            damage: 500
+            damage: 3000
           # TODO: Construction graph
           behaviors:
             - !type:DoActsBehavior
@@ -1733,7 +1733,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/heph.ogg
     - type: BallisticAmmoProvider
       autoCycle: true
       capacity: 6
