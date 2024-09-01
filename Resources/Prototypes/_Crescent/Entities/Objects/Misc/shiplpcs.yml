@@ -449,6 +449,40 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherMusinyane
+  name: CSEC 'Musinyane' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a CorpSec Musinyane-class security corvette pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 25000
+  - type: ShipVoucher
+    ship: Musinyane
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherNazaar
+  name: CSEC 'Nazaar' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a CorpSec Nazaar-class security mediun fighter pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 5000
+  - type: ShipVoucher
+    ship: Nazaar
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherProbe
   name: SHI 'Probe' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with a civilian Probe-class research corvette pattern. Has to be redeemed at a shipyard console.
@@ -533,6 +567,23 @@
     price: 20000
   - type: ShipVoucher
     ship: Jiuzhu
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherHulk
+  name: IPC 'Hulk' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a Interdyne Pharmaceuticals Hulk-class medical heavy cruiser pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 40000
+  - type: ShipVoucher
+    ship: Hulk
 
 - type: entity
   parent: BaseItem

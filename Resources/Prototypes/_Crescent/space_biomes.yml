@@ -47,7 +47,7 @@
   - type: SpaceBiomeSource
     biome: hunterbiome
     swapDistance: 1500
-    priority: 2400
+    priority: 2495
 
 - type: biome
   id: hunterbiome
@@ -64,7 +64,7 @@
   - type: SpaceBiomeSource
     biome: syndicatebiome
     swapDistance: 1000
-    priority: 2300
+    priority: 2494
 
 - type: biome
   id: syndicatebiome
@@ -81,7 +81,7 @@
   - type: SpaceBiomeSource
     biome: corpiebiome
     swapDistance: 1000
-    priority: 2200
+    priority: 2493
 
 - type: biome
   id: corpiebiome

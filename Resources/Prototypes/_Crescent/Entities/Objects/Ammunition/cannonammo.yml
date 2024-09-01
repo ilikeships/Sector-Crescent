@@ -9,10 +9,11 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ProjectileIFF
   - type: Projectile
     damage:
       types:
-        Structural: 80
+        Structural: 70
         Piercing: 25
   - type: PointLight
     radius: 3.5
@@ -62,7 +63,7 @@
       tags:
         - VulcanCartridgeBox
     proto: CartridgeVulcanStandard
-    capacity: 1000
+    capacity: 500
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/vulcan.rsi
@@ -143,10 +144,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 85
-    intensitySlope: 85
-    totalIntensity: 90
-    maxTileBreak: 6
+    maxIntensity: 55
+    intensitySlope: 16
+    totalIntensity: 120
+    maxTileBreak: 7
   - type: PointLight
     radius: 3.5
     color: orange
@@ -220,9 +221,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 27
-    intensitySlope: 19
-    totalIntensity: 28
+    maxIntensity: 35
+    intensitySlope: 7
+    totalIntensity: 8
     maxTileBreak: 6
   - type: PointLight
     radius: 3.5
@@ -306,9 +307,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 40
-    intensitySlope: 48
-    totalIntensity: 50
+    totalIntensity: 80
+    intensitySlope: 4
+    maxIntensity: 6
     maxTileBreak: 4
   - type: PointLight
     radius: 3.5
@@ -338,7 +339,7 @@
   - type: EmpOnTrigger
     range: 4
     energyConsumption: 1000
-    disableDuration: 10
+    disableDuration: 6
   - type: PointLight
     radius: 3.5
     color: blue
@@ -438,9 +439,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 120
-    intensitySlope: 120
-    totalIntensity: 500
+    totalIntensity: 320
+    intensitySlope: 5
+    maxIntensity: 85
     maxTileBreak: 12
   - type: HeatSeeking
     rotationSpeed: 250
@@ -647,7 +648,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 900
+        Structural: 1500
         Blunt: 40
   - type: Tag
     tags:
@@ -661,9 +662,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 240
-    intensitySlope: 160
-    totalIntensity: 600
+    totalIntensity: 230
+    intensitySlope: 7
+    maxIntensity: 55
     maxTileBreak: 12
   - type: PointLight
     radius: 3.5

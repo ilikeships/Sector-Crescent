@@ -542,7 +542,7 @@
     - SemiAuto
     - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/laserturret.ogg
+      path: /Audio/Weapons/Guns/Gunshots/ship_perforator.ogg
     soundEmpty:
       path: /Audio/Items/hiss.ogg
   - type: SpaceArtillery
@@ -649,10 +649,10 @@
       - SpaceArtilleryDetectedMalfunction
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
-    fireRate: 1
+    fireRate: 3
     projectileSpeed: 80
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/artillery.ogg
+      path: /Audio/Weapons/Guns/Gunshots/ship_duster.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: SpaceArtillery
@@ -902,7 +902,7 @@
     fireRate: 9
     projectileSpeed: 100
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/50cal.ogg
+      path: /Audio/Weapons/Guns/Gunshots/vulcan.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: SpaceArtillery

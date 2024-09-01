@@ -4,7 +4,7 @@
 - type: vessel
   id: Jiuzhu
   name: NCSP Jiuzhu
-  description: A salvaged Syndicate cargopod.
+  description: A medium-sized TraumaSec frigate.
   price: 55000
   category: Medium
   group: None
