@@ -10,7 +10,7 @@
 - type: gameMap
   id: Probe
   mapName: 'SHI Probe'
-  mapPath: /Maps/Shuttles/probe.yml
+  mapPath: /Maps/_Crescent/Shuttles/SHI/probe.yml
   minPlayers: 0
   stations:
     Probe:

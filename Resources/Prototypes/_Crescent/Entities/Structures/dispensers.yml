@@ -114,17 +114,20 @@
   parent: BaseDispenser
   id: GrinningJackalCargoChute
   name: syndicate cargo turn-in chute
-  description: A machine with piping systems that lead into the bowels of the ship, accepting export goods for trade deeds. The electronic display informs that the NCSP are in need of food.
+  description: A machine with piping systems that lead into the bowels of the station, accepting export goods for trade deeds. The electronic display informs that the NCSP are in need of food.
   components:
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeGoodAmmo: TradeDeedLow
       TradeGoodAlcohol: TradeDeedHigh
-      TradeGoodAntibiotics: TradeDeedNormal
+      TradeGoodAntibiotics: TradeDeedLow
       TradeGoodRice: TradeDeedLow
-      TradeGoodFlour: TradeDeedHigh
-      TradeGoodSugar: TradeDeedHigh
+      TradeGoodFlour: TradeDeedNormal
+      TradeGoodSugar: TradeDeedNormal
+      TradeGoodFabrics: TradeDeedVeryHigh
+      TradeGoodMiltech: TradeDeedVeryHigh
+      TradeGoodAlloys: TradeDeedExotic
+      TradeGoodWine: TradeDeedExotic
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
     layers:

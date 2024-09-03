@@ -10,7 +10,7 @@
 - type: gameMap
   id: gazpachov
   mapName: 'SHI Gazpachov'
-  mapPath: /Maps/Shuttles/gazpachov.yml
+  mapPath: /Maps/_Crescent/Shuttles/SHI/gazpachov.yml
   minPlayers: 0
   stations:
     gazpachov:
