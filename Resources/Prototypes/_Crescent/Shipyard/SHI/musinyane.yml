@@ -10,7 +10,7 @@
 - type: gameMap
   id: Musinyane
   mapName: 'SHI Musinyane'
-  mapPath: /Maps/Shuttles/musinyane.yml
+  mapPath: /Maps/_Crescent/Shuttles/SHI/musinyane.yml
   minPlayers: 0
   stations:
     Musinyane:
