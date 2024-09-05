@@ -32,7 +32,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.5074323,-0.5817642
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -10388,8 +10387,6 @@ entities:
       pos: 26.5,-28.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2330
@@ -10398,8 +10395,6 @@ entities:
       pos: 27.5,-10.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2331
@@ -10408,8 +10403,6 @@ entities:
       pos: -0.5,-14.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2334
@@ -10419,8 +10412,6 @@ entities:
       pos: -12.5,-14.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2335
@@ -10429,8 +10420,6 @@ entities:
       pos: -0.5,-34.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2338
@@ -10440,8 +10429,6 @@ entities:
       pos: 2.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2370
@@ -10450,8 +10437,6 @@ entities:
       pos: 5.5,-12.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
 - proto: GasVentScrubber
@@ -10463,8 +10448,6 @@ entities:
       pos: 24.5,-28.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2329
@@ -10473,8 +10456,6 @@ entities:
       pos: 25.5,-10.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2332
@@ -10483,8 +10464,6 @@ entities:
       pos: 1.5,-14.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2333
@@ -10493,8 +10472,6 @@ entities:
       pos: -12.5,-10.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2336
@@ -10503,8 +10480,6 @@ entities:
       pos: 1.5,-34.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2337
@@ -10514,8 +10489,6 @@ entities:
       pos: -1.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
   - uid: 2369
@@ -10524,8 +10497,6 @@ entities:
       pos: 7.5,-12.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 2561
 - proto: GeneratorBasic15kW
