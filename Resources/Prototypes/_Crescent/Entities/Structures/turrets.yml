@@ -599,13 +599,13 @@
                   min: 3
                   max: 5
     - type: Gun
-      fireRate: 0.34
+      fireRate: 1.5
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/ship_friendship.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/needler.ogg
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 2
+      rechargeCooldown: 0.5
       rechargeSound:
         path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
         params:
@@ -613,7 +613,7 @@
           variation: 0.08
     - type: BasicEntityAmmoProvider
       proto: LonggunShell
-      capacity: 40
+      capacity: 90
       count: 10
     - type: HTN
       rootTask:
@@ -658,7 +658,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: NCSP 80mm long-distance coilgun
+  name: NCSP 73mm antimatter boltgun
   id: WeaponTurretCoilgunNCSP
   suffix: NCSP CLGN
   components:
@@ -668,7 +668,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: NCWL 80mm long-distance coilgun
+  name: NCWL 73mm antimatter boltgun
   id: WeaponTurretCoilgunNCWL
   suffix: NCWL CLGN
   components:
@@ -678,7 +678,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: CMM 80mm long-distance coilgun
+  name: CMM 73mm antimatter boltgun
   id: WeaponTurretCoilgunCMM
   suffix: CMM CLGN
   components:
@@ -688,7 +688,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: SRM 80mm long-distance coilgun
+  name: SRM 73mm antimatter boltgun
   id: WeaponTurretCoilgunSRM
   suffix: SRM CLGN
   components:
@@ -698,7 +698,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: SHI 80mm long-distance coilgun
+  name: SHI 73mm antimatter boltgun
   id: WeaponTurretCoilgunSHI
   suffix: SHI CLGN
   components:
@@ -708,7 +708,7 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
-  name: DSM 80mm long-distance coilgun
+  name: DSM 73mm antimatter boltgun
   id: WeaponTurretCoilgunDSM
   suffix: DSM CLGN
   components:
