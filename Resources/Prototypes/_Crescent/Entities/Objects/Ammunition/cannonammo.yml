@@ -439,14 +439,14 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 320
-    intensitySlope: 5
+    totalIntensity: 350
+    intensitySlope: 15
     maxIntensity: 85
-    maxTileBreak: 12
+    maxTileBreak: 6
   - type: HeatSeeking
-    rotationSpeed: 250
-    acceleration: 100
-    seekRange: 1000
+    acceleration: 75
+    rotationSpeed: 15
+    seekRange: 150
   - type: PointLight
     radius: 3.5
     color: orange
