@@ -19,6 +19,23 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherCountsman
+  name: DSM 'Countsman' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Countsman-class utility Flagship. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: Contraband
+  - type: ShipVoucher
+    ship: Countsman
+
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherValor
   name: DSM 'Valor' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with an Imperial Valor-class medium interceptor. Has to be redeemed at a shipyard console.
@@ -273,6 +290,22 @@
     price: 25000
   - type: ShipVoucher
     ship: Vasinya
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherClementine
+  name: NCWL 'Clementine' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a communard Clementine-class Flagship battlecruiser pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: Contraband
+  - type: ShipVoucher
+    ship: Clementine
 
 - type: entity
   parent: BaseItem

@@ -570,7 +570,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 1000
+        Structural: 5000
         #currently explosion deals 156 damage per tile in large AoE
   - type: TimedDespawn
     lifetime: 55
@@ -582,8 +582,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 275
-    intensitySlope: 325
+    maxIntensity: 30
+    intensitySlope: 30
     totalIntensity: 750
     maxTileBreak: 53
   - type: PointLight

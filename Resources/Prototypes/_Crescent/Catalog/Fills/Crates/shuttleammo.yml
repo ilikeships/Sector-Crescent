@@ -18,6 +18,52 @@
         amount: 6
 
 - type: entity
+  id: CrateGargoyleAmmo
+  parent: CrateSecgear
+  name: cruise missile crate
+  description: Ammunition for the Gargoyle cruise missile launcher.
+  components:
+  - type: StorageFill
+    contents:
+      - id: TorpGarg
+        amount: 10
+      - id: TorpGargEMP
+        amount: 10
+
+- type: entity
+  id: CrateLancerAmmo
+  parent: CrateSecgear
+  name: lancer rocket crate
+  description: Ammunition for the Lancer swarm missile launcher.
+  components:
+  - type: StorageFill
+    contents:
+      - id: LanceRocketCartridge
+        amount: 30
+
+- type: entity
+  id: CrateAssaultMortarAmmo
+  parent: CrateSecgear
+  name: assault mortar crate
+  description: Ammunition for the assault mortar platform.
+  components:
+  - type: StorageFill
+    contents:
+      - id: HeavyMortarCartridge
+        amount: 15
+
+- type: entity
+  id: CrateIdnaAmmo
+  parent: CrateSecgear
+  name: light torpedo crate
+  description: A crate of light 'Idna' heat guided torpedoes.
+  components:
+  - type: StorageFill
+    contents:
+      - id: IdnaTorpedo
+        amount: 10
+
+- type: entity
   id: CrateBoriatic
   parent: CrateSecgear
   name: boriatic crate
