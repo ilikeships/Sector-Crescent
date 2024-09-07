@@ -162,6 +162,18 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+  - type: DisableToolUse
+    anchoring: true
+    prying: true
+    screwing: true
+    cutting: true
+    welding: true
+    pulsing: true
+    slicing: true
+    sawing: true
+    honking: true
+    rolling: true
+    digging: true
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerIFFSyndicate]
@@ -183,6 +195,18 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+  - type: DisableToolUse
+    anchoring: true
+    prying: true
+    screwing: true
+    cutting: true
+    welding: true
+    pulsing: true
+    slicing: true
+    sawing: true
+    honking: true
+    rolling: true
+    digging: true
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerPowerMonitoring]
@@ -792,3 +816,15 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
+  - type: DisableToolUse
+    anchoring: true
+    prying: true
+    screwing: true
+    cutting: true
+    welding: true
+    pulsing: true
+    slicing: true
+    sawing: true
+    honking: true
+    rolling: true
+    digging: true

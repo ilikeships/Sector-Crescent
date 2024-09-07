@@ -189,6 +189,18 @@
         type: IFFConsoleBoundUserInterface
   - type: Computer
     board: Null
+  - type: DisableToolUse
+    anchoring: true
+    prying: true
+    screwing: true
+    cutting: true
+    welding: true
+    pulsing: true
+    slicing: true
+    sawing: true
+    honking: true
+    rolling: true
+    digging: true
 
 - type: entity
   name: cargo market computer
