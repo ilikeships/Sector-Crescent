@@ -12043,7 +12043,7 @@ entities:
     - type: Transform
       pos: 0.5,-39.5
       parent: 1
-- proto: PlastitaniumWindowStation
+- proto: PlastitaniumWindow
   entities:
   - uid: 357
     components:
@@ -15020,7 +15020,7 @@ entities:
     - type: Transform
       pos: -3.5,-37.5
       parent: 1
-- proto: WallReinforcedStation
+- proto: WallReinforced
   entities:
   - uid: 2
     components:

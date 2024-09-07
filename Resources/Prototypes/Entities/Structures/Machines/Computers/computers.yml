@@ -201,7 +201,7 @@
       stealGroup: SalvageShuttleConsoleCircuitboard
 
 - type: entity
-  parent: BaseComputer
+  parent: [BaseComputer, BaseStructureDisableToolUse]
   id: ComputerIFF
   name: IFF computer
   description: Allows you to control the IFF characteristics of this vessel.
@@ -228,7 +228,7 @@
     board: ComputerIFFCircuitboard
 
 - type: entity
-  parent: ComputerIFF
+  parent: [ComputerIFF, BaseStructureDisableToolUse]
   id: ComputerIFFSyndicate
   name: IFF computer
   suffix: Syndicate

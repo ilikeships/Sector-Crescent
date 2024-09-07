@@ -144,7 +144,7 @@
       state: generic_keys
 
 - type: entity
-  parent: [BaseStructureComputerTabletop, ComputerIFF]
+  parent: [BaseStructureComputerTabletop, ComputerIFF, BaseStructureDisableToolUse]
   id: ComputerTabletopIFF
   components:
   - type: Sprite
@@ -162,21 +162,9 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
-  - type: DisableToolUse
-    anchoring: true
-    prying: true
-    screwing: true
-    cutting: true
-    welding: true
-    pulsing: true
-    slicing: true
-    sawing: true
-    honking: true
-    rolling: true
-    digging: true
 
 - type: entity
-  parent: [BaseStructureComputerTabletop, ComputerIFFSyndicate]
+  parent: [BaseStructureComputerTabletop, ComputerIFFSyndicate, BaseStructureDisableToolUse]
   id: ComputerTabletopIFFSyndicate
   suffix: Syndicate, Tabletop
   components:
@@ -195,18 +183,6 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
-  - type: DisableToolUse
-    anchoring: true
-    prying: true
-    screwing: true
-    cutting: true
-    welding: true
-    pulsing: true
-    slicing: true
-    sawing: true
-    honking: true
-    rolling: true
-    digging: true
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerPowerMonitoring]
@@ -797,7 +773,7 @@
       state: telesci_key
 
 - type: entity
-  parent: [BaseStructureIndestructible, BaseStructureComputerTabletop, ComputerIFFPOI]
+  parent: [BaseStructureIndestructible, BaseStructureComputerTabletop, ComputerIFFPOI, BaseStructureDisableToolUse]
   id: ComputerTabletopComputerIFFPOI
   suffix: POI, Tabletop
   components:
@@ -816,15 +792,3 @@
     - map: ["computerLayerKeys"]
       sprite: Structures/Machines/computers.rsi
       state: generic_keys
-  - type: DisableToolUse
-    anchoring: true
-    prying: true
-    screwing: true
-    cutting: true
-    welding: true
-    pulsing: true
-    slicing: true
-    sawing: true
-    honking: true
-    rolling: true
-    digging: true
