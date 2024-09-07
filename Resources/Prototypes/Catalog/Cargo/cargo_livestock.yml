@@ -33,6 +33,7 @@
 
 - type: cargoProduct
   id: LivestockChicken
+  abstract: true
   icon:
     sprite: Mobs/Animals/chicken.rsi
     state: icon-1
@@ -87,6 +88,7 @@
 
 - type: cargoProduct
   id: LivestockCow
+  abstract: true
   icon:
     sprite: Mobs/Animals/cow.rsi
     state: cow
@@ -97,6 +99,7 @@
 
 - type: cargoProduct
   id: LivestockGoat
+  abstract: true
   icon:
     sprite: Mobs/Animals/goat.rsi
     state: goat
@@ -129,6 +132,7 @@
 
 - type: cargoProduct
   id: LivestockMonkeyCube
+  abstract: true
   icon:
     sprite: Objects/Misc/monkeycube.rsi
     state: box
@@ -139,6 +143,7 @@
 
 - type: cargoProduct
   id: LivestockKoboldCube
+  abstract: true
   icon:
     sprite: Objects/Misc/monkeycube.rsi
     state: box_kobold
@@ -182,6 +187,7 @@
 
 - type: cargoProduct
   id: LivestockPig
+  abstract: true
   icon:
     sprite: Mobs/Animals/pig.rsi
     state: pig

@@ -16,6 +16,8 @@
   - type: PhysicalComposition
     materialComposition:
       ScrapSteel: 500
+  - type: StaticPrice
+    price: 900
 
 - type: entity
   id: SteelScrap1
@@ -79,6 +81,8 @@
   - type: PhysicalComposition
     materialComposition:
       ScrapTitanium: 500
+  - type: StaticPrice
+    price: 1520
 
 - type: entity
   id: TitaniumScrap1
@@ -196,6 +200,8 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapSteel: 500
+  - type: StaticPrice
+    price: 1000
 
 - type: entity
   id: RefinedSteelScrap1
@@ -220,6 +226,8 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapTitanium: 500
+  - type: StaticPrice
+    price: 1250
 
 - type: entity
   id: RefinedTitaniumScrap1
@@ -304,6 +312,8 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedGarbage: 500
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   id: RefinedGarbageOre1
