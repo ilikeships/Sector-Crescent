@@ -3,8 +3,8 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitRamzi
-  name: REAVER mk.I operative combat hardsuit
-  description: A modular hardsuit, bears the colors of the Ramzi's Clique of the Syndicate.
+  name: LUGNUT mk.I combat technician's hardsuit
+  description: A modular hardsuit, bears the colors of the Shipfitters and Astronautics Workers Union of the Syndicate.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndicateramzi.rsi
@@ -35,7 +35,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitSyndicateBG
-  name: LUGGERHEAD mk.II frontliner hardsuit
+  name: BULWARK mk.II frontliner hardsuit
   description: A modular hardsuit painted in the colors of the Syndicate. Bulky nanokevlar pads the light titanium skeleton, shielding flimsy electronics and the fleshy operator underneath.
   components:
   - type: Sprite

@@ -23,18 +23,18 @@
             prob: 0.3
           - id: ScrapSalvageRandomSpawner
             prob: 0.6
-          - id: DelamDisk
-            prob: 0.1
           - id: SalvageCanisterSpawner
             prob: 0.3
           - id: TechminingSpawner
-            prob: 0.2
+            prob: 0.1
           - id: SalvageTankSpawner
             prob: 0.15
           - id: ScrapSalvageRandomSpawner
             prob: 0.15
           - id: SalvageSuitStorageSpawner
             prob: 0.05
+          - id: TradeGoodAlloys
+            prob: 0.12
           - id: SalvagePottedPlantsSpawner
             prob: 0.1
           - id: SalvageGeneratorSpawner
@@ -73,6 +73,8 @@
             prob: 0.2
           - id: Girder
             prob: 1.7
+          - id: TradeGoodWine
+            prob: 0.03
           - id: WallSolid
             prob: 1.5
           - id: Grille
@@ -93,6 +95,8 @@
             prob: 0.05
           - id: ScrapSalvageRandomSpawner
             prob: 0.2
+          - id: TradeGoodFabrics
+            prob: 0.09
         Lattice:
           - prob: 2
           - id: Grille
@@ -110,7 +114,7 @@
           - id: SalvagePartsSpawnerLow
             prob: 0.4
           - id: TechminingSpawner
-            prob: 0.3
+            prob: 0.2
           - id: RandomAmmoBox
             prob: 0.2
           - id: DelamDisk

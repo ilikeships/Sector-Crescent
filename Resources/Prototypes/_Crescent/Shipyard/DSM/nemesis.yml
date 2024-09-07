@@ -1,7 +1,7 @@
 - type: vessel
   id: Nemesis
   name: DSM Nemesis
-  description: A heavy picket corvette intended to provide support for escorting vessels.
+  description: A heavy artillery carrier equipped for long-range expeditions.
   price: 325000
   category: Medium
   group: None

@@ -1,0 +1,19 @@
+- type: gameMap
+  id: Freeport
+  mapName: 'The Freeport'
+  mapPath: /Maps/_Crescent/Stations/freeport.yml
+  minPlayers: 0
+  stations:
+    Freeport:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'The Freeport'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            RingleaderNCSP: [ 1, 1 ]
+            LieutenantNCSP: [ 1, 1 ]
+            InfanteerNCSP: [ 8, 8 ]
+            ForemanNCSP: [ 1, 1 ]
+            ShipbreakerNCSP: [ 5, 5 ]
