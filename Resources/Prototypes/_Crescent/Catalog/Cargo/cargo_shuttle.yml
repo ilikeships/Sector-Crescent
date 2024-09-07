@@ -41,7 +41,7 @@
 - type: cargoProduct
   id: ShuttleAssaultMortarAmmo
   icon:
-    sprite: _Crescent/Objects/ShuttleWeapons/lance.rsi
+    sprite: _Crescent/Objects/ShuttleWeapons/battleshell.rsi
     state: base
   product: CrateAssaultMortarAmmo
   cost: 8000

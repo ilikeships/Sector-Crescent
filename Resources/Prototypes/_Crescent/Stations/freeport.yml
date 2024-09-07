@@ -16,4 +16,5 @@
             LieutenantNCSP: [ 1, 1 ]
             InfanteerNCSP: [ 8, 8 ]
             ForemanNCSP: [ 1, 1 ]
+            TechnicianNCSP: [ 3, 3 ]
             ShipbreakerNCSP: [ 5, 5 ]
