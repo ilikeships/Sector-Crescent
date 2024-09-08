@@ -1,3 +1,20 @@
+- type: latheRecipe
+  id: SinnLPC
+  result: ShipVoucherSinn
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 4250
+    ShipComponents: 2750
+    ShipHull: 8000
+
+- type: latheRecipe
+  id: WolfLPC
+  result: ShipVoucherWolf
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 7250
+    ShipComponents: 4750
+    ShipHull: 15000
 
 - type: latheRecipe
   id: NemesisLPC
@@ -15,7 +32,7 @@
   materials:
     StarshipEngineComponents: 7500
     ShipComponents: 6000
-    ShipHull: 175000
+    ShipHull: 17500
 
 - type: latheRecipe
   id: IbisLPC

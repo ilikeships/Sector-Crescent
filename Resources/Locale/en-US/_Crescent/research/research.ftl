@@ -32,6 +32,10 @@ research-technology-syndieewar = Privateer Electronic Warfare
 
 research-technology-syndieshuttlearmaments = Privateer Shuttle Armaments
 
+research-technology-sinn = Privateer Light Destroyer
+
+research-technology-wolf = Privateer Battleship
+
 #commie
 
 research-technology-commieclothes = Union Standard Textiles

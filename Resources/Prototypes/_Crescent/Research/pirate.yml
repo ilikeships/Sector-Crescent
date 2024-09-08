@@ -12,6 +12,30 @@
   - ClothingOuterHardsuitRamziNCSP
 
 - type: technology
+  id: Sinn
+  name: research-technology-sinn
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Pirate
+  tier: 2
+  cost: 12500
+  recipeUnlocks:
+  - SinnLPC
+
+- type: technology
+  id: Wolf
+  name: research-technology-wolf
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Pirate
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - WolfLPC
+
+- type: technology
   id: SyndicateClothes
   name: research-technology-syndieclothes
   icon:
