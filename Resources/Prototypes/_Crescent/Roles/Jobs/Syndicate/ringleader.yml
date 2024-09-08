@@ -6,8 +6,6 @@
   requirements:
     - !type:WhitelistRequirement
   weight: 55
-    - !type:OverallPlaytimeRequirement
-      time: 18000
   startingGear: RingleaderGear
   alwaysUseSpawner: true
   icon: "JobIconSyndieRingleader"
