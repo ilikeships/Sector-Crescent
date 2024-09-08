@@ -18,9 +18,10 @@
   id: NCSPFighter
   hostile:
     - SRMFighter
-    - CMMFighter
-    - SHIFighter
+    - NCWLFighter
     - DSMFighter
+    - SHIFighter
+    - CMMFighter
 
 - type: npcFaction
   id: CMMFighter
@@ -63,9 +64,11 @@
 - type: npcFaction
   id: NCSPWarship
   hostile:
-    - DSMWarship
     - SRMWarship
+    - NCWLWarship
     - CMMWarship
+    - DSMWarship
+    - SHIWarship
 
 - type: npcFaction
   id: CMMWarship
