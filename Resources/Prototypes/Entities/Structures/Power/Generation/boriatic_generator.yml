@@ -84,9 +84,9 @@
       startSound: { collection: GeneratorTug }
     - type: FuelGenerator
     - type: PowerSupplier
-      supplyRate: 3000
-      supplyRampRate: 500
-      supplyRampTolerance: 500
+      supplyRate: 7500
+      supplyRampRate: 1000
+      supplyRampTolerance: 1000
       enabled: false
     - type: DeviceLinkSink
       ports:
@@ -153,10 +153,10 @@
             True: { visible: true }
             False: { visible: false }
     - type: FuelGenerator
-      minTargetPower: 1000
-      maxTargetPower: 60000
-      targetPower: 30000
-      optimalPower: 30000
+      minTargetPower: 5000
+      maxTargetPower: 80000
+      targetPower: 50000
+      optimalPower: 50000
       optimalBurnRate: 0.035
       fuelEfficiencyConstant: 0.75
     - type: Explosive
@@ -218,8 +218,8 @@
     - type: FuelGenerator
       minTargetPower: 25000
       maxTargetPower: 95000
-      targetPower: 80000
-      optimalPower: 80000
+      targetPower: 90000
+      optimalPower: 90000
       optimalBurnRate: 0.045
       fuelEfficiencyConstant: 1.5
     - type: Explosive

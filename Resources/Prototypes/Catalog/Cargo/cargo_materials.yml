@@ -5,7 +5,7 @@
     sprite: Objects/Materials/Sheets/glass.rsi
     state: glass_3
   product: CrateMaterialGlass
-  cost: 5000 # TODO: Lower the cost back when possible
+  cost: 8000 # TODO: Lower the cost back when possible
   category: cargoproduct-category-name-materials
   group: market
 
@@ -16,7 +16,7 @@
     sprite: Objects/Materials/Sheets/metal.rsi
     state: steel_3
   product: CrateMaterialSteel
-  cost: 3000 # TODO: Lower the cost back when possible
+  cost: 7000 # TODO: Lower the cost back when possible
   category: cargoproduct-category-name-materials
   group: market
 
@@ -26,7 +26,7 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: plastic_3
   product: CrateMaterialPlastic
-  cost: 5000 # TODO: Lower the cost back when possible
+  cost: 9000 # TODO: Lower the cost back when possible
   category: cargoproduct-category-name-materials
   group: market
 
@@ -36,7 +36,7 @@
     sprite: Objects/Materials/Sheets/metal.rsi
     state: brass_3
   product: CrateMaterialBrass
-  cost: 5000 # TODO: Lower the cost back when possible (was 2500)
+  cost: 15000 # TODO: Lower the cost back when possible (was 2500)
   category: cargoproduct-category-name-materials
   group: market
 
@@ -46,7 +46,7 @@
     sprite: Objects/Materials/Sheets/metal.rsi
     state: plasteel_3
   product: CrateMaterialPlasteel
-  cost: 7500 # TODO: Lower the cost back when possible
+  cost: 17500 # TODO: Lower the cost back when possible
   category: cargoproduct-category-name-materials
   group: market
 
@@ -56,7 +56,7 @@
     sprite: Objects/Materials/materials.rsi
     state: cloth_3
   product: CrateMaterialTextiles
-  cost: 2000
+  cost: 8000
   category: cargoproduct-category-name-materials
   group: market
 
@@ -66,7 +66,7 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: plasma_3
   product: CrateMaterialPlasma
-  cost: 3000 # TODO: Lower the cost back when possible
+  cost: 9000 # TODO: Lower the cost back when possible
   category: cargoproduct-category-name-materials
   group: market
 
@@ -76,7 +76,7 @@
     sprite: Objects/Materials/materials.rsi
     state: cardboard_3
   product: CrateMaterialCardboard
-  cost: 750
+  cost: 1250
   category: cargoproduct-category-name-materials
   group: market
 
@@ -86,7 +86,7 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: paper_3
   product: CrateMaterialPaper
-  cost: 1000
+  cost: 3000
   category: cargoproduct-category-name-materials
   group: market
 
@@ -97,7 +97,7 @@
     sprite: Structures/Storage/tanks.rsi
     state: fueltank
   product: WeldingFuelTankFull
-  cost: 1500
+  cost: 2500
   category: cargoproduct-category-name-materials
   group: market
 
@@ -108,6 +108,6 @@
     sprite: Structures/Storage/tanks.rsi
     state: watertank
   product: WaterTankFull
-  cost: 1000
+  cost: 3000
   category: cargoproduct-category-name-materials
   group: market

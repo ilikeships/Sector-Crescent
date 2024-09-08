@@ -182,7 +182,7 @@
 
 - type: latheRecipe
   id: WeaponLightMachineGunL6CNCSP
-  result: WeaponLightMachineGunL6C
+  result: WeaponLightMachineGunL6
   completetime: 4
   materials:
     Steel: 5250

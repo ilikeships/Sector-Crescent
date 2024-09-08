@@ -90,6 +90,10 @@ research-technology-ibis = Imperial Heavy Fighter
 
 research-technology-nemesis = Imperial Artillery Frigate
 
+research-technology-laelaps = Imperial Cruiser
+
+research-technology-anathema = Imperial Light Battlecarrier
+
 #shi
 
 research-technology-corpavionics = Corporate Aviation

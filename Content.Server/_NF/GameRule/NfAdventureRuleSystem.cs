@@ -276,7 +276,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(4000f, 5500f)
+            Offset = _random.NextVector2(3000f, 3500f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Hayes", out var stationProto))
