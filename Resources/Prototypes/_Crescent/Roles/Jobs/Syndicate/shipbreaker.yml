@@ -3,6 +3,9 @@
   name: job-name-shipbreaker
   description: job-description-shipbreaker
   playTimeTracker: JobShipbreakerNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000
   weight: 8
   startingGear: ShipbreakerGear
   alwaysUseSpawner: true

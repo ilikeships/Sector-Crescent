@@ -3,6 +3,9 @@
   name: job-name-lieutenant
   description: job-description-lieutenant
   playTimeTracker: JobLieutenantNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 30000
   weight: 45
   startingGear: LieutenantGear
   alwaysUseSpawner: true
