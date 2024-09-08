@@ -28,12 +28,9 @@
     shuttles:
     - Reaver
     - Corvax
-    - Wolf
-    - Hyena
     - Reaver
     - Piranha
     - Scuttlefish
-    - Sinn
 
 - type: entity
   id: CountsmanMothershipComputer
