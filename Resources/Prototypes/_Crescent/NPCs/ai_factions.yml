@@ -2,6 +2,7 @@
   id: NCWLFighter
   hostile:
     - CMMFighter
+    - NCSPFighter
     - SRMFighter
     - DSMFighter
 
@@ -50,6 +51,7 @@
   hostile:
     - CMMWarship
     - SRMWarship
+    - NCSPWarship
     - DSMWarship
 
 - type: npcFaction
