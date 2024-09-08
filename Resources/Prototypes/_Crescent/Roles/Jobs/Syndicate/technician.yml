@@ -3,6 +3,9 @@
   name: job-name-technician
   description: job-description-technician
   playTimeTracker: JobTechnicianNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 12000
   weight: 18
   startingGear: TechnicianGear
   alwaysUseSpawner: true

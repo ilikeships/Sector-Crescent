@@ -3,6 +3,9 @@
   name: job-name-ripperdoc
   description: job-description-ripperdoc
   playTimeTracker: JobRipperdocNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 6000
   weight: 16
   startingGear: RipperdocGear
   alwaysUseSpawner: true

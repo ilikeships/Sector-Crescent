@@ -3,6 +3,9 @@
   name: job-name-infanteer
   description: job-description-infanteer
   playTimeTracker: JobInfanteerNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000
   weight: 20
   startingGear: InfanteerGear
   alwaysUseSpawner: true

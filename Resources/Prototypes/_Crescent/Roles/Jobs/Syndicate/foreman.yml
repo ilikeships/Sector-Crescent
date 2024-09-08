@@ -3,6 +3,9 @@
   name: job-name-foreman
   description: job-description-foreman
   playTimeTracker: JobForemanNCSP
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 20000
   weight: 8
   startingGear: ForemanGear
   alwaysUseSpawner: true
