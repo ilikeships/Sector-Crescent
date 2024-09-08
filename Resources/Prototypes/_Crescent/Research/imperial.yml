@@ -56,6 +56,31 @@
   - IbisLPC
 
 - type: technology
+  id: Laelaps
+  name: research-technology-laelaps
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Imperial
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - LaelapsLPC
+
+- type: technology
+  id: Anathema
+  name: research-technology-anathema
+  icon:
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    state: icon
+  discipline: Imperial
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - AnatehmaLPC
+
+
+- type: technology
   id: FightersImp
   name: research-technology-impfighters
   icon:

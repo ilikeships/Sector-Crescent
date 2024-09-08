@@ -9,6 +9,15 @@
     ShipHull: 15000
 
 - type: latheRecipe
+  id: LaelapsLPC
+  result: ShipVoucherLaelaps
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 7500
+    ShipComponents: 6000
+    ShipHull: 175000
+
+- type: latheRecipe
   id: IbisLPC
   result: ShipVoucherIbis
   completetime: 1
@@ -42,6 +51,15 @@
   materials:
     StarshipEngineComponents: 4250
     ShipComponents: 2750
+    ShipHull: 8000
+
+- type: latheRecipe
+  id: AnathemaLPC
+  result: ShipVoucherAnathema
+  completetime: 1
+  materials:
+    StarshipEngineComponents: 4250
+    ShipComponents: 4750
     ShipHull: 8000
 
 - type: latheRecipe
