@@ -47,7 +47,6 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      BaseMaxLinearVelocity: 40
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -427,14 +426,32 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,-2.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 88
           - 89
+          - 88
 - proto: ClothingMaskGasExplorer
   entities:
   - uid: 45
@@ -591,6 +608,15 @@ entities:
     - type: Transform
       pos: 0.5,7.5
       parent: 1
+- proto: JugBoriaticFuel
+  entities:
+  - uid: 89
+    components:
+    - type: Transform
+      parent: 87
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MedkitFilled
   entities:
   - uid: 79
@@ -671,15 +697,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,2.5
       parent: 1
-- proto: SheetPlasma
-  entities:
-  - uid: 89
-    components:
-    - type: Transform
-      parent: 87
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ShuttersNormal
   entities:
   - uid: 39
