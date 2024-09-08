@@ -11,8 +11,6 @@
   alwaysUseSpawner: true
   icon: "JobIconSyndieForeman"
   requireAdminNotify: true
-  requirements:
-    - !type:WhitelistRequirement
   supervisors: job-supervisors-ncsp
   canBeAntag: false
   access:
