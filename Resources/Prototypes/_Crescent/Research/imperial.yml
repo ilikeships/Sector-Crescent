@@ -77,7 +77,7 @@
   tier: 2
   cost: 15000
   recipeUnlocks:
-  - AnatehmaLPC
+  - AnathemaLPC
 
 
 - type: technology
