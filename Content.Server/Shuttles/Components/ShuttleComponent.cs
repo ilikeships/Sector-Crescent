@@ -16,12 +16,6 @@ namespace Content.Server.Shuttles.Components
         /// </summary>
         public const float BrakeCoefficient = 1.5f;
 
-        /// <summary>
-        /// Maximum velocity assuming unupgraded, tier 1 thrusters
-        /// </summary>
-        [ViewVariables(VVAccess.ReadWrite)]
-        public float BaseMaxLinearVelocity = 20f;
-
         public const float MaxAngularVelocity = 4f;
 
         /// <summary>
@@ -70,5 +64,11 @@ namespace Content.Server.Shuttles.Components
 
         [DataField("angularDamping"), ViewVariables(VVAccess.ReadWrite)]
         public float AngularDamping = 0.05f;
+
+        /// <summary>
+        /// Maximum velocity assuming unupgraded, tier 1 thrusters
+        /// </summary>
+        [DataField("baseMaxVelocity"), ViewVariables(VVAccess.ReadWrite)]
+        public float BaseMaxVelocity = 20f;
     }
 }
