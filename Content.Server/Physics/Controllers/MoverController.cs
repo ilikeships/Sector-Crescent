@@ -251,7 +251,7 @@ namespace Content.Server.Physics.Controllers
             var horizComp = vel.X != 0 ? MathF.Pow(Vector2.Dot(vel, new (shuttle.BaseLinearThrust[horizIndex] / shuttle.LinearThrust[horizIndex], 0f)), 2) : 0;
             var vertComp = vel.Y != 0 ? MathF.Pow(Vector2.Dot(vel, new (0f, shuttle.BaseLinearThrust[vertIndex] / shuttle.LinearThrust[vertIndex])), 2) : 0;
 
-            return shuttle.BaseMaxLinearVelocity * vel * MathF.ReciprocalSqrtEstimate(horizComp + vertComp);
+            return shuttle.BaseMaxVelocity * vel * MathF.ReciprocalSqrtEstimate(horizComp + vertComp);
         }
 
         private void HandleShuttleMovement(float frameTime)

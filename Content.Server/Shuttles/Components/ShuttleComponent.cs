@@ -70,5 +70,8 @@ namespace Content.Server.Shuttles.Components
 
         [DataField("angularDamping"), ViewVariables(VVAccess.ReadWrite)]
         public float AngularDamping = 0.05f;
+
+        [DataField("baseMaxVelocity")]
+        public float BaseMaxVelocity = 20f;
     }
 }
