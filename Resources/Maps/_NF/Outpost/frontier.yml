@@ -2268,7 +2268,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2901.7688
+      secondsUntilStateChange: -2934.1667
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10385,7 +10385,7 @@ entities:
       pos: 26.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -70.77409
+      secondsUntilStateChange: -103.17196
       state: Closing
 - proto: CurtainsPurpleOpen
   entities:
@@ -11079,6 +11079,14 @@ entities:
       parent: 1431
     - type: Physics
       canCollide: False
+- proto: EncryptionKeyEmpireCiv
+  entities:
+  - uid: 3593
+    components:
+    - type: Transform
+      parent: 1431
+    - type: Physics
+      canCollide: False
 - proto: EncryptionKeyFreelance
   entities:
   - uid: 3463
@@ -11156,7 +11164,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4771.161
+      secondsUntilStateChange: -4803.559
       state: Opening
   - uid: 1418
     components:
@@ -19507,6 +19515,7 @@ entities:
           - 3461
           - 3462
           - 3463
+          - 3593
         machine_board: !type:Container
           showEnts: False
           occludes: True
