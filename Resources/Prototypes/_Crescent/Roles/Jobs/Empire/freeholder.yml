@@ -23,5 +23,5 @@
   id: FreeholderGear
   equipment:
     id: FreeholderPDA
-    ears: ClothingHeadsetEmpire
+    ears: ClothingHeadsetEmpireCiv
     pocket1: ImperialPassportBareLegit

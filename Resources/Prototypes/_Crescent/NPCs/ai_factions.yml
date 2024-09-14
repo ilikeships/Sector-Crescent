@@ -40,7 +40,6 @@
 - type: npcFaction
   id: DSMighter
   hostile:
-    - NCSPFighter
     - SRMFighter
     - NCWLFighter
 
@@ -82,7 +81,6 @@
 - type: npcFaction
   id: DSMWarship
   hostile:
-    - NCSPWarship
     - SRMWarship
     - NCWLWarship
 

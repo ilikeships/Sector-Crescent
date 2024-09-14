@@ -25,3 +25,31 @@
   keycode: "w"
   frequency: 6222
   color: "#535961"
+
+- type: radioChannel
+  id: EmpireCiv
+  name: chat-radio-empireciv
+  keycode: "j"
+  frequency: 6223
+  color: "#535961"
+
+- type: radioChannel
+  id: Gorlex
+  name: chat-radio-syndiegorlex
+  keycode: "p"
+  frequency: 6102
+  color: "#ff7f7f"
+
+- type: radioChannel
+  id: Interdyne
+  name: chat-radio-syndieinterdyne
+  keycode: "3"
+  frequency: 6103
+  color: "#f8baba"
+
+- type: radioChannel
+  id: Saws
+  name: chat-radio-syndiesaws
+  keycode: "x"
+  frequency: 6103
+  color: "#ff5349"

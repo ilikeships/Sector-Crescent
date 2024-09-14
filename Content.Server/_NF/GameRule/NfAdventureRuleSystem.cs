@@ -167,7 +167,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
             {
-                Offset = _random.NextVector2(500f, 700f)
+                Offset = _random.NextVector2(3500f, 1700f)
             }))
         {
             // We should figure out if it is possible to add this grid to the latejoin listing.

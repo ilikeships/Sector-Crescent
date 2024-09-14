@@ -49,6 +49,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      baseMaxLinearVelocity: 25
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -304,24 +305,36 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -3.5,-1.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.921828490624009 rad
   - uid: 109
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-1.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 4.9218284906240095 rad
   - uid: 124
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 2.70753106557254 rad
   - uid: 126
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.894975833329257 rad: 2.7075310655725406 rad
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 66
@@ -743,6 +756,25 @@ entities:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
+- proto: ComputerTargeting
+  entities:
+  - uid: 127
+    components:
+    - type: Transform
+      pos: -1.5,-1.5
+      parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 126
+        - 124
+        - 39
+        - 109
+        missiles:
+        - 126
+        - 124
+        - 39
+        - 109
 - proto: CrateGenericSteel
   entities:
   - uid: 89

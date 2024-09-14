@@ -30,7 +30,7 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatSyndicateDoctor
     id: RipperdocPDA
-    ears: ClothingHeadsetNCSP
+    ears: ClothingHeadsetNCSPInterdyne
     mask: ClothingMaskSyndicateFacemask
     pocket1: MedkitCombatFilled
     outerClothing: ClothingOuterArmorSyndicateApron

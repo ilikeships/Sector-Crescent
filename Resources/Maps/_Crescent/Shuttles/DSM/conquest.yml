@@ -39,7 +39,7 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 0.05
+      angularDamping: 3
       linearDamping: 0.05
       fixedRotation: False
       bodyType: Dynamic
@@ -48,6 +48,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      baseMaxLinearVelocity: 35
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier

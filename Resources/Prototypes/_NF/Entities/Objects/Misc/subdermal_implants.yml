@@ -4,7 +4,7 @@
   parent: BaseSubdermalImplant
   id: MedicalTrackingImplant
   name: medical tracking implant
-  description: This implant has a tracking device monitor for the Medical radio channel.
+  description: This implant has a tracking device monitor for the Interdyne radio channel.
   noSpawn: true
   components:
     - type: SubdermalImplant
@@ -24,7 +24,7 @@
       - Critical
       - Dead
     - type: Rattle
-      radioChannel: "Medical"
+      radioChannel: "Interdyne"
 
 - type: entity
   parent: BaseSubdermalImplant
