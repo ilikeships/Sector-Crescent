@@ -184,7 +184,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid15s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(300f, 1600f)
+            Offset = _random.NextVector2(300f, 1000f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid15s[0]);
@@ -194,7 +194,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid16s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(1600f, 300f)
+            Offset = _random.NextVector2(1000f, 300f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid16s[0]);
@@ -322,7 +322,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(9000f, 6000f)
+            Offset = _random.NextVector2(9000f, 8000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
@@ -337,7 +337,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(3000f, 4500f)
+            Offset = _random.NextVector2(4000f, 2500f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
