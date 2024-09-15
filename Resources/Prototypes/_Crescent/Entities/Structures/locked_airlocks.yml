@@ -345,12 +345,21 @@
 
 - type: entity
   parent: AirlockCommandHorizontal
-  id: AirlockCommandLockedDSMHorizontal
+  id: AirlockCommandLockedDSMHorizontalWealth
   suffix: DSM Wealth, Horizontal
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDSMEmpireWealth ]
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedDSMHorizontalWealth
+  suffix: DSM Wealth, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpire 	 ]
 
 - type: entity
   parent: AirlockCommandHorizontal

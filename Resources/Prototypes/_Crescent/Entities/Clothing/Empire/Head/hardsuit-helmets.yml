@@ -257,7 +257,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatImperialSurgeon
-  name: minister's hood
+  name: surgeon's headwrap
   description: Sterile headwear for Imperial surgeons.
   components:
   - type: Sprite
