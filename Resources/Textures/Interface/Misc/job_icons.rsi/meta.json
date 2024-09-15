@@ -18,6 +18,21 @@
             "name": "Physician"
         },
         {
+            "name": "ScientistImperial"
+        },
+        {
+            "name": "Surgeon"
+        },
+        {
+            "name": "Wealthman"
+        },
+        {
+            "name": "Laborer"
+        },
+        {
+            "name": "ForemanImp"
+        },
+        {
             "name": "logisticier"
         },
         {

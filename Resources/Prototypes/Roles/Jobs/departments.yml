@@ -13,7 +13,6 @@
   roles:
   - Bartender
   - Borg
-  - Antiquarian
  # - Botanist
  # - Boxer
  # - Chaplain
@@ -167,6 +166,10 @@
   - FreeholderDSM
   - LevymanDSM
   - KnightDSM
+  - WealthDSM
+  - ForemanDSM
+  - ScribeDSM
+  - SurgeonDSM
   - CourtierDSM
   - AdjutantDSM
   - GovernorDSM

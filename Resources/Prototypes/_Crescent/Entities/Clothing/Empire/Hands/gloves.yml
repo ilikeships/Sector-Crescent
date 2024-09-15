@@ -55,8 +55,8 @@
 - type: entity
   parent: ClothingHandsBase
   id: ClothingHandsGlovesImperialGovernorGloves
-  name: governor's silken gloves
-  description: Regal silken gloves, intended for the Imperial Governor.
+  name: elegant gloves
+  description: Regal silken gloves, intended for the nobility.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/Hands/mandategovernorgloves.rsi

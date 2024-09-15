@@ -222,12 +222,60 @@
       - state: passenger
 
 - type: entity
+  id: SpawnPointSurgeon
+  parent: SpawnPointJobBase
+  name: freeholder
+  components:
+  - type: SpawnPoint
+    job_id: SurgeonDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
   id: SpawnPointLevyman
   parent: SpawnPointJobBase
   name: man at arms
   components:
   - type: SpawnPoint
     job_id: LevymanDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointWealth
+  parent: SpawnPointJobBase
+  name: minister of wealth
+  components:
+  - type: SpawnPoint
+    job_id: WealthDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointForemanImperial
+  parent: SpawnPointJobBase
+  name: imperial foreman
+  components:
+  - type: SpawnPoint
+    job_id: ForemanDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointScribe
+  parent: SpawnPointJobBase
+  name: imperial scribe
+  components:
+  - type: SpawnPoint
+    job_id: ScribeDSM
   - type: Sprite
     layers:
       - state: green

@@ -166,6 +166,26 @@
 
 - type: entity
   parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatImperialMerchant
+  name: minister's robes
+  description: An ornate, silken robe made for the Minister of Wealth.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandateminister.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/OuterClothing/mandateminister.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  parent: ClothingOuterStorageBase
   id: ClothingOuterCoatImperialGovernor
   name: governor's formal coat
   description: An ornate coat bedecked in Imperial livery and medals, clearly intended for the Imperial Governor.

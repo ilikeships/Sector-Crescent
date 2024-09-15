@@ -27,7 +27,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 50
+    projectileSpeed: 95
     fireRate: 1.2
     selectedMode: FullAuto
     availableModes:
@@ -80,7 +80,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 20
+    projectileSpeed: 65
     fireRate: 2
     selectedMode: SemiAuto
     angleDecay: 45
@@ -133,7 +133,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 60
+    projectileSpeed: 95
     fireRate: 2.4
     selectedMode: SemiAuto
     angleDecay: 45
@@ -188,7 +188,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 80
+    projectileSpeed: 90
     fireRate: 0.4
     angleDecay: 45
     minAngle: 0
@@ -243,7 +243,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 120
+    projectileSpeed: 135
     fireRate: 1
     angleDecay: 45
     minAngle: 0
@@ -295,7 +295,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 90
+    projectileSpeed: 100
     fireRate: 0.3
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
@@ -417,7 +417,7 @@
             - SlugthrowerCartridgeBox
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle
+        startingItem: CartridgeShellArmorPiercing
         priority: 1
         whitelist:
           tags:
@@ -428,7 +428,7 @@
         ents: []
   - type: Gun
     fireRate: 3
-    projectileSpeed: 80
+    projectileSpeed: 95
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/50cal.ogg
     soundEmpty:
@@ -536,7 +536,7 @@
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
     fireRate: 0.7
-    projectileSpeed: 40
+    projectileSpeed: 70
     selectedMode: FullAuto
     availableModes:
     - SemiAuto
@@ -650,7 +650,7 @@
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
     fireRate: 3
-    projectileSpeed: 80
+    projectileSpeed: 95
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ship_duster.ogg
     soundEmpty:
@@ -759,7 +759,7 @@
       - SpaceArtilleryDetectedSafetyChange
   - type: Gun
     fireRate: 1
-    projectileSpeed: 70
+    projectileSpeed: 85
     soundGunshot:
       path: /Audio/Effects/railfire.ogg
     soundEmpty:

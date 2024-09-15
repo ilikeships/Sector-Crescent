@@ -76,6 +76,14 @@
   id: EmpireGovernor
   name: id-card-access-level-empiregovernor
 
+- type: accessLevel
+  id: LogisticsWealth
+  name: id-card-access-level-empirewealth
+
+- type: accessLevel
+  id: ScribesGuild
+  name: id-card-access-level-empirescribes
+
 #srm
 
 - type: accessLevel

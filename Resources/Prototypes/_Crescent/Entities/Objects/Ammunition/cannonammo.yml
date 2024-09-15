@@ -20,7 +20,7 @@
     color: orange
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 9
+    lifetime: 7
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
@@ -153,7 +153,7 @@
     color: orange
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 90
+    lifetime: 40
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/mortarcasing.rsi
     layers:
@@ -230,7 +230,7 @@
     color: red
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 100
+    lifetime: 20
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/laserturret.rsi
     layers:
@@ -283,7 +283,7 @@
     color: orange
     energy: 0.5
   - type: TimedDespawn
-    lifetime: 60
+    lifetime: 22
   - type: Sprite
     sprite: _NF/Objects/SpaceArtillery/plasmahardpoint.rsi
     layers:
@@ -391,7 +391,7 @@
     tags:
       - Torpedo
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 40
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/torpedop.rsi
     layers:
@@ -431,7 +431,7 @@
     tags:
       - TorpedoGarg
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 50
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/torp.rsi
     layers:
@@ -522,7 +522,7 @@
     tags:
       - TorpedoGarg
   - type: TimedDespawn
-    lifetime: 30
+    lifetime: 40
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/torpemp.rsi
     layers:
@@ -592,7 +592,7 @@
     tags:
       - LanceRocket
   - type: TimedDespawn
-    lifetime: 9
+    lifetime: 8
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/lance.rsi
     layers:
@@ -654,7 +654,7 @@
     tags:
       - HeavyMortarShell
   - type: TimedDespawn
-    lifetime: 20
+    lifetime: 30
   - type: Sprite
     sprite: _Crescent/Objects/ShuttleWeapons/battleshell.rsi
     layers:

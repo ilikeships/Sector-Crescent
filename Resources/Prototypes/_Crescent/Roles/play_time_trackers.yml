@@ -65,6 +65,21 @@
   id: JobKnightDSM
 
 - type: playTimeTracker
+  id: JobWealthDSM
+
+- type: playTimeTracker
+  id: JobForemanDSM
+
+- type: playTimeTracker
+  id: JobScribeDSM
+
+- type: playTimeTracker
+  id: JobSurgeonDSM
+
+- type: playTimeTracker
+  id: JobPhysicianDSM
+
+- type: playTimeTracker
   id: JobCourtierDSM
 
 - type: playTimeTracker

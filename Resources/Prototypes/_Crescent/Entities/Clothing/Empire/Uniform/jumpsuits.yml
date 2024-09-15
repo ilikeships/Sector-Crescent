@@ -96,3 +96,14 @@
     sprite: _Crescent/Clothing/Empire/Uniform/mandatecourtier.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Uniform/mandatecourtier.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitImperialSurgeon
+  name: imperial scribe's surgeon scrubs
+  description: Sterile scrubs in Olywir purple.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Uniform/mandatesurgeon.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Uniform/mandatesurgeon.rsi

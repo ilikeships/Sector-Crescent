@@ -1,0 +1,31 @@
+- type: job
+  id: ScribeDSM
+  name: job-name-imperialresearch
+  description: job-description-scribe
+  playTimeTracker: JobScribeDSM
+  weight: 20
+  startingGear: ScribeGear
+  alwaysUseSpawner: true
+  icon: "JobIconImperialScribe"
+  requireAdminNotify: false
+  supervisors: job-supervisors-imperial 
+  canBeAntag: false
+  access:
+  - Command
+  - Empire
+  - Maintenance
+  - ScribesGuild
+  - Service
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: ScribeGear
+  equipment:
+    id: ScribePDA
+    ears: ClothingHeadsetEmpireCiv
+    pocket1: ImperialPassportBareLegit
+    mask: ClothingMaskImperialAdjutantMask
+    shoes: ClothingShoesBootsImperialClogs
+    jumpsuit: ClothingUniformJumpsuitImperialDoctor

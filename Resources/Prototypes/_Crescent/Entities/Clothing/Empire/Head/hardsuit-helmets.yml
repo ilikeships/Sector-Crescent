@@ -180,7 +180,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHelmetImperialWorkerHelmet
-  name: freeholder's worker helmet
+  name: foreman's worker helmet
   description: A flimsy steel helmet for a Mandate worker.
   components:
   - type: Sprite
@@ -230,6 +230,43 @@
     sprite: _Crescent/Clothing/Empire/Head/mandatecap.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatecap.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatImperialHeadwrap
+  name: minister's hood
+  description: An Imperial headwrap worn by the Minister of Wealth.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/mandatemerchant.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/mandatemerchant.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatImperialSurgeon
+  name: minister's hood
+  description: Sterile headwear for Imperial surgeons.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/mandatedoctor.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/mandatedoctor.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
   - type: Tag
     tags:
     - ClothMade

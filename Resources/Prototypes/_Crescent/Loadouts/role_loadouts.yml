@@ -137,10 +137,34 @@
   - DSMCommonerBags
   - DSMCommonerJumpsuits
   - DSMCommonerFeetwear
-  - DSMCommonerHead
-  - DSMCommonerGloves
   - DSMWorkerBelt
 
+- type: roleLoadout
+  id: JobForemanDSM
+  groups:
+  - ContractorTrinkets
+  - DSMCommonerBags
+  - DSMCommonerJumpsuits
+  - DSMCommonerFeetwear
+  - DSMWorkerBelt
+  - DSMCommonerGloves
+
+- type: roleLoadout
+  id: JobScribeDSM
+  groups:
+  - ContractorTrinkets
+  - DSMCommonerBags
+
+- type: roleLoadout
+  id: JobSurgeonDSM
+  groups:
+  - ContractorTrinkets
+  - DSMCommonerBags
+
+- type: roleLoadout
+  id: JobWealthDSM
+  groups:
+  - ContractorTrinkets
 
 - type: roleLoadout
   id: JobLevymanDSM
