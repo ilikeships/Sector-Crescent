@@ -23,7 +23,7 @@
   - type: Tag
     tags: []
   - type: StaticPrice
-    price: 300
+    price: 1000
   - type: Contraband
 
 - type: entity
