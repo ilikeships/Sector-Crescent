@@ -42,7 +42,7 @@
 
 - type: radioChannel
   id: Interdyne
-  name: chat-radio-syndieinterdyne
+  name: chat-radio-syndieipm
   keycode: "3"
   frequency: 6103
   color: "#f8baba"

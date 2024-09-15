@@ -118,6 +118,22 @@
 
 - type: entity
   parent: DoorElectronics
+  id: DoorElectronicsDSMEmpireScribe
+  suffix: Empire Scribes, Locked
+  components:
+  - type: AccessReader
+    access: [["ScribesGuild"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDSMEmpireWealth
+  suffix: Minister of Wealth, Locked
+  components:
+  - type: AccessReader
+    access: [["LogisticsWealth"]]
+
+- type: entity
+  parent: DoorElectronics
   id: DoorElectronicsDSMEmpireSoldier
   suffix: Empire Soldier, Locked
   components:

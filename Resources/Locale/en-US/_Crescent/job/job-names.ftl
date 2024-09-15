@@ -23,14 +23,17 @@ job-name-foreman = Foreman
 
 #empire
 
-job-name-freeholder = Freeholder
+job-name-freeholder = Laborer
 job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-courtier = Minister of Labor
 job-name-logisticsofficer = Knight Logisticier
 job-name-adjutant = Suzerain Adjutant
 job-name-governor = Imperial Baron
-job-name-logistics = Logistics Officer
+job-name-foremanimp = Foreman
+job-name-imperialresearch = Imperial Scribe
+job-name-surgeon = Imperial Surgeon
+job-name-wealth = Minister of Wealth
 
 #srm
 

@@ -1759,7 +1759,7 @@ entities:
           4,-4:
             0: 65473
           4,-3:
-            0: 39865
+            0: 35769
           4,-2:
             0: 61695
           4,-1:
@@ -2268,7 +2268,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2934.1667
+      secondsUntilStateChange: -3129.6423
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2299,6 +2299,11 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 19.5,-24.5
+      parent: 1
+  - uid: 405
+    components:
+    - type: Transform
+      pos: 8.5,-7.5
       parent: 1
   - uid: 568
     components:
@@ -2365,11 +2370,6 @@ entities:
       parent: 1
 - proto: AirlockCommandLockedDSMNoble
   entities:
-  - uid: 164
-    components:
-    - type: Transform
-      pos: 19.5,-9.5
-      parent: 1
   - uid: 872
     components:
     - type: Transform
@@ -2388,10 +2388,24 @@ entities:
     - type: Transform
       pos: 10.5,15.5
       parent: 1
-  - uid: 912
+- proto: AirlockCommandLockedDSMWealth
+  entities:
+  - uid: 164
     components:
     - type: Transform
-      pos: 8.5,-7.5
+      pos: 19.5,-9.5
+      parent: 1
+- proto: AirlockCommandLockedScribe
+  entities:
+  - uid: 3596
+    components:
+    - type: Transform
+      pos: 22.5,-20.5
+      parent: 1
+  - uid: 3597
+    components:
+    - type: Transform
+      pos: 23.5,-20.5
       parent: 1
 - proto: AirlockHorizontal
   entities:
@@ -3366,6 +3380,12 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 25.5,10.5
+      parent: 1
+  - uid: 3599
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-9.5
       parent: 1
 - proto: ButtonFrameCautionSecurity
   entities:
@@ -9966,14 +9986,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 11.5,-13.5
       parent: 1
-- proto: ComputerTabletopCriminalRecords
-  entities:
-  - uid: 1676
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 17.5,-10.5
-      parent: 1
 - proto: ComputerTabletopId
   entities:
   - uid: 3240
@@ -10051,11 +10063,11 @@ entities:
         3299: []
 - proto: ComputerTabletopStationAdminBankATM
   entities:
-  - uid: 3214
+  - uid: 912
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -1.5,-7.5
+      rot: -1.5707963267948966 rad
+      pos: 17.5,-10.5
       parent: 1
     - type: ContainerContainer
       containers:
@@ -10385,7 +10397,7 @@ entities:
       pos: 26.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -103.17196
+      secondsUntilStateChange: -298.64764
       state: Closing
 - proto: CurtainsPurpleOpen
   entities:
@@ -11164,7 +11176,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4803.559
+      secondsUntilStateChange: -4999.0347
       state: Opening
   - uid: 1418
     components:
@@ -17833,7 +17845,7 @@ entities:
   - uid: 3470
     components:
     - type: Transform
-      pos: 7.935316,-16.578197
+      pos: 17.73536,-9.910601
       parent: 1
 - proto: ShipVoucherCountsman
   entities:
@@ -17847,19 +17859,19 @@ entities:
   - uid: 3468
     components:
     - type: Transform
-      pos: 7.905592,-16.12664
+      pos: 17.59967,-9.83627
       parent: 1
   - uid: 3469
     components:
     - type: Transform
-      pos: 7.905592,-16.355206
+      pos: 17.354101,-9.866002
       parent: 1
 - proto: ShipVoucherLaelaps
   entities:
   - uid: 3471
     components:
     - type: Transform
-      pos: 7.861006,-16.370071
+      pos: 17.479599,-9.9254675
       parent: 1
 - proto: ShipyardManufactorum
   entities:
@@ -17868,6 +17880,16 @@ entities:
     - type: Transform
       pos: 19.5,-19.5
       parent: 1
+- proto: ShuttersNormal
+  entities:
+  - uid: 3598
+    components:
+    - type: Transform
+      pos: 16.5,-8.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 3600
 - proto: ShuttersNormalOpen
   entities:
   - uid: 59
@@ -18198,6 +18220,16 @@ entities:
       linkedPorts:
         1993:
         - Pressed: Toggle
+  - uid: 3600
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-9.5
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        3598:
+        - Pressed: Toggle
 - proto: SignToolStorage
   entities:
   - uid: 1133
@@ -18300,6 +18332,18 @@ entities:
     - type: Transform
       pos: 8.5,-13.5
       parent: 1
+- proto: SpawnPointForemanImperial
+  entities:
+  - uid: 3594
+    components:
+    - type: Transform
+      pos: 10.5,3.5
+      parent: 1
+  - uid: 3595
+    components:
+    - type: Transform
+      pos: 10.5,-0.5
+      parent: 1
 - proto: SpawnPointFreeholder
   entities:
   - uid: 3389
@@ -18331,10 +18375,10 @@ entities:
       parent: 1
 - proto: SpawnPointKnight
   entities:
-  - uid: 3392
+  - uid: 1676
     components:
     - type: Transform
-      pos: 16.5,-9.5
+      pos: 11.5,-9.5
       parent: 1
 - proto: SpawnPointLatejoin
   entities:
@@ -18381,6 +18425,27 @@ entities:
     components:
     - type: Transform
       pos: 15.5,6.5
+      parent: 1
+- proto: SpawnPointScribe
+  entities:
+  - uid: 3601
+    components:
+    - type: Transform
+      pos: 20.5,-23.5
+      parent: 1
+- proto: SpawnPointSurgeon
+  entities:
+  - uid: 3602
+    components:
+    - type: Transform
+      pos: 22.5,-23.5
+      parent: 1
+- proto: SpawnPointWealth
+  entities:
+  - uid: 3214
+    components:
+    - type: Transform
+      pos: 16.5,-9.5
       parent: 1
 - proto: SprayBottleSpaceCleaner
   entities:
@@ -23701,11 +23766,6 @@ entities:
     - type: Transform
       pos: 14.5,-11.5
       parent: 1
-  - uid: 405
-    components:
-    - type: Transform
-      pos: 16.5,-8.5
-      parent: 1
   - uid: 482
     components:
     - type: Transform
@@ -23780,6 +23840,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 24.5,11.5
+      parent: 1
+  - uid: 3392
+    components:
+    - type: Transform
+      pos: 16.5,-8.5
       parent: 1
 - proto: WindoorSecureAntiquarian
   entities:

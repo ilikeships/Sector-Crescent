@@ -284,6 +284,62 @@
 
 - type: entity
   parent: BasePDA
+  id: SurgeonPDA
+  name: surgeon's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardSurgeon
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
+  id: ForemanImpPDA
+  name: foreman's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardForeman
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
+  id: ScribePDA
+  name: scribe's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardScribe
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
+  id: WealthPDA
+  name: minister's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardWealth
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
   id: LevymanPDA
   name: levyman's PDA
   description: Purple for Imperial.

@@ -12,26 +12,16 @@
   name: loadout-group-contractor-jumpsuit
   loadouts: #First Section: Role specific freebies/discounts/rewards
   - FreeholderDSMClothingUniformJumpsuitImperialFreeholder
-  - FreeholderDSMClothingUniformJumpsuitImperialDoctor
 
 - type: loadoutGroup
   id: DSMCommonerFeetwear
   name: loadout-group-contractor-shoes
   loadouts: #First Section: Role specific freebies/discounts/rewards
   - FreeholderDSMClothingShoesBootsImperialLongboots
-  - FreeholderDSMClothingShoesBootsImperialClogs
-
-- type: loadoutGroup
-  id: DSMCommonerHead
-  minLimit: 0
-  name: loadout-group-contractor-head
-  loadouts:
-  - FreeholderDSMClothingHeadHelmetImperialWorkerHelmet
 
 - type: loadoutGroup
   id: DSMCommonerGloves
   name: loadout-group-contractor-backpack
-  minLimit: 0
   loadouts:
   - FreeholderDSMClothingHandsGlovesImperialWorkerGloves
 

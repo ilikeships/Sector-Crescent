@@ -25,6 +25,8 @@ id-card-access-level-empiremilitary = Imperial Navy
 id-card-access-level-empirenoble = Imperial Charter of Nobility
 id-card-access-level-empireadjutant = Imperial Adjutant
 id-card-access-level-empiregovernor = Imperial Governor
+id-card-access-level-empirewealth = Minister of Wealth
+id-card-access-level-empirescribes = The Guild of Scribes
 
 #srm
 

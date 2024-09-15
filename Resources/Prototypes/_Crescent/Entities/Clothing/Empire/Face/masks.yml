@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingMaskBase
   id: ClothingMaskImperialAdjutantMask
-  name: adjutant's mask
-  description: A stylish masquerade mask for the Adjutant.
+  name: scribe's mask
+  description: A stylish masquerade mask for the Royal Scribes' Guild.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/Face/adjutantmask.rsi
@@ -27,7 +27,7 @@
 - type: entity
   parent: ClothingMaskBase
   id: ClothingMaskImperialCombatGasmask
-  name: imperial combat rebreather
+  name: imperial rebreather
   description: A close-fitting combat rebreather designed for Imperial troops.
   components:
   - type: Sprite

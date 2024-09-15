@@ -39,8 +39,8 @@
   - type: Thruster
     thrusterType: Angular
     requireSpace: false
-    baseThrust: 250
-    thrust: 250
+    baseThrust: 50
+    thrust: 50
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: Sprite

@@ -261,6 +261,24 @@
 #empire
 
 - type: entity
+  parent: WindoorSecure
+  id: WindoorSecureDSMCommand
+  suffix: DSM Magnate, Windoor
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireWealth ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureDSMScribe
+  suffix: DSM Scribes, Windoor
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireScribe ]
+
+- type: entity
   parent: AirlockCommand
   id: AirlockCommandLockedDSM
   suffix: DSM, Locked
@@ -268,6 +286,24 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDSMEmpire ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockCommandLockedScribe
+  suffix: DSM Scribes, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireScribe ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockCommandLockedDSMWealth
+  suffix: DSM Wealth, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireWealth ]
 
 - type: entity
   parent: AirlockCommand
@@ -310,6 +346,25 @@
 - type: entity
   parent: AirlockCommandHorizontal
   id: AirlockCommandLockedDSMHorizontal
+  suffix: DSM Wealth, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireWealth ]
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedDSMHorizontalScribe
+  suffix: DSM Scribe, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMEmpireScribe ]
+
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedDSMHorizontalWealth
   suffix: DSM, Horizontal
   components:
   - type: ContainerFill

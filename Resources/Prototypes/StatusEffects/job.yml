@@ -14,6 +14,34 @@
 
 - type: statusIcon
   parent: JobIcon
+  id: JobIconImperialWealth
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Wealthman
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconImperialSurgeon
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Surgeon
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconImperialForeman
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: ForemanImp
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconImperialScribe
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: logisticier
+
+- type: statusIcon
+  parent: JobIcon
   id: JobIconQuarterMaster
   icon:
     sprite: /Textures/Interface/Misc/job_icons.rsi
