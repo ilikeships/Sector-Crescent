@@ -435,7 +435,7 @@
   name: highsec agent
   components:
   - type: SpawnPoint
-    job_id: HighSecSHI
+    job_id: HighsecSHI
   - type: Sprite
     layers:
       - state: green
