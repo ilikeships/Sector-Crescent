@@ -1,0 +1,40 @@
+using Content.Shared.DeviceLinking;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server.Factory.Components
+{
+    [RegisterComponent]
+    public sealed partial class FactoryComponent : Component
+    {
+        [ViewVariables]
+        public List<EntityUid> Inserted = new();
+
+        [ViewVariables]
+        public int InsertCount = 0;
+
+        [ViewVariables]
+        public bool Powered;
+
+        [ViewVariables]
+        public bool Active = true;
+
+        [ViewVariables]
+        public int ProductionCap = 1;
+
+        [ViewVariables]
+        public int Produced = 0;
+
+        [DataField]
+        public ProtoId<SinkPortPrototype> Toggle = "Toggle";
+
+        /// <summary>
+        /// recipes , takes an entityID and references another to convert into
+        /// recipes:
+        ///     recipeName:
+        ///         intakeList
+        ///         OutpustList
+        /// </summary>
+        [DataField("recipes")]
+        public Dictionary<string, FactoryRecipe> Recipes = new();
+    }
+}
