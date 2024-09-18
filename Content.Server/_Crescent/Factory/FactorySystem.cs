@@ -22,6 +22,9 @@ using Robust.Shared.Physics.Dynamics;
 using Content.Shared.Item;
 using Content.Server.Item;
 using Robust.Shared.Containers;
+using Content.Server.Sound;
+using Content.Shared.Sound;
+using Robust.Server.Audio;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -35,6 +38,7 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly StackSystem _stacks = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly PhysicsSystem _physics = default!;
+        [Dependency] private readonly AudioSystem _sounds = default!;
 
 
         const string FactoryFixture = "FactoryFixture";
@@ -63,7 +67,7 @@ namespace Content.Server.Factory.EntitySystems
             if (TryComp<PhysicsComponent>(uid, out var physics))
             {
                 var shape = new PolygonShape();
-                shape.SetAsBox(0.6f, 0.6f);
+                shape.SetAsBox(0.5f, 0.5f);
 
                 _fixtures.TryCreateFixture(uid, shape, FactoryFixture,
                     collisionLayer: (int) (CollisionGroup.LowImpassable | CollisionGroup.MidImpassable |
@@ -155,7 +159,7 @@ namespace Content.Server.Factory.EntitySystems
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 0.1f)
+            if (_internalClock > 1f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();
@@ -263,6 +267,8 @@ namespace Content.Server.Factory.EntitySystems
 
                         var factoryRot = factoryTransform.LocalRotation;
                         /// RECIPE OUTPUT
+                        if(comp.SoundOnProduce is not null)
+                            _sounds.PlayPvs(comp.SoundOnProduce, uid);
                         foreach (var (entityRequired, requiredAmount) in chosenRecipe.Outputs)
                         {
                             var amount = requiredAmount;
