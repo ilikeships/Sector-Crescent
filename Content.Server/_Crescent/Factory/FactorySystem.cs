@@ -1,56 +1,18 @@
-using Content.Server.Administration.Logs;
-using Content.Server.Body.Systems;
-using Content.Server.Chemistry.Containers.EntitySystems;
-using Content.Server.Explosion.Components;
-using Content.Server.Flash;
-using Content.Server.Pinpointer;
-using Content.Shared.Flash.Components;
-using Content.Server.Radio.EntitySystems;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Database;
-using Content.Shared.Explosion.Components;
-using Content.Shared.Explosion.Components.OnTrigger;
-using Content.Shared.Implants.Components;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Payload.Components;
-using Content.Shared.Radio;
-using Content.Shared.Slippery;
-using Content.Shared.StepTrigger.Systems;
-using Content.Shared.Trigger;
-using Content.Shared.Weapons.Ranged.Events;
 using JetBrains.Annotations;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Content.Server.Station.Systems;
-using Content.Shared.Humanoid;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
-using Robust.Shared.Player;
-using Content.Shared.Coordinates;
-using Content.Shared.Body.Components; // Frontier - Gib organs
-using Robust.Shared.Utility;
 using Content.Server.Power.Components;
-using Content.Shared.Conveyor;
 using Content.Server.Factory.Components;
 using Content.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.DeviceLinking.Systems;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Toolshed.TypeParsers;
-using Content.Shared.Research.Prototypes;
 using System.Linq;
 using Content.Server.Stack;
 using Content.Shared.Stacks;
-using static Content.Shared.Fax.AdminFaxEuiMsg;
 using Robust.Shared.Map;
 
 namespace Content.Server.Factory.EntitySystems
@@ -62,13 +24,10 @@ namespace Content.Server.Factory.EntitySystems
     {
         [Dependency] private readonly FixtureSystem _fixtures = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly StationSystem _station = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
 
         const string FactoryFixture = "FactoryFixture";
 
-        private List<FactoryComponent> _activeFactories = new();
 
         private float _internalClock = 0f;
 
@@ -152,7 +111,7 @@ namespace Content.Server.Factory.EntitySystems
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 10f)
+            if (_internalClock > 0.1f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();

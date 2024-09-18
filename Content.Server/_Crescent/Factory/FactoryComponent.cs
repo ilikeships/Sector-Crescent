@@ -16,7 +16,7 @@ namespace Content.Server.Factory.Components
         public bool Powered;
 
         [ViewVariables]
-        public bool Active;
+        public bool Active = true;
 
         [ViewVariables]
         public int ProductionCap = 1;
