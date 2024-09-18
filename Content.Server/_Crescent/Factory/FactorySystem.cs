@@ -16,6 +16,7 @@ using Content.Shared.Stacks;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameObjects;
+using Robust.Server.GameObjects;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -27,10 +28,9 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly FixtureSystem _fixtures = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
-        [Dependency] private readonly IPrototypeManager _protoypes = default!;
+        [Dependency] private readonly TransformSystem _transformSystem = default!;
 
         const string FactoryFixture = "FactoryFixture";
-
 
         private float _internalClock = 0f;
 
@@ -159,7 +159,10 @@ namespace Content.Server.Factory.EntitySystems
                             {
 
                                 if (itemCounts.ContainsKey(entityRequired) && itemCounts[entityRequired] < requiredAmount)
-                                    fulfilled = false; break;               
+                                {
+                                    fulfilled = false;
+                                    break;
+                                }
                             }
                             if (!fulfilled)
                                 continue;
@@ -175,6 +178,11 @@ namespace Content.Server.Factory.EntitySystems
                         foreach (var (entityRequired, requiredAmount) in chosenRecipe.Inputs)
                         {
                             var amount = requiredAmount;
+                            if (!recipeEntities.ContainsKey(entityRequired))
+                            {
+                                chosenRecipe = null;
+                                break;
+                            }
                             List<EntityUid> delete = recipeEntities[entityRequired];
                             while (amount > 0 && delete.Count > 0)
                             {
@@ -184,30 +192,33 @@ namespace Content.Server.Factory.EntitySystems
                                 {
                                     var usedAmount = Math.Min(myStack.Count, amount);
                                     if (usedAmount == myStack.Count)
-                                        delete.RemoveAt(1);
+                                        delete.RemoveAt(0);
                                     _stacks.SetCount(targetEntity, myStack.Count - usedAmount, myStack);
                                     amount -= usedAmount;
+                                    itemCounts[entityRequired] -= usedAmount;
                                 }
                                 else
                                 {
                                     QueueDel(targetEntity);
                                     amount--;
+                                    itemCounts[entityRequired]--;
                                     EntityManager.DeleteEntity(delete.First());
-                                    delete.RemoveAt(1);
+                                    delete.RemoveAt(0);
                                 }
                             }
                         }
-                        var factoryPos = factoryTransform.LocalPosition;
-                        var factoryRot = factoryTransform.LocalRotation;
 
-                        EntityCoordinates targetPos = new EntityCoordinates(uid, factoryPos.X + (float)Math.Sin(factoryRot) * 1.5f, factoryPos.Y + (float)Math.Cos(factoryRot) * 1.5f);
+                        if (chosenRecipe is null)
+                            continue;
+
+                        var factoryRot = factoryTransform.LocalRotation;
                         /// RECIPE OUTPUT
                         foreach (var (entityRequired, requiredAmount) in chosenRecipe.Outputs)
                         {
                             var amount = requiredAmount;
                             while (amount > 0)
                             {
-                                EntityManager.SpawnAtPosition(entityRequired, targetPos);
+                                EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin(factoryRot) * 0.8f, (float)Math.Cos(factoryRot) * 0.8f));
                                 amount--;
                             }
                         }
