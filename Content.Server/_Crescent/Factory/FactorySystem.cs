@@ -133,13 +133,16 @@ namespace Content.Server.Factory.EntitySystems
                     {
                         MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
                         string entityString = MetaData(entity).EntityPrototype!.ID;
-                        StackComponent? myStack = null;
+                        if (TryComp<StackComponent>(entity, out var myStack))
+                        {
+                            entityString = myStack.StackTypeId;
+                        }
                         if (!itemCounts.ContainsKey(entityString))
                         {
                             itemCounts.Add(entityString, 0);
                             recipeEntities.Add(entityString, new List<EntityUid> { entity });
                         }
-                        if(TryComp(entity, out myStack))
+                        if(myStack is not null)
                             itemCounts[entityString] += myStack.Count;
                         else
                             itemCounts[entityString]++;
@@ -218,8 +221,16 @@ namespace Content.Server.Factory.EntitySystems
                             var amount = requiredAmount;
                             while (amount > 0)
                             {
-                                EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
-                                amount--;
+                                EntityUid product = EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
+                                if (TryComp<StackComponent>(product, out var productComp))
+                                {
+                                    _stacks.SetCount(product, amount, productComp);
+                                    amount -= productComp.Count;
+                                }
+                                else
+                                {
+                                    amount--;
+                                }
                             }
                         }
 

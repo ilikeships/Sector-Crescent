@@ -29,11 +29,23 @@
     recipes:
       rodToMetal:
         inputs:
-          PartRodMetal:
+          MetalRod:
             2
         outputs:
           SheetSteel:
             1
+      metalToGun:
+        inputs:
+          MetalRod:
+            3
+          Steel:
+            5
+        outputs:
+          WeaponPistolViper:
+            1
+          MagazinePistol:
+            3
+
 
   - type: Lathe
     idleState: icon
