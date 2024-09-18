@@ -84,3 +84,42 @@
   components:
   - type: Sprite
     state: icon
+
+- type: entity
+  parent: BaseSign
+  id: RotLayerThin
+  name: welt tendrils
+  description: "A tendril of Rotwelt. They tend to grow on corpses where Fog is abundant."
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Crescent/Structures/rot.rsi
+    state: meatthin
+
+- type: entity
+  parent: BaseSign
+  id: RotLayerThick
+  name: welt tendrils
+  description: "A tendril of Rotwelt. They tend to grow on corpses where Fog is abundant."
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Crescent/Structures/rot.rsi
+    state: meatlayer
+
+- type: entity
+  parent: BaseSign
+  id: RotPustule
+  name: rotpustule
+  description: "Terrible growths..."
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Crescent/Structures/rot.rsi
+    state: pustule
