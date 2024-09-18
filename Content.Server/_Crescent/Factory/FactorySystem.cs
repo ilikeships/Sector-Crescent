@@ -19,6 +19,9 @@ using Robust.Shared.GameObjects;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Dynamics;
+using Content.Shared.Item;
+using Content.Server.Item;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -45,11 +48,9 @@ namespace Content.Server.Factory.EntitySystems
             SubscribeLocalEvent<FactoryComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<FactoryComponent, ComponentShutdown>(OnDel);
 
-
             SubscribeLocalEvent<FactoryComponent, StartCollideEvent>(OnInsertion);
-
-            SubscribeLocalEvent<FactoryTrackingComponent, PhysicsSleepEvent>(OnSleep);
             SubscribeLocalEvent<FactoryTrackingComponent, EndCollideEvent>(OnRemoval);
+            SubscribeLocalEvent<FactoryTrackingComponent, EntGotInsertedIntoContainerMessage>(OnSnatch);
 
             SubscribeLocalEvent<FactoryComponent, SignalReceivedEvent>(OnSignalReceived);
             SubscribeLocalEvent<FactoryComponent, PowerChangedEvent>(OnPowerChanged);
@@ -77,6 +78,18 @@ namespace Content.Server.Factory.EntitySystems
                 return;
 
             _fixtures.DestroyFixture(uid, FactoryFixture, body: physics);
+        }
+
+        private void OnSnatch(EntityUid uid, FactoryTrackingComponent component,ref EntGotInsertedIntoContainerMessage args)
+        {
+            if (!TerminatingOrDeleted(component.FactoryID))
+            {
+                component.FactoryReference.Inserted.Remove(uid);
+                component.FactoryReference.InsertCount--;
+                if (component.FactoryReference.InsertCount == 0)
+                    RemComp<ActiveFactoryComponent>(component.FactoryID);
+            }
+            RemComp<FactoryTrackingComponent>(uid);
         }
 
         private void OnInsertion(EntityUid uid, FactoryComponent component, ref StartCollideEvent args)
@@ -125,12 +138,6 @@ namespace Content.Server.Factory.EntitySystems
             if (component.FactoryReference.InsertCount == 0)
                 RemComp<ActiveFactoryComponent>(component.FactoryID);
         }
-
-        private void OnSleep(EntityUid uid, FactoryTrackingComponent component, ref PhysicsSleepEvent args)
-        {
-
-        }
-
         private void OnPowerChanged(EntityUid uid, FactoryComponent component, ref PowerChangedEvent args)
         {
             component.Powered = args.Powered;
@@ -148,7 +155,7 @@ namespace Content.Server.Factory.EntitySystems
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 1f)
+            if (_internalClock > 0.1f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();
@@ -162,7 +169,6 @@ namespace Content.Server.Factory.EntitySystems
 
                     Dictionary<string, List<EntityUid>> recipeEntities = new();
                     Dictionary<string, int> itemCounts = new();
-                    List<int> IndexRemoval = new();
                     /// LIST CLEANING FOR NULLS
                     for (int i = 0; i < comp.Inserted.Count; i++)
                         if (TerminatingOrDeleted(comp.Inserted[i]))
