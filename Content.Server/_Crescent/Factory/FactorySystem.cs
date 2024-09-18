@@ -14,6 +14,8 @@ using System.Linq;
 using Content.Server.Stack;
 using Content.Shared.Stacks;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
+using Robust.Shared.GameObjects;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -25,6 +27,7 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly FixtureSystem _fixtures = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
+        [Dependency] private readonly IPrototypeManager _protoypes = default!;
 
         const string FactoryFixture = "FactoryFixture";
 
@@ -119,7 +122,8 @@ namespace Content.Server.Factory.EntitySystems
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
                     /// SETUP
-                    TransformComponent? factoryTransform = null;
+                    
+                    TransformComponent? factoryTransform;
                     if (!TryComp(uid, out factoryTransform))
                         continue;
 
@@ -127,12 +131,16 @@ namespace Content.Server.Factory.EntitySystems
                     Dictionary<string, int> itemCounts = new();
                     foreach(EntityUid entity in comp.Inserted)
                     {
-                        string entityString = entity.ToString();
+                        MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
+                        string entityString = MetaData(entity).EntityPrototype!.ID;
                         StackComponent? myStack = null;
-                        if(TryComp(entity, out myStack))
+                        if (!itemCounts.ContainsKey(entityString))
                         {
-                            itemCounts[entityString] += myStack.Count;
+                            itemCounts.Add(entityString, 0);
+                            recipeEntities.Add(entityString, new List<EntityUid> { entity });
                         }
+                        if(TryComp(entity, out myStack))
+                            itemCounts[entityString] += myStack.Count;
                         else
                             itemCounts[entityString]++;
                         recipeEntities[entityString].Add(entity);
@@ -149,7 +157,8 @@ namespace Content.Server.Factory.EntitySystems
                             bool fulfilled = true;
                             foreach(var (entityRequired, requiredAmount) in recipePrototype.Inputs)
                             {
-                                if (itemCounts[entityRequired] < requiredAmount)
+
+                                if (itemCounts.ContainsKey(entityRequired) && itemCounts[entityRequired] < requiredAmount)
                                     fulfilled = false; break;               
                             }
                             if (!fulfilled)
@@ -198,7 +207,7 @@ namespace Content.Server.Factory.EntitySystems
                             var amount = requiredAmount;
                             while (amount > 0)
                             {
-                                EntityUid newEntity = EntityManager.SpawnAtPosition(entityRequired, targetPos);
+                                EntityManager.SpawnAtPosition(entityRequired, targetPos);
                                 amount--;
                             }
                         }
