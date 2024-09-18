@@ -298,15 +298,6 @@
 
 - type: entity
   parent: AirlockCommand
-  id: AirlockCommandLockedDSMWealth
-  suffix: DSM Wealth, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsDSMEmpireWealth ]
-
-- type: entity
-  parent: AirlockCommand
   id: AirlockCommandLockedDSMSoldier
   suffix: DSM Soldier, Locked
   components:
@@ -354,12 +345,12 @@
 
 - type: entity
   parent: AirlockCommandHorizontal
-  id: AirlockCommandLockedDSMHorizontalWealth
-  suffix: DSM Wealth, Horizontal
+  id: AirlockCommandLockedDSMHorizontal
+  suffix: DSM, Horizontal
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsDSMEmpire 	 ]
+      board: [ DoorElectronicsDSMEmpire ]
 
 - type: entity
   parent: AirlockCommandHorizontal
@@ -372,13 +363,13 @@
 
 
 - type: entity
-  parent: AirlockCommandHorizontal
-  id: AirlockCommandLockedDSMHorizontalWealth
-  suffix: DSM, Horizontal
+  parent: AirlockCommand
+  id: AirlockCommandLockedDSMWealth
+  suffix: DSM Wealth
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsDSMEmpire ]
+      board: [ DoorElectronicsDSMEmpireWealth ]
 
 - type: entity
   parent: AirlockCommandHorizontal
