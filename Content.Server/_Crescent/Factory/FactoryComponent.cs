@@ -31,7 +31,18 @@ namespace Content.Server.Factory.Components
         /// recipes , takes an entityID and references another to convert into
         /// recipes:
         ///     recipeName:
-        ///         intakeList
+        ///         recipe:
+        ///             inputs:
+        ///                 ore:
+        ///                     count
+        ///                 ore2:
+        ///                     count2
+        ///             outputs:
+        ///                 thing:
+        ///                     count1
+        ///                 thing2:
+        ///                     count2
+        ///       
         ///         OutpustList
         /// </summary>
         [DataField("recipes")]

@@ -17,6 +17,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameObjects;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Dynamics;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -29,6 +31,8 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
+        [Dependency] private readonly PhysicsSystem _physics = default!;
+
 
         const string FactoryFixture = "FactoryFixture";
 
@@ -43,7 +47,9 @@ namespace Content.Server.Factory.EntitySystems
 
 
             SubscribeLocalEvent<FactoryComponent, StartCollideEvent>(OnInsertion);
-            SubscribeLocalEvent<FactoryComponent, EndCollideEvent>(OnRemoval);
+
+            SubscribeLocalEvent<FactoryTrackingComponent, PhysicsSleepEvent>(OnSleep);
+            SubscribeLocalEvent<FactoryTrackingComponent, EndCollideEvent>(OnRemoval);
 
             SubscribeLocalEvent<FactoryComponent, SignalReceivedEvent>(OnSignalReceived);
             SubscribeLocalEvent<FactoryComponent, PowerChangedEvent>(OnPowerChanged);
@@ -75,19 +81,54 @@ namespace Content.Server.Factory.EntitySystems
 
         private void OnInsertion(EntityUid uid, FactoryComponent component, ref StartCollideEvent args)
         {
+            if (TryComp<FactoryTrackingComponent>(args.OtherEntity, out var trackerComp))
+            {
+                if (trackerComp.FactoryID == uid)
+                    return;
+            }
             component.Inserted.Add(args.OtherEntity);
+            EnsureComp(args.OtherEntity,out FactoryTrackingComponent tracker);
+            tracker.FactoryReference = component;
+            tracker.FactoryID = uid;
             component.InsertCount++;
             if (component.InsertCount == 1)
                 EnsureComp<ActiveFactoryComponent>(uid);
 
         }
-
-        private void OnRemoval(EntityUid uid, FactoryComponent component, ref EndCollideEvent args)
+        
+        private void OnRemoval(EntityUid uid, FactoryTrackingComponent component, ref EndCollideEvent args)
         {
-            component.Inserted.Remove(args.OtherEntity);
-            component.InsertCount--;
-            if (component.InsertCount == 0)
-                RemComp<ActiveFactoryComponent>(uid);
+            if (TerminatingOrDeleted(component.FactoryID))
+            {
+                RemComp<FactoryTrackingComponent>(uid);
+                return;
+            }
+            if (TerminatingOrDeleted(uid))
+            {
+                component.FactoryReference.Inserted.Remove(uid);
+                return;
+            }
+            if (TryComp<TransformComponent>(component.FactoryID, out var transform))
+            {
+                Fixture? factoryFixture = _fixtures.GetFixtureOrNull(component.FactoryID, FactoryFixture);
+                if (factoryFixture is null)
+                    return;
+
+                Box2 factoryAABB = _physics.GetWorldAABB(component.FactoryID);
+                Box2 itemAABB = _physics.GetWorldAABB(uid);
+                if (factoryAABB.Intersects(in itemAABB))
+                    return;
+            }
+            RemComp<FactoryTrackingComponent>(uid);
+            component.FactoryReference.Inserted.Remove(uid);
+            component.FactoryReference.InsertCount--;
+            if (component.FactoryReference.InsertCount == 0)
+                RemComp<ActiveFactoryComponent>(component.FactoryID);
+        }
+
+        private void OnSleep(EntityUid uid, FactoryTrackingComponent component, ref PhysicsSleepEvent args)
+        {
+
         }
 
         private void OnPowerChanged(EntityUid uid, FactoryComponent component, ref PowerChangedEvent args)
@@ -103,34 +144,34 @@ namespace Content.Server.Factory.EntitySystems
             }
         }
 
-        private void Fabricate(EntityUid uid, FactoryComponent comp, FactoryRecipe factoryRecipe)
-        {
-
-        }
-
-
-
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 0.1f)
+            if (_internalClock > 1f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();
 
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
-                    /// SETUP
-                    
+                    /// SETUP                   
                     TransformComponent? factoryTransform;
                     if (!TryComp(uid, out factoryTransform))
                         continue;
 
                     Dictionary<string, List<EntityUid>> recipeEntities = new();
                     Dictionary<string, int> itemCounts = new();
+                    List<int> IndexRemoval = new();
+                    /// LIST CLEANING FOR NULLS
+                    for (int i = 0; i < comp.Inserted.Count; i++)
+                        if (TerminatingOrDeleted(comp.Inserted[i]))
+                        {
+                            comp.Inserted.RemoveAt(i);
+                            i--;
+                        }
                     foreach(EntityUid entity in comp.Inserted)
-                    {
+                    {       
                         MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
                         string entityString = MetaData(entity).EntityPrototype!.ID;
                         if (TryComp<StackComponent>(entity, out var myStack))
