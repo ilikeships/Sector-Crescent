@@ -218,7 +218,7 @@ namespace Content.Server.Factory.EntitySystems
                             var amount = requiredAmount;
                             while (amount > 0)
                             {
-                                EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin(factoryRot) * 0.8f, (float)Math.Cos(factoryRot) * 0.8f));
+                                EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
                                 amount--;
                             }
                         }
