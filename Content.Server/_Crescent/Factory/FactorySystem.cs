@@ -181,7 +181,7 @@ namespace Content.Server.Factory.EntitySystems
                             i--;
                         }
                     foreach(EntityUid entity in comp.Inserted)
-                    {       
+                    {
                         MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
                         string entityString = MetaData(entity).EntityPrototype!.ID;
                         if (TryComp<StackComponent>(entity, out var myStack))
