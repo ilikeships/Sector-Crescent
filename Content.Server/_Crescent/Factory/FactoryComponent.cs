@@ -1,5 +1,7 @@
 using Content.Shared.DeviceLinking;
 using Robust.Shared.Prototypes;
+using Content.Shared.Sound;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Factory.Components
 {
@@ -24,6 +26,11 @@ namespace Content.Server.Factory.Components
         [ViewVariables]
         public int Produced = 0;
 
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField("sound", required: true)]
+        public SoundSpecifier? SoundOnProduce;
+
         [DataField]
         public ProtoId<SinkPortPrototype> Toggle = "Toggle";
 
@@ -31,7 +38,18 @@ namespace Content.Server.Factory.Components
         /// recipes , takes an entityID and references another to convert into
         /// recipes:
         ///     recipeName:
-        ///         intakeList
+        ///         recipe:
+        ///             inputs:
+        ///                 ore:
+        ///                     count
+        ///                 ore2:
+        ///                     count2
+        ///             outputs:
+        ///                 thing:
+        ///                     count1
+        ///                 thing2:
+        ///                     count2
+        ///       
         ///         OutpustList
         /// </summary>
         [DataField("recipes")]
