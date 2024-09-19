@@ -25,6 +25,7 @@ using Robust.Shared.Containers;
 using Content.Server.Sound;
 using Content.Shared.Sound;
 using Robust.Server.Audio;
+using System.Collections.Generic;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -206,13 +207,13 @@ namespace Content.Server.Factory.EntitySystems
                     {
                         /// RECIPE SEEKING
                         FactoryRecipe? chosenRecipe = null;
-                        foreach (var (recipeName, recipePrototype) in comp.Recipes)
+                        foreach (KeyValuePair<string, FactoryRecipe> factoryPair in comp.Recipes)
                         {
                             bool fulfilled = true;
-                            foreach(var (entityRequired, requiredAmount) in recipePrototype.Inputs)
+                            foreach(KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
                             {
 
-                                if (itemCounts.ContainsKey(entityRequired) && itemCounts[entityRequired] < requiredAmount)
+                                if (itemCounts.ContainsKey(recipePair.Key) && itemCounts[recipePair.Key] < recipePair.Value)
                                 {
                                     fulfilled = false;
                                     break;
@@ -220,7 +221,7 @@ namespace Content.Server.Factory.EntitySystems
                             }
                             if (!fulfilled)
                                 continue;
-                            chosenRecipe = recipePrototype;
+                            chosenRecipe = factoryPair.Value;
                             break;
                         }
                         if (chosenRecipe is null)
@@ -229,15 +230,15 @@ namespace Content.Server.Factory.EntitySystems
 
                         /// RECIPE INPUT
                         comp.Produced++;
-                        foreach (var (entityRequired, requiredAmount) in chosenRecipe.Inputs)
+                        foreach (KeyValuePair<string,int> recipePair in chosenRecipe.Inputs)
                         {
-                            var amount = requiredAmount;
-                            if (!recipeEntities.ContainsKey(entityRequired))
+                            var amount = recipePair.Value;
+                            if (!recipeEntities.ContainsKey(recipePair.Key))
                             {
                                 chosenRecipe = null;
                                 break;
                             }
-                            List<EntityUid> delete = recipeEntities[entityRequired];
+                            List<EntityUid> delete = recipeEntities[recipePair.Key];
                             while (amount > 0 && delete.Count > 0)
                             {
                                 EntityUid targetEntity = delete.First();
@@ -249,13 +250,13 @@ namespace Content.Server.Factory.EntitySystems
                                         delete.RemoveAt(0);
                                     _stacks.SetCount(targetEntity, myStack.Count - usedAmount, myStack);
                                     amount -= usedAmount;
-                                    itemCounts[entityRequired] -= usedAmount;
+                                    itemCounts[recipePair.Key] -= usedAmount;
                                 }
                                 else
                                 {
                                     QueueDel(targetEntity);
                                     amount--;
-                                    itemCounts[entityRequired]--;
+                                    itemCounts[recipePair.Key]--;
                                     EntityManager.DeleteEntity(delete.First());
                                     delete.RemoveAt(0);
                                 }
@@ -269,12 +270,12 @@ namespace Content.Server.Factory.EntitySystems
                         /// RECIPE OUTPUT
                         if(comp.SoundOnProduce is not null)
                             _sounds.PlayPvs(comp.SoundOnProduce, uid);
-                        foreach (var (entityRequired, requiredAmount) in chosenRecipe.Outputs)
+                        foreach (KeyValuePair<string,int> factoryPair in chosenRecipe.Outputs)
                         {
-                            var amount = requiredAmount;
+                            var amount = factoryPair.Value;
                             while (amount > 0)
                             {
-                                EntityUid product = EntityManager.SpawnAtPosition(entityRequired, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
+                                EntityUid product = EntityManager.SpawnAtPosition(factoryPair.Key, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
                                 if (TryComp<StackComponent>(product, out var productComp))
                                 {
                                     _stacks.SetCount(product, amount, productComp);
