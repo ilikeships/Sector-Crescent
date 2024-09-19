@@ -161,6 +161,13 @@
       params:
         variation: 0.125
     recipes:
+      uraniumToEMPCasing:
+        inputs:
+          Uranium:
+            5
+        outputs:
+          Casing120EMP:
+            1
       steelToCasing:
         inputs:
           Steel:
@@ -174,13 +181,6 @@
             10
         outputs:
           Casing120HE:
-            1
-      uraniumToEMPCasing:
-        inputs:
-          Uranium:
-            5
-        outputs:
-          Casing120EMP:
             1
 
 - type: entity
