@@ -24,6 +24,7 @@ using Content.Server.Radio.Components;
 using SixLabors.ImageSharp.Formats.Png;
 using System.Numerics;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio;
 
 namespace Content.Server.LocalizedRadio.EntitySystems
 {
@@ -35,17 +36,17 @@ namespace Content.Server.LocalizedRadio.EntitySystems
 
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
-        internal List<string> ForceLocalize = new();
-        internal float ForceRange = 500f;
-
+        internal Dictionary<string, float> ForceLocalize = new();
 
         public override void Initialize()
         {
             base.Initialize();
 
-            foreach (var localized in _prototypeManager.EnumeratePrototypes<ForceLocalizePrototype>().ToArray())
+            foreach (var localized in _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>().ToArray())
             {
-                ForceLocalize.Add(localized.ID);
+                if (!localized.Localize)
+                    continue;
+                ForceLocalize.Add(localized.ID, localized.LocalizedRange);
             }
 
             if (ForceLocalize.Count > 0)
@@ -58,21 +59,22 @@ namespace Content.Server.LocalizedRadio.EntitySystems
 
         private void RadioReceive(EntityUid entity, IntrinsicRadioReceiverComponent comp, ref RadioReceiveAttemptEvent args)
         {
-            if (!ForceLocalize.Contains(args.Channel.ID))
+            if (!ForceLocalize.ContainsKey(args.Channel.ID))
                 return;
             Vector2 distance = _transformSystem.GetWorldPosition(args.RadioReceiver) - _transformSystem.GetWorldPosition(args.RadioSource);
-            if (Math.Abs(distance.Length()) > ForceRange)
+            if (Math.Abs(distance.Length()) > ForceLocalize[args.Channel.ID])
                 args.Cancelled = true;
 
         }
 
         private void HeadsetReceive(EntityUid entity, HeadsetComponent comp, ref RadioReceiveAttemptEvent args)
         {
-            if (!ForceLocalize.Contains(args.Channel.ID))
+            if (!ForceLocalize.ContainsKey(args.Channel.ID))
                 return;
             Vector2 distance = _transformSystem.GetWorldPosition(args.RadioReceiver) - _transformSystem.GetWorldPosition(args.RadioSource);
-            if (Math.Abs(distance.Length()) > ForceRange)
+            if (Math.Abs(distance.Length()) > ForceLocalize[args.Channel.ID])
                 args.Cancelled = true;
+
 
         }
     }
