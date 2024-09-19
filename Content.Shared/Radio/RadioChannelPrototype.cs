@@ -34,5 +34,11 @@ public sealed partial class RadioChannelPrototype : IPrototype
     /// and messages can be sent across different stations
     /// </summary>
     [DataField("longRange"), ViewVariables]
-    public bool LongRange = false;
+        public bool LongRange = false;
+
+    [DataField("localize"), ViewVariables]
+    public bool Localize = false;
+
+    [DataField("localizeRange"), ViewVariables]
+    public float LocalizedRange = 500f;
 }
