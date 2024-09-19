@@ -142,3 +142,121 @@
       - ClothingHeadHelmetEVA # Frontier
       - ClothingHeadHelmetEVALarge # Frontier
       - ClothingOuterHardsuitEVA # Frontier
+
+
+- type: entity
+  id: Factory120Fab
+  parent: BaseMachinePowered
+  name: shell fabricator
+  description: Shapes metal for use by ship munitions.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/factorystructures.rsi
+    snapCardinals: true
+    layers:
+    - state: pooper
+  - type: Factory
+    sound:
+      collection: Welder
+      params:
+        variation: 0.125
+    recipes:
+      steelToCasing:
+        inputs:
+          Steel:
+            5
+        outputs:
+          Casing120:
+            1
+      plasmaToHECasing:
+        inputs:
+          Plasma:
+            10
+        outputs:
+          Casing120HE:
+            1
+      uraniumToEMPCasing:
+        inputs:
+          Uranium:
+            5
+        outputs:
+          Casing120EMP:
+            1
+
+- type: entity
+  id: Factory120Weld
+  parent: BaseMachinePowered
+  name: cartridge welding arm
+  description: Welds shell casings for priming.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/factorystructures.rsi
+    snapCardinals: false
+    layers:
+    - state: welder
+  - type: Factory
+    sound:
+      collection: Welder
+      params:
+        variation: 0.125
+    recipes:
+      casingToWeldedCasing:
+        inputs:
+          EmptyCasing:
+            1
+        outputs:
+          Casing120Welded:
+            1
+      casingEmpToWeldedCasing:
+        inputs:
+          EmptyCasingEMP:
+            1
+        outputs:
+          Casing120WeldedEMP:
+            1
+      casingHEToWeldedCasing:
+        inputs:
+          EmptyCasingHE:
+            1
+        outputs:
+          Casing120WeldedHE:
+            1
+
+- type: entity
+  id: Factory120Assembler
+  parent: BaseMachinePowered
+  name: assembling arm
+  description: Packs explosive armaments into munitions.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/factorystructures.rsi
+    snapCardinals: false
+    layers:
+    - state: assembler
+  - type: Factory
+    sound:
+      collection: Screwdriver
+      params:
+        variation: 0.125
+    recipes:
+      weldedCasingToLiveAmmo:
+        inputs:
+          WeldedCasing:
+            1
+        outputs:
+          CartridgeShellArmorPiercing:
+            1
+      weldedEMPCasingToLiveAmmo:
+        inputs:
+          WeldedCasingEmp:
+            1
+        outputs:
+          CartridgeShellEmp:
+            1
+      weldedHECasingToLiveAmmo:
+        inputs:
+          WeldedCasingHE:
+            1
+        outputs:
+          CartridgeShellHighExplosive:
+            1
