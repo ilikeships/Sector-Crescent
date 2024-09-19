@@ -159,7 +159,7 @@ namespace Content.Server.Factory.EntitySystems
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 1f)
+            if (_internalClock > 0.3f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();

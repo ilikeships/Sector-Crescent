@@ -31,7 +31,7 @@
   id: CartridgeShellEmp
   name: 120mm EMP artillery shell
   parent: BaseItem
-  description: A primitive artillery shell, lined with bluespace crystal fragments. Disrupts electronics..
+  description: A primitive artillery shell, lined with bluespace crystal fragments. Disrupts electronics.
   components:
   - type: Tag
     tags:
@@ -132,8 +132,8 @@
   - type: Explosive
     explosionType: Default
     maxIntensity: 65
-    intensitySlope: 25
-    totalIntensity: 175
+    intensitySlope: 15
+    totalIntensity: 195
     maxTileBreak: 6
   - type: PointLight
     radius: 3.5
