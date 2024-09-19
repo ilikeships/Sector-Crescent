@@ -40,6 +40,7 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly PhysicsSystem _physics = default!;
         [Dependency] private readonly AudioSystem _sounds = default!;
+        [Dependency] private readonly ISawmill _sawmill = default!;
 
 
         const string FactoryFixture = "FactoryFixture";
@@ -210,12 +211,19 @@ namespace Content.Server.Factory.EntitySystems
                         foreach (KeyValuePair<string, FactoryRecipe> factoryPair in comp.Recipes)
                         {
                             bool fulfilled = true;
-                            foreach(KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
+                            _sawmill.Log(LogLevel.Warning, $"Checking recipe {factoryPair.Key}");
+                            foreach (KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
                             {
-
-                                if (itemCounts.ContainsKey(recipePair.Key) && itemCounts[recipePair.Key] < recipePair.Value)
+                                if(!itemCounts.ContainsKey(recipePair.Key))
                                 {
                                     fulfilled = false;
+                                    _sawmill.Log(LogLevel.Warning, $"Recipe failed at checking for {recipePair.Key}");
+                                    break;
+                                }
+                                if(itemCounts[recipePair.Key] < recipePair.Value)
+                                {
+                                    fulfilled = false;
+                                    _sawmill.Log(LogLevel.Warning, $"Recipe failed at checking for {recipePair.Key}");
                                     break;
                                 }
                             }
