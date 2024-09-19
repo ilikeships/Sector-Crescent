@@ -17,6 +17,14 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameObjects;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Dynamics;
+using Content.Shared.Item;
+using Content.Server.Item;
+using Robust.Shared.Containers;
+using Content.Server.Sound;
+using Content.Shared.Sound;
+using Robust.Server.Audio;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -29,6 +37,9 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
+        [Dependency] private readonly PhysicsSystem _physics = default!;
+        [Dependency] private readonly AudioSystem _sounds = default!;
+
 
         const string FactoryFixture = "FactoryFixture";
 
@@ -41,9 +52,9 @@ namespace Content.Server.Factory.EntitySystems
             SubscribeLocalEvent<FactoryComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<FactoryComponent, ComponentShutdown>(OnDel);
 
-
             SubscribeLocalEvent<FactoryComponent, StartCollideEvent>(OnInsertion);
-            SubscribeLocalEvent<FactoryComponent, EndCollideEvent>(OnRemoval);
+            SubscribeLocalEvent<FactoryTrackingComponent, EndCollideEvent>(OnRemoval);
+            SubscribeLocalEvent<FactoryTrackingComponent, EntGotInsertedIntoContainerMessage>(OnSnatch);
 
             SubscribeLocalEvent<FactoryComponent, SignalReceivedEvent>(OnSignalReceived);
             SubscribeLocalEvent<FactoryComponent, PowerChangedEvent>(OnPowerChanged);
@@ -56,7 +67,7 @@ namespace Content.Server.Factory.EntitySystems
             if (TryComp<PhysicsComponent>(uid, out var physics))
             {
                 var shape = new PolygonShape();
-                shape.SetAsBox(0.6f, 0.6f);
+                shape.SetAsBox(0.5f, 0.5f);
 
                 _fixtures.TryCreateFixture(uid, shape, FactoryFixture,
                     collisionLayer: (int) (CollisionGroup.LowImpassable | CollisionGroup.MidImpassable |
@@ -73,23 +84,64 @@ namespace Content.Server.Factory.EntitySystems
             _fixtures.DestroyFixture(uid, FactoryFixture, body: physics);
         }
 
+        private void OnSnatch(EntityUid uid, FactoryTrackingComponent component,ref EntGotInsertedIntoContainerMessage args)
+        {
+            if (!TerminatingOrDeleted(component.FactoryID))
+            {
+                component.FactoryReference.Inserted.Remove(uid);
+                component.FactoryReference.InsertCount--;
+                if (component.FactoryReference.InsertCount == 0)
+                    RemComp<ActiveFactoryComponent>(component.FactoryID);
+            }
+            RemComp<FactoryTrackingComponent>(uid);
+        }
+
         private void OnInsertion(EntityUid uid, FactoryComponent component, ref StartCollideEvent args)
         {
+            if (TryComp<FactoryTrackingComponent>(args.OtherEntity, out var trackerComp))
+            {
+                if (trackerComp.FactoryID == uid)
+                    return;
+            }
             component.Inserted.Add(args.OtherEntity);
+            EnsureComp(args.OtherEntity,out FactoryTrackingComponent tracker);
+            tracker.FactoryReference = component;
+            tracker.FactoryID = uid;
             component.InsertCount++;
             if (component.InsertCount == 1)
                 EnsureComp<ActiveFactoryComponent>(uid);
 
         }
-
-        private void OnRemoval(EntityUid uid, FactoryComponent component, ref EndCollideEvent args)
+        
+        private void OnRemoval(EntityUid uid, FactoryTrackingComponent component, ref EndCollideEvent args)
         {
-            component.Inserted.Remove(args.OtherEntity);
-            component.InsertCount--;
-            if (component.InsertCount == 0)
-                RemComp<ActiveFactoryComponent>(uid);
-        }
+            if (TerminatingOrDeleted(component.FactoryID))
+            {
+                RemComp<FactoryTrackingComponent>(uid);
+                return;
+            }
+            if (TerminatingOrDeleted(uid))
+            {
+                component.FactoryReference.Inserted.Remove(uid);
+                return;
+            }
+            if (TryComp<TransformComponent>(component.FactoryID, out var transform))
+            {
+                Fixture? factoryFixture = _fixtures.GetFixtureOrNull(component.FactoryID, FactoryFixture);
+                if (factoryFixture is null)
+                    return;
 
+                Box2 factoryAABB = _physics.GetWorldAABB(component.FactoryID);
+                Box2 itemAABB = _physics.GetWorldAABB(uid);
+                if (factoryAABB.Intersects(in itemAABB))
+                    return;
+            }
+            RemComp<FactoryTrackingComponent>(uid);
+            component.FactoryReference.Inserted.Remove(uid);
+            component.FactoryReference.InsertCount--;
+            if (component.FactoryReference.InsertCount == 0)
+                RemComp<ActiveFactoryComponent>(component.FactoryID);
+        }
         private void OnPowerChanged(EntityUid uid, FactoryComponent component, ref PowerChangedEvent args)
         {
             component.Powered = args.Powered;
@@ -103,32 +155,31 @@ namespace Content.Server.Factory.EntitySystems
             }
         }
 
-        private void Fabricate(EntityUid uid, FactoryComponent comp, FactoryRecipe factoryRecipe)
-        {
-
-        }
-
-
-
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
             _internalClock += frameTime;
-            if (_internalClock > 0.1f)
+            if (_internalClock > 1f)
             {
                 _internalClock = 0f;
                 var query = EntityQueryEnumerator<ActiveFactoryComponent, FactoryComponent>();
 
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
-                    /// SETUP
-                    
+                    /// SETUP                   
                     TransformComponent? factoryTransform;
                     if (!TryComp(uid, out factoryTransform))
                         continue;
 
                     Dictionary<string, List<EntityUid>> recipeEntities = new();
                     Dictionary<string, int> itemCounts = new();
+                    /// LIST CLEANING FOR NULLS
+                    for (int i = 0; i < comp.Inserted.Count; i++)
+                        if (TerminatingOrDeleted(comp.Inserted[i]))
+                        {
+                            comp.Inserted.RemoveAt(i);
+                            i--;
+                        }
                     foreach(EntityUid entity in comp.Inserted)
                     {
                         MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
@@ -216,6 +267,8 @@ namespace Content.Server.Factory.EntitySystems
 
                         var factoryRot = factoryTransform.LocalRotation;
                         /// RECIPE OUTPUT
+                        if(comp.SoundOnProduce is not null)
+                            _sounds.PlayPvs(comp.SoundOnProduce, uid);
                         foreach (var (entityRequired, requiredAmount) in chosenRecipe.Outputs)
                         {
                             var amount = requiredAmount;

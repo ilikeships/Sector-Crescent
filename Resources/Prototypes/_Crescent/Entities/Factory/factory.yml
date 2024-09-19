@@ -26,6 +26,10 @@
         - RawMaterial
         - Ingot
   - type: Factory
+    sound:
+      collection: CluwneHorn
+      params:
+        variation: 0.125
     recipes:
       rodToMetal:
         inputs:
