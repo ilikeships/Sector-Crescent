@@ -17,6 +17,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameObjects;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -28,7 +29,6 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly FixtureSystem _fixtures = default!;
         [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
         [Dependency] private readonly StackSystem _stacks = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
 
         const string FactoryFixture = "FactoryFixture";
 
@@ -77,7 +77,7 @@ namespace Content.Server.Factory.EntitySystems
         {
             component.Inserted.Add(args.OtherEntity);
             component.InsertCount++;
-            if (component.InsertCount == 1)
+            if (component.InsertCount == 1 && component.Active)
                 EnsureComp<ActiveFactoryComponent>(uid);
 
         }
@@ -100,15 +100,13 @@ namespace Content.Server.Factory.EntitySystems
             if(args.Port == component.Toggle)
             {
                 component.Active = !component.Active;
+                if (component.InsertCount > 0)
+                    if (component.Active)
+                        EnsureComp<ActiveFactoryComponent>(uid);
+                    else
+                        RemComp<ActiveFactoryComponent>(uid);
             }
         }
-
-        private void Fabricate(EntityUid uid, FactoryComponent comp, FactoryRecipe factoryRecipe)
-        {
-
-        }
-
-
 
         public override void Update(float frameTime)
         {
@@ -122,6 +120,8 @@ namespace Content.Server.Factory.EntitySystems
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
                     /// SETUP
+                    if (comp.Powered == false)
+                        continue;
                     
                     TransformComponent? factoryTransform;
                     if (!TryComp(uid, out factoryTransform))
