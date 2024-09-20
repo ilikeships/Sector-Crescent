@@ -210,10 +210,14 @@ namespace Content.Server.Factory.EntitySystems
                         foreach (KeyValuePair<string, FactoryRecipe> factoryPair in comp.Recipes)
                         {
                             bool fulfilled = true;
-                            foreach(KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
+                            foreach (KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
                             {
-
-                                if (itemCounts.ContainsKey(recipePair.Key) && itemCounts[recipePair.Key] < recipePair.Value)
+                                if(!itemCounts.ContainsKey(recipePair.Key))
+                                {
+                                    fulfilled = false;
+                                    break;
+                                }
+                                if(itemCounts[recipePair.Key] < recipePair.Value)
                                 {
                                     fulfilled = false;
                                     break;
