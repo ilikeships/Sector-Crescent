@@ -31,13 +31,6 @@
       params:
         variation: 0.125
     recipes:
-      rodToMetal:
-        inputs:
-          MetalRod:
-            2
-        outputs:
-          SheetSteel:
-            1
       metalToGun:
         inputs:
           MetalRod:
@@ -49,7 +42,13 @@
             1
           MagazinePistol:
             3
-
+      rodToMetal:
+        inputs:
+          MetalRod:
+            2
+        outputs:
+          SheetSteel:
+            1
 
   - type: Lathe
     idleState: icon
