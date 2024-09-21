@@ -40,6 +40,7 @@ public sealed partial class NavScreen : BoxContainer
         DockToggle.OnToggled += OnDockTogglePressed;
         DockToggle.Pressed = NavRadar.ShowDocks;
 
+
         Group1.OnPressed += _ => OnGroup1Pressed?.Invoke();
         Group2.OnPressed += _ => OnGroup2Pressed?.Invoke();
         Group3.OnPressed += _ => OnGroup3Pressed?.Invoke();
