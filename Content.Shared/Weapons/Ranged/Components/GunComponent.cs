@@ -139,6 +139,8 @@ public sealed partial class GunComponent : Component
     [ViewVariables]
     public EntityCoordinates? ShootCoordinates = null;
 
+    public EntityCoordinates FromCoordinates;
+
     /// <summary>
     ///     The base value for how many shots to fire per burst.
     /// </summary>

@@ -34,6 +34,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly InputSystem _inputSystem = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     public const string HitscanProto = "HitscanEffect";
@@ -179,8 +180,9 @@ public sealed partial class GunSystem : SharedGunSystem
         EntityManager.RaisePredictiveEvent(new RequestShootEvent
         {
             Coordinates = GetNetCoordinates(coordinates),
+            FiringCoordinates = GetNetCoordinates(_transform.GetMoverCoordinates(entity)),
             Gun = GetNetEntity(gunUid),
-        });
+        }) ;
     }
 
     public override void Shoot(EntityUid gunUid, GunComponent gun, List<(EntityUid? Entity, IShootable Shootable)> ammo,

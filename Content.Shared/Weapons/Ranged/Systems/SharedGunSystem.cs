@@ -138,6 +138,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
 
         gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        gun.FromCoordinates = GetCoordinates(msg.FiringCoordinates);
         AttemptShoot(user.Value, ent, gun);
     }
 
@@ -304,7 +305,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
         }
 
-        var fromCoordinates = Transform(user).Coordinates;
+        var fromCoordinates = gun.FromCoordinates;
         // Remove ammo
         var ev = new TakeAmmoEvent(shots, new List<(EntityUid? Entity, IShootable Shootable)>(), fromCoordinates, user);
 
