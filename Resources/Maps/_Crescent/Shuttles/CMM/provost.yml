@@ -64,126 +64,126 @@ entities:
             color: '#52B4E996'
             id: DeliveryGreyscale
           decals:
-            86: -2,-3
-            87: -2,-2
-            88: 2,-2
-            89: 2,-3
+            52: -2,-3
+            53: -2,-2
+            54: 2,-2
+            55: 2,-3
         - node:
             color: '#52B4E996'
             id: WarnBoxGreyscale
           decals:
-            1: -4,-1
-            2: 4,-1
+            0: -4,-1
+            1: 4,-1
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNE
           decals:
-            66: -4,-4
+            44: -4,-4
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNW
           decals:
-            67: -5,-4
+            45: -5,-4
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleSE
           decals:
-            69: -4,-5
+            47: -4,-5
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleSW
           decals:
-            68: -5,-5
+            46: -5,-5
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleE
           decals:
-            4: 6,-7
+            2: 6,-7
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleW
           decals:
-            5: -6,-7
+            3: -6,-7
         - node:
             color: '#52B4E996'
             id: WarnFullGreyscale
           decals:
-            62: -5,-3
-            63: -4,-3
-            64: -6,-4
-            65: -6,-5
+            40: -5,-3
+            41: -4,-3
+            42: -6,-4
+            43: -6,-5
         - node:
             color: '#EFB34196'
             id: WarnLineE
           decals:
-            30: 3,-4
-            31: 3,-4
-            32: -3,-4
-            33: -3,-4
-            38: -1,-6
-            39: -1,-6
+            22: 3,-4
+            23: 3,-4
+            24: -3,-4
+            25: -3,-4
+            30: -1,-6
+            31: -1,-6
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleE
           decals:
-            46: 0,-4
-            47: 0,-3
+            36: 0,-4
+            37: 0,-3
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
           decals:
-            6: -5,-7
-            7: 5,-7
-            78: -2,-4
-            79: 2,-4
+            4: -5,-7
+            5: 5,-7
+            48: -2,-4
+            49: 2,-4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleS
           decals:
-            8: -5,-7
-            9: 5,-7
-            80: -2,-4
-            81: 2,-4
+            6: -5,-7
+            7: 5,-7
+            50: -2,-4
+            51: 2,-4
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
           decals:
-            54: 0,-3
-            55: 0,-4
+            38: 0,-3
+            39: 0,-4
         - node:
             color: '#EFB34196'
             id: WarnLineN
           decals:
-            14: 0,-2
-            15: 0,-2
-            24: 0,-7
-            25: 0,-7
-            26: 0,-5
-            27: 0,-5
+            10: 0,-2
+            11: 0,-2
+            16: 0,-7
+            17: 0,-7
+            18: 0,-5
+            19: 0,-5
         - node:
             color: '#EFB34196'
             id: WarnLineS
           decals:
-            28: 3,-4
-            29: 3,-4
-            34: -3,-4
-            35: -3,-4
-            36: 1,-6
-            37: 1,-6
-            40: 6,-5
-            41: 6,-5
-            42: 6,-4
-            43: 6,-4
+            20: 3,-4
+            21: 3,-4
+            26: -3,-4
+            27: -3,-4
+            28: 1,-6
+            29: 1,-6
+            32: 6,-5
+            33: 6,-5
+            34: 6,-4
+            35: 6,-4
         - node:
             color: '#EFB34196'
             id: WarnLineW
           decals:
-            12: 0,-2
-            13: 0,-2
-            20: 0,-7
-            21: 0,-7
-            22: 0,-5
-            23: 0,-5
+            8: 0,-2
+            9: 0,-2
+            12: 0,-7
+            13: 0,-7
+            14: 0,-5
+            15: 0,-5
     - type: GridAtmosphere
       version: 2
       data:
@@ -702,6 +702,21 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-6.5
+      parent: 1
+  - uid: 257
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+  - uid: 258
+    components:
+    - type: Transform
+      pos: 2.5,0.5
+      parent: 1
+  - uid: 259
+    components:
+    - type: Transform
+      pos: 0.5,0.5
       parent: 1
 - proto: CableHV
   entities:
@@ -1441,7 +1456,7 @@ entities:
       pos: 0.5,-0.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 104
@@ -1582,29 +1597,31 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 4.5,-6.5
+      pos: -3.5,-6.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 29
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,-6.5
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-3.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 57
     components:
     - type: Transform
-      pos: 2.5,0.5
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-4.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 58
     components:
     - type: Transform
-      pos: -1.5,0.5
+      rot: 3.141592653589793 rad
+      pos: 4.5,-6.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1612,23 +1629,21 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -3.5,-6.5
+      pos: 3.5,-6.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 64
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-6.5
+      pos: -1.5,0.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 83
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-3.5
+      pos: 2.5,0.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -1643,16 +1658,16 @@ entities:
   - uid: 85
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -7.5,-3.5
+      rot: -1.5707963267948966 rad
+      pos: 8.5,-3.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 86
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -7.5,-4.5
+      rot: 3.141592653589793 rad
+      pos: -2.5,-6.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
