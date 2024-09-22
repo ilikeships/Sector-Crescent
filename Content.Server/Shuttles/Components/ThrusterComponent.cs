@@ -66,7 +66,7 @@ namespace Content.Server.Shuttles.Components
         public string MachinePartThrust = "Capacitor";
 
         [DataField("partRatingThrustMultiplier")]
-        public float PartRatingThrustMultiplier = 1.6f; // Crescent
+        public float PartRatingThrustMultiplier = 0.6f; // Crescent
 
         [DataField("thrusterIgnoreEmp")]
         public bool ThrusterIgnoreEmp = false;

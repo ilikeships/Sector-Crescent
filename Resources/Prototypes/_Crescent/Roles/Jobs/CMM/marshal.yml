@@ -3,6 +3,8 @@
   name: job-name-marshal
   description: job-description-marshal
   playTimeTracker: JobMarshalCMM
+  requirements:
+    - !type:WhitelistRequirement
   weight: 39
   startingGear: MarshalGear
   alwaysUseSpawner: true

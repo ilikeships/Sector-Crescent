@@ -955,6 +955,7 @@
                   min: 3
                   max: 5
     - type: Gun
+      projectileSpeed: 95
       fireRate: 3
       selectedMode: FullAuto
       availableModes:
@@ -1022,6 +1023,8 @@
       drawdepth: Mobs
       layers:
         - state: syndie_lethal
+    - type: Gun
+      projectileSpeed: 105
     - type: HTN
       rootTask:
         task: PDTTurretCompound #npcroot
