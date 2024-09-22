@@ -1771,13 +1771,6 @@ entities:
     - type: Transform
       pos: 0.5,-5.5
       parent: 2
-- proto: CrateNPCEmotionalSupportSafe
-  entities:
-  - uid: 522
-    components:
-    - type: Transform
-      pos: 1.5,-5.5
-      parent: 2
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 433

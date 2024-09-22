@@ -511,15 +511,3 @@
   components:
     - type: Loadout
       prototypes: [SyndicateOperativeGearExtremelyBasic]
-
-- type: entity
-  id: RandomHumanoidSpawnerNukeOp
-  name: Nuclear Operative
-  components:
-    - type: Sprite
-      sprite: Mobs/Species/Human/parts.rsi
-      state: full
-    - type: RandomHumanoidSpawner
-      settings: NukeOp
-
-

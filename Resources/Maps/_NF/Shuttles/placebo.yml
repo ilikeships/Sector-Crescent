@@ -671,13 +671,6 @@ entities:
     - type: Transform
       pos: 1.5,8.5
       parent: 1
-- proto: CrateNPCEmotionalSupportSafe
-  entities:
-  - uid: 255
-    components:
-    - type: Transform
-      pos: -2.5,7.5
-      parent: 1
 - proto: CrateServiceBureaucracy
   entities:
   - uid: 85
