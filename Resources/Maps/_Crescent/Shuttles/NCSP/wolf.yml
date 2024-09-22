@@ -3132,12 +3132,6 @@ entities:
         572:
         - Group5: Off
         - Group4: On
-        676:
-        - Group4: On
-        - Group5: Off
-        675:
-        - Group4: On
-        - Group5: Off
         672:
         - Group5: Off
         - Group4: On
@@ -3172,10 +3166,10 @@ entities:
         - 570
         - 69
         - 227
-        - 675
+        - invalid
         - 674
         - 672
-        - 676
+        - invalid
         gatling:
         - 571
         - 572
@@ -3189,8 +3183,8 @@ entities:
         ballistic:
         - 69
         - 227
-        - 676
-        - 675
+        - invalid
+        - invalid
         mortars:
         - 674
         - 672
@@ -5777,7 +5771,7 @@ entities:
       pos: 0.5,22.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -7216,30 +7210,6 @@ entities:
       - 280
       - 167
       - 170
-  - uid: 675
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 7.5,18.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 1.3241795065343607 rad: 3.434173406035509 rad
-    - type: DeviceLinkSink
-      links:
-      - 280
-  - uid: 676
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -6.5,18.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 4.6664250481995095 rad: 3.4341734060355096 rad
-    - type: DeviceLinkSink
-      links:
-      - 280
 - proto: WeaponTurretVulcanNCSP
   entities:
   - uid: 571
