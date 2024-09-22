@@ -7,8 +7,8 @@
   startingGear: PassengerGear
   icon: "JobIconPassenger"
 #  supervisors: job-supervisors-everyone
-  accessGroups: # Frontier
-  - GeneralAccess # Frontier
+  accessGroups:
+  - GeneralAccess
 
 - type: startingGear
   id: PassengerGear
