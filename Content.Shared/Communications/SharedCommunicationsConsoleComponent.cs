@@ -12,19 +12,13 @@ namespace Content.Shared.Communications
     {
         public readonly bool CanAnnounce;
         public readonly bool CanBroadcast = true;
-        public readonly bool CanCall;
-        public readonly TimeSpan? ExpectedCountdownEnd;
-        public readonly bool CountdownStarted;
         public List<string>? AlertLevels;
         public string CurrentAlert;
         public float CurrentAlertDelay;
 
-        public CommunicationsConsoleInterfaceState(bool canAnnounce, bool canCall, List<string>? alertLevels, string currentAlert, float currentAlertDelay, TimeSpan? expectedCountdownEnd = null)
+        public CommunicationsConsoleInterfaceState(bool canAnnounce, List<string>? alertLevels, string currentAlert, float currentAlertDelay)
         {
             CanAnnounce = canAnnounce;
-            CanCall = canCall;
-            ExpectedCountdownEnd = expectedCountdownEnd;
-            CountdownStarted = expectedCountdownEnd != null;
             AlertLevels = alertLevels;
             CurrentAlert = currentAlert;
             CurrentAlertDelay = currentAlertDelay;
@@ -61,16 +55,6 @@ namespace Content.Shared.Communications
         {
             Message = message;
         }
-    }
-
-    [Serializable, NetSerializable]
-    public sealed class CommunicationsConsoleCallEmergencyShuttleMessage : BoundUserInterfaceMessage
-    {
-    }
-
-    [Serializable, NetSerializable]
-    public sealed class CommunicationsConsoleRecallEmergencyShuttleMessage : BoundUserInterfaceMessage
-    {
     }
 
     [Serializable, NetSerializable]
