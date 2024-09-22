@@ -337,11 +337,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
-      - id: FrontierUplinkCoin
 
 - type: entity
   noSpawn: true
@@ -350,11 +348,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
-      - id: FrontierUplinkCoin
 
 - type: entity
   noSpawn: true
@@ -363,8 +359,6 @@
   components:
   - type: StorageFill
     contents:
-      - id: BaseSecurityUplinkRadioOfficer
       - id: BoxSurvival
       - id: Flash
       - id: MagazinePistol
-      - id: FrontierUplinkCoin
