@@ -1114,6 +1114,13 @@ entities:
     - type: Transform
       pos: 1.5,-6.5
       parent: 1
+- proto: ComputerTabletopAdvancedRadar
+  entities:
+  - uid: 120
+    components:
+    - type: Transform
+      pos: -0.5,1.5
+      parent: 1
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 333
@@ -1143,8 +1150,13 @@ entities:
   - uid: 130
     components:
     - type: Transform
-      pos: -0.5,1.5
+      anchored: False
+      rot: -4.712393391128403 rad
+      pos: -0.5,0.5
       parent: 1
+    - type: Physics
+      fixedRotation: False
+      bodyType: Dynamic
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 186
@@ -1219,8 +1231,10 @@ entities:
   - uid: 131
     components:
     - type: Transform
-      pos: -0.5,0.5
+      pos: -0.5,-1.5
       parent: 1
+    - type: Physics
+      fixedRotation: False
 - proto: GasPassiveVent
   entities:
   - uid: 200
@@ -1617,14 +1631,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 1.5,-7.5
       parent: 1
-- proto: Rack
-  entities:
-  - uid: 120
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,-1.5
-      parent: 1
 - proto: Railing
   entities:
   - uid: 115
@@ -1677,7 +1683,7 @@ entities:
     - type: MetaData
       name: fire artillery
     - type: Transform
-      pos: -0.681803,-1.3932588
+      pos: -0.11928964,-1.5485542
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -1688,7 +1694,7 @@ entities:
     - type: MetaData
       name: fire missile pod
     - type: Transform
-      pos: -0.306803,-1.3709594
+      pos: -0.08080149,-1.2724813
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -1699,7 +1705,7 @@ entities:
     - type: MetaData
       name: disarm/rearm swarmer turret
     - type: Transform
-      pos: -0.52092814,-1.3982568
+      pos: -0.041164637,-1.7829292
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -1872,6 +1878,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,1.5
       parent: 1
+- proto: TableFrame
+  entities:
+  - uid: 336
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,1.5
+      parent: 1
 - proto: TableReinforced
   entities:
   - uid: 12
@@ -1889,8 +1903,7 @@ entities:
   - uid: 91
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,1.5
+      pos: -0.5,-1.5
       parent: 1
   - uid: 137
     components:
@@ -1912,6 +1925,11 @@ entities:
     components:
     - type: Transform
       pos: 2.5,2.5
+      parent: 1
+  - uid: 337
+    components:
+    - type: Transform
+      pos: -0.5,1.5
       parent: 1
 - proto: ThrusterNCSPWarship
   entities:
@@ -2003,7 +2021,7 @@ entities:
       pos: 3.5,6.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

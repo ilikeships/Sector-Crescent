@@ -26,7 +26,7 @@ entities:
           version: 6
         0,-1:
           ind: 0,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAggAAAAAAggAAAAAAAAAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAggAAAAAAggAAAAAAgQAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAIgAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           version: 6
     - type: Broadphase
     - type: Physics
@@ -64,7 +64,8 @@ entities:
             0: 4401
             1: 17408
           1,-1:
-            0: 13154
+            0: 4962
+            2: 8192
             1: 4
           1,1:
             1: 6
@@ -89,6 +90,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
           - 0
           - 0
           - 0
@@ -177,6 +193,52 @@ entities:
     - type: Transform
       pos: 2.5,4.5
       parent: 1
+- proto: BlastDoor
+  entities:
+  - uid: 186
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,4.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 46
+  - uid: 187
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 5.5,4.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 46
+  - uid: 188
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,3.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 46
+  - uid: 189
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,2.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 46
+  - uid: 190
+    components:
+    - type: Transform
+      pos: 6.5,2.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 46
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 65
@@ -418,6 +480,51 @@ entities:
     - type: Transform
       pos: 2.5,-2.5
       parent: 1
+  - uid: 177
+    components:
+    - type: Transform
+      pos: 3.5,-2.5
+      parent: 1
+  - uid: 178
+    components:
+    - type: Transform
+      pos: 3.5,-1.5
+      parent: 1
+  - uid: 179
+    components:
+    - type: Transform
+      pos: 3.5,-0.5
+      parent: 1
+  - uid: 180
+    components:
+    - type: Transform
+      pos: 4.5,-3.5
+      parent: 1
+  - uid: 181
+    components:
+    - type: Transform
+      pos: 4.5,-2.5
+      parent: 1
+  - uid: 182
+    components:
+    - type: Transform
+      pos: 6.5,2.5
+      parent: 1
+  - uid: 183
+    components:
+    - type: Transform
+      pos: 6.5,1.5
+      parent: 1
+  - uid: 184
+    components:
+    - type: Transform
+      pos: 6.5,0.5
+      parent: 1
+  - uid: 185
+    components:
+    - type: Transform
+      pos: 5.5,0.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 98
@@ -495,6 +602,47 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.5,2.5
       parent: 1
+- proto: ClosetWall
+  entities:
+  - uid: 191
+    components:
+    - type: Transform
+      pos: 5.5,0.5
+      parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 219
+          - 218
+          - 217
+          - 216
+          - 192
+          - 193
+          - 194
+          - 201
+          - 202
+          - 209
 - proto: ClothingHeadHelmetImperialEVA
   entities:
   - uid: 166
@@ -541,6 +689,18 @@ entities:
       linkedPorts:
         32:
         - Group1: Trigger
+        174:
+        - Group2: Toggle
+        190:
+        - Group3: Toggle
+        189:
+        - Group3: Toggle
+        188:
+        - Group3: Toggle
+        187:
+        - Group3: Toggle
+        186:
+        - Group3: Toggle
 - proto: ComputerStationRecords
   entities:
   - uid: 73
@@ -549,6 +709,35 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 5.5,1.5
       parent: 1
+- proto: EMP missile cartridge
+  entities:
+  - uid: 194
+    components:
+    - type: Transform
+      parent: 191
+    - type: BallisticAmmoProvider
+      entities:
+      - 195
+      - 196
+      - 197
+      - 198
+      - 199
+      - 200
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+          - 200
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: EwarDevice
   entities:
   - uid: 69
@@ -667,6 +856,156 @@ entities:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
+- proto: GrenadeBaton
+  entities:
+  - uid: 203
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+  - uid: 204
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+  - uid: 205
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+  - uid: 206
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+  - uid: 207
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+  - uid: 208
+    components:
+    - type: Transform
+      parent: 202
+    - type: Physics
+      canCollide: False
+- proto: GrenadeBlast
+  entities:
+  - uid: 167
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 168
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 169
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 170
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 171
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 172
+    components:
+    - type: Transform
+      parent: 8
+    - type: Physics
+      canCollide: False
+  - uid: 210
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+  - uid: 211
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+  - uid: 212
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+  - uid: 213
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+  - uid: 214
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+  - uid: 215
+    components:
+    - type: Transform
+      parent: 209
+    - type: Physics
+      canCollide: False
+- proto: GrenadeEMP
+  entities:
+  - uid: 195
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 196
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 197
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 198
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 199
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 200
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
 - proto: Grille
   entities:
   - uid: 11
@@ -718,6 +1057,151 @@ entities:
     - type: Transform
       pos: 1.5559087,1.5996423
       parent: 1
+- proto: MagazineGrenadeBaton
+  entities:
+  - uid: 202
+    components:
+    - type: Transform
+      parent: 191
+    - type: BallisticAmmoProvider
+      entities:
+      - 203
+      - 204
+      - 205
+      - 206
+      - 207
+      - 208
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MagazineGrenadeBlast
+  entities:
+  - uid: 8
+    components:
+    - type: Transform
+      parent: 32
+    - type: BallisticAmmoProvider
+      entities:
+      - 167
+      - 168
+      - 169
+      - 170
+      - 171
+      - 172
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 167
+          - 168
+          - 169
+          - 170
+          - 171
+          - 172
+    - type: Physics
+      canCollide: False
+  - uid: 209
+    components:
+    - type: Transform
+      parent: 191
+    - type: BallisticAmmoProvider
+      entities:
+      - 210
+      - 211
+      - 212
+      - 213
+      - 214
+      - 215
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 210
+          - 211
+          - 212
+          - 213
+          - 214
+          - 215
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MagazineLightRifleBoxSlug
+  entities:
+  - uid: 175
+    components:
+    - type: Transform
+      parent: 174
+    - type: Physics
+      canCollide: False
+  - uid: 192
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 216
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 217
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MagazineLightRifleBoxSlugEMP
+  entities:
+  - uid: 193
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 218
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MagazineLightRifleBoxSlugHE
+  entities:
+  - uid: 201
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 219
+    components:
+    - type: Transform
+      parent: 191
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MedkitCombatFilled
   entities:
   - uid: 81
@@ -833,6 +1317,48 @@ entities:
     - type: Transform
       pos: 6.5,2.5
       parent: 1
+- proto: SHISlugthrowerTurretDSM
+  entities:
+  - uid: 174
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 6.5,3.5
+      parent: 1
+    - type: Battery
+      startingCharge: 199500
+    - type: DeviceLinkSink
+      links:
+      - 46
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 175
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+    - type: BatterySelfRecharger
+      autoRechargeRate: -500
+      autoRecharge: True
+    - type: ApcPowerReceiver
+      powerLoad: 2000
 - proto: ShuttersNormal
   entities:
   - uid: 33
@@ -851,6 +1377,20 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.5,3.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 8
     - type: DeviceLinkSink
       links:
       - 46
@@ -992,6 +1532,21 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+  - uid: 173
+    components:
+    - type: Transform
+      pos: 3.5,4.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
+  - uid: 176
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-3.5
+      parent: 1
+    - type: Thruster
+      originalPowerLoad: 1500
 - proto: WallPlastitanium
   entities:
   - uid: 2
@@ -1023,11 +1578,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,3.5
-      parent: 1
-  - uid: 8
-    components:
-    - type: Transform
-      pos: 3.5,4.5
       parent: 1
   - uid: 9
     components:
@@ -1154,7 +1704,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -398.3051
+      secondsUntilStateChange: -1333.2345
       state: Opening
   - uid: 79
     components:
