@@ -80,7 +80,7 @@
                         <controls:Label Text="{controls:Loc 'shuttle-console-iff-search'}"></controls:Label>
                         <controls:LineEdit Name="IffSearchCriteria" Access="Public" HorizontalExpand="True"></controls:LineEdit>
                     </controls:BoxContainer>
-                    <controls:BoxContainer name ="ButtonHolder">
+                    <controls:BoxContainer Name ="ButtonHolder" VerticalExpand="True" HorizontalExpand="False" Orientation="Vertical">
                         <controls:Button Name="Group1"
                                 Text="{controls:Loc 'Module A'}"
                                 TextAlign="Center"

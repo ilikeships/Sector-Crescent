@@ -10,6 +10,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
+using Content.Shared.NamedModules.Components;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -27,6 +28,15 @@ public sealed partial class NavScreen : BoxContainer
     public Action? OnRenamePressed;
 
     private EntityUid? _shuttleEntity;
+
+    public EntityUid? Console;
+
+    private Dictionary<int, Button> _buttons = new();
+    private Dictionary<int, LineEdit> _editable = new();
+
+    public bool RenameModeToggle = false;
+
+    
 
     public NavScreen()
     {
@@ -48,10 +58,63 @@ public sealed partial class NavScreen : BoxContainer
         Group3.OnPressed += OG3P;
         Group4.OnPressed += OG4P;
         Group5.OnPressed += OG5P;
+
+        _buttons[1] = Group1;
+        _buttons[2] = Group2;
+        _buttons[3] = Group3;
+        _buttons[4] = Group4;
+        _buttons[5] = Group5;
+
+
+        foreach(var (index, button) in _buttons)
+        {
+            var specialUi = new LineEdit();
+            if(button.Text is not null)
+                specialUi.Text = button.Text;
+            _editable[index] = specialUi;
+            specialUi.OnTextChanged += _ =>
+            {
+                button.Text = specialUi.Text;
+            };
+        }
+
         RenameButton.OnPressed += RenamePressed;
 
         // Frontier - IFF search
         IffSearchCriteria.OnTextChanged += args => OnIffSearchChanged(args.Text);
+    }
+
+    public void ButtonsToReadyState()
+    {
+        if (Console is not null & _entManager.TryGetComponent<NamedModulesComponent>(Console, out var namesComp) && namesComp is not null)
+        {
+            ButtonHolder.RemoveAllChildren();
+            foreach (var (index, button) in _buttons)
+            {
+                button.Text = _editable[index].Text;
+                namesComp.ButtonNames[index] = _editable[index].Text;
+                ButtonHolder.AddChild(button);
+            }
+        }
+    }
+
+    public void ButtonsToEditState()
+    {
+        ButtonHolder.RemoveAllChildren();
+        foreach (var (index, line) in _editable)
+            ButtonHolder.AddChild(line);
+    }
+
+    public void UpdateButtonNames()
+    {
+        if (Console is not null & _entManager.TryGetComponent<NamedModulesComponent>(Console, out var namesComp) && namesComp is not null)
+        {
+            foreach (var (index, button) in _buttons)
+            {
+                button.Text = namesComp.ButtonNames[index];
+                _editable[index].Text = namesComp.ButtonNames[index];
+            }
+        }
     }
 
     private void OG1P(BaseButton.ButtonEventArgs args)
@@ -81,7 +144,26 @@ public sealed partial class NavScreen : BoxContainer
 
     private void RenamePressed(BaseButton.ButtonEventArgs args)
     {
-        OnGroup5Pressed?.Invoke();
+        RenameModeToggle = !RenameModeToggle;
+        if (RenameModeToggle)
+            ButtonsToEditState();
+        else
+            ButtonsToReadyState();
+    }
+
+    public void SetConsole(EntityUid console)
+    {
+        Console = console;
+        if (Console is null)
+            return;
+        if(_entManager.TryGetComponent<NamedModulesComponent>(Console, out var moduleComp))
+        {
+            foreach(var (index, button) in _buttons)
+            {
+                button.Text = moduleComp.ButtonNames[index];
+                _editable[index].Text = moduleComp.ButtonNames[index];
+            }
+        }
     }
 
 
