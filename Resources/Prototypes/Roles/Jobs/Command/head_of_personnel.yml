@@ -2,7 +2,7 @@
   id: HeadOfPersonnel
   name: job-name-hop
   description: job-description-hop
-  playTimeTracker: JobHeadOfPersonnelOld # Frontier
+  playTimeTracker: JobHeadOfPersonnel
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering

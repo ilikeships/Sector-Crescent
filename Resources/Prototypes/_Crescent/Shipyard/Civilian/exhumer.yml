@@ -15,7 +15,7 @@
   mapName: 'ICM Exhumer'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/exhumer.yml
   minPlayers: 0
-  stations: 
+  stations:
     Exhumer:
       stationProto: StandardFrontierVessel
       components:

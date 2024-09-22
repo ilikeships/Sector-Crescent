@@ -432,12 +432,6 @@
       variation: 0.125
 
 - type: emoteSounds
-  id: Nymph
-  sounds:
-    Chirp:
-      path: /Audio/Animals/nymph_chirp.ogg
-
-- type: emoteSounds
   id: Parrot
   sound:
     path: /Audio/Animals/parrot_raught.ogg

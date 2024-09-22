@@ -2,7 +2,7 @@
   id: SecurityCadet
   name: job-name-cadet
   description: job-description-cadet
-  playTimeTracker: JobSecurityCadetOld
+  playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000 #10 hrs

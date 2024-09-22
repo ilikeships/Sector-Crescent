@@ -2,7 +2,7 @@
   id: Detective
   name: job-name-detective
   description: job-description-detective
-  playTimeTracker: JobDetectiveOld
+  playTimeTracker: JobDetective
   requirements:
   - !type:DepartmentTimeRequirement
     department: Security
