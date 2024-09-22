@@ -24,11 +24,13 @@ job-description-foreman = Coordinate the SAWs. Lead pirate boardings. Scrap vess
 #empire#
 
 job-description-freeholder = Obey the Imperial hierarchy. Earn Credits for the Governor.
+job-description-security = Manage the security of the fief. Uphold the good order of the station.
 job-description-levyman = Obey your liege. Uphold the will of the Kaiser.
 job-description-knight = Organize the Imperial Navy. Obey your liege.
 job-description-courtier = Oversee and command reconstruction and trade efforts on behalf of your liege.
 job-description-adjutant = Obey your liege lord, the Kaiser, and your liege lord, the Governor. Attempt to coordinate the Empire.
 job-description-governor = Maintain the delicate balance of the Count's court. Protect your fief.
+job-description-spymaster = Oversee espionage, intelligence, and counter-intelligence operations for your liege.
 job-description-logistics = Outfit your liege's army with vessels and munitions.
 job-description-wealth = Oversee the barony's economical matters, generate revenue for your liegelord and pay his men.
 job-description-foremanimp = Coordinate the workers of your liege.

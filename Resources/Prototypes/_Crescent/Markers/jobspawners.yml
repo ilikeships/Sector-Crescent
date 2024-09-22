@@ -234,6 +234,18 @@
       - state: passenger
 
 - type: entity
+  id: SpawnPointSecurity
+  parent: SpawnPointJobBase
+  name: security
+  components:
+  - type: SpawnPoint
+    job_id: SecurityDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+      
+- type: entity
   id: SpawnPointLevyman
   parent: SpawnPointJobBase
   name: man at arms
@@ -257,6 +269,18 @@
       - state: green
       - state: passenger
 
+- type: entity
+  id: SpawnPointSpymaster
+  parent: SpawnPointJobBase
+  name: minister of enlightenment
+  components:
+  - type: SpawnPoint
+    job_id: SpymasterDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+      
 - type: entity
   id: SpawnPointForemanImperial
   parent: SpawnPointJobBase

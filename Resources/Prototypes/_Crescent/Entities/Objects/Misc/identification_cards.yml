@@ -210,6 +210,30 @@
 
 - type: entity
   parent: IDCardStandard
+  id: DSMIDCardSecurity
+  name: imperial ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: SecurityDSM
+    
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardSpymaster
+  name: imperial ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: SpymasterDSM
+    
+- type: entity
+  parent: IDCardStandard
   id: DSMIDCardSurgeon
   name: imperial ID card
   components:

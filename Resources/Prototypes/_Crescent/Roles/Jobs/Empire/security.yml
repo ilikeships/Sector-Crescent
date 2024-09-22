@@ -1,0 +1,38 @@
+- type: job
+  id: SecurityDSM
+  name: job-name-security
+  description: job-description-security
+  playTimeTracker: JobSecurityDSM
+  requirements:
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
+  weight: 20
+  startingGear: SecurityGear
+  alwaysUseSpawner: true
+  icon: "JobIconImperialLevyman"
+  requireAdminNotify: false
+  supervisors: job-supervisors-imperial 
+  canBeAntag: false
+  access:
+  - Command
+  - Empire
+  - EmpireNoble
+  - Maintenance
+  - Service
+  - EmpireSoldier
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: SecurityGear
+  equipment:
+    id: SecurityPDA
+    ears: ClothingHeadsetEmpire
+    jumpsuit: ClothingUniformJumpsuitImperialCombat
+    shoes: ClothingShoesBootsImperialJackboots
+    head: ClothingHeadHatImperialBeret
+    outerClothing: ClothingOuterArmorImperialArmorPrestige
+    gloves: ClothingHandsGlovesImperialLonggloves
+    pocket1: ImperialPassportBareLegit

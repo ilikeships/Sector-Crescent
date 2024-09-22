@@ -312,6 +312,34 @@
 
 - type: entity
   parent: BasePDA
+  id: SecurityPDA
+  name: Baron's Gaurdsman PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardSecurity
+    state: noble
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: noble
+    
+- type: entity
+  parent: BasePDA
+  id: SpymasterPDA
+  name: spymaster's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardSpymaster
+    state: noble
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: noble
+    
+- type: entity
+  parent: BasePDA
   id: ScribePDA
   name: scribe's PDA
   description: Purple for Imperial.

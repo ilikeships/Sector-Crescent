@@ -164,6 +164,7 @@
   weight: 85
   roles:
   - FreeholderDSM
+  - SecurityDSM
   - LevymanDSM
   - KnightDSM
   - WealthDSM
@@ -171,6 +172,7 @@
   - ScribeDSM
   - SurgeonDSM
   - CourtierDSM
+  - SpymasterDSM
   - AdjutantDSM
   - GovernorDSM
   enabled: true

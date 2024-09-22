@@ -71,6 +71,9 @@
   id: JobForemanDSM
 
 - type: playTimeTracker
+  id: JobSpymasterDSM
+  
+- type: playTimeTracker
   id: JobScribeDSM
 
 - type: playTimeTracker

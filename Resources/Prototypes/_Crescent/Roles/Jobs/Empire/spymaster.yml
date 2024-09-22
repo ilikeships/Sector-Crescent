@@ -1,0 +1,44 @@
+- type: job
+  id: SpymasterDSM
+  name: job-name-spymaster
+  description: job-description-spymaster
+  playTimeTracker: JobSpymasterDSM
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 2500
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
+  weight: 25
+  startingGear: SpymasterGear
+  alwaysUseSpawner: true
+  icon: "JobIconImperialCourtier"
+  requireAdminNotify: false
+  supervisors: job-supervisors-imperial 
+  canBeAntag: false
+  access:
+  - Command
+  - Empire
+  - EmpireNoble
+  - Maintenance
+  - LogisticsWealth
+  - Service
+  - EmpireSoldier
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: SpymasterGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitImperialNobleMale
+    back: ClothingBackpackSatchelLeatherFilledDSM
+    shoes: ClothingShoesBootsImperialLongboots
+    mask: ClothingMaskImperialGovernorMask
+    head: ClothingHeadHatImperialHat
+    outerClothing: ClothingOuterCoatImperialParade
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    id: SpymasterPDA
+    ears: ClothingHeadsetEmpire
+    pocket1: ImperialPassportBareLegit
+    pocket2: SpaceCash10000
