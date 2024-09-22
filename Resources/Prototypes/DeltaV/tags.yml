@@ -7,9 +7,6 @@
   id: BulletBB
 
 - type: Tag
-  id: BionicSyrinxImplant
-
-- type: Tag
   id: CartridgeSpecial # For the .38 special ammo and revolver
 
 - type: Tag

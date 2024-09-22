@@ -57,24 +57,6 @@
 
 - type: entity
   noSpawn: true
-  id: SpawnPointGhostNukeOperative
-  name: ghost role spawn point
-  suffix: nukeops
-  parent: MarkerBase
-  components:
-  - type: GhostRole
-    rules: ghost-role-information-nukeop-rules
-  - type: GhostRoleMobSpawner
-    prototype: MobHumanNukeOp
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    layers:
-      - state: green
-      - sprite: Structures/Wallmounts/signs.rsi
-        state: radiation
-
-- type: entity
-  noSpawn: true
   id: SpawnPointLoneNukeOperative
   name: ghost role spawn point
   suffix: loneops
@@ -91,25 +73,6 @@
       - state: green
       - sprite: Structures/Wallmounts/signs.rsi
         state: radiation
-
-- type: entity
-  parent: MarkerBase
-  id: SpawnPointGhostDragon
-  noSpawn: true
-  name: ghost role spawn point
-  suffix: dragon
-  components:
-  - type: GhostRole
-    name: ghost-role-information-space-dragon-name
-    description: ghost-role-information-space-dragon-description
-    rules: ghost-role-component-default-rules
-  - type: GhostRoleMobSpawner
-    prototype: MobDragon
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Mobs/Aliens/Carps/dragon.rsi
-      state: alive
 
 - type: entity
   id: SpawnPointGhostSpaceNinja

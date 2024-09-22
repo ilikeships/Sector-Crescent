@@ -938,22 +938,6 @@
     state: pda-detective
 
 - type: entity
-  parent: BaseMedicalPDA
-  id: BrigmedicPDA
-  name: brigmedic PDA
-  description: I wonder whose pulse is on the screen? I hope he doesnt stop... PDA has a built-in health analyzer.
-  components:
-  - type: Pda
-    id: BrigmedicIDCard
-    state: pda-brigmedic
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentHColor: "#d7d7d0"
-    accentVColor: "#d7d7d0"
-  - type: Icon
-    state: pda-brigmedic
-
-- type: entity
   parent: BasePDA
   id: SeniorEngineerPDA
   name: senior engineer PDA
