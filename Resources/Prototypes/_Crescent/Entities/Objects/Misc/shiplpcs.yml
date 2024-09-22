@@ -478,7 +478,7 @@
   - type: StaticPrice
     price: 22000
   - type: ShipVoucher
-    ship: Gazpachov
+    ship: gazpachov
 
 - type: entity
   parent: BaseItem
