@@ -954,29 +954,6 @@
     state: pda-brigmedic
 
 - type: entity
-  parent: ClownPDA
-  id: CluwnePDA
-  name: cluwne PDA
-  suffix: Unremoveable
-  description: Cursed cluwne PDA.
-  components:
-  - type: Pda
-    id: CluwneIDCard
-    state: pda-cluwne
-  - type: PdaBorderColor
-    borderColor: "#1c8f4d"
-  - type: Icon
-    state: pda-cluwne
-    penSlot:
-      startingItem: CrayonGreen
-      ejectSound: /Audio/Items/bikehorn.ogg
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: Unremoveable
-
-- type: entity
   parent: BasePDA
   id: SeniorEngineerPDA
   name: senior engineer PDA
@@ -1037,18 +1014,6 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
-
-- type: entity
-  parent: SyndiPDA
-  id: PiratePDA
-  name: pirate PDA
-  description: Yargh!
-  components:
-  - type: Pda
-    id: PirateIDCard
-    state: pda-pirate
-  - type: Icon
-    state: pda-pirate
 
 - type: entity
   parent: BaseMedicalPDA

@@ -121,7 +121,6 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-  - type: ZombieImmune
 
 - type: entity
   name: bee
@@ -148,7 +147,6 @@
     - SimpleHostile
   - type: Bloodstream
     bloodMaxVolume: 0.1
-  - type: ZombieImmune
 
 - type: entity
   name: chicken
@@ -381,7 +379,6 @@
         damage: 10
       behaviors:
       - !type:GibBehavior { }
-  - type: NonSpreaderZombie
 
 - type: entity
   name: glockroach
@@ -507,8 +504,6 @@
     grindableSolutionName: food
   - type: ReplacementAccent
     accent: mothroach
-  - type: ZombieAccentOverride
-    accent: zombieMoth
   - type: Vocal
     sounds:
       Male: UnisexMoth
@@ -1282,7 +1277,6 @@
   - type: MonkeyAccent
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-primate
-  - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
     prob: 0.05
     makeSentient: true
@@ -1341,13 +1335,6 @@
   - type: AutoTraitor
     giveUplink: false
     giveObjectives: false
-
-- type: entity
-  id: MobMonkeySyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
-  parent: MobBaseSyndicateMonkey
-  suffix: NukeOps
-  components:
-  - type: NukeOperative
 
 - type: entity
   name: kobold
@@ -1448,7 +1435,6 @@
     spawned:
     - id: FoodMeat
       amount: 2
-  - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-kobold
@@ -1499,13 +1485,6 @@
   - type: AutoTraitor
     giveUplink: false
     giveObjectives: false
-
-- type: entity
-  id: MobKoboldSyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
-  parent: MobBaseSyndicateKobold
-  suffix: NukeOps
-  components:
-  - type: NukeOperative
 
 - type: entity
   name: guidebook monkey
@@ -1665,7 +1644,6 @@
   - type: MobPrice
     price: 50
   - type: BadFood
-  - type: NonSpreaderZombie
   - type: PreventSpiller
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
@@ -2316,51 +2294,6 @@
     - type: GhostTakeoverAvailable
 
 - type: entity
-  name: clown spider
-  parent: MobGiantSpiderAngry
-  id: MobClownSpider
-  description: Combines the two most terrifying things in existence, spiders and clowns.
-  components:
-    - type: Sprite
-      drawdepth: Mobs
-      layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
-        state: clown
-        sprite: Mobs/Animals/clownspider.rsi
-    - type: Butcherable
-      spawned:
-        - id: MaterialBananium1
-          amount: 1
-    - type: DamageStateVisuals
-      states:
-        Alive:
-          Base: clown
-        Dead:
-          Base: dead
-    - type: MobThresholds
-      thresholds:
-        0: Alive
-        180: Dead
-    - type: Spider
-      webPrototype: SpiderWebClown
-    - type: MeleeWeapon
-      angle: 0
-      animation: WeaponArcBite
-      soundHit:
-        path: /Audio/Effects/bite.ogg
-      damage:
-        types:
-          Piercing: 8
-    - type: FootstepModifier
-      footstepSoundCollection:
-        collection: FootstepClownFast
-    - type: Speech
-      speechVerb: Cluwne
-    - type: Bloodstream
-      bloodMaxVolume: 150
-      bloodReagent: Laughter
-
-- type: entity
   name: possum
   parent: SimpleMobBase
   id: MobPossum
@@ -2865,7 +2798,7 @@
 - type: entity
   name: space cat
   id: MobCatSpace
-  parent: SimpleSpaceSuitMobBase
+  parent: SimpleMobBase
   description: Feline pet, prepared for the worst.
   components:
   - type: NpcFactionMember
@@ -3244,7 +3177,6 @@
     baseResistTime: 3
   - type: MobPrice
     price: 60
-  - type: NonSpreaderZombie
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
@@ -3320,91 +3252,3 @@
   - type: NpcFactionMember
     factions:
     - Passive
-
-- type: entity
-  name: diona nymph
-  parent: SimpleMobBase
-  id: MobDionaNymph
-  description: It's like a cat, only.... branch-ier.
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    layers:
-    - map: ["enum.DamageStateVisualLayers.Base"]
-      state: nymph
-      sprite: Mobs/Animals/nymph.rsi
-  - type: Physics
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 100 # High, because wood is heavy.
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: Inventory
-    speciesId: cat
-    templateId: pet
-  - type: InventorySlots
-  - type: Strippable
-  - type: Bloodstream
-    bloodReagent: Sap
-    bloodMaxVolume: 60
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: nymph
-      Critical:
-        Base: nymph_sleep
-      Dead:
-        Base: nymph_dead
-  - type: Butcherable
-    spawned:
-    - id: MaterialWoodPlank1
-      amount: 2
-  - type: InteractionPopup
-    successChance: 0.7
-    interactSuccessString: petting-success-nymph
-    interactFailureString: petting-failure-nymph
-    interactSuccessSound:
-      path: /Audio/Animals/nymph_chirp.ogg
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      30: Critical
-      60: Dead
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 2.5
-    baseSprintSpeed : 4.5
-  - type: Grammar
-    attributes:
-      gender: epicene
-  - type: Speech
-    speechVerb: Plant
-  - type: Tag
-    tags:
-    - DoorBumpOpener
-    - VimPilot
-  - type: Emoting
-  - type: BodyEmotes
-    soundsId: Nymph
-  - type: Reform
-    actionPrototype: DionaReformAction
-    reformTime: 10
-    popupText: diona-reform-attempt
-    reformPrototype: MobDionaReformed
-
-- type: entity
-  parent: MobDionaNymph
-  id: MobDionaNymphAccent # No talky. For non-brain & wild nymphs
-  suffix: Accent
-  components:
-  - type: ReplacementAccent
-    accent: nymph

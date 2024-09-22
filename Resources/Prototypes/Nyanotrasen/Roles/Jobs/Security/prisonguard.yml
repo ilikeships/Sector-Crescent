@@ -24,7 +24,7 @@
   - Captain # Frontier
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, TrackingImplant ]
+    implants: [ TrackingImplant ]
 
 - type: startingGear
   id: PrisonGuardGear

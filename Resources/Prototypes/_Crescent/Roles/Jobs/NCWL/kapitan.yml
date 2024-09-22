@@ -12,7 +12,7 @@
   alwaysUseSpawner: true
   icon: "JobIconCommsOfficer"
   requireAdminNotify: false
-  supervisors: job-supervisors-highcomm 
+  supervisors: job-supervisors-highcomm
   canBeAntag: false
   access:
   - Command
@@ -40,5 +40,5 @@
     pocket1: WeaponPistolHKUSP
     pocket2: NCWLPassportAccepted
     gloves: ClothingHandsGlovesFingerless
-  duffelbag: ClothingBackpackDuffelNCWLFilledSanitar
-  satchel: ClothingBackpackSatchelNCWLFilledSanitar
+  # duffelbag: ClothingBackpackDuffelNCWLFilledSanitar YAMLFIX: This doesn't go here anymore.
+  # satchel: ClothingBackpackSatchelNCWLFilledSanitar

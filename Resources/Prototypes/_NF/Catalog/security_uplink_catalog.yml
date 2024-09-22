@@ -486,23 +486,6 @@
         tags:
           - SecurityUplink
 
-
-- type: listing
-  id: UplinkSecurityAmbuzol
-  name:  uplink-security-ambuzol-name
-  description: uplink-security-ambuzol-desc
-  productEntity: SyringeAmbuzol
-  icon: { sprite: Objects/Specific/Chemistry/syringe.rsi, state: syringe_base0 }
-  cost:
-    FrontierUplinkCoin: 1
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
 - type: listing
   id: UplinkSecurityMedkit
   name:  uplink-security-medkit-name
@@ -940,34 +923,34 @@
         # - SeniorOfficer
         # - Sheriff
 
-- type: listing
-  id: UplinkSecurityEmpGrenadeAmmo
-  name:  uplink-security-emp-ammo-name
-  description: uplink-security-emp-ammo-desc
-  productEntity: BoxEmpGrenadesAmmo
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    FrontierUplinkCoin: 1
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+# - type: listing YAMLFIX: These 2 don't work
+#   id: UplinkSecurityEmpGrenadeAmmo
+#   name:  uplink-security-emp-ammo-name
+#   description: uplink-security-emp-ammo-desc
+#   productEntity: BoxEmpGrenadesAmmo
+#   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+#   cost:
+#     FrontierUplinkCoin: 1
+#   categories:
+#     - UplinkSecurityAmmo
+#   conditions:
+#     - !type:StoreWhitelistCondition
+#       whitelist:
+#         tags:
+#           - SecurityUplink
 
-- type: listing
-  id: UplinkSecurityTrackingDartsAmmo
-  name:  uplink-security-trackingdart-ammo-name
-  description: uplink-security-trackingdart-ammo-desc
-  productEntity: BoxTrackingDartsAmmo
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
-  cost:
-    FrontierUplinkCoin: 1
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+# - type: listing
+#   id: UplinkSecurityTrackingDartsAmmo
+#   name:  uplink-security-trackingdart-ammo-name
+#   description: uplink-security-trackingdart-ammo-desc
+#   productEntity: BoxTrackingDartsAmmo
+#   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+#   cost:
+#     FrontierUplinkCoin: 1
+#   categories:
+#     - UplinkSecurityAmmo
+#   conditions:
+#     - !type:StoreWhitelistCondition
+#       whitelist:
+#         tags:
+#           - SecurityUplink

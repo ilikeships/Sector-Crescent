@@ -21,9 +21,9 @@
     ignoreColor: true
     canEjectStoredMaterials: false
     whitelist:
-    tags:
-    - Sheet
-    - Metal
+      tags:
+      - Sheet
+      - Metal
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
@@ -53,8 +53,8 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - DrugComponent
+      tags:
+      - DrugComponent
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
@@ -374,7 +374,7 @@
       - NCWLAutomortarFlatpackCraft
       - NCWLNeedlerFlatpackCraft
       - WeaponLightMachineGunConscriptCraft
-      - MagazineLightRifleBoxConscriptCraft 
+      - MagazineLightRifleBoxConscriptCraft
       - ClothingOuterHardsuitImperialWorkerCraft
       - ClothingOuterCoatImperialSoftsuitCraft
       - ClothingHeadHelmetImperialEVACraft
@@ -477,9 +477,9 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - Sheet
-    - Metal
+      tags:
+      - Sheet
+      - Metal
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
@@ -509,9 +509,9 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - Sheet
-    - Metal
+      tags:
+      - Sheet
+      - Metal
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
@@ -541,8 +541,8 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - OrganMaterial
+      tags:
+      - OrganMaterial
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active
@@ -571,10 +571,10 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - Sheet
-    - Metal
-    - RawMaterial
+      tags:
+      - Sheet
+      - Metal
+      - RawMaterial
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active
@@ -603,9 +603,9 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - Sheet
-    - Metal
+      tags:
+      - Sheet
+      - Metal
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active
@@ -634,9 +634,9 @@
     ignoreColor: true
     canEjectStoredMaterials: true
     whitelist:
-    tags:
-    - Sheet
-    - Metal
+      tags:
+      - Sheet
+      - Metal
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active

@@ -11,7 +11,7 @@
   alwaysUseSpawner: true
   icon: "JobIconArtificer"
   requireAdminNotify: false
-  supervisors: job-supervisors-highcomm 
+  supervisors: job-supervisors-highcomm
   canBeAntag: false
   access:
   - Command
@@ -36,5 +36,5 @@
     pocket1: WeaponPistolHKUSP
     pocket2: NCWLPassportAccepted
     gloves: ClothingHandsGlovesFingerless
-  duffelbag: ClothingBackpackDuffelNCWLFilledArtificer
-  satchel: ClothingBackpackSatchelNCWLFilledArtificer
+  # duffelbag: ClothingBackpackDuffelNCWLFilledArtificer YAMLFIX: This doesn't go here anymore.
+  # satchel: ClothingBackpackSatchelNCWLFilledArtificer

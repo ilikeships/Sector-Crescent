@@ -30,24 +30,6 @@
         task: SimpleHumanoidHostileCompound
 
 - type: entity
-  name: spirate
-  parent: BaseMobHuman
-  id: MobSpirate
-  description: Yarr!
-  components:
-  - type: NpcFactionMember
-    factions:
-      - Syndicate
-  - type: Loadout
-    prototypes:
-      - PirateGear
-  - type: InputMover
-  - type: MobMover
-  - type: HTN
-    rootTask:
-      task: SimpleHumanoidHostileCompound
-
-- type: entity
   name: syndicate footsoldier
   parent: BaseMobHuman
   id: MobSyndicateFootsoldier
@@ -88,13 +70,3 @@
         Blunt: 19
   - type: Inventory
     templateId: corpse
-
-- type: entity
-  parent: MobHuman
-  id: MobCluwne
-  name: person
-  description: A polymorphed unfortunate.
-  components:
-  - type: Cluwne
-  - type: Speech
-    speechVerb: Cluwne

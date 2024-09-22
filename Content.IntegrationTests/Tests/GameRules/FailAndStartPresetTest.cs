@@ -13,26 +13,6 @@ public sealed class FailAndStartPresetTest
 {
     [TestPrototypes]
     private const string Prototypes = @"
-- type: gamePreset
-  id: TestPreset
-  alias:
-    - nukeops
-  name: Test Preset
-  description: """"
-  showInVote: false
-  rules:
-  - TestRule
-
-- type: gamePreset
-  id: TestPresetTenPlayers
-  alias:
-    - nukeops
-  name: Test Preset 10 players
-  description: """"
-  showInVote: false
-  rules:
-  - TestRuleTenPlayers
-
 - type: entity
   id: TestRule
   parent: BaseGameRule

@@ -38,7 +38,7 @@
     - SRMFighter
 
 - type: npcFaction
-  id: DSMighter
+  id: DSMFighter
   hostile:
     - SRMFighter
     - NCSPFighter

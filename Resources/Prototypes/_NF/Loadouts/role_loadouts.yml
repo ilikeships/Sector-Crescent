@@ -190,7 +190,7 @@
   - ContractorEncryptionKey
   - ContractorFun
   - ContractorTrinkets
-  
+
 - type: roleLoadout
   id: JobBrigmedic
   groups:
@@ -300,50 +300,6 @@
   - ContractorImplanter
   - ContractorFun
   - ContractorTrinkets
-
-# Pirate
-
-- type: roleLoadout
-  id: JobPirate
-  groups:
-#  - PirateHead
-#  - PirateNeck
-  - PirateJumpsuit
-#  - PirateGloves
-  - ContractorBackpack
-#  - PirateOuterClothing
-#  - PirateShoes
-  - PirateFace
-  - PiratePDA
-  - ContractorBoxSurvival
-
-- type: roleLoadout
-  id: JobPirateFirstMate
-  groups:
-#  - PirateHead
-#  - PirateNeck
-  - PirateJumpsuit
-#  - PirateGloves
-  - ContractorBackpack
-#  - PirateOuterClothing
-#  - PirateShoes
-  - PirateFace
-  - PiratePDA
-  - ContractorBoxSurvival
-
-- type: roleLoadout
-  id: JobPirateCaptain
-  groups:
-#  - PirateHead
-#  - PirateNeck
-  - PirateJumpsuit
-#  - PirateGloves
-  - ContractorBackpack
-#  - PirateOuterClothing
-#  - PirateShoes
-  - PirateFace
-  - PiratePDA
-  - ContractorBoxSurvival
 
 # Prisoner
 

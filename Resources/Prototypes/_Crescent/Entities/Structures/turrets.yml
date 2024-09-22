@@ -185,7 +185,6 @@
     - type: InteractionOutline
     - type: Actions
     - type: Fixtures
-    - type: TurretIFF
       fixtures:
         fix1:
           shape:
@@ -196,6 +195,7 @@
             - MachineMask
           layer:
             - MachineLayer
+    - type: TurretIFF
     - type: Sprite
       sprite: _Crescent/Objects/Autoturrets/vulcangatling.rsi
       drawdepth: Mobs
@@ -1409,7 +1409,7 @@
   components:
     - type: NpcFactionMember
       factions:
-        - CMMMWarship
+        - CMMWarship
 
 - type: entity
   parent: BaseWeaponTurretNeedler
@@ -1553,7 +1553,7 @@
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     - type: BallisticAmmoProvider
-      autoCycle: true
+      cycleable: false
       capacity: 10
       proto: TorpGarg
       whitelist:
@@ -1644,7 +1644,7 @@
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     - type: BallisticAmmoProvider
-      autoCycle: true
+      cycleable: false
       capacity: 20
       proto: LanceRocketCartridge
       whitelist:
@@ -1735,7 +1735,7 @@
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/heph.ogg
     - type: BallisticAmmoProvider
-      autoCycle: true
+      cycleable: false
       capacity: 6
       proto: HeavyMortarCartridge
       whitelist:
