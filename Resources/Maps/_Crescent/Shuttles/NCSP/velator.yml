@@ -1324,7 +1324,7 @@ entities:
   - uid: 153
     components:
     - type: Transform
-      pos: -0.09716588,3.6526575
+      pos: -0.8432531,0.8756493
       parent: 1
 - proto: ClothingMaskSyndicateFacemask
   entities:
@@ -1415,6 +1415,13 @@ entities:
     - type: Transform
       pos: 14.484761,1.4634907
       parent: 1
+- proto: ComputerTabletopAdvancedRadar
+  entities:
+  - uid: 13
+    components:
+    - type: Transform
+      pos: -0.5,3.5
+      parent: 1
 - proto: ComputerTabletopIFF
   entities:
   - uid: 151
@@ -1474,6 +1481,13 @@ entities:
         - 422
         - 423
         - 424
+- proto: CrateArtilleryAmmo
+  entities:
+  - uid: 147
+    components:
+    - type: Transform
+      pos: 7.5,-1.5
+      parent: 1
 - proto: CrateMedicalSupplies
   entities:
   - uid: 222
@@ -1481,49 +1495,13 @@ entities:
     - type: Transform
       pos: 9.5,-1.5
       parent: 1
-- proto: CrateUranium
+- proto: CrateSwarmerAmmo
   entities:
-  - uid: 221
+  - uid: 3
     components:
     - type: Transform
       pos: 7.5,-2.5
       parent: 1
-    - type: Lock
-      locked: False
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.8856695
-        - 7.0937095
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 13
-          - 6
-          - 3
-          - 147
-          - 149
-          - 150
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: DrinkRootBeerCan
   entities:
   - uid: 235
@@ -1536,8 +1514,10 @@ entities:
   - uid: 148
     components:
     - type: Transform
-      pos: -0.5,3.5
+      pos: -0.5,0.5
       parent: 1
+    - type: Physics
+      fixedRotation: False
 - proto: FoodBurgerChicken
   entities:
   - uid: 234
@@ -1742,27 +1722,11 @@ entities:
       originalPowerLoad: 1500
 - proto: JugBoriaticFuel
   entities:
-  - uid: 3
+  - uid: 149
     components:
     - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 6
-    components:
-    - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 13
-    components:
-    - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: 12.727818,-1.6775527
+      parent: 1
 - proto: MagazineLightRifleBoxSlug
   entities:
   - uid: 219
@@ -1814,29 +1778,6 @@ entities:
     - type: Transform
       pos: 1.7174146,-2.9422925
       parent: 1
-- proto: MagazineSwarmer
-  entities:
-  - uid: 147
-    components:
-    - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 149
-    components:
-    - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 150
-    components:
-    - type: Transform
-      parent: 221
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: MedkitCombatFilled
   entities:
   - uid: 227
@@ -2081,7 +2022,7 @@ entities:
     - type: MetaData
       name: fire slugthrower
     - type: Transform
-      pos: -0.57274944,3.0728757
+      pos: -0.14012808,0.72706944
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -2094,7 +2035,7 @@ entities:
     - type: MetaData
       name: fire artillery
     - type: Transform
-      pos: -0.3200956,3.0431433
+      pos: -0.124503076,0.2546354
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
@@ -2109,7 +2050,7 @@ entities:
       pos: 9.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 48
@@ -2150,7 +2091,7 @@ entities:
       pos: 7.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 48
@@ -2327,6 +2268,11 @@ entities:
       parent: 1
 - proto: TableReinforced
   entities:
+  - uid: 6
+    components:
+    - type: Transform
+      pos: -0.5,0.5
+      parent: 1
   - uid: 131
     components:
     - type: Transform
@@ -2446,7 +2392,7 @@ entities:
       pos: 8.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 988000
+      startingCharge: 985000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
