@@ -11,6 +11,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Content.Shared.NamedModules.Components;
+using Content.Shared.Chemistry;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -25,7 +26,7 @@ public sealed partial class NavScreen : BoxContainer
     public Action? OnGroup3Pressed;
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
-    public Action? OnRenamePressed;
+    public Action<Dictionary<int,string>>? OnRename;
 
     private EntityUid? _shuttleEntity;
 
@@ -72,7 +73,7 @@ public sealed partial class NavScreen : BoxContainer
             if(button.Text is not null)
                 specialUi.Text = button.Text;
             _editable[index] = specialUi;
-            specialUi.OnTextChanged += _ =>
+            specialUi.OnTextEntered += _ =>
             {
                 button.Text = specialUi.Text;
             };
@@ -92,7 +93,6 @@ public sealed partial class NavScreen : BoxContainer
             foreach (var (index, button) in _buttons)
             {
                 button.Text = _editable[index].Text;
-                namesComp.ButtonNames[index] = _editable[index].Text;
                 ButtonHolder.AddChild(button);
             }
         }
@@ -148,7 +148,15 @@ public sealed partial class NavScreen : BoxContainer
         if (RenameModeToggle)
             ButtonsToEditState();
         else
+        {
+            Dictionary<int, string> namesForButtons = new();
+            foreach(var (index, lineedit) in _editable)
+            {
+                namesForButtons.Add(index, lineedit.Text);
+            }
+            OnRename?.Invoke(namesForButtons);
             ButtonsToReadyState();
+        }
     }
 
     public void SetConsole(EntityUid console)

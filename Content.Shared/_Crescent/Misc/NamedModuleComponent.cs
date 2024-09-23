@@ -14,14 +14,18 @@ public sealed partial class NamedModulesComponent : Component
     [DataField("buttonNames")]
     public Dictionary<int, string> ButtonNames = new();
 
-    [Serializable, NetSerializable]
-    public sealed class SetModulesNamesMessage : BoundUserInterfaceMessage
-    {
-        public readonly Dictionary<int, string> ButtonNamesSent = new();
+}
 
-        public SetModulesNamesMessage(Dictionary<int, string> newNames)
-        {
-            ButtonNamesSent = newNames;
-        }
+[NetSerializable, Serializable]
+public sealed class ModuleNamingChangeEvent : BoundUserInterfaceMessage
+{
+
+    public readonly Dictionary<int, string> NewNames;
+
+    public ModuleNamingChangeEvent(Dictionary<int, string> names)
+    {
+
+        NewNames = names;
     }
 }
+

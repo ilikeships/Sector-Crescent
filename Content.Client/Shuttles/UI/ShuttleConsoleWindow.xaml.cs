@@ -30,6 +30,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public Action? OnGroup3Pressed;
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
+    public Action<Dictionary<int, string>>? OnRename;
 
     private bool _updatedOnce;
 
@@ -78,6 +79,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();
         NavContainer.OnGroup4Pressed += () => OnGroup4Pressed?.Invoke();
         NavContainer.OnGroup5Pressed += () => OnGroup5Pressed?.Invoke();
+        NavContainer.OnRename += (args) => OnRename?.Invoke(args);
     }
 
     private void ClearModes(ShuttleConsoleMode mode)
