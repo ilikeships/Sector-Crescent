@@ -848,11 +848,15 @@ entities:
         all:
         - 126
         - 124
+        - invalid
+        - invalid
         - 232
         - 240
         missiles:
         - 126
         - 124
+        - invalid
+        - invalid
         missiles rear:
         - 240
         - 232

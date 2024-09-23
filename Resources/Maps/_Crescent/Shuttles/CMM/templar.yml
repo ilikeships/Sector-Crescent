@@ -2270,6 +2270,7 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
+        - invalid
         - 680
         - 672
         - 696
@@ -2278,6 +2279,8 @@ entities:
         - 699
         - 305
         - 242
+        gatling:
+        - invalid
         ballistic:
         - 680
         - 672

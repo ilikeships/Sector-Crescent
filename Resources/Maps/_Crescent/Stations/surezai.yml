@@ -11809,362 +11809,362 @@ entities:
     - type: Transform
       pos: 25.5,-23.5
       parent: 1
-# - proto: GasVentPump
-#   entities:
-#   - uid: 559
-#     components:
-#     - type: Transform
-#       rot: 1.5707963267948966 rad
-#       pos: 14.5,-20.5
-#       parent: 1
-  # - uid: 1577
-  #   components:
-  #   - type: Transform
-  #     pos: 15.5,18.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1578
-  #   components:
-  #   - type: Transform
-  #     rot: 1.5707963267948966 rad
-  #     pos: 11.5,21.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1580
-  #   components:
-  #   - type: Transform
-  #     rot: 3.141592653589793 rad
-  #     pos: 0.5,1.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1648
-  #   components:
-  #   - type: Transform
-  #     rot: -1.5707963267948966 rad
-  #     pos: 8.5,8.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1664
-  #   components:
-  #   - type: Transform
-  #     rot: -1.5707963267948966 rad
-  #     pos: 12.5,9.5
-  #     parent: 1
-  # - uid: 1733
-  #   components:
-  #   - type: Transform
-  #     rot: 3.141592653589793 rad
-  #     pos: 15.5,0.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1737
-  #   components:
-  #   - type: Transform
-  #     rot: 3.141592653589793 rad
-  #     pos: 47.5,15.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1738
-  #   components:
-  #   - type: Transform
-  #     pos: 47.5,-7.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-#   - uid: 1741
-#     components:
-#     - type: Transform
-#       rot: 1.5707963267948966 rad
-#       pos: 7.5,-4.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-#   - uid: 1743
-#     components:
-#     - type: Transform
-#       rot: 3.141592653589793 rad
-#       pos: 22.5,-7.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-#   - uid: 1794
-#     components:
-#     - type: Transform
-#       pos: 26.5,0.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-# - proto: GasVentScrubber
-#   entities:
-#   - uid: 1576
-#     components:
-#     - type: Transform
-#       rot: 1.5707963267948966 rad
-#       pos: 17.5,18.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-#   - uid: 1579
-#     components:
-#     - type: Transform
-#       rot: -1.5707963267948966 rad
-#       pos: 8.5,21.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-#   - uid: 1581
-#     components:
-#     - type: Transform
-#       rot: 3.141592653589793 rad
-#       pos: 4.5,1.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-#   - uid: 1649
-#     components:
-#     - type: Transform
-#       rot: 3.141592653589793 rad
-#       pos: 7.5,6.5
-#       parent: 1
-#     - type: DeviceNetwork
-#       configurators:
-#       - invalid
-#       deviceLists:
-#       - 3245
-#       - 3246
-#       - 3247
-#       - 3248
-#       - 3249
-#       - 3250
-#       - 3251
-  # - uid: 1665
-  #   components:
-  #   - type: Transform
-  #     rot: 1.5707963267948966 rad
-  #     pos: 12.5,10.5
-  #     parent: 1
-  # - uid: 1731
-  #   components:
-  #   - type: Transform
-  #     rot: 3.141592653589793 rad
-  #     pos: 16.5,2.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1735
-  #   components:
-  #   - type: Transform
-  #     rot: -1.5707963267948966 rad
-  #     pos: 27.5,2.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1736
-  #   components:
-  #   - type: Transform
-  #     pos: 38.5,16.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1739
-  #   components:
-  #   - type: Transform
-  #     rot: 3.141592653589793 rad
-  #     pos: 38.5,-8.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1740
-  #   components:
-  #   - type: Transform
-  #     pos: 12.5,-3.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
-  # - uid: 1742
-  #   components:
-  #   - type: Transform
-  #     pos: 15.5,-6.5
-  #     parent: 1
-  #   - type: DeviceNetwork
-  #     configurators:
-  #     - invalid
-  #     deviceLists:
-  #     - 3245
-  #     - 3246
-  #     - 3247
-  #     - 3248
-  #     - 3249
-  #     - 3250
-  #     - 3251
+- proto: GasVentPump
+  entities:
+  - uid: 559
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 14.5,-20.5
+      parent: 1
+  - uid: 1577
+    components:
+    - type: Transform
+      pos: 15.5,18.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1578
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 11.5,21.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1580
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,1.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1648
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 8.5,8.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1664
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 12.5,9.5
+      parent: 1
+  - uid: 1733
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 15.5,0.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1737
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 47.5,15.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1738
+    components:
+    - type: Transform
+      pos: 47.5,-7.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1741
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 7.5,-4.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1743
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 22.5,-7.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1794
+    components:
+    - type: Transform
+      pos: 26.5,0.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+- proto: GasVentScrubber
+  entities:
+  - uid: 1576
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 17.5,18.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1579
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 8.5,21.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1581
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,1.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1649
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 7.5,6.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1665
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 12.5,10.5
+      parent: 1
+  - uid: 1731
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 16.5,2.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1735
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 27.5,2.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1736
+    components:
+    - type: Transform
+      pos: 38.5,16.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1739
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 38.5,-8.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1740
+    components:
+    - type: Transform
+      pos: 12.5,-3.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
+  - uid: 1742
+    components:
+    - type: Transform
+      pos: 15.5,-6.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 3245
+      - 3246
+      - 3247
+      - 3248
+      - 3249
+      - 3250
+      - 3251
 - proto: GeneratorBasic15kW
   entities:
   - uid: 625
@@ -15870,6 +15870,8 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
+        invalid:
+        - Pressed: Toggle
         1342:
         - Pressed: Toggle
         1343:

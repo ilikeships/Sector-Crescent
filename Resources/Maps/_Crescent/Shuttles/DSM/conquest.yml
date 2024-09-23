@@ -310,20 +310,20 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,2.5
       parent: 1
-# - proto: ComputerShuttle YAMLFIX: Saved with an invalid attribute
-#   entities:
-#   - uid: 32
-#     components:
-#     - type: Transform
-#       pos: 0.5,4.5
-#       parent: 1
-#     - type: DeviceLinkSource
-#       linkedPorts:
-#         invalid: []
-#         39:
-#         - Group1: Toggle
-#         40:
-#         - Group2: Toggle
+- proto: ComputerShuttle
+  entities:
+  - uid: 32
+    components:
+    - type: Transform
+      pos: 0.5,4.5
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        invalid: []
+        39:
+        - Group1: Toggle
+        40:
+        - Group2: Toggle
 - proto: JugBoriaticFuel
   entities:
   - uid: 73
