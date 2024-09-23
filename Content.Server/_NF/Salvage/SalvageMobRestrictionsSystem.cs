@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Body.Components;
 using Content.Server.Body.Systems;
+using Robust.Shared.Physics.Collision;
 
 namespace Content.Server._NF.Salvage;
 
@@ -68,6 +69,9 @@ public sealed class SalvageMobRestrictionsSystem : EntitySystem
     {
         foreach (EntityUid target in component.MobsToKill)
         {
+            if (!target.IsValid())
+                continue;
+
             if (TryComp(target, out BodyComponent? body))
             {
                 // Just because.

@@ -118,7 +118,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("roundAnnouncement");
             _prototypeManager.RegisterIgnore("wireLayout");
             _prototypeManager.RegisterIgnore("alertLevels");
-            _prototypeManager.RegisterIgnore("nukeopsRole");
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();

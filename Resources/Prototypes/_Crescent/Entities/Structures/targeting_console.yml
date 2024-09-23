@@ -27,8 +27,8 @@
   - type: WorldLoader
     radius: 256
   - type: DeviceLinkSource
-    ports:
-      - TargetingConsoleOutput
+    # ports:
+    #   - TargetingConsoleOutput YAMLFIX: This doesn't exist as a SourcePortPrototype
 
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerTargeting]

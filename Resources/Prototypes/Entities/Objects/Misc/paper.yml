@@ -219,9 +219,9 @@
   - type: CargoBountyLabel
   - type: StaticPrice
     price: 0
-  - type: GuideHelp
-    guides:
-    - CargoBounties
+  # - type: GuideHelp #YAMLFIX: Is there not supposed to be a guide for this?
+  #   guides:
+  #   - CargoBounties
 
 - type: entity
   name: character sheet

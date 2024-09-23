@@ -112,9 +112,9 @@
     nameSegments:
     - RegalRatNameKingdom
     - RegalRatNameTitle
-  - type: GuideHelp
-    guides:
-    - MinorAntagonists
+  # - type: GuideHelp #YAMLFIX: No guidebook page.
+  #   guides:
+  #   - MinorAntagonists
   - type: Grammar
     attributes:
       gender: male
@@ -151,9 +151,9 @@
     speedModifierThresholds:
       200: 0.7
       250: 0.5
-  - type: GuideHelp
-    guides:
-    - MinorAntagonists
+  # - type: GuideHelp #YAMLFIX: No guidebook page.
+  #   guides:
+  #   - MinorAntagonists
 
 - type: entity
   name: Rat Servant
@@ -281,9 +281,9 @@
     isBoss: false
   - type: Speech
     speechVerb: SmallMob
-  - type: GuideHelp
-    guides:
-    - MinorAntagonists
+  # - type: GuideHelp #YAMLFIX: No guidebook page.
+  #   guides:
+  #   - MinorAntagonists
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning

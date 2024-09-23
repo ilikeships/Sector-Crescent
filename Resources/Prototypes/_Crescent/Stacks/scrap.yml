@@ -37,7 +37,7 @@
 - type: stack
   id: GarbageOre
   name: industrial garbage
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: icon-garbage }
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: garbage }
   spawn: GarbageOre1
   maxCount: 30
   itemSize: 2
@@ -49,3 +49,37 @@
   spawn: RefinedGarbageOre1
   maxCount: 30
   itemSize: 2
+
+#YAMLFIX: make sure these are right and put them in a category
+
+- type: stack
+  id: PlasmaIsotope
+  name: plasma-9 isotope
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: plasma }
+  spawn: PlasmaIsotope1
+  maxCount: 30
+  itemSize: 5
+
+- type: stack
+  id: MechaniteCanister
+  name: mechanites
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: mechanites }
+  spawn: MechaniteCanister1
+  maxCount: 30
+  itemSize: 5
+
+- type: stack
+  id: GalineCanister
+  name: galine
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: galine5 }
+  spawn: GalineCanister1
+  maxCount: 30
+  itemSize: 5
+
+- type: stack
+  id: PhoronBottle
+  name: phoron
+  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: deactivatedphoron }
+  spawn: DeactivatedPhoronBottle1
+  maxCount: 30
+  itemSize: 5

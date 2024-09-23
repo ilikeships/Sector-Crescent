@@ -155,3 +155,12 @@
 
 - type: playTimeTracker
   id: JobAntiquarian
+
+- type: playTimeTracker
+  id: JobContractor
+
+- type: playTimeTracker
+  id: JobPilot
+
+- type: playTimeTracker
+  id: JobMercenary

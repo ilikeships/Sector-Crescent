@@ -32,15 +32,3 @@
     - state: idintern-service
   - type: PresetIdCard
     job: Valet
-
-- type: entity
-  parent: IDCardStandard
-  id: GuardIDCard
-  name: guard ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: idsecurityofficer
-  - type: PresetIdCard
-    job: PrisonGuard

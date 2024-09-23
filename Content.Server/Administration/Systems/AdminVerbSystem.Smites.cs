@@ -23,7 +23,6 @@ using Content.Shared.Administration.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Clothing.Components;
-using Content.Shared.Cluwne;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -536,22 +535,6 @@ public sealed partial class AdminVerbSystem
                 Message = Loc.GetString("admin-smite-kill-sign-description")
             };
             args.Verbs.Add(killSign);
-
-            Verb cluwne = new()
-            {
-                Text = "Cluwne",
-                Category = VerbCategory.Smite,
-
-                Icon = new SpriteSpecifier.Rsi(new ("/Textures/Clothing/Mask/cluwne.rsi"), "icon"),
-
-                Act = () =>
-                {
-                    EnsureComp<CluwneComponent>(args.Target);
-                },
-                Impact = LogImpact.Extreme,
-                Message = Loc.GetString("admin-smite-cluwne-description")
-            };
-            args.Verbs.Add(cluwne);
 
             Verb maiden = new()
             {

@@ -10,7 +10,7 @@
     WeaponPistolT91: 3
     ClothingBeltNCWLWebbingMedFilled: 6
     ClothingBeltNCWLWebbingFilledGrenadier: 6
-    BoxLethalShot: 10
+    # BoxLethalShot: 10 YAMLFIX: What is the correct prototype?
     BoxShotgunSlug: 10
     MagazinePistol: 25
     MagazineRifle: 25

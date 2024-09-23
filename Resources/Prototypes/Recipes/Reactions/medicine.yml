@@ -207,28 +207,6 @@
     Phalanximine: 3
 
 - type: reaction
-  id: Ambuzol
-  reactants:
-    Dylovene:
-      amount: 1
-    Ammonia:
-      amount: 1
-    ZombieBlood:
-      amount: 2
-  products:
-    Ambuzol: 4
-
-- type: reaction
-  id: AmbuzolPlus
-  reactants:
-    Ambuzol:
-      amount: 5
-    Omnizine:
-      amount: 5
-  products:
-    AmbuzolPlus: 10
-
-- type: reaction
   id: Synaptizine
   reactants:
     Lithium:
@@ -561,7 +539,7 @@
   id: Opporozidone
   minTemp: 400 #Maybe if a method of reducing reagent temp exists one day, this could be -50
   reactants:
-    Cognizine: 
+    Cognizine:
       amount: 1
     Plasma:
       amount: 2

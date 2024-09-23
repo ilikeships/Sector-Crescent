@@ -121,10 +121,8 @@
       - id: ExtendedEmergencyOxygenTankFilled
       - id: SpaceMedipen
       - id: EmergencyMedipen
-      ##- id: Flare
       - id: FoodPSB
       - id: DrinkWaterBottleFull
-      - id: EncryptionKeyTraffic  # Frontier
   - type: Sprite
     layers:
       - state: internals

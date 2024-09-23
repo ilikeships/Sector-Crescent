@@ -9,7 +9,7 @@
   components:
   - type: HumanoidAppearance
     species: Skeleton
-  - type: Carriable # Carrying system from nyanotrasen.  
+  - type: Carriable # Carrying system from nyanotrasen.
   - type: Icon
     sprite: Mobs/Species/Skeleton/parts.rsi
     state: full
@@ -47,7 +47,6 @@
       80: 0.7
   - type: Speech
     speechVerb: Skeleton
-  - type: ZombieImmune
   - type: Vocal
     sounds:
       Male: Skeleton

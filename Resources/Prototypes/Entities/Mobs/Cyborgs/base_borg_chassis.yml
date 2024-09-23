@@ -95,7 +95,6 @@
     - Binary
     - Common
     - Science
-  - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
     allowSelfRepair: false
@@ -232,7 +231,6 @@
 #  - type: AccessReader
 #    access: [["Command"], ["Research"]]
   - type: ShowJobIcons
-  - type: ShowMindShieldIcons
 
 - type: entity
   id: BaseBorgChassisSyndicate
@@ -262,7 +260,6 @@
   - type: ActiveRadio
     channels:
     - Syndicate
-  - type: ShowSyndicateIcons
   - type: MovementAlwaysTouching
   - type: Speech
     speechSounds: SyndieBorg

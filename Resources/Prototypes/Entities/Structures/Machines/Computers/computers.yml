@@ -850,9 +850,9 @@
     color: "#b89f25"
   - type: AccessReader
     access: [["Quartermaster"]]
-  - type: GuideHelp
-    guides:
-    - CargoBounties
+  # - type: GuideHelp #YAMLFIX: Is there not supposed to be a guide for this?
+  #   guides:
+  #   - CargoBounties
 
 - type: entity
   parent: BaseComputer

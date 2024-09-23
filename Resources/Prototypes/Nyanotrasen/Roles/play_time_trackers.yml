@@ -6,7 +6,3 @@
 
 - type: playTimeTracker
   id: JobValet
-
-- type: playTimeTracker
-  id: JobPrisonGuard
-

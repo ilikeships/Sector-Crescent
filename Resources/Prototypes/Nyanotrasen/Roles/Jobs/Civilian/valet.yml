@@ -16,9 +16,6 @@
   - External # Frontier
   - Service
   - Frontier # Frontier
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
 
 - type: startingGear
   id: ValetGear

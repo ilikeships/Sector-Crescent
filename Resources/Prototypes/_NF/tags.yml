@@ -50,9 +50,6 @@
   id: Mustard
 
 - type: Tag
-  id: PrizeTicket
-
-- type: Tag
   id: Mail
 
 - type: Tag
@@ -72,7 +69,7 @@
 
 - type: Tag
   id: SalvageOutpost
-  
+
 - type: Tag
   id: HoverbikeKeys
 

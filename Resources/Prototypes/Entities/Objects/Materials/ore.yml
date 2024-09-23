@@ -41,8 +41,6 @@
   name: gold ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 2340
   - type: Stack
     stackType: GoldOre
   - type: Sprite
@@ -65,8 +63,6 @@
   id: GoldOre1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 95
   - type: Stack
     count: 1
 
@@ -76,8 +72,6 @@
   name: iron ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 750
   - type: Stack
     stackType: SteelOre
   - type: Sprite
@@ -100,8 +94,6 @@
   parent: SteelOre
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 23
   - type: Stack
     count: 1
 
@@ -111,8 +103,6 @@
   name: plasma ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 5900
   - type: Stack
     stackType: PlasmaOre
   - type: Sprite
@@ -140,8 +130,6 @@
   id: PlasmaOre1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 200
   - type: Stack
     count: 1
 
@@ -151,8 +139,6 @@
   name: silver ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 3400
   - type: Stack
     stackType: SilverOre
   - type: Sprite
@@ -175,8 +161,6 @@
   id: SilverOre1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 110
   - type: Stack
     count: 1
 
@@ -186,8 +170,6 @@
   name: space quartz
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 1400
   - type: Stack
     stackType: SpaceQuartz
   - type: Sprite
@@ -210,8 +192,6 @@
   id: SpaceQuartz1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 47
   - type: Stack
     count: 1
 
@@ -221,8 +201,6 @@
   name: uranium ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 4850
   - type: Stack
     stackType: UraniumOre
   - type: Sprite
@@ -253,8 +231,6 @@
   id: UraniumOre1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 189
   - type: Stack
     count: 1
 
@@ -264,8 +240,6 @@
   name: bananium ore
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 3000
   - type: Stack
     stackType: BananiumOre
   - type: Sprite
@@ -297,8 +271,6 @@
   id: BananiumOre1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 100
   - type: Stack
     count: 1
 
@@ -308,8 +280,6 @@
   name: coal
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 1300
   - type: Stack
     stackType: Coal
   - type: Sprite
@@ -340,8 +310,6 @@
   id: Coal1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 45
   - type: Stack
     count: 1
 
@@ -351,8 +319,6 @@
   name: salt
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 2200
   - type: Stack
     stackType: SaltOre
   - type: Sprite
@@ -377,8 +343,6 @@
   id: Salt1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 80
   - type: Stack
     count: 1
 

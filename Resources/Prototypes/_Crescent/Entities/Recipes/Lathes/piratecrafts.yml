@@ -213,7 +213,7 @@
   materials:
     Plastic: 1000
     Gold: 500
-    Diamond: 250
+    # Diamond: 250 YAMLFIX: Not a real material
     Silver: 750
     Uranium: 1000
 
@@ -223,7 +223,7 @@
   completetime: 4
   materials:
     Steel: 500
-    Diamond: 750
+    # Diamond: 750 YAMLFIX: Not a real material
     Plasma: 250
     Silver: 100
 

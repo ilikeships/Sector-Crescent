@@ -165,16 +165,6 @@
   group: market
 
 - type: cargoProduct
-  id: ServiceAnimalCarrier
-  icon:
-    sprite: Objects/Storage/petcarrier.rsi
-    state: icon
-  product: PetCarrier
-  cost: 500
-  category: cargoproduct-category-name-service
-  group: market
-
-- type: cargoProduct
   id: JanitorExplosive
   abstract: true # Frontier
   icon:

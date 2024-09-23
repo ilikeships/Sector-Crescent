@@ -4,7 +4,6 @@
   noSpawn: true
   components:
   - type: ShowJobIcons
-  - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons
 
 
@@ -180,7 +179,6 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
-  - type: ShowSyndicateIcons
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons]
@@ -201,7 +199,6 @@
     - Biological
   - type: ShowHungerIcons
   - type: ShowThirstIcons
-  - type: ShowSyndicateIcons
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons]
@@ -213,7 +210,6 @@
     sprite: Clothing/Eyes/Hud/synd.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/synd.rsi
-  - type: ShowSyndicateIcons
   - type: Contraband #frontier
 
 - type: entity
@@ -226,7 +222,6 @@
     sprite: Clothing/Eyes/Hud/syndagent.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/syndagent.rsi
-  - type: ShowSyndicateIcons
   - type: ShowHealthBars
     damageContainers:
     - Biological

@@ -12,7 +12,7 @@
     ClothingMaskSyndicateFacemask: 10
     ClothingShoesBootsImperialJackboots: 10
     ClothingHandsGlovesImperialLonggloves: 10
-    ShoesBootsJack: 10
+    ClothingShoesBootsJack: 10 #YAMLFIX: What the fuck are these supposed to be?
     FoodSnackNutribrick: 10
     DrinkMREFlask: 10
     WeaponGrapplingGun: 15

@@ -15,7 +15,7 @@
 #  mapName: 'NCWL Clementine'
 #  mapPath: /Maps/_Crescent/Shuttles/NCWL/clementine.yml
 #  minPlayers: 0
-#  stations: 
+#  stations:
 #    Clementine:
 #      stationProto: StandardFrontierVessel
 #      components:

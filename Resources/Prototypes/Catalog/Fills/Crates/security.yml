@@ -99,18 +99,4 @@
         amount: 2
       - id: ClothingMaskSterile
         amount: 2
-
-- type: entity
-  id: CrateSecurityTrackingMindshieldImplants
-  name: implanter crate
-  description: Contains 4 MindShield implants and 4 tracking implant. Requires Security access to open.
-  parent: CrateSecgear
-  components:
-  - type: StorageFill
-    contents:
-      - id: MindShieldImplanter
-        amount: 4
-      - id: TrackingImplanter
-        amount: 4
-
 # Cosmetic Crates

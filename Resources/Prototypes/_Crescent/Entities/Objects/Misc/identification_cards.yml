@@ -552,3 +552,33 @@
     - state: idquartermaster
   - type: PresetIdCard
     job: Antiquarian
+
+- type: entity
+  parent: IDCardStandard
+  id: MercenaryIDCard
+  name: mercenary ID card
+  components:
+  - type: PresetIdCard
+    job: Mercenary
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idmercenary
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi
+
+- type: entity
+  parent: IDCardStandard
+  id: PilotIDCard
+  name: pilot ID card
+  components:
+  - type: PresetIdCard
+    job: Pilot
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idpilot
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi

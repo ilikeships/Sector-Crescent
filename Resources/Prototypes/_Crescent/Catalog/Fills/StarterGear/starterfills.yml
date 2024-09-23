@@ -90,9 +90,9 @@
       - id: trayScanner
       - id: CableMVStack
       - id: CableHVStack
-      - id: CableApcStack
-      - id: SheetSteel
-      - id: SheetGlass
+      # - id: CableApcStack # Not enough room for these
+      # - id: SheetSteel
+      # - id: SheetGlass
 
 - type: entity
   noSpawn: true
@@ -200,9 +200,9 @@
       - id: trayScanner
       - id: CableMVStack
       - id: CableHVStack
-      - id: CableApcStack
-      - id: SheetSteel
-      - id: SheetGlass
+      # - id: CableApcStack # These don't fit
+      # - id: SheetSteel
+      # - id: SheetGlass
 
 - type: entity
   noSpawn: true

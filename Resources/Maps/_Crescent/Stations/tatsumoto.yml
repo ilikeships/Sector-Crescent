@@ -17504,17 +17504,6 @@ entities:
     - type: Transform
       pos: 35.718452,-24.967817
       parent: 1
-- proto: NewtonCradle
-  entities:
-  - uid: 1374
-    components:
-    - type: Transform
-      pos: -37.493095,14.466
-      parent: 1
-    - type: ItemToggle
-      activated: True
-    - type: ItemToggleActiveSound
-      playingStream: invalid
 - proto: NFAshtray
   entities:
   - uid: 1797
