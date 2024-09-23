@@ -421,7 +421,7 @@
         priority: 1
         whitelist:
           tags:
-            - CartridgeShellArmorPiercing
+            - CartridgeShell
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -443,7 +443,7 @@
   - type: BatterySelfRecharger
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Tag
     tags:
     - Wall
@@ -460,7 +460,7 @@
 
 - type: entity
   id: HardlineBeamPulser
-  name: NT-9 3100c 'Hardliner' plasma lance turret 
+  name: NT-9 3100c 'Hardliner' plasma lance turret
   parent: ConstructibleMachine
   description: A ship-mounted, fixed-point artillery turret using military laser technology as a base - an outdated model from the now-defunct NanoTrasen, although tried and tested in many battles. Requires upkeep in the form of liquid coolant to stay operational.
   placement:
@@ -513,7 +513,7 @@
   - type: ExaminableBattery
   - type: BasicEntityAmmoProvider
     proto: BulletMachineGunPlasmaShuttleLarge
-    fireCost: 25000
+    # fireCost: 25000 YAMLFIX: This needs to be set on a different component I think
   - type: ItemSlots
   - type: ContainerContainer
     containers:
@@ -526,9 +526,9 @@
   - type: DeviceLinkSink
   - type: AutoShootGun
   - type: GunSignalControl
-    ports:
-      - Toggle
-      - Trigger
+    # ports: YAMLFIX: These don't exist on this component.
+    #   - Toggle
+    #   - Trigger
   - type: DeviceLinkSource
     ports:
       - SpaceArtilleryDetectedFiring
@@ -561,7 +561,7 @@
                 - Stack
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 1000
   - type: ExtensionCableReceiver
@@ -622,7 +622,7 @@
     startingCharge: 1000000
   - type: ExaminableBattery
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 2
     proto: CartridgeShellArmorPiercing
     whitelist:
@@ -663,7 +663,7 @@
     isPowerRequiredToFire: false
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: ExtensionCableReceiver
@@ -730,7 +730,7 @@
     startingCharge: 1000000
   - type: ExaminableBattery
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 1
     proto: CartridgeRailHighExplosive
     whitelist:
@@ -787,7 +787,7 @@
                 - Stack
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 6000
   - type: ExtensionCableReceiver
@@ -915,7 +915,7 @@
   - type: BatterySelfRecharger
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Tag
     tags:
     - Wall

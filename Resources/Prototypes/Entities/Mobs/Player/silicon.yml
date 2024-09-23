@@ -48,7 +48,6 @@
     - SyndicateSaws
   - type: AccessReader
     access: [["SyndicateAgent"], ["NuclearOperative"], ["SyndicateBasic"], ["SyndicateSaws"]]
-  - type: NukeOperative
   - type: ContainerFill
     containers:
       borg_brain:

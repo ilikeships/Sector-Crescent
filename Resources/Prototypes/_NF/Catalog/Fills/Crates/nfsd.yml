@@ -100,17 +100,4 @@
       - id: ClothingMaskSterile
         amount: 2
 
-- type: entity
-  id: CrateNfsdImplants
-  name: nfsd implanter crate
-  description: Contains 4 MindShield implants and 4 tracking implant. Requires Security access to open.
-  parent: CrateNfsdSecure2
-  components:
-  - type: StorageFill
-    contents:
-      - id: MindShieldImplanter
-        amount: 4
-      - id: TrackingImplanter
-        amount: 4
-
 # Cosmetic Crates

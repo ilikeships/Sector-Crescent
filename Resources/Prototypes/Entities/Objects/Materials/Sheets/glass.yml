@@ -10,8 +10,6 @@
   - type: Item
     sprite: Objects/Materials/Sheets/glass.rsi
     size: Normal
-  - type: StaticPrice
-    price: 0
   - type: Tag
     tags:
     - Sheet
@@ -85,8 +83,6 @@
         reagents:
         - ReagentId: Silicon
           Quantity: 10
-  - type: StaticPrice
-    price: 210
 
 - type: entity
   parent: SheetGlass
@@ -98,8 +94,6 @@
   - type: Stack
     stackType: Glass
     count: 10
-  - type: StaticPrice
-    price: 70
 
 - type: entity
   parent: SheetGlass
@@ -111,8 +105,6 @@
   - type: Stack
     stackType: Glass
     count: 1
-  - type: StaticPrice
-    price: 7
 
 - type: entity
   parent: SheetGlass
@@ -177,8 +169,6 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: StaticPrice
-    price: 480
 
 - type: entity
   parent: SheetRGlass
@@ -204,8 +194,6 @@
         - ReagentId: Carbon
           Quantity: 0.5
         canReact: false
-  - type: StaticPrice
-    price: 16
 
 - type: entity
   parent: SheetGlassBase
@@ -258,8 +246,6 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: StaticPrice
-    price: 900
 
 - type: entity
   parent: SheetPGlass
@@ -283,8 +269,6 @@
         - ReagentId: Plasma
           Quantity: 10
         canReact: false
-  - type: StaticPrice
-    price: 30
 
 - type: entity
   parent: SheetPGlass
@@ -328,8 +312,6 @@
         - ReagentId: Carbon
           Quantity: 0.5
         canReact: false
-  - type: StaticPrice
-    price: 1200
 
 - type: entity
   parent: SheetRPGlass
@@ -342,8 +324,6 @@
   - type: Stack
     stackType: ReinforcedPlasmaGlass
     count: 1
-  - type: StaticPrice
-    price: 40
 
 - type: entity
   parent: SheetGlassBase
@@ -407,8 +387,6 @@
         - ReagentId: Uranium
           Quantity: 10
         canReact: false
-  - type: StaticPrice
-    price: 960
 
 - type: entity
   parent: SheetUGlass
@@ -421,8 +399,6 @@
   - type: Stack
     stackType: UraniumGlass
     count: 1
-  - type: StaticPrice
-    price: 32
 
 - type: entity
   parent: SheetUGlass
@@ -465,8 +441,6 @@
         - ReagentId: Carbon
           Quantity: 0.5
         canReact: false
-  - type: StaticPrice
-    price: 1900
 
 - type: entity
   parent: SheetRUGlass
@@ -479,8 +453,6 @@
   - type: Stack
     stackType: ReinforcedUraniumGlass
     count: 1
-  - type: StaticPrice
-    price: 65
 
 - type: entity
   parent: SheetGlassBase

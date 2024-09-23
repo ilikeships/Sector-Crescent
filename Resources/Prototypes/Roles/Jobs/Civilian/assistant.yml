@@ -2,13 +2,13 @@
   id: Passenger
   name: job-name-passenger
   description: job-description-passenger
-  playTimeTracker: JobPassengerOld
+  playTimeTracker: JobPassenger
   setPreference: false # Frontier
   startingGear: PassengerGear
   icon: "JobIconPassenger"
 #  supervisors: job-supervisors-everyone
-  accessGroups: # Frontier
-  - GeneralAccess # Frontier
+  accessGroups:
+  - GeneralAccess
 
 - type: startingGear
   id: PassengerGear

@@ -28,20 +28,6 @@
  # - Visitor
  # - Zookeeper
  # - ServiceWorker
- # - Contractor # Frontier
- # - Mercenary # Frontier
- # - Pilot # Frontier
- # - Captain # Frontier
- # - ChiefEngineer # Frontier
- # - AtmosphericTechnician # Frontier
- # - StationEngineer # Frontier
- # - TechnicalAssistant # Frontier
- # - ResearchDirector # Frontier
- # - Scientist # Frontier
- # - ResearchAssistant # Frontier
- # - Quartermaster # Frontier
- # - CargoTechnician # Frontier
- # - SalvageSpecialist # Frontier
   enabled: false
 
 - type: department
@@ -54,9 +40,6 @@
   - HeadOfPersonnel # Not shown but needed here for playtime
   - HeadOfSecurity # Not shown but needed here for playtime
 #  - ChiefMedicalOfficer
-  - StationRepresentative # Frontier
-  - Sheriff  # Frontier
-  - StationTrafficController # Frontier
   primary: false
   weight: 100
   enabled: false
@@ -81,20 +64,11 @@
   color: "#DE3A3A"
   weight: 20
   roles:
-  - Detective # Frontier - No Longer Usable
-  - HeadOfSecurity # Frontier - No Longer Usable
-  - SecurityCadet # Frontier - No Longer Usable
-  - SecurityOfficer # Frontier - No Longer Usable
-  - Warden # Frontier - No Longer Usable
-  - PrisonGuard ##nyano
-  - Brigmedic # Frontier
-#  - SecurityGuard # Frontier
-  - DetectiveNF # Frontier
-  - Cadet # Frontier
-  - Deputy # Frontier
-  - Bailiff # Frontier
-  - Sheriff # Frontier
-  - SeniorOfficer # Frontier
+  - Detective
+  - HeadOfSecurity
+  - SecurityCadet
+  - SecurityOfficer
+  - Warden
   enabled: false
 
 - type: department
@@ -110,19 +84,6 @@
   color: "#9FED58"
   weight: -91
   primary: false
-
-- type: department
-  id: Antag
-  description: department-Security-description
-  color: "#DE3A3A"
-  weight: -11
-  roles:
-  - PirateCaptain
-  - PirateFirstMate
-  - Pirate
-  - Prisoner ##nyano
-  primary: false
-
 - type: department
   id: NCWL
   description: department-NCWL-description

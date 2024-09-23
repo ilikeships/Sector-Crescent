@@ -32,17 +32,6 @@
         amount: 2
 
 - type: entity
-  id: CrateVendingMachineRestockCuddlyCritterVendFilled
-  parent: CratePlasticBiodegradable
-  name: CuddlyCritterVend restock crate
-  description: Contains two restock boxes for a CuddlyCritterVend vending machine.
-  components:
-  - type: StorageFill
-    contents:
-      - id: VendingMachineRestockCuddlyCritterVend
-        amount: 2
-
-- type: entity
   id: CrateVendingMachineRestockLessLethalVendFilled
   parent: CratePlasticBiodegradable
   name: LessLethalVend restock crate

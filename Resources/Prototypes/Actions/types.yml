@@ -22,18 +22,6 @@
     checkCanInteract: false
 
 - type: entity
-  id: ActionTurnUndead
-  name: Turn Undead
-  description: Succumb to your infection and become a zombie.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    checkCanInteract: false
-    checkConsciousness: false
-    icon: Interface/Actions/zombie-turn.png
-    event: !type:ZombifySelfActionEvent
-
-- type: entity
   id: ActionToggleLight
   name: Toggle Light
   description: Turn the light on and off.
@@ -170,21 +158,6 @@
       sprite: Clothing/OuterClothing/Hardsuits/lingspacesuit.rsi
       state: icon
     event: !type:UseDnaScramblerImplantEvent
-
-- type: entity
-  id: ActionMorphGeras
-  name: Morph into Geras
-  description:  Morphs you into a Geras - a miniature version of you which allows you to move fast, at the cost of your inventory.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    itemIconStyle: BigAction
-    useDelay: 10 # prevent spam
-    priority: -20
-    icon:
-      sprite: Mobs/Aliens/slimes.rsi
-      state: blue_adult_slime
-    event: !type:MorphIntoGeras
 
 - type: entity
   id: ActionToggleSuitPiece

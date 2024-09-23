@@ -83,7 +83,6 @@ namespace Content.Server.Administration.Systems
             AddDebugVerbs(ev);
             AddSmiteVerbs(ev);
             AddTricksVerbs(ev);
-            AddAntagVerbs(ev);
         }
 
         private void AddAdminVerbs(GetVerbsEvent<Verb> args)

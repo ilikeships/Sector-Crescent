@@ -694,49 +694,6 @@
       amount: 3
 
 - type: entity
-  name: romerol pill
-  parent: Pill
-  id: PillRomerol
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Romerol
-          Quantity: 10
-
-- type: entity
-  name: ambuzol pill
-  parent: Pill
-  id: PillAmbuzol
-  components:
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 20
-          reagents:
-            - ReagentId: Ambuzol
-              Quantity: 10
-
-- type: entity
-  name: ambuzol plus pill
-  parent: Pill
-  id: PillAmbuzolPlus
-  components:
-    - type: Pill
-      pillType: 2
-    - type: Sprite
-      state: pill3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 20
-          reagents:
-            - ReagentId: AmbuzolPlus
-              Quantity: 5
-
-- type: entity
   parent: PillCanister
   id: PillCanisterRandom
   suffix: Random
@@ -781,14 +738,6 @@
       orGroup: RandomPill
     - id: PillCharcoal
       prob: 0.10
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillAmbuzol
-      prob: 0.075
-      maxAmount: 7
-      orGroup: RandomPill
-    - id: PillAmbuzolPlus
-      prob: 0.075
       maxAmount: 7
       orGroup: RandomPill
     - id: PillSpaceDrugs
@@ -893,19 +842,6 @@
           Quantity: 15
 
 - type: entity
-  name: ambuzol syringe
-  parent: PrefilledSyringe
-  id: SyringeAmbuzol
-  components:
-    - type: SolutionContainerManager
-      solutions:
-        injector:
-          maxVol: 15
-          reagents:
-            - ReagentId: Ambuzol
-              Quantity: 15
-
-- type: entity
   name: sigynate syringe
   parent: PrefilledSyringe
   id: SyringeSigynate
@@ -958,19 +894,6 @@
               Quantity: 15
 
 #this is where all the syringes are so i didn't know where to put it
-- type: entity
-  name: romerol syringe
-  parent: PrefilledSyringe
-  id: SyringeRomerol
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 15
-        reagents:
-        - ReagentId: Romerol
-          Quantity: 15
-
 - type: entity
   name: stimulants syringe
   parent: PrefilledSyringe

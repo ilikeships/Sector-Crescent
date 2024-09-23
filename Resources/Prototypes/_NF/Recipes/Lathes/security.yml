@@ -14,13 +14,13 @@
   materials:
     Steel: 190
 
-- type: latheRecipe
-  id: BaseMagazinePistolSubMachineGun
-  result: BaseMagazinePistolSubMachineGun
-  category: Ammo
-  completetime: 5
-  materials:
-    Steel: 190
+# - type: latheRecipe
+#   id: BaseMagazinePistolSubMachineGun
+#   result: BaseMagazinePistolSubMachineGun YAMLFIX: This is abstract and you can't use it.
+#   category: Ammo
+#   completetime: 5
+#   materials:
+#     Steel: 190
 
 - type: latheRecipe
   id: SpeedLoaderRifleHeavyPractice

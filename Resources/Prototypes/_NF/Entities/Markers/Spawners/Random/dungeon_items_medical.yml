@@ -595,7 +595,6 @@
     - JugGold
     - JugMercury
     - JugSilver
-    - JugWeldingFuel
     chance: 1
     offset: 0.0
     rarePrototypes:

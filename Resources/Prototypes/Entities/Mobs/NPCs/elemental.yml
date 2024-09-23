@@ -71,7 +71,6 @@
     context: "human"
   - type: InputMover
   - type: MobMover
-  - type: ZombieImmune
   - type: ClothingRequiredStepTriggerImmune
     slots: All
 
@@ -287,7 +286,6 @@
       - CannotSuicide
       - DoorBumpOpener
   - type: NoSlip
-  - type: ZombieImmune
   - type: ExaminableSolution
     solution: bloodstream
   - type: InjectableSolution

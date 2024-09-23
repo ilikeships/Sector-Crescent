@@ -105,7 +105,6 @@
     speechVerb: Robotic
   - type: TypingIndicator
     proto: robot
-  - type: ZombieImmune
   - type: StepTriggerImmune
 
 - type: entity
@@ -199,7 +198,6 @@
   - type: Slippery
     launchForwardsMultiplier: 2
   - type: Speech
-    speechVerb: Cluwne
   - type: StepTrigger
     intersectRatio: 0.2
   - type: Fixtures
@@ -355,12 +353,12 @@
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: ShowHealthBars
-    damageContainers: 
+    damageContainers:
     - Biological
   - type: ShowHealthIcons
-    damageContainers: 
+    damageContainers:
     - Biological
-  
+
 - type: entity
   parent: MobSiliconBase
   id: MobMimeBot

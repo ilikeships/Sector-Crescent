@@ -78,11 +78,11 @@
   noSpawn: true
   components:
   - type: Projectile
-  - type: ProjectileIFF
     damage:
       types:
         Structural: 90
         Piercing: 25
+  - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -211,13 +211,13 @@
   noSpawn: true
   components:
   - type: Projectile
-  - type: ProjectileIFF
     damage:
       types:
         Structural: 175
         Radiation: 35
         Heat: 40
         Blunt: 20
+  - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -265,12 +265,12 @@
   noSpawn: true
   components:
   - type: Projectile
-  - type: ProjectileIFF
     damage:
       types:
         Structural: 90
         Radiation: 10
         Heat: 25
+  - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -298,12 +298,12 @@
   noSpawn: true
   components:
   - type: Projectile
-  - type: ProjectileIFF
     damage:
       types:
         Structural: 150
         Radiation: 25
         Heat: 35
+  - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -331,11 +331,11 @@
   noSpawn: true
   components:
   - type: Projectile
-  - type: ProjectileIFF
     damage:
       types:
         Radiation: 25
         Heat: 35
+  - type: ProjectileIFF
   - type: EmpOnTrigger
     range: 4
     energyConsumption: 1000

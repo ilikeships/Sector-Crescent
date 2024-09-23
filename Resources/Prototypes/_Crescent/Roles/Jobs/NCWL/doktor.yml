@@ -11,7 +11,7 @@
   alwaysUseSpawner: true
   icon: "JobIconDoktor"
   requireAdminNotify: false
-  supervisors: job-supervisors-highcomm 
+  supervisors: job-supervisors-highcomm
   canBeAntag: false
   access:
   - Command
@@ -34,5 +34,5 @@
     belt: ClothingBeltMedicalFilled
     pocket1: WeaponPistolHKUSP
     pocket2: NCWLPassportAccepted
-  duffelbag: ClothingBackpackDuffelNCWLFilledSanitar
-  satchel: ClothingBackpackSatchelNCWLFilledSanitar
+  # duffelbag: ClothingBackpackDuffelNCWLFilledSanitar YAMLFIX: This doesn't go here anymore.
+  # satchel: ClothingBackpackSatchelNCWLFilledSanitar

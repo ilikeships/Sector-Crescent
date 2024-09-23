@@ -452,23 +452,6 @@
               Poison: 2
 
 - type: reagent
-  id: Romerol
-  name: reagent-name-romerol
-  group: Toxins
-  desc: reagent-desc-romerol
-  physicalDesc: reagent-physical-desc-necrotic
-  flavor: bitter
-  color: "#7e916e"
-  worksOnTheDead: true
-  metabolisms:
-    Medicine:
-      effects:
-        - !type:CauseZombieInfection
-          conditions:
-            - !type:ReagentThreshold
-              min: 5
-
-- type: reagent
   id: UncookedAnimalProteins
   name: reagent-name-uncooked-animal-proteins
   group: Foods

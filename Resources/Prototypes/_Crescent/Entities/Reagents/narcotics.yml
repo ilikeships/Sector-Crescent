@@ -114,7 +114,7 @@
   group: Narcotics
   desc: reagent-desc-mechanites
   physicalDesc: reagent-physical-desc-glowing
-  flavor: mechanites
+  flavor: horrible
   color: "#FF7F7F"
   metabolisms:
     Medicine:
@@ -142,7 +142,7 @@
   group: Narcotics
   desc: reagent-desc-bloodeye
   physicalDesc: reagent-physical-desc-opaque
-  flavor: bloodeye
+  flavor: tingly
   color: "#FF7F7F"
   metabolisms:
     Medicine:

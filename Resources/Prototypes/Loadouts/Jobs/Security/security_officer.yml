@@ -205,15 +205,3 @@
   id: SecurityPDA
   equipment:
     id: SecurityPDA
-
-- type: loadout
-  id: SeniorOfficerPDA
-  equipment: SeniorOfficerPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorOfficer
-
-- type: startingGear
-  id: SeniorOfficerPDA
-  equipment:
-    id: SeniorOfficerPDA

@@ -4555,19 +4555,6 @@ entities:
       - 704
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 342
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 7.5,-2.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 704
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 386
     components:
     - type: Transform

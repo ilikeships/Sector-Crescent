@@ -2,7 +2,7 @@
   id: SecurityOfficer
   name: job-name-security
   description: job-description-security
-  playTimeTracker: JobSecurityOfficerOld
+  playTimeTracker: JobSecurityOfficer
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
@@ -18,9 +18,6 @@
   - Service
   - External
   - Cryogenics
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
   setPreference: false # Frontier
 
 - type: startingGear

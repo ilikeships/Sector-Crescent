@@ -43,17 +43,6 @@
       - id: BoxVial
 
 - type: entity
-  id: CrateMindShieldImplants
-  parent: CrateMedical
-  name: MindShield implant crate
-  description: Crate filled with 3 MindShield implants.
-  components:
-  - type: StorageFill
-    contents:
-      - id: MindShieldImplanter
-        amount: 3
-
-- type: entity
   id: CrateMedicalSurgery
   parent: CrateSurgery
   name: surgical supplies crate

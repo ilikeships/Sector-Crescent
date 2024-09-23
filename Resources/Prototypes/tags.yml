@@ -891,9 +891,6 @@
   id: MimeHappyHonk
 
 - type: Tag
-  id: MindShield
-
-- type: Tag
   id: MindTransferTarget
 
 - type: Tag
@@ -928,9 +925,6 @@
 
 - type: Tag
   id: NozzleBackTank
-
-- type: Tag
-  id: NukeOpsUplink
 
 - type: Tag
   id: Ointment
@@ -1349,7 +1343,7 @@
 
 - type: Tag # Frontier Space Artillery
   id: CartridgeMachineGun # Frontier Space Artillery
- 
+
 - type: Tag # Frontier Space Artillery
   id: CartridgeNitroExpress # Frontier Space Artillery
 

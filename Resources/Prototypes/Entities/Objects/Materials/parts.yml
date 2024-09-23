@@ -67,8 +67,6 @@
         - ReagentId: Carbon
           Quantity: 0.5
   - type: ConstructionMaterials # Frontier
-  - type: StaticPrice
-    price: 150
 
 - type: entity
   parent: PartRodMetal
@@ -83,8 +81,6 @@
     state: rods
   - type: Stack
     count: 10
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   parent: PartRodMetal
@@ -99,8 +95,6 @@
     state: rods
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 5
 
 - type: entity
   parent: PartRodMetal

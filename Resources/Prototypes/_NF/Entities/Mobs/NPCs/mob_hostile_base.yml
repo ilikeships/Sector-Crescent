@@ -254,7 +254,6 @@
   - type: StandingState
   - type: InputMover
   - type: MobMover
-  - type: ZombieImmune
   - type: Hands
   - type: Puller
   - type: NameIdentifier

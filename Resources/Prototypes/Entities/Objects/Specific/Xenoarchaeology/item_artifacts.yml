@@ -71,8 +71,6 @@
   id: SimpleXenoArtifactItem
   suffix: Simple
   components:
-  - type: StaticPrice
-    price: 100
   - type: Artifact
     nodesMin: 2
     nodesMax: 5
@@ -82,8 +80,6 @@
   id: MediumXenoArtifactItem
   suffix: Medium
   components:
-  - type: StaticPrice
-    price: 200
   - type: Artifact
     nodesMin: 5
     nodesMax: 9
@@ -93,8 +89,6 @@
   id: ComplexXenoArtifactItem
   suffix: Complex
   components:
-  - type: StaticPrice
-    price: 300
   - type: Artifact
     nodesMin: 9
     nodesMax: 13
@@ -105,8 +99,6 @@
   id: VariedXenoArtifactItem
   suffix: Varied
   components:
-  - type: StaticPrice
-    price: 400
   - type: Artifact
     nodesMin: 2
     nodesMax: 13
@@ -166,8 +158,6 @@
       reagents:
       - ReagentId: RawArtifexium # Frontier
         Quantity: 1 # Frontier
-  - type: StaticPrice
-    price: 250
   - type: Stack
     stackType: ArtifactFragment
   - type: GuideHelp
@@ -179,7 +169,5 @@
   id: ArtifactFragment1
   suffix: Single
   components:
-  - type: StaticPrice
-    price: 100
   - type: Stack
     count: 1

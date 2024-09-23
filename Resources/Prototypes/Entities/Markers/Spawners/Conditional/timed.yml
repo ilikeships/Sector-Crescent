@@ -12,7 +12,6 @@
     - type: Timer
     - type: TimedSpawner
       prototypes:
-        - MobSpirate
         - MobCivilian
       chance: 0.75
       intervalSeconds: 60

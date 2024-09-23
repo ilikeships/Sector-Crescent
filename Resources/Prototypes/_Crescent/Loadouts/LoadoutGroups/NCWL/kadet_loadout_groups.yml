@@ -10,11 +10,11 @@
   name: loadout-group-contractor-id
   loadouts:
   - KadetNCWLKadetPDA
-  
+
 - type: loadoutGroup
   id: KadetBelt
   name: loadout-group-contractor-belt
   minLimit: 0
   loadouts:
-  - KadetNCWLClothingBeltNCWLPouche
+  - KadetNCWLClothingBeltNCWLPouches
 
