@@ -58,12 +58,6 @@ namespace Content.Client.Communications.UI
                 }
             };
             AlertLevelButton.Disabled = !owner.AlertLevelSelectable;
-
-            EmergencyShuttleButton.OnPressed += (_) => Owner.EmergencyShuttleButtonPressed();
-            EmergencyShuttleButton.Disabled = !owner.CanCall;
-
-            UpdateCountdown();
-            Timer.SpawnRepeating(1000, UpdateCountdown, _timerCancelTokenSource.Token);
         }
 
         // The current alert could make levels unselectable, so we need to ensure that the UI reacts properly.
@@ -102,20 +96,6 @@ namespace Content.Client.Communications.UI
                 }
             }
         }
-
-        public void UpdateCountdown()
-        {
-            if (!Owner.CountdownStarted)
-            {
-                CountdownLabel.SetMessage("");
-                EmergencyShuttleButton.Text = Loc.GetString("comms-console-menu-call-shuttle");
-                return;
-            }
-
-            EmergencyShuttleButton.Text = Loc.GetString("comms-console-menu-recall-shuttle");
-            CountdownLabel.SetMessage($"Time remaining\n{Owner.Countdown.ToString()}s");
-        }
-
         public override void Close()
         {
             base.Close();

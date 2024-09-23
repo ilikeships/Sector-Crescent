@@ -2,7 +2,7 @@
   id: Provost
   name: TSP Provost
   description: A brawler and missile gunship, overdriven to perfection.
-  price: 19000
+  price: 30000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/CMM/provost.yml

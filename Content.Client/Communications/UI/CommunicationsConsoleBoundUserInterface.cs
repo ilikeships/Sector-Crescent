@@ -57,15 +57,6 @@ namespace Content.Client.Communications.UI
                 SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level));
             }
         }
-
-        public void EmergencyShuttleButtonPressed()
-        {
-            if (CountdownStarted)
-                RecallShuttle();
-            else
-                CallShuttle();
-        }
-
         public void AnnounceButtonPressed(string message)
         {
             var maxLength = _cfg.GetCVar(CCVars.ChatMaxAnnouncementLength);
@@ -78,16 +69,6 @@ namespace Content.Client.Communications.UI
             SendMessage(new CommunicationsConsoleBroadcastMessage(message));
         }
 
-        public void CallShuttle()
-        {
-            SendMessage(new CommunicationsConsoleCallEmergencyShuttleMessage());
-        }
-
-        public void RecallShuttle()
-        {
-            SendMessage(new CommunicationsConsoleRecallEmergencyShuttleMessage());
-        }
-
         protected override void UpdateState(BoundUserInterfaceState state)
         {
             base.UpdateState(state);
@@ -97,18 +78,13 @@ namespace Content.Client.Communications.UI
 
             CanAnnounce = commsState.CanAnnounce;
             CanBroadcast = commsState.CanBroadcast;
-            CanCall = commsState.CanCall;
-            _expectedCountdownTime = commsState.ExpectedCountdownEnd;
-            CountdownStarted = commsState.CountdownStarted;
             AlertLevelSelectable = commsState.AlertLevels != null && !float.IsNaN(commsState.CurrentAlertDelay) && commsState.CurrentAlertDelay <= 0;
             CurrentLevel = commsState.CurrentAlert;
 
             if (_menu != null)
             {
-                _menu.UpdateCountdown();
                 _menu.UpdateAlertLevels(commsState.AlertLevels, CurrentLevel);
                 _menu.AlertLevelButton.Disabled = !AlertLevelSelectable;
-                _menu.EmergencyShuttleButton.Disabled = !CanCall;
                 _menu.AnnounceButton.Disabled = !CanAnnounce;
                 _menu.BroadcastButton.Disabled = !CanBroadcast;
             }

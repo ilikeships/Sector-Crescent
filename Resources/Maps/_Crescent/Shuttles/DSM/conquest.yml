@@ -39,7 +39,7 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 3
+      angularDamping: 0.05
       linearDamping: 0.05
       fixedRotation: False
       bodyType: Dynamic
@@ -69,10 +69,10 @@ entities:
             color: '#D381C996'
             id: WarnFullGreyscale
           decals:
-            5: -1,0
-            6: 1,0
-            7: 1,2
-            8: -1,2
+            4: -1,0
+            5: 1,0
+            6: 1,2
+            7: -1,2
     - type: RadiationGridResistance
     - type: GridAtmosphere
       version: 2
@@ -247,6 +247,16 @@ entities:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
+  - uid: 74
+    components:
+    - type: Transform
+      pos: -1.5,3.5
+      parent: 1
+  - uid: 75
+    components:
+    - type: Transform
+      pos: 2.5,3.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 44
@@ -319,7 +329,6 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        invalid: []
         39:
         - Group1: Toggle
         40:
@@ -446,7 +455,7 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -2.5,1.5
+      pos: -1.5,3.5
       parent: 1
     - type: DeviceLinkSink
       links:
@@ -457,7 +466,7 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 3.5,1.5
+      pos: 2.5,3.5
       parent: 1
     - type: DeviceLinkSink
       links:
@@ -538,15 +547,20 @@ entities:
   - uid: 37
     components:
     - type: Transform
-      pos: -1.5,2.5
+      rot: -0 rad
+      pos: -2.5,1.5
       parent: 1
+    - type: Physics
+      fixedRotation: False
     - type: Thruster
       originalPowerLoad: 1500
   - uid: 38
     components:
     - type: Transform
-      pos: 2.5,2.5
+      pos: 3.5,1.5
       parent: 1
+    - type: Physics
+      fixedRotation: False
     - type: Thruster
       originalPowerLoad: 1500
 - proto: ToolboxMechanicalFilled

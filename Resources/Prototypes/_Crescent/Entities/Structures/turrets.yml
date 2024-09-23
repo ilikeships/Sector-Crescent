@@ -61,7 +61,7 @@
                   max: 5
     - type: TurretIFF
     - type: Gun
-      projectileSpeed: 140
+      projectileSpeed: 80
       fireRate: 7
       selectedMode: FullAuto
       availableModes:
@@ -421,7 +421,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      projectileSpeed: 90
+      projectileSpeed: 75
       fireRate: 0.5
       selectedMode: FullAuto
       availableModes:
@@ -955,6 +955,7 @@
                   min: 3
                   max: 5
     - type: Gun
+      projectileSpeed: 95
       fireRate: 3
       selectedMode: FullAuto
       availableModes:
@@ -1022,6 +1023,8 @@
       drawdepth: Mobs
       layers:
         - state: syndie_lethal
+    - type: Gun
+      projectileSpeed: 105
     - type: HTN
       rootTask:
         task: PDTTurretCompound #npcroot
@@ -1637,7 +1640,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      projectileSpeed: 100
+      projectileSpeed: 85
       fireRate: 1.7
       selectedMode: FullAuto
       availableModes:
@@ -1728,7 +1731,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      projectileSpeed: 90
+      projectileSpeed: 60
       fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
