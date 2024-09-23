@@ -388,4 +388,3 @@ BoxHug: BoxSurvivalNFOxygen
 MindShieldImplanter: null
 OrganDionaLungs: null
 SalvageLootSpawner: null #I didn't delete this, it doesn't exist on master.
-ShipVoucherGazpachov: null #YAMLFIX: This I think was just broken and can be reenabled after it's fixed

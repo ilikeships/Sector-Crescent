@@ -463,22 +463,22 @@
   - type: ShipVoucher
     ship: Flea
 
-# - type: entity YAMLFIX: doesn't exist
-#   parent: BaseItem
-#   id: ShipVoucherGazpachov
-#   name: SHI 'Gazpachov' pattern LPC fabprint disk
-#   description: An LPC fabprint disk loaded with a civilian Gazpachov-class mining corvette pattern. Has to be redeemed at a shipyard console.
-#   components:
-#   - type: Item
-#     size: Small
-#   - type: Sprite
-#     sprite: _Crescent/Objects/Misc/lpcchip.rsi
-#     layers:
-#     - state: icon
-#   - type: StaticPrice
-#     price: 22000
-#   - type: ShipVoucher
-#     ship: Gazpachov
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherGazpachov
+  name: SHI 'Gazpachov' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a civilian Gazpachov-class mining corvette pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 22000
+  - type: ShipVoucher
+    ship: gazpachov
 
 - type: entity
   parent: BaseItem
