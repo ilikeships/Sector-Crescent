@@ -14,7 +14,7 @@
   alwaysUseSpawner: true
   icon: "JobIconMontagne"
   requireAdminNotify: false
-  supervisors: job-supervisors-imperial 
+  supervisors: job-supervisors-imperial
   canBeAntag: false
   access:
   - Command
@@ -25,6 +25,10 @@
   - External
   - Mercenary # Frontier
   - Captain # Frontier
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Telepathic
 
 - type: startingGear
   id: MontagneGear

@@ -22,6 +22,11 @@
         Whisper = ChatChannel.Whisper,
 
         /// <summary>
+        ///     Telepathic chat.
+        /// </summary>
+        Telepathic = ChatChannel.Telepathic,
+
+        /// <summary>
         ///     Radio messages
         /// </summary>
         Radio = ChatChannel.Radio,
