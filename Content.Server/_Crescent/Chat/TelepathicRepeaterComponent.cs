@@ -1,10 +1,10 @@
-namespace Content.Server.Nyanotrasen.Chat
+namespace Content.Server.Crescent.Chat
 {
     /// <summary>
     /// Repeats whatever is happening in telepathic chat.
     /// </summary>
     [RegisterComponent]
-    public sealed class TelepathicRepeaterComponent : Component
+    public sealed partial class TelepathicRepeaterComponent : Component
     {
 
     }

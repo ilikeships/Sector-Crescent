@@ -8,18 +8,19 @@ using Content.Shared.Database;
 using Content.Shared.Drugs;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Crescent.Psionics;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using System.Linq;
 
-namespace Content.Server.Nyanotrasen.Chat
+namespace Content.Server.Crescent.Chat
 {
     /// <summary>
-    /// Extensions for nyano's chat stuff
+    /// Telepathy
     /// </summary>
 
-    public sealed class NyanoChatSystem : EntitySystem
+    public sealed class TChatSystem : EntitySystem
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
@@ -40,25 +41,10 @@ namespace Content.Server.Nyanotrasen.Chat
                 .Select(p => p.ConnectedClient);
         }
 
-        private List<INetChannel> GetDreamers(IEnumerable<INetChannel> removeList)
-        {
-            var filtered = Filter.Empty()
-                .AddWhereAttachedEntity(entity => HasComp<SleepingComponent>(entity) || HasComp<SeeingRainbowsComponent>(entity) && !HasComp<PsionicsDisabledComponent>(entity) && !HasComp<PsionicInsulationComponent>(entity))
-                .Recipients
-                .Select(p => p.ConnectedClient);
-
-            var filteredList = filtered.ToList();
-
-            foreach (var entity in removeList)
-                filteredList.Remove(entity);
-
-            return filteredList;
-        }
-
         private bool IsEligibleForTelepathy(EntityUid entity)
         {
-            return HasComp<PsionicComponent>(entity)
-                && (!TryComp<MobStateComponent>(entity, out var mobstate) || mobstate.CurrentState == MobState.Alive);
+            return HasComp<TelepathicComponent>(entity)
+                && (!TryComp<MobStateComponent>(entity, out var mobstate) || mobstate.CurrentState != MobState.Dead);
         }
 
         public void SendTelepathicChat(EntityUid source, string message, bool hideChat)
@@ -82,16 +68,6 @@ namespace Content.Server.Nyanotrasen.Chat
             _chatManager.ChatMessageToMany(ChatChannel.Telepathic, message, messageWrap, source, hideChat, true, clients.ToList(), Color.PaleVioletRed);
 
             _chatManager.ChatMessageToMany(ChatChannel.Telepathic, message, adminMessageWrap, source, hideChat, true, admins, Color.PaleVioletRed);
-
-            if (_random.Prob(0.1f))
-                _glimmerSystem.Glimmer++;
-
-            if (_random.Prob(Math.Min(0.33f + ((float) _glimmerSystem.Glimmer / 1500), 1)))
-            {
-                float obfuscation = (0.25f + (float) _glimmerSystem.Glimmer / 2000);
-                var obfuscated = _chatSystem.ObfuscateMessageReadability(message, obfuscation);
-                _chatManager.ChatMessageToMany(ChatChannel.Telepathic, obfuscated, messageWrap, source, hideChat, false, GetDreamers(clients), Color.PaleVioletRed);
-            }
 
             foreach (var repeater in EntityQuery<TelepathicRepeaterComponent>())
             {
