@@ -887,30 +887,30 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.5,-4.5
       parent: 1
-- proto: GasVentPump
-  entities:
-  - uid: 127
-    components:
-    - type: Transform
-      pos: -0.5,-3.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 153
-- proto: GasVentScrubber
-  entities:
-  - uid: 126
-    components:
-    - type: Transform
-      pos: 2.5,-3.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 153
+# - proto: GasVentPump
+#   entities:
+#   - uid: 127
+#     components:
+#     - type: Transform
+#       pos: -0.5,-3.5
+#       parent: 1
+#     - type: DeviceNetwork
+#       configurators:
+#       - invalid
+#       deviceLists:
+#       - 153
+# - proto: GasVentScrubber
+#   entities:
+#   - uid: 126
+#     components:
+#     - type: Transform
+#       pos: 2.5,-3.5
+#       parent: 1
+#     - type: DeviceNetwork
+#       configurators:
+#       - invalid
+#       deviceLists:
+#       - 153
 - proto: GravityGeneratorMini
   entities:
   - uid: 90

@@ -7266,8 +7266,6 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - invalid
-        - invalid
         - 330
         - 391
         - 1285
@@ -7291,9 +7289,6 @@ entities:
         - 2170
         - 257
         - 2171
-        missiles:
-        - invalid
-        - invalid
         vanguard:
         - 330
         - 391

@@ -3496,84 +3496,84 @@ entities:
       open: False
 - proto: GasVentPump
   entities:
-  - uid: 444
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,4.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
-  - uid: 475
-    components:
-    - type: Transform
-      pos: 0.5,17.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
-  - uid: 476
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,13.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
+  # - uid: 444
+  #   components:
+  #   - type: Transform
+  #     rot: 1.5707963267948966 rad
+  #     pos: 1.5,4.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
+  # - uid: 475
+  #   components:
+  #   - type: Transform
+  #     pos: 0.5,17.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
+  # - uid: 476
+  #   components:
+  #   - type: Transform
+  #     rot: -1.5707963267948966 rad
+  #     pos: 3.5,13.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
 - proto: GasVentScrubber
   entities:
-  - uid: 445
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.5,4.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
-  - uid: 477
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -1.5,13.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
-  - uid: 484
-    components:
-    - type: Transform
-      pos: 2.5,17.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 770
-      - 772
-      - 779
+  # - uid: 445
+  #   components:
+  #   - type: Transform
+  #     rot: -1.5707963267948966 rad
+  #     pos: 0.5,4.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
+  # - uid: 477
+  #   components:
+  #   - type: Transform
+  #     rot: 1.5707963267948966 rad
+  #     pos: -1.5,13.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
+  # - uid: 484
+  #   components:
+  #   - type: Transform
+  #     pos: 2.5,17.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 770
+  #     - 772
+  #     - 779
 - proto: GravityGeneratorMini
   entities:
   - uid: 680

@@ -4368,18 +4368,6 @@ entities:
     - type: Transform
       pos: -6.5,11.5
       parent: 1
-  - uid: 1228
-    components:
-    - type: Transform
-      pos: 7.5,7.5
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - invalid
 - proto: DrinkClownBloodGlass
   entities:
   - uid: 1232
