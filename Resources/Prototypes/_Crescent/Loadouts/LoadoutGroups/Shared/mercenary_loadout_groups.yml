@@ -292,7 +292,7 @@
   - ContractorClothingBackpackDuffelMime
   - ContractorClothingBackpackSatchelMime
   - ContractorClothingBackpackMessengerMime
-  
+
 - type: loadoutGroup
   id: MercenaryOuterClothing
   name: loadout-group-contractor-outerclothing
@@ -509,7 +509,7 @@
   - ContractorClothingHeadHatPlaguedoctor
   - ContractorClothingHeadBandGold
   - ContractorClothingHeadHatTophat
-  
+
 - type: loadoutGroup
   id: MercenaryGloves
   name: loadout-group-contractor-gloves
@@ -577,7 +577,7 @@
   - ContractorMusicianPDA
   - ContractorClownPDA
   - ContractorMimePDA
-  
+
 - type: loadoutGroup
   id: MercenaryGlasses
   name: loadout-group-contractor-glasses

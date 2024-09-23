@@ -773,17 +773,6 @@
   - UplinkAllies
 
 - type: listing
-  id: UplinkReinforcementRadioSyndicate
-  name: uplink-reinforcement-radio-name
-  description: uplink-reinforcement-radio-desc
-  productEntity: ReinforcementRadioSyndicate
-  icon: { sprite: Objects/Devices/communication.rsi, state: old-radio }
-  cost:
-    Telecrystal: 16
-  categories:
-  - UplinkAllies
-
-- type: listing
   id: UplinkCarpDehydrated
   name: uplink-carp-dehydrated-name
   description: uplink-carp-dehydrated-desc

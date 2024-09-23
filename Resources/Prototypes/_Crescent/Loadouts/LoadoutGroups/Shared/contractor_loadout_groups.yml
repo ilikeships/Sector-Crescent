@@ -228,7 +228,7 @@
   - ContractorClothingBackpackDuffelMime
   - ContractorClothingBackpackSatchelMime
   - ContractorClothingBackpackMessengerMime
-  
+
 - type: loadoutGroup
   id: ContractorOuterClothing
   name: loadout-group-contractor-outerclothing
@@ -469,7 +469,7 @@
   - ContractorClothingHeadHatPlaguedoctor
   - ContractorClothingHeadBandGold
   - ContractorClothingHeadHatTophat
-  
+
 - type: loadoutGroup
   id: ContractorGloves
   name: loadout-group-contractor-gloves
@@ -579,7 +579,7 @@
   - ContractorMusicianPDA
   - ContractorClownPDA
   - ContractorMimePDA
-  
+
 - type: loadoutGroup
   id: ContractorGlasses
   name: loadout-group-contractor-glasses
@@ -596,7 +596,7 @@
   - ContractorClothingEyesHudMedical
   - ContractorClothingEyesEyepatchHudDiag
   - ContractorClothingEyesEyepatchHudMedical
-  
+
 - type: loadoutGroup
   id: ContractorUtility # Right Hand - 1 only
   name: loadout-group-contractor-utility
@@ -616,7 +616,7 @@
   - ContractorShipyardRCD
   - ContractorHandheldCrewMonitor
   - ContractorHypoMini
-  
+
 - type: loadoutGroup
   id: ContractorFun # Left Hand - 1 only
   name: loadout-group-contractor-fun
@@ -632,14 +632,6 @@
   - ContractorSaxophoneInstrument
   - ContractorAcousticGuitarInstrument
   - ContractorCane
-  #- ContractorLGBTQHandyFlag
-  #- ContractorNTHandyFlag
-  #- ContractorBalloonNT
-  #- ContractorPonderingOrb
-  #- ContractorPlushieRGBee
-  #- ContractorDawInstrumentFlatpack
-  #- ContractorHoverbikeFlatpack
-  - ContractorEmotionalPetCarrier
 
 - type: loadoutGroup
   id: ContractorFace
