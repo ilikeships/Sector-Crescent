@@ -48,6 +48,8 @@
   - type: Tag
     tags:
     - BypassInteractionRangeChecks
+  - type: CombatMode #Actions tests wants the observer to have combat mode
+    combatToggleAction: ActionCombatModeToggleOff
 
 - type: entity
   id: ActionGhostBoo
