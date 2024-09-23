@@ -4773,17 +4773,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 8.354835,3.3940525
       parent: 1
-- proto: NewtonCradle
-  entities:
-  - uid: 613
-    components:
-    - type: Transform
-      pos: 12.422533,-2.4956095
-      parent: 1
-    - type: ItemToggle
-      activated: True
-    - type: ItemToggleActiveSound
-      playingStream: invalid
 - proto: NitrogenCanister
   entities:
   - uid: 1186

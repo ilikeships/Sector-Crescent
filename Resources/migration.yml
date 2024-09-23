@@ -382,3 +382,9 @@ BoxSurvival: BoxSurvivalNFOxygen
 BoxSurvivalEngineering: BoxSurvivalNFOxygenExtended
 BoxSurvivalMedical: BoxSurvivalNFOxygen
 BoxHug: BoxSurvivalNFOxygen
+
+# Hullrot Era
+# 2024-08-23
+MindShieldImplanter: null
+OrganDionaLungs: null
+ShipVoucherGazpachov: null #YAMLFIX: This I think was just broken and can be reenabled after it's fixed
