@@ -102,9 +102,6 @@
     preset: StorePresetUplink
     balance:
       Telecrystal: 40
-  - type: Tag
-    tags:
-    - NukeOpsUplink
 
 - type: entity
   parent: BaseUplinkRadio
@@ -115,9 +112,6 @@
     preset: StorePresetUplink
     balance:
       Telecrystal: 60
-  - type: Tag
-    tags:
-    - NukeOpsUplink
 
 - type: entity
   parent: BaseUplinkRadio

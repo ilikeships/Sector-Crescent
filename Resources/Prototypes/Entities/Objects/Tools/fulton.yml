@@ -48,8 +48,6 @@
       layers:
         - state: extraction_point
           map: [ "foldedLayer" ]
-    - type: StaticPrice
-      price: 100
 
 - type: entity
   id: Fulton
@@ -78,8 +76,6 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
-  - type: StaticPrice
-    price: 20
   - type: VendPrice
     price: 12000
 

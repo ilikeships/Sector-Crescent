@@ -74,7 +74,7 @@
             - !type:DoActsBehavior
             - !type:SolutionExplosionBehavior
               solution: tank
-              acts: ["Destruction"]
+              # acts: ["Destruction"] YAMLFIX: This is deprecated
     - type: GuideHelp
       guides: [ PortableGenerator, Power ]
 
@@ -163,7 +163,7 @@
       explosionType: Default
       totalIntensity: 2000 # ~15 tile radius.
       intensitySlope: 5
-      maxIntensity: 150 
+      maxIntensity: 150
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
       reagents:
@@ -171,13 +171,13 @@
     - type: SolutionContainerManager
       solutions:
         tank:
-          maxVol: 600 
+          maxVol: 600
     - type: RefillableSolution
       solution: tank
       maxRefill: 100
-      startChance: 1
-      powerSupplyMultiplier: 1.25
-      scaling: Exponential
+      # startChance: 1 #YAMLFIX: Is there supposed to be another component here?
+      # powerSupplyMultiplier: 1.25
+      # scaling: Exponential
     - type: PowerMonitoringDevice
       group: Generator
       loadNodes:
@@ -226,7 +226,7 @@
       explosionType: Default
       totalIntensity: 4000 # ~15 tile radius.
       intensitySlope: 5
-      maxIntensity: 350 
+      maxIntensity: 350
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
       reagents:
@@ -234,13 +234,13 @@
     - type: SolutionContainerManager
       solutions:
         tank:
-          maxVol: 2500 
+          maxVol: 2500
     - type: RefillableSolution
       solution: tank
       maxRefill: 100
-      startChance: 1
-      powerSupplyMultiplier: 1.5
-      scaling: Exponential
+      # startChance: 1 YAMLFIX: These go to another component.
+      # powerSupplyMultiplier: 1.5
+      # scaling: Exponential
     - type: PowerMonitoringDevice
       group: Generator
       loadNodes:

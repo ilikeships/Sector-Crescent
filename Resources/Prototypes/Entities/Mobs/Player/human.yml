@@ -44,42 +44,6 @@
       giveUplink: false
       giveObjectives: false
 
-- type: entity
-  parent: MobHumanSyndicateAgentBase
-  id: MobHumanSyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
-  suffix: Human, NukeOps
-  components:
-    - type: NukeOperative
-
-# Nuclear Operative
-- type: entity
-  noSpawn: true
-  name: Nuclear Operative
-  parent: MobHuman
-  id: MobHumanNukeOp
-  components:
-    - type: NukeOperative
-    - type: RandomHumanoidAppearance
-
-- type: entity
-  noSpawn: true
-  parent: MobHuman
-  id: MobHumanLoneNuclearOperative
-  name: Lone Operative
-  components:
-    - type: RandomHumanoidAppearance
-      randomizeName: false
-    - type: NukeOperative
-    - type: Loadout
-      prototypes: [SyndicateLoneOperativeGearFull]
-    - type: RandomMetadata
-      nameSegments:
-      - SyndicateNamesPrefix
-      - SyndicateNamesNormal
-    - type: NpcFactionMember
-      factions:
-      - Syndicate
-
 # Space Ninja
 - type: entity
   noSpawn: true

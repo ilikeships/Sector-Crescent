@@ -17,9 +17,6 @@
   - Service
   - Mail # Frontier
   - Frontier # Frontier
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
 
 - type: startingGear
   id: MailCarrierGear

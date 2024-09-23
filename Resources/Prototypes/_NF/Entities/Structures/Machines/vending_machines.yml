@@ -1,36 +1,5 @@
 - type: entity
   parent: [BaseStructureUnanchorable, VendingMachine]
-  id: VendingMachineCuddlyCritterVend
-  name: CuddlyCritterVend
-  description: Step into the world of wonder and warmth with Cuddly Critters Vending Machine, a haven for plushie and toy enthusiasts alike.
-  components:
-  - type: VendingMachine
-    pack: CuddlyCritterVendInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    # ejectState: eject-unshaded  No sprite, see chefvend/dinnerware/BODA/etc for expamples
-  - type: Advertise
-    pack: CuddlyCritterAds
-  - type: Sprite
-    sprite: _NF/Structures/Machines/VendingMachines/cuddlycritter.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
-    color: "#4b93ad"
-  - type: MarketModifier
-    mod: 15
-
-- type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine]
   id: VendingMachineAstroVend
   name: AstroVend
   description: Essential gear for the space-men on the go
@@ -404,28 +373,3 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Security"]]
-
-- type: entity
-  parent: [BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, VendingMachineCart] # Frontier
-  id: VendingMachineCartNfsd
-  suffix: NFSD
-  components:
-  - type: VendingMachine
-    pack: PTechNfsdInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    ejectState: eject-unshaded
-    denyState: deny-unshaded
-  - type: Sprite
-    sprite: Structures/Machines/VendingMachines/cart.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["HeadOfSecurity"]]

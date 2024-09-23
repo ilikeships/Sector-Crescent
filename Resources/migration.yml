@@ -345,8 +345,6 @@ BodyBag_Folded: BodyBagFolded
 
 # 2024-04-26
 GlassBoxLaserBroken: GlassBoxBroken
-ReinforcementRadioSyndicateMonkey: ReinforcementRadioSyndicateAncestor
-ReinforcementRadioSyndicateMonkeyNukeops: ReinforcementRadioSyndicateAncestorNukeops
 
 # 2024-05-01
 DrinkBottleGoldschlager: DrinkBottleGildlager
@@ -384,3 +382,9 @@ BoxSurvival: BoxSurvivalNFOxygen
 BoxSurvivalEngineering: BoxSurvivalNFOxygenExtended
 BoxSurvivalMedical: BoxSurvivalNFOxygen
 BoxHug: BoxSurvivalNFOxygen
+
+# Hullrot Era
+# 2024-08-23
+MindShieldImplanter: null
+OrganDionaLungs: null
+SalvageLootSpawner: null #I didn't delete this, it doesn't exist on master.

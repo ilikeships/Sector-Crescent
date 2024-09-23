@@ -635,18 +635,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,-7.5
       parent: 2
-- proto: AirSensor
-  entities:
-  - uid: 512
-    components:
-    - type: Transform
-      pos: 7.5,4.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
+# - proto: AirSensor
+#   entities:
+#   - uid: 512
+#     components:
+#     - type: Transform
+#       pos: 7.5,4.5
+#       parent: 2
+#     - type: DeviceNetwork
+#       configurators:
+#       - invalid
+#       deviceLists:
+#       - 480
 - proto: APCBasic
   entities:
   - uid: 288
@@ -1613,36 +1613,36 @@ entities:
     - type: Transform
       pos: -3.5,3.5
       parent: 2
-  - uid: 384
-    components:
-    - type: Transform
-      pos: 1.5,-4.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
-  - uid: 386
-    components:
-    - type: Transform
-      pos: 4.5,-2.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
-  - uid: 469
-    components:
-    - type: Transform
-      pos: -1.5,0.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
+  # - uid: 384
+  #   components:
+  #   - type: Transform
+  #     pos: 1.5,-4.5
+  #     parent: 2
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 480
+  # - uid: 386
+  #   components:
+  #   - type: Transform
+  #     pos: 4.5,-2.5
+  #     parent: 2
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 480
+  # - uid: 469
+  #   components:
+  #   - type: Transform
+  #     pos: -1.5,0.5
+  #     parent: 2
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 480
 - proto: Fireplace
   entities:
   - uid: 258
@@ -2243,21 +2243,21 @@ entities:
       parent: 2
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 193
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 4.5,-0.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
-    - type: AtmosDevice
-      joinedGrid: 2
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
+  # - uid: 193
+  #   components:
+  #   - type: Transform
+  #     rot: 1.5707963267948966 rad
+  #     pos: 4.5,-0.5
+  #     parent: 2
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 480
+  #   - type: AtmosDevice
+  #     joinedGrid: 2
+  #   - type: AtmosPipeColor
+  #     color: '#0055CCFF'
   - uid: 213
     components:
     - type: Transform
@@ -2310,21 +2310,21 @@ entities:
       joinedGrid: 2
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 197
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,-0.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 480
-    - type: AtmosDevice
-      joinedGrid: 2
-    - type: AtmosPipeColor
-      color: '#990000FF'
+  # - uid: 197
+  #   components:
+  #   - type: Transform
+  #     rot: 3.141592653589793 rad
+  #     pos: 2.5,-0.5
+  #     parent: 2
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 480
+  #   - type: AtmosDevice
+  #     joinedGrid: 2
+  #   - type: AtmosPipeColor
+  #     color: '#990000FF'
   - uid: 209
     components:
     - type: Transform

@@ -9,8 +9,6 @@
   - type: Item
     sprite: Objects/Materials/Sheets/metal.rsi
     size: Normal
-  - type: StaticPrice
-    price: 25
   - type: Tag
     tags:
     - Sheet
@@ -69,8 +67,6 @@
           Quantity: 9
         - ReagentId: Carbon
           Quantity: 1
-  - type: StaticPrice
-    price: 270
 
 - type: entity
   parent: SheetSteel
@@ -83,8 +79,6 @@
   - type: Stack
     stackType: Steel
     count: 10
-  - type: StaticPrice
-    price: 90
 
 - type: entity
   parent: SheetSteel
@@ -97,8 +91,6 @@
   - type: Stack
     stackType: Steel
     count: 1
-  - type: StaticPrice
-    price: 9
 
 - type: entity
   parent: SheetSteel

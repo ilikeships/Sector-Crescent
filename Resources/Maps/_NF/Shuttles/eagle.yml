@@ -2366,19 +2366,19 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 9
-  - uid: 712
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -3.5,0.5
-      parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 9
-      - 568
-      - 196
+  # - uid: 712
+  #   components:
+  #   - type: Transform
+  #     rot: -1.5707963267948966 rad
+  #     pos: -3.5,0.5
+  #     parent: 1
+  #   - type: DeviceNetwork
+  #     configurators:
+  #     - invalid
+  #     deviceLists:
+  #     - 9
+  #     - 568
+  #     - 196
   - uid: 732
     components:
     - type: Transform

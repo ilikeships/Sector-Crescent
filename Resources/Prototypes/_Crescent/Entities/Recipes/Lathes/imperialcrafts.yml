@@ -199,4 +199,4 @@
     Steel: 1000
     Silver: 2500
     Plasma: 1000
-    Diamond: 500
+    # Diamond: 500 YAMLFIX: Diamond isn't a material prototype sweaty

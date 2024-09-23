@@ -42,7 +42,7 @@
     startingCharge: 1000000
   - type: ExaminableBattery
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 1
     proto: CartridgeShellArmorPiercing
     whitelist:
@@ -83,7 +83,7 @@
     isPowerRequiredToFire: false
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: ExtensionCableReceiver
@@ -138,7 +138,7 @@
     startingCharge: 1000000
   - type: ExaminableBattery
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 1
     proto: CartridgeShellArmorPiercing
     whitelist:
@@ -180,7 +180,7 @@
     linearRecoilGrid: 300
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: ExtensionCableReceiver
@@ -229,7 +229,7 @@
     startingCharge: 0
   - type: Appearance
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 60
     proto: CartridgeMachineGunArmorPiercing
     whitelist:
@@ -256,7 +256,7 @@
   - type: BatterySelfRecharger
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -320,7 +320,7 @@
       - SpaceArtilleryDetectedMalfunction
       - SpaceArtilleryDetectedSafetyChange
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 120
     proto: CartridgeMachineGunArmorPiercing
     whitelist:
@@ -347,7 +347,7 @@
   - type: BatterySelfRecharger
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Tag
     tags:
     - Wall
@@ -408,7 +408,7 @@
     startingCharge: 1000000
   - type: ExaminableBattery
   - type: BallisticAmmoProvider
-    autoCycle: true
+    cycleable: false
     capacity: 1
     proto: CartridgeRailArmorPiercing
   - type: ContainerContainer
@@ -462,7 +462,7 @@
                 - Stack
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: ApcPowerReceiver
     powerLoad: 6000
   - type: ExtensionCableReceiver
@@ -562,7 +562,7 @@
                 - Stack
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -670,7 +670,7 @@
                 - Stack
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -717,8 +717,10 @@
     rotateWhileAnchored: true
     increment: 45
   - type: Appearance
-  - type: Storage
-    capacity: 120
+  - type: Storage #YAMLFIX: how big is this supposed to be
+    maxItemSize: Normal
+    grid:
+    - 0,0,7,1
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -765,7 +767,7 @@
     isPowerRequiredToFire: true
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,1.2"
@@ -876,7 +878,7 @@
     linearRecoilGrid: 300
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -983,7 +985,7 @@
     velocityLimitRecoilGrid: 40
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -1091,7 +1093,7 @@
     angularInstabilityGrid: 30
   - type: Actions
   - type: CombatMode
-    IsInCombatMode: true
+    isInCombatMode: true
   - type: Strap
     position: Stand
     buckleOffset: "0,0.8"
@@ -1117,7 +1119,7 @@
     - state: mag-3
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    size: 60
+    size: Massive
   - type: Clothing
     sprite: Objects/Weapons/Guns/LMGs/l6.rsi
     quickEquip: false

@@ -47,8 +47,6 @@
     - type: PortableGenerator
       startOnMapInit: true
 
-
-
 - type: entity
   parent: BoriaticGeneratorHercules
   id: BoriaticGeneratorHerculesShuttle

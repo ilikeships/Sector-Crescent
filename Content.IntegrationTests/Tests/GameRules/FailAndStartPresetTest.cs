@@ -16,7 +16,7 @@ public sealed class FailAndStartPresetTest
 - type: gamePreset
   id: TestPreset
   alias:
-    - nukeops
+    - adventure
   name: Test Preset
   description: """"
   showInVote: false
@@ -26,7 +26,7 @@ public sealed class FailAndStartPresetTest
 - type: gamePreset
   id: TestPresetTenPlayers
   alias:
-    - nukeops
+    - adventure
   name: Test Preset 10 players
   description: """"
   showInVote: false
@@ -74,7 +74,7 @@ public sealed class FailAndStartPresetTest
 
         Assert.That(server.CfgMan.GetCVar(CCVars.GridFill), Is.False);
         Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyFallbackEnabled), Is.True);
-        Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyDefaultPreset), Is.EqualTo("secret"));
+        Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyDefaultPreset), Is.EqualTo("adventure"));
         server.CfgMan.SetCVar(CCVars.GridFill, true);
         server.CfgMan.SetCVar(CCVars.GameLobbyFallbackEnabled, false);
         server.CfgMan.SetCVar(CCVars.GameLobbyDefaultPreset, "TestPreset");
@@ -84,7 +84,7 @@ public sealed class FailAndStartPresetTest
         Assert.That(client.AttachedEntity, Is.Null);
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
-        // Try to start nukeops without readying up
+        // Try to start adventure without readying up
         await pair.WaitCommand("setgamepreset TestPresetTenPlayers");
         await pair.WaitCommand("startround");
         await pair.RunTicksSync(10);
@@ -96,7 +96,7 @@ public sealed class FailAndStartPresetTest
         var player = pair.Player!.AttachedEntity;
         Assert.That(!entMan.EntityExists(player));
 
-        // Ready up and start nukeops
+        // Ready up and start adventure
         await pair.WaitClientCommand("toggleready True");
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.ReadyToPlay));
         await pair.WaitCommand("setgamepreset TestPreset");

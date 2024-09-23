@@ -2,7 +2,7 @@
   id: Warden
   name: job-name-warden
   description: job-description-warden
-  playTimeTracker: JobWardenOld
+  playTimeTracker: JobWarden
   requirements:
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
@@ -20,9 +20,6 @@
   - External
   - Detective
   - Cryogenics
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
   setPreference: false # Frontier
 
 - type: startingGear

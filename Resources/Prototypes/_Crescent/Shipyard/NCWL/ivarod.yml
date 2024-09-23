@@ -13,9 +13,9 @@
 - type: gameMap
   id: Ivarod
   mapName: 'NCWL Ivarod'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/Ivarod.yml
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/ivarod.yml
   minPlayers: 0
-  stations: 
+  stations:
     Ivarod:
       stationProto: StandardFrontierVessel
       components:
@@ -29,5 +29,5 @@
           availableJobs:
             KapitanNCWL: [ 1, 1 ]
             SanitarNCWL: [ 4, 4 ]
-            ArtificerNCWL: [ 1, 1 ]  
+            ArtificerNCWL: [ 1, 1 ]
             KadetNCWL: [ 2, 2 ]

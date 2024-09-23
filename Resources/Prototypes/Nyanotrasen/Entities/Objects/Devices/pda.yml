@@ -49,16 +49,3 @@
   - type: Icon
     sprite: _NF/Objects/Devices/pda.rsi
     state: pda-valet
-
-- type: entity
-  parent: BasePDA
-  id: GuardPDA
-  name: guard PDA
-  description: Red to hide the stains of prisoner blood.
-  components:
-  - type: Pda
-    id: GuardIDCard
-    state: pda-security
-  - type: Icon
-    state: pda-guard
-

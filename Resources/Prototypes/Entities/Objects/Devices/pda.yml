@@ -667,7 +667,7 @@
     state: pda-centcom
 
 - type: entity
-  parent: [MusicBasePDA, CentcomPDA, BaseMedicalPDA] # Frontier - Added MusicBasePDA parent
+  parent: [CentcomPDA, BaseMedicalPDA]
   id: AdminPDA
   name: Admin PDA
   description: If you are not an admin please return this PDA to the nearest admin.
@@ -938,45 +938,6 @@
     state: pda-detective
 
 - type: entity
-  parent: BaseMedicalPDA
-  id: BrigmedicPDA
-  name: brigmedic PDA
-  description: I wonder whose pulse is on the screen? I hope he doesnt stop... PDA has a built-in health analyzer.
-  components:
-  - type: Pda
-    id: BrigmedicIDCard
-    state: pda-brigmedic
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentHColor: "#d7d7d0"
-    accentVColor: "#d7d7d0"
-  - type: Icon
-    state: pda-brigmedic
-
-- type: entity
-  parent: ClownPDA
-  id: CluwnePDA
-  name: cluwne PDA
-  suffix: Unremoveable
-  description: Cursed cluwne PDA.
-  components:
-  - type: Pda
-    id: CluwneIDCard
-    state: pda-cluwne
-  - type: PdaBorderColor
-    borderColor: "#1c8f4d"
-  - type: Icon
-    state: pda-cluwne
-    penSlot:
-      startingItem: CrayonGreen
-      ejectSound: /Audio/Items/bikehorn.ogg
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: Unremoveable
-
-- type: entity
   parent: BasePDA
   id: SeniorEngineerPDA
   name: senior engineer PDA
@@ -1022,33 +983,6 @@
     accentVColor: "#B34200"
   - type: Icon
     state: pda-seniorphysician
-
-- type: entity
-  parent: BasePDA
-  id: SeniorOfficerPDA
-  name: senior officer PDA
-  description: Beaten, battered and broken, but just barely useable.
-  components:
-  - type: Pda
-    id: SeniorOfficerIDCard
-    state: pda-seniorofficer
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#DFDFDF"
-  - type: Icon
-    state: pda-seniorofficer
-
-- type: entity
-  parent: SyndiPDA
-  id: PiratePDA
-  name: pirate PDA
-  description: Yargh!
-  components:
-  - type: Pda
-    id: PirateIDCard
-    state: pda-pirate
-  - type: Icon
-    state: pda-pirate
 
 - type: entity
   parent: BaseMedicalPDA

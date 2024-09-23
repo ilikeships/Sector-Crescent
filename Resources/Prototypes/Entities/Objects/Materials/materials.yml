@@ -55,8 +55,6 @@
         reagents:
         - ReagentId: Cellulose
           Quantity: 6
-  - type: StaticPrice
-    price: 15
 
 - type: entity
   parent: MaterialCardboard
@@ -67,8 +65,6 @@
     state: cardboard
   - type: Stack
     count: 10
-  - type: StaticPrice
-    price: 5
 
 - type: entity
   parent: MaterialCardboard
@@ -79,8 +75,6 @@
     state: cardboard
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 0.5
 
 - type: entity
   parent: MaterialBase
@@ -141,8 +135,6 @@
   - type: Construction
     graph: WebObjects # not sure if I should either keep this here or just make another prototype. Will keep it here just in case.
     node: cloth
-  - type: StaticPrice
-    price: 150
 
 - type: entity
   parent: MaterialCloth
@@ -153,8 +145,6 @@
     state: cloth
   - type: Stack
     count: 10
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   parent: MaterialCloth
@@ -165,8 +155,6 @@
     state: cloth
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 5
 
 - type: entity
   parent: MaterialBase
@@ -201,7 +189,7 @@
     solutions:
       food:
         maxVol: 5
-        reagent s:
+        reagents:
         - ReagentId: Fiber
           Quantity: 5
   - type: Tag
@@ -209,8 +197,6 @@
       - ClothMade
       - DroneUsable
       - RawMaterial
-  - type: StaticPrice
-    price: 450
 
 - type: entity
   parent: MaterialDurathread
@@ -228,8 +214,6 @@
         reagents: #Hell if I know what durathread is made out of.
         - ReagentId: Fiber
           Quantity: 6
-  - type: StaticPrice
-    price: 15
 
 - type: entity
   parent: MaterialBase
@@ -270,8 +254,6 @@
         reagents:
         - ReagentId: Cellulose
           Quantity: 10
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   parent: MaterialWoodPlank
@@ -280,8 +262,6 @@
   components:
   - type: Stack
     count: 10
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   parent: MaterialWoodPlank
@@ -290,8 +270,6 @@
   components:
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 5
 
 - type: entity
   parent: MaterialBase
@@ -313,8 +291,6 @@
   - type: GuideHelp
     guides:
     - Cloning
-  - type: StaticPrice
-    price: 30
 
 - type: entity
   parent: MaterialBiomass
@@ -323,8 +299,6 @@
   components:
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 0.3
 
 # Following not used currently
 - type: entity
@@ -397,8 +371,6 @@
           Quantity: 20
   - type: StackPrice
     price: 50
-  - type: StaticPrice
-    price: 1500
 
 - type: entity
   parent: MaterialDiamond
@@ -407,8 +379,6 @@
   components:
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   parent: MaterialBase
@@ -562,8 +532,6 @@
       - ReagentId: Honk
         Quantity: 5
   - type: Appearance
-  - type: StaticPrice
-    price: 1200
 
 - type: entity
   parent: MaterialBananium
@@ -574,8 +542,6 @@
     state: bananium
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 43
 
 - type: entity
   parent: MaterialBase
@@ -584,8 +550,6 @@
   description: A webby material.
   suffix: Full
   components:
-  - type: StaticPrice
-    price: 300
   - type: ConstructionMaterials # Frontier
   - type: PhysicalComposition
     materialComposition:
@@ -628,8 +592,6 @@
   components:
   - type: Stack
     count: 25
-  - type: StaticPrice
-    price: 30
 
 - type: entity
   parent: MaterialWebSilk

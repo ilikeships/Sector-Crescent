@@ -10,7 +10,6 @@
     - Human
     - Moth
     - Reptilian
-    - SlimePerson
 
 - type: guideEntry
   id: Arachnid
@@ -41,8 +40,3 @@
   id: Reptilian
   name: species-name-reptilian
   text: "/ServerInfo/Guidebook/Mobs/Reptilian.xml"
-
-- type: guideEntry
-  id: SlimePerson
-  name: species-name-slime
-  text: "/ServerInfo/Guidebook/Mobs/SlimePerson.xml"

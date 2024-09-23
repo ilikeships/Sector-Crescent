@@ -1,3 +1,4 @@
+# YAMLFIX: You can't give material stacks static prices without messing stuff up and failing tests. The material values may need to be recalibrated.
 - type: entity
   parent: OreBase
   id: SteelScrapOre
@@ -16,8 +17,6 @@
   - type: PhysicalComposition
     materialComposition:
       ScrapSteel: 500
-  - type: StaticPrice
-    price: 900
 
 - type: entity
   id: SteelScrap1
@@ -81,8 +80,6 @@
   - type: PhysicalComposition
     materialComposition:
       ScrapTitanium: 500
-  - type: StaticPrice
-    price: 1520
 
 - type: entity
   id: TitaniumScrap1
@@ -200,8 +197,6 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapSteel: 500
-  - type: StaticPrice
-    price: 1000
 
 - type: entity
   id: RefinedSteelScrap1
@@ -226,8 +221,6 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedScrapTitanium: 500
-  - type: StaticPrice
-    price: 1250
 
 - type: entity
   id: RefinedTitaniumScrap1
@@ -258,8 +251,6 @@
   - type: PhysicalComposition
     materialComposition:
       Garbage: 500
-  - type: StaticPrice
-    price: 250
 
 - type: entity
   id: GarbageOre1
@@ -312,8 +303,6 @@
   - type: PhysicalComposition
     materialComposition:
       RefinedGarbage: 500
-  - type: StaticPrice
-    price: 500
 
 - type: entity
   id: RefinedGarbageOre1
@@ -357,8 +346,6 @@
   components:
     - type: Stack
       count: 5
-    - type: StaticPrice
-      price: 250
 
 - type: entity
   parent: OreBase
@@ -378,8 +365,6 @@
   - type: PhysicalComposition
     materialComposition:
       Mechanites: 500
-  - type: StaticPrice
-    price: 800
 
 - type: entity
   id: MechaniteCanister1
@@ -415,8 +400,6 @@
   - type: PhysicalComposition
     materialComposition:
       Galine: 500
-  - type: StaticPrice
-    price: 400
 
 - type: entity
   id: GalineCanister1
@@ -468,5 +451,3 @@
   components:
     - type: Stack
       count: 5
-    - type: StaticPrice
-      price: 325

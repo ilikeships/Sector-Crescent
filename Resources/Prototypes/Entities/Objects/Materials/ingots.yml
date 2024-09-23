@@ -9,8 +9,6 @@
   - type: Item
     sprite: Objects/Materials/ingots.rsi
     size: Normal
-  - type: StaticPrice
-    price: 0
   - type: Tag
     tags:
     - Ingot
@@ -59,8 +57,6 @@
         reagents:
         - ReagentId: Gold
           Quantity: 10
-  - type: StaticPrice
-    price: 1800
 
 - type: entity
   parent: IngotGold
@@ -72,8 +68,6 @@
     state: gold
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 60
 
 - type: entity
   parent: IngotBase
@@ -108,8 +102,6 @@
         reagents:
         - ReagentId: Silver
           Quantity: 10
-  - type: StaticPrice
-    price: 900
 
 - type: entity
   parent: IngotSilver
@@ -121,5 +113,3 @@
     state: silver
   - type: Stack
     count: 1
-  - type: StaticPrice
-    price: 30
