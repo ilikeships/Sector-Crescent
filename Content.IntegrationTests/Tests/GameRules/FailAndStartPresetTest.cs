@@ -13,6 +13,26 @@ public sealed class FailAndStartPresetTest
 {
     [TestPrototypes]
     private const string Prototypes = @"
+- type: gamePreset
+  id: TestPreset
+  alias:
+    - adventure
+  name: Test Preset
+  description: """"
+  showInVote: false
+  rules:
+  - TestRule
+
+- type: gamePreset
+  id: TestPresetTenPlayers
+  alias:
+    - adventure
+  name: Test Preset 10 players
+  description: """"
+  showInVote: false
+  rules:
+  - TestRuleTenPlayers
+
 - type: entity
   id: TestRule
   parent: BaseGameRule
@@ -64,7 +84,7 @@ public sealed class FailAndStartPresetTest
         Assert.That(client.AttachedEntity, Is.Null);
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
-        // Try to start nukeops without readying up
+        // Try to start adventure without readying up
         await pair.WaitCommand("setgamepreset TestPresetTenPlayers");
         await pair.WaitCommand("startround");
         await pair.RunTicksSync(10);
@@ -76,7 +96,7 @@ public sealed class FailAndStartPresetTest
         var player = pair.Player!.AttachedEntity;
         Assert.That(!entMan.EntityExists(player));
 
-        // Ready up and start nukeops
+        // Ready up and start adventure
         await pair.WaitClientCommand("toggleready True");
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.ReadyToPlay));
         await pair.WaitCommand("setgamepreset TestPreset");
