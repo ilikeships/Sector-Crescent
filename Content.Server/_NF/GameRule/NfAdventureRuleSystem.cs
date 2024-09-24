@@ -120,7 +120,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
         var freeport = "/Maps/_Crescent/Stations/freeport.yml";
         // var refuge = "/Maps/_Crescent/Stations/refuge.yml";
-        //var clementine = "/Maps/_Crescent/Stations/clementine.yml";
+        var vladzena = "/Maps/_Crescent/Stations/vladzena.yml";
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         // var arena = "/Maps/_NF/POI/arena.yml";
@@ -366,21 +366,20 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
       //      _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
       //  }
 
-      //  if (_map.TryLoad(mapId, clementine, out var depotUid12s, new MapLoadOptions
-      //  {
-       //     Offset = _random.NextVector2(7000f, 6000f)
-      //  }))
-      //  {
-      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Clementine", out var stationProto))
-      //      {
-      //          _station.InitializeNewStation(stationProto.Stations["Clementine"], depotUid12s);
-      //      }
+        if (_map.TryLoad(mapId, vladzena, out var depotUid12s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(17000f, 16000f)
+        }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Vladzena", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Vladzena"], depotUid12s);
+            }
 
-       //     var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
-      //      _meta.SetEntityName(depotUid12s[0], "NCWL Dear Clementine", meta);
-       //     _shuttle.SetIFFColor(depotUid12s[0], factionColor);
-       //     _shuttle.AddIFFFlag(depotUid12s[0], IFFFlags.HideLabel);
-       // }
+            var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
+            _meta.SetEntityName(depotUid12s[0], "Port Vladzena", meta);
+            _shuttle.SetIFFColor(depotUid12s[0], factionColor);
+        }
 
         // if (_map.TryLoad(mapId, lodge, out var lodgeUids, new MapLoadOptions
         //     {
