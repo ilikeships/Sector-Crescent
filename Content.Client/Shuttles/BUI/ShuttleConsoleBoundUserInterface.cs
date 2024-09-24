@@ -3,6 +3,7 @@ using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
+using Content.Shared.NamedModules.Components;
 
 namespace Content.Client.Shuttles.BUI;
 
@@ -23,6 +24,7 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.OpenCentered();
         _window.OnClose += Close;
 
+
         _window.RequestFTL += OnFTLRequest;
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
@@ -32,6 +34,13 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.OnGroup3Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(3));
         _window.OnGroup4Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(4));
         _window.OnGroup5Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(5));
+        _window.OnRename += OnModuleRename;
+        
+    }
+
+    private void OnModuleRename(List<string> newNames)
+    {
+        SendMessage(new ModuleNamingChangeEvent(newNames));
     }
 
     private void OnUndockRequest(NetEntity entity)

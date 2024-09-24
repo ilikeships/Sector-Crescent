@@ -23,6 +23,7 @@ using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.PointCannons;
+using Content.Shared.NamedModules.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -79,8 +80,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<FTLDestinationComponent, ComponentStartup>(OnFtlDestStartup);
         SubscribeLocalEvent<FTLDestinationComponent, ComponentShutdown>(OnFtlDestShutdown);
         SubscribeLocalEvent<ShuttleConsoleComponent, NavConsoleGroupPressedMessage>(OnGroupPressed);
+        SubscribeLocalEvent<NamedModulesComponent, ModuleNamingChangeEvent>(OnNameChange);
 
         InitializeFTL();
+    }
+
+    private void OnNameChange(EntityUid consoleUid, NamedModulesComponent comp, ModuleNamingChangeEvent args)
+    {
+        comp.ButtonNames = args.NewNames;
+        Dirty(consoleUid, comp);
     }
 
     private void OnFtlDestStartup(EntityUid uid, FTLDestinationComponent component, ComponentStartup args)
