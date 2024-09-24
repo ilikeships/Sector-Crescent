@@ -30,7 +30,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public Action? OnGroup3Pressed;
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
-    public Action<Dictionary<int, string>>? OnRename;
+    public Action<List<string>>? OnRename;
 
     private bool _updatedOnce;
 

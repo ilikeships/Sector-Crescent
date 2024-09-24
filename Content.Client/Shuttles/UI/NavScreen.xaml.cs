@@ -26,7 +26,7 @@ public sealed partial class NavScreen : BoxContainer
     public Action? OnGroup3Pressed;
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
-    public Action<Dictionary<int,string>>? OnRename;
+    public Action<List<string>>? OnRename;
 
     private EntityUid? _shuttleEntity;
 
@@ -107,8 +107,8 @@ public sealed partial class NavScreen : BoxContainer
         {
             foreach (var (index, button) in _buttons)
             {
-                button.Text = namesComp.ButtonNames[index];
-                _editable[index].Text = namesComp.ButtonNames[index];
+                button.Text = namesComp.ButtonNames[index-1];
+                _editable[index].Text = namesComp.ButtonNames[index-1];
             }
         }
     }
@@ -145,12 +145,12 @@ public sealed partial class NavScreen : BoxContainer
             ButtonsToEditState();
         else
         {
-            Dictionary<int, string> namesForButtons = new();
+            List<string> newNames = new();
             foreach(var (index, lineedit) in _editable)
             {
-                namesForButtons.Add(index, lineedit.Text);
+                newNames.Add(lineedit.Text);
             }
-            OnRename?.Invoke(namesForButtons);
+            OnRename?.Invoke(newNames);
             ButtonsToReadyState();
         }
     }
@@ -164,8 +164,8 @@ public sealed partial class NavScreen : BoxContainer
         {
             foreach(var (index, button) in _buttons)
             {
-                button.Text = moduleComp.ButtonNames[index];
-                _editable[index].Text = moduleComp.ButtonNames[index];
+                button.Text = moduleComp.ButtonNames[index-1];
+                _editable[index].Text = moduleComp.ButtonNames[index-1];
             }
         }
     }

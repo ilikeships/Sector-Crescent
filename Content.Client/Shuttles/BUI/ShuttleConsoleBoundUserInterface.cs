@@ -38,7 +38,7 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         
     }
 
-    private void OnModuleRename(Dictionary<int , string> newNames)
+    private void OnModuleRename(List<string> newNames)
     {
         SendMessage(new ModuleNamingChangeEvent(newNames));
     }

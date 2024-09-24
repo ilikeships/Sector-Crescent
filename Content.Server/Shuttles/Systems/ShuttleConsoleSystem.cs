@@ -87,10 +87,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     private void OnNameChange(EntityUid consoleUid, NamedModulesComponent comp, ModuleNamingChangeEvent args)
     {
-        foreach (var (index, name) in args.NewNames)
-        {
-            comp.ButtonNames[index] = name;
-        }
+        comp.ButtonNames = args.NewNames;
         Dirty(consoleUid, comp);
     }
 
