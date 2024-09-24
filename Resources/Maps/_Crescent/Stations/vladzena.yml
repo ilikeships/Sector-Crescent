@@ -42,7 +42,6 @@ entities:
       name: grid
     - type: Transform
       pos: -0.44798407,-0.64122903
-      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -26064,15 +26063,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - invalid
           - 1472
           - 1473
           - 1474
           - 1475
           - 1476
-          - invalid
           - 1478
-          - invalid
           - 1609
           - 1610
           - 1470
@@ -26870,7 +26866,7 @@ entities:
     - type: Transform
       pos: 2.5,7.5
       parent: 1
-- proto: PlastitaniumWindow
+- proto: PlastitaniumWindowStation
   entities:
   - uid: 105
     components:
@@ -36740,7 +36736,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,-63.5
       parent: 1
-- proto: WallReinforced
+- proto: WallReinforcedStation
   entities:
   - uid: 5
     components:

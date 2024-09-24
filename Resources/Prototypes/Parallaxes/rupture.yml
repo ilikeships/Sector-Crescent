@@ -1,11 +1,17 @@
 - type: parallax
-  id: Hadal
+  id: Rupture
   layers:
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/Parallaxes/hadal.png"
       slowness: 0.998046875
       scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/rupture.png"
+      slowness: 0.998046875
+      scale: "3.4, 3.4"
+      tiled: false
   layersLQ:
     - texture:
         !type:GeneratedParallaxTextureSource
