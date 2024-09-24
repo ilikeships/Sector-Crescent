@@ -72,10 +72,10 @@
     delay: 1
 
 - type: entity
-  name: L6 SAW
+  name: SHI L93 .30
   id: WeaponLightMachineGunL6
   parent: BaseWeaponLightMachineGun
-  description: A rather traditionally made LMG with a pleasantly lacquered wooden pistol grip. Uses .30 rifle ammo. An illegal firearm often used by Syndicate agents.
+  description: A bulky machinegun developed by a Shinohara subsidiary.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/LMGs/l6.rsi
