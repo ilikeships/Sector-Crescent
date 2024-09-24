@@ -6,10 +6,19 @@
   abstract: true
   components:
   - type: Sprite
+    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    shape:
+    - 0,0,4,0
+    sprite: Objects/Weapons/Guns/LMGs/l6inhands.rsi
     size: Huge
   - type: Clothing
-    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+    sprite: Objects/Weapons/Guns/LMGs/l6worn.rsi
     quickEquip: false
     slots:
     - Back
