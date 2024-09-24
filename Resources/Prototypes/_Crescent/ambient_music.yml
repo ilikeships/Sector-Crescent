@@ -3,7 +3,7 @@
   sound:
     collection: AmbienceCombatMode
   rules: InCombatMode
-  priority: 1000
+  priority: 4000
 
 - type: rules
   id: InCombatMode

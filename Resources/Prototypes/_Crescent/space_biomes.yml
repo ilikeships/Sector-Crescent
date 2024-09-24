@@ -97,7 +97,7 @@
   components:
   - type: SpaceBiomeSource
     biome: wildbiome
-    swapDistance: 25000
+    swapDistance: 15000
     priority: 2450
 
 - type: biome
@@ -114,7 +114,7 @@
   components:
   - type: SpaceBiomeSource
     biome: deepwildbiome
-    swapDistance: 30000
+    swapDistance: 20000
     priority: 2420
 
 - type: biome
@@ -138,4 +138,4 @@
   id: hadalbiome
   name: Abyssal Rupture
   swapDuration: 2
-  parallax: Hadal
+  parallax: Rupture
