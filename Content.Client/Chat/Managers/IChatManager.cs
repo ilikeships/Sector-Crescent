@@ -7,5 +7,7 @@ namespace Content.Client.Chat.Managers
         void Initialize();
 
         public void SendMessage(string text, ChatSelectChannel channel);
+        event Action PermissionsUpdated;
+        public void UpdatePermissions();
     }
 }

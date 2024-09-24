@@ -106,6 +106,13 @@
       - Group3
       - Group4
       - Group5
+  - type: NamedModules
+    buttonNames:
+      - "Module A"
+      - "Module B"
+      - "Module C"
+      - "Module D"
+      - "Module E"
 
 - type: entity
   parent: BaseComputerShuttle
