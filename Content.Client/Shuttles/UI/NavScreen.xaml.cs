@@ -73,10 +73,6 @@ public sealed partial class NavScreen : BoxContainer
             if(button.Text is not null)
                 specialUi.Text = button.Text;
             _editable[index] = specialUi;
-            specialUi.OnTextEntered += _ =>
-            {
-                button.Text = specialUi.Text;
-            };
         }
 
         RenameButton.OnPressed += RenamePressed;

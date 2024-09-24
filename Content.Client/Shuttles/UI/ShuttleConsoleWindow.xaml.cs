@@ -79,7 +79,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();
         NavContainer.OnGroup4Pressed += () => OnGroup4Pressed?.Invoke();
         NavContainer.OnGroup5Pressed += () => OnGroup5Pressed?.Invoke();
-        NavContainer.OnRename += (args) => OnRename?.Invoke(args);
+        NavContainer.OnRename += args => OnRename?.Invoke(args);
     }
 
     private void ClearModes(ShuttleConsoleMode mode)

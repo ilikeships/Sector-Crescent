@@ -34,8 +34,13 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.OnGroup3Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(3));
         _window.OnGroup4Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(4));
         _window.OnGroup5Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(5));
-        _window.OnRename += (args) => SendMessage(new ModuleNamingChangeEvent(args));
+        _window.OnRename += OnModuleRename;
         
+    }
+
+    private void OnModuleRename(Dictionary<int , string> newNames)
+    {
+        SendMessage(new ModuleNamingChangeEvent(newNames));
     }
 
     private void OnUndockRequest(NetEntity entity)
