@@ -42,6 +42,7 @@ entities:
       name: grid
     - type: Transform
       pos: -0.44798407,-0.64122903
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -5731,16 +5732,25 @@ entities:
     - type: Transform
       pos: 6.5,3.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 192
   - uid: 80
     components:
     - type: Transform
       pos: 7.5,3.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 192
   - uid: 81
     components:
     - type: Transform
       pos: 8.5,3.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 192
   - uid: 190
     components:
     - type: Transform
@@ -32104,6 +32114,13 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: RuptureSource
+  entities:
+  - uid: 6814
+    components:
+    - type: Transform
+      pos: 5.4287076,-11.320332
+      parent: 1
 - proto: SalvageFleshSpawner
   entities:
   - uid: 2447
@@ -32368,31 +32385,55 @@ entities:
     - type: Transform
       pos: 4.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1121
+      - 1125
   - uid: 19
     components:
     - type: Transform
       pos: 2.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1121
+      - 1125
   - uid: 21
     components:
     - type: Transform
       pos: 3.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1121
+      - 1125
   - uid: 26
     components:
     - type: Transform
       pos: 10.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1122
+      - 1126
   - uid: 28
     components:
     - type: Transform
       pos: 12.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1122
+      - 1126
   - uid: 119
     components:
     - type: Transform
       pos: 11.5,-4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1122
+      - 1126
   - uid: 1859
     components:
     - type: Transform
@@ -32751,28 +32792,68 @@ entities:
     - type: Transform
       pos: 5.5,3.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        79:
+        - Pressed: Toggle
+        80:
+        - Pressed: Toggle
+        81:
+        - Pressed: Toggle
   - uid: 1121
     components:
     - type: Transform
       pos: 1.5,-4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        19:
+        - Pressed: Toggle
+        21:
+        - Pressed: Toggle
+        18:
+        - Pressed: Toggle
   - uid: 1122
     components:
     - type: Transform
       pos: 13.5,-4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        28:
+        - Pressed: Toggle
+        119:
+        - Pressed: Toggle
+        26:
+        - Pressed: Toggle
   - uid: 1125
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,-4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        19:
+        - Pressed: Toggle
+        21:
+        - Pressed: Toggle
+        18:
+        - Pressed: Toggle
   - uid: 1126
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 13.5,-4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        28:
+        - Pressed: Toggle
+        119:
+        - Pressed: Toggle
+        26:
+        - Pressed: Toggle
   - uid: 1149
     components:
     - type: Transform
