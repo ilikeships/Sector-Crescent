@@ -58,9 +58,9 @@ public abstract class SharedJetpackSystem : EntitySystem
             if (transform.GridUid == gridUid && ev.HasGravity &&
                 jetpackQuery.TryGetComponent(user.Jetpack, out var jetpack))
             {
-               // _popup.PopupClient(Loc.GetString("jetpack-to-grid"), uid, uid);
+               _popup.PopupClient(Loc.GetString("jetpack-to-grid"), uid, uid);
 
-                //SetEnabled(user.Jetpack, jetpack, false, uid);
+               SetEnabled(user.Jetpack, jetpack, false, uid);
             }
         }
     }
@@ -125,8 +125,12 @@ public abstract class SharedJetpackSystem : EntitySystem
 
     private bool CanEnableOnGrid(EntityUid? gridUid)
     {
-        return gridUid == null ||
-               (!HasComp<GravityComponent>(gridUid));
+        if (gridUid is null)
+            return true;
+        if (TryComp<GravityComponent>(gridUid, out var gravityComponent))
+            if (gravityComponent.Enabled)
+                return false;
+        return true;
     }
 
     private void OnJetpackGetAction(EntityUid uid, JetpackComponent component, GetItemActionsEvent args)
