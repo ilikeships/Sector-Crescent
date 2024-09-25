@@ -55,6 +55,10 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
 
     public const float TileMassMultiplier = 0.5f;
 
+    public const float IFFHeatTicking = 1f;
+
+    private float IFFHeatTimeAccumulator = 0f;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -74,6 +78,12 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+        IFFHeatTimeAccumulator += frameTime;
+        if(IFFHeatTimeAccumulator > IFFHeatTicking)
+        {
+            IFFHeatTimeAccumulator = 0f;
+            UpdateCloakers();
+        }
         UpdateHyperspace();
     }
 

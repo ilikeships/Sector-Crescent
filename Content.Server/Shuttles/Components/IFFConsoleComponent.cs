@@ -25,5 +25,25 @@ public sealed partial class IFFConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public IFFFlags AccessableAllowedFlags = IFFFlags.None;
-//Frontier Code ends here
+
+    [DataField("heatCapacity"),ViewVariables(VVAccess.ReadWrite)]
+    public float HeatCapacity = 500f;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float CurrentHeat = 0f;
+
+    /// <summary>
+    /// Heat generation for every 10 seconds
+    /// </summary>
+    [DataField("heatGeneration"), ViewVariables(VVAccess.ReadWrite)]
+    public float HeatGeneration = 5f;
+
+    /// <summary>
+    /// Heat dissipation for every 10 seconds , only active when not cloaked.
+    /// </summary>
+    ///
+    [DataField("heatDissipation"), ViewVariables(VVAccess.ReadWrite)]
+    public float HeatDissipation = 1f;
+
+    //Frontier Code ends here
 }

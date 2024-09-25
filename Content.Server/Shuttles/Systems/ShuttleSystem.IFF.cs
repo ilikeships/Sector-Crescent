@@ -2,11 +2,39 @@ using Content.Server.Shuttles.Components;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Content.Server.Shuttles.Systems;
 
 public sealed partial class ShuttleSystem
 {
+    private List<IFFhandler> _activeComponents = new();
+
+    private sealed class IFFhandler
+    {
+        public readonly IFFConsoleComponent Component;
+        public readonly EntityUid ComponentOwner;
+        public bool Hiding = false;
+
+        public IFFhandler(IFFConsoleComponent comp, EntityUid owner, bool hide)
+        {
+            Component = comp;
+            ComponentOwner = owner;
+            Hiding = hide;
+        }
+    }
+
+    public void RemoveActiveComponent(EntityUid uid)
+    {
+        foreach (var cloaker in _activeComponents)
+        {
+            if (cloaker.ComponentOwner == uid)
+            {
+                _activeComponents.Remove(cloaker);
+                break;
+            }
+        }
+    }
     private void InitializeIFF()
     {
         SubscribeLocalEvent<IFFConsoleComponent, AnchorStateChangedEvent>(OnIFFConsoleAnchor);
@@ -42,11 +70,16 @@ public sealed partial class ShuttleSystem
 
         if (!args.Show)
         {
+            if (component.HeatCapacity - component.CurrentHeat < component.HeatGeneration)
+                return;
             AddIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+            _activeComponents.Add(new IFFhandler(component, uid, true));
         }
         else
         {
             RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+            if (component.CurrentHeat == 0f)
+                RemoveActiveComponent(uid);
         }
     }
 
@@ -65,11 +98,23 @@ public sealed partial class ShuttleSystem
         }
         else
         {
-            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+            if (iff.Flags && IFFFlags.Hide)
             {
-                AllowedFlags = component.AllowedFlags,
-                Flags = iff.Flags,
-            });
+                _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+                {
+                    AllowedFlags = component.AllowedFlags,
+                    Flags = iff.Flags,
+
+                });
+            }
+            else
+            {
+                _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+                {
+                    AllowedFlags = component.AllowedFlags,
+                    Flags = iff.Flags,
+                });
+            }
         }
     }
 
@@ -89,5 +134,35 @@ public sealed partial class ShuttleSystem
                 Flags = component.Flags,
             });
         }
+
     }
+
+    void UpdateCloakers()
+    {
+        foreach(var handler in _activeComponents)
+        {
+            IFFConsoleComponent cloaker = handler.Component;
+            if (handler.Hiding)
+            {
+                cloaker.CurrentHeat += cloaker.HeatGeneration;
+                if (cloaker.CurrentHeat > cloaker.HeatCapacity)
+                {
+                    if (!TryComp<TransformComponent>(handler.ComponentOwner, out var xform) || xform.GridUid == null)
+                    {
+                        return;
+                    }
+                    RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+                    handler.Hiding = false;
+                }
+            }
+            else
+            {
+                cloaker.CurrentHeat -= Math.Max(0f, cloaker.CurrentHeat - cloaker.HeatDissipation);
+                if (cloaker.CurrentHeat == 0f)
+                    RemoveActiveComponent(handler.ComponentOwner);
+
+            }
+        }
+    }
+
 }
