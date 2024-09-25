@@ -10,8 +10,6 @@ public sealed class IFFConsoleBoundUserInterfaceState : BoundUserInterfaceState
     public IFFFlags Flags;
     public float HeatCapacity;
     public float CurrentHeat;
-    public float HeatGeneration;
-    public float HeatDissipation;
 }
 
 [Serializable, NetSerializable]
