@@ -225,6 +225,23 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherHind
+  name: NCWL 'Hind' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a communard Hind-class missile frigate pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 40000
+  - type: ShipVoucher
+    ship: Hind
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherCherenzikov
   name: NCWL 'Cherenzikov' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with a communard Cherenzikov-class frontliner corvette pattern. Has to be redeemed at a shipyard console.
