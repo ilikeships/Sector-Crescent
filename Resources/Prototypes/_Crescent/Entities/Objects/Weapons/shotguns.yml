@@ -11,6 +11,5 @@
   - type: Item
     sprite: _Crescent/Objects/Weapons/spas_inhands_64x.rsi
   - type: BallisticAmmoProvider
-  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: StaticPrice
     price: 2500
