@@ -22,8 +22,8 @@ public partial class MagazineAmmoProviderComponent : AmmoProviderComponent
     /// Should this not be possible to reload?
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("oneUseOnly")]
-    public bool oneUseOnly = false;
+    public bool OneUseOnly = false;
 
     //wether this was already used or not.
-    public bool used = false;
+    public bool Used = false;
 }
