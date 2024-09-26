@@ -37,6 +37,7 @@
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatecommand.rsi
   - type: PointLight
+    radius: 4
     color: "#ffffed"
   - type: PressureProtection
     highPressureMultiplier: 0.1
@@ -64,6 +65,7 @@
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatesoldier.rsi
   - type: PointLight
+    radius: 4
     color: "#ffffed"
   - type: PressureProtection
     highPressureMultiplier: 0.1
