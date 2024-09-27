@@ -3,6 +3,9 @@
   name: job-name-highsec
   description: job-description-highsec
   playTimeTracker: JobHighsecSHI
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 35000
   weight: 39
   startingGear: HighsecGear
   alwaysUseSpawner: true

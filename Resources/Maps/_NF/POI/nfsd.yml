@@ -1013,7 +1013,7 @@ entities:
       pos: 5.5,5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -14311.628
+      secondsUntilStateChange: -15577.719
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1472,47 +1472,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 421
-- proto: BoxBeanbag
-  entities:
-  - uid: 745
-    components:
-    - type: Transform
-      pos: -5.5088363,14.566282
-      parent: 1
-  - uid: 746
-    components:
-    - type: Transform
-      pos: -5.493974,14.863606
-      parent: 1
-- proto: BoxBreachingCharges
-  entities:
-  - uid: 733
-    components:
-    - type: Transform
-      pos: -8.314369,8.837025
-      parent: 1
-  - uid: 757
-    components:
-    - type: Transform
-      pos: -8.314369,8.688363
-      parent: 1
-  - uid: 758
-    components:
-    - type: Transform
-      pos: -8.314369,8.539701
-      parent: 1
-- proto: BoxHandcuff
-  entities:
-  - uid: 734
-    components:
-    - type: Transform
-      pos: -8.671057,8.837025
-      parent: 1
-  - uid: 766
-    components:
-    - type: Transform
-      pos: -8.656195,8.5843
-      parent: 1
 - proto: ButtonFrameCaution
   entities:
   - uid: 420
@@ -6453,41 +6412,113 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -18.721392,3.677258
       parent: 1
-- proto: MagazinePistolSubMachineGun
+- proto: MagazineLightRifleBox
   entities:
-  - uid: 731
-    components:
-    - type: Transform
-      pos: -4.625651,8.485425
-      parent: 1
   - uid: 732
     components:
     - type: Transform
-      pos: -4.4621696,8.54489
+      pos: -4.3423367,8.526541
+      parent: 1
+  - uid: 759
+    components:
+    - type: Transform
+      pos: -4.639576,8.541407
+      parent: 1
+- proto: MagazineMagnumSubMachineGun
+  entities:
+  - uid: 715
+    components:
+    - type: Transform
+      pos: -7.704853,14.575507
+      parent: 1
+  - uid: 728
+    components:
+    - type: Transform
+      pos: -7.5562344,14.575507
+      parent: 1
+  - uid: 740
+    components:
+    - type: Transform
+      pos: -7.4522,14.575507
+      parent: 1
+  - uid: 741
+    components:
+    - type: Transform
+      pos: -7.273856,14.575507
+      parent: 1
+  - uid: 744
+    components:
+    - type: Transform
+      pos: -7.3927517,14.560641
+      parent: 1
+  - uid: 745
+    components:
+    - type: Transform
+      pos: -7.199546,14.575507
+      parent: 1
+  - uid: 746
+    components:
+    - type: Transform
+      pos: -7.5265102,14.530909
+      parent: 1
+  - uid: 747
+    components:
+    - type: Transform
+      pos: -7.675131,14.560641
       parent: 1
   - uid: 748
     components:
     - type: Transform
-      pos: -4.268963,8.648953
+      pos: -7.704853,14.560641
       parent: 1
-- proto: MagazinePistolSubMachineGunEmp
-  entities:
-  - uid: 729
+  - uid: 750
     components:
     - type: Transform
-      pos: -4.506756,8.663819
+      pos: -7.3630285,14.530909
       parent: 1
-- proto: MagazinePistolSubMachineGunRubber
-  entities:
-  - uid: 742
+  - uid: 752
     components:
     - type: Transform
-      pos: -4.4324455,8.54489
+      pos: -7.3778906,14.530909
+      parent: 1
+- proto: MagazineMagnumSubMachineGunPiercing
+  entities:
+  - uid: 735
+    components:
+    - type: Transform
+      pos: -7.5141354,14.530909
       parent: 1
   - uid: 743
     components:
     - type: Transform
-      pos: -4.328411,8.619221
+      pos: -7.5141354,14.590373
+      parent: 1
+  - uid: 751
+    components:
+    - type: Transform
+      pos: -7.469549,14.516043
+      parent: 1
+- proto: MagazinePistolHighCapacity
+  entities:
+  - uid: 729
+    components:
+    - type: Transform
+      pos: -8.695177,8.600872
+      parent: 1
+  - uid: 766
+    components:
+    - type: Transform
+      pos: -8.50197,8.600872
+      parent: 1
+  - uid: 1577
+    components:
+    - type: Transform
+      pos: -8.383075,8.600872
+      parent: 1
+  - uid: 1578
+    components:
+    - type: Transform
+      pos: -8.249317,8.600872
       parent: 1
 - proto: MechaniteAutoinjector
   entities:
@@ -6573,13 +6604,6 @@ entities:
     components:
     - type: Transform
       pos: -10.143259,-0.24996662
-      parent: 1
-- proto: MindShieldImplanter
-  entities:
-  - uid: 699
-    components:
-    - type: Transform
-      pos: -13.496378,-2.7278051
       parent: 1
 - proto: Multitool
   entities:
@@ -7079,12 +7103,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -8.5,14.5
       parent: 1
-  - uid: 613
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.5,14.5
-      parent: 1
   - uid: 614
     components:
     - type: Transform
@@ -7096,6 +7114,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -5.5,8.5
+      parent: 1
+  - uid: 739
+    components:
+    - type: Transform
+      pos: -4.5,14.5
       parent: 1
 - proto: RadioHandheld
   entities:
@@ -7505,30 +7528,6 @@ entities:
         - Pressed: Off
         1572:
         - Pressed: Off
-- proto: RiotBulletShield
-  entities:
-  - uid: 762
-    components:
-    - type: Transform
-      pos: -7.794199,8.569434
-      parent: 1
-  - uid: 763
-    components:
-    - type: Transform
-      pos: -7.6455803,8.569434
-      parent: 1
-- proto: RiotShield
-  entities:
-  - uid: 751
-    components:
-    - type: Transform
-      pos: -7.2145815,8.5843
-      parent: 1
-  - uid: 752
-    components:
-    - type: Transform
-      pos: -7.4523735,8.5843
-      parent: 1
 - proto: RollerBed
   entities:
   - uid: 693
@@ -7569,18 +7568,6 @@ entities:
     - type: Transform
       pos: -1.7352781,-4.2455955
       parent: 1
-- proto: SecBreachingHammer
-  entities:
-  - uid: 759
-    components:
-    - type: Transform
-      pos: -8.685919,8.524836
-      parent: 1
-  - uid: 761
-    components:
-    - type: Transform
-      pos: -8.373817,8.450504
-      parent: 1
 - proto: SheetGlass
   entities:
   - uid: 416
@@ -7608,6 +7595,20 @@ entities:
     components:
     - type: Transform
       pos: -6.7238584,-1.3311278
+      parent: 1
+- proto: ShipVoucherCourageous
+  entities:
+  - uid: 1579
+    components:
+    - type: Transform
+      pos: -19.6192,2.062004
+      parent: 1
+- proto: ShipVoucherTemplar
+  entities:
+  - uid: 1580
+    components:
+    - type: Transform
+      pos: -19.262512,2.032271
       parent: 1
 - proto: ShotGunCabinetFilled
   entities:
@@ -8265,12 +8266,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -16.5,6.5
       parent: 1
-  - uid: 607
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -8.5,8.5
-      parent: 1
   - uid: 608
     components:
     - type: Transform
@@ -8306,6 +8301,11 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,4.5
+      parent: 1
+  - uid: 736
+    components:
+    - type: Transform
+      pos: -8.5,8.5
       parent: 1
 - proto: TableWood
   entities:
@@ -10106,11 +10106,10 @@ entities:
     - type: Transform
       pos: -3.5,-0.5
       parent: 1
-  - uid: 747
+  - uid: 757
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -7.5,14.5
+      pos: -5.5,14.5
       parent: 1
 - proto: WeaponDisablerPractice
   entities:
@@ -10121,35 +10120,23 @@ entities:
       parent: 1
 - proto: WeaponDisablerSMG
   entities:
-  - uid: 735
+  - uid: 761
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -8.727236,14.540639
+      pos: -4.2828884,14.590373
       parent: 1
-  - uid: 736
+  - uid: 762
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -8.266514,14.540639
+      pos: -4.149131,14.590373
       parent: 1
-  - uid: 737
+  - uid: 763
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -8.132756,14.540639
-      parent: 1
-  - uid: 738
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.60834,14.540639
-      parent: 1
-  - uid: 739
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.459721,14.540639
+      pos: -4.0302343,14.590373
       parent: 1
 - proto: WeaponGrapplingGun
   entities:
@@ -10221,6 +10208,13 @@ entities:
     - type: Transform
       pos: -3.5538287,-1.2270641
       parent: 1
+- proto: WeaponLightMachineGunL6
+  entities:
+  - uid: 758
+    components:
+    - type: Transform
+      pos: -5.4569855,8.5562725
+      parent: 1
 - proto: WeaponPistolHKUSP
   entities:
   - uid: 429
@@ -10279,6 +10273,32 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: WeaponPistolMk58
+  entities:
+  - uid: 730
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.372459,8.615738
+      parent: 1
+  - uid: 731
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.729147,8.615738
+      parent: 1
+  - uid: 733
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.1941147,8.615738
+      parent: 1
+  - uid: 734
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.550803,8.615738
+      parent: 1
 - proto: WeaponPistolN1984
   entities:
   - uid: 764
@@ -10293,69 +10313,63 @@ entities:
     - type: Transform
       pos: -12.411958,12.218038
       parent: 1
-- proto: WeaponShotgunEnforcerRubber
+- proto: WeaponSubMachineGunMP49
   entities:
+  - uid: 699
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -8.41823,14.560641
+      parent: 1
   - uid: 714
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -4.8409667,14.592035
+      pos: -8.626297,14.560641
       parent: 1
-  - uid: 715
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.558589,14.592035
-      parent: 1
-  - uid: 740
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.4099693,14.592035
-      parent: 1
-  - uid: 741
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.246488,14.606901
-      parent: 1
-  - uid: 744
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.7072096,14.592035
-      parent: 1
-- proto: WeaponSubMachineGunMP5
-  entities:
   - uid: 727
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -5.725438,8.574622
+      pos: -8.150714,14.560641
       parent: 1
-  - uid: 728
+  - uid: 737
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -5.576819,8.574622
+      pos: -8.819504,14.545775
       parent: 1
-  - uid: 730
+  - uid: 738
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -5.1160965,8.589488
+      pos: -8.641159,14.560641
+      parent: 1
+  - uid: 742
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -8.269609,14.560641
+      parent: 1
+- proto: WeaponTaser
+  entities:
+  - uid: 607
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.476095,14.560641
+      parent: 1
+  - uid: 613
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.654438,14.560641
       parent: 1
   - uid: 749
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -5.234993,8.589488
-      parent: 1
-  - uid: 750
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.4133363,8.589488
+      pos: -4.832782,14.545775
       parent: 1
 - proto: WeaponTurretCoilgunCMM
   entities:
