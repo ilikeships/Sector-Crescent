@@ -12,6 +12,7 @@
     - Zhipov
     - Sasha
     - Cherenzikov
+    - Hind
     - Ivarod
     - Gargut
     - Broadsword
@@ -45,6 +46,7 @@
     - Imparator
     - Laelaps
     - Anathema
+    - Jannissary
 
 - type: entity
   id: NemesisMothershipComputer
@@ -56,6 +58,8 @@
     - Imparator
     - Jannissary
     - Raider
+    - Conquest
+    - Valor
 
 - type: entity
   id: InterdyneMothershipComputer
