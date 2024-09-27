@@ -829,6 +829,17 @@ entities:
         - Group5: Toggle
         235:
         - Group5: Toggle
+        122:
+        - Group1: Toggle
+        118:
+        - Group1: Toggle
+    - type: NamedModules
+      buttonNames:
+      - Fire gatling
+      - Blank
+      - Blank
+      - Reinforce bridge
+      - Docking port lockdown
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 140
@@ -1710,12 +1721,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,5.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 139
   - uid: 122
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 3.5,5.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 139
 - proto: SpawnPointLatejoin
   entities:
   - uid: 229

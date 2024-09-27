@@ -23,7 +23,7 @@ entities:
       chunks:
         0,0:
           ind: 0,0
-          tiles: YQAAAAAAIQAAAAAAIQAAAAAAIQAAAAAAcAAAAAAAIQAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAIQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAggAAAAAAggAAAAAAPQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          tiles: YQAAAAAAIQAAAAAAIQAAAAAAIQAAAAAAcAAAAAAAIQAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAIQAAAAAAggAAAAAAggAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAggAAAAAAggAAAAAAPQAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAggAAAAAAgQAAAAAAAAAAAAAAggAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           version: 6
         -1,0:
           ind: -1,0
@@ -90,7 +90,8 @@ entities:
             0: 2367
             1: 16384
           0,-1:
-            0: 15104
+            0: 6912
+            2: 8192
             1: 64
           -1,0:
             0: 655
@@ -135,6 +136,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
           - 0
           - 0
           - 0
@@ -460,6 +476,51 @@ entities:
     - type: Transform
       pos: -1.5,-1.5
       parent: 1
+  - uid: 201
+    components:
+    - type: Transform
+      pos: 5.5,6.5
+      parent: 1
+  - uid: 205
+    components:
+    - type: Transform
+      pos: 4.5,6.5
+      parent: 1
+  - uid: 212
+    components:
+    - type: Transform
+      pos: 4.5,3.5
+      parent: 1
+  - uid: 213
+    components:
+    - type: Transform
+      pos: 4.5,4.5
+      parent: 1
+  - uid: 214
+    components:
+    - type: Transform
+      pos: 5.5,3.5
+      parent: 1
+  - uid: 215
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 1
+  - uid: 216
+    components:
+    - type: Transform
+      pos: 4.5,5.5
+      parent: 1
+  - uid: 217
+    components:
+    - type: Transform
+      pos: 4.5,2.5
+      parent: 1
+  - uid: 218
+    components:
+    - type: Transform
+      pos: 4.5,1.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 106
@@ -566,6 +627,17 @@ entities:
         - Group4: SpaceArtilleryOffSafety
         89:
         - Group2: Trigger
+        203:
+        - Group1: Toggle
+        - Group3: SpaceArtilleryOnSafety
+        - Group4: SpaceArtilleryOffSafety
+    - type: NamedModules
+      buttonNames:
+      - Fire vulcans
+      - Fire missile
+      - Vulcan safeties on
+      - Vulcan safeties off
+      - Drop shutters
 - proto: ComputerStationRecords
   entities:
   - uid: 77
@@ -668,6 +740,70 @@ entities:
       - invalid
       deviceLists:
       - 168
+- proto: GrenadeBaton
+  entities:
+  - uid: 207
+    components:
+    - type: Transform
+      parent: 206
+    - type: Physics
+      canCollide: False
+  - uid: 208
+    components:
+    - type: Transform
+      parent: 206
+    - type: Physics
+      canCollide: False
+  - uid: 209
+    components:
+    - type: Transform
+      parent: 206
+    - type: Physics
+      canCollide: False
+  - uid: 210
+    components:
+    - type: Transform
+      parent: 206
+    - type: Physics
+      canCollide: False
+  - uid: 211
+    components:
+    - type: Transform
+      parent: 206
+    - type: Physics
+      canCollide: False
+- proto: GrenadeBlast
+  entities:
+  - uid: 195
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 196
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 197
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 198
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
+  - uid: 199
+    components:
+    - type: Transform
+      parent: 194
+    - type: Physics
+      canCollide: False
 - proto: Grille
   entities:
   - uid: 3
@@ -731,6 +867,83 @@ entities:
     - type: Transform
       pos: 0.9519105,-1.3432524
       parent: 1
+- proto: MagazineGrenadeBaton
+  entities:
+  - uid: 206
+    components:
+    - type: Transform
+      pos: 0.16559267,-1.743854
+      parent: 1
+    - type: BallisticAmmoProvider
+      entities:
+      - 207
+      - 208
+      - 209
+      - 210
+      - 211
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 207
+          - 208
+          - 209
+          - 210
+          - 211
+- proto: MagazineGrenadeEmpty
+  entities:
+  - uid: 194
+    components:
+    - type: Transform
+      parent: 89
+    - type: BallisticAmmoProvider
+      entities:
+      - 195
+      - 196
+      - 197
+      - 198
+      - 199
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 195
+          - 196
+          - 197
+          - 198
+          - 199
+    - type: Physics
+      canCollide: False
+- proto: MagazineVulcan
+  entities:
+  - uid: 193
+    components:
+    - type: Transform
+      parent: 90
+    - type: Physics
+      canCollide: False
+  - uid: 200
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.2359497,-1.282598
+      parent: 1
+  - uid: 202
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.4546997,-1.282598
+      parent: 1
+  - uid: 204
+    components:
+    - type: Transform
+      parent: 203
+    - type: Physics
+      canCollide: False
 - proto: NTVulcanTurretNCSP
   entities:
   - uid: 90
@@ -738,6 +951,46 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,3.5
+      parent: 1
+    - type: Battery
+      startingCharge: 198000
+    - type: DeviceLinkSink
+      links:
+      - 76
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 193
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+    - type: BatterySelfRecharger
+      autoRechargeRate: -500
+      autoRecharge: True
+    - type: ApcPowerReceiver
+      powerLoad: 2000
+  - uid: 203
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,3.5
       parent: 1
     - type: Battery
       startingCharge: 199000
@@ -755,7 +1008,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: null
+          ent: 204
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -948,9 +1201,25 @@ entities:
   - uid: 89
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,3.5
+      rot: -3.141592653589793 rad
+      pos: 5.5,6.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 194
+    - type: Physics
+      fixedRotation: False
     - type: DeviceLinkSink
       links:
       - 76
@@ -1011,15 +1280,33 @@ entities:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 100
-          - 101
           - 102
+          - 101
+          - 100
 - proto: TableReinforced
   entities:
   - uid: 78
@@ -1107,7 +1394,7 @@ entities:
   - uid: 192
     components:
     - type: Transform
-      pos: 0.47632718,-1.3432524
+      pos: 1.3296998,-1.1495225
       parent: 1
 - proto: WallPlastitanium
   entities:
