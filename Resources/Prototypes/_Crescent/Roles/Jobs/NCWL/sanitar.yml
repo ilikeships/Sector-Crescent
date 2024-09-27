@@ -11,7 +11,7 @@
   alwaysUseSpawner: true
   icon: "JobIconSanitar"
   requireAdminNotify: false
-  supervisors: job-supervisors-highcomm 
+  supervisors: job-supervisors-highcomm
   canBeAntag: false
   access:
   - Command
@@ -29,3 +29,4 @@
     ears: ClothingHeadsetNCWL
     pocket1: WeaponPistolHKUSP
     pocket2: NCWLPassportAccepted
+    id: SanitarPDA

@@ -10,7 +10,7 @@
   loadouts:
   - SanitarNCWLClothingBackpackNCWLFilledSanitar
   - SanitarNCWLClothingBackpackDuffelNCWLFilledSanitar
-  - SanitarNCWLClothingBackpackSatchelNCWLFilledSanitar  
+  - SanitarNCWLClothingBackpackSatchelNCWLFilledSanitar
 
 - type: loadoutGroup
   id: NCWLOuterClothing
@@ -36,7 +36,7 @@
   - SanitarNCWLClothingHeadHelmetNCWLBasic
   - SanitarNCWLClothingHeadHatNCWLTanker
   - SanitarNCWLClothingHeadHelmetNCWLHeavy
-  
+
 - type: loadoutGroup
   id: NCWLGloves
   name: loadout-group-contractor-gloves
@@ -45,12 +45,6 @@
   - SanitarNCWLClothingHandsGlovesFingerless
   - SanitarNCWLClothingHandsGlovesCombat
 
-- type: loadoutGroup
-  id: SanitarPDA
-  name: loadout-group-contractor-id
-  loadouts:
-  - SanitarNCWLSanitarPDA
-  
 - type: loadoutGroup
   id: SanitarBelt
   name: loadout-group-contractor-belt
