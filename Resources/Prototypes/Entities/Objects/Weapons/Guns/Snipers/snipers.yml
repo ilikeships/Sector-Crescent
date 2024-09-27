@@ -49,8 +49,6 @@
     state: base
   - type: AmmoCounter
   - type: Wieldable
-  - type: MeleeRequiresWield
-  - type: GunRequiresWield
   - type: Gun
     useKey: true
     fireRate: 1
