@@ -4182,6 +4182,13 @@ entities:
     - type: Transform
       pos: 2.5,-10.5
       parent: 2
+- proto: DeedConsole
+  entities:
+  - uid: 559
+    components:
+    - type: Transform
+      pos: -2.5,-20.5
+      parent: 2
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 542
@@ -5513,7 +5520,7 @@ entities:
       pos: -8.5,-5.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 4714.3050557
+      nextDrop: 6178.6450361
 - proto: PosterContrabandInterdyneDD
   entities:
   - uid: 535
@@ -5522,7 +5529,7 @@ entities:
       pos: -8.5,-11.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 4297.3050557
+      nextDrop: 6023.6450361
 - proto: PottedPlantRandom
   entities:
   - uid: 476

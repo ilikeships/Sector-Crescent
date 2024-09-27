@@ -2074,7 +2074,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 2.251474735072685 rad: 3.3510321638291125 rad
+      - 1.3241795065343607 rad: 4.8663299988373625 rad
 - proto: Bed
   entities:
   - uid: 1208
@@ -16528,7 +16528,7 @@ entities:
       pos: 17.5,-17.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 11931.3492761
+      nextDrop: 3368.9540076
 - proto: PosterContrabandInterdyne
   entities:
   - uid: 1235
@@ -21022,7 +21022,7 @@ entities:
       pos: 18.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 949000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21055,7 +21055,7 @@ entities:
       pos: 20.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 949000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21088,7 +21088,7 @@ entities:
       pos: -20.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 949000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21109,6 +21109,7 @@ entities:
       - 2399
       - 632
       - 3233
+      - 1227
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -21121,7 +21122,7 @@ entities:
       pos: -22.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 949000
+      startingCharge: 943000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -21141,6 +21142,7 @@ entities:
       - 2399
       - 632
       - 3233
+      - 1227
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -24247,7 +24249,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 1.5567364622487012 rad: 4.778585536481633 rad
+      - 0.9256570714046527 rad: 5.636920194218838 rad
     - type: DeviceLinkSink
       links:
       - 74
@@ -24259,7 +24261,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 3.089455962039044 rad: 4.816662363486189 rad
+      - 3.089455962039044 rad: 5.6546435904525465 rad
     - type: DeviceLinkSink
       links:
       - 74
@@ -24273,7 +24275,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 2.1801672642817174 rad: 3.42233963462008 rad
+      - 1.2686810147477143 rad: 4.333825884154083 rad
     - type: DeviceLinkSink
       links:
       - 74
@@ -24330,7 +24332,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 1.7878271354962012 rad: 3.8146797634055964 rad
+      - 1.1443260078542725 rad: 4.458180891047525 rad
     - type: DeviceLinkSink
       links:
       - 74
@@ -24432,7 +24434,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 1.291404368350992 rad: 4.382410001341773 rad
+      - 0.6806784082777885 rad: 5.166807153750874 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -24457,7 +24459,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 0.2170308087013046 rad: 4.278327381830725 rad
+      - 0.2170308087013046 rad: 5.140497427073629 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -24485,7 +24487,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 4.465772160124154 rad: 3.3510321638291125 rad
+      - 3.8222710618675815 rad: 3.994533262085685 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -24513,7 +24515,7 @@ entities:
       parent: 2
     - type: PointCannon
       obstructedRanges:
-      - 4.805064782192553 rad: 3.295533672042466 rad
+      - 4.805064782192553 rad: 3.475387170722554 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

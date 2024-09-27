@@ -46,6 +46,7 @@
     - Imparator
     - Laelaps
     - Anathema
+    - Jannissary
 
 - type: entity
   id: NemesisMothershipComputer
@@ -57,6 +58,8 @@
     - Imparator
     - Jannissary
     - Raider
+    - Conquest
+    - Valor
 
 - type: entity
   id: InterdyneMothershipComputer
