@@ -3,6 +3,9 @@
   name: job-name-corpsec
   description: job-description-corpsec
   playTimeTracker: JobSecuritySHI
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000
   weight: 38
   startingGear: CorpsecGear
   alwaysUseSpawner: true

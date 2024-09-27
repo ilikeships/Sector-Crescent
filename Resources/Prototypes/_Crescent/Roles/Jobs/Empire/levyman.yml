@@ -4,6 +4,8 @@
   description: job-description-levyman
   playTimeTracker: JobLevymanDSM
   requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000
     - !type:SpeciesRequirement
       allowedOnly:
         - Human
