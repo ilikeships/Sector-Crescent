@@ -98,7 +98,7 @@ public sealed partial class ShuttleSystem
         }
         else
         {
-            if (iff.Flags && IFFFlags.Hide)
+            if ((iff.Flags & IFFFlags.Hide) != 0)
             {
                 _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
                 {
