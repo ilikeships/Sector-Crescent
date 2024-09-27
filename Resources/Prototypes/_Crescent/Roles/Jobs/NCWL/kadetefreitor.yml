@@ -8,7 +8,7 @@
   alwaysUseSpawner: true
   icon: "JobIconKadet"
   requireAdminNotify: false
-  supervisors: job-supervisors-highcomm 
+  supervisors: job-supervisors-highcomm
   canBeAntag: false
   access:
   - Command
@@ -26,3 +26,4 @@
     ears: ClothingHeadsetNCWL
     belt: WeaponPistolHKUSP
     pocket1: NCWLPassportAccepted
+    id: KadetPDA

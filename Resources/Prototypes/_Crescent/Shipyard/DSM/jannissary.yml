@@ -1,7 +1,7 @@
 - type: vessel
   id: Jannissary
   name: DSM Jannissary
-  description: A light Imperial missile shuttle.
+  description: A light Imperial combat shuttle.
   price: 19500
   category: Small
   group: None

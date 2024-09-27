@@ -3171,6 +3171,14 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -1.5,15.5
       parent: 1
+- proto: ComputerTabletopAdvancedRadar
+  entities:
+  - uid: 922
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,15.5
+      parent: 1
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 475
@@ -3222,6 +3230,13 @@ entities:
         131:
         - Group5: Off
         - Group4: On
+    - type: NamedModules
+      buttonNames:
+      - Reinforce bridge
+      - Fire artillery
+      - Blank
+      - Arm turrets
+      - Disarm turrets
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 94
@@ -4640,14 +4655,17 @@ entities:
   - uid: 365
     components:
     - type: Transform
-      pos: -5.5,15.5
+      rot: 1.4188692569700136 rad
+      pos: -5.4262223,14.660992
       parent: 1
+    - type: Physics
+      fixedRotation: False
 - proto: Pen
   entities:
   - uid: 366
     components:
     - type: Transform
-      pos: -5.565585,15.17862
+      pos: -5.2396374,14.925446
       parent: 1
 - proto: Pickaxe
   entities:
@@ -5869,7 +5887,7 @@ entities:
       pos: 6.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 973000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5900,7 +5918,7 @@ entities:
       pos: 3.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 973000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
