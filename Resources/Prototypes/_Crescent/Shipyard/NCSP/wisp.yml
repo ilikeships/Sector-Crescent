@@ -2,7 +2,7 @@
   id: Wisp
   name: RC Wisp
   description: A repurposed civilian hull, converted into a nimble smuggling shuttle.
-  price: 18500
+  price: 50000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCSP/wisp.yml
