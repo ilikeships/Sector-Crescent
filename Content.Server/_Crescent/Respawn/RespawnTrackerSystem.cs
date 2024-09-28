@@ -1,11 +1,12 @@
 using Content.Shared.Mobs;
 using Content.Shared.Crescent.CCvar;
-using Robust.Shared.Timing;
-using Robust.Shared.Configuration;
+using Content.Shared.Crescent.Ghost;
+using Content.Shared.GameTicking;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mind;
 using Content.Server.Mind;
-using Content.Shared.GameTicking;
+using Robust.Shared.Configuration;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Crescent.Respawn;
 
@@ -24,7 +25,7 @@ public sealed class RespawnTrackerSystem : EntitySystem
     /// <summary>
     /// Matches username to death time and respawn time.
     /// </summary>
-    public Dictionary<Guid, (TimeSpan, TimeSpan)> RespawnTrackers = new Dictionary<Guid, (TimeSpan deathTime, TimeSpan respawnTime)>();
+    public Dictionary<Guid, TimeSpan> RespawnTrackers = new Dictionary<Guid, TimeSpan>();
 
     public override void Initialize()
     {
@@ -32,6 +33,8 @@ public sealed class RespawnTrackerSystem : EntitySystem
         SubscribeLocalEvent<MindContainerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<PlayerSessionEntityDeletedEvent>(OnEntityDeleted);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
+
+        SubscribeNetworkEvent<RespawnTimeRequestEvent>(OnRespawnTimeRequest);
     }
 
     private void OnMobStateChanged(EntityUid uid, MindContainerComponent component, MobStateChangedEvent args)
@@ -68,14 +71,24 @@ public sealed class RespawnTrackerSystem : EntitySystem
         RespawnTrackers.Clear();
     }
 
+    private void OnRespawnTimeRequest(RespawnTimeRequestEvent ev, EntitySessionEventArgs args)
+    {
+        var guid = (Guid) args.SenderSession.UserId;
+        var respawnTime = _timing.CurTime;
+
+        if (RespawnTrackers.ContainsKey(guid))
+            respawnTime = RespawnTrackers[guid];
+
+        var response = new RespawnTimeResponseEvent(respawnTime);
+        RaiseNetworkEvent(response, args.SenderSession.Channel);
+    }
+
     public bool CheckRespawn(Guid guid)
     {
         if (!RespawnTrackers.ContainsKey(guid))
             return true;
 
-        var values = RespawnTrackers[guid];
-
-        if (_timing.CurTime > values.Item2)
+        if (_timing.CurTime >= RespawnTrackers[guid])
         {
             RemoveEntry(guid);
             return true;
@@ -90,7 +103,7 @@ public sealed class RespawnTrackerSystem : EntitySystem
         RemoveEntry(guid);
 
         // add new entry
-        RespawnTrackers.Add(guid, (_timing.CurTime, _timing.CurTime + TimeSpan.FromSeconds(_cfg.GetCVar(CrescentCVars.RespawnTime))));
+        RespawnTrackers.Add(guid, _timing.CurTime + TimeSpan.FromSeconds(_cfg.GetCVar(CrescentCVars.RespawnTime)));
     }
 
     /// <summary>

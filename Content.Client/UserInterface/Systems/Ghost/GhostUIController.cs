@@ -1,8 +1,7 @@
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
-using Content.Shared.Crescent.CCvar;
-using Content.Shared.NF14.CCVar;
+using Content.Shared.Crescent.Ghost;
 using Content.Shared.Ghost;
 using Robust.Client.Console;
 using Robust.Client.UserInterface;
@@ -22,7 +21,6 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     [UISystemDependency] private readonly GhostSystem? _system = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
-    private bool _canUncryo = true; // Frontier. TODO: find a reliable way to update this, for now it just stays active all the time
 
     public override void Initialize()
     {
@@ -31,6 +29,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+        RequestRespawnTime();
     }
 
     private void OnScreenLoad()
@@ -50,6 +49,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         system.PlayerAttached += OnPlayerAttached;
         system.PlayerDetached += OnPlayerDetached;
         system.GhostWarpsResponse += OnWarpsResponse;
+        system.RespawnTimeResponse += OnRespawnTimeResponse;
         system.GhostRoleCountUpdated += OnRoleCountUpdated;
     }
 
@@ -60,6 +60,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         system.PlayerAttached -= OnPlayerAttached;
         system.PlayerDetached -= OnPlayerDetached;
         system.GhostWarpsResponse -= OnWarpsResponse;
+        system.RespawnTimeResponse -= OnRespawnTimeResponse;
         system.GhostRoleCountUpdated -= OnRoleCountUpdated;
     }
 
@@ -71,17 +72,8 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         }
 
         Gui.Visible = _system?.IsGhost ?? false;
-        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody,
-            _system?.Player?.TimeOfDeath,
-            _cfg.GetCVar(CrescentCVars.RespawnTime),
-            _canUncryo && _cfg.GetCVar(NF14CVars.CryoReturnEnabled));
+        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody);
     }
-
-    private void UpdateRespawn(TimeSpan? timeOfDeath)
-    {
-        Gui?.UpdateRespawn(timeOfDeath);
-    }
-
     private void OnPlayerRemoved(GhostComponent component)
     {
         Gui?.Hide();
@@ -100,7 +92,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         Gui.Visible = true;
-        UpdateRespawn(component.TimeOfDeath);
+        RequestRespawnTime();
         UpdateGui();
     }
 
@@ -116,6 +108,11 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
         window.UpdateWarps(msg.Warps);
         window.Populate();
+    }
+
+    private void OnRespawnTimeResponse(RespawnTimeResponseEvent msg)
+    {
+        Gui?.UpdateRespawn(msg.RespawnTime);
     }
 
     private void OnRoleCountUpdated(GhostUpdateGhostRoleCountEvent msg)
@@ -178,6 +175,11 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.RequestWarps();
         Gui?.TargetWindow.Populate();
         Gui?.TargetWindow.OpenCentered();
+    }
+
+    private void RequestRespawnTime()
+    {
+        _system?.RequestRespawnTime();
     }
 
     private void GhostRolesPressed()
