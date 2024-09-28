@@ -23,7 +23,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitClarizeOfficer
-  name: clarizian fatigues
+  name: clarizian officer's suit
   description: An officer's silken suit.
   components:
   - type: Sprite
