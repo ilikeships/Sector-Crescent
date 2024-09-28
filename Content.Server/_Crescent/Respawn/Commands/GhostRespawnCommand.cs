@@ -1,23 +1,18 @@
 using Content.Server.GameTicking;
 using Content.Server.Mind;
+using Content.Server.Crescent.Respawn;
 using Content.Shared.Administration;
-using Content.Shared.CCVar;
 using Content.Shared.Ghost;
-using Content.Shared.Mind;
-using Content.Shared.NF14.CCVar;
-using Content.Shared.Roles;
-using Robust.Server.Player;
+using Content.Shared.Crescent.CCvar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
-using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
-namespace Content.Server.NF14.Commands;
+namespace Content.Server.Crescent.Commands;
 
 [AnyCommand()]
 public sealed class GhostRespawnCommand : IConsoleCommand
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
 
@@ -27,7 +22,7 @@ public sealed class GhostRespawnCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (!_configurationManager.GetCVar(NF14CVars.RespawnEnabled))
+        if (!_configurationManager.GetCVar(CrescentCVars.RespawnEnabled))
         {
             shell.WriteLine("Respawning is disabled, ask an admin to respawn you.");
             return;
@@ -57,12 +52,10 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             shell.WriteLine("You have no mind.");
             return;
         }
-        var time = (_gameTiming.CurTime - ghost.TimeOfDeath);
-        var respawnTime = _configurationManager.GetCVar(NF14CVars.RespawnTime);
 
-        if (respawnTime > time.TotalSeconds)
+        if (!_entityManager.EntitySysManager.GetEntitySystem<RespawnTrackerSystem>().CheckRespawn(shell.Player.UserId))
         {
-            shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
+            shell.WriteLine($"Trying to respawn before timer is up.");
             return;
         }
 

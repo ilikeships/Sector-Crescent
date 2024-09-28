@@ -11,6 +11,7 @@ using Robust.Client.UserInterface;
 using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
 using Robust.Shared.Player;
+using Content.Shared.Crescent.Ghost;
 
 namespace Content.Client.Ghost
 {
@@ -66,6 +67,7 @@ namespace Content.Client.Ghost
         public event Action<GhostComponent>? PlayerAttached;
         public event Action? PlayerDetached;
         public event Action<GhostWarpsResponseEvent>? GhostWarpsResponse;
+        public event Action<RespawnTimeResponseEvent>? RespawnTimeResponse;
         public event Action<GhostUpdateGhostRoleCountEvent>? GhostRoleCountUpdated;
 
         public override void Initialize()
@@ -80,6 +82,7 @@ namespace Content.Client.Ghost
             SubscribeLocalEvent<GhostComponent, LocalPlayerDetachedEvent>(OnGhostPlayerDetach);
 
             SubscribeNetworkEvent<GhostWarpsResponseEvent>(OnGhostWarpsResponse);
+            SubscribeNetworkEvent<RespawnTimeResponseEvent>(OnRespawnTimeResponse);
             SubscribeNetworkEvent<GhostUpdateGhostRoleCountEvent>(OnUpdateGhostRoleCount);
 
             SubscribeLocalEvent<EyeComponent, ToggleLightingActionEvent>(OnToggleLighting);
@@ -176,6 +179,11 @@ namespace Content.Client.Ghost
             GhostWarpsResponse?.Invoke(msg);
         }
 
+        private void OnRespawnTimeResponse(RespawnTimeResponseEvent msg)
+        {
+            RespawnTimeResponse?.Invoke(msg);
+        }
+
         private void OnUpdateGhostRoleCount(GhostUpdateGhostRoleCountEvent msg)
         {
             AvailableGhostRoleCount = msg.AvailableGhostRoles;
@@ -185,6 +193,11 @@ namespace Content.Client.Ghost
         public void RequestWarps()
         {
             RaiseNetworkEvent(new GhostWarpsRequestEvent());
+        }
+
+        public void RequestRespawnTime()
+        {
+            RaiseNetworkEvent(new RespawnTimeRequestEvent());
         }
 
         public void ReturnToBody()
