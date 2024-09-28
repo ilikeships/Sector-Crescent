@@ -5,6 +5,7 @@ using Robust.Shared.Configuration;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mind;
 using Content.Server.Mind;
+using Content.Shared.GameTicking;
 
 namespace Content.Server.Crescent.Respawn;
 
@@ -23,13 +24,14 @@ public sealed class RespawnTrackerSystem : EntitySystem
     /// <summary>
     /// Matches username to death time and respawn time.
     /// </summary>
-    public Dictionary<Guid, (TimeSpan, TimeSpan)> RespawnTrackers = new Dictionary<Guid, (TimeSpan, TimeSpan)>();
+    public Dictionary<Guid, (TimeSpan, TimeSpan)> RespawnTrackers = new Dictionary<Guid, (TimeSpan deathTime, TimeSpan respawnTime)>();
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<MindContainerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<PlayerSessionEntityDeletedEvent>(OnEntityDeleted);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
     }
 
     private void OnMobStateChanged(EntityUid uid, MindContainerComponent component, MobStateChangedEvent args)
@@ -53,12 +55,37 @@ public sealed class RespawnTrackerSystem : EntitySystem
 
     private void OnEntityDeleted(ref PlayerSessionEntityDeletedEvent args)
     {
+        // don't bully this guy if it was his CORPSE that got deleted
+        if (RespawnTrackers.ContainsKey(args.Guid))
+            return;
+
+        // otherwise we probably got instagibbed or eaten by singulo or something
         AddEntry(args.Guid);
+    }
+
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+    {
+        RespawnTrackers.Clear();
+    }
+
+    public bool CheckRespawn(Guid guid)
+    {
+        if (!RespawnTrackers.ContainsKey(guid))
+            return true;
+
+        var values = RespawnTrackers[guid];
+
+        if (_timing.CurTime > values.Item2)
+        {
+            RemoveEntry(guid);
+            return true;
+        }
+
+        return false;
     }
 
     private void AddEntry(Guid guid)
     {
-        Logger.Error("Adding entry for " + guid);
         // delete your old entry if you have one
         RemoveEntry(guid);
 
