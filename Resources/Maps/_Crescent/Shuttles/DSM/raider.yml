@@ -40,6 +40,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      baseMaxLinearVelocity: 25
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -889,8 +890,6 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        invalid:
-        - Group2: Toggle
         160:
         - Group2: Toggle
         33:

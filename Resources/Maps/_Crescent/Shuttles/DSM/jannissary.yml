@@ -40,6 +40,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      baseMaxLinearVelocity: 25
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -1326,7 +1327,7 @@ entities:
       pos: 6.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 46
@@ -1704,7 +1705,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -1333.2345
+      secondsUntilStateChange: -1686.3727
       state: Opening
   - uid: 79
     components:
