@@ -65,118 +65,118 @@ entities:
             color: '#DE3A3A96'
             id: Delivery
           decals:
-            158: 5,-1
-            159: 4,-1
-            160: 4,-2
-            161: 5,-2
+            52: 5,-1
+            53: 4,-1
+            54: 4,-2
+            55: 5,-2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleNE
           decals:
-            86: 1,4
+            20: 1,4
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleNW
           decals:
-            87: 0,4
+            21: 0,4
         - node:
             color: '#DE3A3A96'
             id: WarnCornerNE
           decals:
-            138: 6,0
-            139: 6,0
+            34: 6,0
+            35: 6,0
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSW
           decals:
-            148: 6,-2
-            149: 6,-2
+            44: 6,-2
+            45: 6,-2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSmallNE
           decals:
-            152: 6,-2
-            153: 6,-2
+            48: 6,-2
+            49: 6,-2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSmallSW
           decals:
-            154: 6,0
-            155: 6,0
+            50: 6,0
+            51: 6,0
         - node:
             color: '#DE3A3A96'
             id: WarnEndE
           decals:
-            150: 7,-2
-            151: 7,-2
+            46: 7,-2
+            47: 7,-2
         - node:
             color: '#DE3A3A96'
             id: WarnLineE
           decals:
-            68: -5,0
-            69: -5,0
-            70: -5,-1
-            71: -5,-1
-            72: -5,-2
-            73: -5,-2
-            126: 1,-3
-            127: 1,-3
-            128: 1,-2
-            129: 1,-2
-            136: 6,-1
-            137: 6,-1
+            2: -5,0
+            3: -5,0
+            4: -5,-1
+            5: -5,-1
+            6: -5,-2
+            7: -5,-2
+            22: 1,-3
+            23: 1,-3
+            24: 1,-2
+            25: 1,-2
+            32: 6,-1
+            33: 6,-1
         - node:
             color: '#DE3A3A96'
             id: WarnLineGreyscaleE
           decals:
-            82: 1,2
-            83: 1,3
+            16: 1,2
+            17: 1,3
         - node:
             color: '#DE3A3A96'
             id: WarnLineGreyscaleW
           decals:
-            84: 0,2
-            85: 0,3
+            18: 0,2
+            19: 0,3
         - node:
             color: '#DE3A3A96'
             id: WarnLineN
           decals:
-            78: 6,-3
-            79: 6,-3
-            80: 7,-3
-            81: 7,-3
-            144: 4,0
-            145: 4,0
-            146: 5,0
-            147: 5,0
+            12: 6,-3
+            13: 6,-3
+            14: 7,-3
+            15: 7,-3
+            40: 4,0
+            41: 4,0
+            42: 5,0
+            43: 5,0
         - node:
             color: '#DE3A3A96'
             id: WarnLineS
           decals:
-            130: 0,-2
-            131: 0,-2
-            132: 0,-3
-            133: 0,-3
-            134: 6,-1
-            135: 6,-1
+            26: 0,-2
+            27: 0,-2
+            28: 0,-3
+            29: 0,-3
+            30: 6,-1
+            31: 6,-1
         - node:
             color: '#EFB34196'
             id: WarnLineS
           decals:
-            22: 2,-2
-            23: 2,-2
+            0: 2,-2
+            1: 2,-2
         - node:
             color: '#DE3A3A96'
             id: WarnLineW
           decals:
-            74: 7,-3
-            75: 7,-3
-            76: 6,-3
-            77: 6,-3
-            140: 5,0
-            141: 5,0
-            142: 4,0
-            143: 4,0
+            8: 7,-3
+            9: 7,-3
+            10: 6,-3
+            11: 6,-3
+            36: 5,0
+            37: 5,0
+            38: 4,0
+            39: 4,0
     - type: GridAtmosphere
       version: 2
       data:
@@ -937,6 +937,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,2.5
       parent: 2
+    - type: IFFConsole
+      heatGeneration: 4
+      heatCapacity: 1000
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 174
@@ -975,8 +978,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -2.5,0.5
       parent: 2
-    - type: GasFilter
-      enabled: True
 - proto: GasPassiveVent
   entities:
   - uid: 268
@@ -1173,8 +1174,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-1.5
       parent: 2
-    - type: GasPressurePump
-      enabled: True
 - proto: GasVentPump
   entities:
   - uid: 163
