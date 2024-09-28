@@ -27,6 +27,56 @@
 
 - type: entity
   parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitClarizeWorker
+  noSpawn: true
+  name: clarizian technician's hardsuit helmet
+  description: A miner's hardsuit helmet with internal pressurization systems and a scanning hud for nearby ore and minerals.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/clarizianworker.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/clarizianworker.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.95
+        Caustic: 0.95
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitClarize
+  noSpawn: true
+  name: royal trooper's hardsuit helmet
+  description: A hardsuit helmet for one of the Queensguard.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/clarizian.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/clarizian.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.95
+        Caustic: 0.95
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitImperialCommand
   noSpawn: true
   name: imperial command hardsuit helmet
@@ -81,6 +131,20 @@
         Radiation: 0.9
         Caustic: 0.9
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatClarizeBeret
+  name: royal officer's beret
+  description: A flamboyant, feathered beret with Royal livery.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/clarizeberet.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/clarizeberet.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingHeadBase
@@ -137,6 +201,32 @@
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/mandatehelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Tag
+    tags:
+    - HidesHair
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetClarizianTrooperHelmet
+  name: clarizian helmet
+  description: A sturdy helmet to enforce the Queen's will.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/clarizianhelmet.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/clarizianhelmet.rsi
   - type: Armor
     modifiers:
       coefficients:

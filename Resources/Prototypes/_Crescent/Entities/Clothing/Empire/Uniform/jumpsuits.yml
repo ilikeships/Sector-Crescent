@@ -11,6 +11,28 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitClarizeCombat
+  name: clarizian fatigues
+  description: A sleek onepiece bodysuit with Royal livery.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizecombat.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizecombat.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitClarizeOfficer
+  name: clarizian officer's suit
+  description: An officer's silken suit.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizeofficer.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizeofficer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitImperialSoldierFormal
   name: formal shirt and slacks
   description: A formal shirt and slacks for Imperial soldiers.
@@ -41,6 +63,17 @@
     sprite: _Crescent/Clothing/Empire/Uniform/mandatedoctor.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Uniform/mandatedoctor.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitClarizeDoctor
+  name: doctor's jumpsuit
+  description: A doctor's jumpsuit with Royal livery.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizemedic.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Uniform/clarizemedic.rsi
 
 - type: entity
   parent: ClothingUniformBase

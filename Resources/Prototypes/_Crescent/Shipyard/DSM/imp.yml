@@ -4,7 +4,7 @@
   description: An Imperial salvaging and mining shuttle with a large cargohold.
   price: 29500
   category: Small
-  group: Civilian
+  group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/imp.yml
 
 - type: gameMap

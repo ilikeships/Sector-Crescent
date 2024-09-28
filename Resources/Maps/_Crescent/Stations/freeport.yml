@@ -95,8 +95,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 0.05
-      linearDamping: 0.05
+      angularDamping: 555555
+      linearDamping: 555555
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -12126,7 +12126,7 @@ entities:
     - type: Transform
       pos: 0.5,-39.5
       parent: 1
-- proto: PlastitaniumWindow
+- proto: PlastitaniumWindowStation
   entities:
   - uid: 357
     components:
@@ -15114,7 +15114,7 @@ entities:
     - type: Transform
       pos: -3.5,-37.5
       parent: 1
-- proto: WallReinforced
+- proto: WallReinforcedStation
   entities:
   - uid: 2
     components:
