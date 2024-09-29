@@ -668,6 +668,16 @@
 
 - type: entity
   parent: BaseWeaponTurretArtillery
+  name: 73mm antimatter boltgun
+  id: WeaponTurretCoilgunHostile
+  suffix: NPC HOSTILE
+  components:
+    - type: NpcFactionMember
+      factions:
+        - HostileNPCWorld
+
+- type: entity
+  parent: BaseWeaponTurretArtillery
   name: NCWL 73mm antimatter boltgun
   id: WeaponTurretCoilgunNCWL
   suffix: NCWL CLGN
