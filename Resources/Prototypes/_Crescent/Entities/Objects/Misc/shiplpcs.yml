@@ -19,6 +19,23 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherTriumphant
+  name: DSM 'Triumphant' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Triumphant-class battlecruiser. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 60000
+  - type: ShipVoucher
+    ship: Triumphant
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherCountsman
   name: DSM 'Countsman' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with an Imperial Countsman-class utility Flagship. Has to be redeemed at a shipyard console.
@@ -205,6 +222,23 @@
     price: 9000
   - type: ShipVoucher
     ship: Vanguard
+
+- type: entity
+  parent: BaseItem
+  id: ShipVoucherMeteor
+  name: NCWL 'Meteor' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with a communard Meteor-class cloak fighter pattern. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 12500
+  - type: ShipVoucher
+    ship: Meteor
 
 - type: entity
   parent: BaseItem

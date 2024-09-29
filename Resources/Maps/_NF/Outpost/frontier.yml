@@ -2268,7 +2268,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -3129.6423
+      secondsUntilStateChange: -3158.1758
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2370,6 +2370,11 @@ entities:
       parent: 1
 - proto: AirlockCommandLockedDSMNoble
   entities:
+  - uid: 164
+    components:
+    - type: Transform
+      pos: 19.5,-9.5
+      parent: 1
   - uid: 872
     components:
     - type: Transform
@@ -2387,13 +2392,6 @@ entities:
     components:
     - type: Transform
       pos: 10.5,15.5
-      parent: 1
-- proto: AirlockCommandLockedDSMWealth
-  entities:
-  - uid: 164
-    components:
-    - type: Transform
-      pos: 19.5,-9.5
       parent: 1
 - proto: AirlockCommandLockedScribe
   entities:
@@ -10397,7 +10395,7 @@ entities:
       pos: 26.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -298.64764
+      secondsUntilStateChange: -327.181
       state: Closing
 - proto: CurtainsPurpleOpen
   entities:
@@ -11176,7 +11174,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4999.0347
+      secondsUntilStateChange: -5027.568
       state: Opening
   - uid: 1418
     components:

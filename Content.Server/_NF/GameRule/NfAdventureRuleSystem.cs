@@ -118,7 +118,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         //var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
-        //var freeport = "/Maps/_Crescent/Stations/freeport.yml";
+        var freeport = "/Maps/_Crescent/Stations/freeport.yml";
         // var refuge = "/Maps/_Crescent/Stations/refuge.yml";
         var vladzena = "/Maps/_Crescent/Stations/vladzena.yml";
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
@@ -320,35 +320,35 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
       //      _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
      //   }
 
-      //  if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
-       // {
-       //     Offset = _random.NextVector2(9000f, 8000f)
-       // }))
-      //  {
-      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
-      //      {
-      //          _station.InitializeNewStation(stationProto.Stations["Freeport"], depotUid9s);
-      //      }
+        if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(9000f, 8000f)
+        }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Freeport"], depotUid9s);
+            }
 
-      //      var meta = EnsureComp<MetaDataComponent>(depotUid9s[0]);
-       //     _meta.SetEntityName(depotUid9s[0], "The Freeport", meta);
-       //     _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
-       // }
+            var meta = EnsureComp<MetaDataComponent>(depotUid9s[0]);
+            _meta.SetEntityName(depotUid9s[0], "The Freeport", meta);
+            _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
+        }
 
-     //   if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
-     //   {
-     //       Offset = _random.NextVector2(4000f, 2500f)
-     //   }))
-     //   {
-     //       if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
-     //       {
-      //          _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
-      //      }
+        if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
+        {
+            Offset = _random.NextVector2(6000f, 5500f)
+        }))
+        {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
+            }
        
-      //      var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
-      //      _meta.SetEntityName(depotUid10s[0], "Tatsumoto Trading Outpost", meta);
-      //      _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
-      //  }
+            var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
+            _meta.SetEntityName(depotUid10s[0], "Tatsumoto Trading Outpost", meta);
+            _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
+        }
 
       //  if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
       //  {
