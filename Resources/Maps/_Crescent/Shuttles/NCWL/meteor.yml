@@ -1,0 +1,16 @@
+meta:
+  format: 6
+  postmapinit: false
+tilemap: {}
+entities:
+- proto: AirAlarm
+  entities:
+  - uid: 109
+    components:
+    - type: Transform
+      pos: -5.5,1.5
+    - type: DeviceList
+      devices:
+      - invalid
+      - invalid
+...

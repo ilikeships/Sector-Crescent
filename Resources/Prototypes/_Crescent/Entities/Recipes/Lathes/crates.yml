@@ -45,15 +45,15 @@
   result: TradeGoodWine
   completetime: 2
   materials:
-    Biomass: 350
+    Biomass: 120
 
 - type: latheRecipe
   id: FabricsCrate
   result: TradeGoodFabrics
   completetime: 2
   materials:
-    Cloth: 2500
-    Plastic: 1500
+    Cloth: 1250
+    Plastic: 1000
 
 - type: latheRecipe
   id: ScrapCrate

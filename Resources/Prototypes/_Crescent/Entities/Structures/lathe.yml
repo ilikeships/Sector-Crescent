@@ -14,16 +14,13 @@
     - state: buttons_on
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
-  - type: Machine
-    board: SheetifierMachineCircuitboard
   - type: MaterialStorage
     dropOnDeconstruct: false #should drop ores instead of ingots/sheets
     ignoreColor: true
     canEjectStoredMaterials: false
     whitelist:
       tags:
-      - Sheet
-      - Metal
+      - RawMaterial
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
