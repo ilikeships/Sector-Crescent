@@ -1,3 +1,23 @@
+#
+
+- type: npcFaction
+  id: HostileNPCWorld
+  hostile:
+    - SRMFighter
+    - NCWLFighter
+    - DSMFighter
+    - SHIFighter
+    - CMMFighter
+    - NCSPFighter
+    - NCSPWarship
+    - NCWLWarship
+    - CMMWarship
+    - DSMWarship
+    - SHIWarship
+    - SRMWarship
+
+#
+
 - type: npcFaction
   id: NCWLFighter
   hostile:

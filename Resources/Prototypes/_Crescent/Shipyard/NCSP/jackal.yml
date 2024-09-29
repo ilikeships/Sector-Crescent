@@ -27,5 +27,5 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            InfanteerNCSP: [ 10, 10 ]
-            TechnicianNCSP: [ 5, 5 ]
+            InfanteerNCSP: [ 4, 4 ]
+            TechnicianNCSP: [ 2, 2 ]

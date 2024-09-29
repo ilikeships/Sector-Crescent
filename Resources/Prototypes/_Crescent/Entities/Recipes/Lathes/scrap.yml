@@ -2,20 +2,20 @@
 - type: latheRecipe
   id: SteelScrap
   result: RefinedSteelScrap1
-  completetime: 3
+  completetime: 0.8
   materials:
     ScrapSteel: 500
 
 - type: latheRecipe
   id: TitaniumScrap
   result: RefinedTitaniumScrap1
-  completetime: 3
+  completetime: 0.8
   materials:
     ScrapTitanium: 500
 
 - type: latheRecipe
   id: Garbage
   result: RefinedGarbageOre1
-  completetime: 3
+  completetime: 0.8
   materials:
     Garbage: 500

@@ -633,6 +633,7 @@
       tags:
       - Sheet
       - Metal
+      - RawMaterial
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active

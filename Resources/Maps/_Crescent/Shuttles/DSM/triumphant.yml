@@ -65,7 +65,7 @@ entities:
           version: 6
         0,3:
           ind: 0,3
-          tiles: CQAAAAAAggAAAAAAPQAAAAAAPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          tiles: CQAAAAAAggAAAAAAPQAAAAAAPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAPQAAAAAAPQAAAAAAPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           version: 6
         -1,3:
           ind: -1,3
@@ -438,6 +438,11 @@ entities:
             365: -15,-2
             366: -7,10
         - node:
+            color: '#D381C996'
+            id: WarnCornerGreyscaleNE
+          decals:
+            473: 3,49
+        - node:
             color: '#EFB34196'
             id: WarnCornerNE
           decals:
@@ -613,6 +618,13 @@ entities:
             376: -6,32
             384: 4,42
             385: 4,41
+            472: 3,48
+        - node:
+            color: '#D381C996'
+            id: WarnLineGreyscaleN
+          decals:
+            470: 1,49
+            471: 2,49
         - node:
             color: '#D381C996'
             id: WarnLineGreyscaleW
@@ -884,8 +896,7 @@ entities:
           0,11:
             0: 15281
           0,12:
-            0: 29
-            1: 32
+            0: 253
           1,9:
             0: 16759
             1: 2048
@@ -1314,7 +1325,16 @@ entities:
       parent: 1
     - type: PointCannon
       obstructedRanges:
-      - 2.251474735072685 rad: 6.492624817418906 rad
+      - 4.285918661444065 rad: 6.492624817418906 rad
+  - uid: 782
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,48.5
+      parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.7878271354962012 rad: 4.27832736298208 rad
 - proto: BaseWeaponTurretGargoyle
   entities:
   - uid: 417
@@ -1343,7 +1363,7 @@ entities:
       parent: 1
     - type: PointCannon
       obstructedRanges:
-      - 1.7234002896801222 rad: 4.342754208798159 rad
+      - 1.7323286182123256 rad: 4.333825880265956 rad
 - proto: BaseWeaponTurretNeedlerDSM
   entities:
   - uid: 405
@@ -1352,6 +1372,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,31.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.3586234622910975 rad: 5.385476090200492 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1372,6 +1395,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,32.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1392,6 +1418,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,33.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1412,6 +1441,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,16.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1432,6 +1464,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,17.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1452,6 +1487,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,18.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1472,6 +1510,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -6.5,19.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1492,6 +1533,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,42.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1512,6 +1556,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,41.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 5.166807153750874 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1532,6 +1579,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,40.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 5.509831097093935 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1552,6 +1602,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -5.5,34.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1572,6 +1625,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,43.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -3250,6 +3306,11 @@ entities:
     - type: Transform
       pos: 4.5,2.5
       parent: 1
+  - uid: 1371
+    components:
+    - type: Transform
+      pos: 1.5,9.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 494
@@ -3271,6 +3332,11 @@ entities:
     components:
     - type: Transform
       pos: -0.5,10.5
+      parent: 1
+  - uid: 781
+    components:
+    - type: Transform
+      pos: -12.5,2.5
       parent: 1
   - uid: 842
     components:
@@ -3521,6 +3587,16 @@ entities:
     components:
     - type: Transform
       pos: -3.5,11.5
+      parent: 1
+  - uid: 1369
+    components:
+    - type: Transform
+      pos: -11.5,2.5
+      parent: 1
+  - uid: 1370
+    components:
+    - type: Transform
+      pos: -11.5,3.5
       parent: 1
 - proto: CableMV
   entities:
@@ -4787,18 +4863,6 @@ entities:
         - 792
         - 791
         - 377
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
         - 418
         - 417
         - 427
@@ -4814,6 +4878,7 @@ entities:
         - 410
         - 409
         - 408
+        - 782
         rear:
         - 797
         - 796
@@ -4826,19 +4891,8 @@ entities:
         - 791
         battlemortar:
         - 377
+        - 782
         broadsides:
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
-        - invalid
         - 415
         - 407
         - 406
@@ -5927,6 +5981,8 @@ entities:
   entities:
   - uid: 550
     components:
+    - type: MetaData
+      name: triumphant internal shipyard
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,36.5
@@ -7545,20 +7601,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -2.5,46.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 781
-    components:
-    - type: Transform
-      pos: 2.5,48.5
-      parent: 1
-    - type: Thruster
-      originalPowerLoad: 1500
-  - uid: 782
-    components:
-    - type: Transform
-      pos: 3.5,48.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
@@ -9336,7 +9378,7 @@ entities:
       parent: 1
     - type: PointCannon
       obstructedRanges:
-      - 3.3586234622910975 rad: 4.27832736298208 rad
+      - 3.3586234622910975 rad: 4.278327362982081 rad
     - type: DeviceLinkSink
       links:
       - 448
