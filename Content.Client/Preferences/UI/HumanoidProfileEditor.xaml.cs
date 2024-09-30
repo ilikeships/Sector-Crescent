@@ -49,7 +49,6 @@ namespace Content.Client.Preferences.UI
         private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
-        private OptionButton _genderButton => CPronounsButton;
         private Slider _skinColor => CSkin;
         private OptionButton _spawnPriorityButton => CSpawnPriorityButton;
         private SingleMarkingPicker _hairPicker => CHairStylePicker;
@@ -131,21 +130,6 @@ namespace Content.Client.Preferences.UI
             };
 
             #endregion Age
-
-            #region Gender
-
-            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
-            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
-            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
-            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
-
-            _genderButton.OnItemSelected += args =>
-            {
-                _genderButton.SelectId(args.Id);
-                SetGender((Gender) args.Id);
-            };
-
-            #endregion Gender
 
             #region Species
 
@@ -774,14 +758,7 @@ namespace Content.Client.Preferences.UI
                     Profile = Profile?.WithGender(Gender.Epicene);
                     break;
             }
-            UpdateGenderControls();
             CMarkings.SetSex(newSex);
-            SetDirty();
-        }
-
-        private void SetGender(Gender newGender)
-        {
-            Profile = Profile?.WithGender(newGender);
             SetDirty();
         }
 
@@ -983,17 +960,6 @@ namespace Content.Client.Preferences.UI
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
-
-        private void UpdateGenderControls()
-        {
-            if (Profile == null)
-            {
-                return;
-            }
-
-            _genderButton.SelectId((int) Profile.Gender);
-        }
-
         private void UpdateSpawnPriorityControls()
         {
             if (Profile == null)
@@ -1138,7 +1104,6 @@ namespace Content.Client.Preferences.UI
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();
-            UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpecies();
             UpdateSpawnPriorityControls();

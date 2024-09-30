@@ -405,13 +405,12 @@ namespace Content.Shared.Preferences
 
             var age = Math.Clamp(Age, speciesPrototype.MinAge, speciesPrototype.MaxAge);
 
-            var gender = Gender switch
+            // This code block in honor of Visne and Parky
+            var gender = Sex switch
             {
-                Gender.Epicene => Gender.Epicene,
-                Gender.Female => Gender.Female,
-                Gender.Male => Gender.Male,
-                Gender.Neuter => Gender.Neuter,
-                _ => Gender.Epicene // Invalid enum values.
+                Sex.Male => Gender.Male,
+                Sex.Female => Gender.Female,
+                _ => Gender.Epicene
             };
 
             string name;
