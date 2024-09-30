@@ -12,6 +12,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Humanoid;
 
 namespace Content.Client.Players.PlayTimeTracking;
 
@@ -108,9 +109,11 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
             return true;
 
         string species;
+        Sex sex = Sex.Unsexed;
         if (_preferencesManager.Preferences?.SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
+            sex = selectedCharacter.Sex;
         }
         else
         {
@@ -120,7 +123,7 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         var reasons = new List<string>();
         foreach (var requirement in requirements)
         {
-            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager, _prototypes, _whitelisted, species))
+            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager, _prototypes, _whitelisted, species, sex))
                 continue;
 
             reasons.Add(jobReason.ToMarkup());
