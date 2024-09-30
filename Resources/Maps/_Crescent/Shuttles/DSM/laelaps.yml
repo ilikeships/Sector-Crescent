@@ -3326,8 +3326,6 @@ entities:
       cannonGroups:
         all:
         - 90
-        - invalid
-        - invalid
         - 94
         - 89
         - 92
@@ -3339,8 +3337,6 @@ entities:
         - 72
         brawler:
         - 90
-        - invalid
-        - invalid
         - 94
         - 72
         - 76
@@ -3365,8 +3361,6 @@ entities:
       cannonGroups:
         all:
         - 90
-        - invalid
-        - invalid
         - 94
         - 89
         - 92
@@ -3378,8 +3372,6 @@ entities:
         - 72
         brawler:
         - 90
-        - invalid
-        - invalid
         - 94
         - 72
         - 76

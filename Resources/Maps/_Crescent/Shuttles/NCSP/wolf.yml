@@ -3166,10 +3166,8 @@ entities:
         - 570
         - 69
         - 227
-        - invalid
         - 674
         - 672
-        - invalid
         gatling:
         - 571
         - 572
@@ -3183,8 +3181,6 @@ entities:
         ballistic:
         - 69
         - 227
-        - invalid
-        - invalid
         mortars:
         - 674
         - 672
