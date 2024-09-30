@@ -373,6 +373,9 @@ public sealed class PointCannonSystem : EntitySystem
         {
             foreach (EntityUid uid in uids)
             {
+                if (!Exists(uid))
+                    continue;
+
                 if (enable)
                 {
                     _pvsSys.AddSessionOverride(uid, session);

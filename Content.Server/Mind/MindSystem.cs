@@ -57,6 +57,9 @@ public sealed class MindSystem : SharedMindSystem
         if (!TryGetMind(uid, out var mindId, out var mind, component))
             return;
 
+        // need to know if we're going ghost-to-ghost to not fuck respawns
+        bool ghost2ghost = HasComp<GhostComponent>(uid);
+
         // If the player is currently visiting some other entity, simply attach to that entity.
         if (mind.VisitingEntity is {Valid: true} visiting
             && visiting != uid
@@ -108,6 +111,13 @@ public sealed class MindSystem : SharedMindSystem
             Log.Debug($"Entity \"{ToPrettyString(uid)}\" for {mind.CharacterName} was deleted, spawned \"{ToPrettyString(ghost)}\".");
             _metaData.SetEntityName(ghost, mind.CharacterName ?? string.Empty);
             TransferTo(mindId, ghost, mind: mind);
+
+            // Inform relevant systems this player got fricking owned
+            if (ghost2ghost)
+                return;
+
+            var ev = new PlayerSessionEntityDeletedEvent(mind.Session.UserId);
+            RaiseLocalEvent(ref ev);
         });
     }
 
@@ -394,3 +404,6 @@ public sealed class MindSystem : SharedMindSystem
         TransferTo(mindId, target, ghostCheckOverride: true, mind: mind);
     }
 }
+
+[ByRefEvent]
+public record struct PlayerSessionEntityDeletedEvent(Guid Guid);
