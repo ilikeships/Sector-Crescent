@@ -17,10 +17,13 @@
 - type: entity
   id: StandardFrontierOutpost
   parent:
-    - BaseStation
-    - BaseStationJobsSpawning
-    - BaseStationCargo
-    - BaseStationSiliconLawFrontierShips
+    - BaseStation # Copied from StandardFrontierStation
+    - BaseStationCargo # Cargo
+    - BaseStationJobsSpawning # Records and jobsspawning
+    - BaseStationRecords
+    - BaseStationShuttles # Can spawn shuttles via shipyard consoles
+    - BaseStationAlertLevels # Has a comms console
+    - BaseStationSiliconLawFrontierStation # No funny borg laws
   noSpawn: true
   components:
     - type: Transform
@@ -45,6 +48,7 @@
     - BaseStation
     - BaseStationJobsSpawning
     - BaseStationRecords
+    - BaseStationCargo
     - BaseStationAlertLevels
     - BaseStationAllEventsEligible
     - BaseStationRenameFaxes
@@ -79,6 +83,7 @@
     - BaseStationAllEventsEligible
     - BaseStationRenameFaxes
     - BaseStationRenameWarpPoints
+    - BaseStationCargo
     - BaseStationSiliconLawFrontierShips
     - BaseStationExpeditions
   noSpawn: true
@@ -94,6 +99,7 @@
     - BaseStationAlertLevels
     - BaseStationAllEventsEligible
     - BaseStationRenameFaxes
+    - BaseStationCargo
     - BaseStationRenameWarpPoints
     - BaseStationSiliconLawFrontierShips
     - BaseStationExpeditions

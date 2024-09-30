@@ -889,7 +889,6 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        invalid:
         - Group2: Toggle
         160:
         - Group2: Toggle
