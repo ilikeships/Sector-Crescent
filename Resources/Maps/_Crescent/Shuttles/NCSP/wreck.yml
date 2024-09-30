@@ -13,7 +13,7 @@ tilemap:
 entities:
 - proto: ""
   entities:
-  - uid: 1
+  - uid: 1<
     components:
     - type: MetaData
       name: grid
@@ -787,8 +787,6 @@ entities:
       pos: 0.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 133
 - proto: GasVentScrubber
@@ -800,8 +798,6 @@ entities:
       pos: -0.5,-1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 133
 - proto: GravityGeneratorMini

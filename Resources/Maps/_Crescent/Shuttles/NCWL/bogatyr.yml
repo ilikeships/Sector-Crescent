@@ -1710,8 +1710,6 @@ entities:
       pos: -3.5,1.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 493
   - uid: 280
@@ -1721,8 +1719,6 @@ entities:
       pos: 1.5,3.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 493
 - proto: GasVentScrubber
@@ -1734,8 +1730,6 @@ entities:
       pos: -0.5,3.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 493
   - uid: 289
@@ -1745,8 +1739,6 @@ entities:
       pos: 4.5,1.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 493
 - proto: GravityGeneratorMini
