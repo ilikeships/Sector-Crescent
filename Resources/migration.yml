@@ -388,3 +388,9 @@ BoxHug: BoxSurvivalNFOxygen
 MindShieldImplanter: null
 OrganDionaLungs: null
 SalvageLootSpawner: null #I didn't delete this, it doesn't exist on master.
+
+# 2024-08-30
+BloodCultTurret: null
+OrganDionaEyes: null
+OrganDionaStomach: null
+SpawnMobBloodCultistAcolyte: null

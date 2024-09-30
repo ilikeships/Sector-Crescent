@@ -6516,22 +6516,6 @@ entities:
     - type: Transform
       pos: -8.5,11.5
       parent: 1
-- proto: OrganDionaLungs
-  entities:
-  - uid: 399
-    components:
-    - type: Transform
-      parent: 398
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 400
-    components:
-    - type: Transform
-      parent: 398
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: OrganHumanEyes
   entities:
   - uid: 402

@@ -1,18 +1,11 @@
 <Document>
   # Species
 
-  Nanotrasen employs a variety of sapient species.
-
+  Taypan is dominated by humans and a few types of aliens.
   <Box>
-  <GuideEntityEmbed Entity="MobArachnid" Caption="Arachnid"/>
-  <GuideEntityEmbed Entity="MobDiona" Caption="Diona"/>
-  <GuideEntityEmbed Entity="MobDwarf" Caption="Dwarf"/>
   <GuideEntityEmbed Entity="MobHuman" Caption="Human"/>
-  </Box>
-  <Box>
-  <GuideEntityEmbed Entity="MobMoth" Caption="Moth Person"/>
+  <GuideEntityEmbed Entity="MobArachnid" Caption="Arachnid"/>
   <GuideEntityEmbed Entity="MobReptilian" Caption="Reptilian"/>
-  <GuideEntityEmbed Entity="MobSlimePerson" Caption="Slime Person"/>
   </Box>
 
 </Document>
