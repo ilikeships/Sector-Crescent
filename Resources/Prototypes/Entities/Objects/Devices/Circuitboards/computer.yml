@@ -68,21 +68,8 @@
       state: cpu_security
     - type: ComputerBoard
       prototype: ComputerCriminalRecords
-    - type: ComputerTabletopBoard # Frontier
-      prototype: ComputerTabletopCriminalRecords # Frontier
-
-- type: entity
-  parent: BaseComputerCircuitboard
-  id: NFSDCriminalRecordsComputerCircuitboard
-  name: nfsd criminal records computer board
-  description: A computer printed circuit board for a criminal records computer.
-  components:
-    - type: Sprite
-      state: cpu_nfsd
-    - type: ComputerBoard
-      prototype: ComputerCriminalRecords
-    - type: ComputerTabletopBoard # Frontier
-      prototype: ComputerTabletopCriminalRecords # Frontier
+    - type: ComputerTabletopBoard
+      prototype: ComputerTabletopCriminalRecords
 
 - type: entity
   parent: BaseComputerCircuitboard
