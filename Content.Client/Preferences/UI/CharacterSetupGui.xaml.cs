@@ -63,7 +63,7 @@ namespace Content.Client.Preferences.UI
             };
             _createNewCharacterButton.OnPressed += args =>
             {
-                preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random());
+                preferencesManager.CreateCharacter(HumanoidCharacterProfile.RandomWithSpecies());
                 UpdateUI();
                 args.Event.Handle();
             };

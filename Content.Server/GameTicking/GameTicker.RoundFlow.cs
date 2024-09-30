@@ -243,7 +243,7 @@ namespace Content.Server.GameTicking
                 }
                 else
                 {
-                    profile = HumanoidCharacterProfile.Random();
+                    profile = HumanoidCharacterProfile.RandomWithSpecies();
                 }
                 readyPlayerProfiles.Add(userId, profile);
             }
