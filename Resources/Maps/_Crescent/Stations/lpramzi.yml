@@ -3548,18 +3548,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingMaskGasVoiceChameleonFakeName
-  entities:
-  - uid: 716
-    components:
-    - type: Transform
-      pos: -0.6247835,-10.513768
-      parent: 1
-  - uid: 717
-    components:
-    - type: Transform
-      pos: -0.28103352,-10.435643
-      parent: 1
 - proto: ClothingOuterHardsuitRamzi
   entities:
   - uid: 163
