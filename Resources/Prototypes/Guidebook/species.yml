@@ -3,13 +3,7 @@
   name: guide-entry-species
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
-    - Arachnid
-    - Diona
-    - Dwarf
-    - Goblin # Frontier
     - Human
-    - Moth
-    - Reptilian
 
 - type: guideEntry
   id: Arachnid
@@ -17,24 +11,9 @@
   text: "/ServerInfo/Guidebook/Mobs/Arachnid.xml"
 
 - type: guideEntry
-  id: Diona
-  name: species-name-diona
-  text: "/ServerInfo/Guidebook/Mobs/Diona.xml"
-
-- type: guideEntry
-  id: Dwarf
-  name: species-name-dwarf
-  text: "/ServerInfo/Guidebook/Mobs/Dwarf.xml"
-
-- type: guideEntry
   id: Human
   name: species-name-human
   text: "/ServerInfo/Guidebook/Mobs/Human.xml"
-
-- type: guideEntry
-  id: Moth
-  name: species-name-moth
-  text: "/ServerInfo/Guidebook/Mobs/Moth.xml"
 
 - type: guideEntry
   id: Reptilian

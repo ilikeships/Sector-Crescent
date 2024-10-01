@@ -15,6 +15,3 @@ station-event-bluespace-syndicate-ftl-interception-end-announcement = In complia
 
 station-event-bluespace-wizardfederation-scout-start-announcement = Attention all available personnel! Union Naval Command detected a Bluespace Anomaly in your sector with the signature indicative of the imminent arrival of a St. Romaine's Militia corvette-class vessel. Code: Intercept, Detain, Incarcerate. Arrest the intruders and prepare them for transportation to Chengridz for interrogation.
 station-event-bluespace-wizardfederation-scout-end-announcement = In compliance with NCWL FTL traffic patterns, the raider vessel has been dissipated to ensure non-collision.
-
-station-event-bluespace-bloodmoon-start-announcement = Attention all available personnel! Union Naval Command detected a Bluespace Anomaly in your sector with the signature indicative of the imminent arrival of a reaving pirate vessel. Code: Intercept, Expunge, Exterminate, Cauterise.
-station-event-bluespace-bloodmoon-end-announcement = In compliance with NCWL FTL traffic patterns, the pirate vessel has been dissipated to ensure non-collision.
