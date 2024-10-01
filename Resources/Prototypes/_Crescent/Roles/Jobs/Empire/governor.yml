@@ -8,6 +8,9 @@
     - !type:SpeciesRequirement
       allowedOnly:
         - Human
+    - !type:SexRequirement
+      allowed:
+        - Male
   weight: 87
   startingGear: GovernorGear
   alwaysUseSpawner: true

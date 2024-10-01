@@ -1,10 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
+using Content.Shared.Humanoid;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Content.Shared.Players;
 
 namespace Content.Shared.Preferences.Loadouts.Effects;
 
@@ -24,6 +24,7 @@ public sealed partial class JobRequirementLoadoutEffect : LoadoutEffect
             collection.Resolve<IEntityManager>(),
             collection.Resolve<IPrototypeManager>(),
             true, // Frontier: for now we just let assume whitelist? TODO: implement white list
-            null);
+            null,
+            Sex.Unsexed); // What the fuck is this retarded codeblock where it skips half the checks?
     }
 }
