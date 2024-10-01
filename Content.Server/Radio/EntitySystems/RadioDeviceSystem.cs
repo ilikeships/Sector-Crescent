@@ -209,7 +209,7 @@ public sealed class RadioDeviceSystem : EntitySystem
         if (uid == args.RadioSource)
             return;
 
-        var nameEv = new TransformSpeakerNameEvent(args.MessageSource, Name(args.MessageSource));
+        var nameEv = new TransformSpeakerNameEvent(args.MessageSource, Name(args.MessageSource), radio: true);
         RaiseLocalEvent(args.MessageSource, nameEv);
 
         var name = Loc.GetString("speech-name-relay", ("speaker", Name(uid)),

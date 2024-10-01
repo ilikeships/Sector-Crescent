@@ -25,18 +25,6 @@
       - Snout
 
 - type: entity
-  parent: ClothingMaskGasChameleon
-  id: ClothingMaskGasVoiceChameleon
-  suffix: Voice Mask, Chameleon, Radio Unknown Name # Frontier - Extended suffix
-  components:
-    - type: VoiceMasker
-    - type: StaticPrice
-      price: 500
-    - type: HideLayerClothing
-      slots:
-      - Snout
-
-- type: entity
   parent: ClothingMaskBase
   id: ClothingMaskWeldingGas
   name: welding gas mask
