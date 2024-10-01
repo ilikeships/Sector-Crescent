@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Humanoid;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -78,6 +79,14 @@ namespace Content.Shared.Roles
         [DataField("notAllowed")] public HashSet<ProtoId<SpeciesPrototype>> NotAllowed;
     }
 
+    [UsedImplicitly]
+    [Serializable, NetSerializable]
+    public sealed partial class SexRequirement : JobRequirement
+    {
+        [DataField("allowed")] public List<Sex> Allowed;
+    }
+
+
     public static class JobRequirements
     {
         public static bool TryRequirementsMet(
@@ -87,7 +96,8 @@ namespace Content.Shared.Roles
             IEntityManager entManager,
             IPrototypeManager prototypes,
             bool isWhitelisted,
-            string? species)
+            string? species,
+            Sex sex)
         {
             reason = null;
             if (job.Requirements == null)
@@ -95,7 +105,7 @@ namespace Content.Shared.Roles
 
             foreach (var requirement in job.Requirements)
             {
-                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species))
+                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex))
                     return false;
             }
 
@@ -112,7 +122,8 @@ namespace Content.Shared.Roles
             IEntityManager entManager,
             IPrototypeManager prototypes,
             bool isWhitelisted,
-            string? species)
+            string? species,
+            Sex sex)
         {
             reason = null;
 
@@ -278,6 +289,13 @@ namespace Content.Shared.Roles
                     }
 
                     reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-species-not-allowed", ("species", species)));
+                    return false;
+
+                case SexRequirement sexRequirement: // Crescent: Sex restriction
+                    if (sexRequirement.Allowed.Contains(sex))
+                        return true;
+
+                    reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-sex"));
                     return false;
                 default:
                     throw new NotImplementedException();

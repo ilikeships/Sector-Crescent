@@ -3,12 +3,10 @@ using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Radio.Components;
 using Content.Server.Station.Components;
-using Content.Server.VoiceMask;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
-using Robust.Server.GameObjects;
 using Content.Shared.Speech;
 using Content.Shared.Ghost;
 using Robust.Shared.Map;
@@ -18,7 +16,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.IdentityManagement; // Frontier
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -107,39 +104,12 @@ public sealed class RadioSystem : EntitySystem
         if (!_messages.Add(message))
             return;
 
-        var name = MetaData(messageSource).EntityName; // Frontier - code block to allow multi masks.
-        var mode = "Unknown";
+        var nameEv = new TransformSpeakerNameEvent(messageSource, Name(messageSource), radio: true);
+        RaiseLocalEvent(messageSource, nameEv);
 
-        if (TryComp(messageSource, out VoiceMaskComponent? mask) && mask.Enabled)
-        {
-            switch (mask.Mode)
-            {
-                case Mode.Real:
-                    mode = Identity.Name(messageSource, EntityManager);
-                    break;
-                case Mode.Fake:
-                    mode = mask.VoiceName;
-                    break;
-                case Mode.Unknown:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException($"No implemented mask radio behavior for {mask.Mode}!");
-            }
-            name = mode;
-        } // Frontier - code block to allow multi masks.
+        var name = nameEv.Name;
 
-        name = FormattedMessage.EscapeText(name);
-
-        SpeechVerbPrototype speech;
-        if (mask != null
-            && mask.Enabled
-            && mask.SpeechVerb != null
-            && _prototype.TryIndex<SpeechVerbPrototype>(mask.SpeechVerb, out var proto))
-        {
-            speech = proto;
-        }
-        else
-            speech = _chat.GetSpeechVerb(messageSource, message);
+        SpeechVerbPrototype speech = _chat.GetSpeechVerb(messageSource, message);
 
         var content = escapeMarkup
             ? FormattedMessage.EscapeText(message)

@@ -882,12 +882,14 @@ public sealed class TransformSpeakerNameEvent : EntityEventArgs
     public EntityUid Sender;
     public string Name;
     public string? SpeechVerb;
+    public bool Radio;
 
-    public TransformSpeakerNameEvent(EntityUid sender, string name, string? speechVerb = null)
+    public TransformSpeakerNameEvent(EntityUid sender, string name, string? speechVerb = null, bool radio = false)
     {
         Sender = sender;
         Name = name;
         SpeechVerb = speechVerb;
+        Radio = radio;
     }
 }
 

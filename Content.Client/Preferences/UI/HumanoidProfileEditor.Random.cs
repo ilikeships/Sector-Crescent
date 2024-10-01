@@ -11,7 +11,7 @@ namespace Content.Client.Preferences.UI
 
 
 
-            Profile = HumanoidCharacterProfile.Random(balance : GetBalance());
+            Profile = HumanoidCharacterProfile.RandomWithSpecies(balance : GetBalance());
             UpdateControls();
             IsDirty = true;
 

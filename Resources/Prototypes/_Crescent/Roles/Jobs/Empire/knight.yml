@@ -9,12 +9,15 @@
     - !type:SpeciesRequirement
       allowedOnly:
         - Human
+    - !type:SexRequirement
+      allowed:
+        - Male
   weight: 22
   startingGear: KnightGear
   alwaysUseSpawner: true
   icon: "JobIconImperialKnight"
   requireAdminNotify: false
-  supervisors: job-supervisors-imperial 
+  supervisors: job-supervisors-imperial
   canBeAntag: false
   access:
   - Command
