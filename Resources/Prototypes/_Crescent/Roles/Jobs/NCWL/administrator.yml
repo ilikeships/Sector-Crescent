@@ -12,6 +12,11 @@
     - !type:WhitelistRequirement
   supervisors: job-supervisors-highcomm 
   canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-admin
   access:
   - EmergencyShuttleRepealAll
   - Captain

@@ -18,6 +18,11 @@
   requireAdminNotify: true
   supervisors: job-supervisors-imperial
   canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-baron
   access:
   - EmergencyShuttleRepealAll
   - Captain

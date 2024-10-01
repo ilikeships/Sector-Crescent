@@ -13,6 +13,11 @@
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm
   canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-kapitan
   access:
   - Command
   - Maintenance

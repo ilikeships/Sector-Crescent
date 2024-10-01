@@ -16,6 +16,11 @@
   requireAdminNotify: false
   supervisors: job-supervisors-imperial 
   canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-ministry
   access:
   - Command
   - Empire
