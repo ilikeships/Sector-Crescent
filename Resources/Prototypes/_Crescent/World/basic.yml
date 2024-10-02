@@ -1,0 +1,45 @@
+﻿- type: spaceBiome
+  id: AsteroidsBeltSHI
+  priority: 0 # This probably shouldn't get selected.
+  noiseRanges: {}
+  chunkComponents:
+    - type: DebrisFeaturePlacerController
+      densityNoiseChannel: Density
+    - type: SimpleDebrisSelector
+      debrisTable:
+        - id: AsteroidDebrisNFMedium
+        - id: AsteroidDebrisNFIceMedium
+        - id: AsteroidDebrisNFLarge
+          prob: 0.6
+        - id: AsteroidDebrisNFIceLarge
+          prob: 0.6
+        - id: AsteroidDebrisNFLarger
+          prob: 0.3
+        - id: AsteroidDebrisNFIceLarger
+          prob: 0.3
+        - id: AsteroidDebrisNFHuge
+          prob: 0.15
+        - id: AsteroidDebrisNFIceHuge
+          prob: 0.15
+        - id: AsteroidSalvageNFSmall
+          prob: 0.1
+        - id: AsteroidSalvageNFIceSmall
+          prob: 0.1
+        - id: AsteroidSalvageNFMedium
+          prob: 0.08
+        - id: AsteroidSalvageNFIceMedium
+          prob: 0.08
+        - id: AsteroidSalvageNFLarge
+          prob: 0.05
+        - id: AsteroidSalvageNFIceLarge
+          prob: 0.05
+        - id: AsteroidSalvageNFHuge
+          prob: 0.03
+        - id: AsteroidSalvageNFIceHuge
+          prob: 0.03
+        - id: AsteroidRockSalvageNFHuge
+          prob: 0.03
+    - type: NoiseRangeCarver
+      ranges:
+        - 0.4, 0.6
+      noiseChannel: Carver
