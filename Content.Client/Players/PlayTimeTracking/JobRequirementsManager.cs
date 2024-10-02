@@ -109,21 +109,26 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
             return true;
 
         string species;
+        string faction = "";
         Sex sex = Sex.Unsexed;
         if (_preferencesManager.Preferences?.SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            if(selectedCharacter.Faction is not null)
+                faction = selectedCharacter.Faction;
+
         }
         else
         {
             species = string.Empty;
         }
 
+
         var reasons = new List<string>();
         foreach (var requirement in requirements)
         {
-            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager, _prototypes, _whitelisted, species, sex))
+            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager, _prototypes, _whitelisted, species, sex, faction))
                 continue;
 
             reasons.Add(jobReason.ToMarkup());

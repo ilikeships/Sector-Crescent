@@ -86,6 +86,13 @@ namespace Content.Shared.Roles
         [DataField("allowed")] public List<Sex> Allowed;
     }
 
+    [UsedImplicitly]
+    [Serializable, NetSerializable]
+    public sealed partial class FactionRequirement : JobRequirement
+    {
+        [DataField("factionID")] public string FactionID = "";
+    }
+
 
     public static class JobRequirements
     {
@@ -97,7 +104,8 @@ namespace Content.Shared.Roles
             IPrototypeManager prototypes,
             bool isWhitelisted,
             string? species,
-            Sex sex)
+            Sex sex,
+            string faction)
         {
             reason = null;
             if (job.Requirements == null)
@@ -105,7 +113,7 @@ namespace Content.Shared.Roles
 
             foreach (var requirement in job.Requirements)
             {
-                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex))
+                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex, faction))
                     return false;
             }
 
@@ -123,12 +131,21 @@ namespace Content.Shared.Roles
             IPrototypeManager prototypes,
             bool isWhitelisted,
             string? species,
-            Sex sex)
+            Sex sex,
+            string faction)
         {
             reason = null;
 
             switch (requirement)
             {
+                case FactionRequirement factRequirement:
+                    if (factRequirement.FactionID != "" && faction != "" && faction != factRequirement.FactionID)
+                    {
+                        reason = FormattedMessage.FromMarkup($"Faction is not {factRequirement.FactionID}");
+                        return false;
+                    }
+                    return true;
+
                 case DepartmentTimeRequirement deptRequirement:
                     if (playTimes == null)
                     {
