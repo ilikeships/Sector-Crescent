@@ -1,12 +1,12 @@
 #fallback, don't remove
-- type: biome
+- type: crescentFactionBiome
   id: default
   name: Hadal Deadspace
   swapDuration: 2
   parallax: Default
 
 #example
-- type: biome
+- type: crescentFactionBiome
   id: test
   name: Test zone
   swapDuration: 2
@@ -23,7 +23,7 @@
 
 #imperial
 
-- type: biome
+- type: crescentFactionBiome
   id: imperialbiome
   name: Kal Surezai, Imperial Airspace
   swapDuration: 2
@@ -49,7 +49,7 @@
     swapDistance: 1500
     priority: 2495
 
-- type: biome
+- type: crescentFactionBiome
   id: hunterbiome
   name: The Hunter's Prowl
   swapDuration: 2
@@ -66,7 +66,7 @@
     swapDistance: 1000
     priority: 2494
 
-- type: biome
+- type: crescentFactionBiome
   id: syndicatebiome
   name: The Devil's Maw
   swapDuration: 2
@@ -83,7 +83,7 @@
     swapDistance: 1000
     priority: 2493
 
-- type: biome
+- type: crescentFactionBiome
   id: corpiebiome
   name: Corporate Demilitarized Zone
   swapDuration: 2
@@ -100,7 +100,7 @@
     swapDistance: 15000
     priority: 2450
 
-- type: biome
+- type: crescentFactionBiome
   id: wildbiome
   name: Taypan Wilds
   swapDuration: 2
@@ -117,7 +117,7 @@
     swapDistance: 20000
     priority: 2420
 
-- type: biome
+- type: crescentFactionBiome
   id: deepwildbiome
   name: The Deepwilds
   swapDuration: 2
@@ -134,7 +134,7 @@
     swapDistance: 2000
     priority: 2500
 
-- type: biome
+- type: crescentFactionBiome
   id: hadalbiome
   name: Abyssal Rupture
   swapDuration: 2

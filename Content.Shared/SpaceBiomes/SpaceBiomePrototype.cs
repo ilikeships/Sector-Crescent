@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.SpaceBiomes;
 
 //do not confuse with 'spaceBiome' from worldgen system
-[Prototype("biome")]
+[Prototype("crescentFactionBiome")]
 public sealed class SpaceBiomePrototype : IPrototype
 {
     [IdDataField]
