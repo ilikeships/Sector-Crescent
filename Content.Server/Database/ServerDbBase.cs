@@ -198,6 +198,8 @@ namespace Content.Server.Database
 
             var balance = profile.BankBalance;
 
+            var faction = profile.Faction;
+
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             var markingsRaw = profile.Markings?.Deserialize<List<string>>();
 
@@ -243,6 +245,7 @@ namespace Content.Server.Database
                 sex,
                 gender,
                 balance,
+                faction,
                 new HumanoidCharacterAppearance
                 (
                     profile.HairName,
@@ -280,6 +283,7 @@ namespace Content.Server.Database
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
             profile.BankBalance = humanoid.BankBalance;
+            profile.Faction = humanoid.Faction;
             profile.HairName = appearance.HairStyleId;
             profile.HairColor = appearance.HairColor.ToHex();
             profile.FacialHairName = appearance.FacialHairStyleId;

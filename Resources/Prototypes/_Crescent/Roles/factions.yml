@@ -1,0 +1,53 @@
+- type: faction
+  id: firstFaction
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -10
+  departments:
+  - Civilian
+  enabled: true
+
+- type: faction
+  id: DSM
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: 1
+  departments:
+  - Civilian
+  enabled: true
+
+- type: faction
+  id: NWCL
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: 0
+  departments:
+  - Civilian
+  enabled: true
+
+- type: faction
+  id: IPM
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -1
+  departments:
+  - Civilian
+  enabled: true
+
+- type: faction
+  id: TSP
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -2
+  departments:
+  - Civilian
+  enabled: true
+
+- type: faction
+  id: NWCP
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -3
+  departments:
+  - Civilian
+  enabled: true

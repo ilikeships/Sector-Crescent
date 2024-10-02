@@ -49,6 +49,7 @@ namespace Content.Client.Preferences.UI
         private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
+        private OptionButton _genderButton => CPronounsButton;
         private Slider _skinColor => CSkin;
         private OptionButton _spawnPriorityButton => CSpawnPriorityButton;
         private SingleMarkingPicker _hairPicker => CHairStylePicker;
@@ -62,6 +63,8 @@ namespace Content.Client.Preferences.UI
         private readonly List<JobPrioritySelector> _jobPriorities;
         private OptionButton _preferenceUnavailableButton => CPreferenceUnavailableButton;
         private readonly Dictionary<string, BoxContainer> _jobCategories;
+
+        private readonly Dictionary<string, BoxContainer> _factionDepartaments;
         // Mildly hacky, as I don't trust prototype order to stay consistent and don't want the UI to break should a new one get added mid-edit. --moony
         private readonly List<SpeciesPrototype> _speciesList;
         private readonly List<AntagPreferenceSelector> _antagPreferences = new();
@@ -130,6 +133,21 @@ namespace Content.Client.Preferences.UI
             };
 
             #endregion Age
+
+            #region Gender
+
+            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
+            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
+            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
+            _genderButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
+
+            _genderButton.OnItemSelected += args =>
+            {
+                _genderButton.SelectId(args.Id);
+                SetGender((Gender) args.Id);
+            };
+
+            #endregion Gender
 
             #region Species
 
@@ -303,6 +321,11 @@ namespace Content.Client.Preferences.UI
 
             #endregion Appearance
 
+            #region Factions
+
+            //_tabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-factions-tab"));
+            #endregion Factions
+
             #region Jobs
 
             _tabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab"));
@@ -325,6 +348,7 @@ namespace Content.Client.Preferences.UI
 
             _jobPriorities = new List<JobPrioritySelector>();
             _jobCategories = new Dictionary<string, BoxContainer>();
+            _factionDepartaments = new Dictionary<string, BoxContainer>();
             _requirements = IoCManager.Resolve<JobRequirementsManager>();
             // TODO: Move this to the LobbyUIController instead of being spaghetti everywhere.
             _requirements.Updated += UpdateAntagRequirements;
@@ -504,115 +528,157 @@ namespace Content.Client.Preferences.UI
             _jobList.DisposeAllChildren();
             _jobPriorities.Clear();
             _jobCategories.Clear();
+            _factionDepartaments.Clear();
             var firstCategory = true;
 
-            var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToArray();
-            Array.Sort(departments, DepartmentUIComparer.Instance);
-
-            foreach (var department in departments)
+            var factions = _prototypeManager.EnumeratePrototypes<FactionPrototype>().ToArray();
+            Array.Sort(factions, FactionUIComparer.Instance);
+            foreach (var faction in factions)
             {
-                // Frontier - With a little prototype magic, we can just hop skip and jump over this
-                // whole thing for departments we want to keep but hide in the character and loadout editor.
-                if (!department.Enabled)
+                if (!faction.Enabled)
                     continue;
-                // End Frontier.
+                if (faction.ID != Profile?.Faction)
+                    continue;
 
-                var departmentName = Loc.GetString($"department-{department.ID}");
-
-                if (!_jobCategories.TryGetValue(department.ID, out var category))
+                if(!_factionDepartaments.TryGetValue(faction.ID, out var factionBlock))
                 {
-                    category = new BoxContainer
+                    var factionName = Loc.GetString($"faction-{faction.ID}");
+                    factionBlock = new BoxContainer
                     {
                         Orientation = LayoutOrientation.Vertical,
-                        Name = department.ID,
-                        ToolTip = Loc.GetString("humanoid-profile-editor-jobs-amount-in-department-tooltip",
-                            ("departmentName", departmentName))
+                        Name = faction.ID,
+                        ToolTip = Loc.GetString("humanoid-profile-editor-department-amount-in-faction-tooltip",
+                                ("factionName", factionName))
                     };
 
-                    if (firstCategory)
+                    factionBlock.AddChild(new PanelContainer
                     {
-                        firstCategory = false;
-                    }
-                    else
-                    {
-                        category.AddChild(new Control
-                        {
-                            MinSize = new Vector2(0, 23),
-                        });
-                    }
-
-                    category.AddChild(new PanelContainer
-                    {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = Color.FromHex("#464966")},
+                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#469999") },
                         Children =
-                        {
-                            new Label
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
-                                    ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                new Label
+                                {
+                                    Text = Loc.GetString("humanoid-profile-editor-faction-label",
+                                        ("factionName", factionName)),
+                                    Margin = new Thickness(10f, 0, 0, 0)
+                                }
                             }
-                        }
                     });
 
-                    _jobCategories[department.ID] = category;
-                    _jobList.AddChild(category);
+                    _factionDepartaments[faction.ID] = factionBlock;
+                    _jobList.AddChild(factionBlock);
                 }
 
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
-                    .Where(job => job.SetPreference)
-                    .ToArray();
-                Array.Sort(jobs, JobUIComparer.Instance);
-                var jobLoadoutGroup = new ButtonGroup();
+                var departments = faction.Departments.Select(departamentID => _prototypeManager.Index<DepartmentPrototype>(departamentID))
+                  .ToArray();
+                Array.Sort(departments, DepartmentUIComparer.Instance);
 
-                foreach (var job in jobs)
+                foreach (var department in departments)
                 {
-                    RoleLoadout? loadout = null;
+                    // Frontier - With a little prototype magic, we can just hop skip and jump over this
+                    // whole thing for departments we want to keep but hide in the character and loadout editor.
+                    if (!department.Enabled)
+                        continue;
+                    // End Frontier.
 
-                    // Clone so we don't modify the underlying loadout.
-                    Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
-                    loadout = loadout?.Clone();
-                    var selector = new JobPrioritySelector(loadout, job, jobLoadoutGroup, _prototypeManager)
+                    var departmentName = Loc.GetString($"department-{department.ID}");
+
+                    if (!_jobCategories.TryGetValue(department.ID, out var category))
                     {
-                        Margin = new Thickness(3f, 3f, 3f, 0f),
-                    };
-
-                    if (!_requirements.IsAllowed(job, out var reason))
-                    {
-                        selector.LockRequirements(reason);
-                    }
-
-                    category.AddChild(selector);
-                    _jobPriorities.Add(selector);
-
-                    selector.LoadoutUpdated += args =>
-                    {
-                        Profile = Profile?.WithLoadout(args);
-                        SetDirty();
-                    };
-
-                    selector.PriorityChanged += priority =>
-                    {
-                        Profile = Profile?.WithJobPriority(job.ID, priority);
-
-                        foreach (var jobSelector in _jobPriorities)
+                        category = new BoxContainer
                         {
-                            // Sync other selectors with the same job in case of multiple department jobs
-                            if (jobSelector.Proto == selector.Proto)
+                            Orientation = LayoutOrientation.Vertical,
+                            Name = department.ID,
+                            ToolTip = Loc.GetString("humanoid-profile-editor-jobs-amount-in-department-tooltip",
+                                ("departmentName", departmentName))
+                        };
+
+                        if (firstCategory)
+                        {
+                            firstCategory = false;
+                        }
+                        else
+                        {
+                            category.AddChild(new Control
                             {
-                                jobSelector.Priority = priority;
-                            }
-                            else if (priority == JobPriority.High && jobSelector.Priority == JobPriority.High)
-                            {
-                                // Lower any other high priorities to medium.
-                                jobSelector.Priority = JobPriority.Medium;
-                                Profile = Profile?.WithJobPriority(jobSelector.Proto.ID, JobPriority.Medium);
-                            }
+                                MinSize = new Vector2(0, 23),
+                            });
                         }
 
-                        SetDirty();
-                    };
+                        category.AddChild(new PanelContainer
+                        {
+                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                            Margin = new Thickness(10f, 0, 0, 0),
+                            Children =
+                            {
+                                new Label
+                                {
+                                    Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                        ("departmentName", departmentName)),
+                                    Margin = new Thickness(5f, 0, 0, 0)
+                                }
+                            }
+                        });
 
+                        _jobCategories[department.ID] = category;
+                        factionBlock.AddChild(category);
+                    }
+
+                    var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                        .Where(job => job.SetPreference)
+                        .ToArray();
+                    Array.Sort(jobs, JobUIComparer.Instance);
+                    var jobLoadoutGroup = new ButtonGroup();
+
+                    foreach (var job in jobs)
+                    {
+                        RoleLoadout? loadout = null;
+
+                        // Clone so we don't modify the underlying loadout.
+                        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
+                        loadout = loadout?.Clone();
+                        var selector = new JobPrioritySelector(loadout, job, jobLoadoutGroup, _prototypeManager)
+                        {
+                            Margin = new Thickness(15f, 3f, 3f, 0f),
+                        };
+
+                        if (!_requirements.IsAllowed(job, out var reason))
+                        {
+                            selector.LockRequirements(reason);
+                        }
+
+                        category.AddChild(selector);
+                        _jobPriorities.Add(selector);
+
+                        selector.LoadoutUpdated += args =>
+                        {
+                            Profile = Profile?.WithLoadout(args);
+                            SetDirty();
+                        };
+
+                        selector.PriorityChanged += priority =>
+                        {
+                            Profile = Profile?.WithJobPriority(job.ID, priority);
+
+                            foreach (var jobSelector in _jobPriorities)
+                            {
+                                // Sync other selectors with the same job in case of multiple department jobs
+                                if (jobSelector.Proto == selector.Proto)
+                                {
+                                    jobSelector.Priority = priority;
+                                }
+                                else if (priority == JobPriority.High && jobSelector.Priority == JobPriority.High)
+                                {
+                                    // Lower any other high priorities to medium.
+                                    jobSelector.Priority = JobPriority.Medium;
+                                    Profile = Profile?.WithJobPriority(jobSelector.Proto.ID, JobPriority.Medium);
+                                }
+                            }
+
+                            SetDirty();
+                        };
+
+                    }
                 }
             }
 
@@ -758,7 +824,14 @@ namespace Content.Client.Preferences.UI
                     Profile = Profile?.WithGender(Gender.Epicene);
                     break;
             }
+            UpdateGenderControls();
             CMarkings.SetSex(newSex);
+            SetDirty();
+        }
+
+        private void SetGender(Gender newGender)
+        {
+            Profile = Profile?.WithGender(newGender);
             SetDirty();
         }
 
@@ -960,6 +1033,17 @@ namespace Content.Client.Preferences.UI
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
+
+        private void UpdateGenderControls()
+        {
+            if (Profile == null)
+            {
+                return;
+            }
+
+            _genderButton.SelectId((int) Profile.Gender);
+        }
+
         private void UpdateSpawnPriorityControls()
         {
             if (Profile == null)
@@ -1104,6 +1188,7 @@ namespace Content.Client.Preferences.UI
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();
+            UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpecies();
             UpdateSpawnPriorityControls();

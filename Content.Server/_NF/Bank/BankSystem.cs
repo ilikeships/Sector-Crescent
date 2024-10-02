@@ -57,6 +57,7 @@ public sealed partial class BankSystem : EntitySystem
             profile.Sex,
             profile.Gender,
             bank.Balance,
+            profile.Faction,
             profile.Appearance,
             profile.SpawnPriority,
             profile.JobPriorities,
