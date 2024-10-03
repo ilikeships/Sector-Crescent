@@ -3,6 +3,7 @@ using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
+using Content.Server.Worldgen;
 
 namespace Content.Server.Worldgen.Systems.Biomes;
 
@@ -52,6 +53,19 @@ public sealed class BiomeSelectionSystem : BaseWorldSystem
 
     private bool CheckBiomeValidity(EntityUid chunk, BiomePrototype biome, Vector2i coords)
     {
+        // Crescent: Allow us to only spawn biomes in certain areas.
+        if (biome.MinX != null && coords.X < biome.MinX)
+            return false;
+
+        if (biome.MinY != null && coords.Y < biome.MinY)
+            return false;
+
+        if (biome.MaxX != null && coords.X > biome.MaxX)
+            return false;
+
+        if (biome.MaxY != null && coords.Y > biome.MaxY)
+            return false;
+
         foreach (var (noise, ranges) in biome.NoiseRanges)
         {
             var value = _noiseIdx.Evaluate(chunk, noise, coords);

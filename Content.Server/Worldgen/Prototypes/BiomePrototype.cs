@@ -44,6 +44,34 @@ public sealed partial class BiomePrototype : IPrototype, IInheritingPrototype
     [AlwaysPushInheritance]
     public ComponentRegistry ChunkComponents { get; } = new();
 
+
+    #region Crescent
+
+    /// THESE ARE IN CHUNK COORDINATES. SEE WORLDGEN.CS CHUNKTOWORLDCOORDS
+
+    /// <summary>
+    ///     Minimum X coordinate value to spawn this biome.
+    /// </summary>
+    [DataField]
+    public int? MinX = null;
+
+    /// <summary>
+    ///     Minimum Y coordinate value to spawn this biome.
+    /// </summary>
+    public int? MinY = null;
+
+    /// <summary>
+    ///     Maximum X coordinate value to spawn this biome.
+    /// </summary>
+    public int? MaxX = null;
+
+    /// <summary>
+    ///     Maximum Y coordinate value to spawn this biome.
+    /// </summary>
+    public int? MaxY = null;
+
+    #endregion Crescent
+
     //TODO: Get someone to make this a method on componentregistry that does it Correctly.
     /// <summary>
     ///     Applies the worldgen config to the given target (presumably a map.)
