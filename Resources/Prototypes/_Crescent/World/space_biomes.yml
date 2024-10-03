@@ -63,7 +63,7 @@
   components:
   - type: SpaceBiomeSource
     biome: syndicatebiome
-    swapDistance: 1000
+    swapDistance: 2500
     priority: 2494
 
 - type: crescentFactionBiome
