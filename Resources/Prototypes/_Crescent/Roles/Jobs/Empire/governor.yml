@@ -11,6 +11,8 @@
     - !type:SexRequirement
       allowed:
         - Male
+    - !type:FactionRequirement
+      factionID: "DSM"
   weight: 87
   startingGear: GovernorGear
   alwaysUseSpawner: true

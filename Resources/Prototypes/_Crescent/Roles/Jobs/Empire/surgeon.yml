@@ -3,6 +3,9 @@
   name: job-name-surgeon
   description: job-description-surgeon
   playTimeTracker: JobSurgeonDSM
+  requirements:
+  - !type:FactionRequirement
+      factionID: "DSM"
   weight: 20
   startingGear: SurgeonGear
   alwaysUseSpawner: true

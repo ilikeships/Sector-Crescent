@@ -3,6 +3,9 @@
   name: job-name-foremanimp
   description: job-description-foremanimp
   playTimeTracker: JobForemanDSM
+  requirements:
+  - !type:FactionRequirement
+      factionID: "DSM"
   weight: 19
   startingGear: ForemanImpGear
   alwaysUseSpawner: true

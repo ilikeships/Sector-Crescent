@@ -9,6 +9,8 @@
     - !type:SpeciesRequirement
       allowedOnly:
         - Human
+    - !type:FactionRequirement
+      factionID: "DSM"
   weight: 25
   startingGear: CourtierGear
   alwaysUseSpawner: true

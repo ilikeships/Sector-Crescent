@@ -3,6 +3,9 @@
   name: job-name-imperialresearch
   description: job-description-scribe
   playTimeTracker: JobScribeDSM
+  requirements:
+  - !type:FactionRequirement
+      factionID: "DSM"
   weight: 20
   startingGear: ScribeGear
   alwaysUseSpawner: true

@@ -10,7 +10,7 @@
       allowedOnly:
         - Human
     - !type:FactionRequirement
-      factionID: DSM
+      factionID: "DSM"
   weight: 55
   startingGear: AdjutantGear
   alwaysUseSpawner: true

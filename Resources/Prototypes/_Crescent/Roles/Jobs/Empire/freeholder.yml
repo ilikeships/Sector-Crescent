@@ -3,6 +3,9 @@
   name: job-name-freeholder
   description: job-description-freeholder
   playTimeTracker: JobFreeholderDSM
+  requirements:
+  - !type:FactionRequirement
+      factionID: "DSM"
   weight: 18
   startingGear: FreeholderGear
   alwaysUseSpawner: true

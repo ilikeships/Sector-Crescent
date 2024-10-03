@@ -62,7 +62,6 @@ namespace Content.Client.Preferences.UI
         private readonly List<JobPrioritySelector> _jobPriorities;
         private OptionButton _preferenceUnavailableButton => CPreferenceUnavailableButton;
         private readonly Dictionary<string, BoxContainer> _jobCategories;
-        private readonly Dictionary<string, BoxContainer> _factionDepartaments = new();
         // Mildly hacky, as I don't trust prototype order to stay consistent and don't want the UI to break should a new one get added mid-edit. --moony
         private readonly List<SpeciesPrototype> _speciesList;
         private readonly List<AntagPreferenceSelector> _antagPreferences = new();
@@ -505,157 +504,115 @@ namespace Content.Client.Preferences.UI
             _jobList.DisposeAllChildren();
             _jobPriorities.Clear();
             _jobCategories.Clear();
-            _factionDepartaments.Clear();
             var firstCategory = true;
 
-            var factions = _prototypeManager.EnumeratePrototypes<FactionPrototype>().ToArray();
-            Array.Sort(factions, FactionUIComparer.Instance);
-            foreach (var faction in factions)
-            {
-                if (!faction.Enabled)
-                    continue;
-                if (faction.ID != Profile?.Faction)
-                    continue;
+            var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToArray();
+            Array.Sort(departments, DepartmentUIComparer.Instance);
 
-                if (!_factionDepartaments.TryGetValue(faction.ID, out var factionBlock))
+            foreach (var department in departments)
+            {
+                // Frontier - With a little prototype magic, we can just hop skip and jump over this
+                // whole thing for departments we want to keep but hide in the character and loadout editor.
+                if (!department.Enabled)
+                    continue;
+                // End Frontier.
+
+                var departmentName = Loc.GetString($"department-{department.ID}");
+
+                if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
-                    var factionName = Loc.GetString($"faction-{faction.ID}");
-                    factionBlock = new BoxContainer
+                    category = new BoxContainer
                     {
                         Orientation = LayoutOrientation.Vertical,
-                        Name = faction.ID,
-                        ToolTip = Loc.GetString("humanoid-profile-editor-department-amount-in-faction-tooltip",
-                                ("factionName", factionName))
+                        Name = department.ID,
+                        ToolTip = Loc.GetString("humanoid-profile-editor-jobs-amount-in-department-tooltip",
+                            ("departmentName", departmentName))
                     };
 
-                    factionBlock.AddChild(new PanelContainer
+                    if (firstCategory)
                     {
-                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#469999") },
+                        firstCategory = false;
+                    }
+                    else
+                    {
+                        category.AddChild(new Control
+                        {
+                            MinSize = new Vector2(0, 23),
+                        });
+                    }
+
+                    category.AddChild(new PanelContainer
+                    {
+                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                         Children =
+                        {
+                            new Label
                             {
-                                new Label
-                                {
-                                    Text = Loc.GetString("humanoid-profile-editor-faction-label",
-                                        ("factionName", factionName)),
-                                    Margin = new Thickness(10f, 0, 0, 0)
-                                }
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                    ("departmentName", departmentName)),
+                                Margin = new Thickness(5f, 0, 0, 0)
                             }
+                        }
                     });
 
-                    _factionDepartaments[faction.ID] = factionBlock;
-                    _jobList.AddChild(factionBlock);
+                    _jobCategories[department.ID] = category;
+                    _jobList.AddChild(category);
                 }
 
-                var departments = faction.Departments.Select(departamentID => _prototypeManager.Index<DepartmentPrototype>(departamentID))
-                  .ToArray();
-                Array.Sort(departments, DepartmentUIComparer.Instance);
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                    .Where(job => job.SetPreference)
+                    .ToArray();
+                Array.Sort(jobs, JobUIComparer.Instance);
+                var jobLoadoutGroup = new ButtonGroup();
 
-                foreach (var department in departments)
+                foreach (var job in jobs)
                 {
-                    // Frontier - With a little prototype magic, we can just hop skip and jump over this
-                    // whole thing for departments we want to keep but hide in the character and loadout editor.
-                    if (!department.Enabled)
-                        continue;
-                    // End Frontier.
+                    RoleLoadout? loadout = null;
 
-                    var departmentName = Loc.GetString($"department-{department.ID}");
-
-                    if (!_jobCategories.TryGetValue(department.ID, out var category))
+                    // Clone so we don't modify the underlying loadout.
+                    Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
+                    loadout = loadout?.Clone();
+                    var selector = new JobPrioritySelector(loadout, job, jobLoadoutGroup, _prototypeManager)
                     {
-                        category = new BoxContainer
-                        {
-                            Orientation = LayoutOrientation.Vertical,
-                            Name = department.ID,
-                            ToolTip = Loc.GetString("humanoid-profile-editor-jobs-amount-in-department-tooltip",
-                                ("departmentName", departmentName))
-                        };
+                        Margin = new Thickness(3f, 3f, 3f, 0f),
+                    };
 
-                        if (firstCategory)
-                        {
-                            firstCategory = false;
-                        }
-                        else
-                        {
-                            category.AddChild(new Control
-                            {
-                                MinSize = new Vector2(0, 23),
-                            });
-                        }
-
-                        category.AddChild(new PanelContainer
-                        {
-                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
-                            Margin = new Thickness(10f, 0, 0, 0),
-                            Children =
-                            {
-                                new Label
-                                {
-                                    Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
-                                        ("departmentName", departmentName)),
-                                    Margin = new Thickness(5f, 0, 0, 0)
-                                }
-                            }
-                        });
-
-                        _jobCategories[department.ID] = category;
-                        factionBlock.AddChild(category);
+                    if (!_requirements.IsAllowed(job, out var reason))
+                    {
+                        selector.LockRequirements(reason);
                     }
 
-                    var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
-                        .Where(job => job.SetPreference)
-                        .ToArray();
-                    Array.Sort(jobs, JobUIComparer.Instance);
-                    var jobLoadoutGroup = new ButtonGroup();
+                    category.AddChild(selector);
+                    _jobPriorities.Add(selector);
 
-                    foreach (var job in jobs)
+                    selector.LoadoutUpdated += args =>
                     {
-                        RoleLoadout? loadout = null;
+                        Profile = Profile?.WithLoadout(args);
+                        SetDirty();
+                    };
 
-                        // Clone so we don't modify the underlying loadout.
-                        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
-                        loadout = loadout?.Clone();
-                        var selector = new JobPrioritySelector(loadout, job, jobLoadoutGroup, _prototypeManager)
-                        {
-                            Margin = new Thickness(15f, 3f, 3f, 0f),
-                        };
+                    selector.PriorityChanged += priority =>
+                    {
+                        Profile = Profile?.WithJobPriority(job.ID, priority);
 
-                        if (!_requirements.IsAllowed(job, out var reason))
+                        foreach (var jobSelector in _jobPriorities)
                         {
-                            selector.LockRequirements(reason);
+                            // Sync other selectors with the same job in case of multiple department jobs
+                            if (jobSelector.Proto == selector.Proto)
+                            {
+                                jobSelector.Priority = priority;
+                            }
+                            else if (priority == JobPriority.High && jobSelector.Priority == JobPriority.High)
+                            {
+                                // Lower any other high priorities to medium.
+                                jobSelector.Priority = JobPriority.Medium;
+                                Profile = Profile?.WithJobPriority(jobSelector.Proto.ID, JobPriority.Medium);
+                            }
                         }
 
-                        category.AddChild(selector);
-                        _jobPriorities.Add(selector);
+                        SetDirty();
+                    };
 
-                        selector.LoadoutUpdated += args =>
-                        {
-                            Profile = Profile?.WithLoadout(args);
-                            SetDirty();
-                        };
-
-                        selector.PriorityChanged += priority =>
-                        {
-                            Profile = Profile?.WithJobPriority(job.ID, priority);
-
-                            foreach (var jobSelector in _jobPriorities)
-                            {
-                                // Sync other selectors with the same job in case of multiple department jobs
-                                if (jobSelector.Proto == selector.Proto)
-                                {
-                                    jobSelector.Priority = priority;
-                                }
-                                else if (priority == JobPriority.High && jobSelector.Priority == JobPriority.High)
-                                {
-                                    // Lower any other high priorities to medium.
-                                    jobSelector.Priority = JobPriority.Medium;
-                                    Profile = Profile?.WithJobPriority(jobSelector.Proto.ID, JobPriority.Medium);
-                                }
-                            }
-
-                            SetDirty();
-                        };
-
-                    }
                 }
             }
 

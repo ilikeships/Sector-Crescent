@@ -12,6 +12,8 @@
     - !type:SexRequirement
       allowed:
         - Male
+    - !type:FactionRequirement
+        factionID: "DSM"
   weight: 22
   startingGear: KnightGear
   alwaysUseSpawner: true

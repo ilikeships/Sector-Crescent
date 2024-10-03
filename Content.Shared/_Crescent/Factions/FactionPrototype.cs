@@ -20,10 +20,6 @@ public sealed partial class FactionPrototype : IPrototype
     [DataField("color", required: true)]
     public Color Color = default!;
 
-    [ViewVariables(VVAccess.ReadWrite),
-     DataField("departments", customTypeSerializer: typeof(PrototypeIdListSerializer<DepartmentPrototype>))]
-    public List<string> Departments = new();
-
     /// <summary>
     /// Departments with a higher weight sorted before other departments in UI.
     /// </summary>
