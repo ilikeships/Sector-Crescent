@@ -2,21 +2,24 @@
 - type: faction
   name: "Divine Sol Mandate"
   id: DSM
-  description: >
-    "Controlling much of human space outside the Crescent, the Divine Sol Mandate, or simply"
-    "'the Empire' to laymen, are a product of early space-era corporate classism and"
-    "post-exploration boom-feudalism, ruled by the mysticized, allegedly all-powerful 'Kaiser' from"
-    "the Prime system within the Imperial Core constellation, formerly known to archivists as Sol and"
-    "Pisces, respectively. After the uprising of the NCWL, the Empire had found themselves diminished, but a succesful counter-attack managed to secure the starfortress Kal Suzerai"
-    "and allowed for a return of Imperial forces to the area, altough control on the fringes of Taypan is still disputed, and raids or terror acts are common."
-    ""
-    "Effectively the prime superpower of all of humanity, the Empire allows for a good amount of"
-    "economic freedom for its subjects and promotes loyalty in a manner not too dissimilar to"
-    "the megacorporations of old Earth, with aspiring members climbing up the noble ladder of"
-    "different houses, such as House Olywir of the Domain system. Freeholders thinking that they"
-    "can speak up against the current regime quickly find themselves screened against and"
-    "detained, however, with tight information control preventing widespread dissent and often rewriting history itself to suit the needs of the Empire. Other races are permitted within Imperial"
-    "ranks, but often subject to increased scrutiny and formal or informal discrimination"
+  description: |
+    Controlling much of human space outside the Crescent, the Divine Sol Mandate, or simply
+    'the Empire' to laymen, are a product of early space-era corporate classism and
+    post-exploration boom-feudalism, ruled by the mysticized, allegedly all-powerful 'Kaiser' from
+    the Prime system within the Imperial Core constellation, formerly known to archivists as Sol and
+    Pisces, respectively. After the uprising of the NCWL, the Empire had found themselves diminished,
+    but a succesful counter-attack managed to secure the starfortress Kal Suzerai
+    and allowed for a return of Imperial forces to the area, altough control on the fringes of Taypan
+    is still disputed, and raids or terror acts are common.
+    
+    Effectively the prime superpower of all of humanity, the Empire allows for a good amount of
+    economic freedom for its subjects and promotes loyalty in a manner not too dissimilar to
+    the megacorporations of old Earth, with aspiring members climbing up the noble ladder of
+    different houses, such as House Olywir of the Domain system. Freeholders thinking that they
+    can speak up against the current regime quickly find themselves screened against and
+    detained, however, with tight information control preventing widespread dissent and
+    often rewriting history itself to suit the needs of the Empire. Other races are permitted within Imperial
+    ranks, but often subject to increased scrutiny and formal or informal discrimination
   color: "#9FED58"
   weight: 1
   enabled: true

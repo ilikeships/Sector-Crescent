@@ -1,5 +1,6 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
+using System.ComponentModel.DataAnnotations;
 
 namespace Content.Shared.Roles;
 
@@ -11,6 +12,7 @@ public sealed partial class FactionPrototype : IPrototype
     [DataField("name", required: true)] public string Name = default!;
 
     [DataField("description", required: true)] public string Description = default!;
+
 
     /// <summary>
     ///     A color representing this department to use for text.
