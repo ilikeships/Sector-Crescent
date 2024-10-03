@@ -8,11 +8,9 @@ public sealed partial class FactionPrototype : IPrototype
 {
     [IdDataField] public string ID { get; } = default!;
 
-    /// <summary>
-    ///     A description string to display in the character menu as an explanation of the department's function.
-    /// </summary>
-    [DataField("description", required: true)]
-    public string Description = default!;
+    [DataField("name", required: true)] public string Name = default!;
+
+    [DataField("description", required: true)] public string Description = default!;
 
     /// <summary>
     ///     A color representing this department to use for text.

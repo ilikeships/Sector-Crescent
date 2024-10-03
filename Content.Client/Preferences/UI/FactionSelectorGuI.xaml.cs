@@ -112,7 +112,7 @@ namespace Content.Client.Preferences.UI
                 if (!faction.Enabled)
                     continue;
 
-                var factionName = Loc.GetString($"faction-{faction.ID}");
+                var factionName = faction.Name;
                 var factionButton = new Button();
                 if (faction.ID == Profile!.Faction)
                     factionButton.Text = "SELECTED";
