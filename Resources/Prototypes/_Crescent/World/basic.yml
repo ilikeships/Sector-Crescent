@@ -1,44 +1,25 @@
 ﻿- type: spaceBiome
-  id: AsteroidsBeltSHI
-  priority: 0 # This probably shouldn't get selected.
+  id: DevilsMawWrecks
+  priority: 1000
   noiseRanges: {}
   chunkComponents:
     - type: DebrisFeaturePlacerController
       densityNoiseChannel: Density
-    - type: SimpleDebrisSelector
+    - type: NoiseDrivenDebrisSelector
+      noiseChannel: Wreck
       debrisTable:
-        - id: AsteroidDebrisNFMedium
-        - id: AsteroidDebrisNFIceMedium
-        - id: AsteroidDebrisNFLarge
+        - id: ScrapDebrisSmall
+          prob: 1
+        - id: ScrapDebrisMedium
+          prob: 1
+        - id: ScrapDebrisLarge
           prob: 0.6
-        - id: AsteroidDebrisNFIceLarge
-          prob: 0.6
-        - id: AsteroidDebrisNFLarger
+        - id: ScrapDebrisExtraLarge
           prob: 0.3
-        - id: AsteroidDebrisNFIceLarger
+        - id: ScrapDebrisExtraLargeScattered
           prob: 0.3
-        - id: AsteroidDebrisNFHuge
+        - id: ScrapDebrisHuge
           prob: 0.15
-        - id: AsteroidDebrisNFIceHuge
-          prob: 0.15
-        - id: AsteroidSalvageNFSmall
-          prob: 0.1
-        - id: AsteroidSalvageNFIceSmall
-          prob: 0.1
-        - id: AsteroidSalvageNFMedium
-          prob: 0.08
-        - id: AsteroidSalvageNFIceMedium
-          prob: 0.08
-        - id: AsteroidSalvageNFLarge
-          prob: 0.05
-        - id: AsteroidSalvageNFIceLarge
-          prob: 0.05
-        - id: AsteroidSalvageNFHuge
-          prob: 0.03
-        - id: AsteroidSalvageNFIceHuge
-          prob: 0.03
-        - id: AsteroidRockSalvageNFHuge
-          prob: 0.03
     - type: NoiseRangeCarver
       ranges:
         - 0.4, 0.6
