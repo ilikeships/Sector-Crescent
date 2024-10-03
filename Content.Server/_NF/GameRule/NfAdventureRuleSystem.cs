@@ -250,7 +250,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, arena, out var depotUid5s, new MapLoadOptions
             {
-                Offset = _random.NextVector2(10000f, 9000f)
+                Offset = _random.NextVector2(9500f, 8200f)
             }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid5s[0]);

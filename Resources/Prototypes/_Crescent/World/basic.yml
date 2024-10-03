@@ -1,4 +1,8 @@
 ﻿- type: spaceBiome
+  minX: 3
+  maxX: 7
+  minY: -4
+  maxY: -2
   id: DevilsMawWrecks
   priority: 1000
   noiseRanges: {}
