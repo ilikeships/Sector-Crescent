@@ -4,5 +4,5 @@
     - type: WorldController
     - type: BiomeSelection
       biomes:
-        - AsteroidsFallback
         - Failsafe
+        - DevilsMawWrecks
