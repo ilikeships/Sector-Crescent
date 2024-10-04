@@ -126,6 +126,7 @@ namespace Content.Client.Preferences.UI
                 factionButton.Text = faction.ID;
                 var factionName = new Label();
                 var factionPhoto = new TextureRect();
+                factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
                 factionButton.OnPressed += _ =>
                 {
@@ -135,6 +136,7 @@ namespace Content.Client.Preferences.UI
                     factionDesc.Text = faction.Description;
                     //factionPhoto.Texture = _resourceCache.GetTexture(faction.Icon.TexturePath);
                     factionPhoto.Texture = faction.Icon.Frame0();
+                    factionPhoto.SetSize = new Vector2(32,32);
                     FactionInfo.AddChild(factionName);
                     FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
