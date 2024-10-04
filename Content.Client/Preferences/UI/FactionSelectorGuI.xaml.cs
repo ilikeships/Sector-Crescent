@@ -126,19 +126,31 @@ namespace Content.Client.Preferences.UI
                 factionButton.Text = faction.ID;
                 var factionName = new Label();
                 var factionPhoto = new TextureRect();
+                var factionCommodity = new TextureRect();
+                var NeutralLabel = new Label(); NeutralLabel.Text = "Neutral"; NeutralLabel.HorizontalAlignment = HAlignment.Center;
+                var AlliesLabel = new Label(); AlliesLabel.Text = "Allies"; AlliesLabel.HorizontalAlignment = HAlignment.Center;
+                var EnemiesLabel = new Label(); EnemiesLabel.Text = "Enemies"; EnemiesLabel.HorizontalAlignment = HAlignment.Center;
+                factionCommodity.Stretch = TextureRect.StretchMode.Scale;
                 factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
                 factionButton.OnPressed += _ =>
                 {
                     SetFaction(faction);
                     FactionInfo.RemoveAllChildren();
+                    FactionRelations.RemoveAllChildren();
                     factionName.Text = faction.Name;
                     factionDesc.Text = faction.Description;
                     //factionPhoto.Texture = _resourceCache.GetTexture(faction.Icon.TexturePath);
                     factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetSize = new Vector2(32,32);
+                    factionPhoto.SetSize = new Vector2(256,256);
+                    factionCommodity.Texture = faction.Icon.Frame0();
+                    factionCommodity.SetSize = new Vector2(64,64);
                     FactionInfo.AddChild(factionName);
-                    FactionInfo.AddChild(factionPhoto);
+                    FactionRelations.AddChild(factionPhoto);
+                    FactionRelations.AddChild(AlliesLabel);
+                    FactionRelations.AddChild(NeutralLabel);
+                    FactionRelations.AddChild(EnemiesLabel);
+                    FactionInfo.AddChild(factionCommodity);
                     FactionInfo.AddChild(factionDesc);
 
                 };
