@@ -14,7 +14,7 @@ public sealed partial class FactionPrototype : IPrototype
 
     [DataField("description", required: true)] public string Description = default!;
 
-    [DataField("icon", required:true)] public SpriteSpecifier.Rsi Icon = default!;
+    [DataField("icon", required: true)] public SpriteSpecifier Icon = SpriteSpecifier.Invalid;
 
 
     /// <summary>

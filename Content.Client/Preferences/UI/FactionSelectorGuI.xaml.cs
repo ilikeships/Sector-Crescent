@@ -35,6 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
 using Robust.Client.ResourceManagement;
+using Content.Client.Resources;
 
 namespace Content.Client.Preferences.UI
 {
@@ -132,7 +133,7 @@ namespace Content.Client.Preferences.UI
                     FactionInfo.RemoveAllChildren();
                     factionName.Text = faction.Name;
                     factionDesc.Text = faction.Description;
-                    factionPhoto.Texture =
+                    //factionPhoto.Texture = _resourceCache.GetTexture(faction.Icon.TexturePath);
                     factionPhoto.Texture = faction.Icon.Frame0();
                     FactionInfo.AddChild(factionName);
                     FactionInfo.AddChild(factionPhoto);
@@ -143,7 +144,7 @@ namespace Content.Client.Preferences.UI
 
             }
             var confirmButton = new Button();
-            confirmButton.Text = "Confirm choice";
+            confirmButton.Text = "Confirm";
             confirmButton.OnPressed += _ =>
             {
                 Save();

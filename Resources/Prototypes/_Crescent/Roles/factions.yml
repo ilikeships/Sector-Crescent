@@ -23,7 +23,9 @@
   color: "#9FED58"
   weight: 1
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
 
 - type: faction
   name: "New Crescent Worker's League'"
@@ -32,7 +34,9 @@
   color: "#9FED58"
   weight: 0
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
 
 - type: faction
   name: "Interdyne Pharmaceuticals"
@@ -41,7 +45,9 @@
   color: "#9FED58"
   weight: -1
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
 
 - type: faction
   name: "Taypan Sektor Polizei"
@@ -50,7 +56,9 @@
   color: "#9FED58"
   weight: -2
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
 
 - type: faction
   name: "New Crescent Syndicate of Privateers"
@@ -59,7 +67,9 @@
   color: "#9FED58"
   weight: -3
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
 
 - type: faction
   name: "Shinohara Heavy Industries"
@@ -68,4 +78,6 @@
   color: "#9FED58"
   weight: -4
   enabled: true
-  icon: Objects/Misc/skub.rsi
+  icon:
+    sprite: Structures/Furniture/chairs.rsi
+    state: office-dark
