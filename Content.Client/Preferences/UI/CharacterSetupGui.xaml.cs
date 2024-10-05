@@ -93,7 +93,7 @@ namespace Content.Client.Preferences.UI
         }
 
         public void Save()
-        { 
+        {
             _humanoidProfileEditor.Save();
             _factionSelector.Save();
         }
@@ -115,7 +115,6 @@ namespace Content.Client.Preferences.UI
         public void SwitchToCharacterEditor()
         {
             CharEditor.RemoveAllChildren();
-            CharEditor.AddChild(_humanoidProfileEditor);
             _humanoidProfileEditor.Profile = _factionSelector.Profile;
             var controller = UserInterfaceManager.GetUIController<LobbyUIController>();
             _humanoidProfileEditor.UpdateControls();
