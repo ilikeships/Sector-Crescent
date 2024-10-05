@@ -195,7 +195,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             }
         }
 
-        var isWhitelisted = !_cfg.GetCVar(CrescentCVars.RoleWhitelist) || (player.ContentData()?.Whitelisted ?? false); // DeltaV - Whitelist requirement // Crescent - Disable Role Whitelist CVar
+        var isWhitelisted = !_cfg.GetCVar(CCVars.GameRoleTimers) || (player.ContentData()?.Whitelisted ?? false); // DeltaV - Whitelist requirement // Crescent - Disable Role Whitelist CVar
 
         string species;
         var sex = Sex.Unsexed;

@@ -1,14 +1,12 @@
 using Content.Server.GameTicking;
 using Content.Server.Mind;
-using Content.Server.Crescent.Respawn;
+using Content.Shared._Crescent.CCvars;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
-using Content.Shared.Crescent.CCvar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
-using Robust.Shared.Timing;
 
-namespace Content.Server.Crescent.Commands;
+namespace Content.Server._Crescent.Respawn.Commands;
 
 [AnyCommand()]
 public sealed class GhostRespawnCommand : IConsoleCommand
