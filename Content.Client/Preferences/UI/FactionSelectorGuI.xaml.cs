@@ -122,9 +122,10 @@ namespace Content.Client.Preferences.UI
                     continue;
 
                 var factionButton = new Button();
-                /// SHORTENED FOR UI's sake
+                // SHORTENED FOR UI's sake
                 factionButton.Text = faction.ID;
                 var factionName = new Label();
+                factionName.HorizontalAlignment = HAlignment.Center;
                 var factionPhoto = new TextureRect();
                 var factionCommodity = new TextureRect();
                 var NeutralLabel = new Label(); NeutralLabel.Text = "Neutral"; NeutralLabel.HorizontalAlignment = HAlignment.Center;
@@ -133,6 +134,7 @@ namespace Content.Client.Preferences.UI
                 factionCommodity.Stretch = TextureRect.StretchMode.Scale;
                 factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
+                factionDesc.HorizontalAlignment = HAlignment.Center;
                 factionButton.OnPressed += _ =>
                 {
                     SetFaction(faction);
@@ -161,6 +163,8 @@ namespace Content.Client.Preferences.UI
             confirmButton.Text = "Confirm";
             confirmButton.OnPressed += _ =>
             {
+                FactionInfo.RemoveAllChildren();
+                FactionRelations.RemoveAllChildren();
                 Save();
                 SetupUI.SwitchToCharacterEditor();
             };
