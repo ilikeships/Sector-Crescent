@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Client.Preferences;
+using Content.Shared._Crescent.CCvars;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -123,7 +124,8 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         var reasons = new List<string>();
         foreach (var requirement in requirements)
         {
-            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager, _prototypes, _whitelisted, species, sex))
+            if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager,
+                    _prototypes, !_cfg.GetCVar(CrescentCVars.RoleWhitelist) || _whitelisted, species, sex))
                 continue;
 
             reasons.Add(jobReason.ToMarkup());

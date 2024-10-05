@@ -1,6 +1,6 @@
 using Robust.Shared.Configuration;
 
-namespace Content.Shared.Crescent.CCvar;
+namespace Content.Shared._Crescent.CCvars;
 
 [CVarDefs]
 public sealed class CrescentCVars
@@ -16,4 +16,10 @@ public sealed class CrescentCVars
     /// </summary>
     public static readonly CVarDef<float> RespawnTime =
         CVarDef.Create("sc.respawn.time", 1200.0f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Enforce role whitelists
+    /// </summary>
+    public static readonly CVarDef<bool> RoleWhitelist =
+        CVarDef.Create("sc.role_whitelist", true, CVar.SERVER | CVar.REPLICATED);
 }
