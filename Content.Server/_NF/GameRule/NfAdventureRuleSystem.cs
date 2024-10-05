@@ -123,7 +123,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var vladzena = "/Maps/_Crescent/Stations/vladzena.yml";
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
-        // var arena = "/Maps/_NF/POI/arena.yml";
+        var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
         // var cove = "/Maps/_NF/POI/cove.yml";
         // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
@@ -248,15 +248,15 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //     _shuttle.AddIFFFlag(northpoleUids[0], IFFFlags.HideLabel);
         // }
 
-        //if (_map.TryLoad(mapId, arena, out var depotUid5s, new MapLoadOptions
-        //    {
-        //        Offset = _random.NextVector2(2200f, 4200f)
-        //    }))
-        //{
-        //    var meta = EnsureComp<MetaDataComponent>(depotUid5s[0]);
-        //    _meta.SetEntityName(depotUid5s[0], "The Pit", meta);
-        //    _shuttle.SetIFFColor(depotUid5s[0], civilianColor);
-        //}
+        if (_map.TryLoad(mapId, arena, out var depotUid5s, new MapLoadOptions
+            {
+                Offset = _random.NextVector2(9500f, 8200f)
+            }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid5s[0]);
+            _meta.SetEntityName(depotUid5s[0], "The Graveyard", meta);
+            _shuttle.SetIFFColor(depotUid5s[0], civilianColor);
+        }
 
        // if (_map.TryLoad(mapId, cove, out var depotUid6s, new MapLoadOptions
        //     {

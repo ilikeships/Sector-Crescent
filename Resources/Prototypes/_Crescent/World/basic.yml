@@ -1,0 +1,30 @@
+﻿- type: spaceBiome
+  minX: 3
+  maxX: 7
+  minY: -4
+  maxY: -2
+  id: DevilsMawWrecks
+  priority: 1000
+  noiseRanges: {}
+  chunkComponents:
+    - type: DebrisFeaturePlacerController
+      densityNoiseChannel: Density
+    - type: NoiseDrivenDebrisSelector
+      noiseChannel: Wreck
+      debrisTable:
+        - id: ScrapDebrisSmall
+          prob: 1
+        - id: ScrapDebrisMedium
+          prob: 1
+        - id: ScrapDebrisLarge
+          prob: 0.6
+        - id: ScrapDebrisExtraLarge
+          prob: 0.3
+        - id: ScrapDebrisExtraLargeScattered
+          prob: 0.3
+        - id: ScrapDebrisHuge
+          prob: 0.15
+    - type: NoiseRangeCarver
+      ranges:
+        - 0.4, 0.6
+      noiseChannel: Carver
