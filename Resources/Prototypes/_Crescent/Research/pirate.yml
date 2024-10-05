@@ -78,7 +78,7 @@
   tier: 1
   cost: 5000
   recipeUnlocks:
-  - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
   - NCSPWarshipThrusterFlatpackNCSP
   - NCSPFighterThrusterFlatpackNCSP
 
@@ -126,4 +126,4 @@
   - RadioJammerNCSP
   - EmpGrenadeNCSP
   - CartridgeShellEmpCraft
-  - GrenadeEMPCraft
+  # - GrenadeEMPCraft YAMLFIX: Duplicate recipe result

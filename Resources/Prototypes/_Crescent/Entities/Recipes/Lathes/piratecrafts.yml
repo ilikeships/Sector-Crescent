@@ -243,10 +243,10 @@
     Steel: 1000
     Silver: 300
 
-- type: latheRecipe
-  id: GrenadeEMPCraft
-  result: GrenadeEMP
-  completetime: 4
-  materials:
-    Steel: 250
-    Silver: 100
+# - type: latheRecipe
+#   id: GrenadeEMPCraft
+#   result: GrenadeEMP YAMLFIX: Duplicate result
+#   completetime: 4
+#   materials:
+#     Steel: 250
+#     Silver: 100

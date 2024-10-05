@@ -27,9 +27,9 @@
       - HandTeleporter
       - BluespaceBeaker
       - CryostasisBeaker
-      - BackpackOfHolding
-      - SatchelOfHolding
-      - DuffelbagOfHolding
+      - ClothingBackpackHolding
+      - ClothingSatchelHolding
+      - ClothingDuffelbagHolding
       - ChemicalPayload #Below = shared
       - FlashlightLantern
       - Bucket
@@ -88,7 +88,7 @@
     board: ServiceTechFabCircuitboard
   - type: Lathe
     idleState: icon
-    runningState: icon    
+    runningState: icon
     staticRecipes: #Frontier
       - MailCapsule #Frontier
       - SprayBottle #Frontier, moved some recipes from dynamicRecipes, so the service fab wouldn't need a server for the basic stuff
@@ -115,11 +115,11 @@
       - ServiceSpoon
       - ServiceFork
       - ServicePairedChopsticks
-      - ServiceFoodBowlBig
-      - ServiceFoodPlate
-      - ServiceFoodPlateSmall
-      - ServiceFoodPlateTin
-      - ServiceFoodKebabSkewer
+      - FoodBowlBig
+      - FoodPlate
+      - FoodPlateSmall
+      - FoodPlateTin
+      - FoodKebabSkewer
       - Beaker
       - LargeBeaker
       - ClothingOuterSuitEmergency
@@ -244,7 +244,7 @@
       - BorgChargerCircuitboard
       - WeaponCapacitorRechargerCircuitboard
       - Durathread
-      - Plasteel
+      - SheetPlasteel
       - ClothingOuterSuitEmergency # Frontier
       - ClothingHeadHelmetEVA # Frontier
       - ClothingHeadHelmetEVALarge # Frontier
