@@ -131,7 +131,7 @@
   tier: 1
   cost: 6000
   recipeUnlocks:
-  - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
   - NCWLWarshipThrusterFlatpackCraft
   - NCWLFighterThrusterFlatpackCraft
 
