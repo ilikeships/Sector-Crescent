@@ -8,7 +8,7 @@ using Robust.Shared.Console;
 
 namespace Content.Server._Crescent.Respawn.Commands;
 
-[AnyCommand()]
+[AnyCommand]
 public sealed class GhostRespawnCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
@@ -38,26 +38,26 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             return;
         }
 
-        if (!_entityManager.TryGetComponent<GhostComponent>(shell.Player.AttachedEntity, out var ghost))
+        if (!_entityManager.HasComponent<GhostComponent>(shell.Player.AttachedEntity))
         {
             shell.WriteLine("You are not a ghost.");
             return;
         }
 
-        var mindSystem = _entityManager.EntitySysManager.GetEntitySystem<MindSystem>();
+        var mindSystem = _entityManager.System<MindSystem>();
         if (!mindSystem.TryGetMind(shell.Player, out _, out _))
         {
             shell.WriteLine("You have no mind.");
             return;
         }
 
-        if (!_entityManager.EntitySysManager.GetEntitySystem<RespawnTrackerSystem>().CheckRespawn(shell.Player.UserId))
+        if (!_entityManager.System<RespawnTrackerSystem>().CheckRespawn(shell.Player.UserId))
         {
             shell.WriteLine($"Trying to respawn before timer is up.");
             return;
         }
 
-        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+        var gameTicker = _entityManager.System<GameTicker>();
         gameTicker.Respawn(shell.Player);
     }
 }
