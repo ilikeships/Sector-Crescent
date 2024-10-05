@@ -189,8 +189,8 @@
   recipeUnlocks:
   - NCWLSwarmerFlatpackCraft
   - NCWLKurosawaFlatpackCraft
-  - GrenadeFlashCraft
-  - GrenadeBlastCraft
+  # - GrenadeFlashCraft YAMLFIX: Should be a new result entity or just use GrenadeFlash
+  # - GrenadeBlastCraft
   - GrenadeBatonCraft
 
 - type: technology

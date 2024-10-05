@@ -266,7 +266,6 @@
     chance: 1
     offset: 0.0
     rarePrototypes:
-    - TilePrinterNF
     - AutolatheHyperConvection
     - ProtolatheHyperConvection
     rareChance: 0.01
@@ -403,7 +402,6 @@
     - ProtolatheMachineCircuitboard
     - AutolatheMachineCircuitboard
     - FlatpackerMachineCircuitboard
-    - TilePrinterNFMachineCircuitboard
     # Machines
     - ShredderMachineCircuitboard
     - SpaceHeaterMachineCircuitBoard

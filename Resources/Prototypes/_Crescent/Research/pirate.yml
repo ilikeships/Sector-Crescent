@@ -126,4 +126,4 @@
   - RadioJammerNCSP
   - EmpGrenadeNCSP
   - CartridgeShellEmpCraft
-  - GrenadeEMPCraft
+  # - GrenadeEMPCraft YAMLFIX: Duplicate recipe result

@@ -227,21 +227,21 @@
   materials:
     Steel: 500
 
-- type: latheRecipe
-  id: GrenadeBlastCraft
-  result: GrenadeBlast
-  completetime: 4
-  materials:
-    Steel: 500
-    Uranium: 200
+# - type: latheRecipe
+#   id: GrenadeBlastCraft
+#   result: GrenadeBlast #YAMLFIX: needs new result entity to not fail tests
+#   completetime: 4
+#   materials:
+#     Steel: 500
+#     Uranium: 200
 
-- type: latheRecipe
-  id: GrenadeFlashCraft
-  result: GrenadeFlash
-  completetime: 4
-  materials:
-    Steel: 500
-    Silver: 200
+# - type: latheRecipe
+#   id: GrenadeFlashCraft
+#   result: GrenadeFlash #YAMLFIX: Duplicate lathe recipe result causes test errors
+#   completetime: 4
+#   materials:
+#     Steel: 500
+#     Silver: 200
 
 - type: latheRecipe
   id: NCWLSlugthrowerFlatpackCraft
