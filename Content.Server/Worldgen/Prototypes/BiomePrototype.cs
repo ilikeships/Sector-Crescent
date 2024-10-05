@@ -58,16 +58,19 @@ public sealed partial class BiomePrototype : IPrototype, IInheritingPrototype
     /// <summary>
     ///     Minimum Y coordinate value to spawn this biome.
     /// </summary>
+    [DataField]
     public int? MinY = null;
 
     /// <summary>
     ///     Maximum X coordinate value to spawn this biome.
     /// </summary>
+    [DataField]
     public int? MaxX = null;
 
     /// <summary>
     ///     Maximum Y coordinate value to spawn this biome.
     /// </summary>
+    [DataField]
     public int? MaxY = null;
 
     #endregion Crescent
