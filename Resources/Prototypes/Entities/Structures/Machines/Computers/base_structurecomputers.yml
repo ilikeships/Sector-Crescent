@@ -60,22 +60,4 @@
         ents: []
   - type: LightningTarget
     priority: 1
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100  # Considering we need a lot of thrusters didn't want to make an individual one too tanky
-      behaviors:
-      - !type:DoActsBehavior
-          acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ScrapCircuit:
-            min: 2
-            max: 2
-          SteelScrap1:
-            min: 0
-            max: 1
+  - type: RequireProjectileTarget
