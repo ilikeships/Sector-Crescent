@@ -149,6 +149,9 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
     /// </summary>
     public FixedPoint2 GetOilVolume(EntityUid uid, DeepFryerComponent component)
     {
+        if (component.LifeStage != ComponentLifeStage.Running) // Solution is secretly nullable and will break tests
+            return 0;
+
         var oilVolume = FixedPoint2.Zero;
 
         foreach (var reagent in component.Solution)
@@ -180,6 +183,9 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
     /// </summary>
     public FixedPoint2 GetOilPurity(EntityUid uid, DeepFryerComponent component)
     {
+        if (component.LifeStage != ComponentLifeStage.Running) // Solution is secretly nullable and will break tests
+            return 0;
+
         if (component.Solution.Volume > 0)
             return GetOilVolume(uid, component) / component.Solution.Volume;
         return FixedPoint2.Zero;
@@ -190,6 +196,9 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
     /// </summary>
     public FixedPoint2 GetOilLevel(EntityUid uid, DeepFryerComponent component)
     {
+        if (component.LifeStage != ComponentLifeStage.Running) // Solution is secretly nullable and will break tests
+            return 0;
+
         if (component.Solution.Volume > 0)
             return GetOilVolume(uid, component) / component.Solution.Volume;
         return FixedPoint2.Zero;
