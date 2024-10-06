@@ -3,6 +3,7 @@
 lobbyenabled = false
 map = "Dev"
 role_timers = false
+defaultpreset = "Sandbox"
 
 [gateway]
 generator_enabled = false
