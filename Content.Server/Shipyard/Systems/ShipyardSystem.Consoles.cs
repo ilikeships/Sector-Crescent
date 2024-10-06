@@ -371,10 +371,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        // Deny using the console if its already in use.
-        if (TryComp<UserInterfaceComponent>(uid, out var uiComp2) && uiComp2.Actors.Count != 0)
-            _popup.PopupEntity("This console is in use.", args.Actor, args.Actor, PopupType.Small);
-
         //      mayhaps re-enable this later for HoS/SA
         //        var station = _station.GetOwningStation(uid);
 
