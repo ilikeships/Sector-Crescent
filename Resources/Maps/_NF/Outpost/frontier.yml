@@ -2268,8 +2268,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -3158.1758
-      state: Opening
+      state: Closed
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -10395,8 +10394,7 @@ entities:
       pos: 26.5,8.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -327.181
-      state: Closing
+      state: Closed
 - proto: CurtainsPurpleOpen
   entities:
   - uid: 952
@@ -11174,8 +11172,7 @@ entities:
       pos: 31.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5027.568
-      state: Opening
+      state: Closed
   - uid: 1418
     components:
     - type: Transform
