@@ -1,35 +1,32 @@
+using System.Diagnostics.CodeAnalysis;
+using Content.Server._Crescent.Respawn.Components;
 using Content.Shared.Mobs;
-using Content.Shared.Crescent.CCvar;
 using Content.Shared.Crescent.Ghost;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mind;
 using Content.Server.Mind;
+using Content.Shared._Crescent.CCvars;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
-namespace Content.Server.Crescent.Respawn;
-
-/// TRIGGER WARNING: NOT REALLY ECS! CARGO CULT RUSTROONS AVERT YOUR GAZE!
-/// So, when you die there's a bit of a problem; there's not really a reliable
-/// entity to track you by anymore. This means that the only logical solution for
-/// tracking your respawn time is to do it by your username/GUID.
+namespace Content.Server._Crescent.Respawn;
 
 public sealed class RespawnTrackerSystem : EntitySystem
 {
+    private const string RespawnEntityPrototype = "GhostRespawnTicker";
 
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-
-    /// <summary>
-    /// Matches username to death time and respawn time.
-    /// </summary>
-    public Dictionary<Guid, TimeSpan> RespawnTrackers = new Dictionary<Guid, TimeSpan>();
+    [ViewVariables(VVAccess.ReadOnly)]
+    private EntityUid? _respawnEntity;
 
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<RoundStartedEvent>(OnRoundStarted);
         SubscribeLocalEvent<MindContainerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<PlayerSessionEntityDeletedEvent>(OnEntityDeleted);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
@@ -37,15 +34,18 @@ public sealed class RespawnTrackerSystem : EntitySystem
         SubscribeNetworkEvent<RespawnTimeRequestEvent>(OnRespawnTimeRequest);
     }
 
+    private void OnRoundStarted(RoundStartedEvent ev)
+    {
+        _respawnEntity = Spawn(RespawnEntityPrototype, MapCoordinates.Nullspace);
+    }
+
     private void OnMobStateChanged(EntityUid uid, MindContainerComponent component, MobStateChangedEvent args)
     {
         // User ID is stored in the mind, even if they are disconnected or w/e
-        TryComp<MindComponent>(component.Mind, out var mind);
-
-        if (mind == null || mind.UserId == null)
+        if (!TryComp<MindComponent>(component.Mind, out var mind) || mind.UserId is null)
             return;
 
-        var guid = (Guid) mind.UserId;
+        var guid = mind.UserId.Value.UserId;
 
         // erm, you're dead
         if (args.NewMobState == MobState.Dead)
@@ -58,8 +58,11 @@ public sealed class RespawnTrackerSystem : EntitySystem
 
     private void OnEntityDeleted(ref PlayerSessionEntityDeletedEvent args)
     {
+        if (!TryGetTrackers(out var trackers))
+            return;
+
         // don't bully this guy if it was his CORPSE that got deleted
-        if (RespawnTrackers.ContainsKey(args.Guid))
+        if (trackers.ContainsKey(args.Guid))
             return;
 
         // otherwise we probably got instagibbed or eaten by singulo or something
@@ -68,16 +71,19 @@ public sealed class RespawnTrackerSystem : EntitySystem
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
-        RespawnTrackers.Clear();
+        _respawnEntity = null;
     }
 
     private void OnRespawnTimeRequest(RespawnTimeRequestEvent ev, EntitySessionEventArgs args)
     {
-        var guid = (Guid) args.SenderSession.UserId;
+        if (!TryGetTrackers(out var trackers))
+            return;
+
+        var guid = args.SenderSession.UserId.UserId;
         var respawnTime = _timing.CurTime;
 
-        if (RespawnTrackers.ContainsKey(guid))
-            respawnTime = RespawnTrackers[guid];
+        if (trackers.TryGetValue(guid, out var value))
+            respawnTime = value;
 
         var response = new RespawnTimeResponseEvent(respawnTime);
         RaiseNetworkEvent(response, args.SenderSession.Channel);
@@ -85,25 +91,40 @@ public sealed class RespawnTrackerSystem : EntitySystem
 
     public bool CheckRespawn(Guid guid)
     {
-        if (!RespawnTrackers.ContainsKey(guid))
+        if (!TryGetTrackers(out var trackers))
             return true;
 
-        if (_timing.CurTime >= RespawnTrackers[guid])
-        {
-            RemoveEntry(guid);
+        if (!trackers.TryGetValue(guid, out var respawnTime))
             return true;
-        }
 
-        return false;
+        if (_timing.CurTime < respawnTime)
+            return false;
+
+        RemoveEntry(guid);
+        return true;
     }
 
     private void AddEntry(Guid guid)
     {
+        if (!TryGetTrackers(out var trackers))
+            return;
+
         // delete your old entry if you have one
         RemoveEntry(guid);
 
         // add new entry
-        RespawnTrackers.Add(guid, _timing.CurTime + TimeSpan.FromSeconds(_cfg.GetCVar(CrescentCVars.RespawnTime)));
+        trackers.Add(guid, _timing.CurTime + TimeSpan.FromSeconds(_cfg.GetCVar(CrescentCVars.RespawnTime)));
+    }
+
+    private bool TryGetTrackers([NotNullWhen(true)] out Dictionary<Guid, TimeSpan>? trackers)
+    {
+        trackers = null;
+
+        if (_respawnEntity is null || !TryComp<RespawnTickerComponent>(_respawnEntity, out var comp))
+            return false;
+
+        trackers = comp.RespawnTrackers;
+        return true;
     }
 
     /// <summary>
@@ -113,12 +134,6 @@ public sealed class RespawnTrackerSystem : EntitySystem
     /// <returns>Whether an entry was removed</returns>
     private bool RemoveEntry(Guid guid)
     {
-        if (RespawnTrackers.Keys.Contains(guid))
-        {
-            RespawnTrackers.Remove(guid);
-            return true;
-        }
-
-        return false;
+        return TryGetTrackers(out var trackers) && trackers.Remove(guid);
     }
 }

@@ -131,7 +131,7 @@
   tier: 1
   cost: 6000
   recipeUnlocks:
-  - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
   - NCWLWarshipThrusterFlatpackCraft
   - NCWLFighterThrusterFlatpackCraft
 
@@ -189,8 +189,8 @@
   recipeUnlocks:
   - NCWLSwarmerFlatpackCraft
   - NCWLKurosawaFlatpackCraft
-  - GrenadeFlashCraft
-  - GrenadeBlastCraft
+  # - GrenadeFlashCraft YAMLFIX: Should be a new result entity or just use GrenadeFlash
+  # - GrenadeBlastCraft
   - GrenadeBatonCraft
 
 - type: technology

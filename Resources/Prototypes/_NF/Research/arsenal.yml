@@ -11,7 +11,7 @@
   cost: 15000
   recipeUnlocks:
   - ClothingOuterHardsuitMercenary
-  - ClothingOuterHardsuitPirateEVA
+  # - ClothingOuterHardsuitPirateEVA YAMLFIX Fails tests - not printable
   - ClothingOuterHardsuitPrivateSecurity
   technologyPrerequisites:
   - AdvancedRiotControl
@@ -29,9 +29,9 @@
   tier: 3
   cost: 25000
   recipeUnlocks:
-  - ClothingOuterHardsuitSecurity
-  - ClothingOuterHardsuitWarden
-  - ClothingOuterHardsuitBrigmedic
+  # - ClothingOuterHardsuitSecurity YAMLFIX Fails tests - not printable
+  # - ClothingOuterHardsuitWarden YAMLFIX Fails tests - not printable
+  # - ClothingOuterHardsuitBrigmedic YAMLFIX Fails tests - not printable
   - ClothingOuterHardsuitScaf
   technologyPrerequisites:
   - HardsuitsArmored

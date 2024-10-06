@@ -1,6 +1,6 @@
 - type: latheRecipe
   id: ClothingShoesBootsMagAdv
-  result: ClothingShoesBootsMagAdv 
+  result: ClothingShoesBootsMagAdv
   completetime: 12
   materials:
     Silver: 1000
@@ -34,18 +34,10 @@
     Steel: 1500
 
 - type: latheRecipe
-  id: FlareLathe
-  result: Flare
-  completetime: 0.5
-  category: Tools
-  materials:
-    Steel: 150
-
-- type: latheRecipe
   id: GlowstickBlue
   result: GlowstickBlue
   completetime: 0.5
-  category: Tools
+  category: Lights
   materials:
     Plastic: 50
 
@@ -53,7 +45,7 @@
   id: GlowstickBase
   result: GlowstickBase
   completetime: 0.5
-  category: Tools
+  category: Lights
   materials:
     Plastic: 50
 
@@ -61,15 +53,7 @@
   id: GlowstickPurple
   result: GlowstickPurple
   completetime: 0.5
-  category: Tools
-  materials:
-    Plastic: 50
-
-- type: latheRecipe
-  id: GlowstickRedLathe
-  result: GlowstickRed
-  completetime: 0.5
-  category: Tools
+  category: Lights
   materials:
     Plastic: 50
 
@@ -77,7 +61,7 @@
   id: GlowstickYellow
   result: GlowstickYellow
   completetime: 0.5
-  category: Tools
+  category: Lights
   materials:
     Plastic: 50
 

@@ -1,7 +1,7 @@
 ﻿[game]
 # Straight in-game baby
 lobbyenabled = false
-map = "Frontier"
+map = "Dev"
 role_timers = false
 
 [gateway]
@@ -27,3 +27,6 @@ shipyard = true
 
 [admin]
 see_own_notes = true
+
+[sc]
+role_whitelist = false
