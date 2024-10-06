@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -124,6 +125,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
+        var stranded = "/Maps/_Crescent/Explorables/stranded.yml";
         // var cove = "/Maps/_NF/POI/cove.yml";
         // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
@@ -250,29 +252,40 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, arena, out var depotUid5s, new MapLoadOptions
             {
-                Offset = _random.NextVector2(9500f, 8200f)
+                Offset = new Vector2(10500f, 9200f)
             }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid5s[0]);
             _meta.SetEntityName(depotUid5s[0], "The Graveyard", meta);
-            _shuttle.SetIFFColor(depotUid5s[0], civilianColor);
+            _shuttle.SetIFFColor(depotUid5s[0], lpbravoColor);
         }
 
-       // if (_map.TryLoad(mapId, cove, out var depotUid6s, new MapLoadOptions
-       //     {
-       //         Offset = _random.NextVector2(10000f, 15000f)
-       //     }))
+        if (_map.TryLoad(mapId, stranded, out var depotUid20s, new MapLoadOptions
+        {
+            Offset = new Vector2(10420f, 9250f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid20s[0]);
+            _meta.SetEntityName(depotUid20s[0], "Stranded Ship", meta);
+            _shuttle.SetIFFColor(depotUid20s[0], lpbravoColor);
+            _shuttle.AddIFFFlag(depotUid20s[0], IFFFlags.HideLabel);
+        }
+
+        // if (_map.TryLoad(mapId, cove, out var depotUid6s, new MapLoadOptions
+        //     {
+        //         Offset = _random.NextVector2(10000f, 15000f)
+        //     }))
         //{
         //    if (_prototypeManager.TryIndex<GameMapPrototype>("Cove", out var stationProto))
         //    {
         //        _station.InitializeNewStation(stationProto.Stations["Cove"], depotUid6s);
         //    }
-       // 
+        // 
         //    var meta = EnsureComp<MetaDataComponent>(depotUid6s[0]);
         //    _meta.SetEntityName(depotUid6s[0], "DSM Countsman", meta);
         //    _shuttle.SetIFFColor(depotUid6s[0], coveColor);
         //    _shuttle.AddIFFFlag(depotUid6s[0], IFFFlags.HideLabel);
-      //  }
+        //  }
 
         if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
         {
@@ -322,7 +335,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(9000f, 8000f)
+            Offset = new Vector2(9000f, 8100f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
