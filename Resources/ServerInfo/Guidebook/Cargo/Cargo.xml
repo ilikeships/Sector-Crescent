@@ -8,17 +8,6 @@
   </Box>
   Every transaction you make will begin at a [color=#a4885c]cargo request computer[/color], from which you can make orders for specific products. Making any order requires [color=#118C4F]credits[/color], the currency of the Sector. To make an order, click the "request" button next to whatever you need, type an appropriate reason for why you're ordering it, and hit "approve" when it appears below the request list.
 
-  ## Piloting
-  Orders are shipped to the station via the [color=#a4885c]Freeport[/color], and then transported with cargo shuttles by cargo pilots.
- # <Box>
- #   <GuideEntityEmbed Entity="ComputerCargoShuttle"/>
- # </Box>
- # After clicking the computer, you should see a radar view of the shuttle. Here are the steps for piloting the shuttle back and forth:
-#
- # - First, disconnect any airlocks that are connected to the dock.
-  #- Then, you actually get to pilot the shuttle. The controls are fairly simple, with [color=#028ed9]"W"[/color] and [color=#028ed9]"S"[/color] being forward and backward, [color=#028ed9]"A"[/color] and [color=#028ed9]"D"[/color] being left and right, and [color=#028ed9]"Q"[/color] and [color=#028ed9]"E"[/color] being rotating left and right; and [color=#028ed9]"spacebar"[/color] being the brake and moving precicely by holding the [color=#028ed9]"spacebar"[/color] while doing other inputs.
-  #- Then pilot the shuttle to the [textlink="Trade Station" link="TradeStation"].
-
   ## Selling
   So, you want to order something, but don't have the money for it? You just need to sell something. A lot of things in the system has economic value, which an [color=#a4885c]appraisal tool[/color] can read out to you.
   <Box>
