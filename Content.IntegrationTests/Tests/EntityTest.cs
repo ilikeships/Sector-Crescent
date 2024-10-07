@@ -238,6 +238,9 @@ namespace Content.IntegrationTests.Tests
 
                 // makes an announcement on mapInit.
                 "AnnounceOnSpawn",
+
+                // Crescent: Shipyard consoles can make a new map entity if needed
+                "ShipyardConsole"
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
