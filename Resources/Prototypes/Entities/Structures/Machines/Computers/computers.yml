@@ -774,6 +774,7 @@
       Brute:
         collection: MetalGlassBreak
   - type: Computer
+    board: CargoRequestComputerCircuitboard
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver

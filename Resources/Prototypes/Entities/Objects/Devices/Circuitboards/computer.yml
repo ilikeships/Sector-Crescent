@@ -344,18 +344,6 @@
 
 - type: entity
   parent: BaseComputerCircuitboard
-  id: NFSDAdvancedRadarConsoleCircuitboard # Frontier
-  name: nfsd advanced radar console computer board
-  components:
-  - type: Sprite
-    state: cpu_nfsd
-  - type: ComputerBoard
-    prototype: ComputerAdvancedRadar
-  - type: ComputerTabletopBoard # Frontier
-    prototype: ComputerTabletopAdvancedRadar # Frontier
-
-- type: entity
-  parent: BaseComputerCircuitboard
   id: SolarControlComputerCircuitboard
   name: solar control computer board
   description: A computer printed circuit board for a solar control console.
