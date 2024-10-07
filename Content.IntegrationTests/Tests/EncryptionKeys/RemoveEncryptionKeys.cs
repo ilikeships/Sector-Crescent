@@ -16,9 +16,9 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         Assert.Multiple(() =>
         {
             Assert.That(comp.KeyContainer.ContainedEntities, Has.Count.EqualTo(1));
-            Assert.That(comp.DefaultChannel, Is.EqualTo("Common"));
+            Assert.That(comp.DefaultChannel, Is.EqualTo("Traffic"));
             Assert.That(comp.Channels, Has.Count.EqualTo(1));
-            Assert.That(comp.Channels.First(), Is.EqualTo("Common"));
+            Assert.That(comp.Channels.First(), Is.EqualTo("Traffic"));
         });
 
         // Remove the key
@@ -31,7 +31,7 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         });
 
         // Check that the key was ejected and not just deleted or something.
-        await AssertEntityLookup(("EncryptionKeyCommon", 1));
+        await AssertEntityLookup(("EncryptionKeyTraffic", 1));
 
         // Re-insert a key.
         await Interact("EncryptionKeyCentCom");

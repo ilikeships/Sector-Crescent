@@ -42,7 +42,7 @@
       - Bottle
       - DrinkBottle
       components:
-      - BibleComponent
+      - Bible
       - Drink
       - Smokable
       - MeleeWeapon
@@ -58,7 +58,7 @@
           tags:
           - Book
           components:
-          - BibleComponent
+          - Bible
           - Paper
       bottle:
         whitelist:
