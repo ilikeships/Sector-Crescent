@@ -24,6 +24,7 @@ job-name-foreman = Foreman
 #empire
 
 job-name-freeholder = Laborer
+job-name-lizard = Lizard Corvée Laborer
 job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-courtier = Minister of Labor

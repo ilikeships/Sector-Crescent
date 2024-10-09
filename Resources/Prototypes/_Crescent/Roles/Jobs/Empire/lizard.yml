@@ -1,0 +1,39 @@
+- type: job
+  id: LizardDSM
+  name: job-name-lizard
+  description: job-description-lizard
+  playTimeTracker: JobLizardDSM
+  weight: 18
+  alwaysUseSpawner: true
+  icon: "JobIconImperialFreeholder"
+  requireAdminNotify: false
+  supervisors: job-supervisors-imperial
+  jobEntity: MobReptilianDSM
+  canBeAntag: false
+  access:
+  - Command
+  - Empire
+  - Maintenance
+  - Service
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: LizardDSMGear
+  equipment:
+    id: FreeholderPDA
+    ears: ClothingHeadsetEmpireCiv
+    jumpsuit: ClothingUniformJumpsuitImperialFreeholder
+    shoes: ClothingShoesBootsImperialClogs
+    pocket1: ImperialPassportBareLegit
+
+- type: entity
+  id: MobReptilianDSM
+  parent: MobReptilian
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [LizardDSMGear]
+    stationJob: true

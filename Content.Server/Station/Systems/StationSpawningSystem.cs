@@ -30,7 +30,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Server.Spawners.Components;
-using Content.Shared.Bank.Components; // DeltaV
+using Content.Shared.Bank.Components;
+using Content.Shared.Clothing.Components; // DeltaV
 
 namespace Content.Server.Station.Systems;
 
@@ -154,6 +155,13 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
             DoJobSpecials(job, jobEntity);
             _identity.QueueIdentityUpdate(jobEntity);
+
+            // Loadouts may need their ID updated
+            if (HasComp<LoadoutComponent>(jobEntity) && job?.Prototype != null)
+            {
+                SetPdaAndIdCardData(jobEntity, MetaData(jobEntity).EntityName, prototype, station);
+            }
+
             return jobEntity;
         }
 

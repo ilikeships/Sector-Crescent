@@ -27,6 +27,7 @@
             LevymanDSM: [ 10, 10 ]
             ForemanDSM: [ 3, 3 ]
             FreeholderDSM: [ 20, 20 ]
+            LizardDSM: [4, 4 ]
             ScribeDSM: [ 3, 3 ]
             SurgeonDSM: [ 5, 5 ]
             Antiquarian: [ 1, 1 ]

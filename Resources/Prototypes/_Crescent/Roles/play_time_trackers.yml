@@ -88,6 +88,9 @@
 - type: playTimeTracker
   id: JobGovernorDSM
 
+- type: playTimeTracker
+  id: JobLizardDSM
+
 #srm
 
 - type: playTimeTracker
