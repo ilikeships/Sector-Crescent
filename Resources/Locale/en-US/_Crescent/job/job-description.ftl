@@ -34,6 +34,7 @@ job-description-wealth = Oversee the barony's economical matters, generate reven
 job-description-foremanimp = Coordinate the workers of your liege.
 job-description-scribe = Coordinate the Scribes' Guild, discover new technologies for the Empire.
 job-description-surgeon = Tend to the bodily ails of your comrades.
+job-description-lizard = Fulfill your obligations. Just a few more months of unpaid labor.
 
 #srm#
 
