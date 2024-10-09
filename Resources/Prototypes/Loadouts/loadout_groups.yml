@@ -1,24 +1,5 @@
 # Miscellaneous
 - type: loadoutGroup
-  id: Trinkets
-  name: loadout-group-trinkets
-  minLimit: 0
-  maxLimit: 3
-  loadouts:
-  - PlushieLizard
-  - ClothingNeckLGBTPin
-  - ClothingNeckAromanticPin
-  - ClothingNeckAsexualPin
-  - ClothingNeckBisexualPin
-  - ClothingNeckIntersexPin
-  - ClothingNeckLesbianPin
-  - ClothingNeckNonBinaryPin
-  - ClothingNeckPansexualPin
-  - ClothingNeckTransPin
-  - ClothingNeckAutismPin
-  - ClothingNeckGoldAutismPin
-
-- type: loadoutGroup
   id: Glasses
   name: loadout-group-glasses
   minLimit: 0

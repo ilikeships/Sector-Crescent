@@ -467,22 +467,6 @@
 
 - type: entity
   parent: SecuredVendingMachineRestock
-  id: VendingMachineRestockHappyHonk
-  name: Happy Honk restock box
-  description: place this box full of fun into the restock slot on the Happy Honk Dispenser to begin. A label reads THE BOX IS TAMPER PROOF AND WILL DESTROY IT'S CONTENT ON HARM.
-  components:
-  - type: VendingMachineRestock
-    canRestock:
-    - HappyHonkDispenserInventory
-  - type: Sprite
-    layers:
-    - state: base
-    - state: green_bit
-      shader: unshaded
-    - state: refill_honk
-
-- type: entity
-  parent: SecuredVendingMachineRestock
   id: VendingMachineRestockChemVend
   name: ChemVend restock box
   description: A box filled with chemicals and covered in dangerous-looking NFPA diamonds. Load it into a ChemVend to begin. A label reads THE BOX IS TAMPER PROOF AND WILL DESTROY IT'S CONTENT ON HARM.

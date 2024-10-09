@@ -235,7 +235,7 @@
   - ContractorClothingBackpackDuffelMime
   - ContractorClothingBackpackSatchelMime
   - ContractorClothingBackpackMessengerMime
-  
+
 - type: loadoutGroup
   id: PilotOuterClothing
   name: loadout-group-contractor-outerclothing
@@ -446,7 +446,7 @@
   - ContractorClothingHeadHatPlaguedoctor
   - ContractorClothingHeadBandGold
   - ContractorClothingHeadHatTophat
-  
+
 - type: loadoutGroup
   id: PilotGloves
   name: loadout-group-contractor-gloves
@@ -495,19 +495,8 @@
   - ContractorClothingOuterPonchoClassic
   - ContractorClothingNeckCloakCap
   - ContractorClothingNeckCloakMiner
-  - ContractorClothingNeckCloakMoth
   - ContractorClothingNeckScarfChaplainStole
   - ContractorClothingNeckStoleChaplain
-  - ContractorClothingNeckCloakTrans
-  - ContractorClothingNeckCloakAro
-  - ContractorClothingNeckCloakAce
-  - ContractorClothingNeckCloakBi
-  - ContractorClothingNeckCloakIntersex
-  - ContractorClothingNeckCloakEnby
-  - ContractorClothingNeckCloakPan
-  - ContractorClothingNeckCloakGay
-  - ContractorClothingNeckCloakLesbian
-  - ContractorBedsheetRainbow
   - ContractorClothingNeckCloakCapFormal
   - ContractorClothingNeckMantleCap
   - ContractorClothingNeckCloakQm
@@ -559,7 +548,7 @@
   - ContractorMusicianPDA
   - ContractorClownPDA
   - ContractorMimePDA
-  
+
 - type: loadoutGroup
   id: PilotGlasses
   name: loadout-group-contractor-glasses
