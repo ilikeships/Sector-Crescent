@@ -6485,6 +6485,13 @@ entities:
     - type: Transform
       pos: -1.5,-45.5
       parent: 2
+- proto: GraveyardBiomeSource
+  entities:
+  - uid: 953
+    components:
+    - type: Transform
+      pos: 0.44055048,-25.570835
+      parent: 2
 - proto: GravityGeneratorMini
   entities:
   - uid: 657

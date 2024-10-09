@@ -1,4 +1,4 @@
-- type: noiseChannel
+﻿- type: noiseChannel
   id: Density
   noiseType: Perlin
   fractalLacunarityByPi: 0.666666666
@@ -47,6 +47,16 @@
   clippedValue: 0
   remapTo0Through1: true
   inputMultiplier: 30 # Makes wreck concentration very low noise at scale.
+
+- type: noiseChannel
+  id: WreckGraveyard
+  noiseType: Perlin
+  fractalLacunarityByPi: 0.666666666
+  clippingRanges:
+    - 0.0, 0.4
+  clippedValue: 0
+  remapTo0Through1: true
+  inputMultiplier: 60 # Makes wreck concentration very low noise at scale.
 
 - type: noiseChannel
   id: Temperature

@@ -10,7 +10,7 @@
     - type: DebrisFeaturePlacerController
       densityNoiseChannel: DensityGraveyard
     - type: NoiseDrivenDebrisSelector
-      noiseChannel: Wreck
+      noiseChannel: WreckGraveyard
       debrisTable:
         - id: ScrapDebrisSmall
           prob: 1
@@ -28,3 +28,86 @@
       ranges:
         - 0.4, 0.6
       noiseChannel: Carver
+
+- type: spaceBiome
+  id: HayesWrecks
+  priority: 1041
+  minX: -30
+  maxX: -20
+  minY: 40
+  maxY: 55
+  noiseRanges: {}
+  chunkComponents:
+    - type: DebrisFeaturePlacerController
+      densityNoiseChannel: DensityGraveyard
+    - type: NoiseDrivenDebrisSelector
+      noiseChannel: WreckGraveyard
+      debrisTable:
+        - id: ScrapDebrisSmall
+          prob: 1
+        - id: ScrapDebrisMedium
+          prob: 1
+        - id: ScrapDebrisLarge
+          prob: 0.6
+        - id: ScrapDebrisExtraLarge
+          prob: 0.3
+        - id: ScrapDebrisExtraLargeScattered
+          prob: 0.3
+        - id: ScrapDebrisHuge
+          prob: 0.15
+        - id: ScrapDebrisLarge
+          prob: 0.6
+        - id: ScrapDebrisExtraLarge
+          prob: 0.3
+        - id: ScrapDebrisExtraLargeScattered
+          prob: 0.3
+        - id: ScrapDebrisHuge
+          prob: 0.15
+    - type: NoiseRangeCarver
+      ranges:
+        - 0.4, 0.6
+      noiseChannel: Carver
+
+- type: spaceBiome
+  id: AsteroidsStandardShinohara
+  priority: 1005
+  minX: 30
+  maxX: 65
+  minY: -5
+  maxY: 15
+  noiseRanges: {}
+  chunkComponents:
+    - type: DebrisFeaturePlacerController
+      densityNoiseChannel: Density
+    - type: SimpleDebrisSelector
+      debrisTable:
+        - id: AsteroidDebrisNFMedium
+        - id: AsteroidDebrisNFIceMedium
+        - id: AsteroidDebrisNFLarge
+          prob: 0.6
+        - id: AsteroidDebrisNFIceLarge
+          prob: 0.6
+        - id: AsteroidDebrisNFLarger
+          prob: 0.3
+        - id: AsteroidDebrisNFIceLarger
+          prob: 0.3
+        - id: AsteroidDebrisNFHuge
+          prob: 0.15
+        - id: AsteroidDebrisNFIceHuge
+          prob: 0.15
+        - id: AsteroidSalvageNFSmall
+          prob: 0.1
+        - id: AsteroidSalvageNFIceSmall
+          prob: 0.1
+        - id: AsteroidSalvageNFMedium
+          prob: 0.08
+        - id: AsteroidSalvageNFIceMedium
+          prob: 0.08
+        - id: AsteroidSalvageNFLarge
+          prob: 0.05
+        - id: AsteroidSalvageNFIceLarge
+          prob: 0.05
+        - id: AsteroidSalvageNFHuge
+          prob: 0.03
+        - id: AsteroidSalvageNFIceHuge
+          prob: 0.03

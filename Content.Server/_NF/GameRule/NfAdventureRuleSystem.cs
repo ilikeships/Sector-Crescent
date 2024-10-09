@@ -116,9 +116,10 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var tinnia = "/Maps/_NF/POI/tinnia.yml";
         //var caseys = "/Maps/_NF/POI/caseyscasino.yml";
        // var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
-        var hayes = "/Maps/_Crescent/Stations/hayes.yml";
+        var hayes = "/Maps/_Crescent/Explorables/hayeswreck.yml";
         //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
+        var oris = "/Maps/_Crescent/Explorables/oris.yml";
         //var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
         var freeport = "/Maps/_Crescent/Stations/freeport.yml";
         // var refuge = "/Maps/_Crescent/Stations/refuge.yml";
@@ -127,13 +128,17 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
         var stranded = "/Maps/_Crescent/Explorables/stranded.yml";
+        var fighter1 = "/Maps/_Crescent/Explorables/ruinedfightereast.yml";
+        var fighter2 = "/Maps/_Crescent/Explorables/ruinedfighterwest.yml";
+        var solarruined = "/Maps/_Crescent/Explorables/ruinedsolarsailor.yml";
+        var impwreck = "/Maps/_Crescent/Explorables/impwreck.yml";
         // var cove = "/Maps/_NF/POI/cove.yml";
         // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
-        var lab = "/Maps/_NF/POI/anomalouslab.yml";
+       // var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
         // var grifty = "Maps/_NF/POI/grifty.yml";
-        var nfsdStation = "/Maps/_NF/POI/nfsd.yml";
+       // var nfsdStation = "/Maps/_NF/POI/nfsd.yml";
         // var trade = "/Maps/_NF/POI/trade.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
@@ -263,13 +268,57 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, stranded, out var depotUid20s, new MapLoadOptions
         {
-            Offset = new Vector2(10420f, 9250f)
+            Offset = new Vector2(10320f, 9250f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid20s[0]);
             _meta.SetEntityName(depotUid20s[0], "Stranded Ship", meta);
             _shuttle.SetIFFColor(depotUid20s[0], lpbravoColor);
             _shuttle.AddIFFFlag(depotUid20s[0], IFFFlags.HideLabel);
+        }
+
+        if (_map.TryLoad(mapId, fighter1, out var depotUid21s, new MapLoadOptions
+        {
+            Offset = new Vector2(10920f, 9230f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid21s[0]);
+            _meta.SetEntityName(depotUid21s[0], "Destroyed Fighter", meta);
+            _shuttle.SetIFFColor(depotUid21s[0], lpbravoColor);
+            _shuttle.AddIFFFlag(depotUid21s[0], IFFFlags.HideLabel);
+        }
+
+        if (_map.TryLoad(mapId, fighter2, out var depotUid22s, new MapLoadOptions
+        {
+            Offset = new Vector2(10950f, 9221f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid22s[0]);
+            _meta.SetEntityName(depotUid22s[0], "Destroyed Fighter", meta);
+            _shuttle.SetIFFColor(depotUid22s[0], lpbravoColor);
+            _shuttle.AddIFFFlag(depotUid22s[0], IFFFlags.HideLabel);
+        }
+
+        if (_map.TryLoad(mapId, solarruined, out var depotUid23s, new MapLoadOptions
+        {
+            Offset = new Vector2(10170f, 9150f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid23s[0]);
+            _meta.SetEntityName(depotUid23s[0], "Solar Sailor Derelict", meta);
+            _shuttle.SetIFFColor(depotUid23s[0], lpbravoColor);
+            _shuttle.AddIFFFlag(depotUid23s[0], IFFFlags.HideLabel);
+        }
+
+        if (_map.TryLoad(mapId, impwreck, out var depotUid24s, new MapLoadOptions
+        {
+            Offset = new Vector2(10750f, 9070f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotUid24s[0]);
+            _meta.SetEntityName(depotUid24s[0], "Imperial Hauler Wreck", meta);
+            _shuttle.SetIFFColor(depotUid24s[0], lpbravoColor);
+            _shuttle.AddIFFFlag(depotUid24s[0], IFFFlags.HideLabel);
         }
 
         // if (_map.TryLoad(mapId, cove, out var depotUid6s, new MapLoadOptions
@@ -290,16 +339,15 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(3000f, 3500f)
+            Offset = new Vector2(-3000f, 6500f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Hayes", out var stationProto))
             {
                 _station.InitializeNewStation(stationProto.Stations["Hayes"], depotUid7s);
             }
-
             var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
-            _meta.SetEntityName(depotUid7s[0], "Hayes Medical Waystation", meta);
+            _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
         }
 
@@ -351,7 +399,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(6000f, 5500f)
+            Offset = new Vector2(6000f, 1000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
@@ -360,25 +408,35 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             }
 
             var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
-            _meta.SetEntityName(depotUid10s[0], "Tatsumoto Trading Outpost", meta);
+            _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
             _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
         }
 
-      //  if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
-      //  {
-      //      Offset = _random.NextVector2(9000f, 12000f)
-      //  }))
-       // {
-       //     if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))
-      //      {
-      //          _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
-      //      }
-      //
-      //      var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
-      //      _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
-      //      _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
-      //      _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
-      //  }
+        if (_map.TryLoad(mapId, oris, out var orisUids, new MapLoadOptions
+        {
+            Offset = new Vector2(6500f, 1200f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(orisUids[0]);
+            _meta.SetEntityName(orisUids[0], "Taypan-2 Asteroid Belt", meta);
+            _shuttle.SetIFFColor(orisUids[0], tatsumotoColor);
+        }
+
+        //  if (_map.TryLoad(mapId, refuge, out var depotUid11s, new MapLoadOptions
+        //  {
+        //      Offset = _random.NextVector2(9000f, 12000f)
+        //  }))
+        // {
+        //     if (_prototypeManager.TryIndex<GameMapPrototype>("Refuge", out var stationProto))
+        //      {
+        //          _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
+        //      }
+        //
+        //      var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
+        //      _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
+        //      _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
+        //      _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
+        //  }
 
         if (_map.TryLoad(mapId, vladzena, out var depotUid12s, new MapLoadOptions
         {
@@ -440,15 +498,15 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //     _shuttle.SetIFFColor(depotUid8s[0], factionColor);
         // }
 
-        if (_map.TryLoad(mapId, lab, out var labUids, new MapLoadOptions
-            {
-                Offset = _random.NextVector2(2100f, 3800f)
-            }))
-        {
-            var meta = EnsureComp<MetaDataComponent>(labUids[0]);
-            _meta.SetEntityName(labUids[0], "Derelict Research Outpost", meta);
-            _shuttle.SetIFFColor(labUids[0], factionColor);
-        }
+      //  if (_map.TryLoad(mapId, lab, out var labUids, new MapLoadOptions
+       //     {
+       //         Offset = _random.NextVector2(2100f, 3800f)
+       //     }))
+       // {
+       //     var meta = EnsureComp<MetaDataComponent>(labUids[0]);
+       //     _meta.SetEntityName(labUids[0], "Derelict Research Outpost", meta);
+       //     _shuttle.SetIFFColor(labUids[0], factionColor);
+      //  }
 
         //if (_map.TryLoad(mapId, trade, out var tradeUids, new MapLoadOptions
         //{
