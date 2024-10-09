@@ -37,7 +37,8 @@ namespace Content.Client.Mail
             if (args.Sprite == null)
                 return;
 
-            args.Component.TryGetData(MailVisuals.JobIcon, out string job);
+            if (!args.Component.TryGetData(MailVisuals.JobIcon, out string job))
+                return;
 
             if (!_prototypeManager.TryIndex<StatusIconPrototype>(job, out var icon))
                 return;

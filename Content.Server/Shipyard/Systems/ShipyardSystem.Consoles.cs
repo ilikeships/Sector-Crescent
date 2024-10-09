@@ -14,7 +14,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Crescent.Vouchers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.Radio;
 using System.Linq;
@@ -23,7 +22,6 @@ using Content.Server.Cargo.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Server.Maps;
-using Content.Server.UserInterface;
 using Content.Shared.StationRecords;
 using Content.Server.Chat.Systems;
 using Content.Server.Forensics;
@@ -38,6 +36,7 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -382,9 +381,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
         {
-            if (Deleted(deed!.ShuttleUid))
+            if (Deleted(deed.ShuttleUid))
             {
-                RemComp<ShuttleDeedComponent>(targetId!.Value);
+                RemComp<ShuttleDeedComponent>(targetId.Value);
                 return;
             }
         }
@@ -452,45 +451,52 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
     private void OnItemSlotChanged(EntityUid uid, ShipyardConsoleComponent component, ContainerModifiedMessage args)
     {
-        // kind of cursed. We need to update the UI when an Id is entered, but the UI needs to know the player characters bank account.
         if (!TryComp<ActivatableUIComponent>(uid, out var uiComp) || uiComp.Key == null)
             return;
 
-        var uiUsers = _ui.GetActorUis(uid);
+        var uiUsers = _ui.GetActors(uid, uiComp.Key);
 
         foreach (var user in uiUsers)
         {
-            if (user.Entity is not { Valid: true } player)
+            if (user is not { Valid: true } player)
                 continue;
 
             if (!TryComp<BankAccountComponent>(player, out var bank))
                 continue;
 
             var targetId = component.TargetIdSlot.ContainerSlot?.ContainedEntity;
+            ShuttleDeedComponent? deed = null;
 
-            if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
+            if (targetId.HasValue && TryComp(targetId.Value, out deed))
             {
-                if (Deleted(deed!.ShuttleUid))
+                if (Deleted(deed.ShuttleUid))
                 {
-                    RemComp<ShuttleDeedComponent>(targetId!.Value);
+                    RemComp<ShuttleDeedComponent>(targetId.Value);
                     continue;
                 }
             }
 
-            int sellValue = 0;
-            if (deed?.ShuttleUid != null)
-                sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
+            var sellValue = deed?.ShuttleUid != null
+                ? (int)_pricing.AppraiseGrid((EntityUid)deed.ShuttleUid)
+                : 0;
 
-            if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) uiComp.Key ||
-                ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) uiComp.Key) // Unhardcode this please
+            if (uiComp.Key is ShipyardConsoleUiKey.BlackMarket
+                or ShipyardConsoleUiKey.Syndicate)
             {
-                var tax = (int) (sellValue * 0.30f);
+                var tax = (int)(sellValue * 0.30f);
                 sellValue -= tax;
             }
 
             var fullName = deed != null ? GetFullName(deed) : null;
-            RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue,
-                (ShipyardConsoleUiKey) uiComp.Key);
+            RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey)uiComp.Key);
+            RefreshState(
+                uid: uid,
+                balance: bank.Balance,
+                access: true,
+                shipDeed: fullName,
+                shipSellValue: sellValue,
+                isTargetIdPresent: targetId.HasValue,
+                (ShipyardConsoleUiKey)uiComp.Key);
         }
     }
 
