@@ -28,8 +28,8 @@
       - BluespaceBeaker
       - CryostasisBeaker
       - ClothingBackpackHolding
-      - ClothingSatchelHolding
-      - ClothingDuffelbagHolding
+      - ClothingBackpackSatchelHolding
+      - ClothingBackpackDuffelHolding
       - ChemicalPayload #Below = shared
       - FlashlightLantern
       - Bucket

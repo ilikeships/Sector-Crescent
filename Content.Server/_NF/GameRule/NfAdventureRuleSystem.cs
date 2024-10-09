@@ -54,7 +54,6 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundStartingEvent>(OnStartup);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawningEvent);
     }
 
@@ -109,8 +108,10 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         }
     }
 
-    private void OnStartup(RoundStartingEvent ev)
+    protected override void Started(EntityUid uid, AdventureRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
+        base.Started(uid, component, gameRule, args);
+
         var depotMap = "/Maps/_NF/POI/cargodepot.yml";
         var tinnia = "/Maps/_NF/POI/tinnia.yml";
         //var caseys = "/Maps/_NF/POI/caseyscasino.yml";
@@ -172,22 +173,22 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
         }
 
-       // if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
-       //     {
-       //         Offset = _random.NextVector2(3500f, 1700f)
-       //     }))
-       // {
-       //     // We should figure out if it is possible to add this grid to the latejoin listing.
-       //     // Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-       //     if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
-         //   {
-        //        _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
-        //    }
-     //
-       //     var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
-        //    _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
-        //    _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
-      //  }
+        if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
+            {
+                Offset = _random.NextVector2(3500f, 1700f)
+            }))
+        {
+            // We should figure out if it is possible to add this grid to the latejoin listing.
+            // Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
+            }
+
+            var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
+            _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
+            _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
+        }
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid15s, new MapLoadOptions
         {
@@ -329,7 +330,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    {
         //        _station.InitializeNewStation(stationProto.Stations["Cove"], depotUid6s);
         //    }
-        // 
+        //
         //    var meta = EnsureComp<MetaDataComponent>(depotUid6s[0]);
         //    _meta.SetEntityName(depotUid6s[0], "DSM Countsman", meta);
         //    _shuttle.SetIFFColor(depotUid6s[0], coveColor);
@@ -341,6 +342,10 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             Offset = new Vector2(-3000f, 6500f)
         }))
         {
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Hayes", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Hayes"], depotUid7s);
+            }
             var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
             _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
@@ -401,7 +406,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             {
                 _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
             }
-       
+
             var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
             _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
             _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
