@@ -36,4 +36,3 @@
     randomizeName: true
   - type: Loadout
     prototypes: [LizardDSMGear]
-    stationJob: true

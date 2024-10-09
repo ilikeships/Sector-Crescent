@@ -57,7 +57,6 @@
     heatDamage:
       types:
         Heat : 1.5 #per second, scales with temperature & other constants
-  - type: Wagging
   - type: Carriable # Carrying system from nyanotrasen.
   - type: SizeAttributeWhitelist # Frontier
     tall: true
