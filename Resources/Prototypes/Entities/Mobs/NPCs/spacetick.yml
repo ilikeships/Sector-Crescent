@@ -84,5 +84,5 @@
   parent: MobTick
   suffix: "Salvage Ruleset"
   components:
-  - type: SalvageMobRestrictionsNF
+  - type: SalvageMobRestrictions
 

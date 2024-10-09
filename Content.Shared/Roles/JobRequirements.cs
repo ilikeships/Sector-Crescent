@@ -75,8 +75,8 @@ namespace Content.Shared.Roles
     [Serializable, NetSerializable]
     public sealed partial class SpeciesRequirement : JobRequirement
     {
-        [DataField("allowedOnly")] public HashSet<ProtoId<SpeciesPrototype>> AllowedOnly;
-        [DataField("notAllowed")] public HashSet<ProtoId<SpeciesPrototype>> NotAllowed;
+        [DataField("allowedOnly")] public HashSet<ProtoId<SpeciesPrototype>>? AllowedOnly;
+        [DataField("notAllowed")] public HashSet<ProtoId<SpeciesPrototype>>? NotAllowed;
     }
 
     [UsedImplicitly]
@@ -269,14 +269,14 @@ namespace Content.Shared.Roles
                         return true;
                     }
 
-                    if (speciesRequirement.AllowedOnly.Count > 0)
+                    if (speciesRequirement.AllowedOnly != null && speciesRequirement.AllowedOnly.Count > 0)
                     {
                         if (species.Length > 0 && speciesRequirement.AllowedOnly.Contains(species))
                         {
                             return true;
                         }
                     }
-                    else if (speciesRequirement.NotAllowed.Count > 0)
+                    else if (speciesRequirement.NotAllowed != null && speciesRequirement.NotAllowed.Count > 0)
                     {
                         if (species.Length == 0 || !speciesRequirement.NotAllowed.Contains(species))
                         {
