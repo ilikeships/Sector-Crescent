@@ -1,0 +1,25 @@
+- type: entity
+  id: CrateEngineeringToolbelts
+  parent: CrateEngineering
+  name: toolbelt crate
+  description: The tools you need to get the job done.
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingBeltUtilityEngineering
+        amount: 3
+
+- type: entity
+  id: CrateEngineeringPPE
+  parent: CrateEngineering
+  name: engineering PPE crate
+  description: Safety gear to meet regulations.
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHatWelding
+        amount: 3
+      - id: ClothingHandsGlovesColorYellow
+        amount: 3
+      - id: ClothingOuterVestHazard
+        amount: 3

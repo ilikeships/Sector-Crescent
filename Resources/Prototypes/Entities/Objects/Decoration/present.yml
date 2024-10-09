@@ -100,8 +100,6 @@
         orGroup: GiftPool
       - id: PlushieArachind
         orGroup: GiftPool
-      - id: ClothingNeckCloakMoth
-        orGroup: GiftPool
       - id: ToyMouse
         orGroup: GiftPool
       - id: ToyAi
@@ -195,8 +193,6 @@
       - id: MusicBoxInstrument
         orGroup: GiftPool
       - id: ViolaInstrument
-        orGroup: GiftPool
-      - id: ClothingNeckCloakTrans
         orGroup: GiftPool
       - id: ClothingNeckCloakAdmin
         orGroup: GiftPool
