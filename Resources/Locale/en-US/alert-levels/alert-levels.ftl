@@ -1,4 +1,4 @@
-alert-level-announcement = Attention! Station alert level is now {$name}! {$announcement}
+alert-level-announcement = Attention! Alert level is now {$name}! {$announcement}
 
 alert-level-unknown = Unknown.
 alert-level-unknown-instructions = Unknown.
@@ -34,3 +34,25 @@ alert-level-delta-instructions = Crewmembers are advised to listen to heads of s
 alert-level-epsilon = Epsilon
 alert-level-epsilon-announcement = Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.
 alert-level-epsilon-instructions = Consider all contracts terminated.
+
+
+## Ships
+alert-level-cruise = Cruise
+alert-level-cruise-announcement = I am pleased to announce we have returned to normal cruise operations.
+alert-level-cruise-instructions = Relax, attend your station, but stay vigilant.
+
+alert-level-combat = Combat
+alert-level-combat-announcement = Prepare to engage in naval combat. This is not a drill.
+alert-level-combat-instructions = Assume your combat station.
+
+alert-level-boarders = Boarders
+alert-level-boarders-announcement = This vessel is being boarded by hostile forces. Ensure you're properly armed and secure the area.
+alert-level-boarders-instructions = Secure the ship. Engage hostile personnel.
+
+alert-level-damage = Damage
+alert-level-damage-announcement = This vessel has sustained severe damage. Repairing it is top priority, if safe to do so.
+alert-level-damage-instructions = Repair the ship, or shelter in a safe area.
+
+alert-level-scuttle = Scuttle
+alert-level-scuttle-announcement = This ship is being scuttled. Secure sensitive materials and escape with your life.
+alert-level-scuttle-instructions = Get off this cursed thing!

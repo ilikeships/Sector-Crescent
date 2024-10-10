@@ -1,0 +1,28 @@
+- type: alertLevels
+  id: combatShipAlerts
+  defaultLevel: cruise
+  levels:
+    cruise:
+      announcement: alert-level-cruise-announcement
+      color: Green
+      emergencyLightColor: LawnGreen
+    combat:
+      announcement: alert-level-combat-announcement
+      color: Red
+      emergencyLightColor: Red
+      forceEnableEmergencyLights: true
+    boarders:
+      announcement: alert-level-boarders-announcement
+      color: DodgerBlue
+      forceEnableEmergencyLights: true
+      emergencyLightColor: DodgerBlue
+    damage:
+      announcement: alert-level-damage-announcement
+      color: Yellow
+      emergencyLightColor: Goldenrod
+      forceEnableEmergencyLights: true
+    scuttle:
+      announcement: alert-level-scuttle-announcement
+      color: DarkRed
+      emergencyLightColor: Orange
+      forceEnableEmergencyLights: true

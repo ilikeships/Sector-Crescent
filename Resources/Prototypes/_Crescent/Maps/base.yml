@@ -36,7 +36,7 @@
     - BaseStationJobsSpawning
     - BaseStationRecords
     - BaseStationCargo
-    - BaseStationAlertLevels
+    - BaseCombatShipAlertLevels
     - BaseStationAllEventsEligible
     - BaseStationRenameFaxes
     - BaseStationRenameWarpPoints
@@ -123,3 +123,11 @@
   abstract: true
   components:
     - type: BlockSpaceArtilleryProjectileGrid
+
+- type: entity
+  id: BaseCombatShipAlertLevels
+  abstract: true
+  components:
+    - type: AlertLevel
+      alertLevelPrototype: combatShipAlerts
+
