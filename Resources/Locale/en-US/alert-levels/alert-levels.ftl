@@ -1,4 +1,4 @@
-alert-level-announcement = Attention! Alert level is now {$name}! {$announcement}
+alert-level-announcement = Attention! {$announcement}
 
 alert-level-unknown = Unknown.
 alert-level-unknown-instructions = Unknown.

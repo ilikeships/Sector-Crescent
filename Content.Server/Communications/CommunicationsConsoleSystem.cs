@@ -3,15 +3,12 @@ using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.AlertLevel;
 using Content.Server.Chat.Systems;
-using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.RoundEnd;
-using Content.Server.Screens;
 using Content.Server.Screens.Components;
-using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -55,9 +52,6 @@ namespace Content.Server.Communications
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleSelectAlertLevelMessage>(OnSelectAlertLevelMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleAnnounceMessage>(OnAnnounceMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleBroadcastMessage>(OnBroadcastMessage);
-
-            // On console init, set cooldown
-            SubscribeLocalEvent<CommunicationsConsoleComponent, MapInitEvent>(OnCommunicationsConsoleMapInit);
         }
 
         public override void Update(float frameTime)
@@ -65,11 +59,7 @@ namespace Content.Server.Communications
             var query = EntityQueryEnumerator<CommunicationsConsoleComponent>();
             while (query.MoveNext(out var uid, out var comp))
             {
-                // TODO refresh the UI in a less horrible way
-                if (comp.AnnouncementCooldownRemaining >= 0f)
-                {
-                    comp.AnnouncementCooldownRemaining -= frameTime;
-                }
+                comp.AnnouncementCooldownRemaining -= frameTime;
 
                 comp.UIUpdateAccumulator += frameTime;
 
@@ -83,11 +73,6 @@ namespace Content.Server.Communications
             }
 
             base.Update(frameTime);
-        }
-
-        public void OnCommunicationsConsoleMapInit(EntityUid uid, CommunicationsConsoleComponent comp, MapInitEvent args)
-        {
-            comp.AnnouncementCooldownRemaining = comp.InitialDelay;
         }
 
         /// <summary>
