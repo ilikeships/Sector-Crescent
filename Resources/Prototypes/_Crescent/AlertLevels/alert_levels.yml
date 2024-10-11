@@ -18,7 +18,7 @@
       sound:
         path: /Audio/Misc/ShipAlerts/combat.ogg #Yes this is like 40 seconds long yes it's intended
         params:
-          volume: -2
+          volume: -4
     boarders:
       announcement: alert-level-boarders-announcement
       color: DodgerBlue

@@ -38,21 +38,21 @@ alert-level-epsilon-instructions = Consider all contracts terminated.
 
 ## Ships
 alert-level-cruise = Cruise
-alert-level-cruise-announcement = I am pleased to announce we have returned to normal cruise operations.
-alert-level-cruise-instructions = Relax, attend your station, but stay vigilant.
+alert-level-cruise-announcement = The vessel is operating under normal cruising conditions.
+alert-level-cruise-instructions = Continue regular duties and remain vigilant.
 
 alert-level-combat = Combat
 alert-level-combat-announcement = Prepare to engage in naval combat. This is not a drill.
-alert-level-combat-instructions = Assume your combat station.
+alert-level-combat-instructions = Man your battle stations.
 
 alert-level-boarders = Boarders
-alert-level-boarders-announcement = This vessel is being boarded by hostile forces. Ensure you're properly armed and secure the area.
-alert-level-boarders-instructions = Secure the ship. Engage hostile personnel.
+alert-level-boarders-announcement = The vessel is being boarded by hostile forces. Arm yourself and secure your station.
+alert-level-boarders-instructions = Fortify the ship. Engage hostile boarders.
 
 alert-level-damage = Damage
-alert-level-damage-announcement = This vessel has sustained severe damage. Repairing it is top priority, if safe to do so.
-alert-level-damage-instructions = Repair the ship, or shelter in a safe area.
+alert-level-damage-announcement = The vessel has sustained significant damage. Conduct repairs as a top priority, if conditions permit.
+alert-level-damage-instructions = Commence repairs or seek refuge in a secure area.
 
 alert-level-scuttle = Scuttle
-alert-level-scuttle-announcement = This ship is being scuttled. Secure sensitive materials and escape with your life.
-alert-level-scuttle-instructions = Get off this cursed thing!
+alert-level-scuttle-announcement = The vessel is being scuttled. Secure all classified materials and abandon ship immediately.
+alert-level-scuttle-instructions = Abandon ship!
