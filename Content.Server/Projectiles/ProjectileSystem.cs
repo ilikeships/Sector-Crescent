@@ -34,7 +34,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         //Frontier code
         // Makes sure that armament projectile doesnt damage the safezone
-        if (HasComp<SpaceArtilleryProjectileComponent>(uid) && HasComp<BlockSpaceArtilleryProjectileGridComponent>(Transform(args.OtherEntity).GridUid))
+        if (HasComp<ShipWeaponProjectileComponent>(uid) && HasComp<BlockShipWeaponProjectileGridComponent>(Transform(args.OtherEntity).GridUid))
         {
             QueueDel(uid);
             return;

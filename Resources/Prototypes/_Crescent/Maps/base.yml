@@ -123,7 +123,7 @@
   id: BaseStationSpaceArtilleryImmune
   abstract: true
   components:
-    - type: BlockSpaceArtilleryProjectileGrid
+    - type: BlockShipWeaponProjectileGrid
 
 - type: entity
   id: BaseCombatShipAlertLevels

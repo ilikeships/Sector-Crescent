@@ -26,7 +26,7 @@
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
       - state: base-projectile
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeVulcanStandard
@@ -81,8 +81,7 @@
   - type: Projectile
     damage:
       types:
-        Structural: 90
-        Piercing: 25
+3        Piercing: 25
   - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive

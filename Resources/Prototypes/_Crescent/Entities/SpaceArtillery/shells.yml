@@ -26,7 +26,7 @@
     range: 8
     energyConsumption: 1000
     disableDuration: 10
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeShellEmp
@@ -84,7 +84,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeShellArmorPiercing
@@ -142,7 +142,7 @@
     radius: 3.5
     color: red
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeShellHighExplosive
@@ -200,7 +200,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeShellPractice
@@ -255,7 +255,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeMachineGunEMP
@@ -312,7 +312,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
   - type: ProjectileIFF
 
 - type: entity
@@ -370,7 +370,7 @@
     radius: 5
     color: orange
     energy: 0.8
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
   - type: ProjectileIFF
 
 - type: entity
@@ -428,7 +428,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
   - type: ProjectileIFF
 
 - type: entity
@@ -485,7 +485,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeRailEMP
@@ -543,7 +543,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeRailArmorPiercing
@@ -601,7 +601,7 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
   - type: ProjectileIFF
 
 - type: entity
@@ -652,7 +652,7 @@
     soundHit:
       collection: MeatLaserImpact
     forceSound: true
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 
 # Coolant object
@@ -746,13 +746,16 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 90
         Blunt: 30
         Piercing: 30
         #currently explosion deals roughly 60 damage
+  - type: ProjectileIFF
   - type: TimedDespawn
     lifetime: 10
     #roughly 600m range
@@ -765,7 +768,6 @@
     radius: 3.5
     color: orange
     energy: 0.5
-  - type: ProjectileIFF
 
 - type: entity
   id: PDTBulletCase
@@ -796,7 +798,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 150
@@ -879,7 +883,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 70
@@ -933,7 +939,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 70
@@ -989,7 +997,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 250
