@@ -1,0 +1,33 @@
+- type: gameMap
+  id: Kal
+  mapName: 'Kal Surezai'
+  mapPath: /Maps/_Crescent/Stations/kal.yml
+  minPlayers: 0
+  maxPlayers: 100
+  stations:
+    Kal:
+      stationProto: StandardCrescentStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Kal Surezai'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          overflowJobs:
+            - Contractor
+            - Pilot
+            - Mercenary
+          availableJobs:
+            GovernorDSM: [ 1, 1 ]
+            AdjutantDSM: [ 1, 1 ]
+            CourtierDSM: [ 1, 1 ]
+            WealthDSM: [ 1, 1 ]
+            KnightDSM: [ 5, 5 ]
+            LevymanDSM: [ 10, 10 ]
+            ForemanDSM: [ 3, 3 ]
+            FreeholderDSM: [ 20, 20 ]
+            ScribeDSM: [ 3, 3 ]
+            SurgeonDSM: [ 5, 5 ]
+            Antiquarian: [ 1, 1 ]
+

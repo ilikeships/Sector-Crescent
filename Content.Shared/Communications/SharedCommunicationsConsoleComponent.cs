@@ -11,7 +11,7 @@ namespace Content.Shared.Communications
     public sealed class CommunicationsConsoleInterfaceState : BoundUserInterfaceState
     {
         public readonly bool CanAnnounce;
-        public readonly bool CanBroadcast = true;
+        public readonly bool CanBroadcast = false; // This is AFAICT a placeholder? I'd like to fix it for inter-ship comms at some point.
         public List<string>? AlertLevels;
         public string CurrentAlert;
         public float CurrentAlertDelay;
