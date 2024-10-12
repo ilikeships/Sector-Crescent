@@ -28,7 +28,7 @@ public abstract partial class SpaceArtillerySystem
 
             var vector = _xformSystem.GetWorldPosition(uid) - _xformSystem.GetWorldPosition(playerEnt);
 
-            _recoilSystem.KickCamera(playerEnt, -vector.Normalized() * 0.5f);
+            _recoilSystem.KickCamera(playerEnt, vector.Normalized() * 0.5f);
         }
     }
 }

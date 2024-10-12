@@ -32,14 +32,12 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             || component.DamagedEntity || component is { Weapon: null, OnlyCollideWhenShot: true })
             return;
 
-        //Frontier code
-        // Makes sure that armament projectile doesnt damage the safezone
+        // Delete ship weapons before they can do anything to stations
         if (HasComp<ShipWeaponProjectileComponent>(uid) && HasComp<BlockShipWeaponProjectileGridComponent>(Transform(args.OtherEntity).GridUid))
         {
             QueueDel(uid);
             return;
         }
-        //Frontier code ends here
 
         var target = args.OtherEntity;
         // it's here so this check is only done once before possible hit
