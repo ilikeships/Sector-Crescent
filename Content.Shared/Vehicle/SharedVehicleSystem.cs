@@ -34,6 +34,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _modifier = default!;
+    [Dependency] private readonly EntityManager _manager = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
@@ -124,7 +125,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             var rider = EnsureComp<RiderComponent>(args.BuckledEntity);
             component.Rider = args.BuckledEntity;
             component.LastRider = component.Rider;
-            Dirty(component);
+            _manager.Dirty(uid, component);
             Appearance.SetData(uid, VehicleVisuals.HideRider, true);
 
             _mover.SetRelay(args.BuckledEntity, uid);
@@ -169,7 +170,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         Appearance.SetData(uid, VehicleVisuals.HideRider, false);
         // Reset component
         component.Rider = null;
-        Dirty(component);
+        _manager.Dirty(uid, component);
     }
 
     /// <summary>
@@ -316,7 +317,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         };
 
         if (!oldOffset.Equals(strap.BuckleOffset))
-            Dirty(strap);
+            _manager.Dirty(uid, strap);
 
         foreach (var buckledEntity in strap.BuckledEntities)
         {
