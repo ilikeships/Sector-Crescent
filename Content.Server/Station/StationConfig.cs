@@ -15,5 +15,11 @@ public sealed partial class StationConfig
 
     [DataField("components", required: true)]
     public ComponentRegistry StationComponentOverrides = default!;
+
+    /// <summary>
+    /// These are components that will be added to each grid of this station.
+    /// </summary>
+    [DataField("gridComponents")]
+    public ComponentRegistry? GridComponents = default!;
 }
 

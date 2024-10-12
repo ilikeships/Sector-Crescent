@@ -6,6 +6,9 @@
   stations:
     Refuge:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
       components:
         - type: StationNameSetup
           mapNameTemplate: 'The Refuge'

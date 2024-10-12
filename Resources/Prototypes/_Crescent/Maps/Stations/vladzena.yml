@@ -6,6 +6,9 @@
   stations:
     Vladzena:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Port Vladzena'

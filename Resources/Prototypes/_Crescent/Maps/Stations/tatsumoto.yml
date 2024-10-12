@@ -6,6 +6,9 @@
   stations:
     Tatsumoto:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tatsumoto Trading Outpost'

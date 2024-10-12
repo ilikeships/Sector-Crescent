@@ -6,6 +6,9 @@
   stations:
     Precinct9:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Precinct 9'
