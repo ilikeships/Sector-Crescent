@@ -54,7 +54,7 @@ public abstract partial class SpaceArtillerySystem : EntitySystem
         SubscribeLocalEvent<SpaceArtilleryComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<SpaceArtilleryComponent, ComponentRemove>(OnComponentRemove);
 
-        InitializeGrid();
+        InitializeProjectile();
     }
 
     private void OnComponentInit(EntityUid uid, SpaceArtilleryComponent component, ComponentInit args)
@@ -113,13 +113,6 @@ public abstract partial class SpaceArtillerySystem : EntitySystem
             }
             if (args.Port == component.SpaceArtilleryToggleSafetyPort)
             {
-
-                if (Transform(uid).GridUid is { Valid: true } gridUid)
-                {
-                    var activationEvent = new SpaceArtilleryGridActivationEvent();
-                    RaiseLocalEvent(gridUid, ref activationEvent);
-                }
-
                 if (TryComp<CombatModeComponent>(uid, out var combat))
                 {
                     if (combat.IsInCombatMode == false)

@@ -11,6 +11,7 @@
   components:
   - type: ProjectileIFF
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 70
