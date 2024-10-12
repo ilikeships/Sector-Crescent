@@ -7,7 +7,7 @@ using Content.Shared.Database;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
-using Content.Shared.SpaceArtillery; //Frontier Modification
+using Content.Shared._Crescent.SpaceArtillery;
 
 namespace Content.Server.Projectiles;
 
@@ -31,13 +31,13 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         if (args.OurFixtureId != ProjectileFixture || !args.OtherFixture.Hard
             || component.DamagedEntity || component is { Weapon: null, OnlyCollideWhenShot: true })
             return;
-		
+
 		//Frontier code
 		// Makes sure that armament projectile doesnt damage the safezone
 		if(TryComp<TransformComponent>(args.OtherEntity, out var transformComponent))
 		{
 			var _gridUid = transformComponent.GridUid;
-			
+
 			if(_gridUid is {Valid :true} gridUid)
 			{
 				if(HasComp<SpaceArtilleryProjectileComponent>(uid) && HasComp<BlockSpaceArtilleryProjectileGridComponent>(gridUid))

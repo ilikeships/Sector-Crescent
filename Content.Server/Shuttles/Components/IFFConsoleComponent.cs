@@ -1,10 +1,10 @@
 using Content.Server.Shuttles.Systems;
+using Content.Server._Crescent.SpaceArtillery;
 using Content.Shared.Shuttles.Components;
-using Content.Shared.SpaceArtillery; //Frontier code modification
 
 namespace Content.Server.Shuttles.Components;
 
-[RegisterComponent, Access(typeof(ShuttleSystem),typeof(SpaceArtillerySystem))] //Frontier modification, added acces to SpaceArtillerySystem
+[RegisterComponent, Access(typeof(ShuttleSystem),typeof(SpaceArtillerySystem))]
 public sealed partial class IFFConsoleComponent : Component
 {
     /// <summary>
@@ -12,8 +12,7 @@ public sealed partial class IFFConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("allowedFlags")]
     public IFFFlags AllowedFlags = IFFFlags.HideLabel;
-	
-//Frontier Code - allows temporarily disabling IFF console
+
 	/// <summary>
 	/// Whether the console should be treated as temporarily disabled
 	/// </summary>
@@ -44,6 +43,4 @@ public sealed partial class IFFConsoleComponent : Component
     ///
     [DataField("heatDissipation"), ViewVariables(VVAccess.ReadWrite)]
     public float HeatDissipation = 2f;
-
-    //Frontier Code ends here
 }
