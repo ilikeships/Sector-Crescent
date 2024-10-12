@@ -143,7 +143,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             _sawmill.Error($"Unable to spawn shuttle {shuttlePath}");
             return false;
         };
-
+        
         _shuttleIndex += _mapManager.GetGrid(gridList[0]).LocalAABB.Width + ShuttleSpawnBuffer;
 
         //only dealing with 1 grid at a time for now, until more is known about multi-grid drifting

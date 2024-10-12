@@ -252,7 +252,7 @@ public sealed class PointCannonSystem : EntitySystem
         TransformComponent gridForm = Transform(form.GridUid.Value);
         List<(Angle, Angle)> ranges = new();
 
-        foreach (EntityUid childUid in gridForm.ChildEntities)
+        foreach (EntityUid childUid in gridForm.ChildEnumerator)
         {
             //checking if obstacle is not too far/close to the cannon
             TransformComponent otherForm = Transform(childUid);

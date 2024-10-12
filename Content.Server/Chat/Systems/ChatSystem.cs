@@ -179,9 +179,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-        if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
-            return;
-
         // Sus
         if (player?.AttachedEntity is { Valid: true } entity && source != entity)
         {
@@ -268,9 +265,6 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (!CanSendInGame(message, shell, player))
             return;
 
-        if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
-            return;
-
         // It doesn't make any sense for a non-player to send in-game OOC messages, whereas non-players may be sending
         // in-game IC messages.
         if (player?.AttachedEntity is not { Valid: true } entity || source != entity)
@@ -280,7 +274,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var sendType = type;
         // If dead player LOOC is disabled, unless you are an admin with Moderator perms, send dead messages to dead chat
-        if ((_adminManager.IsAdmin(player) && _adminManager.HasAdminFlag(player, AdminFlags.Moderator)) // Override if admin
+        if ((_adminManager.IsAdmin(player) && _adminManager.HasAdminFlag(player, AdminFlags.Admin)) // Override if admin
             || _deadLoocEnabled
             || (!HasComp<GhostComponent>(source) && !_mobStateSystem.IsDead(source))) // Check that player is not dead
         {

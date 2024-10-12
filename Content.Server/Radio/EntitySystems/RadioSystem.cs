@@ -104,10 +104,10 @@ public sealed class RadioSystem : EntitySystem
         if (!_messages.Add(message))
             return;
 
-        var nameEv = new TransformSpeakerNameEvent(messageSource, Name(messageSource), radio: true);
+        var nameEv = new TransformSpeakerNameEvent(messageSource, Name(messageSource));
         RaiseLocalEvent(messageSource, nameEv);
 
-        var name = nameEv.Name;
+        var name = nameEv.VoiceName;
 
         SpeechVerbPrototype speech = _chat.GetSpeechVerb(messageSource, message);
 

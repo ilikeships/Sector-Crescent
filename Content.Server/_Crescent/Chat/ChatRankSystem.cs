@@ -1,4 +1,5 @@
 using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 
 namespace Content.Server.Crescent.Chat;
 public sealed class ChatRankSystem : EntitySystem
@@ -11,11 +12,9 @@ public sealed class ChatRankSystem : EntitySystem
 
     private void AddRank(EntityUid uid, ChatRankComponent component, TransformSpeakerNameEvent args)
     {
-        if (!args.Radio)
-            return;
 
-        var name = Loc.GetString("rank-ordering", ("rank", Loc.GetString(component.Rank)), ("name", args.Name));
+        var name = Loc.GetString("rank-ordering", ("rank", Loc.GetString(component.Rank)), ("name", args.VoiceName));
 
-        args.Name = name;
+        args.VoiceName = name;
     }
 }
