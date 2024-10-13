@@ -29,6 +29,16 @@ public sealed partial class DiplomacySystem : EntitySystem
         InitializeCommands();
     }
 
+    private void HandleDiplomacyChanged()
+    {
+        var iffs = EntityQueryEnumerator<IFFComponent>();
+
+        while (iffs.MoveNext(out var iffGrid, out var iffComp))
+        {
+            _shuttleSystem.SetIFFFaction(iffGrid, iffComp.Faction, iffComp);
+        }
+    }
+
     private void InitializeDiplomacy(RoundStartedEvent ev)
     {
         _diplomacyEntity = Spawn(DiplomacyEntityPrototype, MapCoordinates.Nullspace);
@@ -77,16 +87,18 @@ public sealed partial class DiplomacySystem : EntitySystem
 
             foreach (var relation in diplomacy.Relations)
             {
-                ChangeRelation(diplomacy.ID, relation.Key, relation.Value, component);
+                ChangeRelation(diplomacy.ID, relation.Key, relation.Value, component, true);
             }
         }
+
+        HandleDiplomacyChanged();
     }
 
     private void UpdateIFFRelations(EntityUid uid, IFFComponent component, RequestFactionRelationsEvent args)
     {
         _shuttleSystem.UpdateFactionRelations(uid, component, GetRelationsForFaction(args.Faction));
     }
-    public void ChangeRelation(string faction1, string faction2, Relations newRelation, DiplomacyComponent? diplo = null)
+    public void ChangeRelation(string faction1, string faction2, Relations newRelation, DiplomacyComponent? diplo = null, bool setup = false)
     {
         if (diplo == null && !TryComp<DiplomacyComponent>(_diplomacyEntity, out diplo))
             return;
@@ -103,6 +115,9 @@ public sealed partial class DiplomacySystem : EntitySystem
 
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]] = newRelation;
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction2], diplo.DiplomacyIndicies[faction1]] = newRelation;
+
+        if (!setup)
+            HandleDiplomacyChanged();
     }
 
     public Relations GetRelations(string faction1, string faction2)
