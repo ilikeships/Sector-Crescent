@@ -2044,6 +2044,7 @@ entities:
     - type: IFF
       color: '#CBC3E3FF'
       flags: IsPlayerShuttle
+      faction: DSM
     - type: StationCargoBountyDatabase
       checkedBounties: []
       bounties: []

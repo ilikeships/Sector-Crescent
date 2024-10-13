@@ -28,6 +28,9 @@
       ColdWar
 
 - type: diplomacy
+  id: TSP
+
+- type: diplomacy
   id: SRM
   relations:
     DSM:
@@ -37,4 +40,6 @@
     NCSP:
       ColdWar
     SHI:
+      ColdWar
+    TSP:
       ColdWar
