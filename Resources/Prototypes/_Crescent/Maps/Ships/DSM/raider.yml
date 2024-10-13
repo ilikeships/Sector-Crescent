@@ -14,13 +14,15 @@
   minPlayers: 0
   stations:
     Raider:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardCrescentExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'DSM Raider {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-expeditions
         - type: StationJobs
           overflowJobs: []
           availableJobs:

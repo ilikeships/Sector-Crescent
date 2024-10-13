@@ -14,13 +14,15 @@
   minPlayers: 0
   stations:
     Wisp:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardCrescentVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'RC Wisp {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-smuggling
         - type: StationJobs
           overflowJobs: []
           availableJobs:

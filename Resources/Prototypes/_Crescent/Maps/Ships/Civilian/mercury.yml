@@ -4,7 +4,7 @@
 - type: vessel
   id: Mercury
   name: ICM Mercury
-  description: A basic techminnig shuttle equipped with high-tech research equipment.
+  description: A basic techmining shuttle equipped with high-tech research equipment.
   price: 13500
   category: Small
   group: Civilian
@@ -24,6 +24,8 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-research
         - type: StationJobs
           overflowJobs: []
           availableJobs:

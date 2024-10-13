@@ -12,6 +12,8 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'The Refuge'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
         - type: Grammar
           attributes:
             proper: true

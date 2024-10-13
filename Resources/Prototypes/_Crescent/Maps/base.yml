@@ -78,6 +78,23 @@
     - type: Transform
 
 - type: entity
+  id: StandardCrescentExpeditionVesselCombat #Expeds
+  parent:
+    - BaseStation
+    - BaseStationJobsSpawning
+    - BaseStationRecords
+    - BaseCombatShipAlertLevels
+    - BaseStationAllEventsEligible
+    - BaseStationRenameFaxes
+    - BaseStationCargo
+    - BaseStationRenameWarpPoints
+    - BaseStationSiliconLawCrescentShips
+    - BaseStationExpeditions
+  noSpawn: true
+  components:
+    - type: Transform
+
+- type: entity
   id: BaseStationSiliconLawCrescentStation
   abstract: true
   components:

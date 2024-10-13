@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared.SpaceBiomes;
+namespace Content.Shared._Crescent.SpaceBiomes;
 
 [RegisterComponent]
 public sealed partial class SpaceBiomeSourceComponent : Component

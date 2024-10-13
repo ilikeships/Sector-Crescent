@@ -21,6 +21,8 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-patrol #My best guess for what our beloved Turkish ESL meant by "interdiction shuttle"
         - type: StationJobs
           overflowJobs: []
           availableJobs:

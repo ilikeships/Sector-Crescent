@@ -6,7 +6,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Timing;
 
-namespace Content.Client.SpaceBiomes;
+namespace Content.Client._Crescent.SpaceBiomes;
 
 public sealed class SpaceBiomeTextOverlay : Overlay
 {
