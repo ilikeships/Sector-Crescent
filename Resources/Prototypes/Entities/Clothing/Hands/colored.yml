@@ -300,7 +300,6 @@
   name: insulated gloves
   description: These gloves will protect the wearer from electric shocks.
   components:
-#  - type: FingerprintMask # Frontier
   - type: Sprite
     sprite: Clothing/Hands/Gloves/Color/yellow.rsi
   - type: Clothing

@@ -1,0 +1,22 @@
+- type: gameMap
+  id: Refuge
+  mapName: 'The Refuge'
+  mapPath: /Maps/_Crescent/Stations/refuge.yml
+  minPlayers: 0
+  stations:
+    Refuge:
+      stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'The Refuge'
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            OverseerSRM: [ 1, 1 ]
+            MontagneSRM: [ 2, 2 ]
+            HunterSRM: [ 6, 6 ]
+            TenderSRM: [ 2, 2 ]
+            AcolyteSRM: [ 4, 4 ]

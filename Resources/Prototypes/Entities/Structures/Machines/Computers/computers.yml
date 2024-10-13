@@ -576,7 +576,7 @@
   parent: BaseComputer
   id: ComputerComms
   name: communications computer
-  description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
+  description: A computer used to make station wide announcements via keyboard and set the appropriate alert level.
   components:
   - type: Sprite
     layers:
@@ -590,9 +590,8 @@
       state: generic_keys
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
-    global: true #SR WILL NOT BE IGNORED
   - type: DeviceNetwork
-    transmitFrequencyId: ShuttleTimer
+    transmitFrequencyId: ShipComms
   - type: ActivatableUI
     key: enum.CommunicationsConsoleUiKey.Key
   - type: UserInterface

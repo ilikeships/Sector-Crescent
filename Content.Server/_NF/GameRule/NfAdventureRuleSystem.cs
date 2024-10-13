@@ -132,14 +132,12 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var fighter2 = "/Maps/_Crescent/Explorables/ruinedfighterwest.yml";
         var solarruined = "/Maps/_Crescent/Explorables/ruinedsolarsailor.yml";
         var impwreck = "/Maps/_Crescent/Explorables/impwreck.yml";
-        // var cove = "/Maps/_NF/POI/cove.yml";
         // var courthouse = "/Maps/_Crescent/Stations/surezai.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
        // var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
         // var grifty = "Maps/_NF/POI/grifty.yml";
-        var nfsdStation = "/Maps/_NF/POI/nfsd.yml";
-        // var trade = "/Maps/_NF/POI/trade.yml";
+        var precinct9 = "/Maps/_Crescent/Stations/precinct9.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
         var lpbravoColor = new Color(200, 55, 55);
@@ -173,7 +171,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
         }
 
-        if (_map.TryLoad(mapId, nfsdStation, out var nfsdUids, new MapLoadOptions
+        if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
             {
                 Offset = _random.NextVector2(3500f, 1700f)
             }))

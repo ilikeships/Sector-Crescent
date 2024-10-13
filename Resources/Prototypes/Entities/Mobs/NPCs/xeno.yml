@@ -454,7 +454,7 @@
     - FootstepSound
   - type: ReplacementAccent
     accent: genericAggressive
-  - type: SalvageMobRestrictionsNF # Frontier
+  - type: SalvageMobRestrictions # Frontier
 
 - type: entity
   name: space adder

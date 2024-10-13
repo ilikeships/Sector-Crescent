@@ -15,6 +15,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Timing;
 using Content.Shared.Crescent.Radar;
+using Content.Shared.PointCannons;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.GameStates;
@@ -58,6 +59,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
+        SubscribeLocalEvent<ShuttleConsoleComponent, BoundUserInterfaceMessageAttempt>(BUIValidation);
         Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
@@ -176,8 +178,33 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private void OnConsoleUIOpenAttempt(EntityUid uid, ShuttleConsoleComponent component,
         ActivatableUIOpenAttemptEvent args)
     {
+        var uis = _ui.GetActorUis(args.User);
+
+        foreach (var (_, key) in uis)
+        {
+            if (key is TargetingConsoleUiKey.Key)
+            {
+                args.Cancel();
+                _popup.PopupEntity(Loc.GetString("shuttle-console-rejection-targeting"), args.User, Shared.Popups.PopupType.LargeCaution);
+                return;
+            }
+        }
+
         if (!TryPilot(args.User, uid))
             args.Cancel();
+    }
+
+    private void BUIValidation(EntityUid uid, ShuttleConsoleComponent component, BoundUserInterfaceMessageAttempt args)
+    {
+        var uis = _ui.GetActorUis(args.Actor);
+
+        foreach (var (_, key) in uis)
+        {
+            if (key is TargetingConsoleUiKey.Key)
+            {
+                args.Cancel();
+            }
+        }
     }
 
     private void OnConsoleAnchorChange(EntityUid uid, ShuttleConsoleComponent component,
