@@ -1,0 +1,19 @@
+- type: entity
+  id: CrescentDiplomacy
+  components:
+  - type: Diplomacy
+
+- type: diplomacy
+  id: DSM
+
+- type: diplomacy
+  id: NCWL
+
+- type: diplomacy
+  id: NCSP
+
+- type: diplomacy
+  id: SHI
+
+- type: diplomacy
+  id: SRM
