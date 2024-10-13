@@ -283,7 +283,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         var xformQuery = GetEntityQuery<TransformComponent>();
 
-        if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, shuttle, targetGrid.Value, DockTag))
+        if (_shuttle.TryFTLDock(stationShuttle.EmergencyShuttle.Value, targetGrid.Value, out var _, DockTag))
         {
             if (TryComp<TransformComponent>(targetGrid.Value, out var targetXform))
             {

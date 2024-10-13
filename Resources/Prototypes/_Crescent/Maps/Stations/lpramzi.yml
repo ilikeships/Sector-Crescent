@@ -9,6 +9,9 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Listening Post 5'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

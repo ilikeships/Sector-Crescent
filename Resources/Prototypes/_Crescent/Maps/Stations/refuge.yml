@@ -12,6 +12,9 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'The Refuge'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

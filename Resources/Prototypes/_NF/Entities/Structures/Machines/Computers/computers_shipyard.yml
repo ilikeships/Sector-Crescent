@@ -73,6 +73,9 @@
   - type: ContainerContainer
     containers:
       ShipyardConsole-targetId: !type:ContainerSlot {}
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
 
 # Hardcoded consoles
 - type: entity

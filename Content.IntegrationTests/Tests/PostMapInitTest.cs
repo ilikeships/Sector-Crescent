@@ -200,8 +200,7 @@ namespace Content.IntegrationTests.Tests
                         shuttle = roots.First(uid => entManager.HasComponent<MapGridComponent>(uid));
                     }, $"Failed to load {shuttlePath}");
                     Assert.That(
-                        shuttleSystem.TryFTLDock(shuttle,
-                            entManager.GetComponent<ShuttleComponent>(shuttle), targetGrid.Value),
+                        shuttleSystem.TryFTLDock(shuttle, targetGrid.Value, out var _),
                         $"Unable to dock {shuttlePath} to {mapProto}");
 #pragma warning restore NUnit2045
                 }
