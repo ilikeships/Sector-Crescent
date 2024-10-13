@@ -1,0 +1,1 @@
+vessel-designation-warship = warship
