@@ -1,12 +1,13 @@
 using System.Linq;
 using Content.Shared._Crescent.Diplomacy;
 using Content.Shared.GameTicking;
+using Content.Shared.NPC.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Crescent.Diplomacy;
 
-public sealed class DiplomacySystem : EntitySystem
+public sealed partial class DiplomacySystem : EntitySystem
 {
     private const string DiplomacyEntityPrototype = "CrescentDiplomacy";
 
@@ -19,6 +20,8 @@ public sealed class DiplomacySystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<RoundStartedEvent>(InitializeDiplomacy);
         SubscribeLocalEvent<DiplomacyComponent, ComponentInit>(InitializeComponent);
+
+        InitializeCommands();
     }
 
     private void InitializeDiplomacy(RoundStartedEvent ev)
@@ -90,12 +93,33 @@ public sealed class DiplomacySystem : EntitySystem
 
     public Relations GetRelations(string faction1, string faction2)
     {
+        if (faction1 == faction2)
+            return Relations.Ally;
+
         if (!TryComp<DiplomacyComponent>(_diplomacyEntity, out var diplo))
             return Relations.Neutral;
 
         if (diplo.DiplomaticSituation == null)
             return Relations.Neutral;
 
+        if (!diplo.DiplomacyIndicies.ContainsKey(faction1) || !diplo.DiplomacyIndicies.ContainsKey(faction2))
+            return Relations.Neutral;
+
         return diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]];
+    }
+
+    public Dictionary<string, Relations> GetRelationsForFaction(string faction)
+    {
+        var dict = new Dictionary<string, Relations>();
+
+        if (!TryComp<DiplomacyComponent>(_diplomacyEntity, out var diplo))
+            return dict;
+
+        foreach (var index in diplo.DiplomacyIndicies)
+        {
+            dict.Add(index.Key, GetRelations(faction, index.Key));
+        }
+
+        return dict;
     }
 }
