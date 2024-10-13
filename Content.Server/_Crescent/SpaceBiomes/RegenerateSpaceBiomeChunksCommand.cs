@@ -2,7 +2,7 @@ using Content.Server.Administration;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 
-namespace Content.Server.SpaceBiomes;
+namespace Content.Server._Crescent.SpaceBiomes;
 
 [AdminCommand(AdminFlags.Mapping)]
 public sealed class RegenerateSpaceBiomeChunksCommand : IConsoleCommand

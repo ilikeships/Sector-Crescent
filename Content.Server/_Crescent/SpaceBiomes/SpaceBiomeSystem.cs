@@ -1,14 +1,17 @@
 using System.Numerics;
 using Content.Server.Parallax;
+using Content.Server.Station.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Parallax;
-using Content.Shared.SpaceBiomes;
+using Content.Shared._Crescent.SpaceBiomes;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+using Content.Server.Station.Components;
 
-namespace Content.Server.SpaceBiomes;
+namespace Content.Server._Crescent.SpaceBiomes;
 
 public sealed class SpaceBiomeSystem : EntitySystem
 {
@@ -16,6 +19,8 @@ public sealed class SpaceBiomeSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _protMan = default!;
     [Dependency] private readonly TransformSystem _formSys = default!;
     [Dependency] private readonly ParallaxSystem _parallaxSys = default!;
+    [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private Dictionary<Vector2, HashSet<EntityUid>> _chunks = new();
     private float _updTimer;
@@ -30,6 +35,7 @@ public sealed class SpaceBiomeSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<SpaceBiomeSourceComponent, ComponentInit>(OnSourceInit);
         SubscribeLocalEvent<SpaceBiomeSourceComponent, ComponentShutdown>(OnSourceShutdown);
+        SubscribeLocalEvent<SpaceBiomeTrackerComponent, EntParentChangedMessage>(OnParentChanged);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
     }
 
@@ -93,6 +99,29 @@ public sealed class SpaceBiomeSystem : EntitySystem
     private void OnSourceShutdown(Entity<SpaceBiomeSourceComponent> uid, ref ComponentShutdown args)
     {
         RemoveBiome(uid, uid.Comp);
+    }
+
+    private void OnParentChanged(EntityUid uid, SpaceBiomeTrackerComponent component, EntParentChangedMessage args)
+    {
+        if (!TryComp<ActorComponent>(uid, out var actor))
+            return;
+
+        var parentStation = _stationSystem.GetOwningStation(uid);
+
+        if (parentStation == null)
+            return;
+
+        if (!component.BoringStations.Contains((EntityUid) parentStation))
+        {
+            component.BoringStations.Add(uid);
+
+            // This is testing if we just initialized because we don't want to send the message on spawn
+            if (_timing.CurTick.Value - MetaData(uid).CreationTick.Value > 500)
+            {
+                NewVesselEnteredMessage message = new NewVesselEnteredMessage(MetaData((EntityUid) parentStation).EntityName, "Test");
+                RaiseNetworkEvent(message, actor.PlayerSession);
+            }
+        }
     }
 
     public void AddBiome(EntityUid uid, SpaceBiomeSourceComponent source)

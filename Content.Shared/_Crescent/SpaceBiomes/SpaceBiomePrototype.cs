@@ -1,8 +1,7 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.SpaceBiomes;
+namespace Content.Shared._Crescent.SpaceBiomes;
 
-//RANE MAKE THIS SHIT WORK WITH PROCGEN PLEASE
 [Prototype("crescentFactionBiome")]
 public sealed class SpaceBiomePrototype : IPrototype
 {

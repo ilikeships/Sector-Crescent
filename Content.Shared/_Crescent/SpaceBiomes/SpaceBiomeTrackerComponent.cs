@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared.SpaceBiomes;
+namespace Content.Shared._Crescent.SpaceBiomes;
 
 //attached to the player
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -12,4 +12,5 @@ public sealed partial class SpaceBiomeTrackerComponent : Component
 
     //server only
     public SpaceBiomeSourceComponent? Source;
+    public List<EntityUid> BoringStations = new List<EntityUid>();
 }
