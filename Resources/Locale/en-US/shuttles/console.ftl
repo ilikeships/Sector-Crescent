@@ -18,6 +18,10 @@ shuttle-console-unknown = Unknown
 shuttle-console-iff-label = {$name} ({$distance}m)
 shuttle-console-exclusion = Exclusion area
 
+shuttle-console-iff-ally = ALLY
+shuttle-console-iff-cold-war = CAUTION
+shuttle-console-iff-war = WAR
+
 shuttle-console-iff-search = Search IFF
 
 # Buttons
