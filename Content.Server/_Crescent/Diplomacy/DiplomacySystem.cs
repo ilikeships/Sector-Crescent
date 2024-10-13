@@ -61,5 +61,41 @@ public sealed class DiplomacySystem : EntitySystem
                 y++;
             }
         }
+
+        foreach (var diplomacy in diplomacies)
+        {
+            if (diplomacy.Relations == null)
+                continue;
+
+            foreach (var relation in diplomacy.Relations)
+            {
+                ChangeRelation(diplomacy.ID, relation.Key, relation.Value, component);
+            }
+        }
+    }
+    public void ChangeRelation(string faction1, string faction2, Relations newRelation, DiplomacyComponent? diplo = null)
+    {
+        if (diplo == null && !TryComp<DiplomacyComponent>(_diplomacyEntity, out diplo))
+            return;
+
+        if (diplo.DiplomaticSituation == null)
+            return;
+
+        if (!diplo.DiplomacyIndicies.ContainsKey(faction1) || !diplo.DiplomacyIndicies.ContainsKey(faction2))
+            return;
+
+        diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]] = newRelation;
+        diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction2], diplo.DiplomacyIndicies[faction1]] = newRelation;
+    }
+
+    public Relations GetRelations(string faction1, string faction2)
+    {
+        if (!TryComp<DiplomacyComponent>(_diplomacyEntity, out var diplo))
+            return Relations.Neutral;
+
+        if (diplo.DiplomaticSituation == null)
+            return Relations.Neutral;
+
+        return diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]];
     }
 }
