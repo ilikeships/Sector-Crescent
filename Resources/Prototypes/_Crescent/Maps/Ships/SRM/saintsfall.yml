@@ -14,13 +14,15 @@
   minPlayers: 0
   stations:
     Saintsfall:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardCrescentExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Saintsfall {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-fighter
         - type: StationJobs
           overflowJobs: []
           availableJobs:

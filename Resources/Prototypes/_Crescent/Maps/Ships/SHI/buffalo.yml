@@ -14,13 +14,15 @@
   minPlayers: 0
   stations:
     buffalo:
-      stationProto: StandardFrontierCivilianVessel
+      stationProto: StandardCrescentCivilianVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'SHI Buffalo {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-civilian
         - type: StationJobs
           overflowJobs: []
           availableJobs:
