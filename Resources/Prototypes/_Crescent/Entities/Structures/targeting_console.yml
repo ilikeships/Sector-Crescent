@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseComputer
   id: ComputerTargeting
-  name: Targeting computer
-  description: Controls shuttle weaponry
+  name: targeting computer
+  description: A dazzling console providing total control over the ship's projectile armaments.
   components:
   - type: Sprite
     layers:

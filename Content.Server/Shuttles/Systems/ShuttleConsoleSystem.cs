@@ -178,9 +178,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private void OnConsoleUIOpenAttempt(EntityUid uid, ShuttleConsoleComponent component,
         ActivatableUIOpenAttemptEvent args)
     {
-        if (!TryPilot(args.User, uid))
-            args.Cancel();
-
         var uis = _ui.GetActorUis(args.User);
 
         foreach (var (_, key) in uis)
@@ -189,8 +186,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             {
                 args.Cancel();
                 _popup.PopupEntity(Loc.GetString("shuttle-console-rejection-targeting"), args.User, Shared.Popups.PopupType.LargeCaution);
+                return;
             }
         }
+
+        if (!TryPilot(args.User, uid))
+            args.Cancel();
     }
 
     private void BUIValidation(EntityUid uid, ShuttleConsoleComponent component, BoundUserInterfaceMessageAttempt args)
