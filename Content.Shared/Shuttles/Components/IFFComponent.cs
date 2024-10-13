@@ -25,6 +25,13 @@ public sealed partial class IFFComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public Color Color = IFFColor;
+
+    /// <summary>
+    /// Which faction this ship is advertising as.
+    /// Use the IDs of Diplomacy prototypes to have it work properly, otherwise it'll show up as neutral.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
+    public string Faction = "Neutral";
 }
 
 [Flags]

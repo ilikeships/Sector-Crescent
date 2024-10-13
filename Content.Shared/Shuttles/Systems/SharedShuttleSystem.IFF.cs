@@ -59,6 +59,18 @@ public abstract partial class SharedShuttleSystem
         UpdateIFFInterfaces(gridUid, component);
     }
 
+    public void SetIFFFaction(EntityUid gridUid, string faction, IFFComponent? component = null)
+    {
+        component ??= EnsureComp<IFFComponent>(gridUid);
+
+        if (component.Faction.Equals(faction))
+            return;
+
+        component.Faction = faction;
+        Dirty(gridUid, component);
+        UpdateIFFInterfaces(gridUid, component);
+    }
+
     [PublicAPI]
     public void AddIFFFlag(EntityUid gridUid, IFFFlags flags, IFFComponent? component = null)
     {
