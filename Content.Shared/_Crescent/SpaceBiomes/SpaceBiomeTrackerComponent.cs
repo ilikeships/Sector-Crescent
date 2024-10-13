@@ -12,5 +12,7 @@ public sealed partial class SpaceBiomeTrackerComponent : Component
 
     //server only
     public SpaceBiomeSourceComponent? Source;
+
+    [ViewVariables]
     public List<EntityUid> BoringStations = new List<EntityUid>();
 }

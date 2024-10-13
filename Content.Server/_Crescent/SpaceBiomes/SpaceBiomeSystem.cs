@@ -10,6 +10,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Server.Station.Components;
+using Content.Shared._Crescent.Vessel;
 
 namespace Content.Server._Crescent.SpaceBiomes;
 
@@ -115,10 +116,14 @@ public sealed class SpaceBiomeSystem : EntitySystem
         {
             component.BoringStations.Add(uid);
 
+            if (!TryComp<VesselDesignationComponent>(parentStation, out var desig) || !TryComp<StationNameSetupComponent>(parentStation, out var setup))
+                return;
+
+            var name = setup.StationNameTemplate.Replace("{1}", "").Trim();
             // This is testing if we just initialized because we don't want to send the message on spawn
             if (_timing.CurTick.Value - MetaData(uid).CreationTick.Value > 500)
             {
-                NewVesselEnteredMessage message = new NewVesselEnteredMessage(MetaData((EntityUid) parentStation).EntityName, "Test");
+                NewVesselEnteredMessage message = new NewVesselEnteredMessage(name, Loc.GetString(desig.Designation));
                 RaiseNetworkEvent(message, actor.PlayerSession);
             }
         }

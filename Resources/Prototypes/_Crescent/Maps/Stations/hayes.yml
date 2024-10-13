@@ -9,6 +9,8 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'IPM Hayes Medical Waystation'
+        - type: VesselDesignation
+          designation: vessel-designation-outpost
         - type: StationJobs
           overflowJobs: []
           availableJobs:
