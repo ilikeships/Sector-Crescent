@@ -617,10 +617,10 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 30
+        maxVol: 50
         reagents:
         - ReagentId: Water
-          Quantity: 30
+          Quantity: 50
   - type: Drink
   - type: Sprite
     sprite: Objects/Consumable/Drinks/waterbottle.rsi
