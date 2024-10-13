@@ -1,6 +1,6 @@
 using Content.Shared.Actions;
 
-namespace Content.Shared.SpaceArtillery;
+namespace Content.Shared._Crescent.SpaceArtillery;
 
 public sealed class SharedSpaceArtillerySystem : EntitySystem
 {

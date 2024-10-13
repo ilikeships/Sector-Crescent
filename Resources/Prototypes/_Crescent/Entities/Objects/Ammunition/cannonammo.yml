@@ -11,6 +11,7 @@
   components:
   - type: ProjectileIFF
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 70
@@ -25,7 +26,7 @@
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
       - state: base-projectile
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeVulcanStandard
@@ -77,10 +78,11 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
-        Structural: 90
         Piercing: 25
   - type: ProjectileIFF
   - type: ExplodeOnTrigger
@@ -136,7 +138,9 @@
   noSpawn: true
   components:
   - type: ProjectileIFF
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 275
@@ -210,7 +214,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 175
@@ -264,7 +270,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 90
@@ -297,7 +305,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 150
@@ -330,7 +340,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Radiation: 25
@@ -382,7 +394,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 5000
@@ -422,7 +436,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 5000
@@ -513,7 +529,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 500
@@ -583,7 +601,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 125
@@ -645,7 +665,9 @@
   parent: BaseBulletTrigger
   noSpawn: true
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 1500

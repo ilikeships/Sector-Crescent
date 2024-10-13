@@ -135,6 +135,11 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         {
             args.Cancelled = true;
         }
+
+        if (component.IgnoreWeaponGrid && component.Weapon != null && Transform(args.OtherEntity).GridUid == Transform((EntityUid) component.Weapon).GridUid)
+        {
+            args.Cancelled = true;
+        }
     }
 
     public void SetShooter(EntityUid id, ProjectileComponent component, EntityUid shooterId)
