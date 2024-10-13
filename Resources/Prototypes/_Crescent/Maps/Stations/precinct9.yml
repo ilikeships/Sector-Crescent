@@ -12,6 +12,9 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Precinct 9'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

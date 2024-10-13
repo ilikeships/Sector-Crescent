@@ -12,6 +12,9 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tatsumoto Trading Outpost'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

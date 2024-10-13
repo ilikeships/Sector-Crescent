@@ -40,6 +40,8 @@ using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Content.Server.Shuttles;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -117,7 +119,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (vessel.Price <= 0)
             return;
 
-        if (_station.GetOwningStation(uid) is not { Valid : true } station)
+        if (_station.GetOwningStation(uid) is not { Valid: true } station)
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-invalid-station"));
             PlayDenySound(uid, component);
@@ -145,7 +147,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle))
+        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle, out var config))
         {
             PlayDenySound(uid, component);
             return;
@@ -252,6 +254,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         SendPurchaseMessage(uid, player, name, channel, false);
+
+        ChatPurchaseLocation(uid, station, config);
 
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vessel.Price} credits via {ToPrettyString(component.Owner)}");
@@ -421,6 +425,49 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             _radio.SendRadioMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player), ("vessel", name)), channel, uid);
             _chat.TrySendInGameICMessage(uid, Loc.GetString("shipyard-console-docking", ("owner", player!), ("vessel", name)), InGameICChatType.Speak, true);
         }
+    }
+
+    private void ChatPurchaseLocation(EntityUid chatter, EntityUid station, DockingConfig? config)
+    {
+        // Null config means we didn't dock and had to park nearby.
+        if (config == null)
+        {
+            _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-nearby"), InGameICChatType.Speak, false);
+            return;
+        }
+
+        var grid = config.TargetGrid;
+        var dock = config.Docks[0].DockBUid;
+
+        // The dock needs to be parented to the target grid, and the target grid should actually exist.
+        if (Transform(dock).GridUid != grid || !TryComp<MapGridComponent>(grid, out var mapGrid))
+        {
+            _sawmill.Error("Cannot get docking location for " + EntityManager.ToPrettyString(chatter));
+            return;
+        }
+
+        //Now we figure out where in the map grid the dock is.
+        var pos = Transform(dock).LocalPosition;
+        var center = mapGrid.LocalAABB.Center;
+
+        var dir = pos - center;
+
+        var angle = dir.ToAngle().Degrees;
+
+        string direction = angle switch
+        {
+            <= 22.5f => Loc.GetString("zzzz-fmt-direction-East"),
+            <= 67.5f => Loc.GetString("zzzz-fmt-direction-NorthEast"),
+            <= 112.5f => Loc.GetString("zzzz-fmt-direction-North"),
+            <= 157.5f => Loc.GetString("zzzz-fmt-direction-NorthWest"),
+            <= 202.5f => Loc.GetString("zzzz-fmt-direction-West"),
+            <= 247.5f => Loc.GetString("zzzz-fmt-direction-SouthWest"),
+            <= 292.5f => Loc.GetString("zzzz-fmt-direction-South"),
+            <= 337.5f => Loc.GetString("zzzz-fmt-direction-SouthEast"),
+            _ => Loc.GetString("zzzz-fmt-direction-East")
+        };
+
+        _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-direction", ("direction", direction.ToLower()), ("station", station)), InGameICChatType.Speak, false);
     }
 
     private void SendSellMessage(EntityUid uid, EntityUid? player, string name, string shipyardChannel, EntityUid seller, bool secret)
@@ -683,7 +730,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle))
+        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle, out var config))
         {
             PlayDenySound(uid, component);
             return false;
