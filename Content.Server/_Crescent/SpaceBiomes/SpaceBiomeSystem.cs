@@ -114,7 +114,7 @@ public sealed class SpaceBiomeSystem : EntitySystem
 
         if (!component.BoringStations.Contains((EntityUid) parentStation))
         {
-            component.BoringStations.Add(uid);
+            component.BoringStations.Add((EntityUid) parentStation);
 
             if (!TryComp<VesselDesignationComponent>(parentStation, out var desig) || !TryComp<StationNameSetupComponent>(parentStation, out var setup))
                 return;

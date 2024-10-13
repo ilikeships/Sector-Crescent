@@ -26,6 +26,7 @@ public sealed class SpaceBiomeSystem : EntitySystem
     {
         _audioSys.ForceUpdateAmbientMusic();
         SpaceBiomePrototype biome = _protMan.Index<SpaceBiomePrototype>(ev.Biome);
+        _overlay.Reset();
         _overlay.Text = biome.Name;
         _overlay.CharInterval = TimeSpan.FromSeconds(2f / biome.Name.Length);
     }
