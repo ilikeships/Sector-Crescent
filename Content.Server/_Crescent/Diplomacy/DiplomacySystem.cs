@@ -94,8 +94,12 @@ public sealed partial class DiplomacySystem : EntitySystem
         if (diplo.DiplomaticSituation == null)
             return;
 
+        if (faction1 == faction2)
+            return;
+
         if (!diplo.DiplomacyIndicies.ContainsKey(faction1) || !diplo.DiplomacyIndicies.ContainsKey(faction2))
             return;
+
 
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction1], diplo.DiplomacyIndicies[faction2]] = newRelation;
         diplo.DiplomaticSituation[diplo.DiplomacyIndicies[faction2], diplo.DiplomacyIndicies[faction1]] = newRelation;

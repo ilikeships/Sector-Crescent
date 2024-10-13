@@ -13,10 +13,12 @@ public partial class DiplomacySystem
     public void InitializeCommands()
     {
         _conHost.RegisterCommand("getfactionrelations", "Gets relations for a given faction", "getfactionrelations <faction ID>",
-            GetFactionRelationsCmd);
+            GetFactionRelationsCmd,
+            GetFactionRelationsCompletion);
 
         _conHost.RegisterCommand("changefactionrelations", "Changes relations between 2 factions", "changefactionrelations <faction 1 ID> <faction 2 ID> <new relation>",
-            ChangeFactionRelationsCmd);
+            ChangeFactionRelationsCmd,
+            ChangeFactionRelationsCompletion);
     }
 
     [AdminCommand(AdminFlags.Logs)]
@@ -34,6 +36,18 @@ public partial class DiplomacySystem
         {
             shell.WriteLine(relation.Key + ": " + relation.Value);
         }
+    }
+
+    public CompletionResult GetFactionRelationsCompletion(IConsoleShell shell, string[] args)
+    {
+        switch (args.Length)
+        {
+            case 1:
+                var opts = CompletionHelper.PrototypeIDs<DiplomacyPrototype>();
+                return CompletionResult.FromOptions(opts);
+        }
+
+        return CompletionResult.Empty;
     }
 
     [AdminCommand(AdminFlags.Fun)]
@@ -65,6 +79,23 @@ public partial class DiplomacySystem
 
         ChangeRelation(args[0], args[1], relations);
         shell.WriteLine("Relations between " + args[0] + " and " + args[1] + " are now " + GetRelations(args[0], args[1]));
+    }
+
+    public CompletionResult ChangeFactionRelationsCompletion(IConsoleShell shell, string[] args)
+    {
+        switch (args.Length)
+        {
+            case 1:
+                var opts = CompletionHelper.PrototypeIDs<DiplomacyPrototype>();
+                return CompletionResult.FromOptions(opts);
+            case 2:
+                var opts2 = CompletionHelper.PrototypeIDs<DiplomacyPrototype>();
+                return CompletionResult.FromOptions(opts2);
+            case 3:
+                return CompletionResult.FromHint("Ally, Neutral, ColdWar, War");
+        }
+
+        return CompletionResult.Empty;
     }
 
 }
