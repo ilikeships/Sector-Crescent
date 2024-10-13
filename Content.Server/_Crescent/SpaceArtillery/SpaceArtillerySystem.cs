@@ -385,7 +385,6 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
     private void OnProjectileHit(EntityUid uid, ShipWeaponProjectileComponent component, ProjectileHitEvent hitEvent)
     {
-        Logger.Error("Processing hit event for " + EntityManager.ToPrettyString(uid));
         var grid = Transform(hitEvent.Target).GridUid;
         if (grid == null)
             return;
