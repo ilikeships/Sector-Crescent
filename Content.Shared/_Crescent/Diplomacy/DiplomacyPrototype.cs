@@ -1,3 +1,4 @@
+using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Crescent.Diplomacy;
@@ -18,4 +19,14 @@ public enum Relations
     Neutral,
     ColdWar,
     War
+}
+
+public struct RequestFactionRelationsEvent
+{
+    public string Faction = "";
+
+    public RequestFactionRelationsEvent(string faction)
+    {
+        Faction = faction;
+    }
 }

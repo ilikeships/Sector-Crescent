@@ -12,7 +12,6 @@ public partial class DiplomacySystem
 
     public void InitializeCommands()
     {
-        Logger.Error("Initializing Commands");
         _conHost.RegisterCommand("getfactionrelations", "Gets relations for a given faction", "getfactionrelations <faction ID>",
             GetFactionRelationsCmd);
 

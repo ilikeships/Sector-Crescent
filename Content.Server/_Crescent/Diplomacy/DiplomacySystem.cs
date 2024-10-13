@@ -2,6 +2,8 @@ using System.Linq;
 using Content.Shared._Crescent.Diplomacy;
 using Content.Shared.GameTicking;
 using Content.Shared.NPC.Systems;
+using Content.Shared.Shuttles.Components;
+using Content.Shared.Shuttles.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -14,12 +16,15 @@ public sealed partial class DiplomacySystem : EntitySystem
     [Dependency]
     private readonly IPrototypeManager _prototypeManager = default!;
 
+    [Dependency]
+    private readonly SharedShuttleSystem _shuttleSystem = default!;
     private EntityUid? _diplomacyEntity;
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<RoundStartedEvent>(InitializeDiplomacy);
         SubscribeLocalEvent<DiplomacyComponent, ComponentInit>(InitializeComponent);
+        SubscribeLocalEvent<IFFComponent, RequestFactionRelationsEvent>(UpdateIFFRelations);
 
         InitializeCommands();
     }
@@ -75,6 +80,11 @@ public sealed partial class DiplomacySystem : EntitySystem
                 ChangeRelation(diplomacy.ID, relation.Key, relation.Value, component);
             }
         }
+    }
+
+    private void UpdateIFFRelations(EntityUid uid, IFFComponent component, RequestFactionRelationsEvent args)
+    {
+        _shuttleSystem.UpdateFactionRelations(uid, component, GetRelationsForFaction(args.Faction));
     }
     public void ChangeRelation(string faction1, string faction2, Relations newRelation, DiplomacyComponent? diplo = null)
     {
