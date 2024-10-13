@@ -22,7 +22,7 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// All of the <see cref="CargoProductPrototype.Group"/>s that are supported.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public List<string> AllowedGroups = new() { "market" };
+    public List<string> AllowedGroups = new() { "market", "surezai" };
 
     /// <summary>
     /// Radio channel on which order approval announcements are transmitted

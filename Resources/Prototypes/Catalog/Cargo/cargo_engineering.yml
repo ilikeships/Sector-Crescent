@@ -99,7 +99,6 @@
 
 - type: cargoProduct
   id: EvaKit
-  abstract: true # Frontier
   icon:
     sprite: Clothing/Head/Helmets/eva.rsi
     state: icon
@@ -110,7 +109,6 @@
 
 - type: cargoProduct
   id: EngineeringRCDAmmo
-  abstract: true # Frontier
   icon:
     sprite: Objects/Tools/rcd.rsi
     state: ammo
