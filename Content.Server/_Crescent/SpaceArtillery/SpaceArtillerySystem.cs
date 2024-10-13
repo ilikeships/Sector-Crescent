@@ -8,6 +8,8 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Shuttles.Systems;
+using Content.Shared.Projectiles;
+using Content.Shared.Camera;
 using Content.Server.DeviceLinking.Events;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Weapons.Ranged.Systems;
@@ -17,10 +19,11 @@ using Robust.Shared.Map;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Player;
 
 namespace Content.Server._Crescent.SpaceArtillery;
 
-public abstract partial class SpaceArtillerySystem : EntitySystem
+public sealed partial class SpaceArtillerySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly GunSystem _gun = default!;
@@ -33,8 +36,11 @@ public abstract partial class SpaceArtillerySystem : EntitySystem
     [Dependency] private readonly SharedShuttleSystem _shuttleSystem = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
+    [Dependency] private readonly SharedCameraRecoilSystem _recoilSystem = default!;
 
     private const float DISTANCE = 100;
+    private const float BIG_DAMAGE = 1000;
+    private const float BIG_DAMGE_KICK = 35;
     private ISawmill _sawmill = default!;
 
     public override void Initialize()
@@ -54,7 +60,7 @@ public abstract partial class SpaceArtillerySystem : EntitySystem
         SubscribeLocalEvent<SpaceArtilleryComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<SpaceArtilleryComponent, ComponentRemove>(OnComponentRemove);
 
-        InitializeProjectile();
+        SubscribeLocalEvent<ShipWeaponProjectileComponent, ProjectileHitEvent>(OnProjectileHit);
     }
 
     private void OnComponentInit(EntityUid uid, SpaceArtilleryComponent component, ComponentInit args)
@@ -375,5 +381,27 @@ public abstract partial class SpaceArtillerySystem : EntitySystem
     {
         if (component.IsCapableOfSendingSignal == true)
             _deviceLink.SendSignal(uid, component.SpaceArtilleryDetectedMalfunctionPort, true);
+    }
+
+    private void OnProjectileHit(EntityUid uid, ShipWeaponProjectileComponent component, ProjectileHitEvent hitEvent)
+    {
+        Logger.Error("Processing hit event for " + EntityManager.ToPrettyString(uid));
+        var grid = Transform(hitEvent.Target).GridUid;
+        if (grid == null)
+            return;
+
+        var players = Filter.Empty();
+        players.AddInGrid((EntityUid) grid);
+
+        foreach (var player in players.Recipients)
+        {
+            if (player.AttachedEntity is not EntityUid playerEnt)
+                continue;
+
+            var vector = _xform.GetWorldPosition(uid) - _xform.GetWorldPosition(playerEnt);
+
+            Logger.Error("Kicking camera of " + EntityManager.ToPrettyString(playerEnt));
+            _recoilSystem.KickCamera(playerEnt, vector.Normalized() * (float) hitEvent.Damage.GetTotal() / BIG_DAMAGE * BIG_DAMGE_KICK);
+        }
     }
 }
