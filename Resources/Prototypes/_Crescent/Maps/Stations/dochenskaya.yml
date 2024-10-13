@@ -9,6 +9,9 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Dochenskaya Engineering Platform'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

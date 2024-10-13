@@ -16,6 +16,9 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs:
             - Contractor
