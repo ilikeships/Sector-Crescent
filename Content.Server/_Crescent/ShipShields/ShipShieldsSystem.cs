@@ -5,6 +5,11 @@ using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Events;
+using Content.Shared.Physics;
+using FastAccessors;
+using Robust.Shared.Spawners;
+using Content.Shared.Projectiles;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
@@ -24,8 +29,23 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<ShipShieldComponent, StartCollideEvent>(OnCollide);
 
         InitializeCommands();
+    }
+
+    private void OnCollide(EntityUid uid, ShipShieldComponent component, StartCollideEvent args)
+    {
+        if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
+            despawn.Lifetime += despawn.Lifetime;
+
+        if (TryComp<ProjectileComponent>(args.OtherEntity, out var projectile))
+            projectile.Weapon = uid;
+
+        if (!TryComp<PhysicsComponent>(args.OtherEntity, out var physics))
+            return;
+
+        _physicsSystem.SetLinearVelocity(args.OtherEntity, -physics.LinearVelocity);
     }
 
     public EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
@@ -74,7 +94,10 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             }
         }
 
-        _fixtureSystem.TryCreateFixture(shield, chain, "shield");
+        _fixtureSystem.TryCreateFixture(shield, chain, "shield",
+            hard: false,
+            collisionLayer: (int) CollisionGroup.FullTileLayer,
+            body: shieldPhysics);
 
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
 
