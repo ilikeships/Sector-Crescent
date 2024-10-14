@@ -20,6 +20,8 @@
   relations:
     SHI:
       ColdWar
+    TSP:
+      ColdWar
 
 - type: diplomacy
   id: SHI
@@ -29,6 +31,9 @@
 
 - type: diplomacy
   id: TSP
+  relations:
+    NCSP:
+      ColdWar
 
 - type: diplomacy
   id: SRM
