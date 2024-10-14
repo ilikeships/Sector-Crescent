@@ -14,6 +14,8 @@
   relations:
     DSM:
       War
+    TSP:
+      ColdWar
 
 - type: diplomacy
   id: NCSP
@@ -33,6 +35,8 @@
   id: TSP
   relations:
     NCSP:
+      ColdWar
+    NCWL:
       ColdWar
 
 - type: diplomacy
