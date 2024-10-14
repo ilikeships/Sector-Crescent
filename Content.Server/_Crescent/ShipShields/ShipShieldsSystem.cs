@@ -1,22 +1,16 @@
 using System.Numerics;
 using Content.Shared._Crescent.ShipShields;
 using Robust.Shared.Physics.Systems;
-using System.Numerics;
-using Content.Shared.Movement.Components;
-using Content.Shared.Physics;
-using Content.Shared.Salvage;
-using Robust.Shared.Map;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 using Robust.Server.GameObjects;
-using System.Linq;
-
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
 {
-    public const string ShipShieldPrototype = "ShipShield";
+    private const string ShipShieldPrototype = "ShipShield";
+    private const float Padding = 6f;
 
     [Dependency]
     private readonly SharedTransformSystem _transformSystem = default!;
@@ -34,20 +28,50 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         InitializeCommands();
     }
 
-    public EntityUid ShieldEntity(EntityUid entity)
+    public EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
     {
+        if (!Resolve(entity, ref mapGrid, false))
+            return EntityUid.Invalid;
+
         var shield = Spawn(ShipShieldPrototype, Transform(entity).Coordinates);
         var shieldPhysics = AddComp<PhysicsComponent>(shield);
 
+        _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetParent(shield, entity);
+
+        var radius = 0f;
+        var scale = 1f;
+        var scaleX = true;
+
+        var height = mapGrid.LocalAABB.Height + Padding;
+        var width = mapGrid.LocalAABB.Width + Padding;
+
+        if (width > height)
+        {
+            radius = 0.5f * height;
+            scale = width / height;
+        }
+        else
+        {
+            radius = 0.5f * width;
+            scale = height / width;
+            scaleX = false;
+        }
 
         var chain = new ChainShape();
 
-        chain.CreateLoop(Vector2.Zero, 1f);
+        chain.CreateLoop(Vector2.Zero, radius);
 
         for (int i = 0; i < chain.Vertices.Length; i++)
         {
-            chain.Vertices[i].X *= 2;
+            if (scaleX)
+            {
+                chain.Vertices[i].X *= scale;
+            }
+            else
+            {
+                chain.Vertices[i].Y *= scale;
+            }
         }
 
         _fixtureSystem.TryCreateFixture(shield, chain, "shield");
