@@ -186,6 +186,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
             _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
             _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
+            _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
         }
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid15s, new MapLoadOptions
@@ -196,6 +197,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid15s[0]);
             _meta.SetEntityName(depotUid15s[0], "Defense Battery Henrietta", meta);
             _shuttle.SetIFFColor(depotUid15s[0], coveColor);
+            _shuttle.SetIFFFaction(depotUid15s[0], "DSM");
         }
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid16s, new MapLoadOptions
@@ -206,6 +208,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid16s[0]);
             _meta.SetEntityName(depotUid16s[0], "Defense Battery Soga", meta);
             _shuttle.SetIFFColor(depotUid16s[0], coveColor);
+            _shuttle.SetIFFFaction(depotUid16s[0], "DSM");
         }
 
         if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
@@ -347,6 +350,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
             _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
+            _shuttle.SetIFFFaction(depotUid7s[0], "NCSP");
         }
 
      //   if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
@@ -393,6 +397,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid9s[0]);
             _meta.SetEntityName(depotUid9s[0], "The Freeport", meta);
             _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
+            _shuttle.SetIFFFaction(depotUid9s[0], "NCSP");
         }
 
         if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
@@ -408,6 +413,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
             _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
             _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
+            _shuttle.SetIFFFaction(depotUid10s[0], "SHI");
         }
 
         if (_map.TryLoad(mapId, oris, out var orisUids, new MapLoadOptions
@@ -449,6 +455,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
             _meta.SetEntityName(depotUid12s[0], "Port Vladzena", meta);
             _shuttle.SetIFFColor(depotUid12s[0], factionColor);
+            _shuttle.SetIFFFaction(depotUid12s[0], "SHI");
         }
 
         // if (_map.TryLoad(mapId, lodge, out var lodgeUids, new MapLoadOptions
