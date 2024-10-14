@@ -20,7 +20,7 @@ shuttle-console-exclusion = Exclusion area
 
 shuttle-console-iff-ally = ALLY
 shuttle-console-iff-cold-war = CAUTION
-shuttle-console-iff-war = WAR
+shuttle-console-iff-war = HOSTILE
 
 shuttle-console-iff-search = Search IFF
 
