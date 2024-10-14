@@ -7,9 +7,11 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Content.Shared.Physics;
-using FastAccessors;
-using Robust.Shared.Spawners;
 using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Ranged;
+using Robust.Shared.Spawners;
+using Content.Shared.Weapons.Ranged.Systems;
+using Robust.Server.GameStates;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
@@ -17,14 +19,16 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 6f;
 
-    [Dependency]
-    private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
-    [Dependency]
-    private readonly FixtureSystem _fixtureSystem = default!;
+    [Dependency] private readonly FixtureSystem _fixtureSystem = default!;
 
-    [Dependency]
-    private readonly PhysicsSystem _physicsSystem = default!;
+    [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
+
+    [Dependency] private readonly SharedGunSystem _gun = default!;
+
+    [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
+
 
     public override void Initialize()
     {
@@ -36,16 +40,31 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
     private void OnCollide(EntityUid uid, ShipShieldComponent component, StartCollideEvent args)
     {
+        if (Transform(args.OtherEntity).Anchored)
+            return;
+
+        if (!TryComp<PhysicsComponent>(Transform(uid).GridUid, out var ourPhysics) || !TryComp<PhysicsComponent>(args.OtherEntity, out var theirPhysics))
+            return;
+
+        var ourVelocity = ourPhysics.LinearVelocity;
+        var velocity = theirPhysics.LinearVelocity;
+
+        Logger.Error("Our velocity: " + ourVelocity);
+        Logger.Error("Their velocity: " + velocity);
+
+        var collisionSpeedVector = Vector2.Subtract(ourVelocity, velocity);
+
+        Logger.Error("Registering collision with " + args.OtherEntity + " at speed " + collisionSpeedVector);
+
+        if (Math.Abs(collisionSpeedVector.Length()) < 20)
+            return;
+
+        Logger.Error("Fast enough for me!");
+
         if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
             despawn.Lifetime += despawn.Lifetime;
 
-        if (TryComp<ProjectileComponent>(args.OtherEntity, out var projectile))
-            projectile.Weapon = uid;
-
-        if (!TryComp<PhysicsComponent>(args.OtherEntity, out var physics))
-            return;
-
-        _physicsSystem.SetLinearVelocity(args.OtherEntity, -physics.LinearVelocity);
+        _gun.ShootProjectile(args.OtherEntity, -velocity, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
     }
 
     public EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
@@ -100,6 +119,8 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             body: shieldPhysics);
 
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
+
+        _pvsSys.AddGlobalOverride(shield);
 
         return shield;
     }
