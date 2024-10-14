@@ -1,0 +1,7 @@
+- type: entity
+  id: ShipShield
+  noSpawn: true
+  name: ship shield
+  components:
+  - type: ShipShield
+  - type: Fixtures
