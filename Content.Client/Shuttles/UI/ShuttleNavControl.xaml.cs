@@ -208,7 +208,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
 
         DrawProjectiles(handle, ourWorldMatrixInvert);
-        DrawShields(handle, ourWorldMatrix);
+        DrawShields(handle, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
         invertedPosition.Y = -invertedPosition.Y;
@@ -533,14 +533,14 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             for (int i = 1; i < count; i++)
             {
                 var v1 = Vector2.Add(center, verticies[i - 1]);
+                v1 = Vector2.Transform(v1, parentXform.WorldMatrix); // transform to world matrix
+                v1 = Vector2.Transform(v1, matrix); // get back to local matrix for drawing
                 v1.Y = -v1.Y;
-                v1 = Vector2.Transform(v1, parentXform.WorldMatrix);
-                v1 = Vector2.Transform(v1, matrix);
                 v1 = ScalePosition(v1);
                 var v2 = Vector2.Add(center, verticies[i]);
-                v2.Y = -v2.Y;
                 v2 = Vector2.Transform(v2, parentXform.WorldMatrix);
                 v2 = Vector2.Transform(v2, matrix);
+                v2.Y = -v2.Y;
                 v2 = ScalePosition(v2);
                 handle.DrawLine(v1, v2, Color.Purple);
             }
