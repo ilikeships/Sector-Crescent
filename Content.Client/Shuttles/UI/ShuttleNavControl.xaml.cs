@@ -512,8 +512,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
     private void DrawShields(DrawingHandleScreen handle, Matrix3x2 matrix)
     {
-        var shields = EntManager.AllEntityQueryEnumerator<ShipShieldComponent, FixturesComponent, TransformComponent>();
-        while (shields.MoveNext(out var uid, out var shield, out var fixtures, out var xform))
+        var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
+        while (shields.MoveNext(out var uid, out var _, out var fixtures, out var xform))
         {
             if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
                 return;

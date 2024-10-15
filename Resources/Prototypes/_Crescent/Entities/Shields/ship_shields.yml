@@ -4,4 +4,13 @@
   name: ship shield
   components:
   - type: ShipShield
+  - type: ShipShieldVisuals
+  - type: Fixtures
+
+- type: entity
+  id: ShipShieldInner
+  nospawn: true
+  name: inner ship shield
+  components:
+  - type: ShipShield
   - type: Fixtures

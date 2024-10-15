@@ -1,22 +1,22 @@
 using System.Numerics;
 using Content.Shared._Crescent.ShipShields;
+using Content.Shared.Physics;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
-using Content.Shared.Physics;
-using Robust.Shared.Spawners;
-using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Server.GameStates;
 using Robust.Shared.Random;
-using Content.Shared.Mobs;
+using Robust.Shared.Spawners;
+using Robust.Server.GameStates;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
 {
     private const string ShipShieldPrototype = "ShipShield";
+    private const string InnerShipShieldPrototype = "ShipShieldInner";
     private const float Padding = 10f;
     private const float CollisionThreshold = 20f;
     private const float DeflectionSpread = 30f;
@@ -78,7 +78,12 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         if (!Resolve(entity, ref mapGrid, false))
             return EntityUid.Invalid;
 
-        var shield = Spawn(ShipShieldPrototype, Transform(entity).Coordinates);
+        var prototype = ShipShieldPrototype;
+
+        if (inner)
+            prototype = InnerShipShieldPrototype;
+
+        var shield = Spawn(prototype, Transform(entity).Coordinates);
         var shieldPhysics = AddComp<PhysicsComponent>(shield);
 
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
