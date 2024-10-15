@@ -573,7 +573,7 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
 							iffComponent.IsDisabled = true;
 
-							var ev = new AnchorStateChangedEvent(transformComponent);
+							var ev = new AnchorStateChangedEvent(gridUid, transformComponent);
 							RaiseLocalEvent(uid, ref ev, false);
 					}
 				}
@@ -615,7 +615,7 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
 								comp.IsDisabled = false;
 
-								var ev = new AnchorStateChangedEvent(transformComponent);
+								var ev = new AnchorStateChangedEvent(gridUid, transformComponent);
 								RaiseLocalEvent(uid, ref ev, false);
 							}
 						}
@@ -665,7 +665,7 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
 							comp.IsDisabled = true;
 
-							var ev = new AnchorStateChangedEvent(transformComponent);
+							var ev = new AnchorStateChangedEvent(gridUid, transformComponent);
 							RaiseLocalEvent(uid, ref ev, false);
 						}
 					}
