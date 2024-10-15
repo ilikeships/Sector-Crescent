@@ -48,30 +48,9 @@ public sealed class EntityWhitelistSystem : EntitySystem
     public bool IsValid(EntityWhitelist list, EntityUid uid)
     {
         if (list.Components != null)
-        {
-            var regs = StringsToRegs(list.Components);
+            EnsureRegistrations(list);
 
-            list.Registrations ??= new List<ComponentRegistration>();
-            list.Registrations.AddRange(regs);
-        }
-
-        if (list.MindRoles != null)
-        {
-            var regs = StringsToRegs(list.MindRoles);
-
-            foreach (var role in regs)
-            {
-                if ( _roles.MindHasRole(uid, role.Type, out _))
-                {
-                    if (!list.RequireAll)
-                        return true;
-                }
-                else if (list.RequireAll)
-                    return false;
-            }
-        }
-
-        if (list.Registrations != null && list.Registrations.Count > 0)
+        if (list.Registrations != null)
         {
             foreach (var reg in list.Registrations)
             {
@@ -185,13 +164,33 @@ public sealed class EntityWhitelistSystem : EntitySystem
         return IsWhitelistFailOrNull(blacklist, uid);
     }
 
+    private void EnsureRegistrations(EntityWhitelist list)
+    {
+        if (list.Components == null)
+            return;
+
+        list.Registrations = new List<ComponentRegistration>();
+        foreach (var name in list.Components)
+        {
+            var availability = _factory.GetComponentAvailability(name);
+            if (_factory.TryGetRegistration(name, out var registration)
+                && availability == ComponentAvailability.Available)
+            {
+                list.Registrations.Add(registration);
+            }
+            else if (availability == ComponentAvailability.Unknown)
+            {
+                Log.Warning($"Unknown component name {name} passed to EntityWhitelist!");
+            }
+        }
+    }
+
     private List<ComponentRegistration> StringsToRegs(string[]? input)
     {
         var list = new List<ComponentRegistration>();
 
         if (input == null || input.Length == 0)
             return list;
-
         foreach (var name in input)
         {
             var availability = _factory.GetComponentAvailability(name);
@@ -205,7 +204,7 @@ public sealed class EntityWhitelistSystem : EntitySystem
                 Log.Error($"StringsToRegs failed: Unknown component name {name} passed to EntityWhitelist!");
             }
         }
-
         return list;
     }
 }
+
