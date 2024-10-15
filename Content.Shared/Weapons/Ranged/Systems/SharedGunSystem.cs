@@ -11,7 +11,6 @@ using Content.Shared.Examine;
 using Content.Shared.Gravity;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
-using Content.Shared.Item; // Delta-V: Felinids in duffelbags can't shoot.
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
@@ -22,6 +21,7 @@ using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -64,6 +64,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly TagSystem TagSystem = default!;
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -128,8 +129,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (user == null ||
             !_combatMode.IsInCombatMode(user) ||
-            !TryGetGun(user.Value, out var ent, out var gun) ||
-            HasComp<ItemComponent>(user)) // Delta-V: Felinids in duffelbags can't shoot.
+            !TryGetGun(user.Value, out var ent, out var gun))
         {
             return;
         }
@@ -476,7 +476,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
 
         var ev = new MuzzleFlashEvent(GetNetEntity(gun), sprite, worldAngle);
-        CreateEffect(gun, ev, user);
+        CreateEffect(gun, ev, gun);
     }
 
     public void CauseImpulse(EntityCoordinates fromCoordinates, EntityCoordinates toCoordinates, EntityUid user, PhysicsComponent userPhysics)

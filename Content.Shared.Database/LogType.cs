@@ -101,4 +101,7 @@ public enum LogType
     // Frontier Station Spesific
     ATMUsage = 200,
     ShipYardUsage = 201,
+
+    // Crescent chad stufff
+    Storage = 202,
 }
