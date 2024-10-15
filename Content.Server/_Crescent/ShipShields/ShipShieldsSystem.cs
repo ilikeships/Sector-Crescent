@@ -11,6 +11,7 @@ using Robust.Shared.Spawners;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameStates;
 using Robust.Shared.Random;
+using Content.Shared.Mobs;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
@@ -61,7 +62,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
         // I originally tried reflection but the math is too hard with the fucked coordinate system in this game (WorldRotation can be negative. Vector to Angle conversion loses information. Etc etc.)
         // Might try again at some point using just vector math with this (https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector)
-        var deflectionVector = -velocity;
+        var deflectionVector = Transform(args.OtherEntity).WorldPosition - Transform(uid).WorldPosition;
         var angle = _random.NextFloat(DeflectionSpread);
 
         if (_random.Prob(0.5f))
