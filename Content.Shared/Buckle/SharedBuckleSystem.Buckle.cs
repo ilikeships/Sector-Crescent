@@ -16,6 +16,7 @@ using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Vehicle.Components;
 using Content.Shared.Verbs;
+using Content.Shared.Whitelist;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Utility;
@@ -25,6 +26,7 @@ namespace Content.Shared.Buckle;
 
 public abstract partial class SharedBuckleSystem
 {
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     private void InitializeBuckle()
     {
         SubscribeLocalEvent<BuckleComponent, ComponentStartup>(OnBuckleComponentStartup);
@@ -234,7 +236,7 @@ public abstract partial class SharedBuckleSystem
 
         // Does it pass the Whitelist
         if (strapComp.Whitelist != null &&
-            !strapComp.Whitelist.IsValid(buckleUid, EntityManager) || strapComp.Blacklist?.IsValid(buckleUid, EntityManager) == true)
+            !_whitelistSystem.IsValid(strapComp.Whitelist, buckleUid) ||   (strapComp.Blacklist is not null && _whitelistSystem.IsValid(strapComp.Blacklist, buckleUid)))
         {
             if (_netManager.IsServer)
                 _popup.PopupEntity(Loc.GetString("buckle-component-cannot-fit-message"), userUid, buckleUid, PopupType.Medium);
