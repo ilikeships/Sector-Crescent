@@ -1,8 +1,9 @@
 using System.Numerics;
+using Content.Shared._Crescent.SpaceBiomes;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CombatMode;
-using Content.Shared.SpaceBiomes;
+using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -16,6 +17,7 @@ public sealed class RulesSystem : EntitySystem
     [Dependency] private readonly AccessReaderSystem _reader = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     public bool IsTrue(EntityUid uid, RulesPrototype rules)
     {
@@ -160,7 +162,7 @@ public sealed class RulesSystem : EntitySystem
 
                     foreach (var ent in _lookup.GetEntitiesInRange(xform.MapID, worldPos, entity.Range))
                     {
-                        if (!entity.Whitelist.IsValid(ent, EntityManager))
+                        if(entity.Whitelist is not null && !_whitelist.IsValid(entity.Whitelist, ent))
                             continue;
 
                         count++;
