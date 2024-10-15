@@ -10,8 +10,6 @@
     - BaseStationSiliconLawCrescentStation
     - BaseStationEmpImmune
     - BaseStationSectorNews
-    - BaseStationSpaceArtilleryImmune # Space artillery gets deleted. Not ideal, diegetic solution at some point please
-    - BaseStationPreventPilot # Prevent piloting stations immune to space arty
   noSpawn: true
   components:
     - type: Transform
@@ -80,6 +78,23 @@
     - type: Transform
 
 - type: entity
+  id: StandardCrescentExpeditionVesselCombat #Expeds
+  parent:
+    - BaseStation
+    - BaseStationJobsSpawning
+    - BaseStationRecords
+    - BaseCombatShipAlertLevels
+    - BaseStationAllEventsEligible
+    - BaseStationRenameFaxes
+    - BaseStationCargo
+    - BaseStationRenameWarpPoints
+    - BaseStationSiliconLawCrescentShips
+    - BaseStationExpeditions
+  noSpawn: true
+  components:
+    - type: Transform
+
+- type: entity
   id: BaseStationSiliconLawCrescentStation
   abstract: true
   components:
@@ -118,22 +133,9 @@
   components:
     - type: SectorNews
 
-# Space artillery will not damage this station
-- type: entity
-  id: BaseStationSpaceArtilleryImmune
-  abstract: true
-  components:
-    - type: BlockSpaceArtilleryProjectileGrid
-
 - type: entity
   id: BaseCombatShipAlertLevels
   abstract: true
   components:
     - type: AlertLevel
       alertLevelPrototype: combatShipAlerts
-
-- type: entity
-  id: BaseStationPreventPilot
-  abstract: true
-  components:
-    - type: PreventPilot

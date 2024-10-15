@@ -6,9 +6,17 @@
   stations:
     Freeport:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
       components:
         - type: StationNameSetup
           mapNameTemplate: 'The Freeport'
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
         - type: StationJobs
           overflowJobs: []
           availableJobs:

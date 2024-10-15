@@ -11,7 +11,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
@@ -132,6 +131,11 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     private void PreventCollision(EntityUid uid, ProjectileComponent component, ref PreventCollideEvent args)
     {
         if (component.IgnoreShooter && (args.OtherEntity == component.Shooter || args.OtherEntity == component.Weapon))
+        {
+            args.Cancelled = true;
+        }
+
+        if (component.IgnoreWeaponGrid && component.Weapon != null && !TerminatingOrDeleted(component.Weapon) && Transform(args.OtherEntity).GridUid == Transform((EntityUid) component.Weapon).GridUid)
         {
             args.Cancelled = true;
         }

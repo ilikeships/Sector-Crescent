@@ -99,7 +99,7 @@ public sealed partial class ShuttleSystem
             IFFhandler? handle = FetchActiveComponent(uid);
             if(handle is not null)
                 handle.Hiding = false;
-           
+
         }
     }
 
@@ -127,7 +127,7 @@ public sealed partial class ShuttleSystem
                 HeatCapacity = component.HeatCapacity,
                 CurrentHeat = component.CurrentHeat,
             });
-    
+
         }
     }
 

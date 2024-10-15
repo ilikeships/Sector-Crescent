@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Numerics;
-using System.Text.RegularExpressions;
 using Content.Server.Administration;
 using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
@@ -8,11 +7,11 @@ using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Crescent.Radar;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Physics;
 using Content.Shared.PointCannons;
 using Content.Shared.Shuttles.BUIStates;
+using Content.Shared.UserInterface;
 using Content.Shared.Weapons.Ranged.Components;
-using Microsoft.CodeAnalysis.CSharp;
+using Content.Shared.Shuttles.Components;
 using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
 using Robust.Shared.Map;
@@ -37,6 +36,8 @@ public sealed class PointCannonSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<TargetingConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleOpenAttempt);
+        SubscribeLocalEvent<TargetingConsoleComponent, BoundUserInterfaceMessageAttempt>(BUIValidation);
         SubscribeLocalEvent<TargetingConsoleComponent, BoundUIOpenedEvent>(OnConsoleOpened);
         SubscribeLocalEvent<TargetingConsoleComponent, BoundUIClosedEvent>(OnConsoleClosed);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleFireMessage>(OnConsoleFire);
@@ -61,6 +62,32 @@ public sealed class PointCannonSystem : EntitySystem
         }
     }
 
+    private void OnConsoleOpenAttempt(EntityUid uid, TargetingConsoleComponent component, ActivatableUIOpenAttemptEvent args)
+    {
+        var uis = _uiSys.GetActorUis(args.User);
+
+        foreach (var (_, key) in uis)
+        {
+            if (key is ShuttleConsoleUiKey.Key)
+            {
+                args.Cancel();
+                _popSys.PopupEntity(Loc.GetString("targeting-rejection-shuttle-console"), args.User, Shared.Popups.PopupType.LargeCaution);
+            }
+        }
+    }
+
+    private void BUIValidation(EntityUid uid, TargetingConsoleComponent component, BoundUserInterfaceMessageAttempt args)
+    {
+        var uis = _uiSys.GetActorUis(args.Actor);
+
+        foreach (var (_, key) in uis)
+        {
+            if (key is ShuttleConsoleUiKey.Key)
+            {
+                args.Cancel();
+            }
+        }
+    }
     private void OnConsoleOpened(Entity<TargetingConsoleComponent> uid, ref BoundUIOpenedEvent args)
     {
         uid.Comp.RegenerateCannons = true;

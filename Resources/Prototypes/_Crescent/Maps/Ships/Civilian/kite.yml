@@ -15,15 +15,17 @@
   mapName: 'ICM Kite'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/kite.yml
   minPlayers: 0
-  stations: 
+  stations:
     Kite:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardCrescentExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'ICM Kite {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-expeditions
         - type: StationJobs
           overflowJobs: []
           availableJobs:

@@ -1,5 +1,6 @@
 using Content.Server.Shuttles.Systems;
 using Content.Server.Shuttles.Components;
+using Content.Server.Shuttles;
 using Content.Server.Station.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Station.Systems;
@@ -8,6 +9,8 @@ using Content.Shared.Shipyard;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
+using Content.Shared.Shipyard.Events;
+using Content.Shared.Mobs.Components;
 using Robust.Server.Maps;
 using Robust.Shared.Map;
 using Content.Shared.CCVar;
@@ -15,9 +18,6 @@ using Robust.Shared.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Content.Shared.Coordinates;
-using Content.Shared.Shipyard.Events;
-using Content.Shared.Mobs.Components;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Shipyard.Systems;
@@ -96,8 +96,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     /// </summary>
     /// <param name="stationUid">The ID of the station to dock the shuttle to</param>
     /// <param name="shuttlePath">The path to the shuttle file to load. Must be a grid file!</param>
-    public bool TryPurchaseShuttle(EntityUid stationUid, string shuttlePath, [NotNullWhen(true)] out ShuttleComponent? shuttle)
+    public bool TryPurchaseShuttle(EntityUid stationUid, string shuttlePath, [NotNullWhen(true)] out ShuttleComponent? shuttle, out DockingConfig? config)
     {
+        config = null;
         if (!TryComp<StationDataComponent>(stationUid, out var stationData) || !TryAddShuttle(shuttlePath, out var shuttleGrid) || !TryComp<ShuttleComponent>(shuttleGrid, out shuttle))
         {
             shuttle = null;
@@ -107,17 +108,16 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var price = _pricing.AppraiseGrid((EntityUid) shuttleGrid, null);
         var targetGrid = _station.GetLargestGrid(stationData);
 
-
         if (targetGrid == null) //how are we even here with no station grid
         {
-            _mapManager.DeleteGrid((EntityUid) shuttleGrid);
+            Del(shuttleGrid);
             shuttle = null;
             return false;
         }
 
         _sawmill.Info($"Shuttle {shuttlePath} was purchased at {ToPrettyString((EntityUid) stationUid)} for {price:f2}");
         //can do TryFTLDock later instead if we need to keep the shipyard map paused
-        _shuttle.TryFTLDock(shuttleGrid.Value, shuttle, targetGrid.Value);
+        _shuttle.TryFTLDock(shuttleGrid.Value, targetGrid.Value, out config);
 
         return true;
     }
