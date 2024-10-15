@@ -18,7 +18,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 10f;
     private const float CollisionThreshold = 20f;
-    private const float DeflectionSpread = 22.5f;
+    private const float DeflectionSpread = 30f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -72,7 +72,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
     }
 
-    public EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
+    private EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null, bool inner = false)
     {
         if (!Resolve(entity, ref mapGrid, false))
             return EntityUid.Invalid;
@@ -83,12 +83,17 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetParent(shield, entity);
 
+        var padding = Padding;
+
+        if (inner)
+            padding = 0;
+
         var radius = 0f;
         var scale = 1f;
         var scaleX = true;
 
-        var height = mapGrid.LocalAABB.Height + Padding;
-        var width = mapGrid.LocalAABB.Width + Padding;
+        var height = mapGrid.LocalAABB.Height + padding;
+        var width = mapGrid.LocalAABB.Width + padding;
 
         if (width > height)
         {
@@ -126,6 +131,9 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
 
         _pvsSys.AddGlobalOverride(shield);
+
+        if (!inner)
+            ShieldEntity(entity, mapGrid, true);
 
         return shield;
     }
