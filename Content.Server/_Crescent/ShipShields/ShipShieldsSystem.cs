@@ -7,17 +7,18 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Content.Shared.Physics;
-using Content.Shared.Projectiles;
-using Content.Shared.Weapons.Ranged;
 using Robust.Shared.Spawners;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.GameStates;
+using Robust.Shared.Random;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
 {
     private const string ShipShieldPrototype = "ShipShield";
-    private const float Padding = 6f;
+    private const float Padding = 10f;
+    private const float CollisionThreshold = 20f;
+    private const float DeflectionSpread = 22.5f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -28,6 +29,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     [Dependency] private readonly SharedGunSystem _gun = default!;
 
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
 
     public override void Initialize()
@@ -49,22 +51,25 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         var ourVelocity = ourPhysics.LinearVelocity;
         var velocity = theirPhysics.LinearVelocity;
 
-        Logger.Error("Our velocity: " + ourVelocity);
-        Logger.Error("Their velocity: " + velocity);
-
         var collisionSpeedVector = Vector2.Subtract(ourVelocity, velocity);
 
-        Logger.Error("Registering collision with " + args.OtherEntity + " at speed " + collisionSpeedVector);
-
-        if (Math.Abs(collisionSpeedVector.Length()) < 20)
+        if (Math.Abs(collisionSpeedVector.Length()) < CollisionThreshold)
             return;
-
-        Logger.Error("Fast enough for me!");
 
         if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
             despawn.Lifetime += despawn.Lifetime;
 
-        _gun.ShootProjectile(args.OtherEntity, -velocity, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
+        // I originally tried reflection but the math is too hard with the fucked coordinate system in this game (WorldRotation can be negative. Vector to Angle conversion loses information. Etc etc.)
+        // Might try again at some point using just vector math with this (https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector)
+        var deflectionVector = -velocity;
+        var angle = _random.NextFloat(DeflectionSpread);
+
+        if (_random.Prob(0.5f))
+            angle = -angle;
+
+        deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
+
+        _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
     }
 
     public EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
