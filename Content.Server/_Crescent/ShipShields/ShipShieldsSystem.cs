@@ -16,7 +16,6 @@ namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
 {
     private const string ShipShieldPrototype = "ShipShield";
-    private const string InnerShipShieldPrototype = "ShipShieldInner";
     private const float Padding = 10f;
     private const float CollisionThreshold = 20f;
     private const float DeflectionSpread = 30f;
@@ -73,15 +72,12 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
     }
 
-    private EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null, bool inner = false)
+    private EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
     {
         if (!Resolve(entity, ref mapGrid, false))
             return EntityUid.Invalid;
 
         var prototype = ShipShieldPrototype;
-
-        if (inner)
-            prototype = InnerShipShieldPrototype;
 
         var shield = Spawn(prototype, Transform(entity).Coordinates);
         var shieldPhysics = AddComp<PhysicsComponent>(shield);
@@ -90,9 +86,6 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _transformSystem.SetParent(shield, entity);
 
         var padding = Padding;
-
-        if (inner)
-            padding = 0;
 
         var radius = 0f;
         var scale = 1f;
@@ -137,9 +130,6 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
 
         _pvsSys.AddGlobalOverride(shield);
-
-        if (!inner)
-            ShieldEntity(entity, mapGrid, true);
 
         return shield;
     }
