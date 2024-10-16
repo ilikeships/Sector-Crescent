@@ -18,7 +18,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 10f;
     private const float CollisionThreshold = 20f;
-    private const float DeflectionSpread = 30f;
+    private const float DeflectionSpread = 25f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -85,10 +85,22 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetParent(shield, entity);
 
-        var padding = Padding;
+        GenerateOvalFixture(shield, "shield", shieldPhysics, mapGrid);
+        GenerateOvalFixture(shield, "inner1", shieldPhysics, mapGrid, Padding - 0.33f);
+        GenerateOvalFixture(shield, "inner2", shieldPhysics, mapGrid, Padding - 0.63f);
+        GenerateOvalFixture(shield, "inner3", shieldPhysics, mapGrid, Padding - 1f);
 
-        var radius = 0f;
-        var scale = 1f;
+        _physicsSystem.WakeBody(shield, body: shieldPhysics);
+
+        _pvsSys.AddGlobalOverride(shield);
+
+        return shield;
+    }
+
+    private void GenerateOvalFixture(EntityUid uid, string name, PhysicsComponent physics, MapGridComponent mapGrid, float padding = Padding)
+    {
+        float radius;
+        float scale;
         var scaleX = true;
 
         var height = mapGrid.LocalAABB.Height + padding;
@@ -122,15 +134,9 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             }
         }
 
-        _fixtureSystem.TryCreateFixture(shield, chain, "shield",
+        _fixtureSystem.TryCreateFixture(uid, chain, name,
             hard: false,
             collisionLayer: (int) CollisionGroup.FullTileLayer,
-            body: shieldPhysics);
-
-        _physicsSystem.WakeBody(shield, body: shieldPhysics);
-
-        _pvsSys.AddGlobalOverride(shield);
-
-        return shield;
+            body: physics);
     }
 }
