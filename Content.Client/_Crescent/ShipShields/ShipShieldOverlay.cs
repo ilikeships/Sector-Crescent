@@ -79,7 +79,6 @@ public sealed class ShipShieldOverlay : Overlay
             // bottom right corner
             var rightCorner = Corner(localPos, rightVertex);
 
-
             // Assemble 2 triangles.
 
             // Triangle one: top left, top right, bottom left
