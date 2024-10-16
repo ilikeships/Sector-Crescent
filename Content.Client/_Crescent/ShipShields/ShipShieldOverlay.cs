@@ -8,6 +8,7 @@ using Content.Shared.Books;
 using Robust.Shared.Physics.Collision.Shapes;
 using System.Numerics;
 using Content.Client.Resources;
+using Robust.Client.Physics;
 
 namespace Content.Client._Crescent.ShipShields;
 
@@ -17,6 +18,7 @@ public sealed class ShipShieldOverlay : Overlay
     private readonly IEntityManager _entManager;
     private readonly SharedTransformSystem _transform;
     private readonly FixtureSystem _fixture;
+    private readonly SharedPhysicsSystem _physics;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     public ShipShieldOverlay(IEntityManager entityManager, IResourceCache resourceCache)
@@ -25,6 +27,7 @@ public sealed class ShipShieldOverlay : Overlay
         _entManager = entityManager;
         _transform = _entManager.EntitySysManager.GetEntitySystem<SharedTransformSystem>();
         _fixture = _entManager.EntitySysManager.GetEntitySystem<FixtureSystem>();
+        _physics = _entManager.EntitySysManager.GetEntitySystem<PhysicsSystem>();
 
         ZIndex = 8;
     }
@@ -53,11 +56,11 @@ public sealed class ShipShieldOverlay : Overlay
 
             var texture = _resourceCache.GetTexture("/Textures/_Crescent/ShipShields/shieldtex.png");
 
-            DrawShield(handle, chain, xform, matrix, texture);
+            DrawShield(handle, uid, chain, xform, texture);
         }
     }
 
-    private void DrawShield(DrawingHandleWorld handle, ChainShape chain, TransformComponent xform, Matrix3x2 matrix, Texture tex)
+    private void DrawShield(DrawingHandleWorld handle, EntityUid uid, ChainShape chain, TransformComponent xform, Texture tex)
     {
         List<DrawVertexUV2D> verts = new List<DrawVertexUV2D>();
 
@@ -65,19 +68,22 @@ public sealed class ShipShieldOverlay : Overlay
         // so we'll have to add them to this and then use the matrix to put them back in world position.
         var localPos = xform.LocalPosition;
 
+        // If "Transforms" ever get deprecated go ahead and check how DebugPHysicsSystem is drawing chains in this hellworld future
+        var transform = _physics.GetPhysicsTransform(uid);
+
         for (int i = 1; i <= chain.Count; i++)
         {
             // top left corner
-            var leftVertex = VertexToWorldPos(localPos, chain.Vertices[i - 1], matrix);
+            var leftVertex = VertexToWorldPos(chain.Vertices[i - 1], transform);
 
             // top right corner
-            var rightVertex = VertexToWorldPos(localPos, chain.Vertices[i], matrix);
+            var rightVertex = VertexToWorldPos(chain.Vertices[i], transform);
 
             // bottom left corner
-            var leftCorner = Corner(localPos, leftVertex);
+            var leftCorner = Corner(localPos, leftVertex, transform);
 
             // bottom right corner
-            var rightCorner = Corner(localPos, rightVertex);
+            var rightCorner = Corner(localPos, rightVertex, transform);
 
             // Assemble 2 triangles.
 
@@ -95,17 +101,17 @@ public sealed class ShipShieldOverlay : Overlay
         handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, texture: tex, verts.ToArray().AsSpan(), Color.White);
     }
 
-    private Vector2 VertexToWorldPos(Vector2 localPos, Vector2 vertexPos, Matrix3x2 matrix)
+    private Vector2 VertexToWorldPos(Vector2 vertexPos, Transform transform)
     {
-        var vertLocation = Vector2.Add(localPos, vertexPos);
-        Vector2.Transform(vertLocation, matrix);
+        var vertLocation = Transform.Mul(transform, vertexPos);
 
         return vertLocation;
     }
 
-    private Vector2 Corner(Vector2 localPos, Vector2 vertexPos, float radius = 1.3f)
+    private Vector2 Corner(Vector2 localPos, Vector2 vertexPos, Transform transform, float radius = 1.3f)
     {
-        var cornerPos = Vector2.Subtract(vertexPos, localPos);
+        var localXform = Transform.Mul(transform, localPos);
+        var cornerPos = Vector2.Subtract(vertexPos, localXform);
         cornerPos.Normalize();
         cornerPos *= radius;
 
