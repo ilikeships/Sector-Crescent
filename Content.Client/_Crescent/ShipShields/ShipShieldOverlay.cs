@@ -9,6 +9,7 @@ using Robust.Shared.Physics.Collision.Shapes;
 using System.Numerics;
 using Content.Client.Resources;
 using Robust.Client.Physics;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Crescent.ShipShields;
 
@@ -16,18 +17,19 @@ public sealed class ShipShieldOverlay : Overlay
 {
     private readonly IResourceCache _resourceCache;
     private readonly IEntityManager _entManager;
-    private readonly SharedTransformSystem _transform;
     private readonly FixtureSystem _fixture;
     private readonly SharedPhysicsSystem _physics;
-    public override OverlaySpace Space => OverlaySpace.WorldSpace;
+    private readonly ShaderInstance _unshadedShader;
+    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
-    public ShipShieldOverlay(IEntityManager entityManager, IResourceCache resourceCache)
+    public ShipShieldOverlay(IEntityManager entityManager, IPrototypeManager prototypeManager, IResourceCache resourceCache)
     {
         _resourceCache = resourceCache;
         _entManager = entityManager;
-        _transform = _entManager.EntitySysManager.GetEntitySystem<SharedTransformSystem>();
         _fixture = _entManager.EntitySysManager.GetEntitySystem<FixtureSystem>();
         _physics = _entManager.EntitySysManager.GetEntitySystem<PhysicsSystem>();
+
+        _unshadedShader = prototypeManager.Index<ShaderPrototype>("unshaded").Instance();
 
         ZIndex = 8;
     }
@@ -35,6 +37,8 @@ public sealed class ShipShieldOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var handle = args.WorldHandle;
+
+        handle.UseShader(_unshadedShader);
 
         var enumerator = _entManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
         while (enumerator.MoveNext(out var uid, out var visuals, out var fixtures, out var xform))
@@ -51,8 +55,6 @@ public sealed class ShipShieldOverlay : Overlay
                 continue;
 
             var chain = (ChainShape) fixture.Shape;
-
-            var (_, _, matrix) = _transform.GetWorldPositionRotationMatrix(uid);
 
             var texture = _resourceCache.GetTexture("/Textures/_Crescent/ShipShields/shieldtex.png");
 
