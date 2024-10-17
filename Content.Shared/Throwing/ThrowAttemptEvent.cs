@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.Throwing
+namespace Content.Shared.Throwing
 {
     public sealed class ThrowAttemptEvent : CancellableEntityEventArgs
     {
@@ -14,7 +14,15 @@
     }
 
     /// <summary>
+    ///     Raised on the item entity that is thrown.
+    /// </summary>
+    /// <param name="User">The user that threw this entity.</param>
+    /// <param name="Cancelled">Whether or not the throw should be cancelled.</param>
+    [ByRefEvent]
+    public record struct ThrowItemAttemptEvent(EntityUid User, bool Cancelled = false);
+
+    /// <summary>
     /// Raised when we try to pushback an entity from throwing
     /// </summary>
-    public sealed class ThrowPushbackAttemptEvent : CancellableEntityEventArgs {}
+    public sealed class ThrowPushbackAttemptEvent : CancellableEntityEventArgs { }
 }

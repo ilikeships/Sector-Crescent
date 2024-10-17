@@ -104,4 +104,5 @@ public enum LogType
 
     // Crescent chad stufff
     Storage = 202,
+    InteractUsing = 203,
 }

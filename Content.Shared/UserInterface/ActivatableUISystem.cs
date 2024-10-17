@@ -101,6 +101,20 @@ public sealed partial class ActivatableUISystem : EntitySystem
         if (_whitelistSystem.IsWhitelistFail(component.RequiredItems, args.Using ?? default))
             return false;
 
+        if (component.RequiresComplex)
+        {
+            if (args.Hands == null)
+                return false;
+
+            if (component.InHandsOnly)
+            {
+                if (!_hands.IsHolding(args.User, uid, out var hand, args.Hands))
+                    return false;
+
+                if (component.RequireActiveHand && args.Hands.ActiveHand != hand)
+                    return false;
+            }
+        }
 
         return args.CanInteract || HasComp<GhostComponent>(args.User) && !component.BlockSpectators;
     }
@@ -121,7 +135,7 @@ public sealed partial class ActivatableUISystem : EntitySystem
 
     private void OnActivate(EntityUid uid, ActivatableUIComponent component, ActivateInWorldEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || !args.Complex)
             return;
 
         if (component.VerbOnly)
@@ -176,6 +190,12 @@ public sealed partial class ActivatableUISystem : EntitySystem
 
         if (!_blockerSystem.CanInteract(user, uiEntity) && (!HasComp<GhostComponent>(user) || aui.BlockSpectators))
             return false;
+
+        if (aui.RequiresComplex)
+        {
+            if (!_blockerSystem.CanComplexInteract(user))
+                return false;
+        }
 
         if (aui.InHandsOnly)
         {
