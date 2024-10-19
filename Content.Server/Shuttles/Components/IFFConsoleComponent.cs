@@ -1,10 +1,9 @@
 using Content.Server.Shuttles.Systems;
-using Content.Server._Crescent.SpaceArtillery;
 using Content.Shared.Shuttles.Components;
 
 namespace Content.Server.Shuttles.Components;
 
-[RegisterComponent, Access(typeof(ShuttleSystem),typeof(SpaceArtillerySystem))]
+[RegisterComponent, Access(typeof(ShuttleSystem))]
 public sealed partial class IFFConsoleComponent : Component
 {
     /// <summary>

@@ -1,4 +1,4 @@
-﻿using Content.Shared.Alert;
+using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.StatusEffect
@@ -10,7 +10,7 @@ namespace Content.Shared.StatusEffect
         public string ID { get; private set; } = default!;
 
         [DataField("alert")]
-        public AlertType? Alert { get; private set; }
+        public ProtoId<AlertPrototype>? Alert { get; private set; }
 
         /// <summary>
         ///     Whether a status effect should be able to apply to any entity,

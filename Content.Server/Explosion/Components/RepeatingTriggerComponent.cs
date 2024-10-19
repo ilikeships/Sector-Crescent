@@ -4,7 +4,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server.Explosion.Components;
 
 /// <summary>
-/// Constantly triggers after being atdded to an enttity.
+/// Constantly triggers after being added to an entity.
 /// </summary>
 [RegisterComponent, Access(typeof(TriggerSystem))]
 [AutoGenerateComponentPause]

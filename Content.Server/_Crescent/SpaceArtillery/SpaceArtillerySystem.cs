@@ -48,7 +48,8 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
         base.Initialize();
         _sawmill = Logger.GetSawmill("SpaceArtillery");
         SubscribeLocalEvent<SpaceArtilleryComponent, SignalReceivedEvent>(OnSignalReceived);
-        SubscribeLocalEvent<SpaceArtilleryComponent, BuckleChangeEvent>(OnBuckleChange);
+        SubscribeLocalEvent<SpaceArtilleryComponent, BuckledEvent>(OnBuckle);
+        SubscribeLocalEvent<SpaceArtilleryComponent, UnbuckledEvent>(OnUnbuckle);
         SubscribeLocalEvent<SpaceArtilleryComponent, FireActionEvent>(OnFireAction);
         SubscribeLocalEvent<SpaceArtilleryComponent, AmmoShotEvent>(OnShotEvent);
         SubscribeLocalEvent<SpaceArtilleryComponent, OnEmptyGunShotEvent>(OnEmptyShotEvent);
@@ -167,22 +168,24 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
             OnMalfunction(uid, component);
     }
 
-    private void OnBuckleChange(EntityUid uid, SpaceArtilleryComponent component, ref BuckleChangeEvent args)
+    private void OnBuckle(EntityUid uid, SpaceArtilleryComponent component, ref BuckledEvent args)
     {
-        // Once Gunner buckles
-        if (args.Buckling)
+        // Update actions
+        if (TryComp<ActionsComponent>(args.Buckle.Owner, out var actions))
         {
-            // Update actions
-            if (TryComp<ActionsComponent>(args.BuckledEntity, out var actions))
-            {
-                _actionsSystem.AddAction(args.BuckledEntity, ref component.FireActionEntity, component.FireAction, uid, actions);
-            }
-            return;
+            _actionsSystem.AddAction(args.Buckle.Owner, ref component.FireActionEntity, component.FireAction, uid, actions);
         }
+        return;
 
+
+    }
+
+    private void OnUnbuckle(EntityUid uid, SpaceArtilleryComponent component, ref UnbuckledEvent args)
+    {
+        
         // Once gunner unbuckles
         // Clean up actions
-        _actionsSystem.RemoveProvidedActions(args.BuckledEntity, uid);
+        _actionsSystem.RemoveProvidedActions(args.Buckle.Owner, uid);
 
     }
 

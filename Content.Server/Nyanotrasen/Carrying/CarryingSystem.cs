@@ -62,7 +62,8 @@ namespace Content.Server.Carrying
             SubscribeLocalEvent<BeingCarriedComponent, GettingInteractedWithAttemptEvent>(OnInteractedWith);
             SubscribeLocalEvent<BeingCarriedComponent, PullAttemptEvent>(OnPullAttempt);
             SubscribeLocalEvent<BeingCarriedComponent, StartClimbEvent>(OnStartClimb);
-            SubscribeLocalEvent<BeingCarriedComponent, BuckleChangeEvent>(OnBuckleChange);
+            SubscribeLocalEvent<BeingCarriedComponent, BuckledEvent>(OnBuckle);
+            SubscribeLocalEvent<BeingCarriedComponent, UnbuckledEvent>(OnUnbuckle);
             SubscribeLocalEvent<CarriableComponent, CarryDoAfterEvent>(OnDoAfter);
             SubscribeLocalEvent<CarryingComponent, GetVerbsEvent<InnateVerb>>(AddInsertCarriedVerb); // Frontier
         }
@@ -155,7 +156,7 @@ namespace Content.Server.Carrying
             var targetParent = Transform(args.Target.Value).ParentUid;
 
             if (args.Target.Value != component.Carrier && targetParent != component.Carrier && targetParent != uid)
-                args.Cancel();
+                args.Cancelled = true;
         }
 
         /// <summary>
@@ -188,7 +189,7 @@ namespace Content.Server.Carrying
         private void OnInteractedWith(EntityUid uid, BeingCarriedComponent component, GettingInteractedWithAttemptEvent args)
         {
             if (args.Uid != component.Carrier)
-                args.Cancel();
+                args.Cancelled = true;
         }
 
         private void OnPullAttempt(EntityUid uid, BeingCarriedComponent component, PullAttemptEvent args)
@@ -201,7 +202,12 @@ namespace Content.Server.Carrying
             DropCarried(component.Carrier, uid);
         }
 
-        private void OnBuckleChange(EntityUid uid, BeingCarriedComponent component, ref BuckleChangeEvent args)
+        private void OnBuckle(EntityUid uid, BeingCarriedComponent component, ref BuckledEvent args)
+        {
+            DropCarried(component.Carrier, uid);
+        }
+
+        private void OnUnbuckle(EntityUid uid, BeingCarriedComponent component, ref UnbuckledEvent args)
         {
             DropCarried(component.Carrier, uid);
         }
@@ -256,7 +262,7 @@ namespace Content.Server.Carrying
             Transform(carrier).AttachToGridOrMap();
             Transform(carried).AttachToGridOrMap();
             Transform(carried).Coordinates = Transform(carrier).Coordinates;
-            Transform(carried).AttachParent(Transform(carrier));
+            Transform(carried).AttachParent(Transform(carrier).ParentUid);
             var carryingComp = EnsureComp<CarryingComponent>(carrier);
             ApplyCarrySlowdown(carrier, carried);
             var carriedComp = EnsureComp<BeingCarriedComponent>(carried);

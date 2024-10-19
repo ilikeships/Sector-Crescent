@@ -85,7 +85,7 @@ namespace Content.Shared.ActionBlocker
                 return false;
 
             var ev = new InteractionAttemptEvent(user, target);
-            RaiseLocalEvent(user, ev);
+            RaiseLocalEvent(user, ref ev);
 
             if (ev.Cancelled)
                 return false;
@@ -94,7 +94,7 @@ namespace Content.Shared.ActionBlocker
                 return true;
 
             var targetEv = new GettingInteractedWithAttemptEvent(user, target);
-            RaiseLocalEvent(target.Value, targetEv);
+            RaiseLocalEvent(target.Value, ref targetEv);
 
             return !targetEv.Cancelled;
         }

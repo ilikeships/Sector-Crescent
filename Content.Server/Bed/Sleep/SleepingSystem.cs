@@ -182,7 +182,7 @@ namespace Content.Server.Bed.Sleep
 
         private void OnConsciousAttempt(EntityUid uid, SleepingComponent component, ConsciousAttemptEvent args)
         {
-            args.Cancel();
+            args.Cancelled = true;
         }
 
 
