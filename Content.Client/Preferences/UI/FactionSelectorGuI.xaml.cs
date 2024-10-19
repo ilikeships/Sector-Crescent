@@ -127,11 +127,6 @@ namespace Content.Client.Preferences.UI
                 var factionName = new Label();
                 factionName.HorizontalAlignment = HAlignment.Center;
                 var factionPhoto = new TextureRect();
-                var factionCommodity = new TextureRect();
-                var NeutralLabel = new Label(); NeutralLabel.Text = "Neutral"; NeutralLabel.HorizontalAlignment = HAlignment.Center;
-                var AlliesLabel = new Label(); AlliesLabel.Text = "Allies"; AlliesLabel.HorizontalAlignment = HAlignment.Center;
-                var EnemiesLabel = new Label(); EnemiesLabel.Text = "Enemies"; EnemiesLabel.HorizontalAlignment = HAlignment.Center;
-                factionCommodity.Stretch = TextureRect.StretchMode.Scale;
                 factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
                 factionDesc.HorizontalAlignment = HAlignment.Center;
@@ -139,20 +134,12 @@ namespace Content.Client.Preferences.UI
                 {
                     SetFaction(faction);
                     FactionInfo.RemoveAllChildren();
-                    FactionRelations.RemoveAllChildren();
-                    factionName.Text = faction.Name;
                     factionDesc.Text = faction.Description;
                     //factionPhoto.Texture = _resourceCache.GetTexture(faction.Icon.TexturePath);
                     factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetSize = new Vector2(256,256);
-                    factionCommodity.Texture = faction.Icon.Frame0();
-                    factionCommodity.SetSize = new Vector2(64,64);
+                    factionPhoto.SetHeight = 123f;
                     FactionInfo.AddChild(factionName);
-                    FactionRelations.AddChild(factionPhoto);
-                    FactionRelations.AddChild(AlliesLabel);
-                    FactionRelations.AddChild(NeutralLabel);
-                    FactionRelations.AddChild(EnemiesLabel);
-                    FactionInfo.AddChild(factionCommodity);
+                    FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
 
                 };
@@ -164,7 +151,6 @@ namespace Content.Client.Preferences.UI
             confirmButton.OnPressed += _ =>
             {
                 FactionInfo.RemoveAllChildren();
-                FactionRelations.RemoveAllChildren();
                 Save();
                 SetupUI.SwitchToCharacterEditor();
             };

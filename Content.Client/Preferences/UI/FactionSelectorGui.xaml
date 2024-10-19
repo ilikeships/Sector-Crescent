@@ -4,6 +4,5 @@
     <BoxContainer>
         <BoxContainer Name="CFactionList" Orientation="Vertical" />
         <BoxContainer Name="FactionInfo" Orientation="Vertical" />
-        <BoxContainer Name="FactionRelations" Orientation="Vertical" />
     </BoxContainer>
 </BoxContainer>
