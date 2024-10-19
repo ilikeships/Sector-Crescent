@@ -170,7 +170,7 @@ public sealed class PartExchangerSystem : EntitySystem
             return;
         }
 
-        component.AudioStream = _audio.PlayPvs(component.ExchangeSound, uid).Value.Entity;
+        component.AudioStream = _audio.PlayPvs(component.ExchangeSound, uid)?.Entity;
 
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: args.Target, used: uid)
         {
