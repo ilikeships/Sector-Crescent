@@ -102,7 +102,7 @@ public sealed partial class BankSystem : EntitySystem
 
         bank.Balance -= amount;
         _log.Info($"{mobUid} withdrew {amount}");
-        Dirty(bank);
+        EntityManager.Dirty(mobUid, bank);
         return true;
     }
 
@@ -128,7 +128,7 @@ public sealed partial class BankSystem : EntitySystem
 
         bank.Balance += amount;
         _log.Info($"{mobUid} deposited {amount}");
-        Dirty(bank);
+        EntityManager.Dirty(mobUid, bank);
         return true;
     }
 

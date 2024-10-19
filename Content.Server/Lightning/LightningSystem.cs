@@ -3,6 +3,7 @@ using Content.Server.Beam;
 using Content.Server.Beam.Components;
 using Content.Server.Lightning.Components;
 using Content.Shared.Lightning;
+using Robust.Shared.Physics;
 using Robust.Shared.Random;
 
 namespace Content.Server.Lightning;
@@ -20,6 +21,7 @@ public sealed class LightningSystem : SharedLightningSystem
     [Dependency] private readonly BeamSystem _beam = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -74,9 +76,10 @@ public sealed class LightningSystem : SharedLightningSystem
         //To Do: This is still pretty bad for perf but better than before and at least it doesn't re-allocate
         // several hashsets every time
 
-        var targets = _lookup.GetComponentsInRange<LightningTargetComponent>(Transform(user).MapPosition, range).ToList();
+        var targets = _lookup.GetEntitiesInRange<LightningTargetComponent>(_transform.GetMapCoordinates(user), range).ToList();
         _random.Shuffle(targets);
-        targets.Sort((x, y) => y.Priority.CompareTo(x.Priority));
+        targets.Sort((x, y) => y.Comp.Priority.CompareTo(x.Comp.Priority));
+
 
         int shootedCount = 0;
         int count = -1;
@@ -86,14 +89,14 @@ public sealed class LightningSystem : SharedLightningSystem
 
             if (count >= targets.Count) { break; }
 
-            var curTarget = targets[count];
+            var curTarget = EntityManager.GetComponent<LightningTargetComponent>(targets[count]);
             if (!_random.Prob(curTarget.HitProbability)) //Chance to ignore target
                 continue;
 
             ShootLightning(user, targets[count].Owner, lightningPrototype, triggerLightningEvents);
-            if (arcDepth - targets[count].LightningResistance > 0)
+            if (arcDepth - curTarget.LightningResistance > 0)
             {
-                ShootRandomLightnings(targets[count].Owner, range, 1, lightningPrototype, arcDepth - targets[count].LightningResistance, triggerLightningEvents);
+                ShootRandomLightnings(targets[count].Owner, range, 1, lightningPrototype, arcDepth - curTarget.LightningResistance, triggerLightningEvents);
             }
             shootedCount++;
         }

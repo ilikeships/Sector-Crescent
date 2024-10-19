@@ -17,6 +17,7 @@ namespace Content.Server.NPC.Systems;
 
 public sealed partial class NPCSteeringSystem
 {
+    [Dependency] private readonly SharedMapSystem _mapping = default!;
     /*
      * For any custom path handlers, e.g. destroying walls, opening airlocks, etc.
      * Putting it onto steering seemed easier than trying to make a custom compound task for it.
@@ -207,7 +208,7 @@ public sealed partial class NPCSteeringSystem
             return;
         }
 
-        foreach (var ent in grid.GetLocalAnchoredEntities(poly.Box))
+        foreach (var ent in _mapping.GetLocalAnchoredEntities(poly.GraphUid, grid, poly.Box))
         {
             if (!_physicsQuery.TryGetComponent(ent, out var body) ||
                 !body.Hard ||

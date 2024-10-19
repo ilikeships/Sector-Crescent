@@ -500,7 +500,7 @@ namespace Content.Server.VendingMachines
             var old = comp.EjectRandomCounter;
             comp.EjectRandomCounter = Math.Clamp(comp.EjectRandomCounter + change, 0, comp.EjectRandomMax);
             if (comp.EjectRandomCounter != old)
-                Dirty(comp);
+                EntityManager.Dirty(uid, comp);
         }
 
         private void EjectItem(EntityUid uid, VendingMachineComponent? vendComponent = null, bool forceEject = false)
