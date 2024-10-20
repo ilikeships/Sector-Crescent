@@ -12,6 +12,7 @@ namespace Content.Client.Clickable
     public sealed partial class ClickableComponent : Component
     {
         [Dependency] private readonly IClickMapManager _clickMapManager = default!;
+        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
         [DataField("bounds")] public DirBoundData? Bounds;
 
@@ -36,7 +37,7 @@ namespace Content.Client.Clickable
 
             drawDepth = sprite.DrawDepth;
             renderOrder = sprite.RenderOrder;
-            var (spritePos, spriteRot) = transform.GetWorldPositionRotation(xformQuery);
+            var (spritePos, spriteRot) = _transformSystem.GetWorldPositionRotation(transform);
             var spriteBB = sprite.CalculateRotatedBoundingBox(spritePos, spriteRot, eye.Rotation);
             bottom = Matrix3Helpers.CreateRotation(eye.Rotation).TransformBox(spriteBB).Bottom;
 
