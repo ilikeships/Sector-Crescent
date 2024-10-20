@@ -5,7 +5,7 @@
   id: DartSyndicateImpedrezene
   name: syndicate impedrezene dart
   description: Try not to prick yourself.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Fun/Darts/dart_red.rsi
@@ -40,7 +40,7 @@
   parent: DartSyndicateImpedrezene
   id: DartSyndicateTranquilizer
   name: syndicate tranquilizer dart
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SolutionContainerManager
     solutions:
@@ -61,7 +61,7 @@
   parent: DartSyndicateImpedrezene
   id: DartAberrantFleshHorrorSpike
   name: bone spike
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Ammo
     muzzleFlash: null
@@ -91,7 +91,7 @@
   parent: ConjuredObject10
   id: DartAberrantFleshHorrorSpikeCluster
   name: bone spike  
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Mobs/Aliens/flesh.rsi

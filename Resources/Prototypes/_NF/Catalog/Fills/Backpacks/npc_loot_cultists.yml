@@ -5,7 +5,7 @@
   name: blood cultist bundle
   description: Loot boxes? Here?
   abstract: true
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   suffix: NPC Loot
   components:
   - type: Sprite
@@ -46,7 +46,7 @@
   parent: CultistMessengerGiftBox
   id: ClothingBackpackBloodCultZealotLootA
   name: cultist gear bundle
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -59,7 +59,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultZealotLootB
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -72,7 +72,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultZealotLootC
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -84,7 +84,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultZealotLootD
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -96,7 +96,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultLootA
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -117,7 +117,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultLootB
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -138,7 +138,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultLootC
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -157,7 +157,7 @@
 - type: entity
   parent: ClothingBackpackBloodCultZealotLootA
   id: ClothingBackpackBloodCultLootD
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:

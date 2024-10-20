@@ -63,7 +63,7 @@
   name: combat gloves
   suffix: smg
   description: Regular black gloves that do not keep you from frying.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Unremoveable
   - type: Sprite
@@ -85,7 +85,7 @@
   id: ClothingHandsGlovesColorBlackAK
   name: combat gloves
   suffix: ak
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -101,7 +101,7 @@
   id: ClothingHandsGlovesColorBlackChinaLake
   name: combat gloves
   suffix: china lake
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -117,7 +117,7 @@
   id: ClothingHandsGlovesColorBlackPistol
   name: combat gloves
   suffix: pistol
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -133,7 +133,7 @@
   id: ClothingHandsGlovesColorMercPistol
   name: combat gloves
   suffix: pistol
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -148,7 +148,7 @@
   id: ClothingHandsGlovesColorMercRevolvers
   name: combat gloves
   suffix: double revolvers
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -165,7 +165,7 @@
   id: ClothingHandsGlovesColorMercShotgun
   name: combat gloves
   suffix: shotgun
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -180,7 +180,7 @@
   id: ClothingHandsGlovesColorMercMosin
   name: combat gloves
   suffix: mosin
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -195,7 +195,7 @@
   id: ClothingHandsGlovesColorMercRepeater
   name: combat gloves
   suffix: repeater
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -210,7 +210,7 @@
   id: ClothingHandsGlovesColorMercHatchet
   name: combat gloves
   suffix: hatchet
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -227,7 +227,7 @@
   id: ClothingHandsGlovesColorMercMachete
   name: combat gloves
   suffix: hatchet
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -244,7 +244,7 @@
   id: ClothingHandsGlovesColorMercLaserNSaw
   name: combat gloves
   suffix: laser and saw
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -261,7 +261,7 @@
   id: ClothingHandsGlovesColorBlackPython
   name: combat gloves
   suffix: python
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -277,7 +277,7 @@
   id: ClothingHandsGlovesColorBlackShotgun
   name: combat gloves
   suffix: shotgun
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -293,7 +293,7 @@
   id: ClothingHandsGlovesColorBlackSprayNozzle
   name: combat gloves
   suffix: spray nozzle
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -309,7 +309,7 @@
   id: ClothingHandsGlovesColorBlackCrossbow
   name: combat gloves
   suffix: crossbow
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -325,7 +325,7 @@
   id: ClothingHandsGlovesColorBlackLaserPistol
   name: combat gloves
   suffix: laser pistol
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -341,7 +341,7 @@
   id: ClothingHandsGlovesWeaponWieldedGlaive
   name: wielded weapon
   suffix: crusher glaive
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -354,7 +354,7 @@
   id: ClothingHandsGlovesWeaponDrill
   name: wielded weapon
   suffix: mining drill
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -367,7 +367,7 @@
   id: ClothingHandsGlovesWeaponWieldedPickaxe
   name: wielded weapon
   suffix: Pickaxe
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -380,7 +380,7 @@
   id: ClothingHandsGlovesWeaponPkaFlashlight
   name: wielded weapon
   suffix: PKA, flashlifght
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -398,7 +398,7 @@
   id: ClothingHandsGlovesWeaponWieldedPka
   name: wielded weapon
   suffix: PKA
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -411,7 +411,7 @@
   id: ClothingHandsGlovesWeaponSawnOffPkaDagger
   name: wielded weapon
   suffix: sawn-off PKA, crusher dagger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:
@@ -426,7 +426,7 @@
   id: ClothingHandsGlovesWeaponSawnOffPkas
   name: wielded weapon
   suffix: double sawn-off PKAs
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Clothing
     clothingVisuals:

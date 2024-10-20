@@ -10,7 +10,7 @@
     - BaseStationSiliconLawCrescentStation
     - BaseStationEmpImmune
     - BaseStationSectorNews
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -24,7 +24,7 @@
     - BaseStationShuttles
     - BaseStationAlertLevels
     - BaseStationSiliconLawCrescentStation
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -40,7 +40,7 @@
     - BaseStationRenameFaxes
     - BaseStationRenameWarpPoints
     - BaseStationSiliconLawCrescentShips
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -56,7 +56,7 @@
     - BaseStationCargo
     - BaseStationRenameWarpPoints
     - BaseStationSiliconLawCrescentShips
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -73,7 +73,7 @@
     - BaseStationRenameWarpPoints
     - BaseStationSiliconLawCrescentShips
     - BaseStationExpeditions
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -90,7 +90,7 @@
     - BaseStationRenameWarpPoints
     - BaseStationSiliconLawCrescentShips
     - BaseStationExpeditions
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 

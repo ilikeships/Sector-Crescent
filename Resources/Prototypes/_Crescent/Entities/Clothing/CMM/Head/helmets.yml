@@ -27,7 +27,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitMidshipman
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: midshipman's helmet
   description: Spaceworthy protection for your fragile skull. A Minuteman design.
   components:
@@ -54,7 +54,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitCMMPatrol
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: minuteman's patrolsuit
   description: Spaceworthy protection for your fragile skull. A Minuteman design.
   components:

@@ -53,7 +53,7 @@
   name: tele-order uplink
   description: A requisitions console that uses bluespace slipstreams to deliver goods to the user.
   suffix: Empty
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Devices/communication.rsi
