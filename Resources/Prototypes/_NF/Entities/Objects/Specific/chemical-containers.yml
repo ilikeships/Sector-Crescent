@@ -2,7 +2,7 @@
   parent: Jug
   name: jug (Space Cleaner)
   id: JugSpaceCleaner
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: Space Cleaner

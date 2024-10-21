@@ -21,7 +21,7 @@ public sealed class DamageStateVisualizerSystem : VisualizerSystem<DamageStateVi
         }
 
         // Brain no worky rn so this was just easier.
-        foreach (var key in new []{ DamageStateVisualLayers.Base, DamageStateVisualLayers.BaseUnshaded })
+        foreach (var key in new[] { DamageStateVisualLayers.Base, DamageStateVisualLayers.BaseUnshaded })
         {
             if (!sprite.LayerMapTryGet(key, out _)) continue;
 

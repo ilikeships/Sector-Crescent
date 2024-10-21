@@ -46,7 +46,7 @@
 
 # Space Ninja
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: Space Ninja
   parent: MobHuman
   id: MobHumanSpaceNinja

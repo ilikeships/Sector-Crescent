@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Server.Interaction;
 using Content.Server.Mech.Equipment.Components;
 using Content.Server.Mech.Systems;
@@ -85,7 +85,7 @@ public sealed class MechGrabberSystem : EntitySystem
         var (mechPos, mechRot) = _transform.GetWorldPositionRotation(mechxform);
 
         var offset = mechPos + mechRot.RotateVec(component.DepositOffset);
-        _transform.SetWorldPositionRotation(xform, offset, Angle.Zero);
+        _transform.SetWorldPositionRotation(uid, offset, Angle.Zero, xform);
         _mech.UpdateUserInterface(mech);
     }
 
@@ -154,7 +154,7 @@ public sealed class MechGrabberSystem : EntitySystem
             return;
 
         args.Handled = true;
-        component.AudioStream = _audio.PlayPvs(component.GrabSound, uid).Value.Entity;
+        component.AudioStream = _audio.PlayPvs(component.GrabSound, uid)?.Entity;
         var doAfterArgs = new DoAfterArgs(EntityManager, args.User, component.GrabDelay, new GrabberDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true

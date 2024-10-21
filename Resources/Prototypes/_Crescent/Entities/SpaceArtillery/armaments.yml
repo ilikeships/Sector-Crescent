@@ -1203,7 +1203,7 @@
   id: ActionSpaceArtilleryShowRadar
   name: Mass Scanner Interface
   description: View a mass scanner interface.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: Structures/Machines/parts.rsi, state: box_0 }

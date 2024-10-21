@@ -56,6 +56,7 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedMapSystem _mapping = default!;
 
     public override void Initialize()
     {
@@ -516,7 +517,7 @@ public sealed class DisposalUnitSystem : SharedDisposalUnitSystem
             return false;
 
         var coords = xform.Coordinates;
-        var entry = grid.GetLocal(coords)
+        var entry = _mapping.GetLocal(uid, grid, coords)
             .FirstOrDefault(HasComp<DisposalEntryComponent>);
 
         if (entry == default || component is not DisposalUnitComponent sDisposals)

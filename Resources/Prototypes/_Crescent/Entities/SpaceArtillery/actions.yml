@@ -2,7 +2,7 @@
   id: ActionSpaceArtilleryFire
   name: Fire
   description: Sends lead downrange
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     useDelay: 0.1

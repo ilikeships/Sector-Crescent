@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitImperialWorker
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: imperial worker's hardsuit helmet
   description: A miner's hardsuit helmet with internal pressurization systems and a scanning hud for nearby ore and minerals.
   components:
@@ -28,7 +28,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitClarizeWorker
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: clarizian technician's hardsuit helmet
   description: A miner's hardsuit helmet with internal pressurization systems and a scanning hud for nearby ore and minerals.
   components:
@@ -53,7 +53,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitClarize
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: royal trooper's hardsuit helmet
   description: A hardsuit helmet for one of the Queensguard.
   components:
@@ -78,7 +78,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitImperialCommand
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: imperial command hardsuit helmet
   description: An Imperial hardsuit helmet with internal pressurization systems and sturdy armor plating.
   components:
@@ -106,7 +106,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitImperialSoldier
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: imperial soldier's hardsuit helmet
   description: A combat hardsuit helmet with internal pressurization systems and an inbuilt tracker system for ballistics.
   components:

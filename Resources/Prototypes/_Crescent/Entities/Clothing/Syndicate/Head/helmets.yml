@@ -30,7 +30,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitRamzi
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: operative's combat hardsuit helmet
   description: Spaceworthy protection for your fragile skull. A Syndicate design.
   components:
@@ -56,7 +56,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitSyndicateBattlegroup
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: frontliner's combat hardsuit helmet
   description: Spaceworthy protection for your fragile skull. A Syndicate design.
   components:

@@ -1,165 +1,165 @@
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackFilled]
   id: ClothingBackpackMessengerFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerClown, ClothingBackpackClownFilled]
   id: ClothingBackpackMessengerClownFilled
 
 #- type: entity
-#  noSpawn: true
+#  categories: [ HideSpawnMenu ]
 #  parent: [ClothingBackpackMessengerSecurity, ClothingBackpackSecurityFilled]
 #  id: ClothingBackpackMessengerSecurityFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerMedical, ClothingBackpackMedicalFilled]
   id: ClothingBackpackMessengerMedicalFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerCaptain, ClothingBackpackCaptainFilled]
   id: ClothingBackpackMessengerCaptainFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerEngineering, ClothingBackpackChiefEngineerFilled]
   id: ClothingBackpackMessengerChiefEngineerFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerScience, ClothingBackpackResearchDirectorFilled]
   id: ClothingBackpackMessengerResearchDirectorFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackHOPFilled]
   id: ClothingBackpackMessengerHOPFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerMedical, ClothingBackpackCMOFilled]
   id: ClothingBackpackMessengerCMOFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerCargo, ClothingBackpackQuartermasterFilled]
   id: ClothingBackpackMessengerQuartermasterFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerEngineering, ClothingBackpackEngineeringFilled]
   id: ClothingBackpackMessengerEngineeringFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerAtmospherics, ClothingBackpackAtmosphericsFilled]
   id: ClothingBackpackMessengerAtmosphericsFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerScience, ClothingBackpackScienceFilled]
   id: ClothingBackpackMessengerScienceFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerHydroponics, ClothingBackpackHydroponicsFilled]
   id: ClothingBackpackMessengerHydroponicsFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerMime, ClothingBackpackMimeFilled]
   id: ClothingBackpackMessengerMimeFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerChemistry, ClothingBackpackChemistryFilled]
   id: ClothingBackpackMessengerChemistryFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackChaplainFilled]
   id: ClothingBackpackMessengerChaplainFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackMusicianFilled]
   id: ClothingBackpackMessengerMusicianFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackLibrarianFilled]
   id: ClothingBackpackMessengerLibrarianFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerCargo, ClothingBackpackCargoFilled]
   id: ClothingBackpackMessengerCargoFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerSalvage, ClothingBackpackSalvageFilled]
   id: ClothingBackpackMessengerSalvageFilled
 
 # Frontier
 #- type: entity
-#  noSpawn: true
+#  categories: [ HideSpawnMenu ]
 #  parent: [ClothingBackpackMessengerBrigmedic, ClothingBackpackSecurityFilled]
 #  id: ClothingBackpackMessengerBrigmedicFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerMercenary, ClothingBackpackMercenaryFilled]
   id: ClothingBackpackMessengerMercenaryFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackLawyerFilled]
   id: ClothingBackpackMessengerLawyerFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerPilot, ClothingBackpackPilotFilled]
   id: ClothingBackpackMessengerPilotFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerJanitor, ClothingBackpackFilled]
   id: ClothingBackpackMessengerJanitorFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerMailCarrier, ClothingBackpackFilled]
   id: ClothingBackpackMessengerMailCarrierFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessenger, ClothingBackpackSrFilled]
   id: ClothingBackpackMessengerSrFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerNfsdBrown, ClothingBackpackNfsdBrownFilled]
   id: ClothingBackpackMessengerNfsdBrownFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerNfsdCream, ClothingBackpackNfsdCreamFilled]
   id: ClothingBackpackMessengerNfsdCreamFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerNfsdBrown, ClothingBackpackNfsdBrownDetectiveFilled]
   id: ClothingBackpackMessengerNfsdBrownDetectiveFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerNfsdBrown, ClothingBackpackNfsdBrownRadioFilled]
   id: ClothingBackpackMessengerNfsdBrownRadioFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackMessengerNfsdBrown, ClothingBackpackNfsdBrownSheriffFilled]
   id: ClothingBackpackMessengerNfsdBrownSheriffFilled

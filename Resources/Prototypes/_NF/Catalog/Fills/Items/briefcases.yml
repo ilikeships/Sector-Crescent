@@ -3,7 +3,7 @@
   id: SpaceCashExpedition
   name: syndicate naval operative bundle
   abstract: true
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   suffix: Money
   components:
   - type: Sprite
@@ -18,7 +18,7 @@
   parent: SpaceCashExpedition
   id: SpaceCash5000Expedition
   name: spesos (5000)
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -32,7 +32,7 @@
   parent: SpaceCashExpedition
   id: SpaceCash10000Expedition
   name: spesos (10000)
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -46,7 +46,7 @@
   parent: SpaceCashExpedition
   id: SpaceCash15000Expedition
   name: spesos (15000)
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -60,7 +60,7 @@
   parent: SpaceCashExpedition
   id: SpaceCash20000Expedition
   name: spesos (20000)
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -74,7 +74,7 @@
   parent: SpaceCashExpedition
   id: SpaceCash25000Expedition
   name: spesos (25000)
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
