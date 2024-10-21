@@ -31,12 +31,10 @@
   name: "New Crescent Worker's League"
   id: NCWL
   description: |
-    Currently the holder of many patents and technologies from the now-defunct NanoTrasen
-    industries, SHI is the unmatched and unrivaled corporate powerhouse in the Sector.
-    Fingers in every pie,they manage logistics between systems,development of new technologies,
-    mining operations, and even dabble in the manufacturing of space-capable vessels.Sharing the
-    system with the Syndicate, they have made their local headquarters at the Tatsumoto
-    Shipworks, enjoying acc
+    Communist ahh motherfuckers , these communist cunts take anyone in their ranks , they don't care about species,
+    sex, race or even competency. The leadership is characterized by incompetence and nepotism , just like former
+    communist regimes. If they manage to do anything in one round they'd be the new Divine mandate of this sector,
+    join this if you like roleplaying as a communist freedom fighter in a third world country
   color: "#9FED58"
   weight: 0
   enabled: true
@@ -48,7 +46,10 @@
 - type: faction
   name: "Taypan FreeStations Coalitions"
   id: TFSC
-  description: department-Civilian-description
+  description: |
+    Privateers from deep-space, they found refuge in the recently evacuated Tatsumoso station. The station has become a defacto space city
+    and is under control from a few influential families within the gang. Their primary activity concerns smuggling, minimal tax trading, kidnapping
+    piracy and charter-less mining
   color: "#9FED58"
   weight: -3
   enabled: true
@@ -59,7 +60,9 @@
 - type: faction
   name: "Shinohara Heavy Industries"
   id: SHI
-  description: department-Civilian-description
+  description: |
+    The powerhouse of the sector, SHI undertakes most industrial processes in the sector. Holding many of the patents to vital technologies
+    employed by the Divine mandate, and being one of the last shipmanufacturers with the necesarry technology to print high-quality hulls.
   color: "#9FED58"
   weight: -4
   enabled: true
@@ -70,7 +73,10 @@
 - type: faction
   name: "Saint Romaine's Militia"
   id: SRM
-  description: department-Civilian-description
+  description: |
+    Known as a cult, the Romaine Militia is as fanatic militarist ensemble with the sole purpose of purging the Psionic scourge from the galaxy,
+    They hunt all psionic species such as Atyrians down with fierce efficiency, following their prophet's directive to the letter to destroy
+    all that rips the galaxy's weave.
   color: "#9FED58"
   weight: -5
   enabled: true
