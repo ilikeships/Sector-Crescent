@@ -1,6 +1,7 @@
 - type: entity
   id: BluespaceCargo
   parent: BaseGameRule
+  abstract: true
   noSpawn: true
   components:
   - type: StationEvent
@@ -11,6 +12,7 @@
 
 - type: entity
   id: BluespaceSyndicateCrate
+  abstract: true
   parent: BaseGameRule
   noSpawn: true
   components:
