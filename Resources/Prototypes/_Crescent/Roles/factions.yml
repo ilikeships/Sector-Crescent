@@ -28,48 +28,33 @@
     state: dsm
 
 - type: faction
-  name: "New Crescent Worker's League'"
+  name: "New Crescent Worker's League"
   id: NCWL
-  description: department-Civilian-description
+  description: |
+    Currently the holder of many patents and technologies from the now-defunct NanoTrasen
+    industries, SHI is the unmatched and unrivaled corporate powerhouse in the Sector.
+    Fingers in every pie,they manage logistics between systems,development of new technologies,
+    mining operations, and even dabble in the manufacturing of space-capable vessels.Sharing the
+    system with the Syndicate, they have made their local headquarters at the Tatsumoto
+    Shipworks, enjoying acc
   color: "#9FED58"
   weight: 0
   enabled: true
   icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: office-dark
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: ncwl
+
 
 - type: faction
-  name: "Interdyne Pharmaceuticals"
-  id: IPM
-  description: department-Civilian-description
-  color: "#9FED58"
-  weight: -1
-  enabled: true
-  icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: office-dark
-
-- type: faction
-  name: "Taypan Sektor Polizei"
-  id: TSP
-  description: department-Civilian-description
-  color: "#9FED58"
-  weight: -2
-  enabled: true
-  icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: office-dark
-
-- type: faction
-  name: "New Crescent Syndicate of Privateers"
-  id: NCSP
+  name: "Taypan FreeStations Coalitions"
+  id: TFSC
   description: department-Civilian-description
   color: "#9FED58"
   weight: -3
   enabled: true
   icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: office-dark
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: tsfc
 
 - type: faction
   name: "Shinohara Heavy Industries"
@@ -79,5 +64,5 @@
   weight: -4
   enabled: true
   icon:
-    sprite: Structures/Furniture/chairs.rsi
-    state: office-dark
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: shi
