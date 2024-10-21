@@ -3,6 +3,9 @@
   name: job-name-intelligenceofficer
   description: job-description-intelligenceofficer
   playTimeTracker: JobIntelligenceOfficerNCSP
+  requirements:
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 14
   startingGear: IntelligenceOfficerGear
   alwaysUseSpawner: true

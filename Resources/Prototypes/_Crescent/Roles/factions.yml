@@ -66,3 +66,14 @@
   icon:
     sprite: /Textures/_Crescent/faction_icons.rsi
     state: shi
+
+- type: faction
+  name: "Saint Romaine's Militia"
+  id: SRM
+  description: department-Civilian-description
+  color: "#9FED58"
+  weight: -5
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: srm

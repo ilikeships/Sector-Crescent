@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 8000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 16
   startingGear: ChemcookGear
   alwaysUseSpawner: true

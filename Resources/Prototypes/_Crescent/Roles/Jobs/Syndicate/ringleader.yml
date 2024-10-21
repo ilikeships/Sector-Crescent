@@ -5,6 +5,8 @@
   playTimeTracker: JobRingleaderNCSP
   requirements:
     - !type:WhitelistRequirement
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 55
   startingGear: RingleaderGear
   alwaysUseSpawner: true
