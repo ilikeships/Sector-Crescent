@@ -84,6 +84,9 @@
     sprite: Objects/Misc/bureaucracy.rsi
     layers:
     - state: scrap
+    - state: scrap_bloodied
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
 
 - type: entity
   name: office paper
@@ -256,7 +259,7 @@
 - type: entity
   parent: Paper
   id: PaperWritten
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Paper
   - type: Sprite

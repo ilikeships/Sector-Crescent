@@ -14,11 +14,11 @@ namespace Content.Server.Communications
         /// </summary>
         [ViewVariables]
         [DataField]
-        public float AnnouncementCooldownRemaining;
+        public float AnnouncementCooldownRemaining = 0f;
 
         [ViewVariables]
         [DataField]
-        public float BroadcastCooldownRemaining;
+        public float BroadcastCooldownRemaining = 0f;
 
         /// <summary>
         /// Fluent ID for the announcement title
@@ -41,13 +41,6 @@ namespace Content.Server.Communications
         [ViewVariables]
         [DataField]
         public int Delay = 90;
-
-        /// <summary>
-        /// Time in seconds of announcement cooldown when a new console is created on a per-console basis
-        /// </summary>
-        [ViewVariables]
-        [DataField]
-        public int InitialDelay = 30;
 
         /// <summary>
         /// Can call or recall the shuttle

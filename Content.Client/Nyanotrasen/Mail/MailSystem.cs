@@ -31,13 +31,15 @@ namespace Content.Client.Mail
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly SpriteSystem _spriteSystem = default!;
+        [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
 
         protected override void OnAppearanceChange(EntityUid uid, MailComponent component, ref AppearanceChangeEvent args)
         {
             if (args.Sprite == null)
                 return;
 
-            args.Component.TryGetData(MailVisuals.JobIcon, out string job);
+            if(!_appearanceSystem.TryGetData(uid, MailVisuals.JobIcon, out string job))
+                return;
 
             if (!_prototypeManager.TryIndex<StatusIconPrototype>(job, out var icon))
                 return;

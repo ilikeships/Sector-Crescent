@@ -336,7 +336,7 @@
       - EmpGrenadeNCSP
       - MagazineLightRifleBoxSlugEMPCraft
       - CartridgeShellEmpCraft
-      - GrenadeEMPCraft
+      # - GrenadeEMPCraft YAMLFIX: Duplicate recipe result
       - ClothingUniformJumpsuitNCWLMedicCraft
       - ClothingUniformJumpsuitNCWLCraft
       - ClothingUniformJumpsuitNCWLArtificerCraft
@@ -365,8 +365,8 @@
       - NCWLSwarmerFlatpackCraft
       - NCWLKurosawaFlatpackCraft
       - GrenadeBatonCraft
-      - GrenadeBlastCraft
-      - GrenadeFlashCraft
+      # - GrenadeBlastCraft YAMLFIX: Should be a new result or just use
+      # - GrenadeFlashCraft YAMLFIX: Should be a new result or just use
       - NCWLSlugthrowerFlatpackCraft
       - NCWLAutomortarFlatpackCraft
       - NCWLNeedlerFlatpackCraft

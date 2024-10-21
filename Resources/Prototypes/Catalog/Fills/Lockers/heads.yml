@@ -382,7 +382,7 @@
   id: LockerFreezerVaultFilled
   suffix: Vault, Locked
   parent: LockerFreezerBase
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
     access: [ [ "Command" ] ]

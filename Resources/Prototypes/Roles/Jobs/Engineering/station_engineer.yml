@@ -17,5 +17,4 @@
   id: StationEngineerGear
   equipment:
     eyes: ClothingEyesGlassesMeson
-#    belt: ClothingBeltUtilityEngineering # Frontier - Moved to locker
     ears: ClothingHeadsetEngineering

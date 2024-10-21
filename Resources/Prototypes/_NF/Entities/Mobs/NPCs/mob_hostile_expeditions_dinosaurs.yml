@@ -67,7 +67,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurCompyExpeditions
   name: compsognathus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -104,7 +104,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurDiloExpeditions
   name: dilophosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -142,7 +142,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurRaptorExpeditions
   name: velociraptor
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -179,7 +179,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurParaExpeditions
   name: parasaurolophus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -216,7 +216,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurKentroExpeditions
   name: kentrosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -253,7 +253,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurTrikeExpeditions
   name: triceratops
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -290,7 +290,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurAnkiExpeditions
   name: ankylosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -327,7 +327,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurSpinoExpeditions
   name: spinosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -364,7 +364,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurStegoExpeditions
   name: stegosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -403,7 +403,7 @@
   parent: BaseMobDinosaurExpeditions
   id: MobDinosaurTrexExpeditions
   name: tyrannosaurus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs

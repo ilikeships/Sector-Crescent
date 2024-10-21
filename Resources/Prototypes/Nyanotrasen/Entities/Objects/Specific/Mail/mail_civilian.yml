@@ -1,5 +1,5 @@
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailBotanistChemicalBottles
   suffix: botanistchemicals
@@ -14,7 +14,7 @@
       prob: 0.4
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailBotanistMutagen
   suffix: mutagen
@@ -26,7 +26,7 @@
     - id: UnstableMutagenChemistryBottle
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailBotanistSeeds
   suffix: seeds
@@ -75,7 +75,7 @@
       orGroup: Seeds
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailClownGildedBikeHorn
   suffix: honk
@@ -86,7 +86,7 @@
     - id: BikeHornInstrument
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailClownHonkSupplement
   suffix: honk
@@ -99,7 +99,7 @@
     - id: FoodBanana
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailHoPBureaucracy
   suffix: hoppaper
@@ -110,7 +110,7 @@
       maxAmount: 3
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailHoPSupplement
   suffix: hopsupplement
@@ -122,7 +122,7 @@
     - id: Paper
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailMimeArtsCrafts
   suffix: artscrafts
@@ -134,7 +134,7 @@
       maxAmount: 3
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailMimeBlankBook
   suffix: blankbook
@@ -144,7 +144,7 @@
       - id: BookRandom
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailMimeBottleOfNothing
   suffix: bottleofnothing
@@ -154,7 +154,7 @@
       - id: DrinkBottleOfNothingFull
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailMusicianInstrumentSmall
   suffix: instrument-small
@@ -174,7 +174,7 @@
       orGroup: Instrument
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailPassengerMoney
   suffix: passengermoney

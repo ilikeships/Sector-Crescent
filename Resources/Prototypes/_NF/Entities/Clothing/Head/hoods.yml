@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodArcadia
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: arcadia coat hood
   components:
   - type: Sprite
@@ -27,7 +27,7 @@
 - type: entity # for looks only
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterSyndieUnremoveable
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: syndicate coat hood
   components:
   - type: Unremoveable
@@ -40,7 +40,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatHoodBloodCulthood
   name: cult hood
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hoods/cult.rsi
@@ -55,7 +55,7 @@
 - type: entity # for looks only
   parent: [ ClothingHeadHatHoodBloodCulthood, ClothingHeadHelmetBasic ] # hehe
   id: ClothingHeadHatHoodBloodCulthoodUnremoveable
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: cult hood
   components:
   - type: Unremoveable

@@ -74,7 +74,7 @@
 - type: entity
   id: ActionToggleMagbootsCombat
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-combat.rsi, state: icon }
@@ -83,7 +83,7 @@
 - type: entity
   id: ActionToggleMagbootsNfsd
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-nfsd.rsi, state: icon }
@@ -92,7 +92,7 @@
 - type: entity
   id: ActionToggleMagbootsPirate
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-pirate.rsi, state: icon }
@@ -101,7 +101,7 @@
 - type: entity
   id: ActionToggleMagbootsMercenary
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-mercenary.rsi, state: icon }
@@ -110,7 +110,7 @@
 - type: entity
   id: ActionToggleMagbootsGaloshes
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-galoshes.rsi, state: icon }

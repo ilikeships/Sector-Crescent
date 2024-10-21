@@ -69,13 +69,6 @@
     - sprite: Mobs/Customization/human_hair.rsi
       state: long_bedhead2
 - type: marking
-  id: HumanHairFloorlengthBedhead
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: floorlength_bedhead
-- type: marking
   id: HumanHairBeehive
   bodyPart: Hair
   markingCategory: Hair
@@ -152,20 +145,6 @@
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bowlcut2
-- type: marking
-  id: HumanHairBraid
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: braid
-- type: marking
-  id: HumanHairBraided
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: braided
 - type: marking
   id: HumanHairBraidfront
   bodyPart: Hair
@@ -320,13 +299,6 @@
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classiccornrows2
-- type: marking
-  id: HumanHairClassicFloorlengthBedhead
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: classicfloorlength_bedhead
 - type: marking
   id: HumanHairClassicModern
   bodyPart: Hair
@@ -1293,20 +1265,6 @@
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: vlong
-- type: marking
-  id: HumanHairLongest
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: longest
-- type: marking
-  id: HumanHairLongest2
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: longest2
 - type: marking
   id: HumanHairVeryshortovereyealternate
   bodyPart: Hair

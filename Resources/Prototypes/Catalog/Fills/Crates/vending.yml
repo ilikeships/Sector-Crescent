@@ -230,17 +230,6 @@
         amount: 2 # Frontier
 
 - type: entity
-  id: CrateVendingMachineRestockHappyHonkFilled
-  parent: CratePlasticBiodegradable # Frontier
-  name: Happy Honk restock crate
-  description: Contains a restock box for a happy honk dispenser.
-  components:
-  - type: StorageFill
-    contents:
-      - id: VendingMachineRestockHappyHonk
-        amount: 8 # Frontier
-
-- type: entity
   id: CrateVendingMachineRestockGetmoreChocolateCorpFilled
   parent: CratePlasticBiodegradable # Frontier
   name: Getmore Chocolate Corp restock crate

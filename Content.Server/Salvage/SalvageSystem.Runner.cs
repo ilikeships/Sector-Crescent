@@ -114,7 +114,7 @@ public sealed partial class SalvageSystem
             Announce(args.MapUid, Loc.GetString("salvage-expedition-announcement-dungeon", ("direction", component.DungeonLocation.GetDir())));
 
         component.Stage = ExpeditionStage.Running;
-        Dirty(component);
+        EntityManager.Dirty(args.MapUid, component);
     }
 
     private void OnFTLStarted(ref FTLStartedEvent ev)
@@ -169,8 +169,8 @@ public sealed partial class SalvageSystem
             }
             else if (comp.Stream == null && remaining < audioLength)
             {
-                var audio = _audio.PlayPvs(comp.Sound, uid).Value;
-                comp.Stream = audio.Entity;
+                var audio = _audio.PlayPvs(comp.Sound, uid);
+                comp.Stream = audio?.Entity;
                 _audio.SetMapAudio(audio);
                 comp.Stage = ExpeditionStage.MusicCountdown;
                 Dirty(uid, comp);

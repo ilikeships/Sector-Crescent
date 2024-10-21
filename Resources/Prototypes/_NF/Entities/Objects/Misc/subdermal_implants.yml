@@ -5,7 +5,7 @@
   id: MedicalTrackingImplant
   name: medical tracking implant
   description: This implant has a tracking device monitor for the Interdyne radio channel.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: SubdermalImplant
 #    - type: SuitSensor
@@ -31,7 +31,7 @@
   id: FreelanceTrackingImplant
   name: freelance tracking implant
   description: This implant has a tracking device monitor for the Freelance radio channel.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: SubdermalImplant
 #    - type: SuitSensor
@@ -57,7 +57,7 @@
   id: DeathAcidifierImplantNF
   name: death-acidifier implant
   description: This implant melts the user and their equipment upon death.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SubdermalImplant
     permanent: true

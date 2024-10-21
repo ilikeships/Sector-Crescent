@@ -1,7 +1,7 @@
 # - type: entity # Frontier -right now you never find them since they spawn on random grids.
   # id: AnomalySpawn
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
   # - type: StationEvent
     # weight: 8
@@ -12,7 +12,7 @@
 - type: entity
   id: BreakerFlip
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 7
@@ -23,7 +23,7 @@
 - type: entity
   id: FalseAlarm
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 15
@@ -33,7 +33,7 @@
 - type: entity
   id: GasLeak
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
@@ -48,7 +48,7 @@
 - type: entity
   id: MouseMigration
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-start-announcement
@@ -72,7 +72,7 @@
 - type: entity
   id: CockroachMigration
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-start-announcement
@@ -91,7 +91,7 @@
 - type: entity
   id: PowerGridCheck
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 5
@@ -109,7 +109,7 @@
 - type: entity
   id: RandomSentience
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 6
@@ -122,7 +122,7 @@
 - type: entity
   parent: BaseGameRule
   id: SolarFlare
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 8
@@ -153,7 +153,7 @@
 - type: entity
   id: VentClog
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-start-announcement
@@ -169,7 +169,7 @@
 - type: entity
   id: MassHallucinations
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 7
@@ -184,7 +184,7 @@
       collection: Paracusia
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseGameRule
   id: IonStorm
   components:
@@ -197,7 +197,7 @@
 # - type: entity # Frontier - Restore this ones we add a blacklist on it for critical machines
   # id: MimicVendorRule
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # earliestStart: 0

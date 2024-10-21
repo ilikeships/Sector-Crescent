@@ -252,8 +252,6 @@ namespace Content.Server.Database
 
         #region Rules
 
-        Task<DateTimeOffset?> GetLastReadRules(NetUserId player);
-        Task SetLastReadRules(NetUserId player, DateTimeOffset time);
 
         #endregion
 
@@ -693,17 +691,6 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.PurgeUploadedResourceLogAsync(days));
         }
 
-        public Task<DateTimeOffset?> GetLastReadRules(NetUserId player)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetLastReadRules(player));
-        }
-
-        public Task SetLastReadRules(NetUserId player, DateTimeOffset time)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetLastReadRules(player, time));
-        }
 
         public Task<int> AddAdminNote(int? roundId, Guid player, TimeSpan playtimeAtNote, string message, NoteSeverity severity, bool secret, Guid createdBy, DateTimeOffset createdAt, DateTimeOffset? expiryTime)
         {

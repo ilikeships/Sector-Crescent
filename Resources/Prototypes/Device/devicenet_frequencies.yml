@@ -101,3 +101,8 @@
   id: BasicDevice
   name: device-frequency-prototype-name-basic-device
   frequency: 1280
+
+- type: deviceFrequency
+  id: ShipComms
+  name: device-frequency-prototype-name-ship-comms
+  frequency: 1555

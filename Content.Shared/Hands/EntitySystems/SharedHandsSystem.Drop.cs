@@ -128,7 +128,7 @@ public abstract partial class SharedHandsSystem
             // TODO recursively check upwards for containers
 
             if (!isInContainer
-                || !ContainerSystem.TryGetContainingContainer(userXform.ParentUid, uid, out var container, skipExistCheck: true)
+                || !ContainerSystem.TryGetContainingContainer(userXform.ParentUid, uid, out var container)
                 || !ContainerSystem.Insert((entity, itemXform), container))
                 TransformSystem.AttachToGridOrMap(entity, itemXform);
             return true;

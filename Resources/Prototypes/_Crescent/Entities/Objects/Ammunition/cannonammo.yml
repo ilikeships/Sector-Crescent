@@ -7,10 +7,11 @@
   id: BulletMachineGunVulcan
   name: 20mm vulcan bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 70
@@ -25,7 +26,7 @@
     sprite: _NF/Objects/SpaceArtillery/pdtcasing.rsi
     layers:
       - state: base-projectile
-  - type: SpaceArtilleryProjectile
+  - type: ShipWeaponProjectile
 
 - type: entity
   id: CartridgeVulcanStandard
@@ -75,12 +76,13 @@
   id: BulletMachineGunVulcanTurret
   name: 23mm uranium-tipped vulcan bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
-        Structural: 90
         Piercing: 25
   - type: ProjectileIFF
   - type: ExplodeOnTrigger
@@ -133,10 +135,12 @@
   id: BulletMachineGunMortarTurret
   name: 90mm heavy mortar shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 275
@@ -208,9 +212,11 @@
   id: BulletMachineGunPlasmaTurret
   name: plasma bolt
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 175
@@ -262,9 +268,11 @@
   id: BulletMachineGunPlasmaShuttle
   name: plasma bolt
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 90
@@ -295,9 +303,11 @@
   id: BulletMachineGunPlasmaShuttleLarge
   name: plasma ball
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 150
@@ -328,9 +338,11 @@
   id: BulletMachineGunIon
   name: ion ray
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Radiation: 25
@@ -380,9 +392,11 @@
   id: TorpedoBase
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 5000
@@ -420,9 +434,11 @@
   name: 240mm heatseeking cruise missile
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 5000
@@ -511,9 +527,11 @@
   name: 240mm heatseeking cruise missile
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 500
@@ -581,9 +599,11 @@
   name: 100mm high-explosive fragmentation rocket
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 125
@@ -643,9 +663,11 @@
   name: 230mm high-explosive heavy mortar shell
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
+  - type: ShipWeaponProjectile
   - type: Projectile
+    ignoreWeaponGrid: true
     damage:
       types:
         Structural: 1500

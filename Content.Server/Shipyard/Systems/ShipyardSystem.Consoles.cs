@@ -14,7 +14,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Crescent.Vouchers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.Radio;
 using System.Linq;
@@ -23,7 +22,6 @@ using Content.Server.Cargo.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Server.Maps;
-using Content.Server.UserInterface;
 using Content.Shared.StationRecords;
 using Content.Server.Chat.Systems;
 using Content.Server.Forensics;
@@ -38,9 +36,12 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Content.Server.Shuttles;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -118,7 +119,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (vessel.Price <= 0)
             return;
 
-        if (_station.GetOwningStation(uid) is not { Valid : true } station)
+        if (_station.GetOwningStation(uid) is not { Valid: true } station)
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-invalid-station"));
             PlayDenySound(uid, component);
@@ -146,7 +147,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle))
+        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle, out var config))
         {
             PlayDenySound(uid, component);
             return;
@@ -170,6 +171,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 A = 100
             });
             _shuttle.AddIFFFlag(shuttle.Owner, IFFFlags.IsPlayerShuttle);
+
+            // match our IFF faction with our spawner's
+            if (TryComp<IFFComponent>(Transform(uid).GridUid, out var stationIFF))
+            {
+                _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
+            }
         }
 
         if (TryComp<AccessComponent>(targetId, out var newCap))
@@ -253,6 +260,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         SendPurchaseMessage(uid, player, name, channel, false);
+
+        ChatPurchaseLocation(uid, station, config);
 
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vessel.Price} credits via {ToPrettyString(component.Owner)}");
@@ -382,9 +391,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
         {
-            if (Deleted(deed!.ShuttleUid))
+            if (Deleted(deed.ShuttleUid))
             {
-                RemComp<ShuttleDeedComponent>(targetId!.Value);
+                RemComp<ShuttleDeedComponent>(targetId.Value);
                 return;
             }
         }
@@ -424,6 +433,49 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
     }
 
+    private void ChatPurchaseLocation(EntityUid chatter, EntityUid station, DockingConfig? config)
+    {
+        // Null config means we didn't dock and had to park nearby.
+        if (config == null)
+        {
+            _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-nearby"), InGameICChatType.Speak, false);
+            return;
+        }
+
+        var grid = config.TargetGrid;
+        var dock = config.Docks[0].DockBUid;
+
+        // The dock needs to be parented to the target grid, and the target grid should actually exist.
+        if (Transform(dock).GridUid != grid || !TryComp<MapGridComponent>(grid, out var mapGrid))
+        {
+            _sawmill.Error("Cannot get docking location for " + EntityManager.ToPrettyString(chatter));
+            return;
+        }
+
+        //Now we figure out where in the map grid the dock is.
+        var pos = Transform(dock).LocalPosition;
+        var center = mapGrid.LocalAABB.Center;
+
+        var dir = pos - center;
+
+        var angle = dir.ToAngle().Degrees;
+
+        string direction = angle switch
+        {
+            <= 22.5f => Loc.GetString("zzzz-fmt-direction-East"),
+            <= 67.5f => Loc.GetString("zzzz-fmt-direction-NorthEast"),
+            <= 112.5f => Loc.GetString("zzzz-fmt-direction-North"),
+            <= 157.5f => Loc.GetString("zzzz-fmt-direction-NorthWest"),
+            <= 202.5f => Loc.GetString("zzzz-fmt-direction-West"),
+            <= 247.5f => Loc.GetString("zzzz-fmt-direction-SouthWest"),
+            <= 292.5f => Loc.GetString("zzzz-fmt-direction-South"),
+            <= 337.5f => Loc.GetString("zzzz-fmt-direction-SouthEast"),
+            _ => Loc.GetString("zzzz-fmt-direction-East")
+        };
+
+        _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-direction", ("direction", direction.ToLower()), ("station", station)), InGameICChatType.Speak, false);
+    }
+
     private void SendSellMessage(EntityUid uid, EntityUid? player, string name, string shipyardChannel, EntityUid seller, bool secret)
     {
         var channel = _prototypeManager.Index<RadioChannelPrototype>(shipyardChannel);
@@ -452,45 +504,52 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
     private void OnItemSlotChanged(EntityUid uid, ShipyardConsoleComponent component, ContainerModifiedMessage args)
     {
-        // kind of cursed. We need to update the UI when an Id is entered, but the UI needs to know the player characters bank account.
         if (!TryComp<ActivatableUIComponent>(uid, out var uiComp) || uiComp.Key == null)
             return;
 
-        var uiUsers = _ui.GetActorUis(uid);
+        var uiUsers = _ui.GetActors(uid, uiComp.Key);
 
         foreach (var user in uiUsers)
         {
-            if (user.Entity is not { Valid: true } player)
+            if (user is not { Valid: true } player)
                 continue;
 
             if (!TryComp<BankAccountComponent>(player, out var bank))
                 continue;
 
             var targetId = component.TargetIdSlot.ContainerSlot?.ContainedEntity;
+            ShuttleDeedComponent? deed = null;
 
-            if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
+            if (targetId.HasValue && TryComp(targetId.Value, out deed))
             {
-                if (Deleted(deed!.ShuttleUid))
+                if (Deleted(deed.ShuttleUid))
                 {
-                    RemComp<ShuttleDeedComponent>(targetId!.Value);
+                    RemComp<ShuttleDeedComponent>(targetId.Value);
                     continue;
                 }
             }
 
-            int sellValue = 0;
-            if (deed?.ShuttleUid != null)
-                sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
+            var sellValue = deed?.ShuttleUid != null
+                ? (int)_pricing.AppraiseGrid((EntityUid)deed.ShuttleUid)
+                : 0;
 
-            if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) uiComp.Key ||
-                ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) uiComp.Key) // Unhardcode this please
+            if (uiComp.Key is ShipyardConsoleUiKey.BlackMarket
+                or ShipyardConsoleUiKey.Syndicate)
             {
-                var tax = (int) (sellValue * 0.30f);
+                var tax = (int)(sellValue * 0.30f);
                 sellValue -= tax;
             }
 
             var fullName = deed != null ? GetFullName(deed) : null;
-            RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue,
-                (ShipyardConsoleUiKey) uiComp.Key);
+            RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId.HasValue, (ShipyardConsoleUiKey)uiComp.Key);
+            RefreshState(
+                uid: uid,
+                balance: bank.Balance,
+                access: true,
+                shipDeed: fullName,
+                shipSellValue: sellValue,
+                isTargetIdPresent: targetId.HasValue,
+                (ShipyardConsoleUiKey)uiComp.Key);
         }
     }
 
@@ -677,7 +736,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle))
+        if (!TryPurchaseShuttle((EntityUid) station, vessel.ShuttlePath.ToString(), out var shuttle, out var config))
         {
             PlayDenySound(uid, component);
             return false;

@@ -27,7 +27,7 @@
   name: IRM MP49 
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunMP49
-  description: A light Imperial machinegun - a shoddy imitation of the vintage NanoTrasen MP5..
+  description: A light Imperial machinegun - a shoddy imitation of the vintage NanoTrasen MP5.
   components:
   - type: StaticPrice
     price: 600

@@ -33,7 +33,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitNCWLInfantry
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: homeguard infanteer's hardsuit helmet
   description: Spaceworthy protection for your fragile skull. A communard design.
   components:
@@ -56,7 +56,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitNCWLJuggernaut
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: homeguard juggernaut's hardsuit helmet
   description: Spaceworthy protection for your fragile skull. A communard design.
   components:

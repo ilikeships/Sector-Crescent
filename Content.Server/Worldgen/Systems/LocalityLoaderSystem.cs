@@ -5,7 +5,6 @@ using Content.Shared.Humanoid; // Frontier
 using Content.Shared.Mobs.Components; // Frontier
 using System.Numerics; // Frontier
 using Robust.Shared.Map; // Frontier
-using Content.Server._NF.Salvage; // Frontier
 
 using EntityPosition = (Robust.Shared.GameObjects.EntityUid Entity, Robust.Shared.Map.EntityCoordinates Coordinates); // Frontier
 
@@ -80,17 +79,6 @@ public sealed class LocalityLoaderSystem : BaseWorldSystem
     {
         if (entity != null)
         {
-            // Handle mobrestrictions getting deleted
-            var query = AllEntityQuery<SalvageMobRestrictionsNFComponent>();
-
-            while (query.MoveNext(out var salvUid, out var salvMob))
-            {
-                if (entity == salvMob.LinkedGridEntity)
-                {
-                    QueueDel(salvUid);
-                }
-            }
-
             var mobQuery = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent, TransformComponent>();
             _detachEnts.Clear();
 

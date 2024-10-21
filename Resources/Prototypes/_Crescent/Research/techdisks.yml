@@ -102,7 +102,7 @@
     - state: syndicate
   - type: TechnologyDisk
     recipes:
-      - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
       - NCSPWarshipThrusterFlatpackNCSP
       - NCSPFighterThrusterFlatpackNCSP
   - type: StaticPrice
@@ -259,7 +259,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - SRMKhopeshCraft
   - type: StaticPrice
@@ -275,7 +275,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - DSMPlasmaTurretFlatpackCraft
   - type: StaticPrice
@@ -291,7 +291,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - WeaponPistolComplianceImperialCraft
   - type: StaticPrice
@@ -307,9 +307,9 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
-      - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
       - DSMWarshipThrusterFlatpackCraft
       - DSMFighterThrusterFlatpackCraft
   - type: StaticPrice
@@ -325,7 +325,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - DSMVulcanFlatpackCraft
       - DSMLadyFlatpackCraft
@@ -342,7 +342,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - ClothingOuterHardsuitImperialSoldierCraft
   - type: StaticPrice
@@ -360,7 +360,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - WeaponPistolBlastpopGrayCraft
       - WeaponPistolBlastpopGoldCraft
@@ -379,7 +379,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - ClothingOuterHardsuitHEVCraft
   - type: StaticPrice
@@ -395,7 +395,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - WeaponPistolHimehabuCraft
   - type: StaticPrice
@@ -411,7 +411,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - WeaponPistolSmartpistolCraft
       - MagazinePistolSmartgunCraft
@@ -428,7 +428,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - WeaponSubMachineGunSabreCraft
   - type: StaticPrice
@@ -446,7 +446,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - TermiteLPC
   - type: StaticPrice
@@ -462,7 +462,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - ParacelsusLPC
   - type: StaticPrice
@@ -478,7 +478,7 @@
     sprite: _Crescent/Objects/Misc/techdisks.rsi
     layers:
     - state: iconnanotrasen
-  - type: TechnologyDisk 
+  - type: TechnologyDisk
     recipes:
       - ExhumerLPC
   - type: StaticPrice

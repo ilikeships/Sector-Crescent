@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._Crescent.SpaceArtillery;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -138,6 +139,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
 
         gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        gun.Target = GetEntity(msg.Target);
         AttemptShoot(user.Value, ent, gun);
     }
 
@@ -198,6 +200,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         gun.ShotCounter = 0;
         gun.ShootCoordinates = null;
+        gun.Target = null;
         Dirty(uid, gun);
     }
 
@@ -390,7 +393,15 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         var targetMapVelocity = gunVelocity + direction.Normalized() * speed;
         var currentMapVelocity = Physics.GetMapLinearVelocity(uid, physics);
-        var finalLinear = physics.LinearVelocity + targetMapVelocity - currentMapVelocity;
+        var finalLinear = physics.LinearVelocity;
+
+        // ship projectiles inherit the velocity of their grid
+        if (HasComp<ShipWeaponProjectileComponent>(uid))
+            finalLinear = physics.LinearVelocity + targetMapVelocity + currentMapVelocity;
+        // normal guns do not because tunneling is le bad when your target is a single entity
+        else
+            finalLinear = physics.LinearVelocity + targetMapVelocity - currentMapVelocity;
+
         Physics.SetLinearVelocity(uid, finalLinear, body: physics);
 
         var projectile = EnsureComp<ProjectileComponent>(uid);

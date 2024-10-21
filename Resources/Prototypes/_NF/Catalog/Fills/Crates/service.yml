@@ -1,18 +1,4 @@
 - type: entity
-  id: CrateServiceJanitorialSupplies2
-  parent: CratePlastic
-  name: janitorial supplies crate B
-  description: Fight back against dirt and grime with Nanotrasen's Janitorial Essentials(tm)! Contains two trash bag boxes, one box of wet floor signs and 2 spray cleaners.
-  components:
-  - type: StorageFill
-    contents:
-      - id: BoxTrashbag
-        amount: 2
-      - id: SprayBottleSpaceCleaner
-        amount: 2
-      - id: BoxWetFloorSign
-
-- type: entity
   id: CrateVehicleJanicart
   parent: CrateLivestock
   name: janicart crate

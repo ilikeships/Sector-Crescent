@@ -2,7 +2,7 @@
   name: fuel canister
   parent: BaseItem
   id: FuelCan
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A metallic container that contains fuel.
   components:
     - type: SolutionContainerManager

@@ -72,6 +72,23 @@
   swapDuration: 2
   parallax: SyndieParallax
 
+#graveyard
+
+- type: entity
+  id: GraveyardBiomeSource
+  name: graveyard source
+  components:
+  - type: SpaceBiomeSource
+    biome: graveyardbiome
+    swapDistance: 500
+    priority: 5000
+
+- type: crescentFactionBiome
+  id: graveyardbiome
+  name: The Graveyard
+  swapDuration: 2
+  parallax: GraveyardParallax
+
 #corpie
 
 - type: entity
@@ -80,7 +97,7 @@
   components:
   - type: SpaceBiomeSource
     biome: corpiebiome
-    swapDistance: 1000
+    swapDistance: 300
     priority: 2493
 
 - type: crescentFactionBiome
@@ -88,6 +105,23 @@
   name: Corporate Demilitarized Zone
   swapDuration: 2
   parallax: CorpieParallax
+
+#oris
+
+- type: entity
+  id: OrisBiomeSource
+  name: oris source
+  components:
+  - type: SpaceBiomeSource
+    biome: orisbiome
+    swapDistance: 1500
+    priority: 2492
+
+- type: crescentFactionBiome
+  id: orisbiome
+  name: Taypan-2 Asteroid Belt
+  swapDuration: 2
+  parallax: OrisParallax
 
 # wilds
 
@@ -97,7 +131,7 @@
   components:
   - type: SpaceBiomeSource
     biome: wildbiome
-    swapDistance: 15000
+    swapDistance: 8000
     priority: 2450
 
 - type: crescentFactionBiome
@@ -105,6 +139,23 @@
   name: Taypan Wilds
   swapDuration: 2
   parallax: WildParallax
+
+#generic debris
+
+- type: entity
+  id: DebrisSource
+  name: debris source
+  components:
+  - type: SpaceBiomeSource
+    biome: debrisbiome
+    swapDistance: 500
+    priority: 5500
+
+- type: crescentFactionBiome
+  id: debrisbiome
+  name: Ruined Derelict
+  swapDuration: 2
+  parallax: DebrisParallax
 
 #deepwilds
 
@@ -114,7 +165,7 @@
   components:
   - type: SpaceBiomeSource
     biome: deepwildbiome
-    swapDistance: 20000
+    swapDistance: 12500
     priority: 2420
 
 - type: crescentFactionBiome

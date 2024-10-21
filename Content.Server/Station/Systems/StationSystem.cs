@@ -16,6 +16,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Station.Systems;
@@ -32,6 +33,8 @@ public sealed class StationSystem : EntitySystem
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly ISerializationManager _serializationManager = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -293,6 +296,21 @@ public sealed class StationSystem : EntitySystem
         foreach (var grid in entry)
         {
             AddGridToStation(station, grid, null, data, name);
+
+            if (stationConfig.GridComponents != null)
+            {
+                foreach (var (compName, compData) in stationConfig.GridComponents)
+                {
+                    // I copied this from AddComponentSpecial.cs I dunno if we have an actual API yet
+                    var component = (Component) _factory.GetComponent(compName);
+                    component.Owner = grid;
+
+                    var temp = (object) component;
+                    _serializationManager.CopyTo(compData.Component, ref temp);
+                    EntityManager.RemoveComponent(grid, temp!.GetType());
+                    EntityManager.AddComponent(grid, (Component) temp);
+                }
+            }
         }
 
         if (TryComp<StationRandomTransformComponent>(station, out var random))

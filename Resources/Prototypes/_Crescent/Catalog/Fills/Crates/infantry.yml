@@ -1,0 +1,23 @@
+- type: entity
+  id: CrateSurezaiInfantry
+  parent: CrateSecgear
+  name: imperial infantry armaments
+  description: Basic armaments to outfit an Imperial squadron.
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolComplianceImperial
+        amount: 3
+      - id: WeaponSubMachineGunMP49
+        amount: 3
+
+- type: entity
+  id: CrateSurezaiInfantryArmor
+  parent: CrateSecgear
+  name: imperial infantry armor
+  description: Basic armor to outfit an Imperial squadron.
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterHardsuitImperialSoldier
+        amount: 3

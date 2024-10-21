@@ -21,6 +21,7 @@ public sealed class NPCJukeSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MeleeWeaponSystem _melee = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedMapSystem _mapping = default!;
 
     private EntityQuery<NPCMeleeCombatComponent> _npcMeleeQuery;
     private EntityQuery<NPCRangedCombatComponent> _npcRangedQuery;
@@ -116,7 +117,7 @@ public sealed class NPCJukeSystem : EntitySystem
                 return;
             }
 
-            var targetCoords = grid.GridTileToWorld(component.TargetTile.Value);
+            var targetCoords = _mapping.GridTileToWorld(uid, grid, component.TargetTile.Value);
             var targetDir = (targetCoords.Position - args.WorldPosition);
             targetDir = args.OffsetRotation.RotateVec(targetDir);
             const float weight = 1f;

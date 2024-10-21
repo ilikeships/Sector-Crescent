@@ -14,6 +14,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Content.Shared._Crescent.Diplomacy;
+using Content.Shared.VendingMachines;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -195,6 +197,12 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             DrawTurrets(handle, ourGridId.Value, matrix, true);
         }
 
+        Dictionary<string, Relations>? relations = new();
+        if (EntManager.TryGetComponent<IFFComponent>(ourGridId, out var myIFF))
+        {
+            relations = myIFF.Relations;
+        }
+
         DrawProjectiles(handle, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
@@ -275,6 +283,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 var uiX = uiXCentre * uiXOffset / uiDistance;
                 var uiY = uiYCentre * uiYOffset / uiDistance;
 
+
+
                 var isOutsideRadarCircle = uiDistance > Math.Abs(uiX) && uiDistance > Math.Abs(uiY);
                 if (isOutsideRadarCircle)
                 {
@@ -313,6 +323,27 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                     };
 
                     handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, UIScale, color);
+
+                    if (iff != null && relations.TryGetValue(iff.Faction, out var relation))
+                    {
+                        if (relation == Relations.Ally)
+                        {
+                            var allyText = Loc.GetString("shuttle-console-iff-ally");
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, allyText, UIScale, Color.Blue);
+                        }
+
+                        if (relation == Relations.ColdWar)
+                        {
+                            var coldWarText = Loc.GetString("shuttle-console-iff-cold-war");
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, coldWarText, UIScale, Color.Yellow);
+                        }
+
+                        if (relation == Relations.War)
+                        {
+                            var warText = Loc.GetString("shuttle-console-iff-war");
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, warText, UIScale, Color.Red);
+                        }
+                    }
                 }
 
                 blipDataList.Add(new BlipData

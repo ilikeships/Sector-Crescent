@@ -50,7 +50,7 @@
 - type: entity
   name: random pen
   id: SpawnDungeonLootBureaucracyPen
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: MarkerBasePlaceFree
   suffix: Dungeon
   components:
@@ -252,7 +252,6 @@
         color: red
   - type: RandomSpawner
     prototypes:
-    - TilePrinterNF
     - SalvageTechfabNF
     - ScienceTechFab
     - ServiceTechFab
@@ -308,7 +307,6 @@
     - VendingMachineDrGibb
     - VendingMachineSovietSoda
     - VendingMachineGames
-    - VendingMachineHappyHonk
     - VendingMachineAutoTuneVend
     - VendingMachinePottedPlantVend
     - WaterCooler
@@ -415,7 +413,7 @@
   id: SpawnDungeonMachineFrame
   parent: MarkerBase
   suffix: Dungeon
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:

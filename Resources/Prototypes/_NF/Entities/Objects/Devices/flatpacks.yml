@@ -274,15 +274,6 @@
     layers:
     - state: service_tray
 
-- type: entity
-  parent: UniformPrinterFlatpack
-  id: TilePrinterNFFlatpack
-  name: tile-meister 5000 flatpack
-  description: A flatpack used for constructing a tile-meister 5000.
-  components:
-  - type: Flatpack
-    entity: TilePrinterNF
-
 # Medical
 - type: entity
   parent: BaseNFFlatpack

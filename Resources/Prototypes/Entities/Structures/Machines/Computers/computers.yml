@@ -22,7 +22,7 @@
   id: ComputerEmergencyShuttle
   name: emergency shuttle console
   description: Handles authorization to early launch the shuttle.
-  noSpawn: true # Frontier
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: AccessReader
     access:
@@ -119,7 +119,7 @@
   id: ComputerShuttleSyndie
   name: syndicate shuttle console
   description: Used to pilot a syndicate shuttle.
-  noSpawn: true # Frontier
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -150,7 +150,7 @@
   id: ComputerShuttleCargo
   name: cargo shuttle console
   description: Used to pilot the cargo shuttle.
-  noSpawn: true # Frontier
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -181,7 +181,7 @@
   id: ComputerShuttleSalvage
   name: salvage shuttle console
   description: Used to pilot the salvage shuttle.
-  noSpawn: true # Frontier
+  categories: [ HideSpawnMenu ] # Frontier
   components:
     - type: Sprite
       layers:
@@ -576,7 +576,7 @@
   parent: BaseComputer
   id: ComputerComms
   name: communications computer
-  description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
+  description: A computer used to make station wide announcements via keyboard and set the appropriate alert level.
   components:
   - type: Sprite
     layers:
@@ -590,9 +590,8 @@
       state: generic_keys
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
-    global: true #SR WILL NOT BE IGNORED
   - type: DeviceNetwork
-    transmitFrequencyId: ShuttleTimer
+    transmitFrequencyId: ShipComms
   - type: ActivatableUI
     key: enum.CommunicationsConsoleUiKey.Key
   - type: UserInterface
@@ -730,7 +729,7 @@
   parent: BaseComputer
   name: cargo shuttle computer
   description: Used to order the shuttle.
-  noSpawn: true # Frontier
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -757,71 +756,6 @@
     color: "#b89f25"
   - type: AccessReader
     access: [["Cargo"]]
-  - type: GuideHelp
-    guides:
-    - Cargo
-
-- type: entity
-  id: ComputerCargoOrders
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer] # Frontier
-  name: cargo request computer
-  description: Used to order supplies and approve requests.
-  placement:
-    mode: SnapgridCenter
-  components:
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection: MetalGlassBreak
-  - type: Computer
-  - type: ApcPowerReceiver
-    powerLoad: 200
-  - type: ExtensionCableReceiver
-  - type: ActivatableUIRequiresPower
-  - type: Sprite
-    netsync: false
-    noRot: true
-    sprite: Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: request
-    - map: ["computerLayerKeys"]
-      state: tech_key
-  - type: CargoOrderConsole
-#  - type: ActiveRadio # Frontier
-#    channels: # Frontier
-#    - Supply # Frontier
-  - type: ActivatableUI
-    key: enum.CargoConsoleUiKey.Orders
-  - type: UserInterface
-    interfaces:
-      enum.CargoConsoleUiKey.Orders:
-        type: CargoOrderConsoleBoundUserInterface
-  - type: LitOnPowered
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
-    color: "#b89f25"
-    enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
-    autoRot: true
-    offset: "0, 0.4" # shine from the top, not bottom of the computer
-    castShadows: false
-  - type: AccessReader
-    #access: [["Cargo"]]
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
-#  - type: WirelessNetworkConnection
-#    range: 200
-  - type: DeviceLinkSource
-    range: 200
-    ports:
-      - OrderSender
   - type: GuideHelp
     guides:
     - Cargo

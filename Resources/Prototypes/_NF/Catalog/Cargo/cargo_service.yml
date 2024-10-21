@@ -1,24 +1,4 @@
 - type: cargoProduct
-  id: BulkSpaceCleaner
-  icon:
-    sprite: Objects/Specific/Chemistry/jug.rsi
-    state: jug
-  product: CrateSpaceCleaner
-  cost: 2000
-  category: cargoproduct-category-name-service
-  group: market
-
-- type: cargoProduct
-  id: ServiceJanitorial2
-  icon:
-    sprite: Objects/Specific/Janitorial/janitorial.rsi
-    state: cleaner
-  product: CrateServiceJanitorialSupplies2
-  cost: 800
-  category: cargoproduct-category-name-service
-  group: market
-
-- type: cargoProduct
   id: ServiceVehicleJanicart
   icon:
     sprite: Objects/Vehicles/janicart.rsi

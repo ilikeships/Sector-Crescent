@@ -1,0 +1,28 @@
+- type: gameMap
+  id: Freeport
+  mapName: 'The Freeport'
+  mapPath: /Maps/_Crescent/Stations/freeport.yml
+  minPlayers: 0
+  stations:
+    Freeport:
+      stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: PreventPilot
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'The Freeport'
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            RingleaderNCSP: [ 1, 1 ]
+            LieutenantNCSP: [ 1, 1 ]
+            InfanteerNCSP: [ 4, 4 ]
+            ForemanNCSP: [ 1, 1 ]
+            TechnicianNCSP: [ 3, 3 ]
+            ShipbreakerNCSP: [ 3, 3 ]

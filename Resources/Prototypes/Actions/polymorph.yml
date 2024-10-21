@@ -2,14 +2,14 @@
   id: ActionRevertPolymorph
   name: Revert
   description: Revert back into your original form.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     event: !type:RevertPolymorphActionEvent
 
 - type: entity
   id: ActionPolymorph
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     event: !type:PolymorphActionEvent

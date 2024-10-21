@@ -7,6 +7,7 @@ using Content.Server.Afk.Events;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
+using Content.Shared._Crescent.CCvars;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs;
@@ -195,7 +196,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             }
         }
 
-        var isWhitelisted = player.ContentData()?.Whitelisted ?? false; // DeltaV - Whitelist requirement
+        var isWhitelisted = !_cfg.GetCVar(CCVars.GameRoleTimers) || (player.ContentData()?.Whitelisted ?? false); // DeltaV - Whitelist requirement // Crescent - Disable Role Whitelist CVar
 
         string species;
         string faction = "";

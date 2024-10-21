@@ -124,7 +124,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             var rider = EnsureComp<RiderComponent>(args.BuckledEntity);
             component.Rider = args.BuckledEntity;
             component.LastRider = component.Rider;
-            Dirty(component);
+            EntityManager.Dirty(uid, component);
             Appearance.SetData(uid, VehicleVisuals.HideRider, true);
 
             _mover.SetRelay(args.BuckledEntity, uid);
@@ -169,7 +169,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         Appearance.SetData(uid, VehicleVisuals.HideRider, false);
         // Reset component
         component.Rider = null;
-        Dirty(component);
+        EntityManager.Dirty(uid, component);
     }
 
     /// <summary>
@@ -316,7 +316,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         };
 
         if (!oldOffset.Equals(strap.BuckleOffset))
-            Dirty(strap);
+            EntityManager.Dirty(uid, strap);
 
         foreach (var buckledEntity in strap.BuckledEntities)
         {

@@ -10,7 +10,7 @@
   recipeUnlocks:
   - SHIFighterThrusterFlatpackCraft
   - SHIWarshipThrusterFlatpackCraft
-  - GyroscopeFlatpackLathe
+  # - GyroscopeFlatpackLathe YAMLFIX Fails tests - not printable
 
 - type: technology
   id: ShinoharaCheapPistols
