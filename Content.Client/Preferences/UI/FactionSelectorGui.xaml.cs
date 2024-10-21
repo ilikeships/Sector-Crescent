@@ -136,10 +136,9 @@ namespace Content.Client.Preferences.UI
                     SetFaction(faction);
                     FactionInfo.RemoveAllChildren();
                     factionDesc.Text = faction.Description;
-                    //factionPhoto.Texture = _resourceCache.GetTexture(faction.Icon.TexturePath);
                     factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetHeight = 123f;
-                    FactionInfo.AddChild(factionName);
+                    factionPhoto.SetHeight = 105f;
+                    factionPhoto.SetWidth = 562f;
                     FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
                 };
