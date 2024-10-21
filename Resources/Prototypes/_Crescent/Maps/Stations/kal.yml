@@ -16,6 +16,11 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
         - type: StationJobs
           overflowJobs:
             - Contractor

@@ -6,11 +6,14 @@ using Content.Shared.Clothing;
 using Content.Shared.Hands;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Nyanotrasen.Kitchen.Components;
+using Robust.Shared.Toolshed.Commands.Math;
 
 namespace Content.Client.Kitchen.Visualizers
 {
     public sealed class DeepFriedVisualizerSystem : VisualizerSystem<DeepFriedComponent>
     {
+        [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
+
         private readonly static string ShaderName = "Crispy";
 
         public override void Initialize()
@@ -26,7 +29,7 @@ namespace Content.Client.Kitchen.Visualizers
             if (args.Sprite == null)
                 return;
 
-            if (!args.Component.TryGetData(DeepFriedVisuals.Fried, out bool isFried))
+            if (!_appearanceSystem.TryGetData(uid, DeepFriedVisuals.Fried, out bool isFried))
                 return;
 
             for (var i = 0; i < args.Sprite.AllLayers.Count(); ++i)

@@ -1,8 +1,7 @@
 - type: entity
   id: BluespaceCargo
   parent: BaseGameRule
-  abstract: true
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     weight: 5
@@ -14,7 +13,7 @@
   id: BluespaceSyndicateCrate
   abstract: true
   parent: BaseGameRule
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAudio:

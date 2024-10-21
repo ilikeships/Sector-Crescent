@@ -12,6 +12,11 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Precinct 9'
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
         - type: StationJobs
           overflowJobs: []
           availableJobs:

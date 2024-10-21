@@ -17,13 +17,15 @@
   minPlayers: 0
   stations:
     Hyena:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardCrescentExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'SAW Hyena {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-utility
         - type: StationJobs
           overflowJobs: []
           availableJobs:

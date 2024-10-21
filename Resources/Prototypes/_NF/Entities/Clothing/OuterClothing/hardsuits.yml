@@ -122,7 +122,7 @@
   parent: ClothingOuterHardsuitSyndie
   id: ClothingOuterHardsuitSyndieEliteUnremoveable
   name: syndicate hardsuit
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Unremoveable
   - type: Sprite
@@ -135,7 +135,7 @@
   parent: ClothingOuterHardsuitSyndie
   id: ClothingOuterHardsuitSyndieBloodRedUnremoveable
   name: syndicate hardsuit
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Unremoveable
   - type: Sprite

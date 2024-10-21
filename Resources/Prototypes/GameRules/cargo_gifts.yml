@@ -1,7 +1,7 @@
 # - type: entity
   # id: GiftsPizzaPartySmall
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
   # - type: StationEvent
     # weight: 10
@@ -21,7 +21,7 @@
 # - type: entity
   # id: GiftsPizzaPartyLarge
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 6
@@ -41,7 +41,7 @@
 # - type: entity
   # id: GiftsEngineering
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 4
@@ -64,7 +64,7 @@
 # - type: entity
   # id: GiftsVendingRestock
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 4
@@ -87,7 +87,7 @@
 # - type: entity
   # id: GiftsJanitor
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 8
@@ -107,7 +107,7 @@
 # - type: entity
   # id: GiftsMedical
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 8
@@ -127,7 +127,7 @@
 # - type: entity
   # id: GiftsSpacingSupplies
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 6
@@ -148,7 +148,7 @@
 # - type: entity
   # id: GiftsFireProtection
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 3
@@ -166,7 +166,7 @@
 # - type: entity
   # id: GiftsSecurityGuns
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 2
@@ -186,7 +186,7 @@
 # - type: entity
   # id: GiftsSecurityRiot
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
     # - type: StationEvent
       # weight: 4

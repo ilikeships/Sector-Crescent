@@ -7,7 +7,7 @@
   id: BulletMachineGunVulcan
   name: 20mm vulcan bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -76,7 +76,7 @@
   id: BulletMachineGunVulcanTurret
   name: 23mm uranium-tipped vulcan bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -135,7 +135,7 @@
   id: BulletMachineGunMortarTurret
   name: 90mm heavy mortar shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: ShipWeaponProjectile
@@ -212,7 +212,7 @@
   id: BulletMachineGunPlasmaTurret
   name: plasma bolt
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -268,7 +268,7 @@
   id: BulletMachineGunPlasmaShuttle
   name: plasma bolt
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -303,7 +303,7 @@
   id: BulletMachineGunPlasmaShuttleLarge
   name: plasma ball
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -338,7 +338,7 @@
   id: BulletMachineGunIon
   name: ion ray
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -392,7 +392,7 @@
   id: TorpedoBase
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -434,7 +434,7 @@
   name: 240mm heatseeking cruise missile
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -527,7 +527,7 @@
   name: 240mm heatseeking cruise missile
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -599,7 +599,7 @@
   name: 100mm high-explosive fragmentation rocket
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -663,7 +663,7 @@
   name: 230mm high-explosive heavy mortar shell
   description: Shit.
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile

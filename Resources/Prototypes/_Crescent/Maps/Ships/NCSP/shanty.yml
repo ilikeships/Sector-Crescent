@@ -24,6 +24,7 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
+        - type: VesselDesignation
         - type: StationJobs
           overflowJobs: []
           availableJobs:

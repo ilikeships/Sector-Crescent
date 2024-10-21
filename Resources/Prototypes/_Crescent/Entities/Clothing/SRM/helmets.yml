@@ -15,7 +15,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitHunter
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: hunter's hardsuit helmet
   description: Spaceworthy protection for your fragile skull.
   components:
@@ -38,7 +38,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitHunterElite
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: sixth subjugation fireteam hardsuit helmet
   description: Spaceworthy protection for your fragile skull.
   components:

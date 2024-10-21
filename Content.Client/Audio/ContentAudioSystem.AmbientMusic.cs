@@ -212,11 +212,11 @@ public sealed partial class ContentAudioSystem
             false,
             AudioParams.Default.WithVolume(_musicProto.Sound.Params.Volume + _volumeSlider));
 
-        _ambientMusicStream = strim.Value.Entity;
+        _ambientMusicStream = strim?.Entity;
 
         if (_musicProto.FadeIn)
         {
-            FadeIn(_ambientMusicStream, strim.Value.Component, AmbientMusicFadeTime);
+            FadeIn(_ambientMusicStream, strim?.Component, AmbientMusicFadeTime);
         }
 
         // Refresh the list

@@ -12,6 +12,11 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Tatsumoto Trading Outpost'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: Grammar
+          attributes:
+            proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:

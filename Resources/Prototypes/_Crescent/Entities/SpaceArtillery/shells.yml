@@ -6,7 +6,7 @@
   id: BulletShellEmp
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -57,7 +57,7 @@
   id: BulletShellArmorPiercing
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -115,7 +115,7 @@
   id: BulletShellHighExplosive
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -173,7 +173,7 @@
   id: BulletShellPractice
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -231,7 +231,7 @@
   id: BulletMachineGunEMP
   name: .50 EMP-tip slugthrower pellet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileIFF
   - type: Projectile
@@ -286,7 +286,7 @@
   id: BulletMachineGunArmorPiercing
   name: .50 AP slugthrower bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -344,7 +344,7 @@
   id: BulletMachineGunHighExplosive
   name: .50 low-yield explosive slugthrower bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -402,7 +402,7 @@
   id: BulletMachineGunPractice
   name: .50 inert slughthrower bullet
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -462,7 +462,7 @@
   id: BulletRailEMP
   name: rail
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -517,7 +517,7 @@
   id: BulletRailArmorPiercing
   name: rail
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -575,7 +575,7 @@
   id: BulletRailHighExplosive
   name: rail
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     ignoreWeaponGrid: true
@@ -634,7 +634,7 @@
   name: booster wave
   id: BulletBoosterWave
   parent: BaseBullet
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
@@ -744,7 +744,7 @@
   id: PDTBullet
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -796,7 +796,7 @@
   id: SwarmerMissile
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -881,7 +881,7 @@
   id: LonggunShell
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -937,7 +937,7 @@
   id: SmartBombBase
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile
@@ -995,7 +995,7 @@
   id: NeedlerBase
   name: shell
   parent: BaseBulletTrigger
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipWeaponProjectile
   - type: Projectile

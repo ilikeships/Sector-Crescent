@@ -256,7 +256,7 @@ namespace Content.Server.Carrying
             Transform(carrier).AttachToGridOrMap();
             Transform(carried).AttachToGridOrMap();
             Transform(carried).Coordinates = Transform(carrier).Coordinates;
-            Transform(carried).AttachParent(Transform(carrier));
+            Transform(carried).AttachParent(carrier);
             var carryingComp = EnsureComp<CarryingComponent>(carrier);
             ApplyCarrySlowdown(carrier, carried);
             var carriedComp = EnsureComp<BeingCarriedComponent>(carried);

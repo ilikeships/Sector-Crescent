@@ -30,6 +30,7 @@ public sealed class PointCannonSystem : EntitySystem
     [Dependency] private readonly GunSystem _gunSys = default!;
     [Dependency] private readonly ShuttleConsoleSystem _shuttleConSys = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private const int MaxCollisionCheckDistance = 10;
 
@@ -278,8 +279,8 @@ public sealed class PointCannonSystem : EntitySystem
 
         TransformComponent gridForm = Transform(form.GridUid.Value);
         List<(Angle, Angle)> ranges = new();
-
-        foreach (EntityUid childUid in gridForm.ChildEntities)
+        TransformChildrenEnumerator enumerate = gridForm.ChildEnumerator;
+        while(enumerate.MoveNext(out var childUid))
         {
             //checking if obstacle is not too far/close to the cannon
             TransformComponent otherForm = Transform(childUid);

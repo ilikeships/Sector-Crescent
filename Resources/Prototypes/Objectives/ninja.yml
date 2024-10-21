@@ -13,7 +13,7 @@
       - NinjaRole
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseNinjaObjective
   id: DoorjackObjective
   components:
@@ -29,7 +29,7 @@
   - type: DoorjackCondition
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseNinjaObjective
   id: StealResearchObjective
   description: Your gloves can be used to hack a research server and steal its precious data. If science has been slacking you'll have to get to work.
@@ -45,7 +45,7 @@
   - type: StealResearchCondition
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseNinjaObjective
   id: SpiderChargeObjective
   description: This bomb can be detonated in a specific location. Note that the bomb will not work anywhere else!
@@ -57,7 +57,7 @@
   - type: SpiderChargeCondition
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [BaseNinjaObjective, BaseSurviveObjective]
   id: NinjaSurviveObjective
   name: Survive
@@ -69,7 +69,7 @@
       state: icon
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseNinjaObjective
   id: TerrorObjective
   name: Call in a threat

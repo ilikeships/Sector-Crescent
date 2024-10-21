@@ -1,5 +1,5 @@
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailSecurityDonuts
   suffix: donuts
@@ -9,7 +9,7 @@
     - id: FoodBoxDonut
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailSecurityFlashlight
   suffix: seclite
@@ -19,7 +19,7 @@
     - id: FlashlightSeclite
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailSecurityNonlethalsKit
   suffix: nonlethalskit
@@ -34,7 +34,7 @@
       maxAmount: 2
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailSecuritySpaceLaw
   suffix: spacelaw
@@ -44,7 +44,7 @@
     - id: BookRandomStory
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseMail
   id: MailWardenCrowdControl
   suffix: crowdcontrol
