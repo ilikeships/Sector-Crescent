@@ -22,6 +22,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Linguini.Syntax.Ast;
 
 namespace Content.Server.Players.PlayTimeTracking;
 
@@ -198,18 +199,21 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         var isWhitelisted = !_cfg.GetCVar(CCVars.GameRoleTimers) || (player.ContentData()?.Whitelisted ?? false); // DeltaV - Whitelist requirement // Crescent - Disable Role Whitelist CVar
 
         string species;
+        string faction = "";
         var sex = Sex.Unsexed;
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            if (selectedCharacter.Faction is not null)
+                faction = selectedCharacter.Faction;
         }
         else
         {
             species = string.Empty;
         }
 
-        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex);
+        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction);
     }
 
     public HashSet<string> GetDisallowedJobs(ICommonSession player)
@@ -229,11 +233,14 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         var isWhitelisted = player.ContentData()?.Whitelisted ?? false; // DeltaV - Whitelist requirement
 
         string species;
+        string faction = "";
         var sex = Sex.Unsexed;
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            if (selectedCharacter.Faction is not null)
+                faction = selectedCharacter.Faction;
         }
         else
         {
@@ -246,7 +253,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             {
                 foreach (var requirement in job.Requirements)
                 {
-                    if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex))
+                    if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction))
                         continue;
 
                     goto NoRole;
@@ -254,7 +261,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             }
 
             roles.Add(job.ID);
-            NoRole:;
+        NoRole:;
         }
 
         return roles;
@@ -277,11 +284,15 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         var isWhitelisted = player.ContentData()?.Whitelisted ?? false; // DeltaV - Whitelist requirement
 
         string species;
+        string faction = "";
         var sex = Sex.Unsexed;
+
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            if (selectedCharacter.Faction is not null)
+                faction = selectedCharacter.Faction;
         }
         else
         {
@@ -299,7 +310,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
             foreach (var requirement in jobber.Requirements)
             {
-                if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex))
+                if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction))
                     continue;
 
                 jobs.RemoveSwap(i);

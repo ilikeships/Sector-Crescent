@@ -34,6 +34,7 @@ namespace Content.Client.Preferences.UI
         private readonly IPrototypeManager _prototypeManager;
         private readonly Button _createNewCharacterButton;
         private readonly HumanoidProfileEditor _humanoidProfileEditor;
+        private readonly FactionSelectorGui _factionSelector;
 
         public CharacterSetupGui(
             IEntityManager entityManager,
@@ -63,14 +64,16 @@ namespace Content.Client.Preferences.UI
             };
             _createNewCharacterButton.OnPressed += args =>
             {
-                preferencesManager.CreateCharacter(HumanoidCharacterProfile.RandomWithSpecies());
+                preferencesManager.CreateCharacter(HumanoidCharacterProfile.Random());
                 UpdateUI();
                 args.Event.Handle();
             };
 
+            _factionSelector = new FactionSelectorGui(preferencesManager, prototypeManager, this);
             _humanoidProfileEditor = new HumanoidProfileEditor(preferencesManager, prototypeManager, configurationManager);
             _humanoidProfileEditor.OnProfileChanged += ProfileChanged;
-            CharEditor.AddChild(_humanoidProfileEditor);
+            _factionSelector.OnProfileChanged += ProfileChanged;
+            // MARCAT
 
             UpdateUI();
 
@@ -89,22 +92,39 @@ namespace Content.Client.Preferences.UI
             _preferencesManager.OnServerDataLoaded -= UpdateUI;
         }
 
-        public void Save() => _humanoidProfileEditor.Save();
+        public void Save()
+        {
+            _humanoidProfileEditor.Save();
+            _factionSelector.Save();
+        }
 
         private void ProfileChanged(ICharacterProfile profile, int profileSlot)
         {
             _humanoidProfileEditor.UpdateControls();
+            _factionSelector.UpdateUI();
             UpdateUI();
         }
 
         public void UpdateControls()
         {
             // Reset sliders etc. upon going going back to GUI.
+            _factionSelector.LoadServerData();
             _humanoidProfileEditor.LoadServerData();
+        }
+
+        public void SwitchToCharacterEditor()
+        {
+            CharEditor.RemoveAllChildren();
+            _humanoidProfileEditor.Profile = _factionSelector.Profile;
+            var controller = UserInterfaceManager.GetUIController<LobbyUIController>();
+            _humanoidProfileEditor.UpdateControls();
+            CharEditor.AddChild(_humanoidProfileEditor);
+            controller.ReloadCharacterUI();
         }
 
         private void UpdateUI()
         {
+
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
             Characters.RemoveAllChildren();
@@ -127,19 +147,34 @@ namespace Content.Client.Preferences.UI
                     characterButtonsGroup,
                     character);
                 Characters.AddChild(characterPickerButton);
-
                 var characterIndexCopy = slot;
                 characterPickerButton.OnPressed += args =>
                 {
-                    _humanoidProfileEditor.Profile = (HumanoidCharacterProfile)character;
-                    _humanoidProfileEditor.CharacterSlot = characterIndexCopy;
-                    _humanoidProfileEditor.UpdateControls();
                     _preferencesManager.SelectCharacter(character);
+                    HumanoidCharacterProfile realProfile = (HumanoidCharacterProfile) character;
                     var controller = UserInterfaceManager.GetUIController<LobbyUIController>();
-                    controller.UpdateProfile(_humanoidProfileEditor.Profile);
-                    controller.ReloadCharacterUI();
+                    CharEditor.RemoveAllChildren();
+                    _humanoidProfileEditor.Profile = realProfile;
+                    _humanoidProfileEditor.CharacterSlot = characterIndexCopy;
+                    _factionSelector.Profile = realProfile;
+                    _factionSelector.CharacterSlot = characterIndexCopy;
+                    if (realProfile.Faction!.Length > 0)
+                    {
+                        CharEditor.AddChild(_humanoidProfileEditor);
+                        _humanoidProfileEditor.UpdateControls();
+                        controller.UpdateProfile(_humanoidProfileEditor.Profile);
+                        controller.ReloadCharacterUI();
+                    }
+                    else
+                    {
+                        CharEditor.AddChild(_factionSelector);
+                        _factionSelector.UpdateUI();
+                        controller.UpdateProfile(_factionSelector.Profile);
+                    }
+
                     UpdateUI();
                     args.Event.Handle();
+
                 };
             }
 
@@ -178,7 +213,7 @@ namespace Content.Client.Preferences.UI
                     _previewDummy = entityManager.SpawnEntity(prototypeManager.Index<SpeciesPrototype>(SharedHumanoidAppearanceSystem.DefaultSpecies).DollPrototype, MapCoordinates.Nullspace);
                 }
 
-                EntitySystem.Get<HumanoidAppearanceSystem>().LoadProfile(_previewDummy, (HumanoidCharacterProfile)profile);
+                EntitySystem.Get<HumanoidAppearanceSystem>().LoadProfile(_previewDummy, (HumanoidCharacterProfile) profile);
 
                 if (humanoid != null)
                 {
