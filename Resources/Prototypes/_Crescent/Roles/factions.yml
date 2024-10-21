@@ -54,7 +54,7 @@
   enabled: true
   icon:
     sprite: /Textures/_Crescent/faction_icons.rsi
-    state: tsfc
+    state: tfsc
 
 - type: faction
   name: "Shinohara Heavy Industries"
