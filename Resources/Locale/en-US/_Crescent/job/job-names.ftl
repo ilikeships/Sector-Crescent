@@ -10,9 +10,9 @@ job-name-kadet = Citizen Soldat
 
 #syndicate#
 
-job-name-ringleader = Ringleader
-job-name-lieutenant = Lieutenant
-job-name-infanteer = Infanteer
+job-name-ringleader = Station Administrator
+job-name-lieutenant = Portboss
+job-name-infanteer = Gorlex Infanteer
 job-name-technician = Artillery Technician
 job-name-ripperdoc = Ripperdoc
 job-name-chemcook = TraumaSec Agent

@@ -185,6 +185,15 @@
       board: [ DoorElectronicsNCSPSaws ]
 
 - type: entity
+  parent: WindoorSecure
+  id: WindoorSecureNCSPSaws
+  suffix: NCSP Saws, Windoor
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNCSPSaws ]
+
+- type: entity
   parent: AirlockSyndicate
   id: AirlockSyndicateLockedNCSPRamzi
   suffix: NCSP Ramzi, Locked

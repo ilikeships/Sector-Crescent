@@ -11,6 +11,7 @@
 
 - type: entity
   id: BluespaceSyndicateCrate
+  abstract: true
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
