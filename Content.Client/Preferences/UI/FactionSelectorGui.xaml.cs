@@ -128,7 +128,6 @@ namespace Content.Client.Preferences.UI
                 var factionName = new Label();
                 factionName.HorizontalAlignment = HAlignment.Center;
                 var factionPhoto = new TextureRect();
-                factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
                 factionDesc.HorizontalAlignment = HAlignment.Center;
                 factionButton.OnPressed += _ =>
@@ -137,8 +136,8 @@ namespace Content.Client.Preferences.UI
                     FactionInfo.RemoveAllChildren();
                     factionDesc.Text = faction.Description;
                     factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetHeight = 105f;
-                    factionPhoto.SetWidth = 562f;
+                    factionPhoto.SetHeight = 210f;
+                    factionPhoto.SetWidth = 1124f;
                     FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
                 };
