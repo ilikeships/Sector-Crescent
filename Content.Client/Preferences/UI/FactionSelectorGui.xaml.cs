@@ -128,6 +128,7 @@ namespace Content.Client.Preferences.UI
                 var factionName = new Label();
                 factionName.HorizontalAlignment = HAlignment.Center;
                 var factionPhoto = new TextureRect();
+                factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
                 factionDesc.HorizontalAlignment = HAlignment.Center;
                 factionButton.OnPressed += _ =>
