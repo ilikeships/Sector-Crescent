@@ -21,3 +21,16 @@
     contents:
       - id: ClothingOuterHardsuitImperialSoldier
         amount: 3
+
+- type: entity
+  id: CrateFreeportPistols
+  parent: CrateSecgear
+  name: smuggled light armaments crate
+  description: Basic light armaments, smuggled from outside sources.
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolHKUSP
+        amount: 2
+      - id: WeaponSubMachineGunSabre
+        amount: 2        

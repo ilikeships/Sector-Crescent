@@ -26,12 +26,10 @@
 - type: startingGear
   id: IntelligenceOfficerGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitHosFormal
+    jumpsuit: ClothingUniformJumpsuitSyndicateSuitCyberdawn
     shoes: ClothingShoesBootsCombat
-    head: ClothingHeadHatSyndieMAA
+    head: ClothingHeadHatPatriarch
     id: IntelligenceOfficerPDA
-    mask: ClothingMaskNCWLBalaclava
-    hands: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterCoatSyndieCap
-    ears: ClothingHeadsetNCSP
-    pocket1: WeaponPistolHKUSP
+    gloves: ClothingHandsGlovesFingerless
+    outerClothing: ClothingOuterArmorCyberdawnPatriarch
+    ears: ClothingHeadsetNCSPCyberdawn

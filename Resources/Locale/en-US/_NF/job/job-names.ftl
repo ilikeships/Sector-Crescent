@@ -2,7 +2,7 @@
 job-name-bailiff = Bailiff
 job-name-brigmedic = Brigmedic
 job-name-cadet-nf = Cadet
-job-name-contractor = Contractor
+job-name-contractor = Vagrant
 job-name-deputy = Deputy
 job-name-detective-nf = Detective
 job-name-ertmailcarrier = ERT Mail Carrier

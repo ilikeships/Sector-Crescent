@@ -15,8 +15,8 @@
 - type: entity
   parent: ClothingHeadHelmetBasic
   id: ClothingHeadHelmetSyndicateBasicInterdyne
-  name: traumasec officer's ballistic helmet
-  description: A kevlar-plated nanoweave infantry helmet. Standard issue for TraumaSec.
+  name: ballistic helmet
+  description: A kevlar-plated nanoweave infantry helmet. Standard issue for TFSC.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Syndicate/Head/traumahelmet.rsi
@@ -78,6 +78,29 @@
         Heat: 0.95
         Radiation: 0.95
         Caustic: 0.95
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitCybersunSuit
+  categories: [ HideSpawnMenu ]
+  name: cybersun hardsuit helmet
+  description: Spaceworthy protection for your fragile skull.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/Head/cybersunhelmet.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/Head/cybersunhelmet.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
 
 - type: entity
   parent: ClothingHeadBase
@@ -144,3 +167,14 @@
     sprite: _Crescent/Clothing/Syndicate/Head/syndiehardhat.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Syndicate/Head/syndiehardhat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatPatriarch
+  name: patriarch's peaked cap
+  description: An authorative cap in Cyberdawn white and red.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/Head/patriarch.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/Head/patriarch.rsi

@@ -33,6 +33,9 @@
   id: JobInfanteerNCSP
 
 - type: playTimeTracker
+  id: JobCyberdawnTechNCSP
+
+- type: playTimeTracker
   id: JobTechnicianNCSP
 
 - type: playTimeTracker

@@ -112,6 +112,18 @@
       - state: passenger
 
 - type: entity
+  id: SpawnPointCyberdawnTech
+  parent: SpawnPointJobBase
+  name: cyberdawn researcher
+  components:
+  - type: SpawnPoint
+    job_id: CyberdawnTechNCSP
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
   id: SpawnPointInfanteer
   parent: SpawnPointJobBase
   name: infanteer
@@ -150,7 +162,7 @@
 - type: entity
   id: SpawnPointChemcook
   parent: SpawnPointJobBase
-  name: chemcook
+  name: traumasec
   components:
   - type: SpawnPoint
     job_id: ChemcookNCSP
@@ -162,7 +174,7 @@
 - type: entity
   id: SpawnPointOperative
   parent: SpawnPointJobBase
-  name: operative
+  name: cyberdawn agent
   components:
   - type: SpawnPoint
     job_id: OperativeNCSP
@@ -174,7 +186,7 @@
 - type: entity
   id: SpawnPointIntelligenceOfficer
   parent: SpawnPointJobBase
-  name: intelligence officer
+  name: patriarch
   components:
   - type: SpawnPoint
     job_id: IntelligenceOfficerNCSP
