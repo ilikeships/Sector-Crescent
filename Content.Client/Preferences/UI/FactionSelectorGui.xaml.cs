@@ -130,6 +130,10 @@ namespace Content.Client.Preferences.UI
                 var factionPhoto = new TextureRect();
                 factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
+                var factionListSeparator = new PanelContainer();
+                factionListSeparator.ModulateSelfOverride = Color.Black;
+                factionListSeparator.SetWidth = 10f;
+                factionDesc.MaxWidth = 1002f;
                 factionDesc.HorizontalAlignment = HAlignment.Center;
                 factionButton.OnPressed += _ =>
                 {
@@ -137,22 +141,29 @@ namespace Content.Client.Preferences.UI
                     FactionInfo.RemoveAllChildren();
                     factionDesc.Text = faction.Description;
                     factionPhoto.Texture = faction.Icon.Frame0();
-                    factionPhoto.SetHeight = 210f;
-                    factionPhoto.SetWidth = 1124f;
+                    factionPhoto.SetHeight = 189f;
+                    factionPhoto.SetWidth = 1002f;
                     FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
+                    FactionInfo.AddChild(factionListSeparator);
                 };
                 _factionList.AddChild(factionButton);
 
             }
             var confirmButton = new Button();
+            var separator = new PanelContainer();
+            separator.ModulateSelfOverride = Color.Black;
+            separator.SetHeight = 10f;
             confirmButton.Text = "Confirm";
+            confirmButton.SetHeight = 50f;
+            confirmButton.ModulateSelfOverride = Color.Red;
             confirmButton.OnPressed += _ =>
             {
                 FactionInfo.RemoveAllChildren();
                 Save();
                 SetupUI.SwitchToCharacterEditor();
             };
+            _factionList.AddChild(separator);
             _factionList.AddChild(confirmButton);
         }
 
