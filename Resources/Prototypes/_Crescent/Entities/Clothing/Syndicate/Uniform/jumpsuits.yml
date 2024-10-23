@@ -67,3 +67,36 @@
     sprite: _Crescent/Clothing/Syndicate/Uniform/syndieregular.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Syndicate/Uniform/syndieregular.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSyndicateSuitCyberdawn
+  name: patriarch's undershirt
+  description: A button-up and matching slacks in Cyberdawn colors.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/Uniform/patriarchsuit.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/Uniform/patriarchsuit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSyndicateLabCyberdawn
+  name: cyberdawn sterile labwear
+  description: Uniform laboratory clothing for Cyberdawn employees.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/Uniform/cyberdawnlab.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/Uniform/cyberdawnlab.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSyndicateSoldierCyberdawn
+  name: cyberdawn associate jumpsuit
+  description: Uniform field clothing for Cyberdawn employees.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/Uniform/cyberdawnsecurity.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/Uniform/cyberdawnsecurity.rsi

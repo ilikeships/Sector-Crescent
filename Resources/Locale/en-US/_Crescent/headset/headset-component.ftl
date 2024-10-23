@@ -6,3 +6,4 @@ chat-radio-empireciv = Imperial Broadband
 chat-radio-syndiesaws = SAW Workers Union
 chat-radio-syndiegorlex = Gorlex Security Consulting
 chat-radio-syndieipm = Interdyne Pharmaceuticals
+chat-radio-syndiecyberdawn = Cyberdawn Technologies

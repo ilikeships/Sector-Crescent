@@ -17,7 +17,8 @@ job-description-technician = Follow your contracts. Hunt bounties. Maintain your
 job-description-ripperdoc = Follow your contracts. Tend to your fellow mercenaries.
 job-description-chemcook = Save policyholders from certain death.
 job-description-operative = Sabotage enemy vessels and gather intelligence for the Syndicate.
-job-description-intelligenceofficer = Represent the interests of the Clique. Sabotage the enemies of the Syndicate.
+job-description-intelligenceofficer = Represent the interests of the Family. Sabotage the enemies of the Syndicate.
+job-description-cyberdawntech = Research new technologies for the Family.
 job-description-shipbreaker = Repair Syndicate vessels, take the others apart for scrap.
 job-description-foreman = Coordinate the SAWs. Lead pirate boardings. Scrap vessels.
 

@@ -16,8 +16,9 @@ job-name-infanteer = Gorlex Infanteer
 job-name-technician = Artillery Technician
 job-name-ripperdoc = Ripperdoc
 job-name-chemcook = TraumaSec Agent
-job-name-operative = Operative
-job-name-intelligenceofficer = Intelligence Officer
+job-name-operative = Cyberdawn Asset Security
+job-name-cyberdawntech = Cyberdawn Researcher
+job-name-intelligenceofficer = Patriarch
 job-name-shipbreaker = Shipbreaker
 job-name-foreman = Foreman
 

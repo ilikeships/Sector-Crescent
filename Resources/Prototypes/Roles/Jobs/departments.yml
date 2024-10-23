@@ -113,9 +113,9 @@
   - ChemcookNCSP
   - OperativeNCSP
   - IntelligenceOfficerNCSP
+  - CyberdawnTechNCSP
   - ForemanNCSP
   - ShipbreakerNCSP
-  - Antiquarian
   enabled: true
 
 - type: department
@@ -161,7 +161,7 @@
   - CorpsecSHI
   - EmployeeSHI
   - MedtechSHI
-  enabled: true
+  enabled: false
 
 - type: department
   id: CMM

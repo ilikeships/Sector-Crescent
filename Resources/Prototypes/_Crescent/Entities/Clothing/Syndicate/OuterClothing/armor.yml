@@ -33,6 +33,19 @@
     price: 1000
 
 - type: entity
+  parent: ClothingOuterHardsuitRamzi
+  id: ClothingOuterHardsuitCybersun
+  name: RONIN mk.III modular hardsuit
+  description: A modular hardsuit, bears the colors of Cybersun Technologies of the Syndicate.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndicatecybersun.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndicatecybersun.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitCybersunSuit
+
+- type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitSyndicateBG
   name: BULWARK mk.II frontliner hardsuit
@@ -98,7 +111,7 @@
   parent: ClothingOuterBaseLarge
   id: ClothingOuterArmorSyndicateWorker
   name: shipfitter's high-vis worker vest
-  description: A rubber vest with hi-vis sprites. Comes in Syndicate colors.
+  description: A rubber vest with hi-vis sprites. Comes in TFSC colors.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndiehazardvest.rsi
@@ -150,7 +163,7 @@
   parent: ClothingOuterBaseLarge
   id: ClothingOuterArmorSyndicateArmorvest
   name: frontliner's ballistic vest
-  description: A bulky kevlar-padded ballistic vest, touched with the colors of the Syndicate.
+  description: A bulky kevlar-padded ballistic vest, touched with the colors of the TFSC.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Syndicate/OuterClothing/syndiearmor.rsi
@@ -176,8 +189,8 @@
 - type: entity
   parent: ClothingOuterBaseLarge
   id: ClothingOuterArmorSyndicateArmorvestInterdyne
-  name: traumasec agent's ballistic vest
-  description: A bulky kevlar-padded ballistic vest, touched with the colors of the Interdyne TraumaSec team.
+  name: ballistic vest
+  description: A bulky kevlar-padded ballistic vest, touched with the colors of the TFSC.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Syndicate/OuterClothing/traumasecvest.rsi
@@ -253,3 +266,30 @@
   - type: GroupExamine
   - type: StaticPrice
     price: 450
+
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorCyberdawnPatriarch
+  name: patriarch's overcoat
+  description: A tall durathread coat, regal and adorned with the Cyberdawn corporate insignia.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/patriarchcoat.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Syndicate/OuterClothing/patriarchcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: GroupExamine
+  - type: StaticPrice
+    price: 500
