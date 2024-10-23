@@ -141,7 +141,7 @@ namespace Content.Shared.Roles
                 case FactionRequirement factRequirement:
                     if (factRequirement.FactionID != "" && faction != "" && faction != factRequirement.FactionID)
                     {
-                        reason = FormattedMessage.FromMarkup($"Faction is not {factRequirement.FactionID}");
+                        reason = FormattedMessage.FromMarkup($"Your faction is not {factRequirement.FactionID}");
                         return false;
                     }
                     return true;

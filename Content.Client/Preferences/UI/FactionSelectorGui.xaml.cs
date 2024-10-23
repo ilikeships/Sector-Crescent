@@ -130,10 +130,7 @@ namespace Content.Client.Preferences.UI
                 var factionPhoto = new TextureRect();
                 factionPhoto.Stretch = TextureRect.StretchMode.Scale;
                 var factionDesc = new Label();
-                var factionListSeparator = new PanelContainer();
-                factionListSeparator.ModulateSelfOverride = Color.Black;
-                factionListSeparator.SetWidth = 10f;
-                factionDesc.MaxWidth = 1002f;
+                factionDesc.MaxWidth = 1012f;
                 factionDesc.HorizontalAlignment = HAlignment.Center;
                 factionButton.OnPressed += _ =>
                 {
@@ -142,10 +139,9 @@ namespace Content.Client.Preferences.UI
                     factionDesc.Text = faction.Description;
                     factionPhoto.Texture = faction.Icon.Frame0();
                     factionPhoto.SetHeight = 189f;
-                    factionPhoto.SetWidth = 1002f;
+                    factionPhoto.SetWidth = 1012f;
                     FactionInfo.AddChild(factionPhoto);
                     FactionInfo.AddChild(factionDesc);
-                    FactionInfo.AddChild(factionListSeparator);
                 };
                 _factionList.AddChild(factionButton);
 

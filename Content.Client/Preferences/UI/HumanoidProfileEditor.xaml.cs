@@ -46,7 +46,6 @@ namespace Content.Client.Preferences.UI
         private TextEdit? _flavorTextEdit;
         private Button _nameRandomButton => CNameRandomize;
         private Button _randomizeEverythingButton => CRandomizeEverything;
-        private RichTextLabel _warningLabel => CWarningLabel;
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
         private Slider _skinColor => CSkin;
@@ -102,7 +101,6 @@ namespace Content.Client.Preferences.UI
             _nameEdit.OnTextChanged += args => { SetName(args.Text); };
             _nameRandomButton.OnPressed += args => RandomizeName();
             _randomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
-            _warningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
 
             #endregion Name
 
@@ -730,6 +728,8 @@ namespace Content.Client.Preferences.UI
             Profile = (HumanoidCharacterProfile) _preferencesManager.Preferences!.SelectedCharacter;
             CharacterSlot = _preferencesManager.Preferences.SelectedCharacterIndex;
 
+            LockedFaction.SetMarkup($"[color=white] Character faction : {Profile.Faction}");
+
             UpdateAntagRequirements();
             UpdateControls();
             ShowClothes.Pressed = true;
@@ -1101,6 +1101,9 @@ namespace Content.Client.Preferences.UI
         public void UpdateControls()
         {
             if (Profile is null) return;
+
+            LockedFaction.SetMarkup($"[color=white] Character faction : {Profile.Faction}");
+
             UpdateNameEdit();
             UpdateFlavorTextEdit();
             UpdateSexControls();

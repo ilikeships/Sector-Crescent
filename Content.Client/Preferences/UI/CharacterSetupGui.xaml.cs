@@ -122,8 +122,10 @@ namespace Content.Client.Preferences.UI
             controller.ReloadCharacterUI();
         }
 
+
         private void UpdateUI()
         {
+
 
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();
@@ -176,6 +178,22 @@ namespace Content.Client.Preferences.UI
                     args.Event.Handle();
 
                 };
+
+                HumanoidCharacterProfile? SelChar = (HumanoidCharacterProfile) (_preferencesManager.Preferences!.SelectedCharacter);
+                if (SelChar is not null && CharEditor.ChildCount == 0)
+                {
+                    if (SelChar.Faction == "" || SelChar.Faction is null)
+                    {
+                        CharEditor.AddChild(_factionSelector);
+                        _factionSelector.UpdateUI();
+                    }
+                    else
+                    {
+                        CharEditor.AddChild(_humanoidProfileEditor);
+                        _humanoidProfileEditor.UpdateControls();
+                    }
+                }
+
             }
 
             _createNewCharacterButton.Disabled =
