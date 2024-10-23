@@ -31,10 +31,10 @@
   name: "New Crescent Worker's League"
   id: NCWL
   description: |
-    Communist ahh motherfuckers , these communist cunts take anyone in their ranks , they don't care about species,
-    sex, race or even competency. The leadership is characterized by incompetence and nepotism , just like former
-    communist regimes. If they manage to do anything in one round they'd be the new Divine mandate of this sector,
-    join this if you like roleplaying as a communist freedom fighter in a third world country
+    The defacto communist powerhouse of the Crescent sector. Leading a guerilla war with the help of xeno-species 
+    and disgruntled DSM workers, they've proven to be a significant factor in local economics & politics. Lately 
+    their influence has been diminished following the start of the cold war, with focus on more populated
+    worlds. The local force left in Sector Crescent remains fearsome, with ships wielding 320mm hull-busters.
   color: "#9FED58"
   weight: 0
   enabled: true
@@ -47,9 +47,9 @@
   name: "Taypan FreeStations Coalitions"
   id: TFSC
   description: |
-    Privateers from deep-space, they found refuge in the recently evacuated Tatsumoso station. The station has become a defacto space city
-    and is under control from a few influential families within the gang. Their primary activity concerns smuggling, minimal tax trading, kidnapping
-    piracy and charter-less mining
+    Privateers from deep-space, they found refuge in the recently evacuated Tatsumoso station. The station has become 
+    a defacto space city and is under control from a few influential families within the gang. Their primary activity
+    concerns smuggling, minimal tax trading, kidnapping ,piracy and "illegal" mining operations
   color: "#9FED58"
   weight: -3
   enabled: true
@@ -61,8 +61,9 @@
   name: "Shinohara Heavy Industries"
   id: SHI
   description: |
-    The powerhouse of the sector, SHI undertakes most industrial processes in the sector. Holding many of the patents to vital technologies
-    employed by the Divine mandate, and being one of the last shipmanufacturers with the necesarry technology to print high-quality hulls.
+    The powerhouse of the sector, SHI undertakes most industrial processes in the sector. Holding many of the patents 
+    to vital technologies employed by the Divine mandate, and being one of the last shipmanufacturers with the necesarry 
+    technology to print high-quality hulls.
   color: "#9FED58"
   weight: -4
   enabled: true
@@ -74,9 +75,9 @@
   name: "Saint Romaine's Militia"
   id: SRM
   description: |
-    Known as a cult, the Romaine Militia is as fanatic militarist ensemble with the sole purpose of purging the Psionic scourge from the galaxy,
-    They hunt all psionic species such as Atyrians down with fierce efficiency, following their prophet's directive to the letter to destroy
-    all that rips the galaxy's weave.
+    Known as a cult, the Romaine Militia is as fanatic militarist ensemble with the sole purpose of purging the Psionic 
+    scourge from the galaxy, They hunt all psionic species such as Atyrians down with fierce efficiency, following their 
+    prophet's directive to the letter to destroy all that rips the galaxy's weave.
   color: "#9FED58"
   weight: -5
   enabled: true
