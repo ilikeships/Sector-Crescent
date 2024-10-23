@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 18000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 8
   startingGear: ShipbreakerGear
   alwaysUseSpawner: true

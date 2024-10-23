@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 12000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 18
   startingGear: TechnicianGear
   alwaysUseSpawner: true

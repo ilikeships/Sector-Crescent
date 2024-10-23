@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 20000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 8
   startingGear: ForemanGear
   alwaysUseSpawner: true

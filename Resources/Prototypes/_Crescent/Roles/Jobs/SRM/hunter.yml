@@ -9,6 +9,8 @@
         - Human
     - !type:OverallPlaytimeRequirement
       time: 20000
+    - !type:FactionRequirement
+      factionID: "SRM"
   weight: 22
   startingGear: HunterGear
   alwaysUseSpawner: true

@@ -47,6 +47,7 @@ namespace Content.IntegrationTests.Tests.Preferences
                 Sex.Male,
                 Gender.Epicene,
                 27000,
+                "",
                 new HumanoidCharacterAppearance(
                     "Afro",
                     Color.Aqua,

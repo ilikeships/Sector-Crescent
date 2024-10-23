@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 30000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 45
   startingGear: LieutenantGear
   alwaysUseSpawner: true

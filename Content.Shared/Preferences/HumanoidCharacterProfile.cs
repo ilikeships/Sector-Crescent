@@ -32,7 +32,7 @@ namespace Content.Shared.Preferences
         public const int MaxNameLength = 32;
         public const int MaxDescLength = 512;
 
-        public const int DefaultBalance = 20000;
+        public const int DefaultBalance = 25000;
 
         private readonly Dictionary<string, JobPriority> _jobPriorities;
         private readonly List<string> _antagPreferences;
@@ -51,6 +51,7 @@ namespace Content.Shared.Preferences
             Sex sex,
             Gender gender,
             int bankBalance,
+            string? faction,
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             Dictionary<string, JobPriority> jobPriorities,
@@ -66,6 +67,7 @@ namespace Content.Shared.Preferences
             Sex = sex;
             Gender = gender;
             BankBalance = bankBalance;
+            Faction = faction;
             Appearance = appearance;
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
@@ -82,7 +84,7 @@ namespace Content.Shared.Preferences
             List<string> antagPreferences,
             List<string> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts)
-            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
+            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Faction, other.Appearance, other.SpawnPriority,
                 jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts)
         {
         }
@@ -101,6 +103,7 @@ namespace Content.Shared.Preferences
             Sex sex,
             Gender gender,
             int bankBalance,
+            string? faction,
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             IReadOnlyDictionary<string, JobPriority> jobPriorities,
@@ -108,7 +111,7 @@ namespace Content.Shared.Preferences
             IReadOnlyList<string> antagPreferences,
             IReadOnlyList<string> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts)
-            : this(name, flavortext, species, age, sex, gender, bankBalance, appearance, spawnPriority, new Dictionary<string, JobPriority>(jobPriorities),
+            : this(name, flavortext, species, age, sex, gender, bankBalance, faction, appearance, spawnPriority, new Dictionary<string, JobPriority>(jobPriorities),
                 preferenceUnavailable, new List<string>(antagPreferences), new List<string>(traitPreferences), new Dictionary<string, RoleLoadout>(loadouts))
         {
         }
@@ -126,9 +129,10 @@ namespace Content.Shared.Preferences
                 Sex.Male,
                 Gender.Male,
                 DefaultBalance,
+                "",
                 new HumanoidCharacterAppearance(),
 
-                SpawnPriorityPreference.None,new Dictionary<string, JobPriority>
+                SpawnPriorityPreference.None, new Dictionary<string, JobPriority>
                 {
                     {SharedGameTicker.FallbackOverflowJob, JobPriority.High}
                 },
@@ -154,6 +158,7 @@ namespace Content.Shared.Preferences
                 Sex.Male,
                 Gender.Male,
                 DefaultBalance,
+                "",
                 HumanoidCharacterAppearance.DefaultWithSpecies(species),
                 SpawnPriorityPreference.None,
                 new Dictionary<string, JobPriority>
@@ -208,7 +213,7 @@ namespace Content.Shared.Preferences
 
             var name = GetName(species, gender);
 
-            return new HumanoidCharacterProfile(name, "", species, age, sex, gender, balance, HumanoidCharacterAppearance.Random(species, sex), SpawnPriorityPreference.None,
+            return new HumanoidCharacterProfile(name, "", species, age, sex, gender, balance, "", HumanoidCharacterAppearance.Random(species, sex), SpawnPriorityPreference.None,
                 new Dictionary<string, JobPriority>
                 {
                     {SharedGameTicker.FallbackOverflowJob, JobPriority.High},
@@ -231,6 +236,9 @@ namespace Content.Shared.Preferences
         [DataField("bankBalance")]
         public int BankBalance { get; private set; }
 
+        [DataField("faction")]
+        public string? Faction { get; private set; }
+
         public ICharacterAppearance CharacterAppearance => Appearance;
 
         [DataField("appearance")]
@@ -249,6 +257,10 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithFlavorText(string flavorText)
         {
             return new(this) { FlavorText = flavorText };
+        }
+        public HumanoidCharacterProfile WithFaction(string factionId)
+        {
+            return new(this) { Faction = factionId };
         }
 
         public HumanoidCharacterProfile WithAge(int age)
@@ -371,6 +383,7 @@ namespace Content.Shared.Preferences
             if (Gender != other.Gender) return false;
             if (Species != other.Species) return false;
             if (BankBalance != other.BankBalance) return false;
+            if (Faction != other.Faction) return false;
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
@@ -405,12 +418,13 @@ namespace Content.Shared.Preferences
 
             var age = Math.Clamp(Age, speciesPrototype.MinAge, speciesPrototype.MaxAge);
 
-            // This code block in honor of Visne and Parky
-            var gender = Sex switch
+            var gender = Gender switch
             {
-                Sex.Male => Gender.Male,
-                Sex.Female => Gender.Female,
-                _ => Gender.Epicene
+                Gender.Epicene => Gender.Epicene,
+                Gender.Female => Gender.Female,
+                Gender.Male => Gender.Male,
+                Gender.Neuter => Gender.Neuter,
+                _ => Gender.Epicene // Invalid enum values.
             };
 
             string name;
@@ -578,7 +592,8 @@ namespace Content.Shared.Preferences
                     Age,
                     Sex,
                     Gender,
-                    Appearance
+                    Appearance,
+                    Faction
                 ),
                 BankBalance,
                 SpawnPriority,
