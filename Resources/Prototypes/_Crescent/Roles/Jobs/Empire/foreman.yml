@@ -6,6 +6,9 @@
   weight: 19
   startingGear: ForemanImpGear
   alwaysUseSpawner: true
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
   icon: "JobIconImperialForeman"
   requireAdminNotify: false
   supervisors: job-supervisors-imperial 

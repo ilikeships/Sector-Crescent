@@ -1,0 +1,86 @@
+
+- type: faction
+  name: "Divine Sol Mandate"
+  id: DSM
+  description: |
+    Controlling much of human space outside the Crescent, the Divine Sol Mandate, or simply
+    'the Empire' to laymen, are a product of early space-era corporate classism and
+    post-exploration boom-feudalism, ruled by the mysticized, allegedly all-powerful 'Kaiser' from
+    the Prime system within the Imperial Core constellation, formerly known to archivists as Sol and
+    Pisces, respectively. After the uprising of the NCWL, the Empire had found themselves diminished,
+    but a succesful counter-attack managed to secure the starfortress Kal Suzerai
+    and allowed for a return of Imperial forces to the area, altough control on the fringes of Taypan
+    is still disputed, and raids or terror acts are common.
+    
+    Effectively the prime superpower of all of humanity, the Empire allows for a good amount of
+    economic freedom for its subjects and promotes loyalty in a manner not too dissimilar to
+    the megacorporations of old Earth, with aspiring members climbing up the noble ladder of
+    different houses, such as House Olywir of the Domain system. Freeholders thinking that they
+    can speak up against the current regime quickly find themselves screened against and
+    detained, however, with tight information control preventing widespread dissent and
+    often rewriting history itself to suit the needs of the Empire. Other races are permitted within Imperial
+    ranks, but often subject to increased scrutiny and formal or informal discrimination
+  color: "#9FED58"
+  weight: 1
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: dsm
+
+- type: faction
+  name: "New Crescent Worker's League"
+  id: NCWL
+  description: |
+    The defacto communist powerhouse of the Crescent sector. Leading a guerilla war with the help of xeno-species 
+    and disgruntled DSM workers, they've proven to be a significant factor in local economics & politics. Lately 
+    their influence has been diminished following the start of the cold war, with focus on more populated
+    worlds. The local force left in Sector Crescent remains fearsome, with ships wielding 320mm hull-busters.
+  color: "#9FED58"
+  weight: 0
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: ncwl
+
+
+- type: faction
+  name: "Taypan FreeStations Coalitions"
+  id: TFSC
+  description: |
+    Privateers from deep-space, they found refuge in the recently evacuated Tatsumoso station. The station has become 
+    a defacto space city and is under control from a few influential families within the gang. Their primary activity
+    concerns smuggling, minimal tax trading, kidnapping ,piracy and "illegal" mining operations
+  color: "#9FED58"
+  weight: -3
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: tfsc
+
+- type: faction
+  name: "Shinohara Heavy Industries"
+  id: SHI
+  description: |
+    The powerhouse of the sector, SHI undertakes most industrial processes in the sector. Holding many of the patents 
+    to vital technologies employed by the Divine mandate, and being one of the last shipmanufacturers with the necesarry 
+    technology to print high-quality hulls.
+  color: "#9FED58"
+  weight: -4
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: shi
+
+- type: faction
+  name: "Saint Romaine's Militia"
+  id: SRM
+  description: |
+    Known as a cult, the Romaine Militia is as fanatic militarist ensemble with the sole purpose of purging the Psionic 
+    scourge from the galaxy, They hunt all psionic species such as Atyrians down with fierce efficiency, following their 
+    prophet's directive to the letter to destroy all that rips the galaxy's weave.
+  color: "#9FED58"
+  weight: -5
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: srm

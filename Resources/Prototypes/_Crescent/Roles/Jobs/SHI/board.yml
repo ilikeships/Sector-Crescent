@@ -3,6 +3,9 @@
   name: job-name-board
   description: job-description-board
   playTimeTracker: JobBoardSHI
+  requirements:
+    - !type:FactionRequirement
+      factionID: "SHI"
   weight: 50
   startingGear: BoardGear
   alwaysUseSpawner: true

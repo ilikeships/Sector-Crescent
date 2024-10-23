@@ -10,6 +10,9 @@
   requireAdminNotify: false
   supervisors: job-supervisors-imperial 
   canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
   special:
   - !type:AddComponentSpecial
     components:

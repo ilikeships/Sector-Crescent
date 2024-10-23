@@ -9,6 +9,8 @@
         - Human
     - !type:OverallPlaytimeRequirement
       time: 40000
+    - !type:FactionRequirement
+      factionID: "SRM"
   weight: 22
   startingGear: MontagneGear
   alwaysUseSpawner: true

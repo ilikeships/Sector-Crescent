@@ -3,6 +3,9 @@
   name: job-name-medtech
   description: job-description-medtech
   playTimeTracker: JobMedtechSHI
+  requirements:
+    - !type:FactionRequirement
+      factionID: "SHI"
   weight: 25
   startingGear: MedtechGear
   alwaysUseSpawner: true

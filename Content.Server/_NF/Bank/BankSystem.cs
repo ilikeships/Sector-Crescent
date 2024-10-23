@@ -57,6 +57,7 @@ public sealed partial class BankSystem : EntitySystem
             profile.Sex,
             profile.Gender,
             bank.Balance,
+            profile.Faction,
             profile.Appearance,
             profile.SpawnPriority,
             profile.JobPriorities,
@@ -146,7 +147,7 @@ public sealed partial class BankSystem : EntitySystem
     ///
     /// EDIT 5/13/2024 THE DB GODS THEY CAME. THEY SMOTE. SAVE ME
     /// </summary>
-    private void OnPlayerLobbyJoin (PlayerJoinedLobbyEvent args)
+    private void OnPlayerLobbyJoin(PlayerJoinedLobbyEvent args)
     {
         var cts = new CancellationToken();
         _prefsManager.RefreshPreferencesAsync(args.PlayerSession, cts);

@@ -6,6 +6,9 @@
   weight: 14
   startingGear: OperativeGear
   alwaysUseSpawner: true
+  requirements:
+    - !type:FactionRequirement
+      factionID: "TFSC"
   icon: "JobIconSyndieOperative"
   requireAdminNotify: false
   supervisors: job-supervisors-ncsp 

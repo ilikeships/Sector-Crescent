@@ -12,6 +12,8 @@
   canBeAntag: false
   requirements:
     - !type:WhitelistRequirement
+    - !type:FactionRequirement
+      factionID: "TFSC"
   access:
   - Command
   - Maintenance

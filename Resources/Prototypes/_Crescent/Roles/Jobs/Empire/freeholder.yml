@@ -5,6 +5,9 @@
   playTimeTracker: JobFreeholderDSM
   weight: 18
   startingGear: FreeholderGear
+  requirements:
+    - !type:FactionRequirement
+        factionID: "DSM"
   alwaysUseSpawner: true
   icon: "JobIconImperialFreeholder"
   requireAdminNotify: false
