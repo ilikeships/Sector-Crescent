@@ -5,6 +5,8 @@
   playTimeTracker: JobMarshalCMM
   requirements:
     - !type:WhitelistRequirement
+    - !type:FactionRequirement
+        factionID: "TSP"
   weight: 39
   startingGear: MarshalGear
   alwaysUseSpawner: true

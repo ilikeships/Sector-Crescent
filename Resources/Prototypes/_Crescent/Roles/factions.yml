@@ -84,3 +84,18 @@
   icon:
     sprite: /Textures/_Crescent/faction_icons.rsi
     state: srm
+
+- type: faction
+  name: "Taypan Sektor Polizei"
+  id: TSP
+  description: |
+    The remnants of the Taypan administration, the Sektor Polizei is now tasked with enforcing the Mandate's laws within the Sector,
+    their equipment consists of old ships & decomissioned hulls from the Mandate. Death is common in the force, the war in the Sector
+    has cooled down but not the piracy. Criminal elements such as the NCWL and TFSC are stronger than ever, and TSP equipment grows
+    more outdated as time passes.
+  color: "#9FED58"
+  weight: -5
+  enabled: true
+  icon:
+    sprite: /Textures/_Crescent/faction_icons.rsi
+    state: tsp
