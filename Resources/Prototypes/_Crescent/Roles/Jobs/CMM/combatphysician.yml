@@ -5,6 +5,9 @@
   playTimeTracker: JobPhysicianCMM
   weight: 24
   startingGear: PhysicianGear
+  requirements:
+  - !type:FactionRequirement
+      factionID: "TSP"
   alwaysUseSpawner: true
   icon: "JobIconCMMPhysician"
   requireAdminNotify: false
