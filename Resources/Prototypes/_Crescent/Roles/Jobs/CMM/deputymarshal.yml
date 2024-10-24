@@ -5,6 +5,9 @@
   playTimeTracker: JobDeputyMarshalCMM
   weight: 32
   startingGear: DeputyMarshalGear
+  requirements:
+  - !type:FactionRequirement
+      factionID: "TSP"
   alwaysUseSpawner: true
   icon: "JobIconDeputyMarshal"
   requireAdminNotify: false
