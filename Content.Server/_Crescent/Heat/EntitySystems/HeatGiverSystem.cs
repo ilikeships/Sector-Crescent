@@ -22,7 +22,9 @@ public sealed class HeatGiverSystem : EntitySystem
 
     private void prepareReceiver(EntityUid uid, HeatGiverComponent comp, ref ComponentStartup args)
     {
-
+        HeatReceiverComponent heatRev = new HeatReceiverComponent(comp);
+        EntityUid targUid = EntityManager.ComponentO
+        EntityManager.AddComponent<HeatReceiverComponent>(comp.tak)
     }
 
     private void checkGivers(EntityUid uid, HeatStorageComponent comp, ref ComponentRemove args)
