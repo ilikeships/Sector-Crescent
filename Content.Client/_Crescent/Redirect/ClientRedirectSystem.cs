@@ -17,6 +17,8 @@ public sealed class ClientRedirectSystem : EntitySystem
 
     private void OnRedirectMessage(RedirectMessage ev)
     {
+        /// We're cooking hard here... DLL diggers.. will you be able to figure out
+        /// what feature we're adding next ? 
         IoCManager.Resolve<IGameController>().Redial(ev.RedirectUrl, null);
         return;
     }
