@@ -48,6 +48,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Timer = Robust.Shared.Timing.Timer;
+using Content.Shared.Crescent.Redirect;
 
 namespace Content.Server.Administration.Systems;
 
@@ -189,6 +190,21 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-smite-garbage-can-description")
         };
         args.Verbs.Add(disposalBin);
+
+        Verb SendToFrontier = new()
+        {
+            Text = "Send to Frontier",
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Structures/Piping/disposal.rsi"), "disposal"),
+            Act = () =>
+            {
+                RedirectMessage message = new("ss14://167.235.179.74:1212/");
+                RaiseNetworkEvent(message, args.Target);
+            }
+            Impact = LogImpact.Extreme,
+            Message = "Sends the target To Frontier Station Maunder 1"
+        };
+        args.Verbs.Add(SendToFrontier);
 
         if (TryComp<DamageableComponent>(args.Target, out var damageable) &&
             HasComp<MobStateComponent>(args.Target))
