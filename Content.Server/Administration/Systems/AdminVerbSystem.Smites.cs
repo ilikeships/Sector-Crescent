@@ -195,12 +195,12 @@ public sealed partial class AdminVerbSystem
         {
             Text = "Send to Frontier",
             Category = VerbCategory.Smite,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/Structures/Piping/disposal.rsi"), "disposal"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Crescent/Smite.rsi"), "F"),
             Act = () =>
             {
                 RedirectMessage message = new("ss14://167.235.179.74:1212/");
                 RaiseNetworkEvent(message, args.Target);
-            }
+            },
             Impact = LogImpact.Extreme,
             Message = "Sends the target To Frontier Station Maunder 1"
         };
