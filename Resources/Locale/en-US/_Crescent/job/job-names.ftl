@@ -30,6 +30,7 @@ job-name-knight = Knight Banneret
 job-name-courtier = Minister of Labor
 job-name-logisticsofficer = Knight Logisticier
 job-name-adjutant = Suzerain Adjutant
+job-name-archmaester = Scribe Archmaester
 job-name-governor = Imperial Baron
 job-name-foremanimp = Foreman
 job-name-imperialresearch = Imperial Scribe

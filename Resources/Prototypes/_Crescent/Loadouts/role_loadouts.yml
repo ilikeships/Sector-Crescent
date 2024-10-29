@@ -138,6 +138,11 @@
   - DSMWorkerBelt
 
 - type: roleLoadout
+  id: JobArchmaesterDSM
+  groups:
+  - ContractorTrinkets
+
+- type: roleLoadout
   id: JobForemanDSM
   groups:
   - ContractorTrinkets

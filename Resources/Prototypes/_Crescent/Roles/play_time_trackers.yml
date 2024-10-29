@@ -80,6 +80,9 @@
   id: JobSurgeonDSM
 
 - type: playTimeTracker
+  id: JobArchmaesterDSM
+
+- type: playTimeTracker
   id: JobPhysicianDSM
 
 - type: playTimeTracker
