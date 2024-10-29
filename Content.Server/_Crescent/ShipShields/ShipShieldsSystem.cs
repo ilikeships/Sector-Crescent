@@ -38,6 +38,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         SubscribeLocalEvent<ShipShieldComponent, StartCollideEvent>(OnCollide);
 
         InitializeCommands();
+        InitializeEmitters();
     }
 
     private void OnCollide(EntityUid uid, ShipShieldComponent component, StartCollideEvent args)

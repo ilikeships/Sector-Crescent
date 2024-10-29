@@ -56,3 +56,4 @@
     powerLoad: 3000
   - type: Actions
   - type: Appearance
+  - type: ShipShieldEmitter
