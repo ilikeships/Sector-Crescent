@@ -7,6 +7,9 @@
   startingGear: KadetGear
   alwaysUseSpawner: true
   icon: "JobIconKadet"
+  requirements:
+    - !type:FactionRequirement
+      factionID: "NCWL"
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm
   canBeAntag: false

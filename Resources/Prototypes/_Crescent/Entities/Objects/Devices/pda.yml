@@ -211,8 +211,8 @@
 - type: entity
   parent: BasePDA
   id: OperativePDA
-  name: operative's PDA
-  description: Red for Syndicate. Has the name 'Halflight Media' stamped at the back.
+  name: asset security's PDA
+  description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
   components:
   - type: Pda
     id: NCSPIDCardOperative
@@ -224,9 +224,23 @@
 
 - type: entity
   parent: BasePDA
+  id: CyberdawnTechPDA
+  name: researcher's PDA
+  description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
+  components:
+  - type: Pda
+    id: NCSPIDCardCyberdawnTech
+    state: pda-syndi
+  - type: PdaBorderColor
+    borderColor: "#DC143C"
+  - type: Icon
+    state: pda-syndi
+
+- type: entity
+  parent: BasePDA
   id: IntelligenceOfficerPDA
-  name: intelligence officer's PDA
-  description: Red for Syndicate. Has the name 'Halflight Media' stamped at the back.
+  name: patriarch's PDA
+  description: Red for Syndicate. Has the name 'Cyberdawn' stamped at the back.
   components:
   - type: Pda
     id: NCSPIDCardIntelligenceOfficer
@@ -276,6 +290,20 @@
   components:
   - type: Pda
     id: DSMIDCardFreeholder
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
+  id: ArchmaesterPDA
+  name: archmaester's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardArchmaester
     state: basic
   - type: PdaBorderColor
     borderColor: "#6d5f8a"

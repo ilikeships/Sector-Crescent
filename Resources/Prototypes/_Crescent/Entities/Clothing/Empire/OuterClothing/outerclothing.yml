@@ -65,6 +65,26 @@
     price: 2500
 
 - type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatArchmaester
+  name: archmaester's jacket
+  description: The Archmaester's bolero jacket; designed for the modern explorer.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/OuterClothing/archmaester.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/OuterClothing/archmaester.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: StaticPrice
+    price: 500
+
+- type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitClarize
   name: royal trooper's hardsuit

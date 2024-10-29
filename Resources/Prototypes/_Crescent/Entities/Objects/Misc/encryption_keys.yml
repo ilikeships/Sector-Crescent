@@ -94,6 +94,22 @@
 
 - type: entity
   parent: EncryptionKey
+  id: EncryptionKeySyndiesCyberdawn
+  name: cyberdawn encryption key
+  description: An encryption key used by Cyberdawn Technologies.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Syndicate
+    - Cyberdawn
+    defaultChannel: Common
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: common_label    
+
+- type: entity
+  parent: EncryptionKey
   id: EncryptionKeyEmpire
   name: imperial encryption key
   description: An encryption key used by the Empire.

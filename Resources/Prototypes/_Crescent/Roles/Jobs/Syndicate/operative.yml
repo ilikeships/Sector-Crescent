@@ -6,6 +6,9 @@
   weight: 14
   startingGear: OperativeGear
   alwaysUseSpawner: true
+  requirements:
+    - !type:FactionRequirement
+      factionID: "TFSC"
   icon: "JobIconSyndieOperative"
   requireAdminNotify: false
   supervisors: job-supervisors-ncsp 
@@ -23,10 +26,10 @@
 - type: startingGear
   id: OperativeGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitSyndicateSuit
+    jumpsuit: ClothingUniformJumpsuitSyndicateSoldierCyberdawn
     shoes: ClothingShoesBootsCombat
     id: OperativePDA
-    hands: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterCoatSyndieCapArmored
-    ears: ClothingHeadsetNCSP
-    pocket1: WeaponPistolHKUSP
+    gloves: ClothingHandsGlovesFingerless
+    outerClothing: ClothingOuterArmorKendoBogu
+    ears: ClothingHeadsetNCSPCyberdawn
+    belt: WeaponPistolHKUSP

@@ -11,7 +11,6 @@
   color: "#9FED58"
   weight: 5
   roles:
-  - Bartender
   - Borg
  # - Botanist
  # - Boxer
@@ -23,12 +22,12 @@
  # - Librarian
  # - Mime
  # - Musician
-  - Passenger
+  - Contractor
  # - Reporter
  # - Visitor
  # - Zookeeper
  # - ServiceWorker
-  enabled: false
+  enabled: true
 
 - type: department
   id: Command
@@ -113,9 +112,9 @@
   - ChemcookNCSP
   - OperativeNCSP
   - IntelligenceOfficerNCSP
+  - CyberdawnTechNCSP
   - ForemanNCSP
   - ShipbreakerNCSP
-  - Antiquarian
   enabled: true
 
 - type: department
@@ -134,6 +133,7 @@
   - CourtierDSM
   - AdjutantDSM
   - GovernorDSM
+  - ArchmaesterDSM
   enabled: true
 
 - type: department
@@ -161,7 +161,7 @@
   - CorpsecSHI
   - EmployeeSHI
   - MedtechSHI
-  enabled: true
+  enabled: false
 
 - type: department
   id: CMM

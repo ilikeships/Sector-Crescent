@@ -69,6 +69,11 @@
   - ContractorTrinkets
 
 - type: roleLoadout
+  id: JobCyberdawnTechNCSP
+  groups:
+  - ContractorTrinkets
+
+- type: roleLoadout
   id: JobLieutenantNCSP
   groups:
   - ContractorTrinkets
@@ -131,6 +136,11 @@
   - DSMCommonerJumpsuits
   - DSMCommonerFeetwear
   - DSMWorkerBelt
+
+- type: roleLoadout
+  id: JobArchmaesterDSM
+  groups:
+  - ContractorTrinkets
 
 - type: roleLoadout
   id: JobForemanDSM

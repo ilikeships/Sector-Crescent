@@ -5,6 +5,9 @@
   playTimeTracker: JobMinutemanCMM
   weight: 26
   startingGear: MinutemanGear
+  requirements:
+  - !type:FactionRequirement
+      factionID: "TSP"
   alwaysUseSpawner: true
   icon: "JobIconMinuteman"
   requireAdminNotify: false

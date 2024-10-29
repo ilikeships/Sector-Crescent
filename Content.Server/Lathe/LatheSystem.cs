@@ -366,7 +366,7 @@ namespace Content.Server.Lathe
 
             component.TimeMultiplier = MathF.Pow(component.PartRatingPrintTimeMultiplier, printTimeRating - 1);
             component.MaterialUseMultiplier = MathF.Pow(component.PartRatingMaterialUseMultiplier, materialUseRating - 1);
-            Dirty(component);
+            EntityManager.Dirty(uid, component);
         }
 
         private void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args)

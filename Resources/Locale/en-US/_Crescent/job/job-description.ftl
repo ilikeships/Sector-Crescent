@@ -17,7 +17,8 @@ job-description-technician = Follow your contracts. Hunt bounties. Maintain your
 job-description-ripperdoc = Follow your contracts. Tend to your fellow mercenaries.
 job-description-chemcook = Save policyholders from certain death.
 job-description-operative = Sabotage enemy vessels and gather intelligence for the Syndicate.
-job-description-intelligenceofficer = Represent the interests of the Clique. Sabotage the enemies of the Syndicate.
+job-description-intelligenceofficer = Represent the interests of the Family. Sabotage the enemies of the Syndicate.
+job-description-cyberdawntech = Research new technologies for the Family.
 job-description-shipbreaker = Repair Syndicate vessels, take the others apart for scrap.
 job-description-foreman = Coordinate the SAWs. Lead pirate boardings. Scrap vessels.
 
@@ -30,9 +31,10 @@ job-description-courtier = Oversee and command reconstruction and trade efforts 
 job-description-adjutant = Obey your liege lord, the Kaiser, and your liege lord, the Governor. Attempt to coordinate the Empire.
 job-description-governor = Maintain the delicate balance of the Count's court. Protect your fief.
 job-description-logistics = Outfit your liege's army with vessels and munitions.
-job-description-wealth = Oversee the barony's economical matters, generate revenue for your liegelord and pay his men.
+job-description-wealth = Oversee the barony's economical matters, generate revenue for your liege lord and pay his men.
 job-description-foremanimp = Coordinate the workers of your liege.
-job-description-scribe = Coordinate the Scribes' Guild, discover new technologies for the Empire.
+job-description-scribe = Explore, discover new technologies, and recover derelicts.
+job-description-archmaester = Coordinate the Scribes' Guild, discover new technologies for the Empire.
 job-description-surgeon = Tend to the bodily ails of your comrades.
 
 #srm#

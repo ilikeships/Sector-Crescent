@@ -1,0 +1,20 @@
+
+- type: cargoProduct
+  id: EvaKitFreeport
+  icon:
+    sprite: Clothing/Head/Helmets/eva.rsi
+    state: icon
+  product: CrateEvaKit
+  cost: 3000
+  category: cargoproduct-category-name-engineering
+  group: freeport
+
+- type: cargoProduct
+  id: EngineeringRCDAmmoFreeport
+  icon:
+    sprite: Objects/Tools/rcd.rsi
+    state: ammo
+  product: CrateRCDAmmo
+  cost: 3250
+  category: cargoproduct-category-name-engineering
+  group: freeport

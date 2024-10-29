@@ -4,7 +4,7 @@
   id: SpawnDungeonLootMeleeT1
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Melee, T1"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -38,7 +38,7 @@
   id: SpawnDungeonLootGunT1
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Gun, T1"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -69,7 +69,7 @@
   id: SpawnDungeonLootExplosivesT1
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Explosives, T1"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -95,7 +95,7 @@
   id: SpawnDungeonLootMeleeT2
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Melee, T2"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -126,7 +126,7 @@
   id: SpawnDungeonLootGunT2
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Gun, T2"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -160,7 +160,7 @@
   id: SpawnDungeonLootExplosivesT2
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Explosives, T2"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -186,7 +186,7 @@
   id: SpawnDungeonLootMeleeT3
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Melee, T3"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -215,7 +215,7 @@
   id: SpawnDungeonLootGunT3
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Gun, T3"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -243,7 +243,7 @@
   id: SpawnDungeonLootExplosivesT3
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Explosives, T3"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -269,7 +269,7 @@
   id: SpawnDungeonLootMeleeT4
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Melee, T4"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -298,7 +298,7 @@
   id: SpawnDungeonLootGunT4
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Gun, T4"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -327,7 +327,7 @@
   id: SpawnDungeonLootExplosivesT4
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Explosives, T4"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -353,7 +353,7 @@
   id: SpawnDungeonLootMeleeT5
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Melee, T5"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -375,7 +375,7 @@
   id: SpawnDungeonLootGunT5
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Gun, T5"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -400,7 +400,7 @@
   id: SpawnDungeonLootExplosivesT5
   parent: MarkerBasePlaceFree
   suffix: "Dungeon, Explosives, T5"
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:

@@ -10,14 +10,15 @@ job-name-kadet = Citizen Soldat
 
 #syndicate#
 
-job-name-ringleader = Ringleader
-job-name-lieutenant = Lieutenant
-job-name-infanteer = Infanteer
+job-name-ringleader = Station Administrator
+job-name-lieutenant = Portboss
+job-name-infanteer = Gorlex Infanteer
 job-name-technician = Artillery Technician
 job-name-ripperdoc = Ripperdoc
 job-name-chemcook = TraumaSec Agent
-job-name-operative = Operative
-job-name-intelligenceofficer = Intelligence Officer
+job-name-operative = Cyberdawn Asset Security
+job-name-cyberdawntech = Cyberdawn Researcher
+job-name-intelligenceofficer = Patriarch
 job-name-shipbreaker = Shipbreaker
 job-name-foreman = Foreman
 
@@ -29,6 +30,7 @@ job-name-knight = Knight Banneret
 job-name-courtier = Minister of Labor
 job-name-logisticsofficer = Knight Logisticier
 job-name-adjutant = Suzerain Adjutant
+job-name-archmaester = Scribe Archmaester
 job-name-governor = Imperial Baron
 job-name-foremanimp = Foreman
 job-name-imperialresearch = Imperial Scribe

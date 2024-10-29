@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 6000
+    - !type:FactionRequirement
+      factionID: "TFSC"
   weight: 16
   startingGear: RipperdocGear
   alwaysUseSpawner: true

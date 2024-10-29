@@ -8,6 +8,17 @@ using Content.Server.Players;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using Content.Server.Chat.Managers;
+using Content.Server.Database;
+using Content.Server.Players;
+using Content.Shared.Administration;
+using Content.Shared.CCVar;
+using Content.Shared.Info;
+using Content.Shared.Players;
 using Robust.Server.Console;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -239,6 +250,7 @@ namespace Content.Server.Administration.Managers
             _sawmill = _logManager.GetSawmill("admin");
 
             _netMgr.RegisterNetMessage<MsgUpdateAdminStatus>();
+            _netMgr.RegisterNetMessage<ShowRulesPopupMessage>();
 
             // Cache permissions for loaded console commands with the requisite attributes.
             foreach (var (cmdName, cmd) in _consoleHost.AvailableCommands)
@@ -342,7 +354,7 @@ namespace Content.Server.Administration.Managers
             }
             else if (e.NewStatus == SessionStatus.Disconnected)
             {
-                if (_admins.Remove(e.Session, out var reg ) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
+                if (_admins.Remove(e.Session, out var reg) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
                 {
                     if (reg.Data.Stealth)
                     {

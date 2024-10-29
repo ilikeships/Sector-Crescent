@@ -3,7 +3,7 @@
 # - type: entity
   # id: Ninja
   # parent: BaseGameRule
-  # noSpawn: true
+  # categories: [ HideSpawnMenu ]
   # components:
   # - type: NinjaRule
     # objectives:
@@ -19,7 +19,7 @@
       # rule: RevenantSpawn
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseGameRule
   id: Thief
   components:
@@ -44,7 +44,7 @@
         sound: "/Audio/Misc/thief_greeting.ogg"
 
 #- type: entity
-#  noSpawn: true
+#  categories: [ HideSpawnMenu ]
 #  parent: BaseGameRule
 #  id: Exterminator
 #  components:

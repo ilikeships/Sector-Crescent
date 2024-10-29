@@ -340,6 +340,8 @@ public sealed partial class ShuttleSystem
         component = AddComp<FTLComponent>(uid);
         component.State = FTLState.Starting;
         var audio = _audio.PlayPvs(_startupSound, uid);
+        if (audio is null)
+            return false;
         audio.Value.Component.Flags |= AudioFlags.GridAudio;
 
         if (_physicsQuery.TryGetComponent(uid, out var gridPhysics))
@@ -506,6 +508,8 @@ public sealed partial class ShuttleSystem
 
         comp.TravelStream = _audio.Stop(comp.TravelStream);
         var audio = _audio.PlayPvs(_arrivalSound, uid);
+        if (audio is null)
+            return;
         audio.Value.Component.Flags |= AudioFlags.GridAudio;
         // TODO: Shitcode til engine fix
 

@@ -46,6 +46,13 @@
   keycode: "3"
   frequency: 6103
   color: "#f8baba"
+  
+- type: radioChannel
+  id: Cyberdawn
+  name: chat-radio-syndiecyberdawn
+  keycode: "2"
+  frequency: 3103
+  color: "#fafafa"
 
 - type: radioChannel
   id: Saws

@@ -133,7 +133,7 @@
   id: ActionBaseToggleMagboots
   name: Toggle Magboots
   description: Toggles the magboots on and off.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: NoItem
@@ -142,7 +142,7 @@
 - type: entity
   id: ActionToggleMagboots
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }
@@ -151,7 +151,7 @@
 - type: entity
   id: ActionToggleMagbootsAdvanced
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: Clothing/Shoes/Boots/magboots-advanced.rsi, state: icon }
@@ -160,7 +160,7 @@
 - type: entity
   id: ActionToggleMagbootsSci
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: Clothing/Shoes/Boots/magboots-science.rsi, state: icon }
@@ -169,7 +169,7 @@
 - type: entity
   id: ActionToggleMagbootsSyndie
   parent: ActionBaseToggleMagboots
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: { sprite: Clothing/Shoes/Boots/magboots-syndicate.rsi, state: icon }

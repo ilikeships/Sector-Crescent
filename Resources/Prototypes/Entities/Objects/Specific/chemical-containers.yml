@@ -90,7 +90,7 @@
   parent: Jug
   name: jug (carbon)
   id: JugCarbon
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-carbon
@@ -105,7 +105,7 @@
   parent: Jug
   name: jug (iodine)
   id: JugIodine
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-iodine
@@ -120,7 +120,7 @@
   parent: Jug
   name: jug (fluorine)
   id: JugFluorine
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-fluorine
@@ -135,7 +135,7 @@
   parent: Jug
   name: jug (chlorine)
   id: JugChlorine
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-chlorine
@@ -150,7 +150,7 @@
   parent: Jug
   name: jug (aluminium)
   id: JugAluminium
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-aluminium
@@ -165,7 +165,7 @@
   parent: Jug
   name: jug (phosphorus)
   id: JugPhosphorus
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-phosphorus
@@ -180,7 +180,7 @@
   parent: Jug
   name: jug (sulfur)
   id: JugSulfur
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-sulfur
@@ -195,7 +195,7 @@
   parent: Jug
   name: jug (silicon)
   id: JugSilicon
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-silicon
@@ -210,7 +210,7 @@
   parent: Jug
   name: jug (hydrogen)
   id: JugHydrogen
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-hydrogen
@@ -225,7 +225,7 @@
   parent: Jug
   name: jug (lithium)
   id: JugLithium
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-lithium
@@ -240,7 +240,7 @@
   parent: Jug
   name: jug (sodium)
   id: JugSodium
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-sodium
@@ -255,7 +255,7 @@
   parent: Jug
   name: jug (potassium)
   id: JugPotassium
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-potassium
@@ -270,7 +270,7 @@
   parent: Jug
   name: jug (radium)
   id: JugRadium
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-radium
@@ -285,7 +285,7 @@
   parent: Jug
   name: jug (iron)
   id: JugIron
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-iron
@@ -300,7 +300,7 @@
   parent: Jug
   name: jug (copper)
   id: JugCopper
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-copper
@@ -315,7 +315,7 @@
   parent: Jug
   name: jug (gold)
   id: JugGold
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-gold
@@ -330,7 +330,7 @@
   parent: Jug
   name: jug (mercury)
   id: JugMercury
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-mercury
@@ -345,7 +345,7 @@
   parent: Jug
   name: jug (silver)
   id: JugSilver
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-silver
@@ -360,7 +360,7 @@
   parent: Jug
   name: jug (ethanol)
   id: JugEthanol
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-ethanol
@@ -375,7 +375,7 @@
   parent: Jug
   name: jug (sugar)
   id: JugSugar
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-sugar
@@ -390,7 +390,7 @@
   parent: Jug
   name: jug (nitrogen)
   id: JugNitrogen
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-nitrogen
@@ -405,7 +405,7 @@
   parent: Jug
   name: jug (oxygen)
   id: JugOxygen
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-oxygen
@@ -420,7 +420,7 @@
   parent: Jug
   name: jug (Plant-B-Gone)
   id: JugPlantBGone
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Label
       currentLabel: reagent-name-plant-b-gone

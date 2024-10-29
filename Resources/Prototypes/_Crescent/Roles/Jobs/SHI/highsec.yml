@@ -6,6 +6,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 35000
+    - !type:FactionRequirement
+      factionID: "SHI"
   weight: 39
   startingGear: HighsecGear
   alwaysUseSpawner: true

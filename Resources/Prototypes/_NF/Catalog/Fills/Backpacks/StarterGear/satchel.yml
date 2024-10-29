@@ -1,15 +1,15 @@
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackSatchelMercenary, ClothingBackpackSatchelFilled]
   id: ClothingBackpackSatchelMercenaryFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: [ClothingBackpackSatchelPilot, ClothingBackpackSatchelFilled]
   id: ClothingBackpackSatchelPilotFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelSrFilled
   components:
@@ -22,7 +22,7 @@
       - id: PhoneInstrument
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchelNfsdBrown
   id: ClothingBackpackSatchelNfsdBrownFilled
   components:
@@ -33,12 +33,12 @@
       - id: FrontierUplinkCoin10
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchelNfsdBrownFilled
   id: ClothingBackpackSatchelNfsdCreamFilled
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchelNfsdBrown
   id: ClothingBackpackSatchelNfsdBrownDetectiveFilled
   components:
@@ -51,7 +51,7 @@
       - id: FrontierUplinkCoin10
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchelNfsdBrown
   id: ClothingBackpackSatchelNfsdBrownRadioFilled
   components:
@@ -62,7 +62,7 @@
       - id: BaseSecurityUplinkRadioOfficer
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: ClothingBackpackSatchelNfsdBrown
   id: ClothingBackpackSatchelNfsdBrownSheriffFilled
   components:

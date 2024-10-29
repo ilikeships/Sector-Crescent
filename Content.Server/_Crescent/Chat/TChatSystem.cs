@@ -32,13 +32,13 @@ namespace Content.Server.Crescent.Chat
             return Filter.Empty()
                 .AddWhereAttachedEntity(IsEligibleForTelepathy)
                 .Recipients
-                .Select(p => p.ConnectedClient);
+                .Select(p => p.Channel);
         }
 
         private IEnumerable<INetChannel> GetAdminClients()
         {
             return _adminManager.ActiveAdmins
-                .Select(p => p.ConnectedClient);
+                .Select(p => p.Channel);
         }
 
         private bool IsEligibleForTelepathy(EntityUid entity)

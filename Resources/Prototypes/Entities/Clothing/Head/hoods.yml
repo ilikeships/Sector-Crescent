@@ -87,7 +87,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHoodChaplainHood
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: chaplain's hood
   description: Maximum piety in this star system.
   components:
@@ -180,7 +180,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHoodIan
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: ian hood
   description: A hood to complete the 'Good boy' look.
   components:
@@ -195,7 +195,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHoodCarp
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: carp hood
   description: A gnarly hood adorned with plastic space carp teeth.
   components:
@@ -230,7 +230,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterDefault
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: default winter coat hood
   components:
   - type: Sprite
@@ -241,7 +241,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterBartender
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: bartender winter coat hood
   components:
   - type: Sprite
@@ -252,7 +252,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCaptain
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: captain's winter coat hood
   description: An expensive hood, to keep the captain's head warm.
   components:
@@ -264,7 +264,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCargo
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: cargo winter coat hood
   components:
   - type: Sprite
@@ -275,7 +275,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCE
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: chief engineer's winter coat hood
   components:
   - type: Sprite
@@ -286,7 +286,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCentcom
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: Centcom winter coat hood
   description: A hood for keeping the central comander's head warm.
   components:
@@ -298,7 +298,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterChem
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: chemist winter coat hood
   components:
   - type: Sprite
@@ -309,7 +309,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCMO
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: chief medical officer's winter coat hood
   components:
   - type: Sprite
@@ -320,7 +320,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterEngineer
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: engineer winter coat hood
   components:
   - type: Sprite
@@ -331,7 +331,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterHOP
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: head of personnel's winter coat hood
   components:
   - type: Sprite
@@ -342,7 +342,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterHOS
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: sheriff's winter coat hood
   components:
   - type: Sprite
@@ -353,7 +353,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterHydro
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: hydroponics coat hood
   components:
   - type: Sprite
@@ -364,7 +364,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterJani
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: janitor coat hood
   components:
   - type: Sprite
@@ -375,7 +375,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterMed
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: medic coat hood
   components:
   - type: Sprite
@@ -386,7 +386,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterMime
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: mime coat hood
   components:
   - type: Sprite
@@ -397,7 +397,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterMiner
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: miner coat hood
   components:
   - type: Sprite
@@ -408,7 +408,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterPara
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: paramedic coat hood
   components:
   - type: Sprite
@@ -419,7 +419,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterQM
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: quartermaster's coat hood
   components:
   - type: Sprite
@@ -430,7 +430,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterRD
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: research director's coat hood
   components:
   - type: Sprite
@@ -441,7 +441,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterRobo
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: robotics coat hood
   components:
   - type: Sprite
@@ -452,7 +452,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterSci
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: scientist coat hood
   components:
   - type: Sprite
@@ -463,7 +463,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterSec
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: security coat hood
   components:
   - type: Sprite
@@ -474,7 +474,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterSyndie
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: syndicate coat hood
   components:
   - type: Sprite
@@ -485,7 +485,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterWarden
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: warden's coat hood
   components:
   - type: Sprite
@@ -496,7 +496,7 @@
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterWeb
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: web coat hood
   components:
   - type: Sprite

@@ -3,7 +3,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitHEV
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: shinohara hazardous environment suit helmet
   description: Spaceworthy protection for your fragile skull.
   components:
@@ -28,7 +28,7 @@
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitCorpsec
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: shinohara highsec hardsuit helmet
   description: Spaceworthy protection for your fragile skull.
   components:
@@ -53,7 +53,7 @@
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitTraumasec
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: interdyne traumasec hardsuit helmet
   description: Spaceworthy protection for your fragile skull.
   components:

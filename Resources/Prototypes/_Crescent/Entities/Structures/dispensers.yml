@@ -379,6 +379,8 @@
       TradeGoodRice: TradeDeedLow
       TradeGoodFlour: TradeDeedNormal
       TradeGoodSugar: TradeDeedNormal
+      TradeGoodOrgans: TradeDeedLow
+      TradeGoodDrugs: TradeDeedLow
       TradeGoodFabrics: TradeDeedVeryHigh
       TradeGoodMiltech: TradeDeedVeryHigh
       TradeGoodAlloys: TradeDeedExotic

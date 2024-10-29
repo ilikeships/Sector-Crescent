@@ -61,6 +61,10 @@
   name: id-card-access-level-empire
 
 - type: accessLevel
+  id: Archmaester
+  name: id-card-access-level-empirearchmaester
+
+- type: accessLevel
   id: EmpireSoldier
   name: id-card-access-level-empiremilitary
 

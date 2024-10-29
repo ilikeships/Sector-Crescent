@@ -6,6 +6,9 @@
   weight: 18
   startingGear: OrdnancemanGear
   alwaysUseSpawner: true
+  requirements:
+  - !type:FactionRequirement
+      factionID: "TSP"
   icon: "JobIconOrdnanceman"
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm 

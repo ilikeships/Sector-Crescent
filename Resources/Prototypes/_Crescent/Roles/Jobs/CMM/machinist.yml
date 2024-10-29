@@ -4,6 +4,9 @@
   description: job-description-machinist
   playTimeTracker: JobMachinistCMM
   weight: 22
+  requirements:
+  - !type:FactionRequirement
+      factionID: "TSP"
   startingGear: MachinistGear
   alwaysUseSpawner: true
   icon: "JobIconMachinist"
