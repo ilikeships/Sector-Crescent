@@ -14,6 +14,8 @@ using Robust.Shared.Spawners;
 using Robust.Server.GameStates;
 using Content.Server.Power.Components;
 using Content.Server.Chemistry.ReagentEffects;
+using System.Linq;
+using Robust.Shared.Physics;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
@@ -135,10 +137,27 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetParent(shield, entity);
 
-        GenerateOvalFixture(shield, "shield", shieldPhysics, mapGrid);
-        GenerateOvalFixture(shield, "inner1", shieldPhysics, mapGrid, Padding - 0.5f);
-        GenerateOvalFixture(shield, "inner2", shieldPhysics, mapGrid, Padding - 1f);
-        GenerateOvalFixture(shield, "inner3", shieldPhysics, mapGrid, Padding - 1.5f);
+        var chain = GenerateOvalFixture(shield, "shield", shieldPhysics, mapGrid);
+
+        List<Vector2> roughPoly = new();
+
+        var interval = chain.Count / PhysicsConstants.MaxPolygonVertices;
+
+        int i = 0;
+
+        while (i < PhysicsConstants.MaxPolygonVertices)
+        {
+            roughPoly.Add(chain.Vertices[i * interval]);
+            i++;
+        }
+
+        var internalPoly = new PolygonShape();
+        internalPoly.Set(roughPoly);
+
+        _fixtureSystem.TryCreateFixture(shield, internalPoly, "internalShield",
+            hard: false,
+            collisionLayer: (int) CollisionGroup.FullTileLayer,
+            body: shieldPhysics);
 
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
 
@@ -161,7 +180,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         return true;
     }
 
-    private void GenerateOvalFixture(EntityUid uid, string name, PhysicsComponent physics, MapGridComponent mapGrid, float padding = Padding)
+    private ChainShape GenerateOvalFixture(EntityUid uid, string name, PhysicsComponent physics, MapGridComponent mapGrid, float padding = Padding)
     {
         float radius;
         float scale;
@@ -202,6 +221,8 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             hard: false,
             collisionLayer: (int) CollisionGroup.FullTileLayer,
             body: physics);
+
+        return chain;
     }
 
     [ByRefEvent]
