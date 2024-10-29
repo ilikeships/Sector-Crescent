@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared._Crescent.ShipShields;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
@@ -49,6 +50,10 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         if (!TryComp<PhysicsComponent>(Transform(uid).GridUid, out var ourPhysics) || !TryComp<PhysicsComponent>(args.OtherEntity, out var theirPhysics))
             return;
 
+        // We're only going to handle projectiles for now, we may handle other stuff once this system is mature
+        if (!HasComp<ProjectileComponent>(args.OtherEntity))
+            return;
+
         var ourVelocity = ourPhysics.LinearVelocity;
         var velocity = theirPhysics.LinearVelocity;
 
@@ -71,6 +76,12 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
 
         _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
+
+        if (component.Source != null)
+        {
+            var ev = new ShieldDeflectedEvent(args.OtherEntity);
+            RaiseLocalEvent(component.Source.Value, ref ev);
+        }
     }
 
     /// <summary>
@@ -166,5 +177,11 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             hard: false,
             collisionLayer: (int) CollisionGroup.FullTileLayer,
             body: physics);
+    }
+
+    [ByRefEvent]
+    public record struct ShieldDeflectedEvent(EntityUid Deflected)
+    {
+
     }
 }
