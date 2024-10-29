@@ -72,8 +72,18 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
     }
 
-    private EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null)
+    /// <summary>
+    /// Produces a shield around a grid entity, if it doesn't already exist.
+    /// </summary>
+    /// <param name="entity">The entity being shielded.</param>
+    /// <param name="mapGrid">The map grid component of the entity being shielded.</param>
+    /// <param name="source">A shield generator or similar providing the shield for the entity</param>
+    /// <returns>The shield entity.</returns>
+    private EntityUid ShieldEntity(EntityUid entity, MapGridComponent? mapGrid = null, EntityUid? source = null)
     {
+        if (TryComp<ShipShieldedComponent>(entity, out var existingShielded))
+            return existingShielded.Shield;
+
         if (!Resolve(entity, ref mapGrid, false))
             return EntityUid.Invalid;
 
@@ -81,6 +91,9 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
         var shield = Spawn(prototype, Transform(entity).Coordinates);
         var shieldPhysics = AddComp<PhysicsComponent>(shield);
+        var shieldComp = EnsureComp<ShipShieldComponent>(shield);
+        shieldComp.Shielded = entity;
+        shieldComp.Source = source;
 
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetParent(shield, entity);
@@ -94,7 +107,21 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
         _pvsSys.AddGlobalOverride(shield);
 
+        var shieldedComp = EnsureComp<ShipShieldedComponent>(entity);
+        shieldedComp.Shield = shield;
+        shieldedComp.Source = source;
+
         return shield;
+    }
+
+    private bool UnshieldEntity(EntityUid uid, ShipShieldedComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return false;
+
+        Del(component.Shield);
+        RemComp<ShipShieldedComponent>(uid);
+        return true;
     }
 
     private void GenerateOvalFixture(EntityUid uid, string name, PhysicsComponent physics, MapGridComponent mapGrid, float padding = Padding)
