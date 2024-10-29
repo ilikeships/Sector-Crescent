@@ -126,6 +126,10 @@ namespace Content.Shared.CCVar
          * Game
          */
 
+
+        public static readonly CVarDef<bool>
+            DeathTax = CVarDef.Create("game.deathtax", true,CVar.SERVERONLY);
+
         /// <summary>
         ///     Disables most functionality in the GameTicker.
         /// </summary>
