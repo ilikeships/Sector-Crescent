@@ -11,6 +11,7 @@ crescent-rank-knight = Ser
 crescent-rank-manatarms = Levy
 crescent-rank-smarts = Dr.
 crescent-rank-ministry = Minister
+crescent-rank-archmaester = Archmaester
 
 #ncwl
 crescent-rank-admin = Major

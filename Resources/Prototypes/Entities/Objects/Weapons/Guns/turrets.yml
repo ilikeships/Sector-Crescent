@@ -195,6 +195,18 @@
   - type: NpcFactionMember
     factions:
     - SimpleHostile
+  - type: SignalControl
+    isOnByDefault: false
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 2500
+  - type: DeviceLinkSink
+    ports:
+      - Toggle
+      - On
+      - Off
 
 - type: entity
   name: xeno turret

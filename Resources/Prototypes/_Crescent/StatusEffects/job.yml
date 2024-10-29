@@ -7,6 +7,13 @@
 
 - type: statusIcon
   parent: JobIcon
+  id: JobIconArchmaester
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: archmaester
+
+- type: statusIcon
+  parent: JobIcon
   id: JobIconCyberdawnTech
   icon:
     sprite: Interface/Misc/job_icons.rsi

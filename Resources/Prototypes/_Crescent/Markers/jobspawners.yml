@@ -236,10 +236,22 @@
 - type: entity
   id: SpawnPointSurgeon
   parent: SpawnPointJobBase
-  name: freeholder
+  name: surgeon
   components:
   - type: SpawnPoint
     job_id: SurgeonDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointArchmaester
+  parent: SpawnPointJobBase
+  name: archmaester
+  components:
+  - type: SpawnPoint
+    job_id: ArchmaesterDSM
   - type: Sprite
     layers:
       - state: green

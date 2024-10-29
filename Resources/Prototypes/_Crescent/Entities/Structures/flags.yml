@@ -123,3 +123,16 @@
     drawdepth: WallTops
     sprite: _Crescent/Structures/rot.rsi
     state: pustule
+
+- type: entity
+  parent: BaseSign
+  id: ImperialFlag
+  name: imperial banner
+  description: "A strip of fabric with the insignia of House Kircheis on it."
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Crescent/Structures/imperialflag.rsi
+    state: flag

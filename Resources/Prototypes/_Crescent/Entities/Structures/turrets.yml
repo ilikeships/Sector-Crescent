@@ -908,7 +908,7 @@
 - type: entity
   parent: BaseStructure
   id: BaseWeaponTurretLaser
-  name: laser gatling
+  name: pressure gatling
   abstract: true
   components:
     - type: PointCannon
