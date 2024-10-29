@@ -12,6 +12,8 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Server.GameStates;
+using Content.Server.Power.Components;
+using Content.Server.Chemistry.ReagentEffects;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
@@ -20,6 +22,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const float Padding = 10f;
     private const float CollisionThreshold = 20f;
     private const float DeflectionSpread = 25f;
+    private const float EmitterUpdateRate = 10f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -32,7 +35,33 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
 
+        var query = EntityQueryEnumerator<ShipShieldEmitterComponent, ApcPowerReceiverComponent>();
+        while (query.MoveNext(out var uid, out var emitter, out var power))
+        {
+            emitter.Accumulator += frameTime;
+
+            if (emitter.Accumulator < EmitterUpdateRate)
+                continue;
+
+            emitter.Accumulator -= EmitterUpdateRate;
+
+            float healed = emitter.HealPerSecond * EmitterUpdateRate;
+
+            if (!power.Powered)
+                healed *= emitter.UnpoweredBonus;
+
+            emitter.Damage -= healed;
+
+            if (emitter.Damage < 0)
+                emitter.Damage = 0;
+
+            AdjustEmitterLoad(uid, emitter, power);
+        }
+    }
     public override void Initialize()
     {
         base.Initialize();
@@ -48,10 +77,6 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             return;
 
         if (!TryComp<PhysicsComponent>(Transform(uid).GridUid, out var ourPhysics) || !TryComp<PhysicsComponent>(args.OtherEntity, out var theirPhysics))
-            return;
-
-        // We're only going to handle projectiles for now, we may handle other stuff once this system is mature
-        if (!HasComp<ProjectileComponent>(args.OtherEntity))
             return;
 
         var ourVelocity = ourPhysics.LinearVelocity;
@@ -111,9 +136,9 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         _transformSystem.SetParent(shield, entity);
 
         GenerateOvalFixture(shield, "shield", shieldPhysics, mapGrid);
-        GenerateOvalFixture(shield, "inner1", shieldPhysics, mapGrid, Padding - 0.33f);
-        GenerateOvalFixture(shield, "inner2", shieldPhysics, mapGrid, Padding - 0.63f);
-        GenerateOvalFixture(shield, "inner3", shieldPhysics, mapGrid, Padding - 1f);
+        GenerateOvalFixture(shield, "inner1", shieldPhysics, mapGrid, Padding - 0.5f);
+        GenerateOvalFixture(shield, "inner2", shieldPhysics, mapGrid, Padding - 1f);
+        GenerateOvalFixture(shield, "inner3", shieldPhysics, mapGrid, Padding - 1.5f);
 
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
 

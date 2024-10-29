@@ -10,5 +10,17 @@ public sealed partial class ShipShieldEmitterComponent : Component
     public float Accumulator;
 
     [DataField]
-    public float Damage;
+    public float Damage = 0f;
+
+    [DataField]
+    public float DamageExp = 1.03f;
+
+    [DataField]
+    public float HealPerSecond = 150f;
+
+    [DataField]
+    public float UnpoweredBonus = 2f;
+
+    [DataField]
+    public float BaseDraw = 3000f;
 }
