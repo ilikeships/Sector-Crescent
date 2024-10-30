@@ -14,6 +14,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using static Content.Shared.Administration.Notes.AdminMessageEuiState;
 
 
 namespace Content.Server.Preferences.Managers
@@ -117,6 +118,40 @@ namespace Content.Server.Preferences.Managers
             {
                 await _db.SaveCharacterSlotAsync(message.MsgChannel.UserId, message.Profile, message.Slot);
             }
+        }
+
+        public async void UpdateProfile(int slot, ICharacterProfile profile, NetUserId userId)
+        {
+            if (profile == null)
+            {
+                Logger.WarningS("prefs",
+                    $"User {userId} sent a {nameof(MsgUpdateCharacter)} with a null profile in slot {slot}.");
+                return;
+            }
+
+            if (!_cachedPlayerPrefs.TryGetValue(userId, out var prefsData) || !prefsData.PrefsLoaded)
+            {
+                Logger.WarningS("prefs", $"User {userId} tried to modify preferences before they loaded.");
+                return;
+            }
+
+            if (slot < 0 || slot >= MaxCharacterSlots)
+            {
+                return;
+            }
+
+            var curPrefs = prefsData.Prefs!;
+            var session = _playerManager.GetSessionById(userId);
+
+            profile.EnsureValid(session, _dependencies);
+
+            var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
+            {
+                [slot] = profile
+            };
+
+            prefsData.Prefs = new PlayerPreferences(profiles, slot, curPrefs.AdminOOCColor);
+            await _db.SaveCharacterSlotAsync(userId, profile, slot);
         }
 
         private async void HandleDeleteCharacterMessage(MsgDeleteCharacter message)

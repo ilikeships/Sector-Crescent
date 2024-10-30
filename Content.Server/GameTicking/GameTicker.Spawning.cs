@@ -2,7 +2,9 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Managers;
+using Content.Server.Database;
 using Content.Server.Ghost;
+using Content.Server.Preferences.Managers;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -27,6 +29,7 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
+        [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
 
         [ValidatePrototypeId<EntityPrototype>]
         public const string ObserverPrototypeName = "MobObserver";
@@ -230,11 +233,6 @@ namespace Content.Server.GameTicking
                     playDefaultSound: false);
             }
 
-            // who tf is perma oWo
-            if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))
-            {
-                EntityManager.AddComponent<OwOAccentComponent>(mob);
-            }
 
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
 
@@ -281,9 +279,18 @@ namespace Content.Server.GameTicking
 
         public void Respawn(ICommonSession player)
         {
+            if (_cfg.GetCVar(CCVars.DeathTax))
+            {
+                var playerProfile = (HumanoidCharacterProfile) (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
+                var profileIndex = _preferencesManager.GetPreferences(player.UserId).SelectedCharacterIndex;
+                var taxAmount = (int) (playerProfile.BankBalance * 0.1);
+                playerProfile = playerProfile.WithBank(playerProfile.BankBalance - taxAmount);
+                _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {taxAmount} from respooling");
+                _preferencesManager.UpdateProfile(profileIndex, playerProfile, player.UserId);
+            }
+
             _mind.WipeMind(player);
             _adminLogger.Add(LogType.Respawn, LogImpact.Medium, $"Player {player} was respawned.");
-
             if (LobbyEnabled)
                 PlayerJoinLobby(player);
             else
