@@ -1,7 +1,7 @@
 - type: entity
   id: ShipShield
-  noSpawn: true
   name: ship shield
+  categories: [ HideSpawnMenu ]
   components:
   - type: ShipShield
   - type: ShipShieldVisuals
