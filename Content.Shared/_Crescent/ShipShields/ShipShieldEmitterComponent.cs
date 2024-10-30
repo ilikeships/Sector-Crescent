@@ -13,14 +13,14 @@ public sealed partial class ShipShieldEmitterComponent : Component
     public float Damage = 0f;
 
     [DataField]
-    public float DamageExp = 1.03f;
+    public float DamageExp = 1.2f;
 
     [DataField]
-    public float HealPerSecond = 150f;
+    public float HealPerSecond = 200f;
 
     [DataField]
     public float UnpoweredBonus = 2f;
 
     [DataField]
-    public float BaseDraw = 3000f;
+    public float BaseDraw = 50000f;
 }

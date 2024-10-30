@@ -46,6 +46,7 @@
   - type: Electrified
     enabled: true
     usesApcPower: true
+    shockDamage: 60
   - type: PointLight
     enabled: false
     castShadows: true
@@ -53,7 +54,7 @@
     color: "#90d5ff"
   - type: LitOnPowered
   - type: ApcPowerReceiver
-    powerLoad: 3000
+    powerLoad: 50000
   - type: Actions
   - type: Appearance
   - type: ShipShieldEmitter

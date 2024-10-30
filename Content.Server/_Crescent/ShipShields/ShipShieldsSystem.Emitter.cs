@@ -2,10 +2,14 @@ using Content.Shared._Crescent.ShipShields;
 using Content.Server.Power.Components;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Components;
+using Content.Server.Emp;
+using Content.Server.Explosion.EntitySystems;
 
 namespace Content.Server._Crescent.ShipShields;
 public partial class ShipShieldsSystem
 {
+    private const float MAX_EMP_DAMAGE = 10000f;
+    [Dependency] private readonly TriggerSystem _trigger = default!;
     public void InitializeEmitters()
     {
         SubscribeLocalEvent<ShipShieldEmitterComponent, PowerChangedEvent>(OnPowerChanged);
@@ -38,6 +42,14 @@ public partial class ShipShieldsSystem
 
     private void OnShieldDeflected(EntityUid uid, ShipShieldEmitterComponent component, ShieldDeflectedEvent args)
     {
+        if (TryComp<EmpOnTriggerComponent>(args.Deflected, out var emp))
+        {
+            component.Damage += Math.Clamp(emp.EnergyConsumption, 0f, MAX_EMP_DAMAGE);
+            _trigger.Trigger(args.Deflected);
+            QueueDel(args.Deflected);
+            return;
+        }
+
         if (TryComp<ProjectileComponent>(args.Deflected, out var proj))
             component.Damage += (float) proj.Damage.GetTotal();
         else if (TryComp<PhysicsComponent>(args.Deflected, out var phys))
