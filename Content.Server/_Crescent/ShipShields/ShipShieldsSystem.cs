@@ -2,7 +2,6 @@ using System.Numerics;
 using Content.Shared._Crescent.ShipShields;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Ranged.Systems;
-using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
@@ -13,16 +12,16 @@ using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Server.GameStates;
 using Content.Server.Power.Components;
-using Content.Server.Chemistry.ReagentEffects;
-using System.Linq;
 using Robust.Shared.Physics;
+using Content.Shared.Projectiles;
+using Content.Shared._Crescent.SpaceArtillery;
 
 namespace Content.Server._Crescent.ShipShields;
 public sealed partial class ShipShieldsSystem : EntitySystem
 {
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 10f;
-    private const float CollisionThreshold = 20f;
+    private const float CollisionThreshold = 50f;
     private const float DeflectionSpread = 25f;
     private const float EmitterUpdateRate = 10f;
 
@@ -79,6 +78,10 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             return;
 
         if (!TryComp<PhysicsComponent>(Transform(uid).GridUid, out var ourPhysics) || !TryComp<PhysicsComponent>(args.OtherEntity, out var theirPhysics))
+            return;
+
+        // only handle ship weapons for now. engine update introduced physics regressions. Let's polish everything else and circle back yeah?
+        if (!HasComp<ShipWeaponProjectileComponent>(args.OtherEntity))
             return;
 
         var ourVelocity = ourPhysics.LinearVelocity;
@@ -160,6 +163,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             body: shieldPhysics);
 
         _physicsSystem.WakeBody(shield, body: shieldPhysics);
+        _physicsSystem.SetSleepingAllowed(shield, shieldPhysics, false);
 
         _pvsSys.AddGlobalOverride(shield);
 
