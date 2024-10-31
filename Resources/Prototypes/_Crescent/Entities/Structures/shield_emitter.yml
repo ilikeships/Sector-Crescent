@@ -12,6 +12,7 @@
     sound:
       path: /Audio/Ambience/Objects/vending_machine_hum.ogg
   - type: Sprite
+    noRot: true
     sprite: _Crescent/Structures/shieldemitter.rsi
     state: icon
     snapCardinals: true
@@ -21,14 +22,32 @@
     noRot: true
   - type: Fixtures
     fixtures:
-      fix1:
+      machine:
         shape:
           !type:PhysShapeAabb
-          bounds: "-2,-2.20,2,2.20"
+          bounds: "0,-2,2,2"
+        mask:
+        - FullTileMask
+        layer:
+        - FullTileLayer
+        density: 200
+      display:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2,0,0,1.8"
         mask:
         - MachineMask
         layer:
         - MachineLayer
+        density: 200
+      smallthing:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.1,-1.8,0,-1"
+        mask:
+        - MachineMask
+        layer:
+        - HalfWallLayer
         density: 200
   - type: Destructible
     thresholds:
@@ -43,10 +62,10 @@
           collection: MetalGlassBreak
   - type: Repairable
     doAfterDelay: 8
-  - type: Electrified
-    enabled: true
-    usesApcPower: true
-    shockDamage: 60
+  # - type: Electrified If we had multifixture this would be fine
+  #   enabled: true
+  #   usesApcPower: true
+  #   shockDamage: 60
   - type: PointLight
     enabled: false
     castShadows: true
@@ -55,6 +74,5 @@
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 50000
-  - type: Actions
   - type: Appearance
   - type: ShipShieldEmitter
