@@ -70,9 +70,9 @@
     enabled: false
     castShadows: true
     radius: 8
-    offset: 1, -2
+    offset: 1.5, -2
     color: "#90d5ff"
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    mask: /Textures/Effects/LightMasks/spiral.png
   - type: AnimationPlayer
   - type: LightBehaviour
     default: radiate
@@ -92,7 +92,7 @@
         minDuration: 0.3
         maxDuration: 0.5
         startValue: 0.0
-        endValue: 359.0
+        endValue: 90.0
         property: Rotation
         isLooped: true
   - type: LitOnPowered
