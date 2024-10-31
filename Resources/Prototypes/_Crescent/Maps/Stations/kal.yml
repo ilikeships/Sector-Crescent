@@ -22,6 +22,7 @@
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: StationJobs
+          checkAlive: false
           overflowJobs:
             - Contractor
             - Pilot

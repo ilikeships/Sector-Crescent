@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
+using Content.Server._Crescent.Station;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
@@ -26,6 +27,7 @@ public sealed partial class StationJobsSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly StationLifeSystem _life = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -110,6 +112,9 @@ public sealed partial class StationJobsSystem : EntitySystem
             return false;
 
         if (!TryAdjustJobSlot(station, jobPrototypeId, -1, false, false, stationJobs))
+            return false;
+
+        if (stationJobs.CheckAlive && !_life.IsAlive(station))
             return false;
 
         stationJobs.PlayerJobs.TryAdd(netUserId, new());
@@ -503,6 +508,9 @@ public sealed partial class StationJobsSystem : EntitySystem
 
         while (query.MoveNext(out var station, out var comp))
         {
+            if (comp.CheckAlive && !_life.IsAlive(station))
+                continue;
+
             var netStation = GetNetEntity(station);
             var list = comp.JobList.ToDictionary(x => x.Key, x => x.Value);
             jobs.Add(netStation, list);
