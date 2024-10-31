@@ -18,6 +18,7 @@
           attributes:
             proper: true
         - type: StationJobs
+          checkAlive: false
           overflowJobs: []
           availableJobs:
             AdministratorNCWL: [ 1, 1 ]

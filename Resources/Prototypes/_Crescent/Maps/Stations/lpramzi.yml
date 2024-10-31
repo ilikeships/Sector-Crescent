@@ -15,6 +15,7 @@
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: StationJobs
+          checkAlive: false
           overflowJobs: []
           availableJobs:
             IntelligenceOfficerNCSP: [ 1, 1 ]

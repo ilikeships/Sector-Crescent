@@ -34,6 +34,7 @@ public sealed partial class StationJobsSystem : EntitySystem
     {
         SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialized);
         SubscribeLocalEvent<StationJobsComponent, StationRenamedEvent>(OnStationRenamed);
+        SubscribeLocalEvent<StationJobsComponent, StationLifeCheckEvent>(OnLifeCheck);
         SubscribeLocalEvent<StationJobsComponent, ComponentShutdown>(OnStationDeletion);
         SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobby);
         Subs.CVar(_configurationManager, CCVars.GameDisallowLateJoins, _ => UpdateJobsAvailable(), true);
@@ -534,6 +535,12 @@ public sealed partial class StationJobsSystem : EntitySystem
 
     private void OnStationRenamed(EntityUid uid, StationJobsComponent component, StationRenamedEvent args)
     {
+        UpdateJobsAvailable();
+    }
+
+    private void OnLifeCheck(EntityUid uid, StationJobsComponent component, StationLifeCheckEvent args)
+    {
+        // if this is actually expensive both this and the rename one should probably do a partial update each time. But I'm guessing it's a nothingburger
         UpdateJobsAvailable();
     }
 

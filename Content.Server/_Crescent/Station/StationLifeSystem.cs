@@ -13,6 +13,30 @@ public sealed partial class StationLifeSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<StationLifeHeuristicComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<StationLifeHeuristicComponent, ComponentShutdown>(OnShutdown);
+    }
+
+    private void OnPowerChanged(EntityUid uid, StationLifeHeuristicComponent component, PowerChangedEvent args)
+    {
+        var station = _station.GetOwningStation(uid);
+
+        if (station != null)
+            UpdateStationLife(station.Value);
+    }
+
+    private void OnShutdown(EntityUid uid, StationLifeHeuristicComponent component, ComponentShutdown args)
+    {
+        var station = _station.GetOwningStation(uid);
+
+        if (station != null)
+            UpdateStationLife(station.Value);
+    }
+
+    private void UpdateStationLife(EntityUid uid)
+    {
+        var ev = new StationLifeCheckEvent();
+        RaiseLocalEvent(uid, ref ev);
     }
 
     /// <summary>
@@ -28,7 +52,7 @@ public sealed partial class StationLifeSystem : EntitySystem
         // A good starting heuristic: Does the station contain a powered shuttle console?
         bool poweredConsole = false;
 
-        var consoles = EntityQueryEnumerator<ShuttleConsoleComponent, ApcPowerReceiverComponent>();
+        var consoles = EntityQueryEnumerator<StationLifeHeuristicComponent, ApcPowerReceiverComponent>();
 
         while (consoles.MoveNext(out var consoleUid, out var _, out var receiver))
         {
@@ -45,3 +69,6 @@ public sealed partial class StationLifeSystem : EntitySystem
         return poweredConsole;
     }
 }
+
+[ByRefEvent]
+public record struct StationLifeCheckEvent;

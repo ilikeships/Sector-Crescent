@@ -12,6 +12,7 @@
         - type: VesselDesignation
           designation: vessel-designation-outpost
         - type: StationJobs
+          checkAlive: false
           overflowJobs: []
           availableJobs:
             RipperdocNCSP: [ 2, 2 ]
