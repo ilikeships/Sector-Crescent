@@ -51,5 +51,8 @@ public sealed class LightBehaviorSystem : EntitySystem
                 component.StartLightBehaviour(container.LightBehaviour.ID);
             }
         }
+
+        if (component.Default != null)
+            component.StartLightBehaviour(component.Default);
     }
 }

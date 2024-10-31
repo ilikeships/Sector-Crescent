@@ -70,7 +70,31 @@
     enabled: false
     castShadows: true
     radius: 8
+    offset: 1, -2
     color: "#90d5ff"
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: AnimationPlayer
+  - type: LightBehaviour
+    default: radiate
+    behaviours:
+      - !type:RandomizeBehaviour
+        id: radiate
+        interpolate: Nearest
+        minDuration: 0.3
+        maxDuration: 0.5
+        startValue: 8.0
+        endValue: 14.0
+        property: Energy
+        isLooped: true
+      - !type:RandomizeBehaviour
+        id: radiate
+        interpolate: Nearest
+        minDuration: 0.3
+        maxDuration: 0.5
+        startValue: 0.0
+        endValue: 359.0
+        property: Rotation
+        isLooped: true
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 50000

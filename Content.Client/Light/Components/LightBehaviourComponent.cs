@@ -92,10 +92,22 @@ namespace Content.Client.Light.Components
                 throw new InvalidOperationException("Property parameter is null! Check the prototype!");
             }
 
-            if (_entMan.TryGetComponent(_parent, out PointLightComponent? light))
+            if (!_entMan.TryGetComponent(_parent, out PointLightComponent? light))
+                return;
+
+            // We need to handle angles
+            if (Property == nameof(PointLightComponent.Rotation))
             {
-                AnimationHelper.SetAnimatableProperty(light, Property, value);
+                var degrees = value as float?;
+
+                if (degrees == null)
+                    return;
+
+                AnimationHelper.SetAnimatableProperty(light, Property, Angle.FromDegrees(degrees.Value));
+                return;
             }
+
+            AnimationHelper.SetAnimatableProperty(light, Property, value);
         }
 
         protected override void ApplyProperty(object context, object value)
@@ -382,6 +394,9 @@ namespace Content.Client.Light.Components
         [ViewVariables(VVAccess.ReadOnly)]
         [DataField("behaviours")]
         public List<LightBehaviourAnimationTrack> Behaviours = new();
+
+        [DataField]
+        public string? Default;
 
         [ViewVariables(VVAccess.ReadOnly)]
         public readonly List<AnimationContainer> Animations = new();
