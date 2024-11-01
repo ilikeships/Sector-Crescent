@@ -96,6 +96,7 @@
         property: Rotation
         isLooped: true
   - type: LitOnPowered
+  - type: PowerSwitch
   - type: ApcPowerReceiver
     powerLoad: 50000
   - type: Appearance
