@@ -7,6 +7,7 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Station.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Audio;
+using Content.Shared.Examine;
 
 namespace Content.Server._Crescent.ShipShields;
 public partial class ShipShieldsSystem
@@ -19,6 +20,7 @@ public partial class ShipShieldsSystem
     {
         SubscribeLocalEvent<ShipShieldEmitterComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<ShipShieldEmitterComponent, ShieldDeflectedEvent>(OnShieldDeflected);
+        SubscribeLocalEvent<ShipShieldEmitterComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnPowerChanged(EntityUid uid, ShipShieldEmitterComponent component, PowerChangedEvent args)
@@ -65,6 +67,24 @@ public partial class ShipShieldsSystem
             component.Damage += (float) proj.Damage.GetTotal();
         else if (TryComp<PhysicsComponent>(args.Deflected, out var phys))
             component.Damage += phys.FixturesMass;
+    }
+
+    private void OnExamined(EntityUid uid, ShipShieldEmitterComponent component, ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        if (component.Damage == 0f)
+        {
+            args.PushMarkup(Loc.GetString("shield-emitter-examine-undamaged"));
+            return;
+        }
+
+        var additionalLoad = (float) Math.Pow(component.Damage, component.DamageExp);
+        var ratio = additionalLoad / component.BaseDraw;
+        ratio = (float) Math.Ceiling(ratio * 100);
+
+        args.PushMarkup(Loc.GetString("shield-emitter-examine-damaged", ("percent", ratio)));
     }
 
     private void AdjustEmitterLoad(EntityUid uid, ShipShieldEmitterComponent? emitter = null, ApcPowerReceiverComponent? receiver = null)
