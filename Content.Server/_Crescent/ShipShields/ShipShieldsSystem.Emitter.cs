@@ -4,12 +4,17 @@ using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Components;
 using Content.Server.Emp;
 using Content.Server.Explosion.EntitySystems;
+using Content.Server.Station.Systems;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Audio;
 
 namespace Content.Server._Crescent.ShipShields;
 public partial class ShipShieldsSystem
 {
     private const float MAX_EMP_DAMAGE = 10000f;
     [Dependency] private readonly TriggerSystem _trigger = default!;
+    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     public void InitializeEmitters()
     {
         SubscribeLocalEvent<ShipShieldEmitterComponent, PowerChangedEvent>(OnPowerChanged);
@@ -23,6 +28,8 @@ public partial class ShipShieldsSystem
         if (parent == null)
             return;
 
+        var filter = _station.GetInOwningStation(uid);
+
         if (args.Powered)
         {
             var shield = ShieldEntity(parent.Value, source: uid);
@@ -31,12 +38,16 @@ public partial class ShipShieldsSystem
                 component.Shield = shield;
                 component.Shielded = parent.Value;
             }
+
+            _audio.PlayGlobal(component.PowerUpSound, filter, true, component.PowerUpSound.Params);
         }
         else
         {
             UnshieldEntity(parent.Value);
             component.Shield = null;
             component.Shielded = null;
+
+            _audio.PlayGlobal(component.PowerDownSound, filter, true, component.PowerUpSound.Params);
         }
     }
 
