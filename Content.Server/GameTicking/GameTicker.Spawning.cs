@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Server.Ghost;
@@ -312,14 +313,15 @@ namespace Content.Server.GameTicking
                     profile.TraitPreferences,
                     new Dictionary<string, RoleLoadout>(profile.Loadouts));
 
-             
+                _dbManager.SaveCharacterSlot(player.UserId, newProfile, index);
+                _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {tax} from respooling");
 
-                _dbManager.SaveCharacterSlotAsync(player.UserId, newProfile, index);
+                // bank component is very poorly written and i need it to be properly updated before the player
+                // character is spawned in SPCR 2024
                 //var playerProfile = (HumanoidCharacterProfile) (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
                 //var profileIndex = _preferencesManager.GetPreferences(player.UserId).SelectedCharacterIndex;
                 //var taxAmount = (int) (playerProfile.BankBalance * 0.1);
                 //playerProfile = playerProfile.WithBank(playerProfile.BankBalance - taxAmount);
-                _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {tax} from respooling");
                 //_preferencesManager.UpdateProfile(profileIndex, playerProfile, player.UserId);
             }
 

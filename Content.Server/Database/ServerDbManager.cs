@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Data.Common;
 using System.IO;
 using System.Net;
 using System.Text.Json;
@@ -37,6 +38,8 @@ namespace Content.Server.Database
         Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index);
 
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
+
+        Task SaveCharacterSlot(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
 
@@ -368,6 +371,11 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveCharacterSlotAsync(userId, profile, slot));
+        }
+        public async Task SaveCharacterSlot(NetUserId userId, ICharacterProfile? profile, int slot)
+        {
+            DbWriteOpsMetric.Inc();
+            await RunDbCommandCoreSync(() => _db.SaveCharacterSlotAsync(userId, profile, slot));
         }
 
         public Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
