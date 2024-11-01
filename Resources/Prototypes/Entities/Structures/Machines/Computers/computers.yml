@@ -80,6 +80,9 @@
       board: !type:Container
         ents: []
       disk_slot: !type:ContainerSlot {}
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
 
 - type: entity
   parent: BaseComputerShuttle
