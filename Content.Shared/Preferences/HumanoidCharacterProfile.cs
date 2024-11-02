@@ -254,6 +254,11 @@ namespace Content.Shared.Preferences
             return new(this) { Name = name };
         }
 
+        public HumanoidCharacterProfile WithBank(int amount)
+        {
+            return new(this) { BankBalance = amount };
+        }
+
         public HumanoidCharacterProfile WithFlavorText(string flavorText)
         {
             return new(this) { FlavorText = flavorText };

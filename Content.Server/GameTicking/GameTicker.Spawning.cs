@@ -1,15 +1,20 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
+using Content.Server.Database;
 using Content.Server.Ghost;
+using Content.Server.Preferences.Managers;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
+using Content.Shared.Bank.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using JetBrains.Annotations;
@@ -20,6 +25,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Serilog;
 
 namespace Content.Server.GameTicking
 {
@@ -27,6 +33,7 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
+        [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
 
         [ValidatePrototypeId<EntityPrototype>]
         public const string ObserverPrototypeName = "MobObserver";
@@ -230,11 +237,6 @@ namespace Content.Server.GameTicking
                     playDefaultSound: false);
             }
 
-            // who tf is perma oWo
-            if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))
-            {
-                EntityManager.AddComponent<OwOAccentComponent>(mob);
-            }
 
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
 
@@ -281,9 +283,50 @@ namespace Content.Server.GameTicking
 
         public void Respawn(ICommonSession player)
         {
+            if (_cfg.GetCVar(CCVars.DeathTax))
+            {
+                var prefs = _prefsManager.GetPreferences(player.UserId);
+                var character = prefs.SelectedCharacter;
+                var index = prefs.IndexOfCharacter(character);
+
+                if (character is not HumanoidCharacterProfile profile)
+                {
+                    return;
+                }
+
+                var tax = (int)(profile.BankBalance * 0.1);
+
+                var newProfile = new HumanoidCharacterProfile(
+                    profile.Name,
+                    profile.FlavorText,
+                    profile.Species,
+                    profile.Age,
+                    profile.Sex,
+                    profile.Gender,
+                    profile.BankBalance - tax,
+                    profile.Faction,
+                    profile.Appearance,
+                    profile.SpawnPriority,
+                    profile.JobPriorities,
+                    profile.PreferenceUnavailable,
+                    profile.AntagPreferences,
+                    profile.TraitPreferences,
+                    new Dictionary<string, RoleLoadout>(profile.Loadouts));
+
+                _dbManager.SaveCharacterSlot(player.UserId, newProfile, index);
+                _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {tax} from respooling");
+
+                // bank component is very poorly written and i need it to be properly updated before the player
+                // character is spawned in SPCR 2024
+                //var playerProfile = (HumanoidCharacterProfile) (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
+                //var profileIndex = _preferencesManager.GetPreferences(player.UserId).SelectedCharacterIndex;
+                //var taxAmount = (int) (playerProfile.BankBalance * 0.1);
+                //playerProfile = playerProfile.WithBank(playerProfile.BankBalance - taxAmount);
+                //_preferencesManager.UpdateProfile(profileIndex, playerProfile, player.UserId);
+            }
+
             _mind.WipeMind(player);
             _adminLogger.Add(LogType.Respawn, LogImpact.Medium, $"Player {player} was respawned.");
-
             if (LobbyEnabled)
                 PlayerJoinLobby(player);
             else
