@@ -25,6 +25,7 @@ using Content.Shared.UserInterface;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.PointCannons;
 using Content.Shared.NamedModules.Components;
+using Content.Server._Crescent.Shipyard;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -225,6 +226,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private bool TryPilot(EntityUid user, EntityUid uid)
     {
         if (!_tags.HasTag(user, "CanPilot") ||
+            HasComp<PurchaseLockoutComponent>(uid) ||
             !TryComp<ShuttleConsoleComponent>(uid, out var component) ||
             !this.IsPowered(uid, EntityManager) ||
             !Transform(uid).Anchored ||
