@@ -8,6 +8,11 @@
       time: 6000
     - !type:FactionRequirement
       factionID: "TFSC"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-syndoc
   weight: 16
   startingGear: RipperdocGear
   alwaysUseSpawner: true

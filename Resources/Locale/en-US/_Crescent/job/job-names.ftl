@@ -36,6 +36,8 @@ job-name-foremanimp = Foreman
 job-name-imperialresearch = Imperial Scribe
 job-name-surgeon = Imperial Surgeon
 job-name-wealth = Minister of Wealth
+job-name-advocatus = Advocatus
+job-name-advocatustemplar = Knight Templar
 
 #srm
 

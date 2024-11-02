@@ -33,6 +33,17 @@
 
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckCloakInspector
+  name: advocati shoulder cape
+  description: Adorned with Advocati Corps livery.
+  components:
+   - type: Sprite
+     sprite: _Crescent/Clothing/Empire/Neck/inspector.rsi
+   - type: Clothing
+     sprite: _Crescent/Clothing/Empire/Neck/inspector.rsi
+
+- type: entity
+  parent: ClothingNeckBase
   id: ClothingNeckCloakImperialAdjutant
   name: adjutant's shoulder cape
   description: Adorned with Imperial livery and meant to be worn by the Adjutant.

@@ -8,6 +8,11 @@
       time: 18000
     - !type:FactionRequirement
       factionID: "TFSC"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-saw
   weight: 8
   startingGear: ShipbreakerGear
   alwaysUseSpawner: true

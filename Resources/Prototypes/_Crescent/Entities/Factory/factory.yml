@@ -181,6 +181,20 @@
         outputs:
           Casing120HE:
             1
+      plasteeltoGargoyle:
+        inputs:
+          Plasteel:
+            10
+        outputs:
+          TorpGarg:
+            1
+      plasictoLancer:
+        inputs:
+          Plastic:
+            3
+        outputs:
+          LanceRocketCartridge:
+            1
 
 - type: entity
   id: Factory120Weld

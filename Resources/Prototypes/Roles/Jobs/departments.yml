@@ -129,10 +129,12 @@
   - WealthDSM
   - ForemanDSM
   - ScribeDSM
+  - TemplarDSM
   - SurgeonDSM
   - CourtierDSM
   - AdjutantDSM
   - GovernorDSM
+  - AdvocatusDSM
   - ArchmaesterDSM
   enabled: true
 

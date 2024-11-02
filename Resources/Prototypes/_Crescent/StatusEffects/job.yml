@@ -7,6 +7,20 @@
 
 - type: statusIcon
   parent: JobIcon
+  id: JobIconAdvocatus
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: advocatus
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconAdvocatusTemplar
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: advocatustemplar
+
+- type: statusIcon
+  parent: JobIcon
   id: JobIconArchmaester
   icon:
     sprite: Interface/Misc/job_icons.rsi

@@ -88,6 +88,10 @@
   id: ScribesGuild
   name: id-card-access-level-empirescribes
 
+- type: accessLevel
+  id: Advocatus
+  name: id-card-access-level-advocatus
+
 #srm
 
 - type: accessLevel
