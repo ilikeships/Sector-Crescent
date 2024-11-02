@@ -19,6 +19,23 @@
 
 - type: entity
   parent: BaseItem
+  id: ShipVoucherGnosis
+  name: DSM 'Gnosis' pattern LPC fabprint disk
+  description: An LPC fabprint disk loaded with an Imperial Gnosis-class personal shuttle. Has to be redeemed at a shipyard console.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/lpcchip.rsi
+    layers:
+    - state: icon
+  - type: StaticPrice
+    price: 8000
+  - type: ShipVoucher
+    ship: Gnosis
+
+- type: entity
+  parent: BaseItem
   id: ShipVoucherTriumphant
   name: DSM 'Triumphant' pattern LPC fabprint disk
   description: An LPC fabprint disk loaded with an Imperial Triumphant-class battlecruiser. Has to be redeemed at a shipyard console.

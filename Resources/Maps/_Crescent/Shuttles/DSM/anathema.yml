@@ -60,6 +60,8 @@ entities:
       fixtures: {}
     - type: OccluderTree
     - type: SpreaderGrid
+    - type: VesselDesignation
+      designation: vessel-designation-carrier
     - type: Shuttle
       baseMaxLinearVelocity: 15
     - type: GridPathfinding

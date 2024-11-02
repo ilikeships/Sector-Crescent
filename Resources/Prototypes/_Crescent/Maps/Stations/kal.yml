@@ -41,6 +41,13 @@
             SurgeonDSM: [ 3, 3 ]
             AdvocatusDSM: [ 1, 1 ]
             TemplarDSM: [ 2, 2 ]
+            MarshalCMM: [ 1, 1 ]
+            DeputyMarshalCMM: [ 1, 1 ]
+            WatchmasterCMM: [ 2, 2 ]
+            MinutemanCMM: [ 4, 4 ]
+            MachinistCMM: [ 2, 2 ]
+            OrdnancemanCMM: [ 2, 2 ]
+            PhysicianCMM: [ 2, 2 ]
             Antiquarian: [ 1, 1 ]
             Contractor: [ 20, 20 ]
 

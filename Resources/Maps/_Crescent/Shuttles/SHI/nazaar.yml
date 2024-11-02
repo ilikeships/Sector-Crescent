@@ -87,10 +87,10 @@ entities:
             6: -1,-1
             11: -2,0
             13: -2,1
-            17: -2,2
-            18: -2,3
-            19: 2,3
-            20: 2,2
+            15: -2,2
+            16: -2,3
+            17: 2,3
+            18: 2,2
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleN
@@ -103,11 +103,11 @@ entities:
             2: 2,-1
             8: 1,-1
             12: 2,0
-            15: 2,1
-            21: -2,2
-            22: -2,3
-            23: 2,3
-            24: 2,2
+            14: 2,1
+            19: -2,2
+            20: -2,3
+            21: 2,3
+            22: 2,2
     - type: GridAtmosphere
       version: 2
       data:
@@ -208,26 +208,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -1.5,1.5
       parent: 1
-- proto: BaseWeaponTurretLancer
-  entities:
-  - uid: 77
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,2.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 1.7878271354962012 rad: 4.27832736298208 rad
-  - uid: 78
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,2.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.3586234622910975 rad: 4.278327362982081 rad
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 57
@@ -582,11 +562,16 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 78
+        - invalid
+        - invalid
         - 77
+        - 78
         missiles:
-        - 78
+        - invalid
+        - invalid
+        gatling:
         - 77
+        - 78
 - proto: CrateVulcanAmmo
   entities:
   - uid: 140
@@ -896,7 +881,7 @@ entities:
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 67
@@ -936,7 +921,7 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 67
@@ -1390,4 +1375,52 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
+- proto: WeaponTurretVulcanSHI
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,2.5
+      parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.7878271354962012 rad: 4.27832736298208 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 78
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,2.5
+      parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.3586234622910975 rad: 4.27832736298208 rad
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 ...
