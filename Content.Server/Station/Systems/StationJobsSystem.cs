@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
+using Content.Server._Crescent.Station;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
@@ -26,12 +27,14 @@ public sealed partial class StationJobsSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly StationLifeSystem _life = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialized);
         SubscribeLocalEvent<StationJobsComponent, StationRenamedEvent>(OnStationRenamed);
+        SubscribeLocalEvent<StationJobsComponent, StationLifeCheckEvent>(OnLifeCheck);
         SubscribeLocalEvent<StationJobsComponent, ComponentShutdown>(OnStationDeletion);
         SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobby);
         Subs.CVar(_configurationManager, CCVars.GameDisallowLateJoins, _ => UpdateJobsAvailable(), true);
@@ -110,6 +113,9 @@ public sealed partial class StationJobsSystem : EntitySystem
             return false;
 
         if (!TryAdjustJobSlot(station, jobPrototypeId, -1, false, false, stationJobs))
+            return false;
+
+        if (stationJobs.CheckAlive && !_life.IsAlive(station))
             return false;
 
         stationJobs.PlayerJobs.TryAdd(netUserId, new());
@@ -503,6 +509,9 @@ public sealed partial class StationJobsSystem : EntitySystem
 
         while (query.MoveNext(out var station, out var comp))
         {
+            if (comp.CheckAlive && !_life.IsAlive(station))
+                continue;
+
             var netStation = GetNetEntity(station);
             var list = comp.JobList.ToDictionary(x => x.Key, x => x.Value);
             jobs.Add(netStation, list);
@@ -526,6 +535,12 @@ public sealed partial class StationJobsSystem : EntitySystem
 
     private void OnStationRenamed(EntityUid uid, StationJobsComponent component, StationRenamedEvent args)
     {
+        UpdateJobsAvailable();
+    }
+
+    private void OnLifeCheck(EntityUid uid, StationJobsComponent component, StationLifeCheckEvent args)
+    {
+        // if this is actually expensive both this and the rename one should probably do a partial update each time. But I'm guessing it's a nothingburger
         UpdateJobsAvailable();
     }
 

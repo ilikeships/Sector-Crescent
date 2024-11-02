@@ -15,6 +15,7 @@
         - type: VesselDesignation
           designation: vessel-designation-outpost
         - type: StationJobs
+          checkAlive: false
           overflowJobs: []
           availableJobs:
             ForemanNCSP: [ 1, 1 ]

@@ -87,4 +87,10 @@ public sealed partial class StationJobsComponent : Component
     [DataField("availableJobs", required: true,
         customTypeSerializer: typeof(PrototypeIdDictionarySerializer<List<int?>, JobPrototype>))]
     public Dictionary<string, List<int?>> SetupAvailableJobs = default!;
+
+    /// <summary>
+    /// Whether to check if this vessel is "alive" (i.e. allows joining, broadcasting IFF)
+    /// </summary>
+    [DataField]
+    public bool CheckAlive = true;
 }
