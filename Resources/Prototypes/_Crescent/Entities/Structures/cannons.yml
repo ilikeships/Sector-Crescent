@@ -188,7 +188,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 90
+    projectileSpeed: 35
     fireRate: 0.4
     angleDecay: 45
     minAngle: 0
