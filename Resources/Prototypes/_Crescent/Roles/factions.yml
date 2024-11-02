@@ -31,10 +31,13 @@
   name: "New Crescent Worker's League"
   id: NCWL
   description: |
-    The defacto communist powerhouse of the Crescent sector. Leading a guerilla war with the help of xeno-species 
-    and disgruntled DSM workers, they've proven to be a significant factor in local economics & politics. Lately 
-    their influence has been diminished following the start of the cold war, with focus on more populated
-    worlds. The local force left in Sector Crescent remains fearsome, with ships wielding 320mm hull-busters.
+    Stitched together from the still-warm corpses of many labor unions that were in disorganized rebellion 
+    against Imperial forces in the Feudal Era before the collapse of Bluespace lanes leading in and out of the 
+    Sector, the NCWL are the undisputed victors of the Crescent Revolution, holding four out of six systems 
+    within the Sector and ruling from their seat of power in the Core. Holding socialist ideals at heart, the 
+    NCWL aims to build a government by laborers, and for the people. Recently having launched a liberation campaign 
+    against the Taypan system in the Outer Rim, the League are finally throwing their hats in the pile to make 
+    their bid for the untamed frontier.
   color: "#9FED58"
   weight: 0
   enabled: true
@@ -47,9 +50,12 @@
   name: "Taypan FreeStations Coalitions"
   id: TFSC
   description: |
-    Privateers from deep-space, they found refuge in the recently evacuated Tatsumoso station. The station has become 
-    a defacto space city and is under control from a few influential families within the gang. Their primary activity
-    concerns smuggling, minimal tax trading, kidnapping ,piracy and "illegal" mining operations
+    A conglomerate of pirate gangs, shipbreakers, and unsavory PMC groups, the Syndicate was formed shortly 
+    after the initial arrival of the Empire into the Sector, disembodied station gangs and pirate reavers at 
+    first, and slowly growing to be a regional superpower under the leadership of Imperial nobility and deserter
+    Ser William 'Pincer' Moore. They've made Taypan their headquarters, thriving within the lawless frontier, away 
+    from the overreaching grasp of the NCWL and reasonably far enough from the Empire's remnants still roaming 
+    the Sector.
   color: "#9FED58"
   weight: -3
   enabled: true
@@ -61,9 +67,11 @@
   name: "Shinohara Heavy Industries"
   id: SHI
   description: |
-    The powerhouse of the sector, SHI undertakes most industrial processes in the sector. Holding many of the patents 
-    to vital technologies employed by the Divine mandate, and being one of the last shipmanufacturers with the necesarry 
-    technology to print high-quality hulls.
+    Currently the holder of many patents and technologies from the now-defunct NanoTrasen Industries, SHI is the 
+    unmatched and unrivaled corporate powerhouse in the Sector. Fingers in every pie, they manage logistics 
+    between systems, development of new technologies, mining operations, and even dabble in the manufacturing of 
+    space-capable vessels. Sharing the system with the Syndicate, they have made their headquarters in Taypan, 
+    enjoying access to ore-rich asteroid veins.
   color: "#9FED58"
   weight: -4
   enabled: true
@@ -75,9 +83,11 @@
   name: "Saint Romaine's Militia"
   id: SRM
   description: |
-    Known as a cult, the Romaine Militia is as fanatic militarist ensemble with the sole purpose of purging the Psionic 
-    scourge from the galaxy, They hunt all psionic species such as Atyrians down with fierce efficiency, following their 
-    prophet's directive to the letter to destroy all that rips the galaxy's weave.
+    Formerly several fireteams of the Imperial Compliance Corps united under a single wing, the SRM have 
+    found their new identity in the reclamation of escaped Imperial 'assets', as well as the 'conscription' 
+    of new ones. Essentially a slaver's guild with a self-appointed divine edge, they operate out of the 
+    Domain system under their Imperial overlords, but often stray into Taypan to capture victims for 
+    the rebuilding effort.
   color: "#9FED58"
   weight: -5
   enabled: true
@@ -89,10 +99,10 @@
   name: "Taypan Sektor Polizei"
   id: TSP
   description: |
-    The remnants of the Taypan administration, the Sektor Polizei is now tasked with enforcing the Mandate's laws within the Sector,
-    their equipment consists of old ships & decomissioned hulls from the Mandate. Death is common in the force, the war in the Sector
-    has cooled down but not the piracy. Criminal elements such as the NCWL and TFSC are stronger than ever, and TSP equipment grows
-    more outdated as time passes.
+    Deputized by the DSM as a civil enforcement agency, the Taypan Sektor Polizei are a frontier sheriff agency 
+    run solely on scant funding from their imperialist overlords and donations from private and civilian entities. 
+    Formed with the system's best interests at heart, underperforming equipment, underfunded staff, and 
+    tendency to draw their members from within impoverished circles leave them susceptible to corruption - which the NCWL often has little manpower or resources to mitigate or mend.
   color: "#9FED58"
   weight: -5
   enabled: true

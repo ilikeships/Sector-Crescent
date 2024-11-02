@@ -7,13 +7,11 @@
   - type: ShipyardListing
     shuttles:
     - Vanguard
-    - Vasinya
     - Cherenzikov
     - Hind
     - Ivarod
     - Broadsword
     - Sabre
-    - Meteor
     - Rapier
     - Khopesh
 
@@ -37,7 +35,6 @@
   - type: ShipyardListing
     shuttles:
     - Ibis
-    - Triumphant
     - Imparator
     - Anathema
     - Jannissary
@@ -58,7 +55,7 @@
   components:
   - type: ShipyardListing
     shuttles:
-    - Imp
+    - Gnosis
 
 - type: entity
   id: NemesisMothershipComputer
@@ -93,8 +90,6 @@
     shuttles:
     - Shanty
     - Hyena
-    - Piranha
-    - Scuttlefish
 
 - type: entity
   id: RamziMothershipComputer

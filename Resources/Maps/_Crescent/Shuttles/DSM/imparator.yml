@@ -202,7 +202,7 @@ entities:
       pos: -1.5,-7.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -223.08246
+      secondsUntilStateChange: -432.7623
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -631,13 +631,12 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ComputerIFF
+- proto: ComputerTabletopCommsShip
   entities:
-  - uid: 198
+  - uid: 88
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-3.5
+      pos: 1.5,-5.5
       parent: 1
 - proto: ComputerTabletopShuttle
   entities:
@@ -656,13 +655,6 @@ entities:
         - Group4: Trigger
         91:
         - Group5: Toggle
-- proto: ComputerTabletopStationRecords
-  entities:
-  - uid: 88
-    components:
-    - type: Transform
-      pos: 1.5,-5.5
-      parent: 1
 - proto: CrateArtilleryAmmo
   entities:
   - uid: 92
@@ -871,20 +863,10 @@ entities:
     - type: InsideEntityStorage
 - proto: JugBoriaticFuel
   entities:
-  - uid: 105
-    components:
-    - type: Transform
-      pos: -2.8656983,-7.4610877
-      parent: 1
   - uid: 199
     components:
     - type: Transform
       pos: -2.6279068,-7.49082
-      parent: 1
-  - uid: 200
-    components:
-    - type: Transform
-      pos: -2.7468033,-7.565151
       parent: 1
 - proto: PoweredlightLED
   entities:
@@ -1203,7 +1185,7 @@ entities:
       pos: 0.5,-1.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 979000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
