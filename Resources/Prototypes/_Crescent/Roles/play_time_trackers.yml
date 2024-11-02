@@ -62,6 +62,12 @@
   id: JobFreeholderDSM
 
 - type: playTimeTracker
+  id: JobAdvocatusDSM
+
+- type: playTimeTracker
+  id: JobTemplarDSM
+
+- type: playTimeTracker
   id: JobLevymanDSM
 
 - type: playTimeTracker

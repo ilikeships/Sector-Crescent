@@ -234,6 +234,30 @@
       - state: passenger
 
 - type: entity
+  id: SpawnPointAdvocatus
+  parent: SpawnPointJobBase
+  name: advocati
+  components:
+  - type: SpawnPoint
+    job_id: AdvocatusDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointTemplar
+  parent: SpawnPointJobBase
+  name: advocati
+  components:
+  - type: SpawnPoint
+    job_id: TemplarDSM
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
   id: SpawnPointSurgeon
   parent: SpawnPointJobBase
   name: surgeon

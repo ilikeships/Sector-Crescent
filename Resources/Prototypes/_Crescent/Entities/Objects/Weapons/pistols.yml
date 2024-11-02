@@ -328,7 +328,7 @@
     oneUseOnly: true
 
 - type: entity
-  name: IRM NeoVolker .45
+  name: IRM NeoVolker Tribune M-8 .45
   parent: BaseWeaponPistol
   id: WeaponPistolNeoVolker
   description: An antiquated, outdated Imperial sidearm, attributed to ancient Terran designs. Fires .45 rounds.

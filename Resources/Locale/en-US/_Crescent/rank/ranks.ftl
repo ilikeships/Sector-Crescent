@@ -12,6 +12,8 @@ crescent-rank-manatarms = Levy
 crescent-rank-smarts = Dr.
 crescent-rank-ministry = Minister
 crescent-rank-archmaester = Archmaester
+crescent-rank-advocatus = Advocati
+crescent-rank-templar = Knight Templar
 
 #ncwl
 crescent-rank-admin = Major
@@ -21,3 +23,15 @@ crescent-rank-doktor = Dr.
 crescent-rank-partisan = Sldt.
 crescent-rank-soldat = Kadet
 crescent-rank-kapitan = Kptn.
+
+#syn
+
+crescent-rank-synadmin = Station Administrator
+crescent-rank-boss = Portboss
+crescent-rank-patriarch = Patriarch
+crescent-rank-op = PvT.
+crescent-rank-pfc = Cpl.
+crescent-rank-freeman = Freeman
+crescent-rank-foreman = Foreman
+crescent-rank-syndoc = Doc
+crescent-rank-saw = Shipbreaker

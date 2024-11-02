@@ -1,0 +1,46 @@
+- type: job
+  id: AdvocatusDSM
+  name: job-name-advocatus
+  description: job-description-advocatus
+  playTimeTracker: JobAdvocatusDSM
+  weight: 32
+  startingGear: AdvocatusGear
+  alwaysUseSpawner: true
+  icon: "JobIconAdvocatus"
+  requireAdminNotify: true
+  supervisors: job-supervisors-imperial 
+  canBeAntag: false
+  requirements:
+    - !type:SpeciesRequirement
+      allowedOnly:
+        - Human
+    - !type:OverallPlaytimeRequirement
+      time: 36000
+    - !type:FactionRequirement
+      factionID: "DSM"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-advocatus
+  access:
+  - Command
+  - Empire
+  - Maintenance
+  - Advocatus
+  - Service
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: AdvocatusGear
+  equipment:
+    id: AdvocatusPDA
+    head:  ClothingHeadHatAdvocatus
+    ears: ClothingHeadsetEmpireCiv
+    pocket1: ImperialPassportBareLegit
+    back: ClothingBackpackSatchelLeatherFilledDSM
+    outerClothing: ClothingOuterCoatImperialAdvocatus
+    shoes: ClothingShoesBootsJack
+    jumpsuit: ClothingUniformJumpsuitImperialNobleMale

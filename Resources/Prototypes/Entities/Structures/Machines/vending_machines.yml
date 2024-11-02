@@ -886,8 +886,6 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Security"]]
   - type: MarketModifier
     mod: 5
   - type: PointLight

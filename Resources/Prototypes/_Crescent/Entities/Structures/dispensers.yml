@@ -489,3 +489,72 @@
     radius: 1.5
     energy: 1.6
     color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: BiomassFoodMulcher
+  name: biomass mulcher
+  description: A miniature vat that accepts grown produce and mulches it into usable biomass.
+  components:
+  - type: Dispenser
+    defaultItem: PlaceholderNothing
+    inventory:
+      WheatBushel: MaterialBiomass25
+      OatBushel: MaterialBiomass25
+      Sugarcane: MaterialBiomass25
+      FoodBanana: MaterialBiomass25
+      FoodCarrot: MaterialBiomass25
+      FoodCabbage: MaterialBiomass25
+      FoodGarlic: MaterialBiomass25
+      FoodLemon: MaterialBiomass25
+      FoodApple: MaterialBiomass25
+      FoodOrange: MaterialBiomass25
+      FoodLime: MaterialBiomass25
+      FoodPotato: MaterialBiomass25
+      FoodTomato: MaterialBiomass25
+      FoodEggplant: MaterialBiomass25
+      FoodCorn: MaterialBiomass25
+      FoodOnion: MaterialBiomass25
+      FoodMushroom: MaterialBiomass25
+  - type: Sprite
+    sprite: _Crescent/Structures/mulcher.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  id: PlaceholderNothing
+  abstract: true
+  name: nothing
+  description: Absolutely nothing.
+
+- type: entity
+  parent: BaseDispenser
+  id: SektorpolCommissary
+  name: sektorpol commissary
+  description: A vendor that uses requisition slips to vend security gear.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/commissary.rsi
+    layers:
+    - state: "icon"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    preset: StorePresetSecurityUplink
+    balance:
+      FrontierUplinkCoin: 5
+  - type: Tag
+    tags:
+    - SecurityUplink

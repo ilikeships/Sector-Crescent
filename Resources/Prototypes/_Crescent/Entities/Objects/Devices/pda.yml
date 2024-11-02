@@ -298,6 +298,35 @@
 
 - type: entity
   parent: BasePDA
+  id: TemplarPDA
+  name: knight templar's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardFreeholder
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+- type: entity
+  parent: BasePDA
+  id: AdvocatusPDA
+  name: advocati's PDA
+  description: Purple for Imperial.
+  components:
+  - type: Pda
+    id: DSMIDCardAdvocatus
+    state: basic
+  - type: PdaBorderColor
+    borderColor: "#6d5f8a"
+  - type: Icon
+    state: basic
+
+
+- type: entity
+  parent: BasePDA
   id: ArchmaesterPDA
   name: archmaester's PDA
   description: Purple for Imperial.

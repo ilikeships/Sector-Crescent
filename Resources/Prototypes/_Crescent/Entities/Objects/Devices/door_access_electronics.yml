@@ -118,6 +118,14 @@
 
 - type: entity
   parent: DoorElectronics
+  id: DoorElectronicsDSMAdvocatus
+  suffix: Advocatus, Locked
+  components:
+  - type: AccessReader
+    access: [["Advocatus"]]
+
+- type: entity
+  parent: DoorElectronics
   id: DoorElectronicsDSMArchmaester
   suffix: Archmaester, Locked
   components:

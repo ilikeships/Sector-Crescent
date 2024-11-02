@@ -116,7 +116,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var tinnia = "/Maps/_NF/POI/tinnia.yml";
         //var caseys = "/Maps/_NF/POI/caseyscasino.yml";
        // var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
-        var hayes = "/Maps/_Crescent/Explorables/hayeswreck.yml";
+        //var hayes = "/Maps/_Crescent/Explorables/hayeswreck.yml";
         //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
         var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         var oris = "/Maps/_Crescent/Explorables/oris.yml";
@@ -137,7 +137,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
        // var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
         // var grifty = "Maps/_NF/POI/grifty.yml";
-        var precinct9 = "/Maps/_Crescent/Stations/precinct9.yml";
+        //var precinct9 = "/Maps/_Crescent/Stations/precinct9.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
         var lpbravoColor = new Color(200, 55, 55);
@@ -171,23 +171,23 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
         }
 
-        if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
-            {
-                Offset = _random.NextVector2(3500f, 1700f)
-            }))
-        {
-            // We should figure out if it is possible to add this grid to the latejoin listing.
+    //    if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
+      //      {
+       //         Offset = _random.NextVector2(3500f, 1700f)
+       //     }))
+      //  {
+      //      // We should figure out if it is possible to add this grid to the latejoin listing.
             // Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
-            }
+       //     if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
+       //     {
+        //        _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
+       //     }
 
-            var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
-            _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
-            _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
-            _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
-        }
+         //   var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
+        //    _meta.SetEntityName(nfsdUids[0], "Precinct 9", meta);
+        //    _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
+        //    _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
+      //  }
 
         if (_map.TryLoad(mapId, defensebattery, out var depotUid15s, new MapLoadOptions
         {
@@ -338,20 +338,20 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.AddIFFFlag(depotUid6s[0], IFFFlags.HideLabel);
         //  }
 
-        if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
-        {
-            Offset = new Vector2(-3000f, 6500f)
-        }))
-        {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Hayes", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["Hayes"], depotUid7s);
-            }
-            var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
-            _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
-            _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
-            _shuttle.SetIFFFaction(depotUid7s[0], "NCSP");
-        }
+       // if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
+       // {
+       //     Offset = new Vector2(-3000f, 6500f)
+       // }))
+     //   {
+      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Hayes", out var stationProto))
+      //      {
+       //         _station.InitializeNewStation(stationProto.Stations["Hayes"], depotUid7s);
+       //     }
+       //     var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
+       //     _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
+       //     _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
+       //     _shuttle.SetIFFFaction(depotUid7s[0], "NCSP");
+      //  }
 
      //   if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
      //   {

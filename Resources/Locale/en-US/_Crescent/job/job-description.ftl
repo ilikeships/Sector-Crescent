@@ -36,6 +36,8 @@ job-description-foremanimp = Coordinate the workers of your liege.
 job-description-scribe = Explore, discover new technologies, and recover derelicts.
 job-description-archmaester = Coordinate the Scribes' Guild, discover new technologies for the Empire.
 job-description-surgeon = Tend to the bodily ails of your comrades.
+job-description-advocatus = Maintain the interests of the Count in the Barony. Collect "taxes".
+job-description-advocatustemplar = Make sure the Advocati stays alive.
 
 #srm#
 

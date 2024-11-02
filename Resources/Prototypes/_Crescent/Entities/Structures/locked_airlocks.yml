@@ -307,6 +307,15 @@
 
 - type: entity
   parent: AirlockCommand
+  id: AirlockCommandLockedDSMAdvocauts
+  suffix: Advocatus DSM, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMAdvocatus ]
+
+- type: entity
+  parent: AirlockCommand
   id: AirlockCommandLockedDSM
   suffix: DSM, Locked
   components:
@@ -369,6 +378,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDSMEmpireWealth ]
+
+- type: entity
+  parent: AirlockCommandHorizontal
+  id: AirlockCommandLockedDSMHorizontalAdvocatus
+  suffix: Advocatus, Horizontal
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDSMAdvocatus ]
 
 - type: entity
   parent: AirlockCommandHorizontal
