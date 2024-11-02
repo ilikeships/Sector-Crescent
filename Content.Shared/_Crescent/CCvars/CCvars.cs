@@ -22,4 +22,10 @@ public sealed class CrescentCVars
     /// </summary>
     public static readonly CVarDef<bool> RoleWhitelist =
         CVarDef.Create("sc.role_whitelist", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// UI Layouts. Here to not conflict with other codebases. (They all share the same config file lol :csgrad:)
+    /// </summary>
+    public static readonly CVarDef<string> UILayout =
+        CVarDef.Create("sc.ui.layout", "Classic", CVar.CLIENTONLY | CVar.ARCHIVE);
 }

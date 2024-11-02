@@ -4,6 +4,7 @@ using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.Viewport;
 using Content.Shared.CCVar;
+using Content.Shared._Crescent.CCvars;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.UserInterface;
@@ -50,7 +51,7 @@ namespace Content.Client.Gameplay
             UserInterfaceManager.PopupRoot.AddChild(_fpsCounter);
             _fpsCounter.Visible = _configurationManager.GetCVar(CCVars.HudFpsCounterVisible);
             _configurationManager.OnValueChanged(CCVars.HudFpsCounterVisible, (show) => { _fpsCounter.Visible = show; });
-            _configurationManager.OnValueChanged(CCVars.UILayout, ReloadMainScreenValueChange);
+            _configurationManager.OnValueChanged(CrescentCVars.UILayout, ReloadMainScreenValueChange);
         }
 
         protected override void Shutdown()
@@ -62,7 +63,7 @@ namespace Content.Client.Gameplay
             _eyeManager.MainViewport = UserInterfaceManager.MainViewport;
             _fpsCounter.Dispose();
             _uiManager.ClearWindows();
-            _configurationManager.UnsubValueChanged(CCVars.UILayout, ReloadMainScreenValueChange);
+            _configurationManager.UnsubValueChanged(CrescentCVars.UILayout, ReloadMainScreenValueChange);
             UnloadMainScreen();
         }
 
@@ -90,7 +91,7 @@ namespace Content.Client.Gameplay
 
         private void LoadMainScreen()
         {
-            var screenTypeString = _configurationManager.GetCVar(CCVars.UILayout);
+            var screenTypeString = _configurationManager.GetCVar(CrescentCVars.UILayout);
             if (!Enum.TryParse(screenTypeString, out ScreenType screenType))
             {
                 screenType = default;
@@ -98,10 +99,10 @@ namespace Content.Client.Gameplay
 
             switch (screenType)
             {
-                case ScreenType.Default:
+                case ScreenType.Soy:
                     _uiManager.LoadScreen<DefaultGameScreen>();
                     break;
-                case ScreenType.Separated:
+                case ScreenType.Classic:
                     _uiManager.LoadScreen<SeparatedChatGameScreen>();
                     break;
             }
