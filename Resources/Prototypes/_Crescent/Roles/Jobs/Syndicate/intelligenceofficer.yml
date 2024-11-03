@@ -14,6 +14,11 @@
     - !type:WhitelistRequirement
     - !type:FactionRequirement
       factionID: "TFSC"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-patriarch
   access:
   - Command
   - Maintenance

@@ -18,6 +18,7 @@
           attributes:
             proper: true
         - type: StationJobs
+          checkAlive: false
           overflowJobs: []
           availableJobs:
             ExecutiveSHI: [ 1, 1 ]

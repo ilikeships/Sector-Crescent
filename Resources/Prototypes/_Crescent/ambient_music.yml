@@ -119,3 +119,45 @@
   files:
    - /Audio/_Crescent/the_insulindan_miracle.ogg
 
+#wilds
+
+- type: ambientMusic
+  id: WildBiome
+  sound:
+    collection: WildBiome
+  rules: InWildAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InWildAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: wildbiome
+
+- type: soundCollection
+  id: WildBiome
+  files:
+   - /Audio/_Crescent/wilds.ogg
+
+#deepwilds
+
+- type: ambientMusic
+  id: DeepwildBiome
+  sound:
+    collection: WildBiome
+  rules: InDeepwildAirspace
+  priority: 2000
+  fadeIn: true
+
+- type: rules
+  id: InDeepwildAirspace
+  rules:
+    - !type:InSpaceBiomeRule
+      biome: deepwildbiome
+
+- type: soundCollection
+  id: DeepwildBiome
+  files:
+   - /Audio/_Crescent/the_deepwilds.ogg
+

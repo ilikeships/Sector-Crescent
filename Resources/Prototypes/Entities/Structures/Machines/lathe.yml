@@ -874,6 +874,10 @@
       idleState: icon
       runningState: icon
       staticRecipes:
+        - SluggieHE
+        - SluggieAP
+        - SluggieEMP
+        - MagazineVulcan
         - MagazinePistolSubMachineGun
         - BoxLethalshot
         - BoxShotgunFlare

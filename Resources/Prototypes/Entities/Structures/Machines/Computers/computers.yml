@@ -49,6 +49,7 @@
   abstract: true
   components:
   - type: ShuttleConsole
+  - type: StationLifeHeuristic
   - type: ActivatableUI
     key: enum.ShuttleConsoleUiKey.Key
   - type: UserInterface
@@ -80,6 +81,9 @@
       board: !type:Container
         ents: []
       disk_slot: !type:ContainerSlot {}
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
 
 - type: entity
   parent: BaseComputerShuttle

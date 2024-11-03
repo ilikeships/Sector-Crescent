@@ -95,6 +95,10 @@ namespace Content.Client.Preferences.UI
         public void Save()
         {
             _humanoidProfileEditor.Save();
+        }
+
+        public void LockFaction()
+        {
             _factionSelector.Save();
         }
 

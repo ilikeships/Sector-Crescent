@@ -132,7 +132,6 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<float>
             DeathTaxPercentage = CVarDef.Create("game.deathtaxpercentage", 0.1f, CVar.SERVERONLY);
-
         /// <summary>
         ///     Disables most functionality in the GameTicker.
         /// </summary>
@@ -1567,8 +1566,8 @@ namespace Content.Shared.CCVar
          * UI
          */
 
-        public static readonly CVarDef<string> UILayout =
-            CVarDef.Create("ui.layout", "Default", CVar.CLIENTONLY | CVar.ARCHIVE);
+        // public static readonly CVarDef<string> UILayout =
+        //     CVarDef.Create("ui.layout", "Default", CVar.CLIENTONLY | CVar.ARCHIVE);
 
         public static readonly CVarDef<string> DefaultScreenChatSize =
             CVarDef.Create("ui.default_chat_size", "", CVar.CLIENTONLY | CVar.ARCHIVE);

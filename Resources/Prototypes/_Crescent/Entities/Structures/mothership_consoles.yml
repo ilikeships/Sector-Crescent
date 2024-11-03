@@ -6,18 +6,12 @@
   components:
   - type: ShipyardListing
     shuttles:
-    - Bogatyr
     - Vanguard
-    - Vasinya
-    - Zhipov
-    - Sasha
     - Cherenzikov
     - Hind
     - Ivarod
-    - Gargut
     - Broadsword
     - Sabre
-    - Meteor
     - Rapier
     - Khopesh
 
@@ -30,7 +24,6 @@
     shuttles:
     - Reaver
     - Corvax
-    - Reaver
     - Piranha
     - Scuttlefish
 
@@ -41,14 +34,28 @@
   components:
   - type: ShipyardListing
     shuttles:
-    - Nemesis
     - Ibis
-    - Imp
-    - Triumphant
     - Imparator
-    - Laelaps
     - Anathema
     - Jannissary
+
+- type: entity
+  id: LaborMothershipComputer
+  parent: BaseMothershipComputer
+  name: imperial shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Imp
+
+- type: entity
+  id: ScribesMothershipComputer
+  parent: BaseMothershipComputer
+  name: imperial shipyard
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Gnosis
 
 - type: entity
   id: NemesisMothershipComputer
@@ -83,9 +90,6 @@
     shuttles:
     - Shanty
     - Hyena
-    - Wisp
-    - Piranha
-    - Scuttlefish
 
 - type: entity
   id: RamziMothershipComputer

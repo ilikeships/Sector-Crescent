@@ -14,8 +14,10 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Physics.Collision.Shapes;
 using Content.Shared._Crescent.Diplomacy;
-using Content.Shared.VendingMachines;
+using Content.Shared._Crescent.ShipShields;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -26,6 +28,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _transform;
+    private readonly FixtureSystem _fixtures;
 
     /// <summary>
     /// Used to transform all of the radar objects. Typically is a shuttle console parented to a grid.
@@ -57,6 +60,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         RobustXamlLoader.Load(this);
         _shuttles = EntManager.System<SharedShuttleSystem>();
         _transform = EntManager.System<SharedTransformSystem>();
+        _fixtures = EntManager.System<FixtureSystem>();
     }
 
     public void SetMatrix(EntityCoordinates? coordinates, Angle? angle)
@@ -204,6 +208,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
 
         DrawProjectiles(handle, ourWorldMatrixInvert);
+        DrawShields(handle, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
         invertedPosition.Y = -invertedPosition.Y;
@@ -503,6 +508,43 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         public Vector2 UiPosition { get; set; }
         public Vector2 VectorToPosition { get; set; }
         public Color Color { get; set; }
+    }
+
+    private void DrawShields(DrawingHandleScreen handle, Matrix3x2 matrix)
+    {
+        var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
+        while (shields.MoveNext(out var uid, out var _, out var fixtures, out var xform))
+        {
+            if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
+                return;
+
+            var shieldFixture = _fixtures.GetFixtureOrNull(uid, "shield", fixtures);
+
+            if (shieldFixture == null || shieldFixture.Shape is not ChainShape)
+                return;
+
+            ChainShape chain = (ChainShape) shieldFixture.Shape;
+
+            var count = chain.Count;
+            var verticies = chain.Vertices;
+
+            var center = xform.LocalPosition;
+
+            for (int i = 1; i < count; i++)
+            {
+                var v1 = Vector2.Add(center, verticies[i - 1]);
+                v1 = Vector2.Transform(v1, parentXform.WorldMatrix); // transform to world matrix
+                v1 = Vector2.Transform(v1, matrix); // get back to local matrix for drawing
+                v1.Y = -v1.Y;
+                v1 = ScalePosition(v1);
+                var v2 = Vector2.Add(center, verticies[i]);
+                v2 = Vector2.Transform(v2, parentXform.WorldMatrix);
+                v2 = Vector2.Transform(v2, matrix);
+                v2.Y = -v2.Y;
+                v2 = ScalePosition(v2);
+                handle.DrawLine(v1, v2, Color.Purple);
+            }
+        }
     }
 
     private const int RadarBlipSize = 15;

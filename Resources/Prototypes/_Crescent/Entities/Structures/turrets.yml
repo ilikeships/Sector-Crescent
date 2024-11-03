@@ -908,7 +908,7 @@
 - type: entity
   parent: BaseStructure
   id: BaseWeaponTurretLaser
-  name: laser gatling
+  name: pressure gatling
   abstract: true
   components:
     - type: PointCannon
@@ -1559,7 +1559,7 @@
                   max: 5
     - type: ProjectileIFF
     - type: Gun
-      projectileSpeed: 50
+      projectileSpeed: 30
       fireRate: 0.4
       selectedMode: FullAuto
       availableModes:

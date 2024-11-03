@@ -15,6 +15,11 @@
   requireAdminNotify: false
   supervisors: job-supervisors-ncsp
   canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-pfc
   access:
   - Command
   - Maintenance

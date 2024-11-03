@@ -222,6 +222,42 @@
 
 - type: entity
   parent: IDCardStandard
+  id: DSMIDCardTemplar
+  name: imperial ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: TemplarDSM
+
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardAdvocatus
+  name: imperial ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: AdvocatusDSM
+
+- type: entity
+  parent: IDCardStandard
+  id: DSMIDCardArchmaester
+  name: imperial ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher
+  - type: PresetIdCard
+    job: ArchmaesterDSM
+
+- type: entity
+  parent: IDCardStandard
   id: DSMIDCardSurgeon
   name: imperial ID card
   components:

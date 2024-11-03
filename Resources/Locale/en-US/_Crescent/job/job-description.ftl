@@ -31,10 +31,13 @@ job-description-courtier = Oversee and command reconstruction and trade efforts 
 job-description-adjutant = Obey your liege lord, the Kaiser, and your liege lord, the Governor. Attempt to coordinate the Empire.
 job-description-governor = Maintain the delicate balance of the Count's court. Protect your fief.
 job-description-logistics = Outfit your liege's army with vessels and munitions.
-job-description-wealth = Oversee the barony's economical matters, generate revenue for your liegelord and pay his men.
+job-description-wealth = Oversee the barony's economical matters, generate revenue for your liege lord and pay his men.
 job-description-foremanimp = Coordinate the workers of your liege.
-job-description-scribe = Coordinate the Scribes' Guild, discover new technologies for the Empire.
+job-description-scribe = Explore, discover new technologies, and recover derelicts.
+job-description-archmaester = Coordinate the Scribes' Guild, discover new technologies for the Empire.
 job-description-surgeon = Tend to the bodily ails of your comrades.
+job-description-advocatus = Maintain the interests of the Count in the Barony. Collect "taxes".
+job-description-advocatustemplar = Make sure the Advocati stays alive.
 
 #srm#
 

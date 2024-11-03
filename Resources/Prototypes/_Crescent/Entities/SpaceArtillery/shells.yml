@@ -24,7 +24,7 @@
       - state: base-projectile
   - type: EmpOnTrigger
     range: 8
-    energyConsumption: 1000
+    energyConsumption: 10000
     disableDuration: 10
   - type: ShipWeaponProjectile
 

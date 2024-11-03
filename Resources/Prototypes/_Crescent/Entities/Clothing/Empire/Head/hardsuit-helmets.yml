@@ -26,6 +26,33 @@
         Caustic: 0.95
 
 - type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitInspector
+  categories: [ HideSpawnMenu ]
+  name: imperial combat hardsuit helmet
+  description: A combatant helmet with internal pressurization systems and a scanning hud for nearby targets and ballistics data.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/inspector.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/inspector.rsi
+  - type: PointLight
+    color: "#182d09"
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: IdentityBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Radiation: 0.95
+        Caustic: 0.95
+
+- type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitClarizeWorker
   categories: [ HideSpawnMenu ]
@@ -141,6 +168,21 @@
     sprite: _Crescent/Clothing/Empire/Head/clarizeberet.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/Head/clarizeberet.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatAdvocatus
+  name: advocati peaked cap
+  description: A peaked cap, stamped with the Olywir Eagle of office.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Clothing/Empire/Head/advocati.rsi
+  - type: Clothing
+    sprite: _Crescent/Clothing/Empire/Head/advocati.rsi
   - type: Tag
     tags:
     - ClothMade

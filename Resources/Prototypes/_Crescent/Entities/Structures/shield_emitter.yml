@@ -1,0 +1,111 @@
+- type: entity
+  id: ShieldEmitter
+  parent: BaseMachinePowered
+  name: NT-910 'Goliath' deflector emitter
+  description: A complicated array of machinery - guzzles power and maintains a bubble deflector shield around the mother vessel. Overheats with too much use.
+  components:
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -5
+    range: 30
+    enabled: false
+    sound:
+      path: /Audio/_Crescent/Ambience/turbine.ogg
+  - type: Sprite
+    noRot: true
+    sprite: _Crescent/Structures/shieldemitter.rsi
+    state: icon
+    snapCardinals: true
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      machine:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0,-2,2,2"
+        mask:
+        - FullTileMask
+        layer:
+        - FullTileLayer
+        density: 200
+      display:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2,0,0,1.8"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+      smallthing:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.1,-1.8,0,-1"
+        mask:
+        - MachineMask
+        layer:
+        - HalfWallLayer
+        density: 200
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+  - type: Repairable
+    doAfterDelay: 8
+  # - type: Electrified If we had multifixture this would be fine
+  #   enabled: true
+  #   usesApcPower: true
+  #   shockDamage: 60
+  - type: PointLight
+    enabled: false
+    castShadows: true
+    radius: 8
+    offset: 1.5, -2
+    color: "#90d5ff"
+    mask: /Textures/Effects/LightMasks/spiral.png
+  - type: AnimationPlayer
+  - type: LightBehaviour
+    default: radiate
+    behaviours:
+      - !type:RandomizeBehaviour
+        id: radiate
+        interpolate: Nearest
+        minDuration: 0.3
+        maxDuration: 0.5
+        startValue: 8.0
+        endValue: 14.0
+        property: Energy
+        isLooped: true
+      - !type:RandomizeBehaviour
+        id: radiate
+        interpolate: Nearest
+        minDuration: 0.3
+        maxDuration: 0.5
+        startValue: 0.0
+        endValue: 90.0
+        property: Rotation
+        isLooped: true
+  - type: LitOnPowered
+  - type: PowerSwitch
+  - type: ApcPowerReceiver
+    powerLoad: 50000
+  - type: Appearance
+  - type: ShipShieldEmitter
+    powerUpSound: !type:SoundPathSpecifier
+        path: "/Audio/Effects/teleport_arrival.ogg"
+        params:
+          pitch: 0.5
+    powerDownSound: !type:SoundPathSpecifier
+        path: "/Audio/Effects/teleport_departure.ogg"
+        params:
+          pitch: 0.5

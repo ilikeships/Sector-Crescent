@@ -300,6 +300,14 @@
   - type: Stack
     count: 1
 
+- type: entity
+  parent: MaterialBiomass
+  id: MaterialBiomass25
+  suffix: Single
+  components:
+  - type: Stack
+    count: 25
+
 # Following not used currently
 - type: entity
   parent: MaterialBase

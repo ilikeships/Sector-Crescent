@@ -413,10 +413,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 105
-    intensitySlope: 105
-    totalIntensity: 210
-    maxTileBreak: 8
+    maxIntensity: 150
+    intensitySlope: 150
+    totalIntensity: 450
   - type: HeatSeeking
     rotationSpeed: 245
     acceleration: 90
@@ -455,10 +454,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 350
-    intensitySlope: 15
-    maxIntensity: 85
-    maxTileBreak: 6
+    totalIntensity: 700
+    intensitySlope: 140
+    maxIntensity: 140
   - type: HeatSeeking
     acceleration: 75
     rotationSpeed: 15

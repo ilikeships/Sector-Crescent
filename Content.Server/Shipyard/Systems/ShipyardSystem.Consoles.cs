@@ -42,6 +42,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Content.Server.Shuttles;
 using Robust.Shared.Map.Components;
+using Content.Server._Crescent.Shipyard;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -62,6 +64,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public void InitializeConsole()
     {
@@ -266,6 +269,21 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vessel.Price} credits via {ToPrettyString(component.Owner)}");
         RefreshState(uid, bank.Balance, true, name, sellValue, true, (ShipyardConsoleUiKey) args.UiKey);
+
+        // to be continued...
+        if (idCard.FullName != null)
+        {
+            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            {
+                if (xform.GridUid != shuttle.Owner)
+                    continue;
+
+                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
+                lockout.CreationTime = _timing.CurTime;
+                lockout.Purchaser = idCard.FullName;
+            }
+        }
     }
 
     private void TryParseShuttleName(ShuttleDeedComponent deed, string name)
@@ -462,15 +480,19 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         string direction = angle switch
         {
-            <= 22.5f => Loc.GetString("zzzz-fmt-direction-East"),
-            <= 67.5f => Loc.GetString("zzzz-fmt-direction-NorthEast"),
-            <= 112.5f => Loc.GetString("zzzz-fmt-direction-North"),
-            <= 157.5f => Loc.GetString("zzzz-fmt-direction-NorthWest"),
-            <= 202.5f => Loc.GetString("zzzz-fmt-direction-West"),
-            <= 247.5f => Loc.GetString("zzzz-fmt-direction-SouthWest"),
-            <= 292.5f => Loc.GetString("zzzz-fmt-direction-South"),
-            <= 337.5f => Loc.GetString("zzzz-fmt-direction-SouthEast"),
-            _ => Loc.GetString("zzzz-fmt-direction-East")
+            <= 15f => "3",
+            <= 45f => "2",
+            <= 75f => "1",
+            <= 105f => "12",
+            <= 135f => "11",
+            <= 165f => "10",
+            <= 195f => "9",
+            <= 225f => "8",
+            <= 255f => "7",
+            <= 285f => "6",
+            <= 315f => "5",
+            <= 345f => "4",
+            _ => "3",
         };
 
         _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-direction", ("direction", direction.ToLower()), ("station", station)), InGameICChatType.Speak, false);

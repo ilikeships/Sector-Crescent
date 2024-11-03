@@ -26,7 +26,7 @@
 
 - type: entity
   id: MagazineLightRifleBoxSlug
-  name: ".50 cal uranium-tip slughthrower box"
+  name: ".50 cal uranium-tip slugthrower box"
   parent: BaseMagazineLightRifle
   components:
   - type: Tag
@@ -46,7 +46,7 @@
 
 - type: entity
   id: MagazineLightRifleBoxSlugHE
-  name: ".50 cal low-yield explosive slughthrower box"
+  name: ".50 cal low-yield explosive slugthrower box"
   parent: BaseMagazineLightRifle
   components:
   - type: Tag
@@ -66,7 +66,7 @@
 
 - type: entity
   id: MagazineLightRifleBoxSlugEMP
-  name: ".50 cal EMP slughthrower box"
+  name: ".50 cal EMP slugthrower box"
   parent: BaseMagazineLightRifle
   components:
   - type: Tag
@@ -86,7 +86,7 @@
 
 - type: entity
   id: MagazineLightRifleBoxSlugInert
-  name: ".50 cal inert slughthrower box"
+  name: ".50 cal inert slugthrower box"
   parent: BaseMagazineLightRifle
   components:
   - type: Tag

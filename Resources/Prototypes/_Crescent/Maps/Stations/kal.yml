@@ -22,6 +22,7 @@
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: StationJobs
+          checkAlive: false
           overflowJobs:
             - Contractor
             - Pilot
@@ -31,11 +32,22 @@
             AdjutantDSM: [ 1, 1 ]
             CourtierDSM: [ 1, 1 ]
             WealthDSM: [ 1, 1 ]
-            KnightDSM: [ 5, 5 ]
-            LevymanDSM: [ 10, 10 ]
+            KnightDSM: [ 3, 3 ]
+            LevymanDSM: [ 8, 8 ]
             ForemanDSM: [ 3, 3 ]
-            FreeholderDSM: [ 20, 20 ]
+            FreeholderDSM: [ 15, 15 ]
+            ArchmaesterDSM: [ 1, 1 ]
             ScribeDSM: [ 3, 3 ]
-            SurgeonDSM: [ 5, 5 ]
+            SurgeonDSM: [ 3, 3 ]
+            AdvocatusDSM: [ 1, 1 ]
+            TemplarDSM: [ 2, 2 ]
+            MarshalCMM: [ 1, 1 ]
+            DeputyMarshalCMM: [ 1, 1 ]
+            WatchmasterCMM: [ 2, 2 ]
+            MinutemanCMM: [ 4, 4 ]
+            MachinistCMM: [ 2, 2 ]
+            OrdnancemanCMM: [ 2, 2 ]
+            PhysicianCMM: [ 2, 2 ]
             Antiquarian: [ 1, 1 ]
+            Contractor: [ 20, 20 ]
 
