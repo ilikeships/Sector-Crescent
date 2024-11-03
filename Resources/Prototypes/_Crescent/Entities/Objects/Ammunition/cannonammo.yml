@@ -691,3 +691,92 @@
     color: orange
     energy: 0.5
   - type: ProjectileIFF
+
+# flak
+
+- type: Tag
+  id: FlakShell
+
+- type: Tag
+  id: FlakBox
+
+- type: entity
+  id: FlakCartridge
+  name: 88mm 'Prince' flak cannon shell
+  parent: BaseItem
+  description: A spread-fire flak cannon shell.
+  components:
+  - type: Tag
+    tags:
+      - FlakShell
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: FlakProjectile
+    count: 3
+    spread: 10
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/flak.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: SpaceGarbage
+
+- type: entity
+  id: FlakProjectile
+  name: 88mm low-yield flak pellet
+  description: Shit.
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ShipWeaponProjectile
+  - type: Projectile
+    ignoreWeaponGrid: true
+    damage:
+      types:
+        Structural: 150
+        Blunt: 40
+  - type: Tag
+    tags:
+      - FlakShell
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/flak.rsi
+    layers:
+      - state: base-projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 55
+    intensitySlope: 7
+    maxIntensity: 30
+    maxTileBreak: 5
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+  - type: ProjectileIFF
+
+- type: entity
+  id: MagazineFlak
+  name: "88mm 'Prince' flakcannon AP"
+  parent: BaseMagazineLightRifle
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - FlakShell
+    proto: FlakCartridge
+    capacity: 15
+  - type: Item
+  - type: Sprite
+    sprite: _Crescent/Ammunition/flak.rsi
+    state: base
+  - type: Tag
+    tags:
+      - FlakBox

@@ -38,7 +38,7 @@
   equipment:
     id: AdvocatusPDA
     head:  ClothingHeadHatAdvocatus
-    ears: ClothingHeadsetEmpireCiv
+    ears: ClothingHeadsetEmpire
     pocket1: ImperialPassportBareLegit
     back: ClothingBackpackSatchelLeatherFilledDSM
     outerClothing: ClothingOuterCoatImperialAdvocatus

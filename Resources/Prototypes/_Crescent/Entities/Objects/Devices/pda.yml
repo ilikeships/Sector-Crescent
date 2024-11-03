@@ -303,7 +303,7 @@
   description: Purple for Imperial.
   components:
   - type: Pda
-    id: DSMIDCardFreeholder
+    id: DSMIDCardTemplar
     state: basic
   - type: PdaBorderColor
     borderColor: "#6d5f8a"
