@@ -130,6 +130,8 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool>
             DeathTax = CVarDef.Create("game.deathtax", true,CVar.SERVERONLY);
 
+        public static readonly CVarDef<float>
+            DeathTaxPercentage = CVarDef.Create("game.deathtaxpercentage", 0.1f, CVar.SERVERONLY);
         /// <summary>
         ///     Disables most functionality in the GameTicker.
         /// </summary>

@@ -22,6 +22,5 @@ namespace Content.Server.Preferences.Managers
         bool HavePreferencesLoaded(ICommonSession session);
         Task RefreshPreferencesAsync(ICommonSession session, CancellationToken cancel);
 
-        void UpdateProfile(int slot, ICharacterProfile profile, NetUserId userId);
     }
 }

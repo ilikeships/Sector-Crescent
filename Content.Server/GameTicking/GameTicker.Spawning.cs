@@ -281,48 +281,31 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(mob, aev, true);
         }
 
+        public void DeathTax(ICommonSession player, float percentage)
+        {
+            var prefs = _prefsManager.GetPreferences(player.UserId);
+            var character = prefs.SelectedCharacter;
+            var index = prefs.IndexOfCharacter(character);
+
+            if (character is not HumanoidCharacterProfile profile)
+            {
+                return;
+            }
+
+            var tax = (int) (profile.BankBalance * percentage);
+
+            var newProfile = profile.WithBank(profile.BankBalance - tax);
+
+            _dbManager.SaveCharacterSlot(player.UserId, newProfile, index);
+            _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {tax} from respooling");
+
+        }
+
         public void Respawn(ICommonSession player)
         {
             if (_cfg.GetCVar(CCVars.DeathTax))
             {
-                var prefs = _prefsManager.GetPreferences(player.UserId);
-                var character = prefs.SelectedCharacter;
-                var index = prefs.IndexOfCharacter(character);
-
-                if (character is not HumanoidCharacterProfile profile)
-                {
-                    return;
-                }
-
-                var tax = (int)(profile.BankBalance * 0.1);
-
-                var newProfile = new HumanoidCharacterProfile(
-                    profile.Name,
-                    profile.FlavorText,
-                    profile.Species,
-                    profile.Age,
-                    profile.Sex,
-                    profile.Gender,
-                    profile.BankBalance - tax,
-                    profile.Faction,
-                    profile.Appearance,
-                    profile.SpawnPriority,
-                    profile.JobPriorities,
-                    profile.PreferenceUnavailable,
-                    profile.AntagPreferences,
-                    profile.TraitPreferences,
-                    new Dictionary<string, RoleLoadout>(profile.Loadouts));
-
-                _dbManager.SaveCharacterSlot(player.UserId, newProfile, index);
-                _adminLogger.Add(LogType.DeathTax, LogImpact.Medium, $"Player {player} has been taxed {tax} from respooling");
-
-                // bank component is very poorly written and i need it to be properly updated before the player
-                // character is spawned in SPCR 2024
-                //var playerProfile = (HumanoidCharacterProfile) (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
-                //var profileIndex = _preferencesManager.GetPreferences(player.UserId).SelectedCharacterIndex;
-                //var taxAmount = (int) (playerProfile.BankBalance * 0.1);
-                //playerProfile = playerProfile.WithBank(playerProfile.BankBalance - taxAmount);
-                //_preferencesManager.UpdateProfile(profileIndex, playerProfile, player.UserId);
+                DeathTax(player,_cfg.GetCVar(CCVars.DeathTaxPercentage));
             }
 
             _mind.WipeMind(player);
