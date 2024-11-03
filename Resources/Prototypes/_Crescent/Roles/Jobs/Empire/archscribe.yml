@@ -38,7 +38,7 @@
   id: ArchmaesterGear
   equipment:
     id: ArchmaesterPDA
-    ears: ClothingHeadsetEmpireCiv
+    ears: ClothingHeadsetEmpire
     pocket1: ImperialPassportBareLegit
     back: ClothingBackpackSatchelLeatherFilledDSM
     outerClothing: ClothingOuterCoatArchmaester
