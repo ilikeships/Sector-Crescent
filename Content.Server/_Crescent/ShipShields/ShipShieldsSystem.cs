@@ -137,7 +137,6 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         shieldComp.Shielded = entity;
         shieldComp.Source = source;
 
-
         _transformSystem.SetLocalPosition(shield, mapGrid.LocalAABB.Center);
         _transformSystem.SetWorldRotation(shield, _transformSystem.GetWorldRotation(entity));
         _transformSystem.SetParent(shield, entity);
