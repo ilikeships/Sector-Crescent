@@ -156,6 +156,7 @@ namespace Content.Client.Preferences.UI
             confirmButton.OnPressed += _ =>
             {
                 FactionInfo.RemoveAllChildren();
+                SetupUI.LockFaction();
                 Save();
                 SetupUI.SwitchToCharacterEditor();
             };

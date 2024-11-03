@@ -72,7 +72,7 @@ namespace Content.Client.Preferences.UI
             _factionSelector = new FactionSelectorGui(preferencesManager, prototypeManager, this);
             _humanoidProfileEditor = new HumanoidProfileEditor(preferencesManager, prototypeManager, configurationManager);
             _humanoidProfileEditor.OnProfileChanged += ProfileChanged;
-            _factionSelector.OnProfileChanged += LockFaction;
+            _factionSelector.OnProfileChanged += ProfileChanged;
             // MARCAT
 
             UpdateUI();
@@ -97,7 +97,7 @@ namespace Content.Client.Preferences.UI
             _humanoidProfileEditor.Save();
         }
 
-        public void LockFaction(ICharacterProfile profile, int profileSlot)
+        public void LockFaction()
         {
             _factionSelector.Save();
         }
