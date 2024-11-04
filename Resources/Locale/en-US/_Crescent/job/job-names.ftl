@@ -31,7 +31,7 @@ job-name-courtier = Minister of Labor
 job-name-logisticsofficer = Knight Logisticier
 job-name-adjutant = Suzerain Adjutant
 job-name-archmaester = Scribe Archmaester
-job-name-governor = Imperial Baron
+job-name-governor = Lord Regent
 job-name-foremanimp = Foreman
 job-name-imperialresearch = Imperial Scribe
 job-name-surgeon = Imperial Surgeon
@@ -57,7 +57,7 @@ job-name-traumasec = TraumaSec Combat Medic
 job-name-employee = Salaryman
 job-name-medtech = MedTech Specialist
 
-#cmm
+#tsp
 
 job-name-ordnanceman = Kanonier
 job-name-machinist = Machinist

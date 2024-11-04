@@ -10,6 +10,13 @@
   requirements:
   - !type:FactionRequirement
       factionID: "TSP"
+  - !type:OverallPlaytimeRequirement
+    time: 12000
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-watchmaster
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm 
   canBeAntag: false
