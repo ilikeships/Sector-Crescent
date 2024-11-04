@@ -783,6 +783,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 A = 100
             });
             _shuttle.AddIFFFlag(shuttle.Owner, IFFFlags.IsPlayerShuttle);
+
+            // match our IFF faction with our spawner's
+            if (TryComp<IFFComponent>(Transform(uid).GridUid, out var stationIFF))
+            {
+                _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
+            }
         }
 
         if (TryComp<AccessComponent>(targetId, out var newCap))
@@ -863,6 +869,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         SendPurchaseMessage(uid, user, name, channel, false);
+
+        ChatPurchaseLocation(uid, station, config);
 
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(user):actor} redeemed shuttle {ToPrettyString(shuttle.Owner)} with voucher via {ToPrettyString(component.Owner)}");
