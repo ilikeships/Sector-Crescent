@@ -208,7 +208,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
 
         DrawProjectiles(handle, ourWorldMatrixInvert);
-        DrawShields(handle, ourWorldMatrixInvert);
+        DrawShields(handle, xform, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
         invertedPosition.Y = -invertedPosition.Y;
@@ -510,18 +510,21 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         public Color Color { get; set; }
     }
 
-    private void DrawShields(DrawingHandleScreen handle, Matrix3x2 matrix)
+    private void DrawShields(DrawingHandleScreen handle, TransformComponent consoleXform, Matrix3x2 matrix)
     {
         var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
         while (shields.MoveNext(out var uid, out var _, out var fixtures, out var xform))
         {
             if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
-                return;
+                continue;
+
+            if (xform.MapID != consoleXform.MapID)
+                continue;
 
             var shieldFixture = _fixtures.GetFixtureOrNull(uid, "shield", fixtures);
 
             if (shieldFixture == null || shieldFixture.Shape is not ChainShape)
-                return;
+                continue;
 
             ChainShape chain = (ChainShape) shieldFixture.Shape;
 
