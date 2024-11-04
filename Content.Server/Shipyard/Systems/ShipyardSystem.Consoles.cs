@@ -476,23 +476,23 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var dir = pos - center;
 
-        var angle = dir.ToAngle().Degrees;
+        var angle = dir.ToAngle().Degrees + 180;
 
         string direction = angle switch
         {
-            <= 15f => "3",
-            <= 45f => "2",
-            <= 75f => "1",
-            <= 105f => "12",
-            <= 135f => "11",
-            <= 165f => "10",
-            <= 195f => "9",
-            <= 225f => "8",
-            <= 255f => "7",
-            <= 285f => "6",
-            <= 315f => "5",
-            <= 345f => "4",
-            _ => "3",
+            <= 15f => "9",
+            <= 45f => "8",
+            <= 75f => "7",
+            <= 105f => "6",
+            <= 135f => "5",
+            <= 165f => "4",
+            <= 195f => "3",
+            <= 225f => "2",
+            <= 255f => "1",
+            <= 285f => "12",
+            <= 315f => "11",
+            <= 345f => "10",
+            _ => "9",
         };
 
         _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-direction", ("direction", direction.ToLower()), ("station", station)), InGameICChatType.Speak, false);
