@@ -1,2 +1,2 @@
-chat-radio-traffic = Traffic
-chat-radio-nfsd = Colonial Minutemen
+chat-radio-traffic = Shortband
+chat-radio-nfsd = Sektorpol

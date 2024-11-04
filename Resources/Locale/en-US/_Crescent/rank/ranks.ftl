@@ -35,3 +35,13 @@ crescent-rank-freeman = Freeman
 crescent-rank-foreman = Foreman
 crescent-rank-syndoc = Doc
 crescent-rank-saw = Shipbreaker
+
+#tsp
+
+crescent-rank-physician = Sanitier
+crescent-rank-marshallie = Marshallie
+crescent-rank-ordnance = Canonier Sgt.
+crescent-rank-minuteman = Inspktr.
+crescent-rank-machinist = Cpl.
+crescent-rank-watchmaster = Kmmsr.
+crescent-rank-2ic = 2nd Marshallie

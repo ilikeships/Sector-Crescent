@@ -1,15 +1,20 @@
 - type: job
-  id: OrdnancemanCMM
-  name: job-name-ordnanceman
-  description: job-description-ordnanceman
-  playTimeTracker: JobOrdnancemanCMM
-  weight: 18
-  startingGear: OrdnancemanGear
-  alwaysUseSpawner: true
+  id: PhysicianCMM
+  name: job-name-physician
+  description: job-description-physician
+  playTimeTracker: JobPhysicianCMM
+  weight: 24
+  startingGear: PhysicianGear
   requirements:
   - !type:FactionRequirement
       factionID: "TSP"
-  icon: "JobIconOrdnanceman"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-physician
+  alwaysUseSpawner: true
+  icon: "JobIconCMMPhysician"
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm 
   canBeAntag: false
@@ -22,13 +27,13 @@
   - Captain # Frontier
 
 - type: startingGear
-  id: OrdnancemanGear
+  id: PhysicianGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitCMMOrdnanceman
+    jumpsuit: ClothingUniformJumpsuitCMMPhysician
     shoes: ClothingShoesBootsCombat
-    head: ClothingHeadHelmetCMMOrdnanceman
+    head: ClothingHeadHatMinuteman
     gloves: ClothingHandsGlovesCombat
     belt: ClothingBeltMinutemanPouches
-    id: OrdnancemanPDA
+    id: PhysicianPDA
     ears: ClothingHeadsetCMM
     pocket1: WeaponPistolHKUSP

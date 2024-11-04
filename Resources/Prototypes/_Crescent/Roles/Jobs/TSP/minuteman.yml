@@ -8,6 +8,11 @@
   requirements:
   - !type:FactionRequirement
       factionID: "TSP"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-minuteman
   alwaysUseSpawner: true
   icon: "JobIconMinuteman"
   requireAdminNotify: false
