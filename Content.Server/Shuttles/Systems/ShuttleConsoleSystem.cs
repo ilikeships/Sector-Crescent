@@ -186,7 +186,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             if (key is TargetingConsoleUiKey.Key)
             {
                 args.Cancel();
-                _popup.PopupEntity(Loc.GetString("shuttle-console-rejection-targeting"), args.User, Shared.Popups.PopupType.LargeCaution);
+                _popup.PopupEntity(Loc.GetString("shuttle-console-rejection-targeting"), args.User, args.User, PopupType.LargeCaution);
                 return;
             }
         }

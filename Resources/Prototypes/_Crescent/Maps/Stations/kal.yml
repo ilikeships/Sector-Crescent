@@ -10,6 +10,8 @@
       gridComponents:
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
+        - type: IFF
+          faction: DSM
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Kal Surezai'
