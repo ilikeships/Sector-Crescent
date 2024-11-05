@@ -7,6 +7,7 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
+      - EncryptionKeyTraffic
 
 - type: entity
   parent: [ClothingHeadsetCommon, ClothingHeadsetSecurity]
@@ -38,6 +39,7 @@
       key_slots:
       - EncryptionKeyNfsd
       - EncryptionKeyCommon
+      - EncryptionKeyTraffic
 
 - type: entity
   parent: ClothingHeadsetNfsdBrown
@@ -68,3 +70,4 @@
       - EncryptionKeyNfsd
       - EncryptionKeyCommon
       - EncryptionKeyMedical
+      - EncryptionKeyTraffic
