@@ -12,7 +12,7 @@ public sealed partial class PassiveRegenerationComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier HealPerTick = default!;
 
-    [DataField("waterDrain", required: true)]
+    [DataField("thirstDrain", required: true)]
     [ViewVariables(VVAccess.ReadWrite)]
     public float thirstDrain = 0.1f;
 

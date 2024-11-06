@@ -1,5 +1,8 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.GameObjects;
@@ -16,6 +19,7 @@ public sealed class PassiveRegenerationSystem : EntitySystem
     [Dependency] private readonly ThirstSystem _thirst = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly MobStateSystem _states = default!;
 
     EntityQuery<PassiveRegenerationComponent> _componentQuery;
 
@@ -28,9 +32,14 @@ public sealed class PassiveRegenerationSystem : EntitySystem
         accumulator += frameTime;
         if (accumulator > 15f)
         {
+            accumulator = 0f;
             var query = EntityQueryEnumerator<PassiveRegenerationComponent>();
             while (query.MoveNext(out var uid, out var regenComp))
             {
+                if (!TryComp<MobStateComponent>(uid, out var mobState))
+                    continue;
+                if (mobState.CurrentState == MobState.Dead)
+                    continue;
                 if(!TryComp<DamageableComponent>(uid, out var damageable))
                     continue;
                 if(damageable.TotalDamage == 0)
