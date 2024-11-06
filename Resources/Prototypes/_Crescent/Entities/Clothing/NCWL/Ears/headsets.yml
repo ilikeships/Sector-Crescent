@@ -9,7 +9,6 @@
         key_slots:
           - EncryptionKeyNCWL
           - EncryptionKeyTraffic
-          
     - type: Sprite
       sprite: _Crescent/Clothing/Headsets/ncwl.rsi
     - type: Clothing
