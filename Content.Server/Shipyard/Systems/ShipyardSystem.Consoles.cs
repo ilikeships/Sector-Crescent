@@ -476,23 +476,23 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var dir = pos - center;
 
-        var angle = dir.ToAngle().Degrees;
+        var angle = dir.ToAngle().Degrees + 180;
 
         string direction = angle switch
         {
-            <= 15f => "3",
-            <= 45f => "2",
-            <= 75f => "1",
-            <= 105f => "12",
-            <= 135f => "11",
-            <= 165f => "10",
-            <= 195f => "9",
-            <= 225f => "8",
-            <= 255f => "7",
-            <= 285f => "6",
-            <= 315f => "5",
-            <= 345f => "4",
-            _ => "3",
+            <= 15f => "9",
+            <= 45f => "8",
+            <= 75f => "7",
+            <= 105f => "6",
+            <= 135f => "5",
+            <= 165f => "4",
+            <= 195f => "3",
+            <= 225f => "2",
+            <= 255f => "1",
+            <= 285f => "12",
+            <= 315f => "11",
+            <= 345f => "10",
+            _ => "9",
         };
 
         _chat.TrySendInGameICMessage(chatter, Loc.GetString("shipyard-console-direction", ("direction", direction.ToLower()), ("station", station)), InGameICChatType.Speak, false);
@@ -783,6 +783,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 A = 100
             });
             _shuttle.AddIFFFlag(shuttle.Owner, IFFFlags.IsPlayerShuttle);
+
+            // match our IFF faction with our spawner's
+            if (TryComp<IFFComponent>(Transform(uid).GridUid, out var stationIFF))
+            {
+                _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
+            }
         }
 
         if (TryComp<AccessComponent>(targetId, out var newCap))
@@ -863,6 +869,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         SendPurchaseMessage(uid, user, name, channel, false);
+
+        ChatPurchaseLocation(uid, station, config);
 
         PlayConfirmSound(uid, component);
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(user):actor} redeemed shuttle {ToPrettyString(shuttle.Owner)} with voucher via {ToPrettyString(component.Owner)}");

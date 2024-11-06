@@ -8,6 +8,8 @@
   relations:
     NCWL:
       War
+    TSP:
+      Ally
 
 - type: diplomacy
   id: NCWL

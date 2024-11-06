@@ -8,6 +8,7 @@ using Content.Shared.Crescent.Radar;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.PointCannons;
+using Content.Shared.Popups;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.UserInterface;
 using Content.Shared.Weapons.Ranged.Components;
@@ -72,7 +73,7 @@ public sealed class PointCannonSystem : EntitySystem
             if (key is ShuttleConsoleUiKey.Key)
             {
                 args.Cancel();
-                _popSys.PopupEntity(Loc.GetString("targeting-rejection-shuttle-console"), args.User, Shared.Popups.PopupType.LargeCaution);
+                _popSys.PopupEntity(Loc.GetString("targeting-rejection-shuttle-console"), args.User, args.User, PopupType.LargeCaution);
             }
         }
     }

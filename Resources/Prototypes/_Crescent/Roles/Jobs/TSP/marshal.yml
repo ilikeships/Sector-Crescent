@@ -1,15 +1,21 @@
 - type: job
-  id: DeputyMarshalCMM
-  name: job-name-deputymarshal
-  description: job-description-deputymarshal
-  playTimeTracker: JobDeputyMarshalCMM
-  weight: 32
-  startingGear: DeputyMarshalGear
+  id: MarshalCMM
+  name: job-name-marshal
+  description: job-description-marshal
+  playTimeTracker: JobMarshalCMM
   requirements:
-  - !type:FactionRequirement
-      factionID: "TSP"
+    - !type:WhitelistRequirement
+    - !type:FactionRequirement
+        factionID: "TSP"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-marshallie
+  weight: 39
+  startingGear: MarshalGear
   alwaysUseSpawner: true
-  icon: "JobIconDeputyMarshal"
+  icon: "JobIconMarshal"
   requireAdminNotify: false
   supervisors: job-supervisors-highcomm 
   canBeAntag: false
@@ -25,13 +31,13 @@
   - Captain # Frontier
 
 - type: startingGear
-  id: DeputyMarshalGear
+  id: MarshalGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCMMOfficer
     shoes: ClothingShoesBootsCombat
-    head: ClothingHeadHatCMMDeputyMarshal
+    head: ClothingHeadHatCMMMarshal
     gloves: ClothingHandsGlovesCombat
     belt: WeaponRevolverSnubnose
-    id: DeputyMarshalPDA
+    id: MarshalPDA
     ears: ClothingHeadsetCMM
-    outerClothing: ClothingOuterArmorCMMDeputyCarapace
+    outerClothing: ClothingOuterArmorCMMCarapace

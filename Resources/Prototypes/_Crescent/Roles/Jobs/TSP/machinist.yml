@@ -7,6 +7,11 @@
   requirements:
   - !type:FactionRequirement
       factionID: "TSP"
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: ChatRank
+        rank: crescent-rank-machinist
   startingGear: MachinistGear
   alwaysUseSpawner: true
   icon: "JobIconMachinist"
