@@ -241,13 +241,13 @@
   - type: PassiveRegeneration
     healPerTick:
       types:
-        Heat: -0.5
+        Heat: -0.3
         Poison: -0.1
         Shock: -0.1
         Cold: -0.2
         Piercing: -0.3
-        Blunt: -1
-        Slash: -1
+        Blunt: -0.3
+        Slash: -0.3
     thirstDrain: 0.1
     hungerDrain: 0.2
   # Organs
