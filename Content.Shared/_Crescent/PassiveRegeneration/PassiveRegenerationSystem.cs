@@ -2,6 +2,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Crescent.PassiveRegeneration;
@@ -15,6 +16,7 @@ public sealed class PassiveRegenerationSystem : EntitySystem
     [Dependency] private readonly ThirstSystem _thirst = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly PrototypeManager _prototype = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     EntityQuery<PassiveRegenerationComponent> _componentQuery;
 
@@ -39,10 +41,7 @@ public sealed class PassiveRegenerationSystem : EntitySystem
                     var totalHeal = (thirst.CurrentThirst / thirst.ThirstThresholds[thirst.LastThirstThreshold]);
                     totalHeal *= (hunger.CurrentHunger / hunger.Thresholds[hunger.CurrentThreshold]);
                     totalHeal *= 4f;
-                    foreach(var (damageType, damageAmount) in damageable.Damage.GetDamagePerGroup(_prototype))
-                    {
-                        
-                    }
+                    _damageable.TryChangeDamage(uid, new DamageSpecifier(), true);
 
             }
         }
