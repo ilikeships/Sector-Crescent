@@ -15,7 +15,6 @@ public sealed class PassiveRegenerationSystem : EntitySystem
 
     [Dependency] private readonly ThirstSystem _thirst = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly PrototypeManager _prototype = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
 
     EntityQuery<PassiveRegenerationComponent> _componentQuery;
@@ -36,12 +35,13 @@ public sealed class PassiveRegenerationSystem : EntitySystem
                     continue;
                 if(damageable.TotalDamage == 0)
                     continue;
-                if(!TryComp<ThirstComponent>(uid, out var thirst) || !TryComp<HungerComponent>(uid, out var hunger));
+                if(!TryComp<ThirstComponent>(uid, out var thirst) || !TryComp<HungerComponent>(uid, out var hunger))
                     continue;
-                    var totalHeal = (thirst.CurrentThirst / thirst.ThirstThresholds[thirst.LastThirstThreshold]);
-                    totalHeal *= (hunger.CurrentHunger / hunger.Thresholds[hunger.CurrentThreshold]);
-                    totalHeal *= 4f;
-                    _damageable.TryChangeDamage(uid, new DamageSpecifier(), true);
+                if(_hunger.IsHungerBelowState(uid, HungerThreshold.Okay, null, hunger) || _thirst.IsThirstBelowState(uid, ThirstThreshold.Parched, null, thirst))
+                    continue;
+                if (!_thirst.ModifyThirst(uid, thirst, -regenComp.thirstDrain) || !_hunger.ModifyHunger(uid, -regenComp.hungerDrain, hunger))
+                    continue;
+                _damageable.TryChangeDamage(uid, regenComp.HealPerTick, true);
 
             }
         }
