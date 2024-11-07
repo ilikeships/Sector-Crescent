@@ -15,4 +15,7 @@ public sealed partial class PointCannonComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public Angle ClearanceAngle = 0;
+
+    [DataField,ViewVariables(VVAccess.ReadOnly)]
+    public EntityUid? LinkedConsoleId;
 }

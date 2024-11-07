@@ -6,7 +6,7 @@
   product: CrateEngineeringThruster
   cost: 1500
   category: cargoproduct-category-name-shuttle
-  group: surezai
+  group: freeport
 
 - type: cargoProduct
   id: ShuttleFreeport

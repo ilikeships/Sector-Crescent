@@ -67,6 +67,13 @@ public sealed class ThirstSystem : EntitySystem
             _movement.RefreshMovementSpeedModifiers(uid, moveMod);
     }
 
+    public bool IsThirstBelowState(EntityUid uid, ThirstThreshold threshold, float? thirst = null, ThirstComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return false; // It's never going to go hungry, so it's probably fine to assume that it's not... you know, hungry.
+
+        return GetThirstThreshold(comp, comp.CurrentThirst) < threshold;
+    }
     private void OnRefreshMovespeed(EntityUid uid, ThirstComponent component, RefreshMovementSpeedModifiersEvent args)
     {
         // TODO: This should really be taken care of somewhere else
@@ -98,9 +105,13 @@ public sealed class ThirstSystem : EntitySystem
         return result;
     }
 
-    public void ModifyThirst(EntityUid uid, ThirstComponent component, float amount)
+    public bool ModifyThirst(EntityUid uid, ThirstComponent component, float amount)
     {
         SetThirst(uid, component, component.CurrentThirst + amount);
+        if (component.CurrentThirst > 0)
+            return true;
+        return false;
+
     }
 
     public void SetThirst(EntityUid uid, ThirstComponent component, float amount)

@@ -76,7 +76,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         if (_coordinates == null || _rotation == null || args.Function != EngineKeyFunctions.UIClick)
             return;
 
-        OnRadarClick?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+        OnRadarClick?.Invoke(PureRelativePosition(args.RelativePosition));
     }
 
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
@@ -96,20 +96,32 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         if (_coordinates == null || _rotation == null)
             return;
 
-        OnRadarMouseMove?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+        OnRadarMouseMove?.Invoke(PureRelativePosition(args.RelativePosition));
     }
 
     private EntityCoordinates RelativePositionToEntityCoords(Vector2 pos)
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
-
+        
         var a = InverseScalePosition(pos);
         var relativeWorldPos = a with { Y = -a.Y };
         relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
         return _coordinates.Value.Offset(relativeWorldPos);
+        
     }
-
+    // SPCR 2024 - This is only used for shooting ship weapons. The function above is ... not accurate
+    // for objects with a width and height of 0 (aka bullets)
+    public EntityCoordinates PureRelativePosition(Vector2 pos)
+    {
+        if (_coordinates == null || _rotation == null)
+            return EntityCoordinates.Invalid;
+        
+        var a = pos - Size/2;
+        var relativePos = a with { Y = -a.Y };
+        relativePos = _rotation.Value.RotateVec(relativePos);
+        return _coordinates.Value.Offset(relativePos); 
+    }
     /// <summary>
     /// Gets the entity coordinates of where the mouse position is, relative to the control.
     /// </summary>
@@ -208,7 +220,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
 
         DrawProjectiles(handle, ourWorldMatrixInvert);
-        DrawShields(handle, ourWorldMatrixInvert);
+        DrawShields(handle, xform, ourWorldMatrixInvert);
 
         var invertedPosition = _coordinates.Value.Position - offset;
         invertedPosition.Y = -invertedPosition.Y;
@@ -510,18 +522,21 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         public Color Color { get; set; }
     }
 
-    private void DrawShields(DrawingHandleScreen handle, Matrix3x2 matrix)
+    private void DrawShields(DrawingHandleScreen handle, TransformComponent consoleXform, Matrix3x2 matrix)
     {
         var shields = EntManager.AllEntityQueryEnumerator<ShipShieldVisualsComponent, FixturesComponent, TransformComponent>();
         while (shields.MoveNext(out var uid, out var _, out var fixtures, out var xform))
         {
             if (!EntManager.TryGetComponent<TransformComponent>(xform.GridUid, out var parentXform))
-                return;
+                continue;
+
+            if (xform.MapID != consoleXform.MapID)
+                continue;
 
             var shieldFixture = _fixtures.GetFixtureOrNull(uid, "shield", fixtures);
 
             if (shieldFixture == null || shieldFixture.Shape is not ChainShape)
-                return;
+                continue;
 
             ChainShape chain = (ChainShape) shieldFixture.Shape;
 

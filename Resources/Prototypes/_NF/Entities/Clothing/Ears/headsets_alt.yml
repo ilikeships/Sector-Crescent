@@ -7,6 +7,7 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
+      - EncryptionKeyTraffic
   - type: Sprite
     sprite: _NF/Clothing/Ears/Headsets/mercenary.rsi
   - type: Clothing
@@ -21,6 +22,7 @@
     containers:
       key_slots:
       - EncryptionKeyCommon
+      - EncryptionKeyTraffic
   - type: Sprite
     sprite: _NF/Clothing/Ears/Headsets/pilot.rsi
   - type: Clothing
@@ -37,6 +39,7 @@
       - EncryptionKeyCommon
       - EncryptionKeyNfsd
       - EncryptionKeyCommand
+      - EncryptionKeyTraffic
   - type: Sprite
     sprite: _NF/Clothing/Ears/Headsets/nfsd_h_green.rsi
   - type: Clothing
@@ -53,6 +56,7 @@
       - EncryptionKeyCommon
       - EncryptionKeyNfsd
       - EncryptionKeyCommand
+      - EncryptionKeyTraffic
   - type: Sprite
     sprite: _NF/Clothing/Ears/Headsets/nfsd_h_brown.rsi
   - type: Clothing
@@ -72,3 +76,4 @@
       key_slots:
       - EncryptionKeyStationMaster
       - EncryptionKeyCentCom
+      - EncryptionKeyTraffic

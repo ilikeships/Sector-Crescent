@@ -5,8 +5,6 @@ using Content.Client.Humanoid;
 using Content.Client.Lobby;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Client.Stylesheets;
-using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
@@ -49,7 +47,6 @@ namespace Content.Client.Preferences.UI
         private Button _saveButton => CSaveButton;
         private OptionButton _sexButton => CSexButton;
         private Slider _skinColor => CSkin;
-        private OptionButton _spawnPriorityButton => CSpawnPriorityButton;
         private SingleMarkingPicker _hairPicker => CHairStylePicker;
         private SingleMarkingPicker _facialHairPicker => CFacialHairPicker;
         private EyeColorPicker _eyesPicker => CEyeColorPicker;
@@ -269,21 +266,6 @@ namespace Content.Client.Preferences.UI
             };
 
             #endregion Hair
-
-            #region SpawnPriority
-
-            foreach (var value in Enum.GetValues<SpawnPriorityPreference>())
-            {
-                _spawnPriorityButton.AddItem(Loc.GetString($"humanoid-profile-editor-preference-spawn-priority-{value.ToString().ToLower()}"), (int) value);
-            }
-
-            _spawnPriorityButton.OnItemSelected += args =>
-            {
-                _spawnPriorityButton.SelectId(args.Id);
-                SetSpawnPriority((SpawnPriorityPreference) args.Id);
-            };
-
-            #endregion SpawnPriority
 
             #region Eyes
 
@@ -960,15 +942,6 @@ namespace Content.Client.Preferences.UI
 
             CSpeciesButton.Select(_speciesList.FindIndex(x => x.ID == Profile.Species));
         }
-        private void UpdateSpawnPriorityControls()
-        {
-            if (Profile == null)
-            {
-                return;
-            }
-
-            _spawnPriorityButton.SelectId((int) Profile.SpawnPriority);
-        }
 
         private void UpdateHairPickers()
         {
@@ -1109,7 +1082,6 @@ namespace Content.Client.Preferences.UI
             UpdateSexControls();
             UpdateSkinColor();
             UpdateSpecies();
-            UpdateSpawnPriorityControls();
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();
