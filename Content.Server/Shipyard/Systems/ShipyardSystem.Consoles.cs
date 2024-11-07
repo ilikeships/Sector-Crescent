@@ -167,6 +167,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(player).EntityName}.");
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
