@@ -1410,7 +1410,7 @@ entities:
         all:
         - 209
         - 211
-        gatling:
+        vulcan:
         - 209
         - 211
 - proto: CrateArtilleryAmmo
@@ -2184,7 +2184,7 @@ entities:
       pos: 8.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 979000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -2820,6 +2820,7 @@ entities:
       pos: 9.5,4.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 206
       obstructedRanges:
       - 2.715122334649169 rad: 4.458180891047525 rad
     - type: ContainerContainer
@@ -2843,6 +2844,7 @@ entities:
       pos: 7.5,4.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 206
       obstructedRanges:
       - 2.251474735072685 rad: 4.458180891047526 rad
     - type: ContainerContainer

@@ -1538,6 +1538,13 @@ entities:
       parent: 772
     - type: Physics
       canCollide: False
+- proto: Bucket
+  entities:
+  - uid: 1505
+    components:
+    - type: Transform
+      pos: 4.8004746,6.4846478
+      parent: 1
 - proto: BurnAutoInjector
   entities:
   - uid: 734
@@ -3216,6 +3223,16 @@ entities:
       parent: 1
 - proto: CableMV
   entities:
+  - uid: 400
+    components:
+    - type: Transform
+      pos: -3.5,5.5
+      parent: 1
+  - uid: 543
+    components:
+    - type: Transform
+      pos: -3.5,4.5
+      parent: 1
   - uid: 1014
     components:
     - type: Transform
@@ -3520,6 +3537,66 @@ entities:
     components:
     - type: Transform
       pos: -4.5,6.5
+      parent: 1
+  - uid: 1493
+    components:
+    - type: Transform
+      pos: -3.5,3.5
+      parent: 1
+  - uid: 1494
+    components:
+    - type: Transform
+      pos: -3.5,2.5
+      parent: 1
+  - uid: 1495
+    components:
+    - type: Transform
+      pos: -3.5,1.5
+      parent: 1
+  - uid: 1496
+    components:
+    - type: Transform
+      pos: -3.5,0.5
+      parent: 1
+  - uid: 1497
+    components:
+    - type: Transform
+      pos: -3.5,-0.5
+      parent: 1
+  - uid: 1498
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 1
+  - uid: 1499
+    components:
+    - type: Transform
+      pos: -3.5,-2.5
+      parent: 1
+  - uid: 1500
+    components:
+    - type: Transform
+      pos: -2.5,-2.5
+      parent: 1
+  - uid: 1501
+    components:
+    - type: Transform
+      pos: -1.5,-2.5
+      parent: 1
+  - uid: 1502
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
+  - uid: 1503
+    components:
+    - type: Transform
+      pos: -0.5,-2.5
+      parent: 1
+  - uid: 1504
+    components:
+    - type: Transform
+      pos: -4.5,0.5
       parent: 1
 - proto: CarpetBlack
   entities:
@@ -4694,31 +4771,24 @@ entities:
       parent: 1
 - proto: ComputerTabletopTargeting
   entities:
-  - uid: 543
+  - uid: 399
     components:
-    - type: MetaData
-      desc: Controls this shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: 0.5,11.5
       parent: 1
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 472
         - 794
-        - 626
+        - 472
         - 471
-        - 625
+        - 626
         - 470
-        frontal:
-        - 472
+        ballistic:
         - 794
-        broadsides:
-        - 626
+        - 472
         - 471
-        - 625
-        rear:
+        - 626
         - 470
 - proto: ComputerWallmountBankATM
   entities:
@@ -4824,8 +4894,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 399
-          - 400
+          - invalid
+          - invalid
           - 401
           - 402
         paper_label: !type:ContainerSlot
@@ -6582,6 +6652,7 @@ entities:
       pos: 0.5,-17.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 399
       obstructedRanges:
       - 6.231048615628837 rad: 3.245866036691291 rad
   - uid: 471
@@ -6593,6 +6664,7 @@ entities:
       pos: -8.5,-4.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 399
       obstructedRanges:
       - 3.8222710618675815 rad: 4.458180891047525 rad
   - uid: 472
@@ -6604,6 +6676,7 @@ entities:
       pos: -9.5,13.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 399
       obstructedRanges:
       - 3.5772923987407172 rad: 3.5960108269559767 rad
   - uid: 625
@@ -6626,6 +6699,7 @@ entities:
       pos: 13.5,-3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 399
       obstructedRanges:
       - 0.6806784082777885 rad: 4.0257731027615495 rad
   - uid: 794
@@ -6637,6 +6711,7 @@ entities:
       pos: 9.5,12.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 399
       obstructedRanges:
       - 2.0863260784447557 rad: 3.9798284388821696 rad
 - proto: PottedPlant16

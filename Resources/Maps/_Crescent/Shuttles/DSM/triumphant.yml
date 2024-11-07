@@ -84,7 +84,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 25
+      baseMaxLinearVelocity: 15
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -4586,6 +4586,13 @@ entities:
     components:
     - type: Transform
       pos: -7.5,8.5
+      parent: 1
+- proto: ComputerAdvancedRadar
+  entities:
+  - uid: 1048
+    components:
+    - type: Transform
+      pos: -0.5,1.5
       parent: 1
 - proto: ComputerCrewMonitoring
   entities:

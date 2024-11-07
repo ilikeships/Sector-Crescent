@@ -864,6 +864,7 @@ entities:
       pos: -5.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 4.202777454632893 rad: 4.541322097858697 rad
     - type: ContainerContainer
@@ -887,6 +888,7 @@ entities:
       pos: -5.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 3.3586234622910975 rad: 4.921828471775364 rad
     - type: ContainerContainer
@@ -910,6 +912,7 @@ entities:
       pos: 9.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 1.0394490711489877 rad: 4.56305782775281 rad
     - type: ContainerContainer
@@ -933,6 +936,7 @@ entities:
       pos: 9.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 0.6806784082777885 rad: 4.458180872198882 rad
     - type: ContainerContainer
@@ -3241,41 +3245,37 @@ entities:
   entities:
   - uid: 94
     components:
-    - type: MetaData
-      desc: Controls this shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: -2.5,16.5
       parent: 1
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 981
-        - 980
         - 976
+        - 980
+        - 981
         - 63
-        - 158
-        - 973
         - 131
-        - 912
-        - 911
+        - 973
+        - 158
         - 909
         - 910
-        missiles:
-        - 981
-        - 980
+        - 911
+        - 912
+        missile:
         - 976
+        - 980
+        - 981
         machinegun:
         - 63
-        - 158
-        - 973
-        gatling:
         - 131
-        boltguns:
-        - 912
-        - 911
+        - 973
+        - 158
+        boltgun:
         - 909
         - 910
+        - 911
+        - 912
   - uid: 159
     components:
     - type: MetaData
@@ -3306,6 +3306,7 @@ entities:
         - 63
         - 158
         - 973
+        - 131
         gatling:
         - 131
         boltguns:
@@ -3313,6 +3314,15 @@ entities:
         - 911
         - 909
         - 910
+        missile:
+        - 976
+        - 980
+        - 981
+        boltgun:
+        - 909
+        - 910
+        - 911
+        - 912
 - proto: CrateArtilleryAmmo
   entities:
   - uid: 913
@@ -5887,7 +5897,7 @@ entities:
       pos: 6.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 973000
+      startingCharge: 970000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5918,7 +5928,7 @@ entities:
       pos: 3.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 973000
+      startingCharge: 970000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -7028,6 +7038,7 @@ entities:
       pos: 11.5,5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 94
       obstructedRanges:
       - 0.6806784082777885 rad: 4.08384726365765 rad
     - type: DeviceLinkSink
@@ -7042,6 +7053,7 @@ entities:
       pos: -6.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 94
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: DeviceLinkSink
@@ -7054,6 +7066,7 @@ entities:
       pos: 4.5,-8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 94
       obstructedRanges:
       - 5.148088725535614 rad: 4.748582839149418 rad
     - type: DeviceLinkSink
@@ -7070,6 +7083,7 @@ entities:
       pos: 10.5,18.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 3.322924351960348 rad: 4.31402647331283 rad
     - type: ContainerContainer
@@ -7097,6 +7111,7 @@ entities:
       pos: -6.5,17.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 3.8222710618675815 rad: 3.3510321638291125 rad
     - type: ContainerContainer
@@ -7123,6 +7138,7 @@ entities:
       pos: -0.5,17.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 2.251474735072685 rad: 3.961758123902316 rad
     - type: ContainerContainer
@@ -7150,6 +7166,7 @@ entities:
       pos: -0.5,-8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 159
       obstructedRanges:
       - 5.811291703263932 rad: 4.74858283914942 rad
     - type: ContainerContainer
