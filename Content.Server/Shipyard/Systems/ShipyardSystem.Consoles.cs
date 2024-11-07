@@ -44,6 +44,7 @@ using Content.Server.Shuttles;
 using Robust.Shared.Map.Components;
 using Content.Server._Crescent.Shipyard;
 using Robust.Shared.Timing;
+using Robust.Shared.Map;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -79,20 +80,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid : true } targetId)
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return;
-        }
-
-        if (!TryComp<IdCardComponent>(targetId, out var idCard))
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return;
-        }
-
-        if (HasComp<ShuttleDeedComponent>(targetId))
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-already-deeded"));
             PlayDenySound(uid, component);
             return;
         }
@@ -187,15 +174,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             var newAccess = newCap.Tags.ToList();
             newAccess.Add($"Captain");
 
-            if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) args.UiKey)
-            {
-                newAccess.Add($"Security");
-                newAccess.Add($"Brig");
-            }
-
             _accessSystem.TrySetTags(targetId, newAccess, newCap);
         }
 
+        EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
 
@@ -204,10 +186,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var channel = component.ShipyardChannel;
 
-        if (ShipyardConsoleUiKey.Security != (ShipyardConsoleUiKey) args.UiKey)
-            _idSystem.TryChangeJobTitle(targetId, $"Captain", idCard, player);
-        else
-            channel = component.SecurityShipyardChannel;
 
         // The following block of code is entirely to do with trying to sanely handle moving records from station to station.
         // it is ass.
@@ -245,9 +223,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
         _records.Synchronize(shuttleStation!.Value);
         _records.Synchronize(station);
-
-        //if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) args.UiKey) Enable in the case we force this on every security ship
-        //    EnsureComp<StationEmpImmuneComponent>(shuttle.Owner); Enable in the case we force this on every security ship
 
         int sellValue = 0;
         if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
