@@ -22,4 +22,5 @@ public sealed partial class ShuttleDeedComponent : Component
 
     [DataField("shuttleOwner")]
     public EntityUid? ShuttleOwner = null;
+
 }
