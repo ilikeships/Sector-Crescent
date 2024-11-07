@@ -6,7 +6,7 @@ namespace Content.Client.Preferences.UI
     {
         private void RandomizeEverything()
         {
-            Profile = HumanoidCharacterProfile.RandomWithSpecies();
+            Profile = HumanoidCharacterProfile.RandomWithSpecies(faction: Profile!.Faction is null ? "" : Profile.Faction);
             UpdateControls();
             IsDirty = true;
         }
