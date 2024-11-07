@@ -553,22 +553,14 @@ entities:
   entities:
   - uid: 48
     components:
-    - type: MetaData
-      desc: Controls this shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: -2.5,0.5
       parent: 1
     - type: TargetingConsole
       cannonGroups:
         all:
-        - invalid
-        - invalid
         - 77
         - 78
-        missiles:
-        - invalid
-        - invalid
         gatling:
         - 77
         - 78
@@ -881,7 +873,7 @@ entities:
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 67
@@ -921,7 +913,7 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 67
@@ -1384,6 +1376,7 @@ entities:
       pos: 3.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 48
       obstructedRanges:
       - 1.7878271354962012 rad: 4.27832736298208 rad
     - type: ContainerContainer
@@ -1407,6 +1400,7 @@ entities:
       pos: -2.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 48
       obstructedRanges:
       - 3.3586234622910975 rad: 4.27832736298208 rad
     - type: ContainerContainer

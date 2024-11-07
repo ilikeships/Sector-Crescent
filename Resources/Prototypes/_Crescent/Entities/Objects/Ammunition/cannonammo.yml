@@ -14,7 +14,7 @@
     ignoreWeaponGrid: true
     damage:
       types:
-        Structural: 70
+        Structural: 85
         Piercing: 25
   - type: PointLight
     radius: 3.5
@@ -84,6 +84,7 @@
     damage:
       types:
         Piercing: 25
+        Structural: 60
   - type: ProjectileIFF
   - type: ExplodeOnTrigger
   - type: Explosive

@@ -876,7 +876,7 @@
       staticRecipes:
         - SluggieHE
         - SluggieAP
-        - SluggieEMP
+        - MagazineLightRifleBoxSlugEMPCraft
         - MagazineVulcan
         - MagazinePistolSubMachineGun
         - BoxLethalshot

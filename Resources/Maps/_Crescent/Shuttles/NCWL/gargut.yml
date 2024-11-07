@@ -1105,6 +1105,7 @@ entities:
       pos: 16.5,5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 1.6634721286027596 rad: 3.939034770299038 rad
     - type: ContainerContainer
@@ -1131,6 +1132,7 @@ entities:
       pos: -17.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 5.3930673886624785 rad: 3.814679763405596 rad
     - type: ContainerContainer
@@ -1156,6 +1158,7 @@ entities:
       pos: -12.5,-5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 4.929419789085995 rad: 4.402682369875522 rad
     - type: ContainerContainer
@@ -1181,6 +1184,7 @@ entities:
       pos: 14.5,-6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 0.6806784082777885 rad: 3.3510321638291125 rad
     - type: ContainerContainer
@@ -1209,6 +1213,7 @@ entities:
       pos: -8.5,13.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 3.147530122935145 rad: 3.901418082076422 rad
     - type: DeviceLinkSink
@@ -1221,6 +1226,7 @@ entities:
       pos: -12.5,12.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 3.4040467472661273 rad: 3.4707575483937365 rad
     - type: DeviceLinkSink
@@ -3921,16 +3927,10 @@ entities:
         302:
         - Group4: On
         - Group5: Off
-        272:
-        - Group4: On
-        - Group5: Off
         1147:
         - Group4: On
         - Group5: Off
         856:
-        - Group4: On
-        - Group5: Off
-        273:
         - Group4: On
         - Group5: Off
         435:
@@ -3970,8 +3970,8 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 273
-        - 272
+        - invalid
+        - invalid
         - 381
         - 435
         - 1147
@@ -3986,9 +3986,11 @@ entities:
         - 1149
         - 312
         - 298
-        mortars:
         - 273
         - 272
+        mortars:
+        - invalid
+        - invalid
         - 381
         - 435
         missiles:
@@ -4006,6 +4008,27 @@ entities:
         - 1149
         - 312
         - 298
+        flak:
+        - 273
+        - 272
+        smartbomb:
+        - 856
+        - 1147
+        artillery:
+        - 381
+        - 435
+        machinegun:
+        - 305
+        - 474
+        - 313
+        - 314
+        - 303
+        boltgun:
+        - 298
+        - 312
+        - 313
+        - 1149
+        - 297
 - proto: ConveyorBelt
   entities:
   - uid: 278
@@ -4348,6 +4371,52 @@ entities:
     - type: Transform
       pos: -6.5,4.5
       parent: 1
+- proto: FlakCannonTurret
+  entities:
+  - uid: 272
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,9.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 570
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 273
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -6.5,10.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 570
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: Flare
   entities:
   - uid: 663
@@ -6324,7 +6393,7 @@ entities:
       pos: 12.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 985000
+      startingCharge: 982000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6355,7 +6424,7 @@ entities:
       pos: -16.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 985000
+      startingCharge: 982000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6386,7 +6455,7 @@ entities:
       pos: -14.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 985000
+      startingCharge: 982000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -8017,61 +8086,6 @@ entities:
       parent: 1
 - proto: WeaponTurretMortarNCWL
   entities:
-  - uid: 272
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -10.5,9.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 0.8458270649057177 rad: 0.507938472036518 rad
-      - 1.870968342307374 rad: 0.5899459030046307 rad
-      - 2.715122334649169 rad: 4.529488361838493 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: DeviceLinkSink
-      links:
-      - 609
-  - uid: 273
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,10.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 1.870968342307374 rad: 0.5899459030046307 rad
-      - 2.610245397943884 rad: 4.981282142354265 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: DeviceLinkSink
-      links:
-      - 609
   - uid: 381
     components:
     - type: Transform
@@ -8079,6 +8093,7 @@ entities:
       pos: 10.5,13.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 1.6634721286027596 rad: 4.1041834269269675 rad
     - type: ContainerContainer
@@ -8105,6 +8120,7 @@ entities:
       pos: 9.5,15.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 1.7878271354962012 rad: 3.8146797634055964 rad
     - type: ContainerContainer
@@ -8145,6 +8161,7 @@ entities:
       pos: -14.5,-4.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 5.3930673886624785 rad: 3.8146797634055964 rad
     - type: DeviceLinkSink
@@ -8157,6 +8174,7 @@ entities:
       pos: 14.5,8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 1.6634721286027596 rad: 4.402682369875522 rad
     - type: DeviceLinkSink
@@ -8169,6 +8187,7 @@ entities:
       pos: 5.5,-9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 0.15260396288522549 rad: 4.467109215691601 rad
     - type: DeviceLinkSink
@@ -8181,6 +8200,7 @@ entities:
       pos: -4.5,-9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 4.929419789085995 rad: 4.278327381830724 rad
     - type: DeviceLinkSink
@@ -8193,6 +8213,7 @@ entities:
       pos: 16.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 570
       obstructedRanges:
       - 0.2170308087013046 rad: 4.373279072047823 rad
     - type: DeviceLinkSink

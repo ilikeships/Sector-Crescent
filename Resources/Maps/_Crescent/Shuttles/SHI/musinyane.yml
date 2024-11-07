@@ -607,34 +607,16 @@ entities:
     - type: Transform
       pos: 7.5,4.5
       parent: 1
-- proto: BaseWeaponTurretNeedlerSHI
+- proto: BaseWeaponTurretGargoyle
   entities:
-  - uid: 634
+  - uid: 645
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -4.5,16.5
+      pos: -1.5,18.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 3.8222710618675815 rad: 3.814679763405596 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: DeviceLinkSink
-      links:
-      - 203
+      linkedConsoleId: 634
 - proto: Bed
   entities:
   - uid: 305
@@ -1934,19 +1916,10 @@ entities:
         - Group2: Trigger
         5:
         - Group2: Trigger
-        634:
-        - Group4: Off
-        - Group5: On
         638:
         - Group4: Off
         - Group5: On
         639:
-        - Group4: Off
-        - Group5: On
-        645:
-        - Group4: Off
-        - Group5: On
-        646:
         - Group4: Off
         - Group5: On
         648:
@@ -1980,11 +1953,8 @@ entities:
       parent: 1
 - proto: ComputerTargeting
   entities:
-  - uid: 220
+  - uid: 634
     components:
-    - type: MetaData
-      desc: Controls the shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: 0.5,16.5
       parent: 1
@@ -1992,23 +1962,22 @@ entities:
       cannonGroups:
         all:
         - 645
+        - 220
         - 646
-        - 648
-        - 647
         - 639
         - 638
-        - 634
-        gatling:
+        - 648
+        - 647
+        missile:
         - 645
+        artillery:
+        - 220
         - 646
-        vanguard:
-        - 648
-        - 647
-        rearguard:
+        machinegun:
         - 639
         - 638
-        boltgun:
-        - 634
+        - 648
+        - 647
 - proto: CrateFreezer
   entities:
   - uid: 373
@@ -3227,7 +3196,7 @@ entities:
       pos: 5.5,16.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 203
@@ -4540,6 +4509,52 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -5.693763,4.5167103
       parent: 1
+- proto: WeaponTurretMortarSHI
+  entities:
+  - uid: 220
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,17.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 634
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 646
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,16.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 634
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: WeaponTurretPDTSHI
   entities:
   - uid: 638
@@ -4549,6 +4564,7 @@ entities:
       pos: -4.5,-5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 634
       obstructedRanges:
       - 4.805064782192553 rad: 3.939034770299037 rad
     - type: DeviceLinkSink
@@ -4561,6 +4577,7 @@ entities:
       pos: 5.5,-5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 634
       obstructedRanges:
       - 0.6806784082777885 rad: 3.939034770299038 rad
     - type: DeviceLinkSink
@@ -4573,6 +4590,7 @@ entities:
       pos: 6.5,8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 634
       obstructedRanges:
       - 1.5248323946097162 rad: 4.077674504292082 rad
     - type: DeviceLinkSink
@@ -4585,69 +4603,12 @@ entities:
       pos: -5.5,8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 634
       obstructedRanges:
       - 3.8222710618675815 rad: 4.077674504292082 rad
     - type: DeviceLinkSink
       links:
       - 203
-- proto: WeaponTurretVulcanSHI
-  entities:
-  - uid: 645
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,18.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.1136447885970444 rad: 2.8693685030700644 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: DeviceLinkSink
-      links:
-      - 203
-    - type: Physics
-      canCollide: False
-  - uid: 646
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -1.5,18.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.2342684553976557 rad: 3.011739541760714 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-    - type: DeviceLinkSink
-      links:
-      - 203
-    - type: Physics
-      canCollide: False
 - proto: WindoorSecure
   entities:
   - uid: 221
