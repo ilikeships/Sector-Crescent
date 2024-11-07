@@ -86,11 +86,14 @@ public sealed class HungerSystem : EntitySystem
     /// <param name="uid"></param>
     /// <param name="amount"></param>
     /// <param name="component"></param>
-    public void ModifyHunger(EntityUid uid, float amount, HungerComponent? component = null)
+    public bool ModifyHunger(EntityUid uid, float amount, HungerComponent? component = null)
     {
         if (!Resolve(uid, ref component))
-            return;
+            return false;
         SetHunger(uid, component.CurrentHunger + amount, component);
+        if (component.CurrentHunger > 0)
+            return true;
+        return false;
     }
 
     /// <summary>
