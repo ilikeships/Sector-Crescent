@@ -106,16 +106,9 @@ public sealed class PointCannonSystem : EntitySystem
 
     private void OnCannonTerminating(Entity<PointCannonComponent> uid, ref EntityTerminatingEvent args)
     {
-        EntityUid? gridUid = Transform(uid).GridUid;
-        if (gridUid == null)
-            return;
-
-        var query = EntityQueryEnumerator<TransformComponent, TargetingConsoleComponent>();
-        while (query.MoveNext(out var consoleUid, out var form, out var console))
-        {
-            if (form.GridUid == gridUid)
-                UnlinkCannon(uid, consoleUid, console);
-        }
+        if(uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
+            UnlinkCannon(uid, (EntityUid)uid.Comp.LinkedConsoleId, console );
+       
     }
 
     private void OnLinkToolUse(Entity<PointCannonComponent> uid, ref InteractUsingEvent args)
@@ -150,17 +143,26 @@ public sealed class PointCannonSystem : EntitySystem
 
     public void LinkCannon(EntityUid cannonUid, EntityUid consoleUid, TargetingConsoleComponent console, string group)
     {
+        if(!TryComp<PointCannonComponent>(cannonUid, out var cannonComponent))
+            return;
         if (!console.CannonGroups.ContainsKey(group))
             console.CannonGroups[group] = [];
 
         if (console.CannonGroups[group].Contains(cannonUid))
+        {
+            // SPCR 2024 - For fixing the old ships before we added this functionality
+            if (cannonComponent.LinkedConsoleId is null)
+                cannonComponent.LinkedConsoleId = consoleUid;
             return;
+        }
 
         console.CannonGroups[group].Add(cannonUid);
         if (group != "all" && !console.CannonGroups["all"].Contains(cannonUid))
             console.CannonGroups["all"].Add(cannonUid);
 
         console.RegenerateCannons = true;
+        cannonComponent.LinkedConsoleId = consoleUid;
+
 
         if (group == console.CurrentGroupName)
             TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), true);
