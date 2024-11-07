@@ -103,11 +103,15 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
-
-        var a = InverseScalePosition(pos);
-        var relativeWorldPos = a with { Y = -a.Y };
-        relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
-        return _coordinates.Value.Offset(relativeWorldPos);
+        var a = pos - Size/2;
+        var relativePos = a with { Y = -a.Y };
+        return _coordinates.Value.Offset(relativePos);
+        /*
+    var a = InverseScalePosition(pos);
+    var relativeWorldPos = a with { Y = -a.Y };
+    relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
+    return _coordinates.Value.Offset(relativeWorldPos);
+        */
     }
 
     /// <summary>
