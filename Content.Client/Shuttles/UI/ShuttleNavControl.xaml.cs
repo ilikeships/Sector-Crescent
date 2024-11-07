@@ -76,7 +76,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         if (_coordinates == null || _rotation == null || args.Function != EngineKeyFunctions.UIClick)
             return;
 
-        OnRadarClick?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+        OnRadarClick?.Invoke(PureRelativePosition(args.RelativePosition));
     }
 
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
@@ -96,24 +96,32 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         if (_coordinates == null || _rotation == null)
             return;
 
-        OnRadarMouseMove?.Invoke(RelativePositionToEntityCoords(args.RelativePosition));
+        OnRadarMouseMove?.Invoke(PureRelativePosition(args.RelativePosition));
     }
 
     private EntityCoordinates RelativePositionToEntityCoords(Vector2 pos)
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
+        
+        var a = InverseScalePosition(pos);
+        var relativeWorldPos = a with { Y = -a.Y };
+        relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
+        return _coordinates.Value.Offset(relativeWorldPos);
+        
+    }
+    // SPCR 2024 - This is only used for shooting ship weapons. The function above is ... not accurate
+    // for objects with a width and height of 0 (aka bullets)
+    public EntityCoordinates PureRelativePosition(Vector2 pos)
+    {
+        if (_coordinates == null || _rotation == null)
+            return EntityCoordinates.Invalid;
+        
         var a = pos - Size/2;
         var relativePos = a with { Y = -a.Y };
-        return _coordinates.Value.Offset(relativePos);
-        /*
-    var a = InverseScalePosition(pos);
-    var relativeWorldPos = a with { Y = -a.Y };
-    relativeWorldPos = _rotation.Value.RotateVec(relativeWorldPos);
-    return _coordinates.Value.Offset(relativeWorldPos);
-        */
+        relativePos = _rotation.Value.RotateVec(relativePos);
+        return _coordinates.Value.Offset(relativePos); 
     }
-
     /// <summary>
     /// Gets the entity coordinates of where the mouse position is, relative to the control.
     /// </summary>
