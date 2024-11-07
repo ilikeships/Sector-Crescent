@@ -2,7 +2,7 @@
   id: Triumphant
   name: DSM Triumphant
   description: An exploration cruiser turned frontliner vessel, equipped for long-distance missions.
-  price: 200000
+  price: 170000
   category: Large
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/triumphant.yml
