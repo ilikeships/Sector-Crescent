@@ -177,15 +177,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
 
-        if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) args.UiKey || ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) args.UiKey) // Unhardcode this please
-        {
-            var tax = (int) (sellValue * 0.30f);
-            sellValue -= tax;
-            channel = component.ShipyardChannel;
-
-            SendPurchaseMessage(uid, player, name, component.SecurityShipyardChannel, true);
-        }
-
         SendPurchaseMessage(uid, player, name, channel, false);
 
         ChatPurchaseLocation(uid, station, config);
@@ -254,6 +245,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         RemComp<ShuttleDeedComponent>(targetId);
+        
 
 
         _bank.TryBankDeposit(player, bill);

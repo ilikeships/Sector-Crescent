@@ -61,7 +61,7 @@
       swap: true
       whitelist:
         components:
-        - shuttleDeed
+        - ShuttleDeed
   - type: ActivatableUI
     singleUser: true
     key: enum.ShipyardConsoleUiKey.Shipyard
