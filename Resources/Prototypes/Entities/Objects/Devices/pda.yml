@@ -34,6 +34,11 @@
       whitelist:
         tags:
         - Write
+    shipSlot:
+      priority: -3
+      whitelist:
+        components:
+        - ShuttleDeed
     bookSlot: # Frontier
       startingItem: HyperlinkBookSpaceLaw
       priority: -2
