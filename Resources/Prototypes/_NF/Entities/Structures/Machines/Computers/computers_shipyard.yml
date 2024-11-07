@@ -61,7 +61,7 @@
       swap: true
       whitelist:
         components:
-        - IdCard
+        - shuttleDeed
   - type: ActivatableUI
     singleUser: true
     key: enum.ShipyardConsoleUiKey.Shipyard
@@ -101,82 +101,6 @@
     interfaces:
       enum.ShipyardConsoleUiKey.Security:
         type: ShipyardConsoleBoundUserInterface
-
-- type: entity
-  id: ComputerShipyardNfsd
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyard]
-  name: nfsd shipyard console
-  description: Used to buy nfsd patrol vessels
-  components:
-  - type: Sprite
-    sprite: _NF/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shipyard_nfsd
-    - map: ["computerLayerKeys"]
-      state: telesci_key
-  - type: ActivatableUI
-    key: enum.ShipyardConsoleUiKey.Security
-  - type: UserInterface
-    interfaces:
-      enum.ShipyardConsoleUiKey.Security:
-        type: ShipyardConsoleBoundUserInterface
-
-- type: entity
-  id: ComputerShipyardSyndicate
-  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, ComputerShipyard]
-  name: syndicate shipyard console
-  description: Used to buy ships not available through other means. Has a sticker that says SALES TAX 30%
-  components:
-  - type: ActivatableUI
-    key: enum.ShipyardConsoleUiKey.Syndicate
-  - type: UserInterface
-    interfaces:
-      enum.ShipyardConsoleUiKey.Syndicate:
-        type: ShipyardConsoleBoundUserInterface
-  - type: Sprite
-    sprite: _NF/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_blackmarket
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shipyard_blackmarket
-    - map: ["computerLayerKeys"]
-      state: blackmarket_key
-  - type: ShipyardConsole
-    shipyardChannel: Syndicate
-
-- type: entity
-  id: ComputerShipyardBlackMarket
-  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, ComputerShipyard]
-  name: black market shipyard console
-  description: Used to buy ships not available through other means. Has a sticker that says SALES TAX 30%
-  components:
-  - type: ActivatableUI
-    key: enum.ShipyardConsoleUiKey.BlackMarket
-  - type: UserInterface
-    interfaces:
-      enum.ShipyardConsoleUiKey.BlackMarket:
-        type: ShipyardConsoleBoundUserInterface
-  - type: Sprite
-    sprite: _NF/Structures/Machines/computers.rsi
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer_blackmarket
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: shipyard_blackmarket
-    - map: ["computerLayerKeys"]
-      state: blackmarket_key
-  - type: ShipyardConsole
-    shipyardChannel: Freelance
 
 - type: entity
   id: ComputerShipyardExpedition
