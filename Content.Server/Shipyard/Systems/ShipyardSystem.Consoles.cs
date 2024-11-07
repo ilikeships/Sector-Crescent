@@ -65,6 +65,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly MetaDataSystem _metadata = default!;
 
     public void InitializeConsole()
     {
@@ -165,6 +166,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
+        _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
@@ -245,7 +247,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         RemComp<ShuttleDeedComponent>(targetId);
-        
+        Del(targetId);
 
 
         _bank.TryBankDeposit(player, bill);
