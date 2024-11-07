@@ -2,7 +2,7 @@
   id: Imparator
   name: DSM Imparator
   description: A light Imperial picket and support fighter.
-  price: 22500
+  price: 19500
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/imparator.yml

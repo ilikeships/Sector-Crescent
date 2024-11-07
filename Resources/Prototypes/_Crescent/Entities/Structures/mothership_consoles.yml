@@ -11,7 +11,6 @@
     - Hind
     - Ivarod
     - Broadsword
-    - Sabre
     - Rapier
     - Khopesh
 
@@ -78,7 +77,6 @@
   - type: ShipyardListing
     shuttles:
     - Hulk
-    - Jiuzhu
     - Meatwagon
 
 - type: entity
@@ -126,7 +124,6 @@
     shuttles:
     - Khopesh
     - Broadsword
-    - Sabre
 
 - type: entity
   id: JackalCarrierMothershipComputer

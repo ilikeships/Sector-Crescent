@@ -44,6 +44,7 @@ using Content.Server.Shuttles;
 using Robust.Shared.Map.Components;
 using Content.Server._Crescent.Shipyard;
 using Robust.Shared.Timing;
+using Robust.Shared.Map;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -60,11 +61,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly IdCardSystem _idSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly StationRecordsSystem _records = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly MetaDataSystem _metadata = default!;
 
     public void InitializeConsole()
     {
@@ -76,26 +77,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid : true } player)
             return;
 
-        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid : true } targetId)
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return;
-        }
-
-        if (!TryComp<IdCardComponent>(targetId, out var idCard))
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return;
-        }
-
-        if (HasComp<ShuttleDeedComponent>(targetId))
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-already-deeded"));
-            PlayDenySound(uid, component);
-            return;
-        }
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(player, uid, accessReaderComponent))
         {
@@ -182,85 +163,22 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             }
         }
 
-        if (TryComp<AccessComponent>(targetId, out var newCap))
-        {
-            var newAccess = newCap.Tags.ToList();
-            newAccess.Add($"Captain");
-
-            if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) args.UiKey)
-            {
-                newAccess.Add($"Security");
-                newAccess.Add($"Brig");
-            }
-
-            _accessSystem.TrySetTags(targetId, newAccess, newCap);
-        }
-
-        var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
+        EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
+        var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
+        _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(player).EntityName}.");
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
 
         var channel = component.ShipyardChannel;
 
-        if (ShipyardConsoleUiKey.Security != (ShipyardConsoleUiKey) args.UiKey)
-            _idSystem.TryChangeJobTitle(targetId, $"Captain", idCard, player);
-        else
-            channel = component.SecurityShipyardChannel;
 
-        // The following block of code is entirely to do with trying to sanely handle moving records from station to station.
-        // it is ass.
-        // This probably shouldnt be messed with further until station records themselves become more robust
-        // and not entirely dependent upon linking ID card entity to station records key lookups
-        // its just bad
-
-        var stationList = EntityQueryEnumerator<StationRecordsComponent>();
-
-        if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
-                && shuttleStation != null
-                && keyStorage.Key != null)
-        {
-            bool recSuccess = false;
-            while (stationList.MoveNext(out var stationUid, out var stationRecComp))
-            {
-                if (!_records.TryGetRecord<GeneralStationRecord>(keyStorage.Key.Value, out var record))
-                    continue;
-
-                //_records.RemoveRecord(keyStorage.Key.Value);
-                _records.AddRecordEntry((EntityUid) shuttleStation, record);
-                recSuccess = true;
-                break;
-            }
-
-            if (!recSuccess &&
-                _mind.TryGetMind(args.Actor, out var mindUid, out var mindComp)
-                && _prefManager.GetPreferences(_mind.GetSession(mindComp)!.UserId).SelectedCharacter is HumanoidCharacterProfile profile)
-            {
-                TryComp<FingerprintComponent>(player, out var fingerprintComponent);
-                TryComp<DnaComponent>(player, out var dnaComponent);
-                TryComp<StationRecordsComponent>(shuttleStation, out var stationRec);
-                _records.CreateGeneralRecord((EntityUid) shuttleStation, targetId, profile.Name, profile.Age, profile.Species, profile.Gender, $"Captain", fingerprintComponent!.Fingerprint, dnaComponent!.DNA, profile, stationRec!);
-            }
-        }
-        _records.Synchronize(shuttleStation!.Value);
-        _records.Synchronize(station);
-
-        //if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) args.UiKey) Enable in the case we force this on every security ship
-        //    EnsureComp<StationEmpImmuneComponent>(shuttle.Owner); Enable in the case we force this on every security ship
 
         int sellValue = 0;
-        if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
+        if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
-
-        if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) args.UiKey || ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) args.UiKey) // Unhardcode this please
-        {
-            var tax = (int) (sellValue * 0.30f);
-            sellValue -= tax;
-            channel = component.ShipyardChannel;
-
-            SendPurchaseMessage(uid, player, name, component.SecurityShipyardChannel, true);
-        }
 
         SendPurchaseMessage(uid, player, name, channel, false);
 
@@ -270,20 +188,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vessel.Price} credits via {ToPrettyString(component.Owner)}");
         RefreshState(uid, bank.Balance, true, name, sellValue, true, (ShipyardConsoleUiKey) args.UiKey);
 
-        // to be continued...
-        if (idCard.FullName != null)
-        {
-            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
-            {
-                if (xform.GridUid != shuttle.Owner)
-                    continue;
-
-                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
-                lockout.CreationTime = _timing.CurTime;
-                lockout.Purchaser = idCard.FullName;
-            }
-        }
     }
 
     private void TryParseShuttleName(ShuttleDeedComponent deed, string name)
@@ -304,13 +208,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
 
         if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
-        {
-            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return;
-        }
-
-        if (!TryComp<IdCardComponent>(targetId, out var idCard))
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(uid, component);
@@ -338,16 +235,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (_station.GetOwningStation(shuttleUid) is { Valid : true } shuttleStation
-            && TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
-            && keyStorage.Key != null
-            && keyStorage.Key.Value.OriginStation == shuttleStation
-            && _records.TryGetRecord<GeneralStationRecord>(keyStorage.Key.Value, out var record))
-        {
-            //_records.RemoveRecord(keyStorage.Key.Value);
-            _records.AddRecordEntry(stationUid, record);
-            _records.Synchronize(stationUid);
-        }
 
         var shuttleName = ToPrettyString(shuttleUid); // Grab the name before it gets 1984'd
 
@@ -361,25 +248,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         RemComp<ShuttleDeedComponent>(targetId);
+        Del(targetId);
 
-        if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) args.UiKey)
-            channel = component.SecurityShipyardChannel;
-
-        if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) args.UiKey || ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) args.UiKey) // Unhardcode this please
-        {
-            var tax = (int) (bill * 0.30f);
-            var query = EntityQueryEnumerator<StationBankAccountComponent>();
-
-            while (query.MoveNext(out _, out var comp))
-            {
-                _cargo.DeductFunds(comp, -tax);
-            }
-
-            bill -= tax;
-            channel = component.ShipyardChannel;
-
-            SendSellMessage(uid, deed.ShuttleOwner!, GetFullName(deed), component.SecurityShipyardChannel, player, true);
-        }
 
         _bank.TryBankDeposit(player, bill);
         PlayConfirmSound(uid, component);
@@ -711,12 +581,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (!TryComp<IdCardComponent>(targetId, out var idCard))
-        {
-            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return false;
-        }
 
         if (HasComp<ShuttleDeedComponent>(targetId))
         {
@@ -796,16 +660,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             var newAccess = newCap.Tags.ToList();
             newAccess.Add($"Captain");
 
-            if (ShipyardConsoleUiKey.Security == (ShipyardConsoleUiKey) ui.Key)
-            {
-                newAccess.Add($"Security");
-                newAccess.Add($"Brig");
-            }
-
             _accessSystem.TrySetTags(targetId, newAccess, newCap);
         }
 
-        var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
+        EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
+        var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
@@ -813,60 +672,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var channel = component.ShipyardChannel;
 
-        if (ShipyardConsoleUiKey.Security != (ShipyardConsoleUiKey) ui.Key)
-            _idSystem.TryChangeJobTitle(targetId, $"Captain", idCard, user);
-        else
-            channel = component.SecurityShipyardChannel;
-
-        // The following block of code is entirely to do with trying to sanely handle moving records from station to station.
-        // it is ass.
-        // This probably shouldnt be messed with further until station records themselves become more robust
-        // and not entirely dependent upon linking ID card entity to station records key lookups
-        // its just bad
-
-        var stationList = EntityQueryEnumerator<StationRecordsComponent>();
-
-        if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
-                && shuttleStation != null
-                && keyStorage.Key != null)
-        {
-            bool recSuccess = false;
-            while (stationList.MoveNext(out var stationUid, out var stationRecComp))
-            {
-                if (!_records.TryGetRecord<GeneralStationRecord>(keyStorage.Key.Value, out var record))
-                    continue;
-
-                //_records.RemoveRecord(keyStorage.Key.Value);
-                _records.AddRecordEntry((EntityUid) shuttleStation, record);
-                recSuccess = true;
-                break;
-            }
-
-            if (!recSuccess &&
-                _mind.TryGetMind(user, out var mindUid, out var mindComp)
-                && _prefManager.GetPreferences(_mind.GetSession(mindComp)!.UserId).SelectedCharacter is HumanoidCharacterProfile profile)
-            {
-                TryComp<FingerprintComponent>(user, out var fingerprintComponent);
-                TryComp<DnaComponent>(user, out var dnaComponent);
-                TryComp<StationRecordsComponent>(shuttleStation, out var stationRec);
-                _records.CreateGeneralRecord((EntityUid) shuttleStation, targetId, profile.Name, profile.Age, profile.Species, profile.Gender, $"Captain", fingerprintComponent!.Fingerprint, dnaComponent!.DNA, profile, stationRec!);
-            }
-        }
-        _records.Synchronize(shuttleStation!.Value);
-        _records.Synchronize(station);
 
         int sellValue = 0;
-        if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
+        if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
 
-        if (ShipyardConsoleUiKey.BlackMarket == (ShipyardConsoleUiKey) ui.Key || ShipyardConsoleUiKey.Syndicate == (ShipyardConsoleUiKey) ui.Key) // Unhardcode this please
-        {
-            var tax = (int) (sellValue * 0.30f);
-            sellValue -= tax;
-            channel = component.ShipyardChannel;
-
-            SendPurchaseMessage(uid, user, name, component.SecurityShipyardChannel, true);
-        }
 
         SendPurchaseMessage(uid, user, name, channel, false);
 

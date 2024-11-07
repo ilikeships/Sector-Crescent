@@ -318,8 +318,6 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
-    - type: SalvageMobRestrictionsGrid
-      mobsToKill: []
     - type: BecomesStation
       id: Bison
     - type: CrescentEMPTechnologyTier
@@ -523,6 +521,7 @@ entities:
       pos: -6.5,11.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: DeviceLinkSink
@@ -534,6 +533,7 @@ entities:
       pos: 5.5,-6.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 0.6806784082777885 rad: 3.994533262085685 rad
     - type: DeviceLinkSink
@@ -545,6 +545,7 @@ entities:
       pos: -0.5,-9.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 5.3930673886624785 rad: 3.9096314724713395 rad
     - type: DeviceLinkSink
@@ -557,6 +558,7 @@ entities:
       pos: 4.5,13.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: DeviceLinkSink
@@ -1998,33 +2000,30 @@ entities:
   entities:
   - uid: 114
     components:
-    - type: MetaData
-      desc: Controls this shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: -1.5,-2.5
       parent: 2
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 34
-        - 420
-        - 341
         - 109
+        - 341
+        - 420
+        - 34
+        - 35
+        - 324
         - 323
         - 33
-        - 324
-        - 35
-        plasma:
-        - 34
-        - 420
-        - 341
+        laser:
         - 109
+        - 341
+        - 420
+        - 34
         ballistic:
+        - 35
+        - 324
         - 323
         - 33
-        - 324
-        - 35
 - proto: ConveyorBelt
   entities:
   - uid: 57
@@ -4173,6 +4172,7 @@ entities:
       pos: -6.5,-7.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 5.3930673886624785 rad: 3.3510321638291116 rad
     - type: DeviceLinkSink
@@ -4185,6 +4185,7 @@ entities:
       pos: 5.5,8.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 1.5326447324774293 rad: 4.069862166424369 rad
     - type: DeviceLinkSink
@@ -4197,6 +4198,7 @@ entities:
       pos: 4.5,-9.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 0.6806784082777885 rad: 3.3510321638291125 rad
     - type: DeviceLinkSink
@@ -4209,6 +4211,7 @@ entities:
       pos: -2.5,15.5
       parent: 2
     - type: PointCannon
+      linkedConsoleId: 114
       obstructedRanges:
       - 2.8394773415426107 rad: 4.333825884154083 rad
     - type: DeviceLinkSink

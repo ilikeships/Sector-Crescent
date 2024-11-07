@@ -1,0 +1,10 @@
+- type: entity
+  parent: BaseItem
+  id: ShuttleOwnershipChip
+  name: Shuttle Ownership Chip
+  description: A chip that denotes the owner of a shuttle. It bears the symbol of a now-defunct paramilitary corporation.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Misc/shuttledeed.rsi
+    layers:
+      - state: ShipDeed

@@ -2,7 +2,7 @@
   id: Nemesis
   name: DSM Nemesis
   description: A heavy artillery carrier equipped for long-range expeditions.
-  price: 325000
+  price: 140000
   category: Medium
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/DSM/nemesis.yml
