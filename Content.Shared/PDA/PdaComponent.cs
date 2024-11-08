@@ -13,6 +13,7 @@ namespace Content.Shared.PDA
         public const string PdaPenSlotId = "PDA-pen";
         public const string PdaPaiSlotId = "PDA-pai";
         public const string PdaBookSlotId = "PDA-book";
+        public const string PdaShuttleSlot = "PDA-shuttle";
 
         /// <summary>
         /// The base PDA sprite state, eg. "pda", "pda-clown"
@@ -28,6 +29,9 @@ namespace Content.Shared.PDA
 
         [DataField("paiSlot")]
         public ItemSlot PaiSlot = new();
+
+        [DataField("shipSlot")]
+        public ItemSlot shipSlot = new();
 
         [DataField("bookSlot")]
         public ItemSlot BookSlot = new();

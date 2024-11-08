@@ -74,7 +74,7 @@ public record struct GetPryTimeModifierEvent
 {
     public readonly EntityUid User;
     public float PryTimeModifier = 1.0f;
-    public float BaseTime = 5.0f;
+    public float BaseTime = 3.0f;
 
     public GetPryTimeModifierEvent(EntityUid user)
     {

@@ -45,6 +45,7 @@ using Robust.Shared.Map.Components;
 using Content.Server._Crescent.Shipyard;
 using Robust.Shared.Timing;
 using Robust.Shared.Map;
+using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -66,6 +67,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
+    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
 
     public void InitializeConsole()
     {
@@ -173,6 +175,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
 
         var channel = component.ShipyardChannel;
+        _handsSystem.PickupOrDrop(args.Actor, product);
 
 
 
