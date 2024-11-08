@@ -1,7 +1,7 @@
 - type: gameMap
   id: Kal
-  mapName: 'Kal Surezai'
-  mapPath: /Maps/_Crescent/Stations/kal.yml
+  mapName: 'The Freeport'
+  mapPath: /Maps/_Crescent/Stations/freeport.yml
   minPlayers: 0
   maxPlayers: 100
   stations:
@@ -14,7 +14,7 @@
           faction: DSM
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Kal Surezai'
+          mapNameTemplate: 'The Freeport'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -30,25 +30,14 @@
             - Pilot
             - Mercenary
           availableJobs:
-            GovernorDSM: [ 1, 1 ]
-            AdjutantDSM: [ 1, 1 ]
-            CourtierDSM: [ 1, 1 ]
-            WealthDSM: [ 1, 1 ]
-            KnightDSM: [ 3, 3 ]
-            LevymanDSM: [ 8, 8 ]
-            ForemanDSM: [ 3, 3 ]
-            FreeholderDSM: [ 15, 15 ]
-            ArchmaesterDSM: [ 1, 1 ]
-            ScribeDSM: [ 3, 3 ]
-            SurgeonDSM: [ 3, 3 ]
-            AdvocatusDSM: [ 1, 1 ]
-            TemplarDSM: [ 2, 2 ]
-            MarshalCMM: [ 1, 1 ]
-            DeputyMarshalCMM: [ 1, 1 ]
-            WatchmasterCMM: [ 2, 2 ]
-            MinutemanCMM: [ 4, 4 ]
-            MachinistCMM: [ 2, 2 ]
-            OrdnancemanCMM: [ 2, 2 ]
-            PhysicianCMM: [ 2, 2 ]
-            Antiquarian: [ 1, 1 ]
-            Contractor: [ 10, 10 ]
+            RingleaderNCSP: [ 1, 1 ]
+            LieutenantNCSP: [ 1, 1 ]
+            InfanteerNCSP: [ 15, 15 ]
+            ForemanNCSP: [ 1, 1 ]
+            TechnicianNCSP: [ 5, 5 ]
+            ShipbreakerNCSP: [ 15, 15 ]
+            IntelligenceOfficerNCSP: [ 1, 1 ]
+            OperativeNCSP: [ 5, 5 ]
+            CyberdawnTechNCSP: [ 3, 3 ]
+            ChemcookNCSP: [ 8, 8 ]
+            RipperdocNCSP: [ 3, 3 ]
