@@ -32,7 +32,7 @@ public sealed class InheritGridVelocitySystem : EntitySystem
             Vector2 linearVec =
                 _physics.GetLinearVelocity((EntityUid) args.OldParent, new Vector2(0, 0), parentPhysics);
             mill.Info($"{uid} , applying linear velocity of {linearVec.X} and {linearVec.Y} ");
-            _physics.ApplyForce(uid, linearVec, null, physics );
+            _physics.SetLinearVelocity(uid, linearVec);
 
         }
     }
