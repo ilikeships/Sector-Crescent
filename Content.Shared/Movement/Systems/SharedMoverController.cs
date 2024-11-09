@@ -139,6 +139,19 @@ namespace Content.Shared.Movement.Systems
                 }
             }
 
+
+            var relative = xform.GridUid;
+            relative ??= xform.MapUid;
+            var velocity = physicsComponent.LinearVelocity;
+            if (!mover.RelativeEntity.Equals(relative) && mover.RelativeEntity is not null && relative is not null)
+                if(_mapManager.IsGrid(mover.RelativeEntity.Value) && _mapManager.IsMap(relative.Value))
+                {
+                    if (!TryComp<PhysicsComponent>(uid, out var physics))
+                        return;
+                    if (!TryComp<PhysicsComponent>(mover.RelativeEntity.Value, out var parentPhysics))
+                        return;
+                    velocity = Physics.GetLinearVelocity(mover.RelativeEntity.Value, new Vector2(0, 0), parentPhysics);
+                }
             // Update relative movement
             if (mover.LerpTarget < Timing.CurTime)
             {
@@ -157,6 +170,9 @@ namespace Content.Shared.Movement.Systems
                 UsedMobMovement[uid] = false;
                 return;
             }
+
+
+
 
 
             UsedMobMovement[uid] = true;
@@ -210,7 +226,6 @@ namespace Content.Shared.Movement.Systems
 
             DebugTools.Assert(MathHelper.CloseToPercent(total.Length(), worldTotal.Length()));
 
-            var velocity = physicsComponent.LinearVelocity;
             float friction;
             float weightlessModifier;
             float accel;
