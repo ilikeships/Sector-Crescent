@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Content.Server.Chat.Managers;
 using Content.Server.Mind;
 using Content.Shared.Mind;
@@ -35,6 +35,9 @@ public sealed class JobSystem : SharedJobSystem
 
         _chat.DispatchServerMessage(session, Loc.GetString("job-greet-introduce-job-name",
             ("jobName", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(prototype.LocalizedName))));
+
+        _chat.DispatchServerMessage(session,
+            Loc.GetString(prototype.Description is not null ? prototype.Description : ""));
 
         if (prototype.RequireAdminNotify)
             _chat.DispatchServerMessage(session, Loc.GetString("job-greet-important-disconnect-admin-notify"));
