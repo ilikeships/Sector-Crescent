@@ -46,6 +46,7 @@ using Content.Server._Crescent.Shipyard;
 using Robust.Shared.Timing;
 using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
+using Content.Server.Database;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -577,21 +578,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
-        {
-            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
-            PlayDenySound(uid, component);
-            return false;
-        }
-
-
-        if (HasComp<ShuttleDeedComponent>(targetId))
-        {
-            ConsolePopup(user, Loc.GetString("shipyard-console-already-deeded"));
-            PlayDenySound(uid, component);
-            return false;
-        }
-
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(user, uid, accessReaderComponent))
         {
             ConsolePopup(user, Loc.GetString("comms-console-permission-denied"));
@@ -658,17 +644,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             }
         }
 
-        if (TryComp<AccessComponent>(targetId, out var newCap))
-        {
-            var newAccess = newCap.Tags.ToList();
-            newAccess.Add($"Captain");
-
-            _accessSystem.TrySetTags(targetId, newAccess, newCap);
-        }
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
+        _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(user).EntityName}.");
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
