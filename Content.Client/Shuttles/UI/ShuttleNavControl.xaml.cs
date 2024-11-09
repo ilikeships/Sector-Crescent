@@ -116,8 +116,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
-        
-        var a = pos - Size/2;
+        var trueSize = Size;
+        var a = (pos - (trueSize/2))/MinimapScale;
         var relativePos = a with { Y = -a.Y };
         relativePos = _rotation.Value.RotateVec(relativePos);
         return _coordinates.Value.Offset(relativePos); 
