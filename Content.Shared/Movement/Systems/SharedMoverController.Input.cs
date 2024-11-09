@@ -7,6 +7,7 @@ using Content.Shared.Movement.Events;
 using Robust.Shared.GameStates;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -251,6 +252,12 @@ namespace Content.Shared.Movement.Systems
             var relative = args.Transform.GridUid;
             relative ??= args.Transform.MapUid;
 
+            if (args.Transform.GridUid is null && TryComp<PhysicsComponent>(args.OldParent, out var parentPhysics))
+            {
+                var linearVec =
+                    Physics.GetLinearVelocity((EntityUid) args.OldParent, new Vector2(0, 0), parentPhysics);
+                Physics.ApplyForce(uid, linearVec);
+            }
             if (component.LifeStage < ComponentLifeStage.Running)
             {
                 component.RelativeEntity = relative;
