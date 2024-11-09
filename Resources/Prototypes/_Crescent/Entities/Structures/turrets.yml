@@ -3,7 +3,7 @@
 - type: entity
   parent: BaseStructure
   id: BaseWeaponTurretPDT
-  name: ballistic turret
+  name: light dual machinegun
   abstract: true
   components:
     - type: PointCannon
@@ -78,9 +78,9 @@
         RotateSpeed: !type:Single
           3.141
         RangedRange: !type:Single
-          65
+          75
         VisionRadius: !type:Single
-          65
+          75
         SoundTargetInLOS: !type:SoundPathSpecifier
           path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
@@ -1492,6 +1492,7 @@
     - type: TurretIFF
     - type: Gun
       fireRate: 7
+      projectileSpeed: 60
       selectedMode: FullAuto
       availableModes:
         - FullAuto

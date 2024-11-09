@@ -3465,7 +3465,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Kal
+      id: Freeport
 - proto: AirAlarm
   entities:
   - uid: 6161
