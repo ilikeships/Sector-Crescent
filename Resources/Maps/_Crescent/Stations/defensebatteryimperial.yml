@@ -39,8 +39,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 5555555
-      linearDamping: 5555555
+      angularDamping: 55555
+      linearDamping: 55555
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -186,43 +186,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,1.5
       parent: 1
-- proto: BaseWeaponTurretLaserDSM
-  entities:
-  - uid: 125
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 7.5,-0.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 65
-  - uid: 126
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,4.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 65
-  - uid: 127
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.5,-0.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 65
-  - uid: 128
-    components:
-    - type: Transform
-      pos: 0.5,-7.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 65
 - proto: ButtonFrameCaution
   entities:
   - uid: 2
@@ -656,7 +619,7 @@ entities:
         - Pressed: Toggle
         135:
         - Pressed: Toggle
-        128:
+        126:
         - Pressed: Toggle
         133:
         - Pressed: Toggle
@@ -664,7 +627,7 @@ entities:
         - Pressed: Toggle
         125:
         - Pressed: Toggle
-        126:
+        128:
         - Pressed: Toggle
         136:
         - Pressed: Toggle
@@ -879,6 +842,43 @@ entities:
     - type: Transform
       pos: 4.5,-4.5
       parent: 1
+- proto: WeaponTurretCoilgunDSM
+  entities:
+  - uid: 125
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 7.5,-0.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 65
+  - uid: 126
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.5,-0.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 65
+  - uid: 127
+    components:
+    - type: Transform
+      pos: 0.5,-7.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 65
+  - uid: 128
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,4.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 65
 - proto: WeaponTurretPDTDSM
   entities:
   - uid: 133

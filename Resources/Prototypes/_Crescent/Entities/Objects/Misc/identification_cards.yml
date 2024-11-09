@@ -630,3 +630,16 @@
     - state: idpilot
   - type: Clothing
     sprite: _NF/Objects/Misc/id_cards.rsi
+
+- type: entity
+  name: "magnate ID card"
+  parent: IDCardStandard
+  id: DeparmentPassMagnate
+  components:
+  - type: Access
+    tags:
+    - LogisticsWealth
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idseniorresearcher

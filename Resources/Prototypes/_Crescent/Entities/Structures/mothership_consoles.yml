@@ -47,6 +47,7 @@
   - type: ShipyardListing
     shuttles:
     - Imp
+    - Prospector
 
 - type: entity
   id: ScribesMothershipComputer

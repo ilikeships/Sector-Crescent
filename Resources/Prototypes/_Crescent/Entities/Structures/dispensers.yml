@@ -325,6 +325,10 @@
       TradeGoodRice: TradeDeedLow
       TradeGoodFlour: TradeDeedLow
       TradeGoodSugar: TradeDeedLow
+      TradeGoodGoodScrap: TradeDeedHigh
+      TradeGoodPlasma: TradeDeedHigh
+      TradeGoodWine: TradeDeedHigh
+      TradeGoodFabrics: TradeDeedHigh
   - type: Sprite
     sprite: _Crescent/Structures/cargochute.rsi
     layers:
@@ -558,3 +562,37 @@
   - type: Tag
     tags:
     - SecurityUplink
+
+- type: entity
+  parent: BaseDispenser
+  id: IDDispenserLabor
+  name: department pass vendor
+  description: Dispenses laborer ID cards for recruitment.
+  components:
+  - type: Dispenser
+    defaultItem: DSMIDCardFreeholder
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/cart.rsi
+    layers:
+    - state: "off"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+
+- type: entity
+  parent: BaseDispenser
+  id: IDWealthLabor
+  name: department pass vendor
+  description: Dispenses magnate ID cards for recruitment.
+  components:
+  - type: Dispenser
+    defaultItem: DeparmentPassMagnate
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/cart.rsi
+    layers:
+    - state: "off"
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"

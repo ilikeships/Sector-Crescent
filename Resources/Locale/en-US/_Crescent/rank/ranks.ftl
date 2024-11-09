@@ -5,7 +5,7 @@ rank-ordering = {$rank} {$name}
 crescent-rank-private = PvT.
 
 #empire
-crescent-rank-baron = Baron
+crescent-rank-baron = Regent
 crescent-rank-adjutant = Adjutant
 crescent-rank-knight = Ser
 crescent-rank-manatarms = Levy
