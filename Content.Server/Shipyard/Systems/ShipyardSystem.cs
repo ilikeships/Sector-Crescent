@@ -22,7 +22,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Shipyard.Systems;
-
+    
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
     [Dependency] private readonly IConfigurationManager _configManager = default!;

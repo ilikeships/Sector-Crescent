@@ -36,6 +36,7 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Server._Crescent.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
@@ -47,6 +48,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -69,6 +71,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly CrescentHelperSystem _crescent = default!;
 
     public void InitializeConsole()
     {
@@ -79,6 +82,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     {
         if (args.Actor is not { Valid : true } player)
             return;
+
+        if (!_crescent.GetPlayerId(args.Actor, out var idCardComponent))
+        {
+            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(uid, component);
+            return;
+        }
 
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(player, uid, accessReaderComponent))
@@ -170,13 +180,28 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
-        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(player).EntityName}.");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+
+        if (idCardComponent.FullName != null)
+        {
+            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            {
+                if (xform.GridUid != shuttle.Owner)
+                    continue;
+
+                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
+                lockout.CreationTime = _timing.CurTime;
+                lockout.Purchaser = idCardComponent.FullName;
+            }
+        }
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
 
         var channel = component.ShipyardChannel;
         _handsSystem.PickupOrDrop(args.Actor, product);
+
 
 
 
@@ -202,7 +227,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var hasSuffix = nameParts.Length > 1 && nameParts.Last().Length < MaxSuffixLength && nameParts.Last().Contains('-');
         deed.ShuttleNameSuffix = hasSuffix ? nameParts.Last() : null;
-        deed.ShuttleName = String.Join(" ", nameParts.SkipLast(hasSuffix ? 1 : 0));
+        deed.ShuttleName = System.String.Join(" ", nameParts.SkipLast(hasSuffix ? 1 : 0));
     }
 
     public void OnSellMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSellMessage args)
@@ -578,6 +603,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
+        if (!_crescent.GetPlayerId(user, out var idCardComponent))
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(user, uid, accessReaderComponent))
         {
             ConsolePopup(user, Loc.GetString("comms-console-permission-denied"));
@@ -649,7 +681,21 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
-        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(user).EntityName}.");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+
+        if (idCardComponent.FullName != null)
+        {
+            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            {
+                if (xform.GridUid != shuttle.Owner)
+                    continue;
+
+                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
+                lockout.CreationTime = _timing.CurTime;
+                lockout.Purchaser = idCardComponent.FullName;
+            }
+        }
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
