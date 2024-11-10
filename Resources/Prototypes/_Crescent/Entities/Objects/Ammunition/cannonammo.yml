@@ -64,7 +64,7 @@
       tags:
         - VulcanCartridgeBox
     proto: CartridgeVulcanStandard
-    capacity: 500
+    capacity: 200
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/vulcan.rsi
@@ -198,7 +198,7 @@
       tags:
         - MortarShell
     proto: BulletMachineGunMortarTurret
-    capacity: 30
+    capacity: 10
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/mortar.rsi
@@ -773,7 +773,7 @@
       tags:
         - FlakShell
     proto: FlakCartridge
-    capacity: 15
+    capacity: 6
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/flak.rsi

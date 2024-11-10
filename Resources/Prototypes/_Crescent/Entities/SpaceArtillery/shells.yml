@@ -860,7 +860,7 @@
       tags:
         - SwarmRocket
     proto: SwarmerRocketCartridge
-    capacity: 60
+    capacity: 10
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/coil.rsi
@@ -982,7 +982,7 @@
       tags:
         - NeedlerMag
     proto: Needler
-    capacity: 80
+    capacity: 20
   - type: Item
   - type: Sprite
     sprite: _Crescent/Ammunition/needler.rsi

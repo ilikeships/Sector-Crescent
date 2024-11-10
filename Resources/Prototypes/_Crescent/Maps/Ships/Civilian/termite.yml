@@ -5,7 +5,7 @@
   id: Termite
   name: ICM Termite
   description: A frugal mining pod.
-  price: 12000
+  price: 15000
   category: Small
   group: Civilian
   shuttlePath: /Maps/_Crescent/Shuttles/Civilian/termite.yml

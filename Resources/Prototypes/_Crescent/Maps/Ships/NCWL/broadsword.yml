@@ -5,7 +5,7 @@
   id: Broadsword
   name: NCWL Broadsword
   description: An ultralight communard bomber.
-  price: 6500
+  price: 9500
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCWL/broadsword.yml
