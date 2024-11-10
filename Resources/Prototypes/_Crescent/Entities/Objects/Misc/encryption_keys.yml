@@ -7,6 +7,7 @@
   - type: EncryptionKey
     channels:
     - NCWL
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -38,6 +39,7 @@
   - type: EncryptionKey
     channels:
     - Syndicate
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -54,6 +56,7 @@
     channels:
     - Syndicate
     - Gorlex
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -70,6 +73,7 @@
     channels:
     - Syndicate
     - Interdyne
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -86,6 +90,7 @@
     channels:
     - Syndicate
     - Saws
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -102,6 +107,7 @@
     channels:
     - Syndicate
     - Cyberdawn
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -119,6 +125,7 @@
     - Imperial
     - Nfsd
     - EmpireCiv
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -134,6 +141,7 @@
   - type: EncryptionKey
     channels:
     - EmpireCiv
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -149,6 +157,7 @@
   - type: EncryptionKey
     channels:
     - Hunter
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -164,6 +173,7 @@
   - type: EncryptionKey
     channels:
     - SHI
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -180,6 +190,7 @@
     channels:
     - Nfsd
     - Imperial
+    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
