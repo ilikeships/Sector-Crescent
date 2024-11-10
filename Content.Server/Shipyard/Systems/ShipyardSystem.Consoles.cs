@@ -36,6 +36,7 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Server._Crescent.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
@@ -47,6 +48,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Content.Server.Shipyard.Systems;
 
@@ -69,6 +71,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly CrescentHelperSystem _crescent = default!;
 
     public void InitializeConsole()
     {
@@ -79,6 +82,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     {
         if (args.Actor is not { Valid : true } player)
             return;
+
+        if (!_crescent.GetPlayerId(uid, out var idCardComponent))
+        {
+            ConsolePopup(args.Actor, Loc.GetString("comms-console-no-id"));
+            PlayDenySound(uid, component);
+            return;
+        }
 
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(player, uid, accessReaderComponent))
@@ -180,6 +190,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
 
 
+
         int sellValue = 0;
         if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
@@ -202,7 +213,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         var hasSuffix = nameParts.Length > 1 && nameParts.Last().Length < MaxSuffixLength && nameParts.Last().Contains('-');
         deed.ShuttleNameSuffix = hasSuffix ? nameParts.Last() : null;
-        deed.ShuttleName = String.Join(" ", nameParts.SkipLast(hasSuffix ? 1 : 0));
+        deed.ShuttleName = System.String.Join(" ", nameParts.SkipLast(hasSuffix ? 1 : 0));
     }
 
     public void OnSellMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleSellMessage args)
