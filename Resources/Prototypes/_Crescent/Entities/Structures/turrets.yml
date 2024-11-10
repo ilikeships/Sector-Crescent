@@ -71,18 +71,6 @@
     - type: BallisticAmmoProvider
       proto: PDTBulletCase
       capacity: 5000
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #turret_root
-      blackboard:
-        RotateSpeed: !type:Single
-          3.141
-        RangedRange: !type:Single
-          75
-        VisionRadius: !type:Single
-          75
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -260,18 +248,6 @@
       containers:
         ballistic-ammo: !type:Container
           ents: []
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          3.141
-        RangedRange: !type:Single
-          85
-        VisionRadius: !type:Single
-          85
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -613,20 +589,8 @@
           variation: 0.08
     - type: BasicEntityAmmoProvider
       proto: LonggunShell
-      capacity: 90
+      capacity: 3
       count: 10
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          2.041
-        RangedRange: !type:Single
-          110
-        VisionRadius: !type:Single
-          110
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -1035,18 +999,6 @@
         - state: syndie_lethal
     - type: Gun
       projectileSpeed: 105
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          2.841
-        RangedRange: !type:Single
-          130
-        VisionRadius: !type:Single
-          130
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
 
 - type: entity
   parent: BaseWeaponTurretLaser
@@ -1160,18 +1112,6 @@
     - type: BallisticAmmoProvider
       proto: SmartBomb
       capacity: 99999
-    - type: HTN
-      rootTask:
-        task: PDTTurretCompound #npcroot
-      blackboard:
-        RotateSpeed: !type:Single
-          3.841
-        RangedRange: !type:Single
-          200
-        VisionRadius: !type:Single
-          200
-        SoundTargetInLOS: !type:SoundPathSpecifier
-          path: /Audio/Effects/double_beep.ogg
     - type: SignalControl
       isOnByDefault: true
     - type: DeviceNetwork
@@ -1568,7 +1508,7 @@
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     - type: BallisticAmmoProvider
       cycleable: false
-      capacity: 10
+      capacity: 3
       proto: TorpGarg
       whitelist:
         tags:
@@ -1659,7 +1599,7 @@
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
     - type: BallisticAmmoProvider
       cycleable: false
-      capacity: 20
+      capacity: 6
       proto: LanceRocketCartridge
       whitelist:
         tags:
@@ -1750,7 +1690,7 @@
       soundGunshot: /Audio/Weapons/Guns/Gunshots/heph.ogg
     - type: BallisticAmmoProvider
       cycleable: false
-      capacity: 6
+      capacity: 3
       proto: HeavyMortarCartridge
       whitelist:
         tags:

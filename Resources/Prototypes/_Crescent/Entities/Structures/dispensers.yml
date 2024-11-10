@@ -72,11 +72,11 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     inventory:
-      TradeDeedLow: SpaceCash1000
-      TradeDeedNormal: SpaceCash1250
-      TradeDeedHigh: SpaceCash1750
-      TradeDeedVeryHigh: SpaceCash2000
-      TradeDeedExotic: SpaceCash5000
+      TradeDeedLow: SpaceCash1750
+      TradeDeedNormal: SpaceCash2000
+      TradeDeedHigh: SpaceCash3500
+      TradeDeedVeryHigh: SpaceCash5000
+      TradeDeedExotic: SpaceCash8000
   - type: Sprite
     sprite: _Crescent/Structures/deedsmachine.rsi
     layers:

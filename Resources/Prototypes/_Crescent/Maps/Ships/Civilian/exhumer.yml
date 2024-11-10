@@ -5,7 +5,7 @@
   id: Exhumer
   name: ICM Exhumer
   description: An entry-level mining corvette.
-  price: 34000
+  price: 35000
   category: Small
   group: Civilian
   shuttlePath: /Maps/_Crescent/Shuttles/Civilian/exhumer.yml

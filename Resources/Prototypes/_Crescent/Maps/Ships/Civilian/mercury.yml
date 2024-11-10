@@ -5,7 +5,7 @@
   id: Mercury
   name: ICM Mercury
   description: A basic techmining shuttle equipped with high-tech research equipment.
-  price: 13500
+  price: 17500
   category: Small
   group: Civilian
   shuttlePath: /Maps/_Crescent/Shuttles/Civilian/mercury.yml

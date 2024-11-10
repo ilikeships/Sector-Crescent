@@ -2,31 +2,31 @@
 # Discord: @fleshangel
 
 - type: vessel
-  id: Cockroach
-  name: Cockroach
-  description: A reclaimed mining barge.
-  price: 65000
+  id: Warthog
+  name: Warthog
+  description: A scrap pod put together from welded rods and other bits of waste. Almost useless.
+  price: 8000
   category: Small
   group: Scrap
-  shuttlePath: /Maps/_Crescent/Shuttles/Civilian/cockroach.yml
+  shuttlePath: /Maps/_Crescent/Shuttles/Civilian/warthog.yml
 
 - type: gameMap
-  id: Cockroach
-  mapName: 'Cockroach'
-  mapPath: /Maps/_Crescent/Shuttles/Civilian/cockroach.yml
+  id: Warthog
+  mapName: 'Warthog'
+  mapPath: /Maps/_Crescent/Shuttles/Civilian/warthog.yml
   minPlayers: 0
   stations:
-    Cockroach:
+    Warthog:
       stationProto: StandardCrescentCivilianVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Cockroach {1}'
+          mapNameTemplate: 'Warthog {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: vessel-designation-mining
+          designation: vessel-designation-civilian
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            Contractor: [ 4, 4 ]
+            Contractor: [ 0, 0 ]
