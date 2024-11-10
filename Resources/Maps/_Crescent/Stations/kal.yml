@@ -47023,11 +47023,8 @@ entities:
         - Middle: Off
         8852:
         - Left: Forward
-        - Right: Reverse
         - Middle: Off
   - uid: 4477
-    components:
-    - type: Transform
       pos: 19.5,-66.5
       parent: 1
     - type: DeviceLinkSource
@@ -47213,11 +47210,8 @@ entities:
         - Middle: Off
         8759:
         - Left: Forward
-        - Right: Reverse
         - Middle: Off
 - proto: VendingMachineAstroVend
-  entities:
-  - uid: 3275
     components:
     - type: Transform
       pos: -8.5,-62.5
