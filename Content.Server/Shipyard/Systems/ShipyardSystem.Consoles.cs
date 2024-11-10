@@ -83,9 +83,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid : true } player)
             return;
 
-        if (!_crescent.GetPlayerId(uid, out var idCardComponent))
+        if (!_crescent.GetPlayerId(args.Actor, out var idCardComponent))
         {
-            ConsolePopup(args.Actor, Loc.GetString("comms-console-no-id"));
+            ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(uid, component);
             return;
         }
@@ -180,7 +180,21 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
-        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(player).EntityName}.");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+
+        if (idCardComponent.FullName != null)
+        {
+            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            {
+                if (xform.GridUid != shuttle.Owner)
+                    continue;
+
+                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
+                lockout.CreationTime = _timing.CurTime;
+                lockout.Purchaser = idCardComponent.FullName;
+            }
+        }
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
@@ -589,6 +603,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
+        if (!_crescent.GetPlayerId(user, out var idCardComponent))
+        {
+            ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(uid, component);
+            return false;
+        }
+
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(user, uid, accessReaderComponent))
         {
             ConsolePopup(user, Loc.GetString("comms-console-permission-denied"));
@@ -660,7 +681,21 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
-        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {MetaData(user).EntityName}.");
+        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+
+        if (idCardComponent.FullName != null)
+        {
+            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            {
+                if (xform.GridUid != shuttle.Owner)
+                    continue;
+
+                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
+                lockout.CreationTime = _timing.CurTime;
+                lockout.Purchaser = idCardComponent.FullName;
+            }
+        }
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
