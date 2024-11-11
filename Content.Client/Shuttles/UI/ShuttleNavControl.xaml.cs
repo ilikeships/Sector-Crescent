@@ -26,6 +26,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private readonly ILogManager _logs = default!;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _transform;
     private readonly FixtureSystem _fixtures;
@@ -116,9 +117,11 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
+        var logger = _logs.GetSawmill("ui");
         var trueSize = Size;
-        var a = (pos - (trueSize/2))/MinimapScale;
+        var a = ((pos - (trueSize/2))*2)/Size * WorldMaxRange;
         var relativePos = a with { Y = -a.Y };
+        logger.Debug($"Pos: {pos.X}, {pos.Y}   , relativePos: {relativePos.X}, {relativePos.Y}");
         relativePos = _rotation.Value.RotateVec(relativePos);
         return _coordinates.Value.Offset(relativePos); 
     }
