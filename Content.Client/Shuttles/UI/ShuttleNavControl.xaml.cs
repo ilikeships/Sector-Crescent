@@ -119,7 +119,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             return EntityCoordinates.Invalid;
         var logger = _logs.GetSawmill("ui");
         var trueSize = Size;
-        var a = ((pos - (trueSize/2))*2)/Size * WorldMaxRange;
+        var a = ((pos - (trueSize/2))*2)/Size * ActualRadarRange;
         var relativePos = a with { Y = -a.Y };
         logger.Debug($"Pos: {pos.X}, {pos.Y}   , relativePos: {relativePos.X}, {relativePos.Y}");
         relativePos = _rotation.Value.RotateVec(relativePos);
