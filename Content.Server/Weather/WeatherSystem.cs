@@ -1,16 +1,31 @@
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Weather;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Console;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Player;
+using System.Numerics;
+using Content.Shared.Damage;
+using System.Net.NetworkInformation;
+using Content.Shared._Crescent.PassiveRegeneration;
+using Robust.Server.GameObjects;
+using Robust.Server.Player;
 
 namespace Content.Server.Weather;
 
 public sealed class WeatherSystem : SharedWeatherSystem
 {
     [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {
@@ -21,6 +36,24 @@ public sealed class WeatherSystem : SharedWeatherSystem
             Loc.GetString("cmd-weather-help"),
             WeatherTwo,
             WeatherCompletion);
+    }
+
+    protected override void Run(EntityUid uid, WeatherData weather, WeatherPrototype weatherProto, float frameTime)
+    {
+        base.Run(uid, weather, weatherProto, frameTime);
+        if (weatherProto.Damage is null)
+            return;
+        if (!TryComp<MapGridComponent>(uid, out var mapComp))
+            return;
+        var mapTransform = Transform(uid);
+        HashSet<Entity<DamageableComponent, PassiveRegenerationComponent>> targets = new();
+        _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
+        foreach (var entity in targets)
+        {
+            _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
+
+        }
+
     }
 
     private void OnWeatherGetState(EntityUid uid, WeatherComponent component, ref ComponentGetState args)
