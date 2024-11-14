@@ -12,6 +12,7 @@ using Robust.Shared.Player;
 using System.Numerics;
 using Content.Shared.Damage;
 using System.Net.NetworkInformation;
+using Content.Shared._Crescent.PassiveRegeneration;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 
@@ -24,6 +25,7 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {
@@ -43,21 +45,15 @@ public sealed class WeatherSystem : SharedWeatherSystem
             return;
         if (!TryComp<MapGridComponent>(uid, out var mapComp))
             return;
-        var mapUid = Transform(uid).MapUid;
-        foreach(var tile in _mapSystem.GetAllTiles(uid, mapComp, false))
+        var mapTransform = Transform(uid);
+        HashSet<Entity<DamageableComponent, PassiveRegenerationComponent>> targets = new();
+        _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
+        foreach (var entity in targets)
         {
-            if (!CanWeatherAffect(uid, mapComp, tile))
-                continue;
-            foreach (var thing in _mapSystem.GetLocal(uid, mapComp, new EntityCoordinates(tile.GridUid, tile.GridIndices)))
-            {
-                if (!_playerManager.TryGetSessionByEntity(@thing, out var _))
-                    continue;
-                if (!TryComp<DamageableComponent>(thing, out var damageComp))
-                    continue;
-                _damage.TryChangeDamage(thing, weatherProto.Damage, true, false, damageComp, uid);
-            }
+            _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
 
         }
+
     }
 
     private void OnWeatherGetState(EntityUid uid, WeatherComponent component, ref ComponentGetState args)
