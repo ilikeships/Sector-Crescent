@@ -79,8 +79,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatShinoharaBeret
-  name: security officer's beret
-  description: A formal beret with the Shinohara Heavy Industries corporate logo emblazoned on the front.
+  name: watchman's beret
+  description: A formal beret with the tower insignia of the Lord Commander.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/SHI/Head/beret.rsi

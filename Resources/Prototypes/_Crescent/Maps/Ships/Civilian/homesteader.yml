@@ -5,7 +5,7 @@
   id: Homesteader
   name: ICM Homesteader
   description: An entry-level colonization corvette.
-  price: 32500
+  price: 37500
   category: Small
   group: Civilian
   shuttlePath: /Maps/_Crescent/Shuttles/Civilian/homesteader.yml
