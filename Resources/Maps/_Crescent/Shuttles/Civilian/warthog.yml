@@ -119,6 +119,26 @@ entities:
     - type: Transform
       pos: 1.5,-0.5
       parent: 1
+  - uid: 48
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+  - uid: 49
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+  - uid: 50
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+  - uid: 51
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 27
@@ -131,6 +151,26 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
+  - uid: 40
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+  - uid: 41
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+  - uid: 42
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+  - uid: 43
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 29
@@ -142,6 +182,26 @@ entities:
     components:
     - type: Transform
       pos: 0.5,0.5
+      parent: 1
+  - uid: 44
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+  - uid: 45
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+  - uid: 46
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+  - uid: 47
+    components:
+    - type: Transform
+      pos: 0.5,2.5
       parent: 1
 - proto: Catwalk
   entities:

@@ -417,11 +417,11 @@
             - SlugthrowerCartridgeBox
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeShellArmorPiercing
+        startingItem: CartridgeMachineGunArmorPiercing
         priority: 1
         whitelist:
           tags:
-            - CartridgeShell
+            - CartridgeMachineGun
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

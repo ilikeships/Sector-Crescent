@@ -101,7 +101,7 @@
     shuttles:
     - Velator
     - Wisp
-    - Wreck
+    - Taipan
 
 - type: entity
   id: TatsumotoMothershipComputer
