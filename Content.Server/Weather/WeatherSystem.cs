@@ -50,6 +50,13 @@ public sealed class WeatherSystem : SharedWeatherSystem
         _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
         foreach (var entity in targets)
         {
+            if(!TryComp<TransformComponent>(entity, out var transformComp))
+                continue;
+            if(!_transform.TryGetGridTilePosition(new Entity<TransformComponent?>(entity.Owner, transformComp), out var position, mapComp))
+                continue;
+            var tile = _mapSystem.GetTileRef(new Entity<MapGridComponent>(entity.Owner, mapComp), position);
+            if (!CanWeatherAffect(uid, mapComp, tile))
+                continue;
             _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
 
         }
