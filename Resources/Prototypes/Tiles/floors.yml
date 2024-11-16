@@ -443,6 +443,7 @@
     collection: FootstepTile
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
+  weather: false
 
 - type: tile
   id: FloorDarkMini

@@ -56,18 +56,13 @@ public sealed class WeatherSystem : SharedWeatherSystem
         _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
         foreach (var entity in targets)
         {
+            if (_transform.GetGrid(entity.Owner) != uid)
+                continue;
             if (!_transform.TryGetGridTilePosition(entity.Owner, out var position))
                 continue;
             var tile = _mapSystem.GetTileRef(uid, mapComp, position);
-            var tileDef = (ContentTileDefinition) _tileDefManager[tile.Tile.TypeId];
             if (!CanWeatherAffect(uid, mapComp, tile))
                 continue;
-            if (sawmill is not null && _playerManager.TryGetSessionByEntity(entity.Owner, out var _))
-            {
-                sawmill.Debug($"Weather at tile {tile.X} , {tile.Y} returned as being affected. {uid}");
-                sawmill.Warning($"tileDefId {tile.Tile.TypeId} with the weather set to  {tileDef.Weather}");
-            }
-
             _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
 
         }
