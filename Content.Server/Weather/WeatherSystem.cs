@@ -15,6 +15,7 @@ using System.Net.NetworkInformation;
 using Content.Shared._Crescent.PassiveRegeneration;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Content.Shared.Maps;
 
 namespace Content.Server.Weather;
 
@@ -22,14 +23,19 @@ public sealed class WeatherSystem : SharedWeatherSystem
 {
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
+
+    private ISawmill? sawmill;
 
     public override void Initialize()
     {
         base.Initialize();
+        sawmill = _logManager.GetSawmill("weatherSystem");
         SubscribeLocalEvent<WeatherComponent, ComponentGetState>(OnWeatherGetState);
         _console.RegisterCommand("weather",
             Loc.GetString("cmd-weather-desc"),
@@ -50,6 +56,13 @@ public sealed class WeatherSystem : SharedWeatherSystem
         _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
         foreach (var entity in targets)
         {
+            if (_transform.GetGrid(entity.Owner) != uid)
+                continue;
+            if (!_transform.TryGetGridTilePosition(entity.Owner, out var position))
+                continue;
+            var tile = _mapSystem.GetTileRef(uid, mapComp, position);
+            if (!CanWeatherAffect(uid, mapComp, tile))
+                continue;
             _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
 
         }
