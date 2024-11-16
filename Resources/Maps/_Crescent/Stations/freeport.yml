@@ -3901,7 +3901,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -92646.766
+      secondsUntilStateChange: -92737.84
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4022,7 +4022,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -12776.721
+      secondsUntilStateChange: -12867.799
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -7549,6 +7549,7 @@ entities:
       pos: 45.5,47.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 2.251474735072685 rad: 3.814679763405596 rad
   - uid: 2260
@@ -7569,6 +7570,7 @@ entities:
       pos: 19.5,61.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 1.870968342307374 rad: 3.731538556594424 rad
   - uid: 6290
@@ -7577,6 +7579,7 @@ entities:
       pos: 25.5,-9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 0.2170308087013046 rad: 4.547494863234134 rad
 - proto: Beaker
@@ -19995,43 +19998,39 @@ entities:
         - 6283
         - 2149
         - 1007
-        - 147
-        - 236
-        - 2260
         - 6290
         - 133
-        - 6292
-        - 2261
-        - 6287
+        - 236
         - 6291
         - 1006
         - 1052
         - 6286
         - 6285
-        - 6282
         - 6284
-        flakscreen:
+        - 6282
+        - 6287
+        - 2261
+        - 6292
+        flak:
         - 6283
         - 2149
         - 1007
-        artillery:
-        - 147
-        - 236
-        - 2260
-        missile:
+        gargoyle:
         - 6290
         - 133
-        machineguns:
-        - 6292
-        - 2261
-        - 6287
+        artillery:
+        - 236
+        machinegun:
         - 6291
         - 1006
         - 1052
         - 6286
         - 6285
-        - 6282
         - 6284
+        - 6282
+        - 6287
+        - 2261
+        - 6292
 - proto: ComputerWallmountBankATM
   entities:
   - uid: 359
@@ -22656,6 +22655,7 @@ entities:
       pos: 52.5,36.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -22679,6 +22679,7 @@ entities:
       pos: -20.5,44.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -22702,6 +22703,7 @@ entities:
       pos: -12.5,26.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 0.8333277526948826 rad: 1.0168605325439188 rad
       - 3.5772923987407172 rad: 3.5960108269559767 rad
@@ -28746,6 +28748,7 @@ entities:
       pos: -13.5,70.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 3.8222710618675815 rad: 2.9562410360241875 rad
   - uid: 1052
@@ -28755,6 +28758,7 @@ entities:
       pos: -18.5,54.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 3.8222710618675815 rad: 4.213202217353472 rad
   - uid: 2261
@@ -28764,6 +28768,7 @@ entities:
       pos: 59.5,7.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 1.5326447324774293 rad: 4.069862166424369 rad
   - uid: 6282
@@ -28772,6 +28777,7 @@ entities:
       pos: 13.5,-1.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 5.181974049552404 rad: 5.132921829734085 rad
   - uid: 6284
@@ -28780,6 +28786,7 @@ entities:
       pos: 3.5,-1.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 5.3930673886624785 rad: 4.92182849062401 rad
   - uid: 6285
@@ -28788,6 +28795,7 @@ entities:
       pos: -6.5,-1.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 5.3930673886624785 rad: 4.92182849062401 rad
   - uid: 6286
@@ -28796,6 +28804,7 @@ entities:
       pos: -16.5,11.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 4.7642710968243245 rad: 3.9798284556672656 rad
   - uid: 6287
@@ -28805,6 +28814,7 @@ entities:
       pos: 59.5,-8.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 0.6806784082777885 rad: 4.077674504292082 rad
   - uid: 6291
@@ -28814,6 +28824,7 @@ entities:
       pos: 15.5,66.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 2.251474735072685 rad: 3.814679763405596 rad
   - uid: 6292
@@ -28823,6 +28834,7 @@ entities:
       pos: 48.5,27.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 2478
       obstructedRanges:
       - 0.6806784082777885 rad: 3.3510321638291125 rad
 - proto: PortableScrubber
