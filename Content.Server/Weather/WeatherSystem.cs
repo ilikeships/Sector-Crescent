@@ -15,6 +15,7 @@ using System.Net.NetworkInformation;
 using Content.Shared._Crescent.PassiveRegeneration;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Content.Shared.Maps;
 
 namespace Content.Server.Weather;
 
@@ -22,14 +23,19 @@ public sealed class WeatherSystem : SharedWeatherSystem
 {
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
+
+    private ISawmill? sawmill;
 
     public override void Initialize()
     {
         base.Initialize();
+        sawmill = _logManager.GetSawmill("weatherSystem");
         SubscribeLocalEvent<WeatherComponent, ComponentGetState>(OnWeatherGetState);
         _console.RegisterCommand("weather",
             Loc.GetString("cmd-weather-desc"),
@@ -50,13 +56,18 @@ public sealed class WeatherSystem : SharedWeatherSystem
         _lookup.GetEntitiesOnMap(mapTransform.MapID, targets);
         foreach (var entity in targets)
         {
-            if(!TryComp<TransformComponent>(entity, out var transformComp))
+            if (!_transform.TryGetGridTilePosition(entity.Owner, out var position))
                 continue;
-            if(!_transform.TryGetGridTilePosition(new Entity<TransformComponent?>(entity.Owner, transformComp), out var position, mapComp))
-                continue;
-            var tile = _mapSystem.GetTileRef(new Entity<MapGridComponent>(entity.Owner, mapComp), position);
+            var tile = _mapSystem.GetTileRef(uid, mapComp, position);
+            var tileDef = (ContentTileDefinition) _tileDefManager[tile.Tile.TypeId];
             if (!CanWeatherAffect(uid, mapComp, tile))
                 continue;
+            if (sawmill is not null && _playerManager.TryGetSessionByEntity(entity.Owner, out var _))
+            {
+                sawmill.Debug($"Weather at tile {tile.X} , {tile.Y} returned as being affected. {uid}");
+                sawmill.Warning($"tileDefId {tile.Tile.TypeId} with the weather set to  {tileDef.Weather}");
+            }
+
             _damage.TryChangeDamage(entity, weatherProto.Damage, true, false, entity.Comp1, uid);
 
         }
