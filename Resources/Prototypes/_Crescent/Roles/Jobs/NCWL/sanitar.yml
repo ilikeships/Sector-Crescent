@@ -5,7 +5,7 @@
   playTimeTracker: JobSanitarNCWL
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 20000
+      time: 1000
     - !type:FactionRequirement
       factionID: "NCWL"
   weight: 20

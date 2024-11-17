@@ -24,7 +24,7 @@ job-name-foreman = Foreman
 
 #empire
 
-job-name-freeholder = Laborer
+job-name-freeholder = Freeholder
 job-name-levyman = Man-at-Arms
 job-name-knight = Knight Banneret
 job-name-courtier = Minister of Labor

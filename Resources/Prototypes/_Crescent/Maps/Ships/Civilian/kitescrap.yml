@@ -2,16 +2,16 @@
 # Discord: @fleshangel
 
 - type: vessel
-  id: Kite
+  id: KiteScrap
   name: ICM Kite
   description: A small all-rounder shuttle with expedition capabilities for beginner pilots, armed with dual plasmacasters. Expedition-worthy.
   price: 25000
   category: Small
-  group: Civilian
+  group: Scrap
   shuttlePath: /Maps/_Crescent/Shuttles/Civilian/kite.yml
 
 - type: gameMap
-  id: Kite
+  id: KiteScrap
   mapName: 'ICM Kite'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/kite.yml
   minPlayers: 0
