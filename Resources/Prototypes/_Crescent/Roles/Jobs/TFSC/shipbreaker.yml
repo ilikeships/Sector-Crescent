@@ -4,8 +4,6 @@
   description: job-description-shipbreaker
   playTimeTracker: JobShipbreakerNCSP
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000
     - !type:FactionRequirement
       factionID: "TFSC"
   special:

@@ -5,7 +5,7 @@
   playTimeTracker: JobInfanteerNCSP
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 18000
+      time: 8000
     - !type:FactionRequirement
       factionID: "TFSC"
   weight: 20

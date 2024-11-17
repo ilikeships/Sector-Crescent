@@ -10,29 +10,6 @@
       - Artifact
 
 - type: cargoBounty
-  id: BountyBaseballBat
-  reward: 4000
-  description: bounty-description-baseball-bat
-  idPrefix: CC
-  entries:
-  - name: bounty-item-baseball-bat
-    amount: 5
-    whitelist:
-      tags:
-      - BaseballBat
-
-- type: cargoBounty
-  id: BountyBrain
-  reward: 12500
-  description: bounty-description-brain
-  entries:
-  - name: bounty-item-brain
-    amount: 1
-    whitelist:
-      components:
-      - Brain
-
-- type: cargoBounty
   id: BountyBread
   reward: 2000
   description: bounty-description-bread
@@ -176,7 +153,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 1000
+  reward: 3000
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -233,7 +210,7 @@
 
 - type: cargoBounty
   id: BountyLung
-  reward: 2000
+  reward: 7000
   description: bounty-description-lung
   entries:
   - name: bounty-item-lung

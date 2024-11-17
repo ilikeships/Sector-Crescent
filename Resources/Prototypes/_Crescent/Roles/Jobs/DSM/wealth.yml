@@ -5,7 +5,7 @@
   playTimeTracker: JobWealthDSM
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 2500
+      time: 500
     - !type:SpeciesRequirement
       allowedOnly:
         - Human
