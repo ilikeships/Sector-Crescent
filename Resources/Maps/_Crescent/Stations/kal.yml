@@ -5967,6 +5967,9 @@ entities:
       id: Kal
     - type: VesselDesignation
       designation: vessel-designation-headquarters
+    - type: StationCargoBountyDatabase
+      checkedBounties: []
+      bounties: []
 - proto: AcousticGuitarInstrument
   entities:
   - uid: 2300
@@ -6310,7 +6313,7 @@ entities:
       pos: -13.5,-42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4888.847
+      secondsUntilStateChange: -5005.8228
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -6517,7 +6520,7 @@ entities:
       pos: 13.5,-0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -81140.64
+      secondsUntilStateChange: -81257.62
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -21905,6 +21908,11 @@ entities:
     - type: Transform
       pos: -24.5,-46.5
       parent: 1
+  - uid: 4779
+    components:
+    - type: Transform
+      pos: -31.5,-58.5
+      parent: 1
 - proto: CargoTelepad
   entities:
   - uid: 4735
@@ -26642,6 +26650,16 @@ entities:
           showEnts: False
           occludes: True
           ents: []
+- proto: ComputerCargoBounty
+  entities:
+  - uid: 8874
+    components:
+    - type: MetaData
+      desc: Allows citizenry to take cargo bounties from Imperial Highcomm.
+      name: imperial requisitions console
+    - type: Transform
+      pos: -25.5,-57.5
+      parent: 1
 - proto: ComputerCargoOrdersSurezai
   entities:
   - uid: 4727
@@ -26706,6 +26724,16 @@ entities:
     components:
     - type: Transform
       pos: -27.5,-53.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          ents: []
+  - uid: 4793
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -31.5,-57.5
       parent: 1
     - type: ContainerContainer
       containers:
@@ -27725,10 +27753,10 @@ entities:
       parent: 1
 - proto: DeedConsole
   entities:
-  - uid: 4779
+  - uid: 8873
     components:
     - type: Transform
-      pos: -31.5,-57.5
+      pos: -29.5,-57.5
       parent: 1
 - proto: DeepWildBiomeSource
   entities:
@@ -28411,7 +28439,7 @@ entities:
       pos: 25.5,-12.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -72743.336
+      secondsUntilStateChange: -72860.31
       state: Opening
   - uid: 1757
     components:
@@ -38023,11 +38051,6 @@ entities:
     components:
     - type: Transform
       pos: 23.5,-44.5
-      parent: 1
-  - uid: 4793
-    components:
-    - type: Transform
-      pos: -29.5,-57.5
       parent: 1
 - proto: PottedPlantRD
   entities:
