@@ -1,3 +1,5 @@
+using Robust.Shared.Serialization;
+
 namespace Content.Server._Crescent.Broadcaster;
 
 /// <summary>
@@ -15,3 +17,33 @@ public sealed partial class BroadcasterComponent : Component
     [DataField("outpost")]
     public string? Outpost;
 }
+
+public sealed partial class BroadcastingConsoleComponent : Component
+{
+    [DataField("outpost")]
+    public string? Outpost;
+
+    public int currentlyPlaying = -1;
+
+    public List<string>? availableAnnouncements;
+}
+
+[Serializable, NetSerializable]
+public sealed class BroadcasterConsoleState : BoundUserInterfaceState
+{
+
+}
+
+[Serializable, NetSerializable]
+public sealed class BroadcasterBroadcastMessage : BoundUserInterfaceMessage
+{
+}
+
+
+[NetSerializable, Serializable]
+public enum BroadcasterUIKey
+{
+    Key,
+}
+
+

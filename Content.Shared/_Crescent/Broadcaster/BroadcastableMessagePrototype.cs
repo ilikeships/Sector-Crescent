@@ -14,7 +14,7 @@ public sealed partial class BroadcastableMessagePrototype : IPrototype
     public string ID { get; } = default!;
 
     [DataField("announce")]
-    public SoundSpecifier announceSound = default!;
+    public SoundPathSpecifier announceSound = default!;
 
     /// <summary>
     ///  Identifier for letting it know what can play it and what can't
