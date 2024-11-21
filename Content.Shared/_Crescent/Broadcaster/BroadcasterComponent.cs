@@ -28,22 +28,6 @@ public sealed partial class BroadcastingConsoleComponent : Component
     public List<string>? availableAnnouncements;
 }
 
-[Serializable, NetSerializable]
-public sealed class BroadcasterConsoleState : BoundUserInterfaceState
-{
 
-}
-
-[Serializable, NetSerializable]
-public sealed class BroadcasterBroadcastMessage : BoundUserInterfaceMessage
-{
-}
-
-
-[NetSerializable, Serializable]
-public enum BroadcasterUIKey
-{
-    Key,
-}
 
 

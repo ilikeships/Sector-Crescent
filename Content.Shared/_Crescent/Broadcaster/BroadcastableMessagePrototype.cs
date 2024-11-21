@@ -13,6 +13,12 @@ public sealed partial class BroadcastableMessagePrototype : IPrototype
     [IdDataField]
     public string ID { get; } = default!;
 
+    /// <summary>
+    /// Name that shows in the Broadcasting Console
+    /// </summary>
+    [DataField]
+    public string Name = default!;
+
     [DataField("announce")]
     public SoundPathSpecifier announceSound = default!;
 
