@@ -7,11 +7,6 @@ namespace Content.Shared._Crescent.Broadcaster;
 /// </summary>
 public class SharedBroadcasterSystem : EntitySystem
 {
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        
-    }
 
     [Serializable, NetSerializable]
     public sealed class BroadcasterConsoleState : BoundUserInterfaceState

@@ -26,7 +26,7 @@ public sealed partial class BroadcastingConsoleComponent : Component
 
     public int currentlyPlaying = -1;
 
-    public List<string>? availableAnnouncements;
+    public List<string>? AvailableAnnouncements;
 }
 
 

@@ -1,3 +1,4 @@
+using Content.Server.Mapping;
 using Content.Server.Radio.Components;
 using Content.Server.Radio;
 using Content.Shared.Radio.Components;
@@ -27,6 +28,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
 
 
@@ -106,7 +108,14 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         var comps = EntityManager.GetAllComponents(typeof(BroadcasterComponent));
         foreach (var broadcaster in comps)
         {
-            _lookup.Get
+            var broadcastingComp = (BroadcasterComponent)broadcaster.Component;
+            HashSet<Entity<EyeComponent>> targets = new();
+            _lookup.GetEntitiesInRange<EyeComponent>(_transform.GetMapCoordinates(broadcaster.Uid,
+                Transform(broadcaster.Uid)), broadcastingComp.Range, targets, LookupFlags.All);
+            foreach(var player in targets)
+            {
+                _audioSystem.PlayEntity(broadcastableMessages[args.indexForBroadcast].sound, player.Owner, broadcaster.Uid);
+            }
 
         }
 
