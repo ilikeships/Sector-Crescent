@@ -18,8 +18,7 @@ namespace Content.Server._Crescent.Broadcaster;
 
 /// <summary>
 /// This is used for...
-/// </summary>
-[RegisterComponent]
+/// </summary>W
 public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
 
 {
@@ -107,7 +106,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         var comps = EntityManager.GetAllComponents(typeof(BroadcasterComponent));
         foreach (var broadcaster in comps)
         {
-            var entTransform = Transform(broadcaster.Uid);
+            _lookup.Get
 
         }
 

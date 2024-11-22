@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Server._Crescent.Broadcaster;
+namespace Content.Shared._Crescent.Broadcaster;
 
 /// <summary>
 /// This is used for...
@@ -17,6 +17,7 @@ public sealed partial class BroadcasterComponent : Component
     [DataField("outpost")]
     public string? Outpost;
 }
+[RegisterComponent]
 
 public sealed partial class BroadcastingConsoleComponent : Component
 {
