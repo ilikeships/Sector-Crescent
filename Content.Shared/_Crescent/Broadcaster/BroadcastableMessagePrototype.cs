@@ -6,7 +6,7 @@ namespace Content.Server._Crescent.Broadcaster;
 /// <summary>
 /// This is a prototype for...
 /// </summary>
-[Prototype()]
+[Prototype("broadcastMessage")]
 public sealed partial class BroadcastableMessagePrototype : IPrototype
 {
     /// <inheritdoc/>
@@ -19,7 +19,7 @@ public sealed partial class BroadcastableMessagePrototype : IPrototype
     [DataField]
     public string Name = default!;
 
-    [DataField("announce")]
+    [DataField("sound")]
     public SoundPathSpecifier announceSound = default!;
 
     /// <summary>

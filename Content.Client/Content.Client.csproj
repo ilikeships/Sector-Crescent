@@ -36,9 +36,4 @@
       <Generator>MSBuild:Compile</Generator>
     </AdditionalFiles>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="_Crescent\Broadcaster\broadcasterUI.xaml.cs">
-      <DependentUpon>BroadcasterUI.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>

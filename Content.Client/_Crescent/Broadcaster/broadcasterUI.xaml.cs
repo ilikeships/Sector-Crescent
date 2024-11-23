@@ -11,13 +11,13 @@ namespace Content.Client._Crescent.Broadcaster.UI;
 public partial class BroadcasterUI : FancyWindow
 {
     private Dictionary<int, string> broadcastMessages;
-    public Action<int>? ClickBroadcast; 
+    public Action<int>? ClickBroadcast;
     public int Amount;
 
     public BroadcasterUI()
     {
-        broadcastMessages = new Dictionary<int, string>();
         RobustXamlLoader.Load(this);
+        broadcastMessages = new Dictionary<int, string>();
         Title = Loc.GetString("bank-atm-menu-title");
         MessageList.SelectMode = ItemList.ItemListSelectMode.Button;
         MessageList.OnItemSelected += OnItemSelect;

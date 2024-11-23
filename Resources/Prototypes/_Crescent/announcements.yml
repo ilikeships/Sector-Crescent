@@ -1,0 +1,21 @@
+
+- type: broadcastMessage
+  id: bm1
+  name: announce1
+  sound:
+    path: /Audio/_Crescent/Announcements/curfew_01.ogg
+  outpost: default
+
+- type: broadcastMessage
+  id: bm2
+  name: announce2
+  sound:
+    path: /Audio/_Crescent/Announcements/looter_01.ogg
+  outpost: default
+
+- type: broadcastMessage
+  id: bm3
+  name: announce3
+  sound:
+    path: /Audio/_Crescent/Announcements/pledgeloyalty.ogg
+  outpost: none

@@ -62,7 +62,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         {
             if (message.Outpost is null)
                 continue;
-            broadcastableMessages.Add(new BroadcastWrapper(message.announceSound, _audioSystem.GetAudioLength(message.announceSound.Path.Filename), message.Name, message.Outpost));
+            broadcastableMessages.Add(new BroadcastWrapper(message.announceSound, _audioSystem.GetAudioLength(message.announceSound.Path.ToRootedPath().CanonPath), message.Name, message.Outpost));
             if (!currentlyPlayingOn.ContainsKey(message.Outpost))
             {
                 currentlyPlayingOn.Add(message.Outpost, -1);

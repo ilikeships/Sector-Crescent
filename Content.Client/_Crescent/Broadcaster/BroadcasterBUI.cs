@@ -5,6 +5,7 @@ using Content.Shared.Bank.BUI;
 using Content.Shared.Bank.Events;
 using Content.Shared.NamedModules.Components;
 using Robust.Client.GameObjects;
+using Robust.Client.UserInterface.XAML;
 
 namespace Content.Client._Crescent.Broadcaster.BUI;
 
@@ -17,10 +18,10 @@ public sealed class BroadcasterBUI : BoundUserInterface
 
     protected override void Open()
     {
+        base.Open();
         if (!(_entManager.TryGetComponent<BroadcastingConsoleComponent>(Owner, out var broadcastingComp) &&
               broadcastingComp is not null))
             return;
-        base.Open();
 
         _menu = new BroadcasterUI();
         if (broadcastingComp.AvailableAnnouncements is null)
@@ -43,14 +44,14 @@ public sealed class BroadcasterBUI : BoundUserInterface
 
     private void OnTryPlayBroadcast(int index)
     {
-        SendMessage(new SharedBroadcasterSystem.BroadcasterBroadcastMessage(index));
+        SendMessage(new BroadcasterBroadcastMessage(index));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
 
-        if (state is not SharedBroadcasterSystem.BroadcasterConsoleState cast)
+        if (state is not BroadcasterConsoleState cast)
             return;
 
         _menu?.setBroadcastables(cast.playableBroadcasts);
