@@ -67,10 +67,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
             if (message.Outpost is null)
                 continue;
             broadcastableMessages.Add(new BroadcastWrapper(message.announceSound, (float)_audioSystem.GetAudioLength(message.announceSound.Path.ToRootedPath().CanonPath).TotalSeconds, message.Name, message.Outpost, message.Text));
-            if (!currentlyPlayingOn.ContainsKey(message.Outpost))
-            {
-                currentlyPlayingOn.Add(message.Outpost, -1);
-            }
+            currentlyPlayingOn.TryAdd(message.Outpost, -1);
         }
         SubscribeLocalEvent<BroadcastingConsoleComponent, ComponentStartup>(RequestAvailableBroadcasts);
         SubscribeLocalEvent<BroadcastingConsoleComponent, BroadcasterBroadcastMessage>(PlayBroadcast);
@@ -97,6 +94,8 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     {
         if (comp.Outpost is null)
             return;
+        if (!currentlyPlayingOn.ContainsKey(comp.Outpost))
+            currentlyPlayingOn.Add(comp.Outpost, -1);
         comp.currentlyPlaying = currentlyPlayingOn[comp.Outpost];
         comp.AvailableAnnouncements = buildBroadcastListForState(comp.Outpost);
         EntityManager.Dirty(new Entity<BroadcastingConsoleComponent>(uid, comp));
@@ -154,7 +153,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         var comps = EntityManager.GetAllComponents(typeof(BroadcasterComponent));
         playtimesLeft.Add(comp.Outpost, broadcastableMessages[args.indexForBroadcast].duration);
         UpdateAllConsoles(comp.Outpost);
-        HashSet<Entity<EyeComponent>> alreadyMessaged = new();
+        //HashSet<Entity<EyeComponent>> alreadyMessaged = new();
         foreach (var broadcaster in comps)
         {
             var broadcastingComp = (BroadcasterComponent)broadcaster.Component;
@@ -163,9 +162,12 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
                 Transform(broadcaster.Uid)), broadcastingComp.Range, targets, LookupFlags.All);
             foreach(var player in targets)
             {
-                if(alreadyMessaged.Contains(player))
+                if (!_playerManager.TryGetSessionByEntity(player.Owner, out var _))
                     continue;
-                alreadyMessaged.Add(player);
+                //if(alreadyMessaged.Contains(player))
+                //     _chatting.TrySendInGameICMessage(broadcaster.Uid, broadcastableMessages[args.indexForBroadcast].text, InGameICChatType.Speak, ChatTransmitRange.Normal);
+                //    continue;
+                //alreadyMessaged.Add(player);
 
                 _chatting.TrySendInGameICMessage(broadcaster.Uid, broadcastableMessages[args.indexForBroadcast].text, InGameICChatType.Speak, ChatTransmitRange.Normal);
                 _audioSystem.PlayEntity(broadcastableMessages[args.indexForBroadcast].sound, player.Owner, broadcaster.Uid);

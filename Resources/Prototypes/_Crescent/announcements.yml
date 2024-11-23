@@ -5,7 +5,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/storm_01.ogg
   outpost: default
-  text: hawk tuak
+  text: Attention residents of the colony ! The storm is incoming , return to your housing immediately!
 
 - type: broadcastMessage
   id: bm0
@@ -13,7 +13,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/storm_02.ogg
   outpost: default
-  text: hawk tuak
+  text: Attention! A state of emergency has been declared , the storm is incoming , return to your housing units immediately!
 
 - type: broadcastMessage
   id: bm1
@@ -21,7 +21,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/curfew_01.ogg
   outpost: default
-  text: hawk tuak
+  text: The lord commander's mandate implores you to be inside by 10PM
 
 - type: broadcastMessage
   id: bm2
@@ -29,7 +29,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/curfew_storm.ogg
   outpost: default
-  text: bruh shit purh
+  text: Attention! Curfew is now in immediate effect, we are in a state of emergency due to the oncoming storm!
 
 - type: broadcastMessage
   id: bm3
@@ -37,7 +37,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/hostilescause_01.ogg
   outpost: default
-  text: eeeee
+  text: Hostiles , remember , if the colony falls , your cause falls with it!
 
 - type: broadcastMessage
   id: bm4
@@ -45,7 +45,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/hostilescause_02.ogg
   outpost: default
-  text: eeeee
+  text: All hostiles fighters , consider , if the colony falls , your cause falls with it!
 
 - type: broadcastMessage
   id: bm5
@@ -53,7 +53,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/looter_01.ogg
   outpost: default
-  text: eeeee
+  text: Anyone found on the streets after 10PM will be dealt with accordingly.
 
 - type: broadcastMessage
   id: bm6
@@ -61,7 +61,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/looter_02.ogg
   outpost: default
-  text: eeeee
+  text: Anyone found on the street after 10PM will be classified as a looter.
 
 
 - type: broadcastMessage
@@ -70,7 +70,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/hostilesurrender_01.ogg
   outpost: default
-  text: eeeee
+  text: Hostile fighters , lay down your arms and surrender yourselves!
 
 - type: broadcastMessage
   id: bm8
@@ -78,7 +78,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/hostilesurrender_02.ogg
   outpost: default
-  text: eeeee
+  text: Hostiles , lay down your arms and surrender yourselves!
 
 - type: broadcastMessage
   id: bm9
@@ -86,7 +86,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/martiallaw_01.ogg
   outpost: default
-  text: eeeee
+  text: Martial law is now in immediate affect! Obey all commands from the lord commander's men!
 
 - type: broadcastMessage
   id: bm10
@@ -94,7 +94,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/martiallaw_02.ogg
   outpost: default
-  text: eeeee
+  text: Attention! Martial law is now in immediate effect obey all commands without question!
 
 - type: broadcastMessage
   id: bm11
@@ -102,7 +102,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/pledgeloyalty.ogg
   outpost: default
-  text: eeeee
+  text: Pledge your loyalyt to your new banner
 
 - type: broadcastMessage
   id: bm12
@@ -110,7 +110,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/propaganda_01.ogg
   outpost: default
-  text: eeeee
+  text: You need not fear the lord commander's men , lest you are an enemy of the mandate
 
 - type: broadcastMessage
   id: bm13
@@ -118,7 +118,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/propaganda_02.ogg
   outpost: default
-  text: eeeee
+  text: Those loyal have no reason to fear
 
 - type: broadcastMessage
   id: bm14
@@ -126,7 +126,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/propaganda_03.ogg
   outpost: default
-  text: eeeee
+  text: Those loyal have no reason to fear the lord commander's men. Only the mandate's enemies needs to cower.
 
 - type: broadcastMessage
   id: bm15
@@ -134,7 +134,7 @@
   sound:
     path: /Audio/_Crescent/Announcements/propaganda_04.ogg
   outpost: default
-  text: eeeee
+  text: The lord commander's men need not justify their actions. Obey all commands without question!
 
 - type: broadcastMessage
   id: bm16
@@ -142,53 +142,52 @@
   sound:
     path: /Audio/_Crescent/Announcements/propaganda_05.ogg
   outpost: default
-  text: eeeee
+  text: We know you better than you know yourself. Obey the orders from lord commander's men without questions!
 
 - type: broadcastMessage
   id: bm17
   name: Togheter we stand strong
   sound:
-    path: /Audio/_Crescent/Announcements/propagandaalong_01.ogg
+    path: /Audio/_Crescent/Announcements/propagandalong_01.ogg
   outpost: default
-  text: eeeee
+  text: Attention residents , dividing cold is no match for our indomitable spirit, Togheter we stand strong under lord commander ,against the arrogance in any who would threaten our way of life.
 
 - type: broadcastMessage
   id: bm18
-  name: Equity will survive , report all dissidents
+  name: unity will survive , report all dissidents
   sound:
-    path: /Audio/_Crescent/Announcements/propagandaalong_02.ogg
+    path: /Audio/_Crescent/Announcements/propagandalong_02.ogg
   outpost: default
-  text: eeeee
+  text: Remember , unity will survive, report all acts of dissident immediately!
 
 - type: broadcastMessage
   id: bm19
   name: Do your part , earn your share, fuel the colony.
   sound:
-    path: /Audio/_Crescent/Announcements/propagandaalong_03.ogg
+    path: /Audio/_Crescent/Announcements/propagandalong_03.ogg
   outpost: default
-  text: eeeee
+  text: Attention,  residents , do your part , earn your share , do the community labor and earn yourselves ration. Remember , your labour fuels the colony.
 
 - type: broadcastMessage
   id: bm20
   name: No place for eclipse. Strive for excellence. Honor the strength
   sound:
-    path: /Audio/_Crescent/Announcements/propagandaalong_04.ogg
+    path: /Audio/_Crescent/Announcements/propagandalong_04.ogg
   outpost: default
-  text: eeeee
-
+  text: A reminder to all , there is no place for eclipse within the colony , strive for excellence in all tasks , report inefficiencies and honor the strength of our colony , only the resolute endure.
 - type: broadcastMessage
   id: bm21
   name: Vigilance is the foundation of security. Eyes foward.
   sound:
-    path: /Audio/_Crescent/Announcements/propagandaalong_06.ogg
+    path: /Audio/_Crescent/Announcements/propagandalong_06.ogg
   outpost: default
-  text: eeeee
+  text: Attention! Vigilance is the foundation of security , keeps an eye for the horizon and on your neighbors , be a total stranger , our colony thrives because we stand watch for lord commander's against all threats. Eyes foward residents.
 
 - type: entity
   id: AnnouncerIntercom
   name: Announcer Intercom
   parent: Intercom
   components:
-    - type: Broadcaster
+  - type: Broadcaster
     range: 15.0
     outpost: default
