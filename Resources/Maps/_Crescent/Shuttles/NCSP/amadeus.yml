@@ -351,6 +351,9 @@ entities:
             id: WarnFull
           decals:
             103: 2,-15
+            298: 7,-10
+            299: 7,-11
+            300: 3,-13
         - node:
             color: '#DE3A3A96'
             id: WarnFullGreyscale
@@ -1953,6 +1956,76 @@ entities:
     - type: Transform
       pos: 4.5,-12.5
       parent: 1
+  - uid: 759
+    components:
+    - type: Transform
+      pos: 3.5,-12.5
+      parent: 1
+  - uid: 760
+    components:
+    - type: Transform
+      pos: 0.5,-12.5
+      parent: 1
+  - uid: 761
+    components:
+    - type: Transform
+      pos: 0.5,-11.5
+      parent: 1
+  - uid: 762
+    components:
+    - type: Transform
+      pos: 0.5,-10.5
+      parent: 1
+  - uid: 763
+    components:
+    - type: Transform
+      pos: 0.5,-9.5
+      parent: 1
+  - uid: 764
+    components:
+    - type: Transform
+      pos: 0.5,-8.5
+      parent: 1
+  - uid: 765
+    components:
+    - type: Transform
+      pos: 1.5,-8.5
+      parent: 1
+  - uid: 766
+    components:
+    - type: Transform
+      pos: 2.5,-8.5
+      parent: 1
+  - uid: 767
+    components:
+    - type: Transform
+      pos: 3.5,-8.5
+      parent: 1
+  - uid: 768
+    components:
+    - type: Transform
+      pos: 3.5,-9.5
+      parent: 1
+  - uid: 769
+    components:
+    - type: Transform
+      pos: 4.5,-9.5
+      parent: 1
+  - uid: 770
+    components:
+    - type: Transform
+      pos: 5.5,-9.5
+      parent: 1
+  - uid: 771
+    components:
+    - type: Transform
+      pos: 6.5,-9.5
+      parent: 1
+  - uid: 772
+    components:
+    - type: Transform
+      pos: 7.5,-9.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 344
@@ -2282,6 +2355,12 @@ entities:
     - type: Transform
       pos: 0.5,-15.5
       parent: 1
+  - uid: 750
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5,7.5
+      parent: 1
 - proto: ChairFolding
   entities:
   - uid: 441
@@ -2504,6 +2583,7 @@ entities:
         - 667
         - 748
         - 749
+        - 756
         flak:
         - 102
         bolter:
@@ -2513,6 +2593,7 @@ entities:
         - 667
         - 748
         - 749
+        - 756
 - proto: ConveyorBelt
   entities:
   - uid: 61
@@ -2533,6 +2614,44 @@ entities:
     - type: DeviceLinkSink
       links:
       - 128
+- proto: CrateAutogunAmmo
+  entities:
+  - uid: 751
+    components:
+    - type: Transform
+      pos: -4.5,-8.5
+      parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 752
+          - 753
+          - 754
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
   - uid: 166
@@ -3131,6 +3250,12 @@ entities:
     - type: Transform
       pos: -2.542619,-12.409777
       parent: 1
+  - uid: 755
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.2014236,-12.562496
+      parent: 1
 - proto: LockerSyndicatePersonal
   entities:
   - uid: 250
@@ -3220,6 +3345,27 @@ entities:
     - type: Transform
       pos: -8.512731,2.4567132
       parent: 1
+  - uid: 752
+    components:
+    - type: Transform
+      parent: 751
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 753
+    components:
+    - type: Transform
+      parent: 751
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 754
+    components:
+    - type: Transform
+      parent: 751
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MagazineRifle
   entities:
   - uid: 237
@@ -3400,6 +3546,16 @@ entities:
       linkedConsoleId: 320
       obstructedRanges:
       - 3.8222710618675815 rad: 5.166807153750874 rad
+  - uid: 756
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,7.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 320
+      obstructedRanges:
+      - 3.6424175733842894 rad: 3.459578181521437 rad
 - proto: PottedPlantRandom
   entities:
   - uid: 511
@@ -3889,6 +4045,18 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 8.5,7.5
+      parent: 1
+- proto: SMESBasic
+  entities:
+  - uid: 757
+    components:
+    - type: Transform
+      pos: 3.5,-12.5
+      parent: 1
+  - uid: 758
+    components:
+    - type: Transform
+      pos: 7.5,-9.5
       parent: 1
 - proto: SpawnPointShipbreaker
   entities:
