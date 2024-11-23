@@ -197,7 +197,7 @@
     whitelist:
       tags:
         - MortarShell
-    proto: BulletMachineGunMortarTurret
+    proto: CartridgeMortarStandardTurret
     capacity: 10
   - type: Item
   - type: Sprite
@@ -283,10 +283,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 35
-    intensitySlope: 35
-    totalIntensity: 40
-    maxTileBreak: 5
+    maxIntensity: 15
+    intensitySlope: 25
+    totalIntensity: 20
+    maxTileBreak: 2
   - type: PointLight
     radius: 3.5
     color: orange

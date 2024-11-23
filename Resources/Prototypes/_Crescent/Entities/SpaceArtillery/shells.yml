@@ -76,9 +76,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 70
-    intensitySlope: 14
-    totalIntensity: 16
+    maxIntensity: 60
+    intensitySlope: 50
+    totalIntensity: 60
     maxTileBreak: 5
   - type: PointLight
     radius: 3.5
@@ -134,8 +134,8 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 65
-    intensitySlope: 15
+    maxIntensity: 95
+    intensitySlope: 35
     totalIntensity: 195
     maxTileBreak: 6
   - type: PointLight
@@ -249,7 +249,7 @@
       - state: base-projectile
   - type: EmpOnTrigger
     range: 3
-    energyConsumption: 200
+    energyConsumption: 250
     disableDuration: 1
   - type: PointLight
     radius: 3.5
@@ -304,9 +304,9 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 12
-    intensitySlope: 8
-    totalIntensity: 9
+    maxIntensity: 9
+    intensitySlope: 7
+    totalIntensity: 7
     maxTileBreak: 1
   - type: PointLight
     radius: 3.5
@@ -362,10 +362,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    maxIntensity: 16
-    intensitySlope: 19
-    totalIntensity: 19
-    maxTileBreak: 3
+    maxIntensity: 12
+    intensitySlope: 15
+    totalIntensity: 13
+    maxTileBreak: 2
   - type: PointLight
     radius: 5
     color: orange

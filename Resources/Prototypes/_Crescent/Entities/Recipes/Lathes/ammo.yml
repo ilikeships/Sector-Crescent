@@ -20,3 +20,11 @@
   completetime: 2
   materials:
     Steel: 1500
+
+- type: latheRecipe
+  id: MagazineFlak
+  result: MagazineFlak
+  completetime: 2
+  materials:
+    Steel: 2500
+    Plasma: 1000
