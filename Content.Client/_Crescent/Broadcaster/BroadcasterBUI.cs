@@ -41,8 +41,11 @@ public sealed class BroadcasterBUI : BoundUserInterface
     {
         base.UpdateState(state);
 
-        if (state is not SharedBroadcasterSystem.BroadcasterConsoleState bankState)
+        if (state is not SharedBroadcasterSystem.BroadcasterConsoleState cast)
             return;
+
+        _menu.setBroadcastables(cast.playableBroadcasts);
+        _menu.setPlaying(cast.currentlyPlaying);
 
     }
 }

@@ -6,14 +6,36 @@ using Robust.Client.UserInterface.XAML;
 namespace Content.Client._Crescent.Broadcaster.UI;
 
 [GenerateTypedNameReferences]
-public sealed partial class BroadcasterUI : FancyWindow
+public partial class BroadcasterUI : FancyWindow
 {
+    private Dictionary<int, string> broadcastMessages;
     public Action<int>? ClickBroadcast; 
     public int Amount;
+
     public BroadcasterUI()
     {
+        broadcastMessages = new Dictionary<int, string>();
         RobustXamlLoader.Load(this);
         Title = Loc.GetString("bank-atm-menu-title");
+        MessageList.OnItemSelected += OnItemSelect;
     }
 
+    public void setBroadcastables(Dictionary<int, string> playables)
+    {
+        broadcastMessages = playables;
+        foreach (var message in playables)
+        {
+            MessageList.AddItem(message.Value);
+        }
+    }
+
+    public void setPlaying()
+    {
+
+    }
+
+    private void OnItemSelect(ItemList.ItemListSelectedEventArgs obj)
+    {
+        throw new NotImplementedException();
+    }
 }
