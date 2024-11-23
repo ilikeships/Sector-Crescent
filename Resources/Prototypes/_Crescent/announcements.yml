@@ -1,5 +1,21 @@
 
 - type: broadcastMessage
+  id: bm01
+  name: Storm is coming. Return to your house[1]
+  sound:
+    path: /Audio/_Crescent/Announcements/storm_01.ogg
+  outpost: default
+  text: hawk tuak
+
+- type: broadcastMessage
+  id: bm0
+  name: Storm is coming. Return to your house[2]
+  sound:
+    path: /Audio/_Crescent/Announcements/storm_02.ogg
+  outpost: default
+  text: hawk tuak
+
+- type: broadcastMessage
   id: bm1
   name: Curfew By 10 PM
   sound:
@@ -132,22 +148,45 @@
   id: bm17
   name: Togheter we stand strong
   sound:
+    path: /Audio/_Crescent/Announcements/propagandaalong_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm18
+  name: Equity will survive , report all dissidents
+  sound:
+    path: /Audio/_Crescent/Announcements/propagandaalong_02.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm19
+  name: Do your part , earn your share, fuel the colony.
+  sound:
+    path: /Audio/_Crescent/Announcements/propagandaalong_03.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm20
+  name: No place for eclipse. Strive for excellence. Honor the strength
+  sound:
     path: /Audio/_Crescent/Announcements/propagandaalong_04.ogg
   outpost: default
   text: eeeee
 
-
-
-
-
-
-
-
-
-
+- type: broadcastMessage
+  id: bm21
+  name: Vigilance is the foundation of security. Eyes foward.
+  sound:
+    path: /Audio/_Crescent/Announcements/propagandaalong_06.ogg
+  outpost: default
+  text: eeeee
 
 - type: entity
   id: AnnouncerIntercom
+  name: Announcer Intercom
   parent: Intercom
   components:
     - type: Broadcaster
