@@ -35,6 +35,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     private List<BroadcastWrapper> broadcastableMessages = new();
 
     private Dictionary<string, int> currentlyPlayingOn = new();
+    private Dictionary<string, TimeSpan> playtimesLeft = new();
 
 
     private struct BroadcastWrapper
@@ -92,8 +93,43 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     {
         if (comp.Outpost is null)
             return;
+        comp.currentlyPlaying = currentlyPlayingOn[comp.Outpost];
+        comp.AvailableAnnouncements = buildBroadcastListForState(comp.Outpost);
         var newState = new BroadcasterConsoleState(buildBroadcastListForState(comp.Outpost), currentlyPlayingOn[comp.Outpost]);
         _userInterface.SetUiState(uid, BroadcasterUIKey.Key, newState);
+    }
+
+    public void RequestAvailableBroadcasts(EntityUid uid, BroadcastingConsoleComponent comp)
+    {
+        if (comp.Outpost is null)
+            return;
+        comp.AvailableAnnouncements = buildBroadcastListForState(comp.Outpost);
+        var newState = new BroadcasterConsoleState(buildBroadcastListForState(comp.Outpost), currentlyPlayingOn[comp.Outpost]);
+        _userInterface.SetUiState(uid, BroadcasterUIKey.Key, newState);
+    }
+
+    public void UpdateAllConsoles(string targetOutpost)
+    {
+        var comps = EntityManager.GetAllComponents(typeof(BroadcastingConsoleComponent));
+        foreach (var comp in comps)
+        {
+            var cast = (BroadcastingConsoleComponent) comp.Component;
+            if (cast.Outpost is null)
+                continue;
+            if (cast.Outpost != targetOutpost)
+                continue;
+            RequestAvailableBroadcasts(comp.Uid, cast);
+        }
+    }
+
+
+    public void UpdateAllConsoles()
+    {
+        var comps = EntityManager.GetAllComponents(typeof(BroadcastingConsoleComponent));
+        foreach (var comp in comps)
+        {
+            RequestAvailableBroadcasts(comp.Uid, (BroadcastingConsoleComponent) comp.Component);
+        }
     }
 
     public void PlayBroadcast(EntityUid uid, BroadcastingConsoleComponent comp, ref BroadcasterBroadcastMessage args)
@@ -105,7 +141,13 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
             return;
         if (currentlyPlayingOn[message.outpost] != -1)
             return;
+        currentlyPlayingOn[message.outpost] = args.indexForBroadcast;
+        if (comp.AvailableAnnouncements is null)
+            return;
         var comps = EntityManager.GetAllComponents(typeof(BroadcasterComponent));
+        playtimesLeft.Add(comp.Outpost, broadcastableMessages[args.indexForBroadcast].duration);
+        UpdateAllConsoles(comp.Outpost);
+
         foreach (var broadcaster in comps)
         {
             var broadcastingComp = (BroadcasterComponent)broadcaster.Component;
@@ -116,10 +158,21 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
             {
                 _audioSystem.PlayEntity(broadcastableMessages[args.indexForBroadcast].sound, player.Owner, broadcaster.Uid);
             }
-
         }
-
-
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        foreach (var (key, timespan) in playtimesLeft)
+        {
+            playtimesLeft[key] -= TimeSpan.FromMilliseconds(frameTime);
+            if (playtimesLeft[key] < TimeSpan.Zero)
+            {
+                currentlyPlayingOn[key] = -1;
+                playtimesLeft.Remove(key);
+                UpdateAllConsoles(key);
+            }
+        }
+    }
 }

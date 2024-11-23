@@ -1,3 +1,4 @@
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Crescent.Broadcaster;
@@ -17,7 +18,7 @@ public sealed partial class BroadcasterComponent : Component
     [DataField("outpost")]
     public string? Outpost;
 }
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 
 public sealed partial class BroadcastingConsoleComponent : Component
 {
@@ -25,8 +26,8 @@ public sealed partial class BroadcastingConsoleComponent : Component
     public string? Outpost;
 
     public int currentlyPlaying = -1;
-
-    public List<string>? AvailableAnnouncements;
+    [AutoNetworkedField]
+    public Dictionary<int, string>? AvailableAnnouncements;
 }
 
 
