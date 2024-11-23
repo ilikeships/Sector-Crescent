@@ -1,4 +1,4 @@
-using Content.Client._Crescent.Broadcaster.UI;
+using Content.Client._Crescent.Broadcaster;
 using Content.Client.Bank.UI;
 using Content.Shared._Crescent.Broadcaster;
 using Content.Shared.Bank.BUI;
@@ -7,14 +7,14 @@ using Content.Shared.NamedModules.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client._Crescent.Broadcaster.BUI;
+namespace Content.Client._Crescent.Broadcaster;
 
-public sealed class BroadcasterBUI : BoundUserInterface
+public sealed class BroadcasterBui : BoundUserInterface
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     private BroadcasterUI? _menu;
 
-    public BroadcasterBUI(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
+    public BroadcasterBui(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {

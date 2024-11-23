@@ -175,7 +175,7 @@
   - type: UserInterface
     interfaces:
       enum.BroadcasterUIKey.Key:
-        type: BroadcasterBUI
+        type: BroadcasterBui
   - type: LitOnPowered
   - type: PointLight
     radius: 1.5
@@ -229,7 +229,7 @@
   - type: UserInterface
     interfaces:
       enum.BroadcasterUIKey.Key:
-        type: BroadcasterBUI
+        type: BroadcasterBui
   - type: LitOnPowered
   - type: PointLight
     radius: 1.5

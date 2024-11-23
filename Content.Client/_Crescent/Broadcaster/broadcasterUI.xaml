@@ -3,9 +3,7 @@
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       >
     <BoxContainer Margin="10 2 10 2" Orientation="Vertical">
-        <ScrollContainer VerticalExpand="True">
-            <ItemList Name="MessageList"/>
-            <!-- Populated when loading state -->
+        <ScrollContainer VerticalExpand="True" Name="Outer">
         </ScrollContainer>
     </BoxContainer>
 </controls:FancyWindow>

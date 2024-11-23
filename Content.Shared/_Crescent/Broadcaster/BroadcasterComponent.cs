@@ -24,9 +24,9 @@ public sealed partial class BroadcastingConsoleComponent : Component
 {
     [DataField("outpost")]
     public string? Outpost;
-
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public int currentlyPlaying = -1;
-    [AutoNetworkedField]
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public Dictionary<int, string>? AvailableAnnouncements;
 }
 

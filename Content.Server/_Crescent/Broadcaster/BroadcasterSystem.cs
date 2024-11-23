@@ -1,3 +1,4 @@
+using Content.Server.Chat.Systems;
 using Content.Server.Mapping;
 using Content.Server.Radio.Components;
 using Content.Server.Radio;
@@ -29,28 +30,31 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly ChatSystem _chatting = default!;
 
 
 
     private List<BroadcastWrapper> broadcastableMessages = new();
 
     private Dictionary<string, int> currentlyPlayingOn = new();
-    private Dictionary<string, TimeSpan> playtimesLeft = new();
+    private Dictionary<string, float> playtimesLeft = new();
 
 
     private struct BroadcastWrapper
     {
         public SoundPathSpecifier sound;
-        public TimeSpan duration;
+        public float duration;
         public string name;
         public string outpost;
+        public string text;
 
-        public BroadcastWrapper(SoundPathSpecifier playing, TimeSpan dur, string name, string outpost)
+        public BroadcastWrapper(SoundPathSpecifier playing, float dur, string name, string outpost, string text)
         {
             sound = playing;
             duration = dur;
             this.name = name;
             this.outpost = outpost;
+            this.text = text;
         }
     }
 
@@ -62,7 +66,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         {
             if (message.Outpost is null)
                 continue;
-            broadcastableMessages.Add(new BroadcastWrapper(message.announceSound, _audioSystem.GetAudioLength(message.announceSound.Path.ToRootedPath().CanonPath), message.Name, message.Outpost));
+            broadcastableMessages.Add(new BroadcastWrapper(message.announceSound, (float)_audioSystem.GetAudioLength(message.announceSound.Path.ToRootedPath().CanonPath).TotalSeconds, message.Name, message.Outpost, message.Text));
             if (!currentlyPlayingOn.ContainsKey(message.Outpost))
             {
                 currentlyPlayingOn.Add(message.Outpost, -1);
@@ -95,6 +99,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
             return;
         comp.currentlyPlaying = currentlyPlayingOn[comp.Outpost];
         comp.AvailableAnnouncements = buildBroadcastListForState(comp.Outpost);
+        EntityManager.Dirty(new Entity<BroadcastingConsoleComponent>(uid, comp));
         var newState = new BroadcasterConsoleState(buildBroadcastListForState(comp.Outpost), currentlyPlayingOn[comp.Outpost]);
         _userInterface.SetUiState(uid, BroadcasterUIKey.Key, newState);
     }
@@ -103,7 +108,9 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
     {
         if (comp.Outpost is null)
             return;
+        comp.currentlyPlaying = currentlyPlayingOn[comp.Outpost];
         comp.AvailableAnnouncements = buildBroadcastListForState(comp.Outpost);
+        EntityManager.Dirty(new Entity<BroadcastingConsoleComponent>(uid, comp));
         var newState = new BroadcasterConsoleState(buildBroadcastListForState(comp.Outpost), currentlyPlayingOn[comp.Outpost]);
         _userInterface.SetUiState(uid, BroadcasterUIKey.Key, newState);
     }
@@ -147,7 +154,7 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         var comps = EntityManager.GetAllComponents(typeof(BroadcasterComponent));
         playtimesLeft.Add(comp.Outpost, broadcastableMessages[args.indexForBroadcast].duration);
         UpdateAllConsoles(comp.Outpost);
-
+        HashSet<Entity<EyeComponent>> alreadyMessaged = new();
         foreach (var broadcaster in comps)
         {
             var broadcastingComp = (BroadcasterComponent)broadcaster.Component;
@@ -156,6 +163,11 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
                 Transform(broadcaster.Uid)), broadcastingComp.Range, targets, LookupFlags.All);
             foreach(var player in targets)
             {
+                if(alreadyMessaged.Contains(player))
+                    continue;
+                alreadyMessaged.Add(player);
+
+                _chatting.TrySendInGameICMessage(broadcaster.Uid, broadcastableMessages[args.indexForBroadcast].text, InGameICChatType.Speak, ChatTransmitRange.Normal);
                 _audioSystem.PlayEntity(broadcastableMessages[args.indexForBroadcast].sound, player.Owner, broadcaster.Uid);
             }
         }
@@ -166,8 +178,8 @@ public sealed partial class BroadcasterSystem : SharedBroadcasterSystem
         base.Update(frameTime);
         foreach (var (key, timespan) in playtimesLeft)
         {
-            playtimesLeft[key] -= TimeSpan.FromMilliseconds(frameTime);
-            if (playtimesLeft[key] < TimeSpan.Zero)
+            playtimesLeft[key] -= frameTime;
+            if (playtimesLeft[key] <= 0)
             {
                 currentlyPlayingOn[key] = -1;
                 playtimesLeft.Remove(key);

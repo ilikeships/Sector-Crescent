@@ -27,4 +27,7 @@ public sealed partial class BroadcastableMessagePrototype : IPrototype
     /// </summary>
     [DataField("outpost")]
     public string Outpost = default!;
+
+    [DataField("text")]
+    public string Text = default!;
 }

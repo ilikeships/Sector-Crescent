@@ -1,21 +1,155 @@
 
 - type: broadcastMessage
   id: bm1
-  name: announce1
+  name: Curfew By 10 PM
   sound:
     path: /Audio/_Crescent/Announcements/curfew_01.ogg
   outpost: default
+  text: hawk tuak
 
 - type: broadcastMessage
   id: bm2
-  name: announce2
+  name: Immediate curfew [Storm]
   sound:
-    path: /Audio/_Crescent/Announcements/looter_01.ogg
+    path: /Audio/_Crescent/Announcements/curfew_storm.ogg
   outpost: default
+  text: bruh shit purh
 
 - type: broadcastMessage
   id: bm3
-  name: announce3
+  name: Hostiles, your cause falls with the colony[1].
+  sound:
+    path: /Audio/_Crescent/Announcements/hostilescause_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm4
+  name: Hostiles, your cause falls with the colony[2].
+  sound:
+    path: /Audio/_Crescent/Announcements/hostilescause_02.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm5
+  name: Anyone on the street after 10PM will be dealt with[1]
+  sound:
+    path: /Audio/_Crescent/Announcements/looter_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm6
+  name: Anyone on the street after 10PM will be dealt with[2]
+  sound:
+    path: /Audio/_Crescent/Announcements/looter_02.ogg
+  outpost: default
+  text: eeeee
+
+
+- type: broadcastMessage
+  id: bm7
+  name: Hostiles, Surrender [1]
+  sound:
+    path: /Audio/_Crescent/Announcements/hostilesurrender_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm8
+  name: Hostiles, Surrender [2]
+  sound:
+    path: /Audio/_Crescent/Announcements/hostilesurrender_02.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm9
+  name: Martial Law in Effect [1]
+  sound:
+    path: /Audio/_Crescent/Announcements/martiallaw_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm10
+  name: Martial Law in Effect [2]
+  sound:
+    path: /Audio/_Crescent/Announcements/martiallaw_02.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm11
+  name: Pledge Loyalty [1]
   sound:
     path: /Audio/_Crescent/Announcements/pledgeloyalty.ogg
-  outpost: none
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm12
+  name: Do not fear the lord, lest you are an enemy
+  sound:
+    path: /Audio/_Crescent/Announcements/propaganda_01.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm13
+  name: Those loyal have no reason to fear
+  sound:
+    path: /Audio/_Crescent/Announcements/propaganda_02.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm14
+  name: Those loyal... only the mandates enemies need to cower
+  sound:
+    path: /Audio/_Crescent/Announcements/propaganda_03.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm15
+  name: Lord's names no need to justify. Obey all commands without question
+  sound:
+    path: /Audio/_Crescent/Announcements/propaganda_04.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm16
+  name: We know you better than yourself. Obey all orders.
+  sound:
+    path: /Audio/_Crescent/Announcements/propaganda_05.ogg
+  outpost: default
+  text: eeeee
+
+- type: broadcastMessage
+  id: bm17
+  name: Togheter we stand strong
+  sound:
+    path: /Audio/_Crescent/Announcements/propagandaalong_04.ogg
+  outpost: default
+  text: eeeee
+
+
+
+
+
+
+
+
+
+
+
+- type: entity
+  id: AnnouncerIntercom
+  parent: Intercom
+  components:
+    - type: Broadcaster
+    range: 15.0
+    outpost: default
