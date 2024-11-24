@@ -20,7 +20,7 @@ public sealed partial class BroadcasterUI : FancyWindow
         MessageList = new();
         broadcastMessages = new Dictionary<int, string>();
         Outer.AddChild(MessageList);
-        Title = Loc.GetString("bank-atm-menu-title");
+        Title = Loc.GetString("announcer-menu-title");
         MessageList.SelectMode = ItemList.ItemListSelectMode.Button;
         MessageList.OnItemSelected += OnItemSelect;
     }

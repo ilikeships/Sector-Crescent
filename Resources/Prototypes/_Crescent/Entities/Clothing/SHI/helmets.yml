@@ -90,7 +90,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatShinoharaFacade
-  name: executive's facade
+  name: captain's facade
   description: A sleek, face-covering helmet that strips the wearer of identity.
   components:
   - type: HideLayerClothing

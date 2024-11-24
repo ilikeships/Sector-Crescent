@@ -82,10 +82,9 @@
     jumpsuit: ClothingUniformJumpsuitImperialGovernor
     back: ClothingBackpackSatchelLeatherFilledDSM
     shoes: ClothingShoesBootsImperialGovernorBoots
-    head: ClothingHeadHatImperialBicorne
-    outerClothing: ClothingOuterCoatImperialGovernor
+    head: ClothingHeadHatImperialPeakedCap
+    outerClothing: ClothingOuterCoatImperialParade
     belt: ClothingBeltSheathFilled
     id: GovernorPDA
     ears: ClothingHeadsetEmpire
-    gloves: ClothingHandsGlovesImperialGovernorGloves
     pocket1: ImperialPassportBareLegit
