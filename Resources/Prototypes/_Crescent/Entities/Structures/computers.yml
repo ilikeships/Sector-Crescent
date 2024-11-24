@@ -137,7 +137,58 @@
     - Cargo
 
 
-# freeport
+# broadcast Console
+
+- type: entity
+  id: ComputerBroadcast
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  name: Outpost broadcast console
+  description: Used to broadcast very important messages throughout the city
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: MetalGlassBreak
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: Sprite
+    netsync: false
+    noRot: true
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+    - map: ["computerLayerKeys"]
+      state: tech_key
+  - type: BroadcastingConsole
+    outpost: default
+  - type: ActivatableUI
+    key: enum.BroadcasterUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.BroadcasterUIKey.Key:
+        type: BroadcasterBui
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4" # shine from the top, not bottom of the computer
+    castShadows: false
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
 
 - type: entity
   id: ComputerCargoOrdersFreeport
