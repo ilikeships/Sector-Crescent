@@ -224,6 +224,13 @@
     state: ame-part
 
 - type: stealTargetGroup
+  id: SalvageExpeditionsComputerCircuitboard
+  name: salvage expeditions computer board
+  sprite:
+    sprite: Objects/Misc/module.rsi
+    state: cpu_supply
+
+- type: stealTargetGroup
   id: CargoShuttleConsoleCircuitboard
   name: cargo shuttle console board
   sprite:

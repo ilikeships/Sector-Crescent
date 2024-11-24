@@ -39,6 +39,7 @@
   
   # Salvage expeditions
   <Box>
+  <GuideEntityEmbed Entity="ComputerSalvageExpedition"/>
   <GuideEntityEmbed Entity="TelecomServerFilledShuttle"/>
   </Box>
   Expeditions are adventures that you can do with your fellow crewmates or on your own. You must pick a mission from the [color=#a4885c]salvage console[/color], each of which of varying difficulty and reward, the FTL transition to the location will initiate immediately if your shuttle is far enough away from celestial bodies (other shuttles, asteroids, POIs, etc.). Once you arrive, the chat will tell you in which direction the target dungeon of the expedition is.
