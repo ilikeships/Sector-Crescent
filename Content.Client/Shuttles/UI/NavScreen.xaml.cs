@@ -165,6 +165,7 @@ public sealed partial class NavScreen : BoxContainer
             foreach(var (index, button) in _buttons)
             {
                 button.Text = moduleComp.ButtonNames[index-1];
+                _editable[index].Text = moduleComp.ButtonNames[index-1];
             }
         }
     }
