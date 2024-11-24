@@ -545,6 +545,26 @@
       state: generic_keys
 
 - type: entity
+  parent: [BaseStructureComputerTabletop, ComputerSalvageExpedition]
+  id: ComputerTabletopSalvageExpedition
+  components:
+  - type: Sprite
+    drawdepth: SmallObjects
+    layers:
+    - map: ["computerLayerBody"]
+      sprite: _NF/Structures/Machines/computer_tabletop.rsi
+      state: computer_tabletop
+    - map: ["computerLayerKeyboard"]
+      sprite: _NF/Structures/Machines/computer_tabletop.rsi
+      state: generic_keyboard_tabletop
+    - map: ["computerLayerScreen"]
+      sprite: Structures/Machines/computers.rsi
+      state: mining
+    - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
+      state: tech_key
+
+- type: entity
   parent: [BaseStructureComputerTabletop, ComputerSurveillanceCameraMonitor]
   id: ComputerTabletopSurveillanceCameraMonitor
   components:

@@ -83,18 +83,19 @@ public sealed partial class NavScreen : BoxContainer
 
     public void ButtonsToReadyState()
     {
-        UpdateButtonNames();
-        ButtonHolder.RemoveAllChildren();
-        foreach (var (index, button) in _buttons)
+        if (Console is not null & _entManager.TryGetComponent<NamedModulesComponent>(Console, out var namesComp) && namesComp is not null)
         {
-            ButtonHolder.AddChild(button);
+            ButtonHolder.RemoveAllChildren();
+            foreach (var (index, button) in _buttons)
+            {
+                button.Text = _editable[index].Text;
+                ButtonHolder.AddChild(button);
+            }
         }
-        
     }
 
     public void ButtonsToEditState()
     {
-        UpdateButtonNames();
         ButtonHolder.RemoveAllChildren();
         foreach (var (index, line) in _editable)
             ButtonHolder.AddChild(line);
@@ -110,13 +111,6 @@ public sealed partial class NavScreen : BoxContainer
                 _editable[index].Text = namesComp.ButtonNames[index-1];
             }
         }
-    }
-
-    private void UpdateComponentNames(List<string> newNames)
-    {
-        if (Console is not null & _entManager.TryGetComponent<NamedModulesComponent>(Console, out var namesComp) &&
-            namesComp is not null)
-            namesComp.ButtonNames = newNames;
     }
 
     private void OG1P(BaseButton.ButtonEventArgs args)
@@ -156,7 +150,6 @@ public sealed partial class NavScreen : BoxContainer
             {
                 newNames.Add(lineedit.Text);
             }
-            UpdateComponentNames(newNames);
             OnRename?.Invoke(newNames);
             ButtonsToReadyState();
         }
