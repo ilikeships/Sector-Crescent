@@ -73,13 +73,13 @@
 - type: startingGear
   id: AdjutantGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitImperialCombat
+    jumpsuit: ClothingUniformJumpsuitImperialAdjutantFormal
     back: ClothingBackpackSatchelLeatherFilledDSM
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatShinoharaFacade
-    outerClothing: ClothingOuterShinoharaOvercoat
+    shoes: ClothingShoesBootsImperialLongboots
+    head: ClothingHeadHatImperialBeret
+    outerClothing: ClothingOuterCoatImperialAdjutant
     id: AdjutantPDA
     pocket1: ImperialPassportBareLegit
     belt: WeaponRevolverSnubnose
     ears: ClothingHeadsetEmpire
-    gloves: ClothingHandsGlovesFingerless
+    gloves: ClothingHandsGlovesImperialAdjutantGloves

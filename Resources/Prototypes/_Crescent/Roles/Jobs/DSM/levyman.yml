@@ -36,9 +36,9 @@
   equipment:
     id: LevymanPDA
     ears: ClothingHeadsetEmpire
+    shoes: ClothingShoesBootsImperialJackboots
+    head: ClothingHeadHelmetImperialTrooperHelmet
     jumpsuit: ClothingUniformJumpsuitImperialCombat
-    shoes: ClothingShoesBootsCombatFilled
-    outerClothing: ClothingOuterWinterHoS
-    gloves: ClothingHandsGlovesFingerless
-    belt: Truncheon
+    outerClothing: ClothingOuterArmorImperialTrooperArmor
+    gloves: ClothingHandsGlovesImperialLonggloves
     pocket1: ImperialPassportBareLegit
