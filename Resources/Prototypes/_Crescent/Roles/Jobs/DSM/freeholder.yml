@@ -16,6 +16,7 @@
   access:
   - Command
   - Maintenance
+  - Empire
   - Service
   - External
   - Mercenary # Frontier

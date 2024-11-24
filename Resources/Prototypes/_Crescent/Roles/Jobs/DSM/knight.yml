@@ -43,10 +43,8 @@
     id: KnightPDA
     ears: ClothingHeadsetEmpire
     jumpsuit: ClothingUniformJumpsuitImperialCombat
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatShinoharaBeret
-    back: WeaponSniperRepeater
-    outerClothing: ClothingOuterWinterHoS
-    gloves: ClothingHandsGlovesFingerless
-    belt: Truncheon
+    shoes: ClothingShoesBootsImperialJackboots
+    head: ClothingHeadHelmetImperialTrooperHelmet
+    outerClothing: ClothingOuterArmorImperialTrooperArmor
+    gloves: ClothingHandsGlovesImperialLonggloves
     pocket1: ImperialPassportBareLegit

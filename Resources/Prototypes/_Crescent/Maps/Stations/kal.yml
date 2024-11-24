@@ -1,6 +1,6 @@
 - type: gameMap
   id: Kal
-  mapName: 'Bannerwall Keep'
+  mapName: 'Taypan'
   mapPath: /Maps/_Crescent/Stations/kal.yml
   minPlayers: 0
   stations:
@@ -11,7 +11,7 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Bannerwall Keep'
+          mapNameTemplate: 'Kal Surezai'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: Grammar
@@ -23,9 +23,21 @@
           availableJobs:
             GovernorDSM: [ 1, 1 ]
             AdjutantDSM: [ 1, 1 ]
-            KnightDSM: [ 1, 1 ]
-            LevymanDSM: [ 20, 20 ]
+            KnightDSM: [ 3, 3 ]
+            LevymanDSM: [ 12, 12 ]
+            ArchmaesterDSM: [ 1, 1 ]
+            ScribeDSM: [ 4, 4 ]
             SurgeonDSM: [ 4, 4 ]
+            TemplarDSM: [ 2, 2 ]
+            AdvocatusDSM: [ 1, 1 ]
+            CourtierDSM: [ 1, 1 ]
             WealthDSM: [ 1, 1 ]
-            ForemanDSM: [ 5, 5 ]
-            FreeholderDSM: [ 75, 75 ]
+            ForemanDSM: [ 3, 3 ]
+            FreeholderDSM: [ 10, 10 ]
+            MarshalCMM: [ 1, 1 ]
+            DeputyMarshalCMM: [ 1, 1 ]
+            WatchmasterCMM: [ 2, 2 ]
+            MinutemanCMM: [ 6, 6 ]
+            OrdnancemanCMM: [ 3, 3 ]
+            PhysicianCMM: [ 3, 3 ]
+            Antiquarian: [ 1, 1 ]
