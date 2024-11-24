@@ -161,8 +161,8 @@
 - type: entity
   parent: ClothingOuterBaseLarge
   id: ClothingOuterShinoharaOvercoat
-  name: executive's overcoat
-  description: A heavy overcoat. Bears the Shinohara insignia on a label on the inside.
+  name: captain's overcoat
+  description: A heavy overcoat. Bears the Lord Commander's insignia on a label on the inside.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/SHI/OuterClothing/execcoat.rsi

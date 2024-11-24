@@ -24,18 +24,18 @@ job-name-foreman = Foreman
 
 #empire
 
-job-name-freeholder = Freeholder
-job-name-levyman = Man-at-Arms
-job-name-knight = Knight Banneret
+job-name-freeholder = Citizen
+job-name-levyman = Watchman
+job-name-knight = Gatemaster
 job-name-courtier = Minister of Labor
 job-name-logisticsofficer = Knight Logisticier
-job-name-adjutant = Suzerain Adjutant
+job-name-adjutant = Watch Captain
 job-name-archmaester = Scribe Archmaester
-job-name-governor = Lord Regent
-job-name-foremanimp = Foreman
+job-name-governor = Lord Commander
+job-name-foremanimp = Ex-Con
 job-name-imperialresearch = Imperial Scribe
 job-name-surgeon = Imperial Surgeon
-job-name-wealth = Minister of Wealth
+job-name-wealth = Knight Logisticar
 job-name-advocatus = Advocatus
 job-name-advocatustemplar = Knight Templar
 

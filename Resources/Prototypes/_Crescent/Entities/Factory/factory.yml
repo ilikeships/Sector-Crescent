@@ -273,3 +273,58 @@
         outputs:
           CartridgeShellHighExplosive:
             1
+
+
+- type: entity
+  id: Factory320Assembler
+  parent: BaseMachinePowered
+  name: assembling arm
+  description: Packs explosive armaments into munitions.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/factorystructures.rsi
+    snapCardinals: false
+    layers:
+    - state: assembler
+  - type: Factory
+    sound:
+      collection: Screwdriver
+      params:
+        variation: 0.125
+    recipes:
+      incompleteToComplete:
+        inputs:
+          ColonyShellIncomplete:
+            1
+          Gunpowder:
+            5          
+          Plasma:
+            5          
+        outputs:
+          ColonyShellComplete:
+            1
+
+- type: entity
+  id: Factory320Fab
+  parent: BaseMachinePowered
+  name: shell fabricator
+  description: Shapes metal for use by ship munitions.
+  components:
+  - type: Sprite
+    sprite: _Crescent/Structures/factorystructures.rsi
+    snapCardinals: true
+    layers:
+    - state: pooper
+  - type: Factory
+    sound:
+      collection: Welder
+      params:
+        variation: 0.125
+    recipes:
+      steelToEmptyCasing:
+        inputs:
+          Steel:
+            15
+        outputs:
+          ColonyShellIncomplete:
+            1
