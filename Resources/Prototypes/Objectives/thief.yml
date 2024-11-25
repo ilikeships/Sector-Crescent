@@ -256,18 +256,6 @@
   - type: Objective
     difficulty: 1
 
-- type: entity                                      #Cargo subgroup
-  categories: [ HideSpawnMenu ]
-  parent: BaseThiefStealObjective
-  id: ExpeditionsCircuitboardStealObjective
-  components:
-  - type: NotJobRequirement
-    job: SalvageSpecialist
-  - type: StealCondition
-    stealGroup: SalvageExpeditionsComputerCircuitboard
-  - type: Objective
-    difficulty: 0.7
-
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: BaseThiefStealObjective
