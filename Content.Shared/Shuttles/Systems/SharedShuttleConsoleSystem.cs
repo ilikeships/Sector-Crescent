@@ -1,4 +1,6 @@
+using Content.Shared.Access.Components;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Movement.Events;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
@@ -9,6 +11,7 @@ namespace Content.Shared.Shuttles.Systems
     public abstract class SharedShuttleConsoleSystem : EntitySystem
     {
         [Dependency] protected readonly ActionBlockerSystem ActionBlockerSystem = default!;
+        [Dependency] protected readonly ItemSlotsSystem _itemSlotsSystem = default!;
 
         public override void Initialize()
         {
@@ -16,6 +19,19 @@ namespace Content.Shared.Shuttles.Systems
             SubscribeLocalEvent<PilotComponent, UpdateCanMoveEvent>(HandleMovementBlock);
             SubscribeLocalEvent<PilotComponent, ComponentStartup>(OnStartup);
             SubscribeLocalEvent<PilotComponent, ComponentShutdown>(HandlePilotShutdown);
+            SubscribeLocalEvent<SharedShuttleConsoleComponent, ComponentInit>(OnComponentInit);
+            SubscribeLocalEvent<SharedShuttleConsoleComponent, ComponentRemove>(OnComponentRemove);
+        }
+
+        private void OnComponentInit(EntityUid uid, SharedShuttleConsoleComponent component, ComponentInit args)
+        {
+            _itemSlotsSystem.AddItemSlot(uid, IdCardConsoleComponent.PrivilegedIdCardSlotId, SharedShuttleConsoleComponent.DiskSlotName);
+        }
+
+        private void OnComponentRemove(EntityUid uid, SharedShuttleConsoleComponent component, ComponentRemove args)
+        {
+            _itemSlotsSystem.RemoveItemSlot(uid, component.PrivilegedIdSlot);
+            _itemSlotsSystem.RemoveItemSlot(uid, component.TargetIdSlot);
         }
 
         [Serializable, NetSerializable]

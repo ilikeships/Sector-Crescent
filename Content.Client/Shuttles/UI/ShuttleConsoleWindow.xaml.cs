@@ -44,6 +44,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         NavModeButton.OnPressed += NavPressed;
         MapModeButton.OnPressed += MapPressed;
         DockModeButton.OnPressed += DockPressed;
+        CrewManagementButton.OnPressed += CrewPressed;
 
         // Modes are exclusive
         var group = new ButtonGroup();
@@ -51,6 +52,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         NavModeButton.Group = group;
         MapModeButton.Group = group;
         DockModeButton.Group = group;
+        CrewManagementButton.Group = group;
 
         NavModeButton.Pressed = true;
         SetupMode(_mode);
@@ -116,6 +118,12 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         SwitchMode(ShuttleConsoleMode.Dock);
     }
 
+    private void CrewPressed(BaseButton.ButtonEventArgs obj)
+    {
+        SwitchMode(ShuttleConsoleMode.Crew);
+    }
+
+
     private void SetupMode(ShuttleConsoleMode mode)
     {
         switch (mode)
@@ -129,6 +137,9 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
                 break;
             case ShuttleConsoleMode.Dock:
                 DockContainer.Visible = true;
+                break;
+            case ShuttleConsoleMode.Crew:
+                CrewContainer.Visible = true;
                 break;
             default:
                 throw new NotImplementedException();
@@ -150,6 +161,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         Nav,
         Map,
         Dock,
+        Crew,
     }
 
     public void UpdateState(EntityUid owner, ShuttleBoundUserInterfaceState cState)

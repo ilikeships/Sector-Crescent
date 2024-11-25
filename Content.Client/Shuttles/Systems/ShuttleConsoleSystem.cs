@@ -1,3 +1,4 @@
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Input;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -11,11 +12,13 @@ namespace Content.Client.Shuttles.Systems
     {
         [Dependency] private readonly IInputManager _input = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<PilotComponent, ComponentHandleState>(OnHandleState);
+            SubscribeLocalEvent<ShuttleConsoleComponent, ComponentInit>(OnComponentInit);
             var shuttle = _input.Contexts.New("shuttle", "common");
             shuttle.AddFunction(ContentKeyFunctions.ShuttleStrafeUp);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleStrafeDown);
@@ -24,6 +27,7 @@ namespace Content.Client.Shuttles.Systems
             shuttle.AddFunction(ContentKeyFunctions.ShuttleRotateLeft);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleRotateRight);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleBrake);
+            
         }
 
         public override void Shutdown()
