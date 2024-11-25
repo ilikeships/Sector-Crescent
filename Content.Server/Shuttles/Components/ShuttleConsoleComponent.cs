@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -39,5 +40,8 @@ namespace Content.Server.Shuttles.Components
         public float DisableDuration = 60f;
 
         public ShuttleBoundUserInterfaceState? LastUpdatedState = null;
+
+        public ItemSlot targetIdSlot;
+
     }
 }

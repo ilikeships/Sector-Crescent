@@ -28,6 +28,7 @@ namespace Content.Client.Shuttles.UI;
 public sealed partial class CrewScreen : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
+    public bool HasID = false;
     
     public CrewScreen()
     {
@@ -37,9 +38,8 @@ public sealed partial class CrewScreen : BoxContainer
         OnVisibilityChanged += OnVisChange;
     }
 
-    public void UpdateState(ShuttleMapInterfaceState state)
+    public void UpdateState(CrewInterfaceState state)
     {
-
     }
 
 

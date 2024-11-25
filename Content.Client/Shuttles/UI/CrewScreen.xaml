@@ -3,5 +3,25 @@
        xmlns:controls="https://spacestation14.io"
        xmlns:controls1="clr-namespace:Content.Client.UserInterface.Controls"
        xmlns:ui="clr-namespace:Content.Client.Shuttles.UI">
+    <controls:Label Text="Target ID" />
+    <controls:Button Name="targetIdButton" Access="Public"/>
+    <controls:Label Name="targetIdLabel" />
+    <controls:Button Name="switchCrew" Access="Public"/>
+    <controls:Button Name="switchPilot" Access="Public"/>
+    <controls:Button Name="switchCaptain" Access="Public"/>
+    <controls:BoxContainer Name="ShipEmployees">
+        <controls1:HighDivider>
+            <controls:Label Name="Captains" />
+            <controls:Label Name="Example1" />
+            <controls:Label Name="Example" />
+        </controls1:HighDivider>
+        <controls1:HighDivider>
+            <controls:Label Name="Pilots" />
+            <controls:Label Name="Example1" />
+            <controls:Label Name="Example" />
+        </controls1:HighDivider>
+    </controls:BoxContainer>
+    
+    
    
 </controls:BoxContainer>

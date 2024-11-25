@@ -26,6 +26,7 @@ using Content.Server.DeviceLinking.Systems;
 using Content.Server.PointCannons;
 using Content.Shared.NamedModules.Components;
 using Content.Server._Crescent.Shipyard;
+using Content.Shared.Access.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -85,9 +86,22 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, NavConsoleGroupPressedMessage>(OnGroupPressed);
         SubscribeLocalEvent<NamedModulesComponent, ModuleNamingChangeEvent>(OnNameChange);
 
+        SubscribeLocalEvent<ShuttleConsoleComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<ShuttleConsoleComponent, ComponentRemove>(OnComponentRemove);
+
         InitializeFTL();
     }
 
+    private void OnComponentInit(EntityUid uid, ShuttleConsoleComponent component, ComponentInit args)
+    {
+        _itemSlotsSystem.AddItemSlot(uid, SharedShuttleConsoleComponent.IdSlotName, component.targetIdSlot);
+    }
+
+    private void OnComponentRemove(EntityUid uid, ShuttleConsoleComponent component, ComponentRemove args)
+    {
+        _itemSlotsSystem.RemoveItemSlot(uid, component.targetIdSlot);
+
+    }
     private void OnNameChange(EntityUid consoleUid, NamedModulesComponent comp, ModuleNamingChangeEvent args)
     {
         comp.ButtonNames = args.NewNames;
@@ -123,12 +137,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         GetExclusions(ref exclusions);
         _consoles.Clear();
         _lookup.GetChildEntities(gridUid, _consoles);
-        DockingInterfaceState? dockState = null;
-        IFFInterfaceState? iffState = null;
-
         foreach (var entity in _consoles)
         {
-            UpdateState(entity, entity.Comp, ref dockState, ref iffState);
+            UpdateState(entity, entity.Comp);
         }
     }
 
@@ -140,12 +151,10 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var exclusions = new List<ShuttleExclusionObject>();
         GetExclusions(ref exclusions);
         var query = AllEntityQuery<ShuttleConsoleComponent>();
-        DockingInterfaceState? dockState = null;
-        IFFInterfaceState? iffState = null;
 
         while (query.MoveNext(out var uid, out var console))
         {
-            UpdateState(uid, console, ref dockState, ref iffState);
+            UpdateState(uid, console);
         }
     }
 
@@ -211,16 +220,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private void OnConsoleAnchorChange(EntityUid uid, ShuttleConsoleComponent component,
         ref AnchorStateChangedEvent args)
     {
-        DockingInterfaceState? dockState = null;
-        IFFInterfaceState? iffState = null;
-        UpdateState(uid, component, ref dockState, ref iffState);
+        UpdateState(uid, component);
     }
 
     private void OnConsolePowerChange(EntityUid uid, ShuttleConsoleComponent component, ref PowerChangedEvent args)
     {
-        DockingInterfaceState? dockState = null;
-        IFFInterfaceState? iffState = null;
-        UpdateState(uid, component, ref dockState, ref iffState);
+        UpdateState(uid, component);
     }
 
     private bool TryPilot(EntityUid user, EntityUid uid)
@@ -290,7 +295,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         return result;
     }
 
-    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console, ref DockingInterfaceState? dockState, ref IFFInterfaceState? iffState)
+    private void UpdateState(EntityUid consoleUid, ShuttleConsoleComponent console)
     {
         EntityUid? entity = consoleUid;
 
@@ -307,8 +312,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         NavInterfaceState navState;
         ShuttleMapInterfaceState mapState;
-        dockState ??= GetDockState();
-        iffState ??= GetIFFState(consoleUid, consoleXform, null);
+        var dockState = GetDockState();
+        var iffState = GetIFFState(consoleUid, consoleXform, null);
+        var crewState = GetCrewState(consoleUid, console);
 
         if (shuttleGridUid != null && entity != null)
         {
@@ -327,7 +333,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
-            var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState);
+            var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState, crewState);
             state.IFFState = iffState;
             console.LastUpdatedState = state;
             _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, state);
@@ -534,6 +540,17 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             default:
                 break;
         };
+    }
+
+    public CrewInterfaceState GetCrewState(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole)
+    {
+        var State = new CrewInterfaceState(shuttleConsole.Crewmember, shuttleConsole.Pilots, shuttleConsole.Captains,
+            false);
+        if (_itemSlotsSystem.TryGetSlot(consoleUid, SharedShuttleConsoleComponent.IdSlotName, out var itemSlot) &&
+            itemSlot.HasItem)
+            State.hasId = true;
+        return State;
+
     }
 
 

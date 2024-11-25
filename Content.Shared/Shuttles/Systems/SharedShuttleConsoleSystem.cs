@@ -19,20 +19,8 @@ namespace Content.Shared.Shuttles.Systems
             SubscribeLocalEvent<PilotComponent, UpdateCanMoveEvent>(HandleMovementBlock);
             SubscribeLocalEvent<PilotComponent, ComponentStartup>(OnStartup);
             SubscribeLocalEvent<PilotComponent, ComponentShutdown>(HandlePilotShutdown);
-            SubscribeLocalEvent<SharedShuttleConsoleComponent, ComponentInit>(OnComponentInit);
-            SubscribeLocalEvent<SharedShuttleConsoleComponent, ComponentRemove>(OnComponentRemove);
         }
 
-        private void OnComponentInit(EntityUid uid, SharedShuttleConsoleComponent component, ComponentInit args)
-        {
-            _itemSlotsSystem.AddItemSlot(uid, IdCardConsoleComponent.PrivilegedIdCardSlotId, SharedShuttleConsoleComponent.DiskSlotName);
-        }
-
-        private void OnComponentRemove(EntityUid uid, SharedShuttleConsoleComponent component, ComponentRemove args)
-        {
-            _itemSlotsSystem.RemoveItemSlot(uid, component.PrivilegedIdSlot);
-            _itemSlotsSystem.RemoveItemSlot(uid, component.TargetIdSlot);
-        }
 
         [Serializable, NetSerializable]
         protected sealed class PilotComponentState : ComponentState

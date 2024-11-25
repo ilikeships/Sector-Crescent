@@ -12,9 +12,11 @@ namespace Content.Shared.Shuttles.Components
     {
         public static string DiskSlotName = "disk_slot";
 
-        public ItemSlot idSlot = default!;
-
         public static string IdSlotName = "id_slot";
+
+        public List<string> Crewmember = new();
+        public List<string> Pilots = new();
+        public List<string> Captains = new();
     }
 
     

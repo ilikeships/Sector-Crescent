@@ -1,9 +1,12 @@
 using Content.Client.Shuttles.UI;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Content.Shared.NamedModules.Components;
+using Content.Shared.Shuttles.Components;
+using Content.Shared.Shuttles.Systems;
 
 namespace Content.Client.Shuttles.BUI;
 
@@ -12,6 +15,8 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private ShuttleConsoleWindow? _window;
+
+
 
     public ShuttleConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -29,6 +34,8 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
+
+        _window.idSlotButtonPressed += _ => SendMessage(new ItemSlotButtonPressedEvent(SharedShuttleConsoleComponent.IdSlotName));
         _window.OnGroup1Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(1));
         _window.OnGroup2Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(2));
         _window.OnGroup3Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(3));

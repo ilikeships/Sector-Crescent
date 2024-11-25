@@ -18,7 +18,6 @@ namespace Content.Client.Shuttles.Systems
         {
             base.Initialize();
             SubscribeLocalEvent<PilotComponent, ComponentHandleState>(OnHandleState);
-            SubscribeLocalEvent<ShuttleConsoleComponent, ComponentInit>(OnComponentInit);
             var shuttle = _input.Contexts.New("shuttle", "common");
             shuttle.AddFunction(ContentKeyFunctions.ShuttleStrafeUp);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleStrafeDown);
