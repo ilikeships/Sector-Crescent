@@ -243,6 +243,9 @@
   description: Loosely compacted industrial trash.
   suffix: Full
   components:
+  - type: Tag
+    tags:
+    - RawMaterial
   - type: Stack
     stackType: GarbageOre
   - type: Sprite
