@@ -41,6 +41,7 @@ namespace Content.Server.Shuttles.Components
 
         public ShuttleBoundUserInterfaceState? LastUpdatedState = null;
 
+        [DataField("targetIdSlot")]
         public ItemSlot targetIdSlot = default!;
 
     }

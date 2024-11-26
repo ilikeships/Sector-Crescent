@@ -13,12 +13,12 @@
         <controls1:HighDivider>
             <controls:Label Name="Captains" />
             <controls:Label Name="Example1" />
-            <controls:Label Name="Example" />
+            <controls:Label Name="Example2" />
         </controls1:HighDivider>
         <controls1:HighDivider>
             <controls:Label Name="Pilots" />
-            <controls:Label Name="Example1" />
-            <controls:Label Name="Example" />
+            <controls:Label Name="Example3" />
+            <controls:Label Name="Example4" />
         </controls1:HighDivider>
     </controls:BoxContainer>
     
