@@ -928,6 +928,138 @@
     powerLoad: 3000
   - type: ExtensionCableReceiver
 
+- type: entity
+  id: SAWCleanser
+  name: SAW 20mm "Cleanser" gatlingun
+  parent: ConstructibleMachine
+  description: A retrofit of the 20mm vulcan made by TSFC SAW Engineers. All safety considerations seem to be missing on this..
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: TurretIFF
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              collection: MetalGlassBreak
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              SheetSteel1:
+                min: 2
+                max: 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.01,-0.01,0.01,0.01"
+        density: 600
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _Crescent/Objects/ShuttleWeapons/gatling.rsi
+    layers:
+    - state: space_artillery
+  - type: Anchorable
+  - type: Pullable
+  - type: Rotatable
+    rotateWhilePulling: false
+    rotateWhileAnchored: true
+    increment: 90
+  - type: Battery
+    maxCharge: 200000
+    startingCharge: 200000
+  - type: ExaminableBattery
+  - type: Appearance
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: AutoShootGun
+  - type: GunSignalControl
+  - type: WirelessNetworkConnection
+    range: 700
+  - type: DeviceLinkSink
+    ports:
+      - Toggle
+      - SpaceArtilleryFire
+      - SpaceArtilleryToggleSafety
+      - SpaceArtilleryOnSafety
+      - SpaceArtilleryOffSafety
+  - type: DeviceLinkSource
+    ports:
+      - SpaceArtilleryDetectedFiring
+      - SpaceArtilleryDetectedMalfunction
+      - SpaceArtilleryDetectedSafetyChange
+  - type: ChamberMagazineAmmoProvider
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineVulcan
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - VulcanCartridgeBox
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeVulcanStandard
+        priority: 1
+        whitelist:
+          tags:
+            - VulcanCartridgeBox
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+  - type: Gun
+    fireRate: 36
+    maxAngle: 4
+    minAngle: 0
+    projectileSpeed: 200
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/vulcan.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+  - type: SpaceArtillery
+    isArmed: true
+    powerChargeRate: 1500
+    powerUsePassive: 500
+    powerUseActive: 12000
+    isPowerRequiredForMount: false
+    isPowerRequiredToFire: true
+    isPowerRequiredForSignal: true
+  - type: BatterySelfRecharger
+  - type: Actions
+  - type: CombatMode
+    isInCombatMode: true
+  - type: Tag
+    tags:
+    - Wall
+  - type: Airtight
+  - type: RadiationBlocker
+    resistance: 8
+  - type: ApcPowerReceiver
+    powerLoad: 3000
+  - type: ExtensionCableReceiver
+
 #Faction-tagged slugs
 
 - type: entity
