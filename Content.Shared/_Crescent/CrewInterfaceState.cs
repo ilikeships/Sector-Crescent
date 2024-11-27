@@ -3,6 +3,12 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Shuttles.BUIStates;
 
 [Serializable, NetSerializable]
+public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceMessage
+{
+    public bool Visible = visible;
+}
+
+[Serializable, NetSerializable]
 public sealed class CrewInterfaceState
 {
     public List<string> RegisteredCrewmembers;
