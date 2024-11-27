@@ -11,7 +11,7 @@
       effects:
       - !type:MovespeedModifier
         walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.35
+        sprintSpeedModifier: 1.50
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -71,6 +71,8 @@
             Heat: -0.33
             Shock: -0.33
             Cold: -0.33
+      - !type:ModifyBleedAmount
+        amount: -5.00
     Narcotic:
       effects:
       - !type:GenericStatusEffect
@@ -80,8 +82,8 @@
         time: 6
         refresh: false
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.35
+        walkSpeedModifier: 1.15
+        sprintSpeedModifier: 1.15
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -134,7 +136,7 @@
         - !type:ReagentThreshold
           min: 5
       - !type:ModifyBleedAmount
-        amount: -0.25
+        amount: -5.00
 
 - type: reagent
   id: Bloodeye
@@ -162,4 +164,4 @@
         - !type:ReagentThreshold
           min: 5
       - !type:ModifyBleedAmount
-        amount: -0.25
+        amount: -2.50
