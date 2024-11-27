@@ -1,5 +1,5 @@
 advertisement-syndicatehumanoid-1 = Man, I hate it in here.
-advertisement-syndicatehumanoid-2 = Yesterday I saw an SHI employee. Miserable creature.
+advertisement-syndicatehumanoid-2 = Yesterday I saw a tribal. Miserable creature.
 advertisement-syndicatehumanoid-3 = Must've been the wind.
 advertisement-syndicatehumanoid-4 = What was that?
 advertisement-syndicatehumanoid-5 = You saw that?
