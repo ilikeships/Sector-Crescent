@@ -25,6 +25,3 @@
           designation: vessel-designation-gunship
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            MinutemanCMM: [1, 1]
-

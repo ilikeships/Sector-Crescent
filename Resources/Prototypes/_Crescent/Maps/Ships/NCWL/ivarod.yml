@@ -28,8 +28,3 @@
           designation: vessel-designation-destroyer
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            KapitanNCWL: [ 1, 1 ]
-            SanitarNCWL: [ 4, 4 ]
-            ArtificerNCWL: [ 1, 1 ]
-            KadetNCWL: [ 2, 2 ]

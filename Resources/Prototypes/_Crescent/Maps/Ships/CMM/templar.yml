@@ -25,9 +25,4 @@
           designation: vessel-designation-assault-corvette
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            MachinistCMM: [1, 1]
-            PhysicianCMM: [2, 2]
-            MinutemanCMM: [4, 4]
-            WatchmasterCMM: [1, 1]
 

@@ -25,5 +25,3 @@
           designation: vessel-designation-smuggling
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            OperativeNCSP: [ 0, 1 ]

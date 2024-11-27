@@ -28,7 +28,3 @@
           designation: vessel-designation-patrol
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            KapitanNCWL: [ 1, 1 ]
-            SanitarNCWL: [ 2, 5 ]
-            DoktorNCWL: [ 1, 2 ]

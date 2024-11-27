@@ -25,5 +25,3 @@
           designation: vessel-designation-salvage
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            FreeholderDSM: [ 0, 1 ]

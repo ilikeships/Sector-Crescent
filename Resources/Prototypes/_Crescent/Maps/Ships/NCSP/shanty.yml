@@ -27,5 +27,3 @@
         - type: VesselDesignation
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            ShipbreakerNCSP: [ 1, 1 ]

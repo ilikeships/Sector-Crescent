@@ -28,6 +28,3 @@
           designation: vessel-designation-missile
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            InfanteerNCSP: [ 1, 1 ]
-            TechnicianNCSP: [ 1, 1 ]

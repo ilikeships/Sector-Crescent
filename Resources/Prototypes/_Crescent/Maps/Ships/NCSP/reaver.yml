@@ -28,5 +28,3 @@
           designation: vessel-designation-fighter
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            InfanteerNCSP: [ 0, 0 ]

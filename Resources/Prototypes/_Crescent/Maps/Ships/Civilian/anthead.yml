@@ -28,5 +28,3 @@
           designation: vessel-designation-civilian
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            Contractor: [ 1, 1 ]

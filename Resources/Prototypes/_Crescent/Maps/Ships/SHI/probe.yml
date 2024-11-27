@@ -25,7 +25,3 @@
           designation: vessel-designation-research
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            EmployeeSHI: [0, 2]
-            MedtechSHI: [0, 2]
-

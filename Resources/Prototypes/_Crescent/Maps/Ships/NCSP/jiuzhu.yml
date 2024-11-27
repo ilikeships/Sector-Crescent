@@ -28,5 +28,3 @@
           designation: vessel-designation-medical
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            RipperdocNCSP: [ 3, 3 ]

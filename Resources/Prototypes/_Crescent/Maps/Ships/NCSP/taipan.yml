@@ -28,5 +28,3 @@
           designation: vessel-designation-utility
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            OperativeNCSP: [ 2, 2 ]

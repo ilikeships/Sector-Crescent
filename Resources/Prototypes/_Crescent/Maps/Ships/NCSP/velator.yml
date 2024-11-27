@@ -28,5 +28,3 @@
           designation: vessel-designation-electronic
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            OperativeNCSP: [ 3, 3 ]

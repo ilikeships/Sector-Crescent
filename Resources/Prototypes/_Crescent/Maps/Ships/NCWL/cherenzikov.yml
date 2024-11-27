@@ -27,6 +27,3 @@
         - type: VesselDesignation
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            SanitarNCWL: [ 4, 4 ]
-            ArtificerNCWL: [ 1, 1 ]

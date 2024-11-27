@@ -25,6 +25,4 @@
           designation: vessel-designation-mining
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            EmployeeSHI: [0, 2]
 

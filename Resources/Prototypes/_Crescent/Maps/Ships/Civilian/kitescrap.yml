@@ -28,5 +28,3 @@
           designation: vessel-designation-expeditions
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            SalvageSpecialist: [ 0, 0 ]

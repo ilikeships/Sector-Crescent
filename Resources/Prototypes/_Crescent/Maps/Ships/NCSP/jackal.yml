@@ -28,6 +28,3 @@
           designation: vessel-designation-carrier
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            InfanteerNCSP: [ 4, 4 ]
-            TechnicianNCSP: [ 2, 2 ]

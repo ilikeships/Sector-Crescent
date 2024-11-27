@@ -25,6 +25,4 @@
           designation: vessel-designation-stealth-boarder
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            CorpsecSHI: [2, 2]
 

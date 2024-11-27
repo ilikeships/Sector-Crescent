@@ -25,6 +25,4 @@
           designation: vessel-designation-civilian
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            EmployeeSHI: [1, 2]
 

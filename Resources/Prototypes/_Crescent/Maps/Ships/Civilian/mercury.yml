@@ -28,5 +28,3 @@
           designation: vessel-designation-research
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            Scientist: [ 1, 1 ]

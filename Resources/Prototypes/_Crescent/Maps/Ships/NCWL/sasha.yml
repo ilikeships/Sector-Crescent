@@ -28,8 +28,3 @@
           designation: vessel-designation-assault-frigate
         - type: StationJobs
           overflowJobs: []
-          availableJobs:
-            KapitanNCWL: [ 1, 1 ]
-            SanitarNCWL: [ 5, 5 ]
-            ArtificerNCWL: [ 2, 2 ]
-            DoktorNCWL: [ 2, 2 ]
