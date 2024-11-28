@@ -28,12 +28,17 @@ namespace Content.Client.Shuttles.UI;
 public sealed partial class CrewScreen : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
+
+    public Action<EmployeeOptions>? toggleEmployeeClicked;
     public bool HasID = false;
     
     public CrewScreen()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        switchCrew.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Crew);
+        switchPilot.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Pilot);
+        switchCaptain.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Captain);
 
         OnVisibilityChanged += OnVisChange;
     }

@@ -1,11 +1,25 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared.Access;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Shuttles.Components
 {
+    [Serializable, NetSerializable]
+    public enum ShuttleConsoleAccesState
+    {
+        // Always logged in on NotDynamic , since we dont have dynamic acces reader
+        NotDynamic, 
+        NoAcces,
+        PilotAcces,
+        CaptainAcces,
+    };
+
     [RegisterComponent]
     public sealed partial class ShuttleConsoleComponent : SharedShuttleConsoleComponent
     {
@@ -43,6 +57,8 @@ namespace Content.Server.Shuttles.Components
 
         [DataField("targetIdSlot")]
         public ItemSlot targetIdSlot = default!;
+
+        public ShuttleConsoleAccesState accesState = ShuttleConsoleAccesState.NotDynamic;
 
     }
 }

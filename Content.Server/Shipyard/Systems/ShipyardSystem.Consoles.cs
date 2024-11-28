@@ -181,6 +181,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+        if(deedID.ShuttleNameSuffix is not null)
+            AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
 
         if (idCardComponent.FullName != null)
         {
@@ -557,6 +559,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         deed.ShuttleUid = shuttleUid;
         TryParseShuttleName(deed, shuttleName!);
         deed.ShuttleOwner = shuttleOwner;
+        if(shuttleUid is not null)
+            EntityManager.Dirty(shuttleUid.Value, deed);
     }
 
     private void OnInitDeedSpawner(EntityUid uid, StationDeedSpawnerComponent component, MapInitEvent args)

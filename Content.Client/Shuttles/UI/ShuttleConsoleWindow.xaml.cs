@@ -28,7 +28,9 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     public event Action<string>? idSlotButtonPressed;
 
-    public event Action<bool> crewHudVisChange;
+    public event Action<bool>? crewHudVisChange;
+
+    public event Action<EmployeeOptions>? employToggleButtonClicked;
 
     public Action? OnGroup1Pressed;
     public Action? OnGroup2Pressed;
@@ -83,6 +85,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         };
         CrewContainer.targetIdButton.OnPressed += _ => idSlotButtonPressed?.Invoke(SharedShuttleConsoleComponent.IdSlotName);
         CrewContainer.OnVisibilityChanged += control => crewHudVisChange?.Invoke(control.Visible);
+        CrewContainer.toggleEmployeeClicked += _ => employToggleButtonClicked?.Invoke(_);
         NavContainer.OnGroup1Pressed += () => OnGroup1Pressed?.Invoke();
         NavContainer.OnGroup2Pressed += () => OnGroup2Pressed?.Invoke();
         NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();

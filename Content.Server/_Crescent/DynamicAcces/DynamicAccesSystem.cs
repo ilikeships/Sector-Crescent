@@ -1,3 +1,6 @@
+using Content.Shared._Crescent;
+using Content.Shared.Access;
+using Content.Shared.Access.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -18,10 +21,21 @@ public sealed class DynamicAccesSystem : EntitySystem
     {
     }
 
+    public bool hasSpecificAcces(ProtoId<AccessLevelPrototype> lookingFor, GridDynamicAccesComponent dynAccesComponent)
+    {
+        return dynAccesComponent.dynamicAccesCodes.Contains(lookingFor);
+    }
+
+    public bool hasSpecificAcces(ProtoId<AccessLevelPrototype> lookingFor, AccessComponent AccesComponent)
+    {
+        return AccesComponent.Tags.Contains(lookingFor);
+    }
+
+
     private Tuple<string, long> generateRandomIdentifier()
     {
         long randomGen = _randomSystem.GetRandom().NextInt64();
-        while(!validateIdentifier(randomGen))
+        while(validateIdentifier(randomGen))
             randomGen = _randomSystem.GetRandom().NextInt64();
         return new Tuple<string, long>($"DynamicKey-{randomGen}", randomGen);
     }
@@ -45,7 +59,7 @@ public sealed class DynamicAccesSystem : EntitySystem
         return validateIdentifier(number);
     }
 
-    private string AddNewAcces(string name)
+    public string AddNewAcces(string name)
     {
         var generatedKey = generateRandomIdentifier();
         generatedKeys.Add(generatedKey.Item2);
@@ -58,7 +72,7 @@ public sealed class DynamicAccesSystem : EntitySystem
     }
 
     // Returns a equivalent list with all names replaced by the identifier of the new prototypes
-    private List<string> AddNewAcces(List<string> Names)
+    public List<string> AddNewAcces(List<string> Names)
     {
         var returnList = new List<string>();
         var generationList = "";

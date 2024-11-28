@@ -8,6 +8,19 @@ public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceM
     public bool Visible = visible;
 }
 
+public enum EmployeeOptions
+{
+    Crew,
+    Pilot,
+    Captain,
+}
+
+[Serializable, NetSerializable]
+public sealed class TryMakeEmployeeMessage(EmployeeOptions option) : BoundUserInterfaceMessage
+{
+    public EmployeeOptions chosenOption = option;
+}
+
 [Serializable, NetSerializable]
 public sealed class CrewInterfaceState
 {
