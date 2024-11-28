@@ -7,7 +7,7 @@ public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceM
 {
     public bool Visible = visible;
 }
-
+[Serializable, NetSerializable]
 public enum EmployeeOptions
 {
     Crew,

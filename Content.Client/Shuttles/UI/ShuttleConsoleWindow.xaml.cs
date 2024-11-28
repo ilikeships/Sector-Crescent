@@ -202,6 +202,9 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
             _updatedOnce = true;
         }
 
+        CrewManagementButton.Disabled = !cState.canAccesCrew;
+        if(_mode == ShuttleConsoleMode.Crew && CrewManagementButton.Disabled)
+            SwitchMode(ShuttleConsoleMode.Map);
         var coordinates = _entManager.GetCoordinates(cState.NavState.Coordinates);
         NavContainer.SetShuttle(coordinates?.EntityId);
         NavContainer.SetConsole(owner);

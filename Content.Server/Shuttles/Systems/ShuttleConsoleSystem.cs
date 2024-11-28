@@ -40,6 +40,7 @@ using Content.Shared.Interaction;
 using Content.Shared.StationRecords;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Shuttles.Systems;
@@ -62,7 +63,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly AccessSystem _acces = default!;
     [Dependency] private readonly DynamicAccesSystem _dynAcces = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly ILogManager _logger = default!;
 
+    private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
@@ -71,6 +74,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     public override void Initialize()
     {
         base.Initialize();
+
+        logging = _logger.GetSawmill("DebuggingShitForSPCR");
 
         _metaQuery = GetEntityQuery<MetaDataComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
@@ -81,14 +86,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
         SubscribeLocalEvent<ShuttleConsoleComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<ShuttleConsoleComponent, BoundUserInterfaceMessageAttempt>(BUIValidation);
-        SubscribeLocalEvent<ShuttleConsoleComponent, ItemSlotInsertAttemptEvent>(OnTryInsert);
+        SubscribeLocalEvent<ShuttleConsoleComponent, EntInsertedIntoContainerMessage>(UpdateUI);
+        SubscribeLocalEvent<ShuttleConsoleComponent, EntRemovedFromContainerMessage>(UpdateUI);
+        SubscribeLocalEvent<ShuttleConsoleComponent, TryMakeEmployeeMessage>(OnToggleEmployee);
         Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
             subs.Event<ShuttleConsoleFTLPositionMessage>(OnPositionFTLMessage);
             subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
             subs.Event<SwitchedToCrewHudMessage>(OnCrewSwitch);
-            subs.Event<TryMakeEmployeeMessage>(OnToggleEmployee);
         });
 
         SubscribeLocalEvent<DroneConsoleComponent, ConsoleShuttleEvent>(OnCargoGetConsole);
@@ -130,6 +136,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (!args.Visible)
             _itemSlotsSystem.TryEject(uid, comp.targetIdSlot, null, out var item);
         _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, !args.Visible);
+        UpdateState(uid, comp);
         
     }
     private void OnNameChange(EntityUid consoleUid, NamedModulesComponent comp, ModuleNamingChangeEvent args)
@@ -138,7 +145,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         Dirty(consoleUid, comp);
     }
     
-    private void OnTryInsert(EntityUid console, ShuttleConsoleComponent comp, ItemSlotInsertAttemptEvent args)
+    private void UpdateUI(EntityUid console, ShuttleConsoleComponent comp, object args)
     {
        UpdateState(console, comp);
     }
@@ -152,11 +159,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (!_crescent.getGridOfEntity(uid, out var gridId) ||
             !TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces))
             return;
-        if (!TryComp<AccessComponent>(comp.targetIdSlot.Item.Value, out var accesComp))
+        if (!TryComp<AccessComponent>(comp.targetIdSlot.Item, out var accesComp))
             return;
         var accesCode = dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(args.chosenOption)];
         if (accesComp.Tags.Contains(accesCode))
+        {
             accesComp.Tags.Remove(accesCode);
+        }
         else
             accesComp.Tags.Add(accesCode);
         Dirty(comp.targetIdSlot.Item.Value, accesComp);
@@ -273,7 +282,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (component.accesState != ShuttleConsoleAccesState.NoAcces)
         {
             component.accesState = ShuttleConsoleAccesState.NoAcces;
-            _popup.PopupEntity("Console locked", args.User, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
             return;
         }
 
@@ -289,7 +298,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
-            _popup.PopupEntity("Authorized to console. Welcome onboard, captain.", args.User, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity("Console unlocked. Welcome onboard, captain.", uid, args.User);
+            UpdateState(uid, component);
+            return;
         }
 
         if (_dynAcces.hasSpecificAcces(
@@ -297,7 +308,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
-            _popup.PopupEntity("Authorized to console as pilot.", args.User, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity("Authorized to console as pilot.", uid, args.User, PopupType.LargeCaution);
+            UpdateState(uid, component);
+            return;
         }
 
 
@@ -432,6 +445,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (_ui.HasUi(consoleUid, ShuttleConsoleUiKey.Key))
         {
             var state = new ShuttleBoundUserInterfaceState(navState, mapState, dockState, crewState);
+            state.canAccesCrew = (console.accesState == ShuttleConsoleAccesState.CaptainAcces);
             state.IFFState = iffState;
             console.LastUpdatedState = state;
             _ui.SetUiState(consoleUid, ShuttleConsoleUiKey.Key, state);
@@ -473,6 +487,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             var iffState = GetIFFState(uid, transform, turrets);
             var state = new ShuttleBoundUserInterfaceState(console.LastUpdatedState);
             state.IFFState = iffState;
+            state.canAccesCrew = (console.accesState == ShuttleConsoleAccesState.CaptainAcces);
 
             if (state.DirtyFlags < ShuttleBoundUserInterfaceState.StateDirtyFlags.IFF)
             {
