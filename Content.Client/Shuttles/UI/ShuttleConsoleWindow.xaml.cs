@@ -85,7 +85,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         };
         CrewContainer.targetIdButton.OnPressed += _ => idSlotButtonPressed?.Invoke(SharedShuttleConsoleComponent.IdSlotName);
         CrewContainer.OnVisibilityChanged += control => crewHudVisChange?.Invoke(control.Visible);
-        CrewContainer.toggleEmployeeClicked += _ => employToggleButtonClicked?.Invoke(_);
+        CrewContainer.toggleEmployeeClicked += args => employToggleButtonClicked?.Invoke(args);
         NavContainer.OnGroup1Pressed += () => OnGroup1Pressed?.Invoke();
         NavContainer.OnGroup2Pressed += () => OnGroup2Pressed?.Invoke();
         NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();

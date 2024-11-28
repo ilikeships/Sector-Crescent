@@ -24,19 +24,19 @@ public sealed class TryMakeEmployeeMessage(EmployeeOptions option) : BoundUserIn
 [Serializable, NetSerializable]
 public sealed class CrewInterfaceState
 {
-    public List<string> RegisteredCrewmembers;
-    public List<string> RegisteredPilots;
-    public List<string> RegisteredCaptains;
     public string IdName;
     public bool hasId;
+    public bool isCrew;
+    public bool isPilot;
+    public bool isCaptain;
 
 
-    public CrewInterfaceState(List<string> Crew, List<string>Pilots, List<string>Captains, bool hasId,string name)
+    public CrewInterfaceState(bool isCrew, bool isPilot, bool isCaptain, bool hasId,string name)
     {
-        RegisteredCrewmembers = Crew;
-        RegisteredPilots = Pilots;
-        RegisteredCaptains = Captains;
         this.hasId = hasId;
         IdName = name;
+        this.isCaptain = isCaptain;
+        this.isCrew = isCrew;
+        this.isPilot = isPilot;
     }
 }

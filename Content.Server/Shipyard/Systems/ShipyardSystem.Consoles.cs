@@ -204,7 +204,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 if (xform.GridUid != shuttle.Owner)
                     continue;
-                if(consoleComponent.accesState)
+                consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
             }
         }
 

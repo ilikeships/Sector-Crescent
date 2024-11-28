@@ -45,6 +45,33 @@ public sealed partial class CrewScreen : BoxContainer
 
     public void UpdateState(CrewInterfaceState state)
     {
+        if (state.hasId)
+        {
+            targetIdButton.Text = state.IdName;
+            if (state.isCaptain)
+                switchCaptain.Text = "Demote from Captain";
+            else
+                switchCaptain.Text = "Promote to Captain";
+            if (state.isPilot)
+                switchPilot.Text = "Demote from Pilot";
+            else
+                switchPilot.Text = "Promote to Pilot";
+            if (state.isCrew)
+                switchCrew.Text = "Demote from Crew";
+            else
+                switchCrew.Text = "Promote to Crew";
+
+        }
+
+        else
+        {
+            targetIdButton.Text = "Insert Employee ID";
+            switchCrew.Text = "Waiting for ID";
+            switchCaptain.Text = "Waiting for ID";
+            switchPilot.Text = "Waiting for ID";
+        }
+
+        
     }
 
 

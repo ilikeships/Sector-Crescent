@@ -35,6 +35,7 @@ using Content.Shared._Crescent;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Interaction;
 using Content.Shared.StationRecords;
 using Robust.Server.Audio;
@@ -80,6 +81,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
         SubscribeLocalEvent<ShuttleConsoleComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<ShuttleConsoleComponent, BoundUserInterfaceMessageAttempt>(BUIValidation);
+        SubscribeLocalEvent<ShuttleConsoleComponent, ItemSlotInsertAttemptEvent>(OnTryInsert);
         Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
@@ -135,6 +137,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         comp.ButtonNames = args.NewNames;
         Dirty(consoleUid, comp);
     }
+    
+    private void OnTryInsert(EntityUid console, ShuttleConsoleComponent comp, ItemSlotInsertAttemptEvent args)
+    {
+       UpdateState(console, comp);
+    }
 
     private void OnToggleEmployee(EntityUid uid, ShuttleConsoleComponent comp, TryMakeEmployeeMessage args)
     {
@@ -152,6 +159,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             accesComp.Tags.Remove(accesCode);
         else
             accesComp.Tags.Add(accesCode);
+        Dirty(comp.targetIdSlot.Item.Value, accesComp);
+        UpdateState(uid, comp);
     }
 
     private void OnFtlDestStartup(EntityUid uid, FTLDestinationComponent component, ComponentStartup args)
@@ -633,11 +642,28 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     public CrewInterfaceState GetCrewState(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole)
     {
-        var State = new CrewInterfaceState(shuttleConsole.Crewmember, shuttleConsole.Pilots, shuttleConsole.Captains,
-            false);
+        var State = new CrewInterfaceState(false,false, false, false, "");
         if (_itemSlotsSystem.TryGetSlot(consoleUid, SharedShuttleConsoleComponent.IdSlotName, out var itemSlot) &&
-            itemSlot.HasItem)
+            itemSlot.Item is not null)
+        {
+            if (!TryComp<IdCardComponent>(itemSlot.Item.Value, out var comp))
+                return State;
+            if (!TryComp<AccessComponent>(itemSlot.Item.Value, out var accesComp))
+                return State;
+            if (!_crescent.getGridOfEntity(consoleUid, out var gridId) ||
+                !TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces))
+                return State;
+            if(comp.FullName is not null)
+                State.IdName = comp.FullName;
+            State.isCaptain = _dynAcces.hasSpecificAcces(
+                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], accesComp);
+            State.isPilot = _dynAcces.hasSpecificAcces(
+                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], accesComp);
+            State.isCrew = _dynAcces.hasSpecificAcces(
+                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Crew)], accesComp);
             State.hasId = true;
+        }
+
         return State;
 
     }
