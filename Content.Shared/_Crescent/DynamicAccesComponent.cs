@@ -12,6 +12,7 @@ namespace Content.Shared._Crescent;
 public sealed partial class GridDynamicAccesComponent : Component
 {
     [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public List<ProtoId<AccessLevelPrototype>> dynamicAccesCodes = new();
 
     /// <summary>
@@ -19,5 +20,6 @@ public sealed partial class GridDynamicAccesComponent : Component
     /// prevent conflicts please.
     /// </summary>
     ///
+    [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<string, ProtoId<AccessLevelPrototype>> keyToAccesMapping = new();
 }
