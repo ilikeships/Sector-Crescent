@@ -31,6 +31,19 @@ public sealed class DynamicAccesSystem : EntitySystem
         return AccesComponent.Tags.Contains(lookingFor);
     }
 
+    public void AddAcces(ProtoId<AccessLevelPrototype> Acces, AccessComponent accessComponent)
+    {
+        if (hasSpecificAcces(Acces, accessComponent))
+            return;
+        accessComponent.Tags.Add(Acces);
+    }
+
+    public void RemoveAcces(ProtoId<AccessLevelPrototype> Acces, AccessComponent accessComponent)
+    {
+        if (!hasSpecificAcces(Acces, accessComponent))
+            return;
+        accessComponent.Tags.Remove(Acces);
+    }
 
     private Tuple<string, long> generateRandomIdentifier()
     {

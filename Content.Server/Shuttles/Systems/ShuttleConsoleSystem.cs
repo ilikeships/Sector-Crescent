@@ -140,9 +140,18 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (comp.accesState != ShuttleConsoleAccesState.CaptainAcces)
             return;
-        if (!comp.targetIdSlot.HasItem)
+        if (comp.targetIdSlot.Item is null)
             return;
-
+        if (!_crescent.getGridOfEntity(uid, out var gridId) ||
+            !TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces))
+            return;
+        if (!TryComp<AccessComponent>(comp.targetIdSlot.Item.Value, out var accesComp))
+            return;
+        var accesCode = dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(args.chosenOption)];
+        if (accesComp.Tags.Contains(accesCode))
+            accesComp.Tags.Remove(accesCode);
+        else
+            accesComp.Tags.Add(accesCode);
     }
 
     private void OnFtlDestStartup(EntityUid uid, FTLDestinationComponent component, ComponentStartup args)

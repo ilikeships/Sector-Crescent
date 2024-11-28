@@ -78,7 +78,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             accesComponent.keyToAccesMapping.Add(accesCodeNames[i], AccesPrototype );
             accesComponent.dynamicAccesCodes.Add(AccesPrototype);
         }
-
+        EntityManager.Dirty(gridUid, accesComponent);
         return accesComponent;
     }
 

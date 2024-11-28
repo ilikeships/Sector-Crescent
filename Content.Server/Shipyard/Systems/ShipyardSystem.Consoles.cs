@@ -36,6 +36,7 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Server._Crescent.DynamicAcces;
 using Content.Server._Crescent.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
@@ -48,6 +49,8 @@ using Robust.Shared.Timing;
 using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
+using Content.Shared._Crescent;
+using Content.Shared.Shuttles.BUIStates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Content.Server.Shipyard.Systems;
@@ -72,6 +75,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly CrescentHelperSystem _crescent = default!;
+    [Dependency] private readonly DynamicAccesSystem _dynamicAcces = default!;
 
     public void InitializeConsole()
     {
@@ -83,7 +87,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (args.Actor is not { Valid : true } player)
             return;
 
-        if (!_crescent.GetPlayerId(args.Actor, out var idCardComponent))
+        if (!_crescent.GetPlayerIdEntity(args.Actor, out var idCardUid) ||
+            !TryComp<AccessComponent>(idCardUid, out var accesComp) ||
+            !TryComp<IdCardComponent>(idCardUid, out var idCardComponent))
+            
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(uid, component);
@@ -181,8 +188,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if(deedID.ShuttleNameSuffix is not null)
-            AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
+        if (deedID.ShuttleNameSuffix is not null)
+        {
+            var dynamicAcces = AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], accesComp);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], accesComp);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Crew)], accesComp);
+        }
+
 
         if (idCardComponent.FullName != null)
         {
