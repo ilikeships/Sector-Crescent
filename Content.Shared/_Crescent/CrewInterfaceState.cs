@@ -27,14 +27,16 @@ public sealed class CrewInterfaceState
     public List<string> RegisteredCrewmembers;
     public List<string> RegisteredPilots;
     public List<string> RegisteredCaptains;
+    public string IdName;
     public bool hasId;
 
 
-    public CrewInterfaceState(List<string> Crew, List<string>Pilots, List<string>Captains, bool hasId)
+    public CrewInterfaceState(List<string> Crew, List<string>Pilots, List<string>Captains, bool hasId,string name)
     {
         RegisteredCrewmembers = Crew;
         RegisteredPilots = Pilots;
         RegisteredCaptains = Captains;
         this.hasId = hasId;
+        IdName = name;
     }
 }

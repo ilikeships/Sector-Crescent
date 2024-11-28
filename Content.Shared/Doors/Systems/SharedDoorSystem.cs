@@ -661,8 +661,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
             var userAccesTags = _accessReaderSystem.FindAccessTags(user.Value);
             if ((dynamicAcces.dynamicAccesCodes.Intersect(userAccesTags)).Any())
                 return true;
-            else
-                return false;
+            
+            return false;
         }
 
         return AccessType switch

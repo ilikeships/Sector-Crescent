@@ -204,10 +204,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 if (xform.GridUid != shuttle.Owner)
                     continue;
-
-                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
-                lockout.CreationTime = _timing.CurTime;
-                lockout.Purchaser = idCardComponent.FullName;
+                if(consoleComponent.accesState)
             }
         }
 

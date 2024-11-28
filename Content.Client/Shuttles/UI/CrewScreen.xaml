@@ -11,12 +11,6 @@
     <controls:Button Name="switchCrew" Access="Public" Text="Awaiting ID"/>
     <controls:Button Name="switchPilot" Access="Public" Text="Awaiting ID"/>
     <controls:Button Name="switchCaptain" Access="Public" Text="Awaiting ID"/>
-    <controls:BoxContainer >
-        <controls:Label Text ="Ship employees"></controls:Label>
-        <controls:BoxContainer Name="ShipEmployees">
-
-        </controls:BoxContainer>
-    </controls:BoxContainer>
     
     
    
