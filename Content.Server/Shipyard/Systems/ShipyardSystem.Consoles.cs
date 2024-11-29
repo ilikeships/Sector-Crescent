@@ -617,12 +617,16 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return false;
         }
 
-        if (!_crescent.GetPlayerId(user, out var idCardComponent))
+        if (!_crescent.GetPlayerIdEntity(user, out var idCardUid) ||
+            !TryComp<AccessComponent>(idCardUid, out var accesComp) ||
+            !TryComp<IdCardComponent>(idCardUid, out var idCardComponent))
+
         {
             ConsolePopup(user, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(uid, component);
             return false;
         }
+
 
         if (TryComp<AccessReaderComponent>(uid, out var accessReaderComponent) && !_access.IsAllowed(user, uid, accessReaderComponent))
         {
@@ -693,9 +697,17 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
-        AssignShuttleDeedProperties(deedID, shuttle.Owner, name, user);
+        AssignShuttleDeedProperties(deedID, shuttle.Owner, name,  user);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+        if (deedID.ShuttleNameSuffix is not null)
+        {
+            var dynamicAcces = AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], accesComp);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], accesComp);
+            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Crew)], accesComp);
+        }
+
 
         if (idCardComponent.FullName != null)
         {
@@ -704,12 +716,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 if (xform.GridUid != shuttle.Owner)
                     continue;
-
-                var lockout = EnsureComp<PurchaseLockoutComponent>(consoleUid);
-                lockout.CreationTime = _timing.CurTime;
-                lockout.Purchaser = idCardComponent.FullName;
+                consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
             }
         }
+
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
