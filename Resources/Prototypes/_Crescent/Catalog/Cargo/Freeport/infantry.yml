@@ -27,3 +27,13 @@
   cost: 1000
   category: cargoproduct-category-name-military
   group: freeport
+
+- type: cargoProduct
+  id: BreachingChargesFreeport
+  icon:
+    sprite: DeltaV/Objects/Weapons/Bombs/breaching.rsi
+    state: icon
+  product: BoxBreachingCharges
+  cost: 1500
+  category: cargoproduct-category-name-military
+  group: freeport

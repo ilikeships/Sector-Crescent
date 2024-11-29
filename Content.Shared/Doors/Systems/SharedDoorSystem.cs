@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Crescent;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
@@ -634,6 +635,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     {
         // TODO network AccessComponent for predicting doors
 
+
         // if there is no "user" we skip the access checks. Access is also ignored in some game-modes.
         if (user == null || AccessType == AccessTypes.AllowAll)
             return true;
@@ -651,6 +653,17 @@ public abstract partial class SharedDoorSystem : EntitySystem
             return true;
 
         var isExternal = access.AccessLists.Any(list => list.Contains("External"));
+
+        var gridId = Transform(uid).GridUid;
+
+        if(gridId is not null && TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces) && dynamicAcces.dynamicAccesCodes.Count != 0)
+        {
+            var userAccesTags = _accessReaderSystem.FindAccessTags(user.Value);
+            if ((dynamicAcces.dynamicAccesCodes.Intersect(userAccesTags)).Any())
+                return true;
+            
+            return false;
+        }
 
         return AccessType switch
         {

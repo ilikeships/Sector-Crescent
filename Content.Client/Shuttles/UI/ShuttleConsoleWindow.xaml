@@ -29,6 +29,12 @@
                     VerticalExpand="True"
                     Text="DOCK"
                     Margin="5"/>
+            <Button Name="CrewManagementButton"
+                    ToggleMode="True"
+                    HorizontalExpand="True"
+                    VerticalExpand="True"
+                    Text="CREW"
+                    Margin="5"/>
         </BoxContainer>
         <!-- Contents box -->
         <BoxContainer Name="Contents"
@@ -38,6 +44,7 @@
             <ui:NavScreen Name="NavContainer" Visible="False"/>
             <ui:MapScreen Name="MapContainer" Visible="False"/>
             <ui:DockingScreen Name="DockContainer" Visible="False"/>
+            <ui:CrewScreen Name="CrewContainer" Visible="False"/>
         </BoxContainer>
     </BoxContainer>
 </controls:FancyWindow>
