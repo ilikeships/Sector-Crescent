@@ -17,7 +17,7 @@
       stationProto: StandardCrescentVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'TSP Provost{1}'
+          mapNameTemplate: 'TSP Provost {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

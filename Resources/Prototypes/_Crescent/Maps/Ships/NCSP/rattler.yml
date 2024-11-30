@@ -5,7 +5,7 @@
   id: Rattler
   name: NCSP Rattler
   description: A ramshackle gunship.
-  price: 35000
+  price: 30000
   category: Small
   group: None
   shuttlePath: /Maps/_Crescent/Shuttles/NCSP/Rattler.yml
@@ -28,3 +28,5 @@
           designation: vessel-designation-utility
         - type: StationJobs
           overflowJobs: []
+          availableJobs:
+            ShipbreakerNCSP: [ 1, 1 ]
