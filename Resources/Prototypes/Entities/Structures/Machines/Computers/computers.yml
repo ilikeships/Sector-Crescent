@@ -49,6 +49,15 @@
   abstract: true
   components:
   - type: ShuttleConsole
+    targetIdSlot:
+        name: Employee ID card slot
+        ejectSound: /Audio/Machines/id_swipe.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectOnBreak: true
+        swap: false
+        whitelist:
+          components:
+          - IdCard
   - type: StationLifeHeuristic
   - type: ActivatableUI
     key: enum.ShuttleConsoleUiKey.Key

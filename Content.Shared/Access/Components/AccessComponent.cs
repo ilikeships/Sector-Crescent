@@ -21,7 +21,7 @@ public sealed partial class AccessComponent : Component
     public bool Enabled = true;
 
     [DataField]
-    [Access(typeof(SharedAccessSystem), Other = AccessPermissions.ReadExecute)] // FIXME Friends
+    [Access(typeof(SharedAccessSystem), Other = AccessPermissions.ReadWriteExecute)] // FIXME Friends
     [AutoNetworkedField]
     public HashSet<ProtoId<AccessLevelPrototype>> Tags = new();
 

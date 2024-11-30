@@ -63,6 +63,17 @@ namespace Content.Shared.Access.Systems
             return true;
         }
 
+        public bool AddExtraTags(EntityUid uid, IEnumerable<ProtoId<AccessLevelPrototype>> newTags, AccessComponent? access = null)
+        {
+            if (!Resolve(uid, ref access))
+                return false;
+
+            access.Tags.UnionWith(newTags);
+            Dirty(uid, access);
+
+            return true;
+        }
+
         /// <summary>
         ///     Gets the set of access tags.
         /// </summary>

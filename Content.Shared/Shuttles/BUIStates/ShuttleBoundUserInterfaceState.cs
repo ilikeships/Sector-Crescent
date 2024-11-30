@@ -18,16 +18,20 @@ public sealed class ShuttleBoundUserInterfaceState : BoundUserInterfaceState
     public NavInterfaceState NavState;
     public ShuttleMapInterfaceState MapState;
     public DockingInterfaceState DockState;
+    public CrewInterfaceState CrewState;
 
     public IFFInterfaceState IFFState;
 
     public StateDirtyFlags DirtyFlags;
 
-    public ShuttleBoundUserInterfaceState(NavInterfaceState navState, ShuttleMapInterfaceState mapState, DockingInterfaceState dockState)
+    public bool canAccesCrew = false;
+
+    public ShuttleBoundUserInterfaceState(NavInterfaceState navState, ShuttleMapInterfaceState mapState, DockingInterfaceState dockState, CrewInterfaceState crewState)
     {
         NavState = navState;
         MapState = mapState;
         DockState = dockState;
+        CrewState = crewState;
         IFFState = default!;
         DirtyFlags = StateDirtyFlags.Base;
     }
@@ -37,7 +41,9 @@ public sealed class ShuttleBoundUserInterfaceState : BoundUserInterfaceState
         NavState = other.NavState;
         MapState = other.MapState;
         DockState = other.DockState;
+        CrewState = other.CrewState;
         IFFState = other.IFFState;
         DirtyFlags = other.DirtyFlags;
+        canAccesCrew = other.canAccesCrew;
     }
 }
