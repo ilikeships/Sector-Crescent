@@ -90,6 +90,7 @@
     shuttles:
     - Shanty
     - Amadeus
+    - Rattler
     - Hyena
 
 - type: entity

@@ -1030,7 +1030,7 @@
       ballistic-ammo: !type:Container
         ents: []
   - type: Gun
-    fireRate: 36
+    fireRate: 12
     maxAngle: 4
     minAngle: 0
     projectileSpeed: 200
