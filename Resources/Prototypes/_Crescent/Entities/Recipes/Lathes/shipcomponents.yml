@@ -4,8 +4,8 @@
   result: StarshipHull1
   completetime: 1
   materials:
-    Steel: 250
-    Plasma: 175
+    Steel: 450
+    Plasma: 375
 
 - type: latheRecipe
   id: ShipElectronics
@@ -13,14 +13,14 @@
   completetime: 1
   materials:
     Steel: 200
-    Gold: 175
-    Silver: 225
+    Gold: 575
+    Silver: 325
 
 - type: latheRecipe
   id: ShipEngine
   result: StarshipEngineComponents1
   completetime: 1
   materials:
-    Steel: 175
-    Gold: 130
-    Plasma: 225
+    Steel: 275
+    Gold: 730
+    Plasma: 525

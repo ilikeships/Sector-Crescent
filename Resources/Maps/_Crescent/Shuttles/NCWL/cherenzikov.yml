@@ -2104,14 +2104,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,10.5
       parent: 1
-- proto: ComputerTabletopIFF
-  entities:
-  - uid: 253
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-8.5
-      parent: 1
 - proto: ComputerTargeting
   entities:
   - uid: 220
