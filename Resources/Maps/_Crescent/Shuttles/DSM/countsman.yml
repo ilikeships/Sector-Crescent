@@ -15077,14 +15077,6 @@ entities:
       parent: 2215
     - type: Physics
       canCollide: False
-- proto: ClothingUniformJumpsuitImperialGovernorCasual
-  entities:
-  - uid: 2274
-    components:
-    - type: Transform
-      parent: 2215
-    - type: Physics
-      canCollide: False
 - proto: ClothingUniformJumpsuitImperialNobleFemale
   entities:
   - uid: 2739

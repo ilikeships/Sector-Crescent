@@ -3077,14 +3077,6 @@ entities:
         1060:
         - Group4: Off
         - Group5: On
-- proto: ComputerTabletopIFF
-  entities:
-  - uid: 1027
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,-1.5
-      parent: 2
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 276

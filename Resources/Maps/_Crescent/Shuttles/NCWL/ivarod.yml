@@ -3054,14 +3054,6 @@ entities:
     - type: Transform
       pos: -0.5,2.5
       parent: 1
-- proto: ComputerTabletopIFF
-  entities:
-  - uid: 360
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,-0.5
-      parent: 1
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 507

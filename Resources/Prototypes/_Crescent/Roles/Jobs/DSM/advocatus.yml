@@ -27,6 +27,8 @@
   access:
   - Command
   - Empire
+  - EmpireNoble
+  - EmpireSoldier
   - Maintenance
   - Advocatus
   - Service

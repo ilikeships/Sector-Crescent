@@ -5,7 +5,7 @@
   materials:
     StarshipEngineComponents: 7250
     ShipComponents: 5750
-    ShipHull: 9000
+    ShipHull: 12000
 
 - type: latheRecipe
   id: WolfLPC
@@ -13,7 +13,7 @@
   completetime: 1
   materials:
     StarshipEngineComponents: 8250
-    ShipComponents: 6750
+    ShipComponents: 9750
     ShipHull: 15000
 
 - type: latheRecipe
@@ -22,7 +22,7 @@
   completetime: 1
   materials:
     StarshipEngineComponents: 8250
-    ShipComponents: 5750
+    ShipComponents: 6750
     ShipHull: 18000
 
 - type: latheRecipe
@@ -31,8 +31,8 @@
   completetime: 1
   materials:
     StarshipEngineComponents: 8500
-    ShipComponents: 7000
-    ShipHull: 19500
+    ShipComponents: 10000
+    ShipHull: 25000
 
 - type: latheRecipe
   id: IbisLPC
@@ -67,8 +67,8 @@
   completetime: 1
   materials:
     StarshipEngineComponents: 9250
-    ShipComponents: 6750
-    ShipHull: 12000
+    ShipComponents: 12500
+    ShipHull: 25000
 
 - type: latheRecipe
   id: AnathemaLPC
@@ -95,7 +95,7 @@
   materials:
     StarshipEngineComponents: 9000
     ShipComponents: 5750
-    ShipHull: 19000
+    ShipHull: 25000
 
 - type: latheRecipe
   id: GargutLPC
@@ -104,7 +104,7 @@
   materials:
     StarshipEngineComponents: 9250
     ShipComponents: 4750
-    ShipHull: 20000
+    ShipHull: 25000
 
 - type: latheRecipe
   id: BogatyrLPC
@@ -113,7 +113,7 @@
   materials:
     StarshipEngineComponents: 2250
     ShipComponents: 6750
-    ShipHull: 4000
+    ShipHull: 7000
 
 - type: latheRecipe
   id: BroadswordLPC
@@ -121,8 +121,8 @@
   completetime: 1
   materials:
     StarshipEngineComponents: 250
-    ShipComponents: 300
-    ShipHull: 1000
+    ShipComponents: 500
+    ShipHull: 1500
 
 - type: latheRecipe
   id: KhopeshLPC
@@ -131,7 +131,7 @@
   materials:
     StarshipEngineComponents: 750
     ShipComponents: 400
-    ShipHull: 850
+    ShipHull: 1850
 
 - type: latheRecipe
   id: RapierLPC
