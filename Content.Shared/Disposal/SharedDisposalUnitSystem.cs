@@ -109,6 +109,8 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
         if (!Transform(uid).Anchored)
             return false;
 
+        if (HasComp<NotDisposableComponent>(entity))
+            return false;
         var storable = HasComp<ItemComponent>(entity);
         if (!storable && !HasComp<BodyComponent>(entity))
             return false;
