@@ -1,7 +1,0 @@
-- type: loadoutGroup
-  id: CMMBackpacks
-  name: loadout-group-contractor-backpack
-  loadouts:
-  - CMMClothingBackpackMinutemanDuffelbagFilled
-  - CMMClothingBackpackMinutemanSatchelFilled
-  - CMMClothingBackpackMinutemanFilled
