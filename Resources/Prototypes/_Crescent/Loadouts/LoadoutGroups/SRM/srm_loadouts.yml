@@ -1,6 +1,0 @@
-- type: loadoutGroup
-  id: SRMBackpacks
-  name: loadout-group-contractor-backpack
-  loadouts:
-  - SRMClothingBackpackSatchelFilledSRM
-  - SRMClothingBackpackFilledSRM
