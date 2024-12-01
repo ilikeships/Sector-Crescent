@@ -57,7 +57,12 @@ namespace Content.Server.Shuttles.Components
         [DataField("targetIdSlot")]
         public ItemSlot targetIdSlot = default!;
 
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
         public ShuttleConsoleAccesState accesState = ShuttleConsoleAccesState.NotDynamic;
 
+        [ViewVariables(VVAccess.ReadOnly)]
+        [AutoNetworkedField]
+        [DataField]
+        public Dictionary<string, ProtoId<AccessLevelPrototype>>? keyToAccesMapping = new();
     }
 }
