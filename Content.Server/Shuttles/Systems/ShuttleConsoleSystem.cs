@@ -354,6 +354,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 TryComp<GridDynamicAccesComponent>(args.Transform.GridUid, out var _comp))
             {
                 component.accesState = ShuttleConsoleAccesState.NoAcces;
+                component.keyToAccesMapping = _comp.keyToAccesMapping;
             }
             else
             {
