@@ -38,6 +38,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Interaction;
 using Content.Shared.StationRecords;
+using FastAccessors;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -75,14 +76,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         base.Initialize();
 
-        logging = _logger.GetSawmill("DebuggingShitForSPCR");
-
         _metaQuery = GetEntityQuery<MetaDataComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
 
         SubscribeLocalEvent<ShuttleConsoleComponent, ComponentShutdown>(OnConsoleShutdown);
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
+        SubscribeLocalEvent<ShuttleConsoleComponent, ReAnchorEvent>(OnConsoleReAnchor);
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
         SubscribeLocalEvent<ShuttleConsoleComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<ShuttleConsoleComponent, BoundUserInterfaceMessageAttempt>(BUIValidation);
@@ -150,25 +150,41 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
        UpdateState(console, comp);
     }
 
+    private void OnConsoleReAnchor(EntityUid uid, ShuttleConsoleComponent comp, ReAnchorEvent args)
+    {
+        if (TryComp<GridDynamicAccesComponent>(args.Grid, out var accesComp))
+        {
+            comp.accesState = ShuttleConsoleAccesState.NoAcces;
+        }
+        else
+        {
+            comp.accesState = ShuttleConsoleAccesState.NotDynamic;
+        }
+    }
+
     private void OnToggleEmployee(EntityUid uid, ShuttleConsoleComponent comp, TryMakeEmployeeMessage args)
     {
         if (comp.accesState != ShuttleConsoleAccesState.CaptainAcces)
             return;
         if (comp.targetIdSlot.Item is null)
             return;
-        if (!_crescent.getGridOfEntity(uid, out var gridId) ||
-            !TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces))
+        if (comp.keyToAccesMapping is null)
             return;
         if (!TryComp<AccessComponent>(comp.targetIdSlot.Item, out var accesComp))
             return;
-        var accesCode = dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(args.chosenOption)];
+        var accesKey = _crescent.EnumEmployeeToString(args.chosenOption);
+        if (!comp.keyToAccesMapping.ContainsKey(accesKey))
+            return;
+        var accesCode = comp.keyToAccesMapping[accesKey];
+#pragma warning disable CA1868 // Unnecessary call to 'Contains(item)'
         if (accesComp.Tags.Contains(accesCode))
         {
             accesComp.Tags.Remove(accesCode);
         }
         else
             accesComp.Tags.Add(accesCode);
-        Dirty(comp.targetIdSlot.Item.Value, accesComp);
+#pragma warning restore CA1868 // Unnecessary call to 'Contains(item)'
+        EntityManager.DirtyEntity(comp.targetIdSlot.Item.Value);
         UpdateState(uid, comp);
     }
 
@@ -245,7 +261,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             return;
         }
-
+        _itemSlotsSystem.TryEject(uid, component.targetIdSlot, null, out var item);
+        _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, true);
         RemovePilot(args.Actor);
     }
 
@@ -255,7 +272,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if(component.accesState == ShuttleConsoleAccesState.NoAcces)
         {
             args.Cancel();
-            _popup.PopupEntity("Swipe ID to authorize yourself.", args.User, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity("Swipe ID to authorize yourself.", uid, args.User, PopupType.LargeCaution);
             return;
         }
         var uis = _ui.GetActorUis(args.User);
@@ -308,7 +325,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
-            _popup.PopupEntity("Authorized to console as pilot.", uid, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity("Authorized to console as pilot.", uid, args.User);
             UpdateState(uid, component);
             return;
         }
@@ -331,6 +348,19 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     private void OnConsoleAnchorChange(EntityUid uid, ShuttleConsoleComponent component,
         ref AnchorStateChangedEvent args)
     {
+        if (args.Anchored)
+        {
+            if (args.Transform.GridUid is not null &&
+                TryComp<GridDynamicAccesComponent>(args.Transform.GridUid, out var _comp))
+            {
+                component.accesState = ShuttleConsoleAccesState.NoAcces;
+            }
+            else
+            {
+                component.accesState = ShuttleConsoleAccesState.NotDynamic;
+            }
+        }
+
         UpdateState(uid, component);
     }
 

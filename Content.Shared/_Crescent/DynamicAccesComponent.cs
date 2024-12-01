@@ -22,6 +22,7 @@ public sealed partial class GridDynamicAccesComponent : Component
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadOnly)]
+    [AutoNetworkedField]
     [DataField]
     public Dictionary<string, ProtoId<AccessLevelPrototype>> keyToAccesMapping = new();
 }
