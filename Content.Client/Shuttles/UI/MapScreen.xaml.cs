@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Xml;
 using Content.Client.Shuttles.Systems;
 using Content.Shared._NF.Shuttles.Components;
 using Content.Shared.Shuttles.BUIStates;
@@ -49,8 +50,8 @@ public sealed partial class MapScreen : BoxContainer
     private TimeSpan _pingCooldown = TimeSpan.FromSeconds(3);
     private TimeSpan _nextMapDequeue;
 
-    private float _minMapDequeue = 0.05f;
-    private float _maxMapDequeue = 0.25f;
+    private float _minMapDequeue = 0.02f;
+    private float _maxMapDequeue = 0.08f;
 
     private StyleBoxFlat _ftlStyle;
 
@@ -487,6 +488,13 @@ public sealed partial class MapScreen : BoxContainer
             {
                 var xText = _mapObjectControls[x];
                 var yText = _mapObjectControls[y];
+
+                if (xText == yText)
+                    return 0;
+                if (yText == "grid")
+                    return -1;
+                if (xText == "grid")
+                    return 1;
 
                 return string.Compare(xText, yText, StringComparison.CurrentCultureIgnoreCase);
             });
