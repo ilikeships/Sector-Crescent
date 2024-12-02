@@ -3085,14 +3085,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-13.5
       parent: 2
-- proto: ComputerTabletopSalvageExpedition
-  entities:
-  - uid: 369
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-0.5
-      parent: 2
 - proto: ComputerTargeting
   entities:
   - uid: 7
