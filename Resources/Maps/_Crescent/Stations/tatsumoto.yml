@@ -201,8 +201,8 @@ entities:
             1662: 48,-16
             1663: 49,-16
             1664: 49,-17
-            1742: -4,-2
-            1743: -4,-3
+            1739: -4,-2
+            1740: -4,-3
         - node:
             angle: -1.5707963267948966 rad
             color: '#EFB34196'
@@ -214,7 +214,7 @@ entities:
             color: '#EFB34196'
             id: LoadingAreaGreyscale
           decals:
-            1741: 2,-2
+            1738: 2,-2
         - node:
             angle: 1.5707963267948966 rad
             color: '#EFB34196'
@@ -358,7 +358,7 @@ entities:
             1614: 31,-12
             1615: 31,-18
             1635: 39,-24
-            1698: 46,12
+            1697: 46,12
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleNW
@@ -413,7 +413,7 @@ entities:
             1617: 30,-6
             1618: 30,-18
             1636: 35,-24
-            1699: 45,12
+            1698: 45,12
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleSE
@@ -460,8 +460,8 @@ entities:
             1611: 31,-14
             1612: 31,-8
             1634: 39,-26
-            1702: 54,10
-            1746: 46,11
+            1699: 54,10
+            1743: 46,11
         - node:
             color: '#52B4E996'
             id: WarnCornerGreyscaleSW
@@ -569,9 +569,9 @@ entities:
             1605: 57,-1
             1606: 57,0
             1658: 46,-18
-            1717: -1,-1
-            1739: -4,-1
-            1740: 1,-1
+            1714: -1,-1
+            1736: -4,-1
+            1737: 1,-1
         - node:
             color: '#52B4E996'
             id: WarnCornerSmallGreyscaleNW
@@ -599,9 +599,9 @@ entities:
             1542: 54,-1
             1602: 59,-1
             1655: 50,-18
-            1718: 1,-1
-            1737: -1,-1
-            1738: 4,-1
+            1715: 1,-1
+            1734: -1,-1
+            1735: 4,-1
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleSE
@@ -619,10 +619,10 @@ entities:
             1541: 52,3
             1604: 57,3
             1656: 46,-15
-            1719: -1,1
-            1735: -4,1
-            1736: 1,1
-            1745: 45,11
+            1716: -1,1
+            1732: -4,1
+            1733: 1,1
+            1742: 45,11
         - node:
             color: '#52B4E996'
             id: WarnCornerSmallGreyscaleSW
@@ -648,9 +648,9 @@ entities:
             1540: 54,3
             1603: 59,3
             1657: 50,-15
-            1720: 1,1
-            1733: -1,1
-            1734: 4,1
+            1717: 1,1
+            1730: -1,1
+            1731: 4,1
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallNE
@@ -716,7 +716,7 @@ entities:
             id: WarnEndGreyscaleS
           decals:
             1366: 40,-4
-            1744: 45,10
+            1741: 45,10
         - node:
             color: '#52B4E996'
             id: WarnEndGreyscaleW
@@ -1190,10 +1190,10 @@ entities:
             1626: 39,-25
             1650: 46,-16
             1651: 46,-17
-            1706: 54,11
-            1716: -1,0
-            1721: -4,0
-            1722: 1,0
+            1703: 54,11
+            1713: -1,0
+            1718: -4,0
+            1719: 1,0
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
@@ -1334,17 +1334,17 @@ entities:
             1652: 47,-18
             1653: 48,-18
             1654: 49,-18
-            1707: 51,8
-            1708: 52,8
-            1709: 54,8
-            1710: 55,8
-            1711: 56,8
-            1712: 53,8
-            1713: 0,-1
-            1729: -3,-1
-            1730: -2,-1
-            1731: 2,-1
-            1732: 3,-1
+            1704: 51,8
+            1705: 52,8
+            1706: 54,8
+            1707: 55,8
+            1708: 56,8
+            1709: 53,8
+            1710: 0,-1
+            1726: -3,-1
+            1727: -2,-1
+            1728: 2,-1
+            1729: 3,-1
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleS
@@ -1486,14 +1486,14 @@ entities:
             1645: 47,-15
             1646: 48,-15
             1647: 49,-15
-            1703: 53,10
-            1704: 52,10
-            1705: 51,10
-            1715: 0,1
-            1725: -2,1
-            1726: -3,1
-            1727: 2,1
-            1728: 3,1
+            1700: 53,10
+            1701: 52,10
+            1702: 51,10
+            1712: 0,1
+            1722: -2,1
+            1723: -3,1
+            1724: 2,1
+            1725: 3,1
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
@@ -1791,10 +1791,10 @@ entities:
             1625: 35,-25
             1648: 50,-16
             1649: 50,-17
-            1697: 45,11
-            1714: 1,0
-            1723: -1,0
-            1724: 4,0
+            1696: 45,11
+            1711: 1,0
+            1720: -1,0
+            1721: 4,0
         - node:
             color: '#EFB34196'
             id: WarnLineN
@@ -3483,6 +3483,15 @@ entities:
       parent: 1
 - proto: BlastDoor
   entities:
+  - uid: 640
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -37.5,-8.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 2605
   - uid: 1697
     components:
     - type: Transform
@@ -10665,6 +10674,19 @@ entities:
     components:
     - type: Transform
       parent: 2145
+    - type: GroupExamine
+      group:
+      - hoverMessage: ""
+        contextText: verb-examine-group-other
+        icon: /Textures/Interface/examine-star.png
+        components:
+        - Armor
+        - ClothingSpeedModifier
+        entries:
+        - message: This decreases your speed by [color=yellow]10%[/color].
+          priority: 0
+          component: ClothingSpeedModifier
+        title: null
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -10976,6 +10998,20 @@ entities:
     - type: Transform
       pos: 58.5,3.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationAdminBankATM
   entities:
   - uid: 1983
@@ -11015,11 +11051,8 @@ entities:
       parent: 1
 - proto: ComputerTargeting
   entities:
-  - uid: 2035
+  - uid: 3307
     components:
-    - type: MetaData
-      desc: Controls the station's armaments.
-      name: station defense console
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 59.5,1.5
@@ -11027,35 +11060,35 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 3311
-        - 3313
-        - 3312
-        - 3820
         - 3819
         - 3315
-        - 4266
+        - 3306
+        - 3313
+        - 2035
         - 3304
         - 3305
-        - 3306
+        - 3312
         - 3308
+        - 3820
+        - 638
+        - 3311
         - 3309
         - 3310
-        - 3307
-        defense:
-        - 3311
-        - 3313
-        - 3312
-        - 3820
+        boltgun:
         - 3819
         - 3315
-        - 4266
+        - 3306
+        - 3313
+        - 2035
         - 3304
         - 3305
-        - 3306
+        - 3312
         - 3308
+        - 3820
+        - 638
+        - 3311
         - 3309
         - 3310
-        - 3307
 - proto: ComputerWallmountWithdrawBankATM
   entities:
   - uid: 1935
@@ -11191,6 +11224,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 38.5,-14.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 1916
   - uid: 1809
     components:
     - type: Transform
@@ -17009,10 +17045,10 @@ entities:
     - type: InsideEntityStorage
 - proto: Jukebox
   entities:
-  - uid: 1920
+  - uid: 639
     components:
     - type: Transform
-      pos: 41.5,-18.5
+      pos: 41.5,-7.5
       parent: 1
 - proto: KitchenMicrowave
   entities:
@@ -17286,8 +17322,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.8968438
-        - 7.1357465
+        - 1.8977377
+        - 7.139109
         - 0
         - 0
         - 0
@@ -17304,21 +17340,21 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 2158
-          - 2157
-          - 2146
-          - 2147
-          - 2148
-          - 2149
-          - 2150
-          - 2151
-          - 2152
-          - 2153
-          - 2154
-          - 2155
-          - 2156
           - 599
+          - 2156
+          - 2155
+          - 2154
+          - 2153
+          - 2152
           - 2605
+          - 2151
+          - 2150
+          - 2149
+          - 2148
+          - 2147
+          - 2146
+          - 2157
+          - 2158
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -20421,7 +20457,7 @@ entities:
       parent: 2145
     - type: DeviceLinkSource
       linkedPorts:
-        1214:
+        640:
         - Pressed: Toggle
     - type: Physics
       canCollide: False
@@ -20591,15 +20627,6 @@ entities:
       links:
       - 2133
       - 2149
-  - uid: 1214
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -37.5,-8.5
-      parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 2605
   - uid: 1348
     components:
     - type: Transform
@@ -22732,6 +22759,10 @@ entities:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
+        1808:
+        - Left: Forward
+        - Right: Reverse
+        - Middle: Off
 - proto: VendingMachineAstroVend
   entities:
   - uid: 2120
@@ -22839,6 +22870,68 @@ entities:
     components:
     - type: Transform
       pos: 53.5,6.5
+      parent: 1
+- proto: WallPlastitaniumIndestructible
+  entities:
+  - uid: 641
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -40.5,-6.5
+      parent: 1
+  - uid: 649
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -39.5,-6.5
+      parent: 1
+  - uid: 650
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -38.5,-6.5
+      parent: 1
+  - uid: 660
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -37.5,-6.5
+      parent: 1
+  - uid: 862
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -40.5,-8.5
+      parent: 1
+  - uid: 868
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -37.5,-9.5
+      parent: 1
+  - uid: 951
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -40.5,-7.5
+      parent: 1
+  - uid: 1214
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -38.5,-9.5
+      parent: 1
+  - uid: 1374
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -39.5,-9.5
+      parent: 1
+  - uid: 1920
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -37.5,-7.5
       parent: 1
 - proto: WallReinforcedStation
   entities:
@@ -24650,26 +24743,6 @@ entities:
     - type: Transform
       pos: -40.5,-5.5
       parent: 1
-  - uid: 638
-    components:
-    - type: Transform
-      pos: -40.5,-6.5
-      parent: 1
-  - uid: 639
-    components:
-    - type: Transform
-      pos: -39.5,-6.5
-      parent: 1
-  - uid: 640
-    components:
-    - type: Transform
-      pos: -38.5,-6.5
-      parent: 1
-  - uid: 641
-    components:
-    - type: Transform
-      pos: -37.5,-6.5
-      parent: 1
   - uid: 642
     components:
     - type: Transform
@@ -24699,16 +24772,6 @@ entities:
     components:
     - type: Transform
       pos: -30.5,-6.5
-      parent: 1
-  - uid: 649
-    components:
-    - type: Transform
-      pos: -40.5,-8.5
-      parent: 1
-  - uid: 650
-    components:
-    - type: Transform
-      pos: -37.5,-9.5
       parent: 1
   - uid: 651
     components:
@@ -24754,11 +24817,6 @@ entities:
     components:
     - type: Transform
       pos: -35.5,-11.5
-      parent: 1
-  - uid: 660
-    components:
-    - type: Transform
-      pos: -40.5,-7.5
       parent: 1
   - uid: 663
     components:
@@ -24893,16 +24951,6 @@ entities:
     - type: Transform
       pos: -42.5,6.5
       parent: 1
-  - uid: 862
-    components:
-    - type: Transform
-      pos: -38.5,-9.5
-      parent: 1
-  - uid: 868
-    components:
-    - type: Transform
-      pos: -39.5,-9.5
-      parent: 1
   - uid: 870
     components:
     - type: Transform
@@ -24912,11 +24960,6 @@ entities:
     components:
     - type: Transform
       pos: -31.5,-10.5
-      parent: 1
-  - uid: 951
-    components:
-    - type: Transform
-      pos: -37.5,-7.5
       parent: 1
   - uid: 962
     components:
@@ -27752,127 +27795,141 @@ entities:
       parent: 1
 - proto: WeaponTurretCoilgunSHI
   entities:
-  - uid: 3304
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -38.5,18.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.4635003989963824 rad: 3.7098028267003116 rad
-  - uid: 3305
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -45.5,8.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.5772923987407172 rad: 4.1840134334259025 rad
-  - uid: 3306
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -47.5,6.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.8222710618675815 rad: 3.783439934984155 rad
-  - uid: 3307
-    components:
-    - type: Transform
-      pos: 0.5,-12.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 5.094568458625648 rad: 5.51882635069767 rad
-  - uid: 3308
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -47.5,-5.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 5.572920877145771 rad: 3.171178675345819 rad
-  - uid: 3309
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -42.5,-7.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 5.148088725535614 rad: 4.115156943816337 rad
-  - uid: 3310
-    components:
-    - type: Transform
-      pos: -31.5,-13.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 4.7642710968243245 rad: 4.5384277643094935 rad
-  - uid: 3311
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 56.5,14.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 2.0064960719458207 rad: 3.5960108269559767 rad
-  - uid: 3312
-    components:
-    - type: Transform
-      pos: 53.5,-6.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 0.4356997451509244 rad: 4.224807118794131 rad
-  - uid: 3313
+  - uid: 638
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 59.5,6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 3307
       obstructedRanges:
       - 1.6928754264304586 rad: 3.909631472471339 rad
-  - uid: 3315
+  - uid: 2035
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
+      rot: -1.5707963267948966 rad
+      pos: -47.5,6.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 3.8222710618675815 rad: 3.783439934984155 rad
+  - uid: 3304
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -45.5,8.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 3.5772923987407172 rad: 4.1840134334259025 rad
+  - uid: 3305
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -38.5,18.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 3.4635003989963824 rad: 3.7098028267003116 rad
+  - uid: 3306
+    components:
+    - type: Transform
+      pos: -42.5,-7.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 5.148088725535614 rad: 4.115156943816337 rad
+  - uid: 3308
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
       pos: 32.5,21.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 3307
       obstructedRanges:
       - 1.6928754264304586 rad: 4.6424465722998765 rad
-  - uid: 3819
-    components:
-    - type: Transform
-      pos: 32.5,-25.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 5.3930673886624785 rad: 5.166807153750874 rad
-  - uid: 3820
+  - uid: 3309
     components:
     - type: Transform
       pos: 42.5,-24.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 3307
       obstructedRanges:
       - 0.15260396288522549 rad: 4.12408527234854 rad
-  - uid: 4266
+  - uid: 3310
+    components:
+    - type: Transform
+      pos: 32.5,-25.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 5.3930673886624785 rad: 5.166807153750874 rad
+  - uid: 3311
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 53.5,-6.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 0.4356997451509244 rad: 4.224807118794131 rad
+  - uid: 3312
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,12.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 3307
       obstructedRanges:
       - 1.952975805035855 rad: 5.518826350697671 rad
+  - uid: 3313
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -47.5,-5.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 5.572920877145771 rad: 3.171178675345819 rad
+  - uid: 3315
+    components:
+    - type: Transform
+      pos: -31.5,-13.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 4.7642710968243245 rad: 4.5384277643094935 rad
+  - uid: 3819
+    components:
+    - type: Transform
+      pos: 0.5,-12.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 5.094568458625648 rad: 5.51882635069767 rad
+  - uid: 3820
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 56.5,14.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 3307
+      obstructedRanges:
+      - 2.0064960719458207 rad: 3.5960108269559767 rad
 - proto: WeldingFuelTankFull
   entities:
   - uid: 2104
@@ -28021,7 +28078,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -37784.61
+      secondsUntilStateChange: -38415.484
       state: Opening
   - uid: 1972
     components:
