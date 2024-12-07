@@ -175,8 +175,6 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
-    - type: SalvageMobRestrictionsGrid
-      mobsToKill: []
     - type: BecomesStation
       id: buffalo
 - proto: AirAlarm
@@ -367,31 +365,6 @@ entities:
     components:
     - type: Transform
       pos: 0.5,11.5
-      parent: 2
-  - uid: 393
-    components:
-    - type: Transform
-      pos: -2.5,12.5
-      parent: 2
-  - uid: 394
-    components:
-    - type: Transform
-      pos: -1.5,12.5
-      parent: 2
-  - uid: 395
-    components:
-    - type: Transform
-      pos: -1.5,11.5
-      parent: 2
-  - uid: 435
-    components:
-    - type: Transform
-      pos: -2.5,6.5
-      parent: 2
-  - uid: 468
-    components:
-    - type: Transform
-      pos: -2.5,7.5
       parent: 2
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
@@ -1914,6 +1887,20 @@ entities:
       linkedPorts:
         143:
         - Group1: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 430
@@ -2403,42 +2390,7 @@ entities:
   - uid: 46
     components:
     - type: Transform
-      pos: 2.2399049,-7.4480724
-      parent: 2
-  - uid: 127
-    components:
-    - type: Transform
-      pos: 2.5520067,-7.4629393
-      parent: 2
-  - uid: 135
-    components:
-    - type: Transform
-      pos: 2.3142152,-7.4332066
-      parent: 2
-  - uid: 140
-    components:
-    - type: Transform
-      pos: 2.254767,-7.4629393
-      parent: 2
-  - uid: 469
-    components:
-    - type: Transform
-      pos: 2.6709032,-7.4629393
-      parent: 2
-  - uid: 470
-    components:
-    - type: Transform
-      pos: 2.7006273,-7.4629393
-      parent: 2
-  - uid: 471
-    components:
-    - type: Transform
-      pos: 2.7006273,-7.4629393
-      parent: 2
-  - uid: 569
-    components:
-    - type: Transform
-      pos: 2.7006273,-7.4629393
+      pos: 2.5005445,-7.397315
       parent: 2
 - proto: LockerSyndicate
   entities:

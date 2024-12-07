@@ -62,14 +62,14 @@ entities:
             color: '#43990996'
             id: WarnCornerGreyscaleNE
           decals:
+            56: 1,4
             57: 1,4
-            58: 1,4
         - node:
             color: '#43990996'
             id: WarnCornerGreyscaleNW
           decals:
+            58: 0,4
             59: 0,4
-            60: 0,4
         - node:
             color: '#43990996'
             id: WarnCornerNE
@@ -86,14 +86,14 @@ entities:
             color: '#43990996'
             id: WarnCornerSmallNE
           decals:
+            54: 5,-2
             55: 5,-2
-            56: 5,-2
         - node:
             color: '#43990996'
             id: WarnCornerSmallSW
           decals:
+            52: 5,0
             53: 5,0
-            54: 5,0
         - node:
             color: '#43990996'
             id: WarnEndE
@@ -136,10 +136,10 @@ entities:
             11: 4,3
             16: 7,2
             19: -6,2
+            64: 1,2
             65: 1,2
-            66: 1,2
+            66: 1,3
             67: 1,3
-            68: 1,3
         - node:
             color: '#43990996'
             id: WarnLineGreyscaleW
@@ -154,10 +154,10 @@ entities:
             15: 4,4
             17: 7,2
             18: -6,2
+            60: 0,3
             61: 0,3
-            62: 0,3
+            62: 0,2
             63: 0,2
-            64: 0,2
         - node:
             color: '#43990996'
             id: WarnLineN
@@ -168,8 +168,8 @@ entities:
             color: '#43990996'
             id: WarnLineS
           decals:
+            50: 5,-1
             51: 5,-1
-            52: 5,-1
         - node:
             color: '#EFB34196'
             id: WarnLineS
@@ -326,26 +326,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,-3.5
       parent: 2
-- proto: BaseWeaponTurretLaserSRM
-  entities:
-  - uid: 98
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 7.5,2.5
-      parent: 2
-    - type: PointCannon
-      obstructedRanges:
-      - 2.127119714387558 rad: 3.4753871845142394 rad
-  - uid: 100
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,2.5
-      parent: 2
-    - type: PointCannon
-      obstructedRanges:
-      - 3.8222710618675815 rad: 3.4753871845142394 rad
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 169
@@ -936,6 +916,20 @@ entities:
         - Group1: Toggle
         93:
         - Group1: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 127
@@ -946,22 +940,19 @@ entities:
       parent: 2
 - proto: ComputerTabletopTargeting
   entities:
-  - uid: 153
+  - uid: 98
     components:
-    - type: MetaData
-      desc: Manipulates this shuttle's armaments.
-      name: gunnery console
     - type: Transform
       pos: 1.5,5.5
       parent: 2
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 98
         - 100
-        plasma:
-        - 98
+        - 151
+        boltgun:
         - 100
+        - 151
 - proto: Emag
   entities:
   - uid: 146
@@ -979,6 +970,13 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: EwarDevice
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      pos: -4.5,-0.5
+      parent: 2
 - proto: FaxMachineShip
   entities:
   - uid: 126
@@ -1037,19 +1035,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: JugBoriaticFuel
-  entities:
-  - uid: 151
-    components:
-    - type: Transform
-      pos: -4.650268,-0.42292506
-      parent: 2
-  - uid: 166
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.397614,-0.55672103
-      parent: 2
 - proto: Poweredlight
   entities:
   - uid: 252
@@ -1361,11 +1346,6 @@ entities:
     - type: Transform
       pos: -4.5,0.5
       parent: 2
-  - uid: 172
-    components:
-    - type: Transform
-      pos: -4.5,-0.5
-      parent: 2
 - proto: TableReinforced
   entities:
   - uid: 95
@@ -1489,13 +1469,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ToolboxMechanicalFilled
-  entities:
-  - uid: 177
-    components:
-    - type: Transform
-      pos: -4.51651,0.008194923
-      parent: 2
 - proto: TurboItemRecharger
   entities:
   - uid: 110
@@ -1951,6 +1924,24 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 6.767423,0.66019243
       parent: 2
+- proto: WeaponTurretCoilgunSRM
+  entities:
+  - uid: 100
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 7.5,2.5
+      parent: 2
+    - type: PointCannon
+      linkedConsoleId: 98
+  - uid: 151
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,2.5
+      parent: 2
+    - type: PointCannon
+      linkedConsoleId: 98
 - proto: WindoorSecure
   entities:
   - uid: 106

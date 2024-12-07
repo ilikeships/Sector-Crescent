@@ -208,6 +208,28 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -1.5,1.5
       parent: 1
+- proto: BaseWeaponTurretLancer
+  entities:
+  - uid: 78
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,2.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 48
+      obstructedRanges:
+      - 3.3586234622910975 rad: 4.27832736298208 rad
+  - uid: 140
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,2.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleId: 48
+      obstructedRanges:
+      - 1.7878271354962012 rad: 4.27832736298208 rad
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 57
@@ -549,6 +571,20 @@ entities:
         - Group3: Toggle
         47:
         - Group3: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTargeting
   entities:
   - uid: 48
@@ -559,76 +595,18 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 77
+        - 140
         - 78
-        gatling:
-        - 77
+        lancer:
+        - 140
         - 78
-- proto: CrateVulcanAmmo
+- proto: CrateLancerAmmo
   entities:
-  - uid: 140
+  - uid: 77
     components:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14908
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 141
-          - 142
-          - 143
-          - 144
-          - 145
-          - 146
-          - 147
-          - 148
-          - 149
-          - 150
-          - 151
-          - 152
-          - 153
-          - 154
-          - 155
-          - 156
-          - 157
-          - 158
-          - 159
-          - 160
-          - 161
-          - 162
-          - 163
-          - 164
-          - 165
-          - 166
-          - 167
-          - 168
-          - 169
-          - 170
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: FaxMachineShip
   entities:
   - uid: 63
@@ -652,218 +630,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: LanceRocketCartridge
-  entities:
-  - uid: 141
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 142
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 143
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 144
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 145
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 146
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 147
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 148
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 149
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 150
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 151
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 152
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 153
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 154
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 155
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 156
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 157
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 158
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 159
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 160
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 161
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 162
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 163
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 164
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 165
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 166
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 167
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 168
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 169
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 170
-    components:
-    - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: NTVulcanTurretSHI
   entities:
   - uid: 80
@@ -873,7 +639,7 @@ entities:
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 67
@@ -913,7 +679,7 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 67
@@ -1367,54 +1133,4 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
-- proto: WeaponTurretVulcanSHI
-  entities:
-  - uid: 77
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,2.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleId: 48
-      obstructedRanges:
-      - 1.7878271354962012 rad: 4.27832736298208 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-  - uid: 78
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,2.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleId: 48
-      obstructedRanges:
-      - 3.3586234622910975 rad: 4.27832736298208 rad
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        gun_chamber: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 ...
