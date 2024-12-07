@@ -703,21 +703,24 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
         if (deedID.ShuttleNameSuffix is not null)
         {
-            var dynamicAcces = AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
-            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], accesComp);
-            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], accesComp);
-            _dynamicAcces.AddAcces(dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Crew)], accesComp);
-        }
+            
+            var dynamicAcces = AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList,
+                deedID.ShuttleNameSuffix);
+            foreach (var accesCode in dynamicAcces.dynamicAccesCodes)
+                _dynamicAcces.AddAcces(accesCode, accesComp);
+            
 
 
-        if (idCardComponent.FullName != null)
-        {
-            var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-            while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+            if (idCardComponent.FullName != null)
             {
-                if (xform.GridUid != shuttle.Owner)
-                    continue;
-                consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
+                var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+                while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
+                {
+                    if (xform.GridUid != shuttle.Owner)
+                        continue;
+                    consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
+                    consoleComponent.keyToAccesMapping = dynamicAcces.keyToAccesMapping;
+                }
             }
         }
 

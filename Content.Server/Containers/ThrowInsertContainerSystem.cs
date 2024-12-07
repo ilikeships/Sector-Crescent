@@ -1,5 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
+using Content.Shared.Disposal.Components;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
@@ -26,6 +27,9 @@ public sealed class ThrowInsertContainerSystem : EntitySystem
     private void OnThrowCollide(Entity<ThrowInsertContainerComponent> ent, ref ThrowHitByEvent args)
     {
         var container = _containerSystem.GetContainer(ent, ent.Comp.ContainerId);
+
+        if (HasComp<NotDisposableComponent>(args.Thrown))
+            return;
 
         if (!_containerSystem.CanInsert(args.Thrown, container))
             return;
