@@ -8,6 +8,10 @@ ghost-respawn-rules-window-rules = You are about to be recloned:
     you DO NOT remember anything after falling unconcious,
     as your character was respooled from an emergency DNA
     sample, not live tissue.
+
+    Be aware that respooling deducts 20% of your current bank
+    account. Try to sit it out and get recloned normally if
+    you can!
 ## COMMMANDS
 ghost-respawn-command-desc = Respawns you if you're an eligible ghost.
 ghost-respawn-not-a-ghost = You're not currently ghosted.
