@@ -15,7 +15,7 @@ public sealed class CrescentCVars
     /// Respawn time, how long the player has to wait in seconds after death.
     /// </summary>
     public static readonly CVarDef<float> RespawnTime =
-        CVarDef.Create("sc.respawn.time", 1200.0f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("sc.respawn.time", 300.0f, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// Enforce role whitelists
