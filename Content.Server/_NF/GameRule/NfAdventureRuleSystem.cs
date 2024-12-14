@@ -180,9 +180,9 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         {
           //   We should figure out if it is possible to add this grid to the latejoin listing.
           //   Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Nfsd", out var stationProto))
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Precinct9", out var stationProto))
             {
-                _station.InitializeNewStation(stationProto.Stations["Nfsd"], nfsdUids);
+                _station.InitializeNewStation(stationProto.Stations["Precinct9"], nfsdUids);
             }
 
             var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
