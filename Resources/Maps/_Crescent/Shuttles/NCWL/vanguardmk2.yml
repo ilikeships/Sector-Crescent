@@ -865,18 +865,6 @@ entities:
     - type: Transform
       pos: -1.495218,-6.4542527
       parent: 1
-- proto: MagazineVulcan
-  entities:
-  - uid: 63
-    components:
-    - type: Transform
-      pos: -0.47650653,0.5669623
-      parent: 1
-  - uid: 70
-    components:
-    - type: Transform
-      pos: -0.47650653,0.7899552
-      parent: 1
 - proto: NTVulcanTurretNCWL
   entities:
   - uid: 81

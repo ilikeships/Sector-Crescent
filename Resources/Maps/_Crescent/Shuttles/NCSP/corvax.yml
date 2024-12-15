@@ -1172,13 +1172,6 @@ entities:
         missiles:
         - 26
         - 178
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 142
-    components:
-    - type: Transform
-      pos: 4.5,-2.5
-      parent: 1
 - proto: CrateMaterialUranium
   entities:
   - uid: 140
@@ -1216,13 +1209,7 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 143
-    components:
-    - type: Transform
-      pos: 3.5,-3.5
-      parent: 1
+
 - proto: FaxMachineShip
   entities:
   - uid: 131

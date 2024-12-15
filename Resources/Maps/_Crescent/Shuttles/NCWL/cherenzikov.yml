@@ -2654,37 +2654,6 @@ entities:
     - type: Transform
       pos: -3.230841,1.5496049
       parent: 1
-- proto: MagazineLightRifleBoxSlug
-  entities:
-  - uid: 314
-    components:
-    - type: Transform
-      pos: -1.4798605,9.745584
-      parent: 1
-  - uid: 315
-    components:
-    - type: Transform
-      pos: -1.4947226,9.582055
-      parent: 1
-- proto: MagazineLightRifleBoxSlugEMP
-  entities:
-  - uid: 312
-    components:
-    - type: Transform
-      pos: -1.806824,9.76045
-      parent: 1
-  - uid: 313
-    components:
-    - type: Transform
-      pos: -1.806824,9.567189
-      parent: 1
-- proto: MagazineLightRifleBoxSlugHE
-  entities:
-  - uid: 316
-    components:
-    - type: Transform
-      pos: -1.227207,9.656386
-      parent: 1
 - proto: MedicalBed
   entities:
   - uid: 258

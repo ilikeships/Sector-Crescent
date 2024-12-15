@@ -3798,13 +3798,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CrateMaterials
-  entities:
-  - uid: 770
-    components:
-    - type: Transform
-      pos: 0.5,3.5
-      parent: 1
 - proto: CrewMonitoringServer
   entities:
   - uid: 693

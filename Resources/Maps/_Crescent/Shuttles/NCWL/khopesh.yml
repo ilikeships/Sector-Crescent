@@ -298,18 +298,6 @@ entities:
         - Group1: Toggle
         - Group2: SpaceArtilleryOnSafety
         - Group3: SpaceArtilleryOffSafety
-- proto: MagazineVulcan
-  entities:
-  - uid: 28
-    components:
-    - type: Transform
-      pos: 0.2378242,2.5244327
-      parent: 1
-  - uid: 29
-    components:
-    - type: Transform
-      pos: 0.20810008,2.8217564
-      parent: 1
 - proto: NTVulcanTurretNCWL
   entities:
   - uid: 8

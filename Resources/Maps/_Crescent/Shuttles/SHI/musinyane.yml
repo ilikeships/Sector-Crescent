@@ -2005,64 +2005,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CrateMaterials
-  entities:
-  - uid: 273
-    components:
-    - type: Transform
-      pos: -0.5,5.5
-      parent: 1
-- proto: CrateSlugthrowerAmmo
-  entities:
-  - uid: 276
-    components:
-    - type: Transform
-      pos: 0.5,3.5
-      parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 649
-          - 650
-          - 651
-          - 652
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 274
-    components:
-    - type: Transform
-      pos: 0.5,5.5
-      parent: 1
-  - uid: 275
-    components:
-    - type: Transform
-      pos: -0.5,1.5
-      parent: 1
 - proto: CrewMonitoringServer
   entities:
   - uid: 219
@@ -2719,22 +2661,6 @@ entities:
     - type: Transform
       pos: -2.1287549,1.5583353
       parent: 1
-- proto: MagazineVulcan
-  entities:
-  - uid: 650
-    components:
-    - type: Transform
-      parent: 276
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 652
-    components:
-    - type: Transform
-      parent: 276
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: MedkitCombatFilled
   entities:
   - uid: 297

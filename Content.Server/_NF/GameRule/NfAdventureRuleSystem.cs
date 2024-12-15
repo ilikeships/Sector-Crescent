@@ -153,7 +153,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var caseysOffset = _random.NextVector2(2250f, 4600f);
         var tradeOffset = _random.NextVector2(1500f, 2500f);
 
-        if (_map.TryLoad(mapId, depotMap, out var depotUids, new MapLoadOptions
+        /*if (_map.TryLoad(mapId, depotMap, out var depotUids, new MapLoadOptions
             {
                 Offset = depotOffset
             }))
@@ -171,11 +171,11 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid3s[0]);
             _meta.SetEntityName(depotUid3s[0], "Resupply Depot B", meta);
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
-        }
+        }*/
 
         if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
             {
-                Offset = _random.NextVector2(3500f, 1700f)
+                Offset = new Vector2(2500f,4500f)
             }))
         {
           //   We should figure out if it is possible to add this grid to the latejoin listing.
@@ -261,7 +261,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, arena, out var depotUid5s, new MapLoadOptions
             {
-                Offset = new Vector2(10500f, 9200f)
+                Offset = new Vector2(7200f, 5500f)
             }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid5s[0]);
@@ -271,7 +271,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, stranded, out var depotUid20s, new MapLoadOptions
         {
-            Offset = new Vector2(10320f, 9250f)
+            Offset = new Vector2(7250f, 5320f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid20s[0]);
@@ -282,7 +282,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, fighter1, out var depotUid21s, new MapLoadOptions
         {
-            Offset = new Vector2(10920f, 9230f)
+            Offset = new Vector2(7730f, 5920f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid21s[0]);
@@ -293,7 +293,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, fighter2, out var depotUid22s, new MapLoadOptions
         {
-            Offset = new Vector2(10950f, 9221f)
+            Offset = new Vector2(7721f, 5950f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid22s[0]);
@@ -304,7 +304,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, solarruined, out var depotUid23s, new MapLoadOptions
         {
-            Offset = new Vector2(10170f, 9150f)
+            Offset = new Vector2(7750f, 5170f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid23s[0]);
@@ -315,7 +315,8 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, impwreck, out var depotUid24s, new MapLoadOptions
         {
-            Offset = new Vector2(10750f, 9070f)
+            Offset = new Vector2(7770f, 5750f)
+
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid24s[0]);
@@ -340,7 +341,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.AddIFFFlag(depotUid6s[0], IFFFlags.HideLabel);
         //  }
 
-        if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
+       /* if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
         {
             Offset = new Vector2(-3000, 6500f)
         }))
@@ -348,7 +349,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
             _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
-        }
+        }*/
 
      //   if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
      //   {
@@ -383,7 +384,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
         {
-            Offset = new Vector2(9000f, 8100f)
+            Offset = new Vector2(7794f, 4500f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
@@ -406,7 +407,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
      //       {
     //            _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
     //        }
-    //  
+    //
     //        var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
     //        _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
     //        _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
@@ -415,7 +416,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, oris, out var orisUids, new MapLoadOptions
         {
-            Offset = new Vector2(6500f, 1200f)
+            Offset = new Vector2(3000f, 5400f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(orisUids[0]);
@@ -423,7 +424,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(orisUids[0], factionColor);
         }
 
-        if (_map.TryLoad(mapId, craster, out var crasterUids, new MapLoadOptions
+        /*if (_map.TryLoad(mapId, craster, out var crasterUids, new MapLoadOptions
         {
             Offset = new Vector2(-6500f, -12000f)
         }))
@@ -431,11 +432,11 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(crasterUids[0]);
             _meta.SetEntityName(crasterUids[0], "Craster's Grave", meta);
             _shuttle.SetIFFColor(crasterUids[0], coveColor);
-        }
+        }*/
 
         if (_map.TryLoad(mapId, taypanone, out var taypanoneUids, new MapLoadOptions
         {
-            Offset = new Vector2(1000f, 5000f)
+            Offset = new Vector2(3000f, 3500f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(taypanoneUids[0]);
@@ -452,7 +453,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
        //       {
        //           _station.InitializeNewStation(stationProto.Stations["Refuge"], depotUid11s);
        //       }
-      //  
+      //
       //        var meta = EnsureComp<MetaDataComponent>(depotUid11s[0]);
        //       _meta.SetEntityName(depotUid11s[0], "The Refuge", meta);
        //       _shuttle.SetIFFColor(depotUid11s[0], refugeColor);
@@ -461,7 +462,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, vladzena, out var depotUid12s, new MapLoadOptions
         {
-            Offset = _random.NextVector2(3000f, 9000f)
+            Offset = new Vector2(0f, 9000f)
         }))
         {
             if (_prototypeManager.TryIndex<GameMapPrototype>("Vladzena", out var stationProto))

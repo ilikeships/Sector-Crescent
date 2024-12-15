@@ -1963,20 +1963,6 @@ entities:
     - type: Transform
       pos: 9.820159,3.5835135
       parent: 1
-- proto: MagazineLightRifleBoxSlug
-  entities:
-  - uid: 225
-    components:
-    - type: Transform
-      pos: 9.701262,4.6390142
-      parent: 1
-- proto: MagazineLightRifleBoxSlugHE
-  entities:
-  - uid: 223
-    components:
-    - type: Transform
-      pos: 9.314851,4.6390142
-      parent: 1
 - proto: PaperBin20
   entities:
   - uid: 423

@@ -1413,13 +1413,6 @@ entities:
         vulcan:
         - 209
         - 211
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 147
-    components:
-    - type: Transform
-      pos: 7.5,-1.5
-      parent: 1
 - proto: CrateBoriatic
   entities:
   - uid: 7
@@ -1433,13 +1426,6 @@ entities:
     components:
     - type: Transform
       pos: 9.5,-1.5
-      parent: 1
-- proto: CrateSwarmerAmmo
-  entities:
-  - uid: 3
-    components:
-    - type: Transform
-      pos: 7.5,-2.5
       parent: 1
 - proto: DrinkBeerBottleFull
   entities:

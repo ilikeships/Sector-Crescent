@@ -1133,23 +1133,6 @@ entities:
     - type: Transform
       pos: -0.63267875,2.3172925
       parent: 2
-- proto: MagazineVulcan
-  entities:
-  - uid: 65
-    components:
-    - type: Transform
-      pos: -2.5129762,5.7970543
-      parent: 2
-  - uid: 67
-    components:
-    - type: Transform
-      pos: -2.468391,5.529463
-      parent: 2
-  - uid: 248
-    components:
-    - type: Transform
-      pos: -4.5193458,5.6632586
-      parent: 2
 - proto: OxygenTankFilled
   entities:
   - uid: 213

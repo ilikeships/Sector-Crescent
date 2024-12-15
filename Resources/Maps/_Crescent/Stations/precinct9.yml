@@ -10124,13 +10124,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 1472
-- proto: CrateAssaultMortarAmmo
-  entities:
-  - uid: 1172
-    components:
-    - type: Transform
-      pos: 5.5,5.5
-      parent: 1
 - proto: CrateEmergencyAdvancedKit
   entities:
   - uid: 1173
