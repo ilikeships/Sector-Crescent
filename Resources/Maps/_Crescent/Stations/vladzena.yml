@@ -3743,7 +3743,6 @@ entities:
     - type: Transform
       parent: 3937
     - type: InstantAction
-      toggled: True
       container: 3937
 - proto: AirAlarm
   entities:
@@ -17250,7 +17249,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17264,7 +17263,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17278,7 +17277,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17292,7 +17291,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17306,7 +17305,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17320,7 +17319,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 1746
+      - 789
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -19745,9 +19744,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 7.5,-75.5
       parent: 1
-- proto: ComputerCargoOrders
+- proto: ComputerCargoOrdersCommie
   entities:
-  - uid: 1746
+  - uid: 789
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -19755,9 +19754,9 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        1748:
-        - OrderSender: OrderReceiver
         1747:
+        - OrderSender: OrderReceiver
+        1748:
         - OrderSender: OrderReceiver
         1749:
         - OrderSender: OrderReceiver
