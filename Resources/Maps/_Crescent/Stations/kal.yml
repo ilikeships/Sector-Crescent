@@ -3842,7 +3842,7 @@ entities:
       pos: -11.5,-34.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -117426.586
+      secondsUntilStateChange: -117630.11
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4369,6 +4369,20 @@ entities:
     components:
     - type: Transform
       parent: 2694
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6850
+    components:
+    - type: Transform
+      parent: 3243
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6852
+    components:
+    - type: Transform
+      parent: 3244
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -18405,6 +18419,20 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+  - uid: 6851
+    components:
+    - type: Transform
+      parent: 3243
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6854
+    components:
+    - type: Transform
+      parent: 3244
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingMaskImperialGovernorMask
   entities:
   - uid: 430
@@ -18700,6 +18728,22 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: ClothingOuterHardsuitInspector
+  entities:
+  - uid: 6849
+    components:
+    - type: Transform
+      parent: 3243
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6856
+    components:
+    - type: Transform
+      parent: 3244
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingOuterHardsuitRd
   entities:
   - uid: 3618
@@ -18868,6 +18912,20 @@ entities:
     components:
     - type: Transform
       parent: 1614
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6848
+    components:
+    - type: Transform
+      parent: 3243
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6853
+    components:
+    - type: Transform
+      parent: 3244
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -28894,6 +28952,20 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+  - uid: 6847
+    components:
+    - type: Transform
+      parent: 3243
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 6855
+    components:
+    - type: Transform
+      parent: 3244
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: HandheldHealthAnalyzer
   entities:
   - uid: 2793
@@ -30029,7 +30101,7 @@ entities:
   - uid: 3883
     components:
     - type: Transform
-      pos: 29.356117,-39.447697
+      pos: 29.276283,-39.444633
       parent: 1
   - uid: 3884
     components:
@@ -35749,6 +35821,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: 16.5,-55.5
       parent: 1
+- proto: SolarTracker
+  entities:
+  - uid: 6857
+    components:
+    - type: Transform
+      pos: 4.5,-62.5
+      parent: 1
+  - uid: 6858
+    components:
+    - type: Transform
+      pos: -3.5,-62.5
+      parent: 1
 - proto: SpaceCash100
   entities:
   - uid: 3860
@@ -36790,11 +36874,69 @@ entities:
     - type: Transform
       pos: 7.5,-35.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 6847
+          - 6848
+          - 6849
+          - 6850
+          - 6851
   - uid: 3244
     components:
     - type: Transform
       pos: 9.5,-35.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 6852
+          - 6853
+          - 6854
+          - 6855
+          - 6856
   - uid: 3561
     components:
     - type: Transform
