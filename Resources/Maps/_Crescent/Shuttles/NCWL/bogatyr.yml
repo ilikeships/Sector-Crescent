@@ -1498,23 +1498,6 @@ entities:
     - type: Transform
       pos: 1.5,5.5
       parent: 2
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 274
-    components:
-    - type: Transform
-      pos: -6.5,4.5
-      parent: 2
-  - uid: 276
-    components:
-    - type: Transform
-      pos: 7.5,4.5
-      parent: 2
-  - uid: 277
-    components:
-    - type: Transform
-      pos: -6.5,5.5
-      parent: 2
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
   - uid: 243

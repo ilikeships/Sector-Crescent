@@ -825,23 +825,6 @@ entities:
     - type: Thruster
       originalPowerLoad: 1500
       baseThrust: 250
-- proto: MagazineGrenadeBlast
-  entities:
-  - uid: 112
-    components:
-    - type: Transform
-      pos: -0.72951096,-0.10156667
-      parent: 1
-  - uid: 113
-    components:
-    - type: Transform
-      pos: -0.72951096,-0.279961
-      parent: 1
-  - uid: 114
-    components:
-    - type: Transform
-      pos: -0.72951096,-0.47322187
-      parent: 1
 - proto: PoweredlightLED
   entities:
   - uid: 170

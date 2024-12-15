@@ -412,46 +412,6 @@ entities:
       originalPowerLoad: 1500
       baseThrust: 450
       thrust: 450
-- proto: MagazineGrenadeBlast
-  entities:
-  - uid: 39
-    components:
-    - type: Transform
-      pos: 2.808998,3.366154
-      parent: 1
-- proto: MagazineVulcan
-  entities:
-  - uid: 71
-    components:
-    - type: Transform
-      parent: 70
-    - type: Physics
-      canCollide: False
-  - uid: 95
-    components:
-    - type: Transform
-      pos: -2.2831898,3.8593814
-      parent: 1
-  - uid: 96
-    components:
-    - type: Transform
-      pos: -2.9865918,3.3787942
-      parent: 1
-  - uid: 98
-    components:
-    - type: Transform
-      pos: -2.9171014,3.7954607
-      parent: 1
-  - uid: 99
-    components:
-    - type: Transform
-      pos: -2.9780936,3.428826
-      parent: 1
-  - uid: 100
-    components:
-    - type: Transform
-      pos: -2.8893056,4.0454607
-      parent: 1
 - proto: NTVulcanTurret
   entities:
   - uid: 70

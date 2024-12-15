@@ -2285,36 +2285,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -9.5,-3.5
       parent: 1
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 297
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 1
 - proto: CrateAutogunAmmo
   entities:
   - uid: 298
     components:
     - type: Transform
       pos: 1.5,2.5
-      parent: 1
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 394
-    components:
-    - type: Transform
-      pos: 8.5,-2.5
-      parent: 1
-  - uid: 395
-    components:
-    - type: Transform
-      pos: 7.5,-2.5
-      parent: 1
-  - uid: 396
-    components:
-    - type: Transform
-      pos: -6.5,-2.5
       parent: 1
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:

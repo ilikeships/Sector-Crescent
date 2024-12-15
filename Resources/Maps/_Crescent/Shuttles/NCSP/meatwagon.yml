@@ -970,35 +970,6 @@ entities:
     - type: Transform
       pos: -0.11461252,-2.3638334
       parent: 1
-- proto: MagazineGrenadeBlast
-  entities:
-  - uid: 89
-    components:
-    - type: Transform
-      parent: 88
-    - type: Physics
-      canCollide: False
-- proto: MechaniteAutoinjector
-  entities:
-  - uid: 129
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.2621603,-6.408024
-      parent: 1
-  - uid: 130
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.514814,-6.42289
-      parent: 1
-- proto: MedkitBruteFilled
-  entities:
-  - uid: 138
-    components:
-    - type: Transform
-      pos: 2.2403226,-6.3188267
-      parent: 1
 - proto: MedkitBurnFilled
   entities:
   - uid: 139

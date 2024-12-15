@@ -3277,13 +3277,6 @@ entities:
           ents: []
     - type: Physics
       canCollide: False
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 914
-    components:
-    - type: Transform
-      pos: -16.5,1.5
-      parent: 1
 - proto: CrateFoodMRE
   entities:
   - uid: 909
@@ -3325,13 +3318,6 @@ entities:
     components:
     - type: Transform
       pos: -14.5,2.5
-      parent: 1
-- proto: CrateMaterials
-  entities:
-  - uid: 910
-    components:
-    - type: Transform
-      pos: -16.5,5.5
       parent: 1
 - proto: CrateMaterialTextiles
   entities:

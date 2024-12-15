@@ -2312,13 +2312,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CrateMaterials
-  entities:
-  - uid: 922
-    components:
-    - type: Transform
-      pos: -12.5,-16.5
-      parent: 1
 - proto: CrateServiceBureaucracy
   entities:
   - uid: 918
@@ -3091,70 +3084,6 @@ entities:
     components:
     - type: Transform
       pos: -10.101189,-17.649328
-      parent: 1
-- proto: MagazineLightRifleBoxSlugHE
-  entities:
-  - uid: 73
-    components:
-    - type: Transform
-      parent: 70
-    - type: Physics
-      canCollide: False
-  - uid: 74
-    components:
-    - type: Transform
-      parent: 71
-    - type: Physics
-      canCollide: False
-  - uid: 940
-    components:
-    - type: Transform
-      pos: 3.2170572,-5.6754837
-      parent: 1
-  - uid: 941
-    components:
-    - type: Transform
-      pos: 3.6895924,-5.647706
-      parent: 1
-  - uid: 942
-    components:
-    - type: Transform
-      pos: 3.7729807,-5.3004827
-      parent: 1
-  - uid: 943
-    components:
-    - type: Transform
-      pos: 3.3282413,-5.314372
-      parent: 1
-  - uid: 944
-    components:
-    - type: Transform
-      pos: 4.2733116,-5.5921497
-      parent: 1
-  - uid: 945
-    components:
-    - type: Transform
-      pos: 4.745846,-5.606039
-      parent: 1
-  - uid: 946
-    components:
-    - type: Transform
-      pos: 5.7743044,-5.272705
-      parent: 1
-  - uid: 947
-    components:
-    - type: Transform
-      pos: 5.2739735,-5.7032614
-      parent: 1
-  - uid: 948
-    components:
-    - type: Transform
-      pos: 5.8576927,-5.7032614
-      parent: 1
-  - uid: 949
-    components:
-    - type: Transform
-      pos: 4.5512733,-5.32524
       parent: 1
 - proto: MagazinePistolHighCapacity
   entities:

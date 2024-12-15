@@ -2298,73 +2298,12 @@ entities:
         - 699
     - type: Physics
       fixedRotation: False
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 158
-    components:
-    - type: Transform
-      pos: 3.5,1.5
-      parent: 1
-  - uid: 642
-    components:
-    - type: Transform
-      pos: 3.5,2.5
-      parent: 1
 - proto: CrateFoodMRE
   entities:
   - uid: 389
     components:
     - type: Transform
       pos: 5.5896354,3.5339332
-      parent: 1
-- proto: CrateMaterials
-  entities:
-  - uid: 78
-    components:
-    - type: Transform
-      pos: 3.5,4.5
-      parent: 1
-    - type: Physics
-      fixedRotation: False
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 87
-          - 83
-          - 82
-          - 98
-          - 99
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-- proto: CrateSlugthrowerAmmo
-  entities:
-  - uid: 683
-    components:
-    - type: Transform
-      pos: 6.5,3.5
       parent: 1
 - proto: CrewMonitoringServer
   entities:
@@ -2928,20 +2867,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: MagazineLightRifleBoxSlugHE
-  entities:
-  - uid: 241
-    components:
-    - type: Transform
-      parent: 240
-    - type: Physics
-      canCollide: False
-  - uid: 632
-    components:
-    - type: Transform
-      parent: 631
-    - type: Physics
-      canCollide: False
 - proto: MechaniteAutoinjector
   entities:
   - uid: 392

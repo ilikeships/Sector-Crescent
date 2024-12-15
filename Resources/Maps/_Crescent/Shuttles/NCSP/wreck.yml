@@ -856,25 +856,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 3.553216,-1.2215008
       parent: 1
-- proto: MagazineLightRifleBoxSlugEMP
-  entities:
-  - uid: 124
-    components:
-    - type: Transform
-      pos: 2.3435917,-4.199095
-      parent: 1
-  - uid: 125
-    components:
-    - type: Transform
-      pos: 2.70028,-4.199095
-      parent: 1
-- proto: MagazineLightRifleBoxSlugHE
-  entities:
-  - uid: 126
-    components:
-    - type: Transform
-      pos: 2.4922123,-4.49642
-      parent: 1
 - proto: PlastitaniumWindow
   entities:
   - uid: 99

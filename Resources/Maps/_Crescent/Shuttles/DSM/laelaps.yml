@@ -3279,18 +3279,6 @@ entities:
         - 92
         - 48
         - 366
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 491
-    components:
-    - type: Transform
-      pos: -3.5,11.5
-      parent: 1
-  - uid: 568
-    components:
-    - type: Transform
-      pos: -2.5,20.5
-      parent: 1
 - proto: CrateEngineeringAMEJar
   entities:
   - uid: 135

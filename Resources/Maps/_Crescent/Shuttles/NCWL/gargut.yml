@@ -4043,18 +4043,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -17.5,3.5
       parent: 1
-- proto: CrateArtilleryAmmo
-  entities:
-  - uid: 472
-    components:
-    - type: Transform
-      pos: 1.5,-0.5
-      parent: 1
-  - uid: 1190
-    components:
-    - type: Transform
-      pos: 0.5,-0.5
-      parent: 1
 - proto: CrateBoriatic
   entities:
   - uid: 473
@@ -4068,58 +4056,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,1.5
-      parent: 1
-- proto: CrateMaterials
-  entities:
-  - uid: 468
-    components:
-    - type: Transform
-      pos: 0.5,0.5
-      parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 469
-          - 470
-          - 471
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-- proto: CrateSumitomoAmmo
-  entities:
-  - uid: 655
-    components:
-    - type: Transform
-      pos: 0.5,1.5
-      parent: 1
-- proto: CrateVulcanAmmo
-  entities:
-  - uid: 654
-    components:
-    - type: Transform
-      pos: -0.5,-0.5
       parent: 1
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
