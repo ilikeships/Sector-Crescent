@@ -1,2 +1,2 @@
 chat-radio-traffic = Shortband
-chat-radio-nfsd = Sektorpol
+chat-radio-nfsd = Taypan Sektorpolizei
