@@ -63,19 +63,19 @@ entities:
             color: '#DE3A3A96'
             id: WarnCornerSmallSE
           decals:
-            18: -1,1
+            11: -1,1
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSmallSW
           decals:
-            19: 1,1
+            12: 1,1
         - node:
             color: '#DE3A3A96'
             id: WarnLineE
           decals:
-            12: -1,0
-            13: -1,-1
-            14: -1,-2
+            5: -1,0
+            6: -1,-1
+            7: -1,-2
         - node:
             color: '#FFFFFFFF'
             id: WarnLineE
@@ -86,14 +86,14 @@ entities:
             color: '#DE3A3A96'
             id: WarnLineN
           decals:
-            11: 0,1
+            4: 0,1
         - node:
             color: '#DE3A3A96'
             id: WarnLineS
           decals:
-            15: 1,0
-            16: 1,-1
-            17: 1,-2
+            8: 1,0
+            9: 1,-1
+            10: 1,-2
         - node:
             color: '#FFFFFFFF'
             id: WarnLineS
@@ -667,16 +667,12 @@ entities:
         - Group5: Toggle
         173:
         - Group5: Toggle
-        90:
+        193:
         - Group1: Toggle
-        - Group3: SpaceArtilleryOnSafety
-        - Group4: SpaceArtilleryOffSafety
         219:
         - Group2: Trigger
-        203:
+        90:
         - Group1: Toggle
-        - Group3: SpaceArtilleryOnSafety
-        - Group4: SpaceArtilleryOffSafety
         220:
         - Group2: Trigger
     - type: NamedModules
@@ -851,7 +847,7 @@ entities:
     - type: Transform
       pos: 1.0410829,-1.2986534
       parent: 1
-- proto: NTVulcanTurretNCSP
+- proto: NTVulcanTurret
   entities:
   - uid: 90
     components:
@@ -860,7 +856,7 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 197500
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 76
@@ -875,7 +871,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 193
+          ent: null
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -893,14 +889,14 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
-  - uid: 203
+  - uid: 193
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 76
@@ -915,7 +911,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 204
+          ent: null
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True

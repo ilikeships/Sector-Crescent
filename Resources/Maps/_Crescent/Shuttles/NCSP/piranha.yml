@@ -51,27 +51,27 @@ entities:
             color: '#DE3A3A96'
             id: WarnBoxGreyscale
           decals:
-            17: 0,3
+            8: 0,3
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleNE
           decals:
-            15: 0,2
+            6: 0,2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleNW
           decals:
-            16: -1,2
+            7: -1,2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleSE
           decals:
-            14: 0,1
+            5: 0,1
         - node:
             color: '#DE3A3A96'
             id: WarnCornerGreyscaleSW
           decals:
-            13: -1,1
+            4: -1,1
         - node:
             color: '#DE3A3A96'
             id: WarnLineN
@@ -317,8 +317,27 @@ entities:
       linkedPorts:
         3:
         - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
+    - type: NamedModules
+      buttonNames:
+      - Fire Slugthrower
+      - N/A
+      - N/A
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: PoweredlightLED
   entities:
   - uid: 59
@@ -327,7 +346,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,1.5
       parent: 1
-- proto: SHISlugthrowerTurretNCSP
+- proto: SHISlugthrowerTurret
   entities:
   - uid: 3
     components:
@@ -340,6 +359,8 @@ entities:
     - type: DeviceLinkSink
       links:
       - 24
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
