@@ -791,9 +791,30 @@ entities:
         88:
         - Group2: Trigger
         87:
-        - Group3: Toggle
-        - Group4: SpaceArtilleryOnSafety
         - Group5: SpaceArtilleryOffSafety
+        - Group4: SpaceArtilleryOnSafety
+        - Group3: Toggle
+    - type: NamedModules
+      buttonNames:
+      - Reinforce Bridge
+      - Fire Missile Launcher
+      - Fire Slugthrower
+      - Slugthrower Safeties ON
+      - Slugthrower Safeties OFF
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 93
@@ -1109,7 +1130,7 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        87:
+        invalid:
         - Pressed: Toggle
   - uid: 154
     components:
@@ -1131,13 +1152,10 @@ entities:
       pos: 3.5,1.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
-      - 152
       - 76
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1186,7 +1204,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 89
+          ent: invalid
     - type: DeviceLinkSink
       links:
       - 154

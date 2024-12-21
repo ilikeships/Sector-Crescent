@@ -2067,8 +2067,6 @@ entities:
       linkedPorts:
         203:
         - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
         208:
         - Group4: On
         - Group5: Off
@@ -2096,6 +2094,29 @@ entities:
         216:
         - Group4: On
         - Group5: Off
+    - type: NamedModules
+      buttonNames:
+      - Fire Slugthrower
+      - N/A
+      - N/A
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: ApcPowerReceiver
+      needsPower: False
 - proto: ComputerTabletopAdvancedRadar
   entities:
   - uid: 311
@@ -2971,7 +2992,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.2461631,-8.60629
       parent: 1
-- proto: SHISlugthrowerTurretNCWL
+- proto: SHISlugthrowerTurret
   entities:
   - uid: 203
     components:
@@ -2980,12 +3001,10 @@ entities:
       pos: 1.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 197500
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 213
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
