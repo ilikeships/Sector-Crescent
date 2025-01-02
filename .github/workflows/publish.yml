@@ -41,6 +41,9 @@ jobs:
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
+    - name: Own the publishscript (the fact i have to do it this way is so monumentally retarded i have no words)
+      run: chmod +x Tools/publish_multi_request.py
+
     - name: Publish version
       run: Tools/publish_multi_request.py
       env:
