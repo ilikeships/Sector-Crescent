@@ -1006,14 +1006,41 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        161:
+        75:
         - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
-        135:
+        76:
         - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
+    - type: NamedModules
+      buttonNames:
+      - Fire Slugthrowers
+      - N/A
+      - N/A
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: ApcPowerReceiver
+      needsPower: False
+- proto: ComputerTabletopPowerMonitoring
+  entities:
+  - uid: 135
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,3.5
+      parent: 1
 - proto: CrateSlugthrowerAmmo
   entities:
   - uid: 170
@@ -1267,6 +1294,20 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,0.5
       parent: 1
+- proto: RCD
+  entities:
+  - uid: 146
+    components:
+    - type: Transform
+      pos: -5.4692936,2.53402
+      parent: 1
+- proto: RCDAmmo
+  entities:
+  - uid: 149
+    components:
+    - type: Transform
+      pos: -5.6327753,2.429957
+      parent: 1
 - proto: ReinforcedPlasmaWindow
   entities:
   - uid: 88
@@ -1281,19 +1322,17 @@ entities:
       parent: 1
 - proto: SHISlugthrowerTurret
   entities:
-  - uid: 135
+  - uid: 75
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -0.5,4.5
+      pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 197000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 137
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1321,19 +1360,17 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
-  - uid: 161
+  - uid: 76
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 1.5,4.5
+      pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 197000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 137
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

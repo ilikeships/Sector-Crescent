@@ -3905,7 +3905,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -99345.9
+      secondsUntilStateChange: -99639.625
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4026,7 +4026,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -19475.855
+      secondsUntilStateChange: -19769.58
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -31084,6 +31084,18 @@ entities:
     - type: Transform
       pos: 34.31378,40.528984
       parent: 1
+- proto: ShinoharaBudgetVendor
+  entities:
+  - uid: 6338
+    components:
+    - type: Transform
+      pos: 5.5,39.5
+      parent: 1
+  - uid: 6352
+    components:
+    - type: Transform
+      pos: -3.5,1.5
+      parent: 1
 - proto: ShipyardManufactorum
   entities:
   - uid: 2166
@@ -35100,11 +35112,6 @@ entities:
     - type: Transform
       pos: 17.5,-0.5
       parent: 1
-  - uid: 6338
-    components:
-    - type: Transform
-      pos: 5.5,39.5
-      parent: 1
 - proto: VendingMachineAutoTuneVend
   entities:
   - uid: 1383
@@ -35126,6 +35133,11 @@ entities:
     - type: Transform
       pos: 9.5,47.5
       parent: 1
+  - uid: 6353
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
 - proto: VendingMachineChemicals
   entities:
   - uid: 1659
@@ -35145,6 +35157,13 @@ entities:
     - type: Transform
       pos: 37.5,36.5
       parent: 1
+- proto: VendingMachineClothing
+  entities:
+  - uid: 6354
+    components:
+    - type: Transform
+      pos: 6.5,1.5
+      parent: 1
 - proto: VendingMachineCoffee
   entities:
   - uid: 2689
@@ -35163,6 +35182,11 @@ entities:
     components:
     - type: Transform
       pos: 6.5,47.5
+      parent: 1
+  - uid: 6355
+    components:
+    - type: Transform
+      pos: 10.5,1.5
       parent: 1
 - proto: VendingMachineFlatpackVend
   entities:
@@ -35218,19 +35242,17 @@ entities:
     - type: Transform
       pos: -10.5,46.5
       parent: 1
-- proto: VendingMachineTankDispenserEVA
-  entities:
-  - uid: 2017
-    components:
-    - type: Transform
-      pos: 5.5,38.5
-      parent: 1
 - proto: VendingMachineVendomat
   entities:
   - uid: 681
     components:
     - type: Transform
       pos: 11.5,18.5
+      parent: 1
+  - uid: 2017
+    components:
+    - type: Transform
+      pos: 5.5,38.5
       parent: 1
 - proto: VendingMachineYouTool
   entities:

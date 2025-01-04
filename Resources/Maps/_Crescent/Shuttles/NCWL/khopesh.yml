@@ -290,15 +290,34 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
+        22:
+        - Group1: Toggle
         8:
         - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
-        23:
-        - Group1: Toggle
-        - Group2: SpaceArtilleryOnSafety
-        - Group3: SpaceArtilleryOffSafety
-- proto: NTVulcanTurretNCWL
+    - type: NamedModules
+      buttonNames:
+      - Fire Vulcans
+      - N/A
+      - N/A
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: ApcPowerReceiver
+      needsPower: False
+- proto: NTVulcanTurret
   entities:
   - uid: 8
     components:
@@ -307,12 +326,10 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 26
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -340,19 +357,17 @@ entities:
       autoRecharge: True
     - type: ApcPowerReceiver
       powerLoad: 2000
-  - uid: 23
+  - uid: 22
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,4.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 26
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

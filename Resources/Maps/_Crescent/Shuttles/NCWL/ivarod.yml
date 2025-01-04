@@ -69,6 +69,30 @@ entities:
         version: 2
         nodes:
         - node:
+            color: '#EFB34196'
+            id: BrickTileSteelCornerNe
+          decals:
+            177: -4,10
+            178: -4,10
+        - node:
+            color: '#EFB34196'
+            id: BrickTileSteelCornerNw
+          decals:
+            175: -3,10
+            176: -3,10
+        - node:
+            color: '#EFB34196'
+            id: BrickTileSteelCornerSe
+          decals:
+            179: -4,11
+            180: -4,11
+        - node:
+            color: '#EFB34196'
+            id: BrickTileSteelCornerSw
+          decals:
+            181: -3,11
+            182: -3,11
+        - node:
             color: '#FFFFFFFF'
             id: TechN
           decals:
@@ -3109,6 +3133,29 @@ entities:
         268:
         - Group5: On
         - Group4: Off
+    - type: NamedModules
+      buttonNames:
+      - Fire Artillery
+      - Artillery Safeties ON
+      - Artillery Safeties OFF
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: ApcPowerReceiver
+      needsPower: False
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 533
@@ -5607,7 +5654,7 @@ entities:
       pos: -0.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 997000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5637,7 +5684,7 @@ entities:
       pos: 2.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 997000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

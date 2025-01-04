@@ -41,21 +41,13 @@ jobs:
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
-    - name: Upload build artifact
-      id: artifact-upload-step
-      uses: actions/upload-artifact@v4
-      with:
-        name: build
-        path: release/*.zip
-        compression-level: 0
-        retention-days: 0
+    - name: Own the publishscript (the fact i have to do it this way is so monumentally retarded i have no words)
+      run: chmod +x Tools/publish_multi_request.py
 
     - name: Publish version
-      run: Tools/publish_github_artifact.py
+      run: Tools/publish_multi_request.py
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-        ARTIFACT_ID: ${{ steps.artifact-upload-step.outputs.artifact-id }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
 
     #- name: Publish changelog (Discord)
@@ -69,7 +61,3 @@ jobs:
       env:
         CHANGELOG_RSS_KEY: ${{ secrets.CHANGELOG_RSS_KEY }}
 
-    - uses: geekyeggo/delete-artifact@v5
-      if: always()
-      with:
-        name: build
