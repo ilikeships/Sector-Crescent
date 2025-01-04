@@ -58,15 +58,15 @@ entities:
             1: 4352
           0,-1:
             0: 65058
-            1: 1
+            1: 9
           0,1:
             1: 3
+            0: 8
           1,0:
             0: 4401
             1: 17408
           1,-1:
-            0: 4962
-            2: 8192
+            0: 13154
             1: 4
           1,1:
             1: 6
@@ -91,21 +91,6 @@ entities:
           moles:
           - 0
           - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        - volume: 2500
-          temperature: 293.14996
-          moles:
-          - 20.078888
-          - 75.53487
           - 0
           - 0
           - 0
@@ -205,6 +190,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
+      - 168
   - uid: 187
     components:
     - type: Transform
@@ -214,6 +200,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
+      - 168
   - uid: 188
     components:
     - type: Transform
@@ -223,6 +210,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
+      - 168
   - uid: 189
     components:
     - type: Transform
@@ -232,6 +220,7 @@ entities:
     - type: DeviceLinkSink
       links:
       - 46
+      - 168
   - uid: 190
     components:
     - type: Transform
@@ -239,7 +228,7 @@ entities:
       parent: 1
     - type: DeviceLinkSink
       links:
-      - 46
+      - 168
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 65
@@ -258,6 +247,12 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,1.5
+      parent: 1
+  - uid: 167
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,2.5
       parent: 1
 - proto: CableApcExtension
   entities:
@@ -634,16 +629,16 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 219
-          - 218
-          - 217
-          - 216
-          - 192
-          - 193
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
           - 194
-          - 201
-          - 202
-          - 209
+          - invalid
+          - invalid
+          - invalid
 - proto: ClothingHeadHelmetImperialEVA
   entities:
   - uid: 166
@@ -688,12 +683,10 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
+        8:
+        - Group2: Trigger
         32:
-        - Group1: Trigger
-        174:
-        - Group2: Toggle
-        190:
-        - Group3: Toggle
+        - Group1: Toggle
         189:
         - Group3: Toggle
         188:
@@ -702,6 +695,27 @@ entities:
         - Group3: Toggle
         186:
         - Group3: Toggle
+    - type: NamedModules
+      buttonNames:
+      - Fire Slugthrower
+      - Fire Kurosawa
+      - N/A
+      - N/A
+      - N/A
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerStationRecords
   entities:
   - uid: 73
@@ -718,24 +732,24 @@ entities:
       parent: 191
     - type: BallisticAmmoProvider
       entities:
-      - 195
-      - 196
-      - 197
-      - 198
-      - 199
-      - 200
+      - invalid
+      - invalid
+      - invalid
+      - invalid
+      - invalid
+      - invalid
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 195
-          - 196
-          - 197
-          - 198
-          - 199
-          - 200
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -1023,21 +1037,19 @@ entities:
     - type: Transform
       pos: 6.5,2.5
       parent: 1
-- proto: SHISlugthrowerTurretDSM
+- proto: SHISlugthrowerTurret
   entities:
-  - uid: 174
+  - uid: 32
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 199500
     - type: DeviceLinkSink
       links:
       - 46
-    - type: ChamberMagazineAmmoProvider
-      boltClosed: True
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1047,7 +1059,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 175
+          ent: null
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -1077,26 +1089,12 @@ entities:
       - 88
 - proto: ShuttleGunMissileRack
   entities:
-  - uid: 32
+  - uid: 8
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,3.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 8
     - type: DeviceLinkSink
       links:
       - 46
@@ -1111,6 +1109,24 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         33:
+        - Pressed: Toggle
+  - uid: 168
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,2.5
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        186:
+        - Pressed: Toggle
+        187:
+        - Pressed: Toggle
+        188:
+        - Pressed: Toggle
+        189:
+        - Pressed: Toggle
+        190:
         - Pressed: Toggle
 - proto: SmallGyroscopeSecurity
   entities:
@@ -1410,7 +1426,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -1686.3727
+      secondsUntilStateChange: -1782.6313
       state: Opening
   - uid: 79
     components:
