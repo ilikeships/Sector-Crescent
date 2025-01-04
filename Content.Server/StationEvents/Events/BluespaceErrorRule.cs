@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
@@ -6,15 +7,18 @@ using Robust.Server.GameObjects;
 using Robust.Server.Maps;
 using Robust.Shared.Map;
 using Content.Server.GameTicking.Rules.Components;
+using Content.Server.Maps;
 using Content.Server.Salvage;
 using Content.Server.Salvage.Magnet;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
+using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
 using Content.Shared.Coordinates;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
@@ -28,6 +32,8 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PricingSystem _pricing = default!;
     [Dependency] private readonly CargoSystem _cargo = default!;
+    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private List<(Entity<TransformComponent> Entity, EntityUid MapUid, Vector2 LocalPosition)> _playerMobs = new();
 
@@ -56,6 +62,23 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
         {
             _shuttle.FTLToCoordinates(gridUid, shuttle, new EntityCoordinates(mapUid, offset), 0f, 0f, 30f);
         }
+
+        var stringEnd = component.GridPath.Length-1;
+        var path = component.GridPath;
+        var startingIndex = 0;
+        while (path[stringEnd] != '/')
+        {
+            startingIndex = stringEnd;
+            stringEnd--;
+        }
+        var GameProto= component.GridPath.Substring(startingIndex);
+        // remove yaml shit
+        GameProto = GameProto.Remove(GameProto.Length - 5);
+        if (_prototypeManager.TryIndex<GameMapPrototype>(GameProto, out var stationProto))
+        {
+            _station.InitializeNewStation(stationProto.Stations[GameProto], new List<EntityUid>(){component.GridUid.Value});
+        }
+
 
     }
 
