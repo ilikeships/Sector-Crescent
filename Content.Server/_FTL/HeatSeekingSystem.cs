@@ -25,7 +25,7 @@ public sealed class HeatSeekingSystem : EntitySystem
         var query = EntityQueryEnumerator<HeatSeekingComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
-            if (comp.TargetEntity.HasValue)
+            if (comp.TargetEntity is not null)
             {
                 var entXform = Transform(comp.TargetEntity.Value);
                 var angle = (
@@ -35,18 +35,14 @@ public sealed class HeatSeekingSystem : EntitySystem
 
                 _transform.SetLocalRotationNoLerp(uid, angle, xform);
 
-                if (!_rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform))
-                {
-                    continue;
-                }
-
-                _physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
-                return;
+                _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue,
+                    xform);
+                _physics.SetLinearVelocity(uid, -angle.ToWorldVec() * comp.Acceleration);
+                //_physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
             }
             else
-            {
                 GetNewTarget(uid, comp, xform);
-            }
+            
         }
     }
 
