@@ -3197,7 +3197,8 @@ entities:
           4,-6:
             0: 60655
           3,-6:
-            0: 61007
+            0: 28239
+            2: 32768
           3,-5:
             0: 3822
           5,-7:
@@ -3346,15 +3347,15 @@ entities:
           -1,-17:
             0: 65343
           -1,-16:
-            2: 61152
+            3: 61152
           -1,-14:
-            2: 61152
+            3: 61152
           0,-16:
-            2: 65520
+            3: 65520
           0,-15:
             0: 65520
           0,-14:
-            2: 65520
+            3: 65520
           0,-17:
             0: 65485
           1,-15:
@@ -3690,6 +3691,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 28.530462
+          - 107.32889
           - 0
           - 0
           - 0
@@ -20497,30 +20513,15 @@ entities:
       parent: 1
 - proto: DelamDisk
   entities:
-  - uid: 4005
-    components:
-    - type: Transform
-      pos: -1.5893418,-53.435677
-      parent: 1
-  - uid: 4006
-    components:
-    - type: Transform
-      pos: -1.2623779,-53.435677
-      parent: 1
   - uid: 4007
     components:
     - type: Transform
-      pos: -1.4853075,-53.30188
-      parent: 1
-  - uid: 4012
-    components:
-    - type: Transform
-      pos: -0.7867944,-53.37621
+      pos: -1.5227319,-53.14886
       parent: 1
   - uid: 4013
     components:
     - type: Transform
-      pos: -1.0543103,-53.25728
+      pos: -0.70328724,-53.204414
       parent: 1
 - proto: DelamDiskThumb
   entities:
@@ -20532,7 +20533,7 @@ entities:
   - uid: 4009
     components:
     - type: Transform
-      pos: -0.62331176,-53.510006
+      pos: -0.7310653,-53.53775
       parent: 1
   - uid: 4010
     components:
@@ -20542,7 +20543,7 @@ entities:
   - uid: 4011
     components:
     - type: Transform
-      pos: -0.93541384,-53.450542
+      pos: -1.2588426,-53.579414
       parent: 1
   - uid: 4014
     components:
@@ -21232,6 +21233,14 @@ entities:
 - proto: EncryptionKeyBalreska
   entities:
   - uid: 4018
+    components:
+    - type: Transform
+      parent: 1563
+    - type: Physics
+      canCollide: False
+- proto: EncryptionKeyTraffic
+  entities:
+  - uid: 1746
     components:
     - type: Transform
       parent: 1563
@@ -25803,38 +25812,22 @@ entities:
       parent: 1
 - proto: IngotGold
   entities:
-  - uid: 3993
-    components:
-    - type: Transform
-      pos: -1.5150316,-61.355713
-      parent: 1
   - uid: 3994
     components:
     - type: Transform
       pos: -1.2326537,-61.340843
       parent: 1
-  - uid: 3995
-    components:
-    - type: Transform
-      pos: 2.200467,-61.340843
-      parent: 1
-- proto: IngotSilver
+    - type: Stack
+      count: 10
+- proto: IngotSilver1
   entities:
-  - uid: 3996
+  - uid: 3993
     components:
     - type: Transform
-      pos: -0.5638648,-61.348087
+      pos: 1.7599286,-61.480984
       parent: 1
-  - uid: 3997
-    components:
-    - type: Transform
-      pos: 1.546539,-61.348087
-      parent: 1
-  - uid: 3998
-    components:
-    - type: Transform
-      pos: 1.9032271,-61.348087
-      parent: 1
+    - type: Stack
+      count: 10
 - proto: Jukebox
   entities:
   - uid: 810
@@ -26216,7 +26209,7 @@ entities:
   - uid: 1469
     components:
     - type: Transform
-      pos: 15.5,-20.5
+      pos: 15.5,-20.49976
       parent: 1
     - type: EntityStorage
       air:
@@ -26224,8 +26217,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 9.186494
-        - 34.55872
+        - 2.4809096
+        - 9.332947
         - 0
         - 0
         - 0
@@ -26236,6 +26229,8 @@ entities:
         - 0
         - 0
         - 0
+    - type: Physics
+      fixedRotation: False
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -26248,10 +26243,9 @@ entities:
           - 1475
           - 1476
           - 1478
-          - 1609
           - 1610
+          - 1609
           - 1470
-          - 4507
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -26503,8 +26497,7 @@ entities:
   - uid: 4000
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.7800848,-61.58595
+      pos: 2.263992,-61.499836
       parent: 1
   - uid: 4001
     components:
@@ -26514,7 +26507,7 @@ entities:
   - uid: 4002
     components:
     - type: Transform
-      pos: -0.23690072,-61.199425
+      pos: -0.48600796,-61.277615
       parent: 1
   - uid: 4003
     components:
@@ -32483,13 +32476,6 @@ entities:
       parent: 1
 - proto: ShipVoucherCherenzikov
   entities:
-  - uid: 1609
-    components:
-    - type: Transform
-      parent: 1469
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 1610
     components:
     - type: Transform
@@ -32497,16 +32483,9 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ShipVoucherClementine
+- proto: ShipVoucherVanguard
   entities:
-  - uid: 4913
-    components:
-    - type: Transform
-      pos: 13.546708,-20.002148
-      parent: 1
-- proto: ShipVoucherSasha
-  entities:
-  - uid: 4507
+  - uid: 1609
     components:
     - type: Transform
       parent: 1469
@@ -36582,6 +36561,7 @@ entities:
           occludes: True
           ents:
           - 4018
+          - 1746
         machine_board: !type:Container
           showEnts: False
           occludes: True
@@ -43209,52 +43189,80 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,-30.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.5308973351381185 rad: 4.511701147390304 rad
   - uid: 3900
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,-59.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.893578532658549 rad: 0.34922537855842617 rad
+      - 4.17104207445361 rad: 3.8644312047674436 rad
   - uid: 3901
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,-45.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.5308973351381185 rad: 3.4943722147582164 rad
   - uid: 6672
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.2941966164750185 rad: 3.415459009645192 rad
   - uid: 6673
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 31.5,-18.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.6079736368161133 rad: 3.06723803354736 rad
   - uid: 6677
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 29.5,0.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.6079736368161133 rad: 3.351032163829112 rad
   - uid: 6681
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 34.5,-36.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.251474735072685 rad: 3.3510321638291125 rad
   - uid: 6687
     components:
     - type: Transform
       pos: 29.5,-79.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.4356997451509244 rad: 4.115156943816337 rad
   - uid: 6691
     components:
     - type: Transform
       pos: 6.5,-79.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 5.03429672579128 rad: 4.338599118538466 rad
 - proto: WeaponTurretHostile
   entities:
   - uid: 2609
@@ -43277,69 +43285,105 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,-37.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.541101064462838 rad: 3.4943722147582164 rad
   - uid: 3903
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,-52.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.5308973351381185 rad: 3.5045759440829354 rad
   - uid: 6675
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,5.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.089455962039044 rad: 3.9186986070297207 rad
   - uid: 6676
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 20.5,7.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 2.715122334649169 rad: 3.282175692057553 rad
   - uid: 6678
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 29.5,-11.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.2686810147477143 rad: 3.953319491388772 rad
   - uid: 6679
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 25.5,-29.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.8333277526948826 rad: 4.987848096652325 rad
   - uid: 6682
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 36.5,-41.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.6079736368161133 rad: 3.2997949892617005 rad
   - uid: 6683
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 67.5,-65.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 1.6634721286027596 rad: 2.9970347353422953 rad
   - uid: 6684
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 52.5,-52.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 3.0956287214046125 rad: 3.233520517960154 rad
   - uid: 6685
     components:
     - type: Transform
       pos: 52.5,-78.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 6.2552374421868375 rad: 3.215504450767722 rad
   - uid: 6689
     components:
     - type: Transform
       pos: 22.5,-86.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 0.16153229141742903 rad: 4.428777589331699 rad
   - uid: 6690
     components:
     - type: Transform
       pos: 15.5,-86.5
       parent: 1
+    - type: PointCannon
+      obstructedRanges:
+      - 4.805064782192553 rad: 4.497634078941265 rad
 - proto: WeaponTurretSyndicateBroken
   entities:
   - uid: 4019
