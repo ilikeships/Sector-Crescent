@@ -66,7 +66,8 @@ entities:
             0: 4401
             1: 17408
           1,-1:
-            0: 13154
+            0: 4962
+            2: 8192
             1: 4
           1,1:
             1: 6
@@ -91,6 +92,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
           - 0
           - 0
           - 0
@@ -600,7 +616,7 @@ entities:
       parent: 1
 - proto: ClosetWall
   entities:
-  - uid: 191
+  - uid: 169
     components:
     - type: Transform
       pos: 5.5,0.5
@@ -629,16 +645,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-          - 194
-          - invalid
-          - invalid
-          - invalid
+          - 170
+          - 171
 - proto: ClothingHeadHelmetImperialEVA
   entities:
   - uid: 166
@@ -724,35 +732,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 5.5,1.5
       parent: 1
-- proto: EMP missile cartridge
-  entities:
-  - uid: 194
-    components:
-    - type: Transform
-      parent: 191
-    - type: BallisticAmmoProvider
-      entities:
-      - invalid
-      - invalid
-      - invalid
-      - invalid
-      - invalid
-      - invalid
-    - type: ContainerContainer
-      containers:
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-          - invalid
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: EwarDevice
   entities:
   - uid: 69
@@ -922,6 +901,22 @@ entities:
     - type: Transform
       pos: 1.5559087,1.5996423
       parent: 1
+- proto: MagazineGrenadeBlast
+  entities:
+  - uid: 170
+    components:
+    - type: Transform
+      parent: 169
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 171
+    components:
+    - type: Transform
+      parent: 169
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MedkitCombatFilled
   entities:
   - uid: 81
@@ -1046,7 +1041,7 @@ entities:
       pos: 6.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
     - type: DeviceLinkSink
       links:
       - 46
@@ -1426,7 +1421,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -1782.6313
+      secondsUntilStateChange: -1893.4475
       state: Opening
   - uid: 79
     components:
