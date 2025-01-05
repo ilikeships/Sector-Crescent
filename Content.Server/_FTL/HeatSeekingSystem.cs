@@ -25,28 +25,38 @@ public sealed class HeatSeekingSystem : EntitySystem
         var query = EntityQueryEnumerator<HeatSeekingComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
-            if (comp.TargetEntity.HasValue)
+            if (comp.TargetEntity is not null)
             {
                 var entXform = Transform(comp.TargetEntity.Value);
+                var originalAngle = _transform.GetWorldRotation(xform);
                 var angle = (
-                    _transform.ToMapCoordinates(xform.Coordinates).Position -
-                    _transform.ToMapCoordinates(entXform.Coordinates).Position
+                    _transform.ToMapCoordinates(entXform.Coordinates).Position -
+                    _transform.ToMapCoordinates(xform.Coordinates).Position
                 ).ToWorldAngle();
+                var trueRotationSpeed = comp.RotationSpeed;
+                if(trueRotationSpeed is null)
+                    trueRotationSpeed = 999;
+                trueRotationSpeed *= frameTime;
+
+                if (angle > originalAngle + trueRotationSpeed.Value)
+                {
+                    angle = originalAngle + trueRotationSpeed.Value;
+                }
+                else if (angle < originalAngle - trueRotationSpeed.Value)
+                {
+                    angle = originalAngle - trueRotationSpeed.Value;
+                }
 
                 _transform.SetLocalRotationNoLerp(uid, angle, xform);
 
-                if (!_rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform))
-                {
-                    continue;
-                }
-
-                _physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
-                return;
+                _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue,
+                    xform);
+                _physics.SetLinearVelocity(uid, angle.ToWorldVec() * comp.Acceleration);
+                //_physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
             }
             else
-            {
                 GetNewTarget(uid, comp, xform);
-            }
+            
         }
     }
 
