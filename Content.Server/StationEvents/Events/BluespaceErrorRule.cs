@@ -73,9 +73,11 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
         }
         var GameProto= component.GridPath.Substring(startingIndex);
         // remove yaml shit
-        GameProto = GameProto.Remove(GameProto.Length - 5);
+        GameProto = GameProto.Remove(GameProto.Length - 4);
+        Log.Error($"Looked for {GameProto} ");
         if (_prototypeManager.TryIndex<GameMapPrototype>(GameProto, out var stationProto))
         {
+            Log.Error("Found");
             _station.InitializeNewStation(stationProto.Stations[GameProto], new List<EntityUid>(){component.GridUid.Value});
         }
 
