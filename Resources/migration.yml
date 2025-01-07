@@ -394,3 +394,9 @@ BloodCultTurret: null
 OrganDionaEyes: null
 OrganDionaStomach: null
 SpawnMobBloodCultistAcolyte: null
+
+# 2025-01-07
+WeaponTurretPDTSRM: WeaponTurretPDTNCWL
+WeaponTurretPDTCMM: WeaponTurretPDTNCWL
+WeaponTurretPDTSHI: WeaponTurretPDTNCWL
+WeaponTurretPDTDSM: WeaponTurretPDTNCWL
