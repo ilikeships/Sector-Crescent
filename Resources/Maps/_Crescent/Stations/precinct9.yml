@@ -2458,7 +2458,7 @@ entities:
       pos: -5.5,-0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5763.3228
+      secondsUntilStateChange: -5877.4634
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2507,6 +2507,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 0.5,-0.5
+      parent: 1
+  - uid: 899
+    components:
+    - type: Transform
+      pos: -6.5,18.5
       parent: 1
 - proto: AirlockCMMLockedHorizontal
   entities:
@@ -2590,11 +2595,6 @@ entities:
     components:
     - type: Transform
       pos: -2.5,18.5
-      parent: 1
-  - uid: 899
-    components:
-    - type: Transform
-      pos: -6.5,18.5
       parent: 1
   - uid: 1583
     components:
@@ -11256,6 +11256,22 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: EncryptionKeyMinutemen
+  entities:
+  - uid: 3208
+    components:
+    - type: Transform
+      parent: 1567
+    - type: Physics
+      canCollide: False
+- proto: EncryptionKeyTraffic
+  entities:
+  - uid: 3209
+    components:
+    - type: Transform
+      parent: 1567
+    - type: Physics
+      canCollide: False
 - proto: EngineeringTechFab
   entities:
   - uid: 1603
@@ -17927,6 +17943,22 @@ entities:
     - type: Transform
       pos: -6.5,-8.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        key_slots: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 3208
+          - 3209
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: Thruster
   entities:
   - uid: 692
