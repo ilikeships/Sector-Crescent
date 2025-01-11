@@ -174,8 +174,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 0.05
-      linearDamping: 0.05
+      angularDamping: 55555
+      linearDamping: 55555
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -3905,7 +3905,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -99639.625
+      secondsUntilStateChange: -99658.39
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4026,7 +4026,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -19769.58
+      secondsUntilStateChange: -19788.348
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
