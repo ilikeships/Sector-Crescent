@@ -67,6 +67,11 @@ job-name-watchmaster = Colonial Watchmaster
 job-name-deputymarshal = Deputy Marshal
 job-name-marshal = Colonial Marshal
 
+#tap
+
+job-name-prophet = Arabet Prophet
+job-name-acolytetap = Arabet Devoted
+
 #misc
 
 job-name-antiquarian = Antiquarian

@@ -67,6 +67,11 @@ job-description-watchmaster = Coordinate your underlings for the Deputy Marshal.
 job-description-deputymarshal = Coordinate the Minutemen in the absence of the Marshal. Whip the militia into shape.
 job-description-marshal = Coordinate the Minutemen. Oversee martial and civil court. Protect the System.
 
+#tap
+
+job-description-prophet = Lead your flock into the light. Ensure order within the Families.
+job-description-acolytetap = Follow your Prophet. Ensure their safety.
+
 #misc
 
 job-description-antiquarian = Fulfill the system's blackmarketing needs.

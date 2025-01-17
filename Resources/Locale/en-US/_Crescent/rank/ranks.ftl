@@ -38,10 +38,15 @@ crescent-rank-saw = Shipbreaker
 
 #tsp
 
-crescent-rank-physician = Sanitier
-crescent-rank-marshallie = Marshallie
-crescent-rank-ordnance = Canonier Sgt.
-crescent-rank-minuteman = Inspktr.
-crescent-rank-machinist = Cpl.
-crescent-rank-watchmaster = Kmmsr.
-crescent-rank-2ic = 2nd Marshallie
+crescent-rank-physician = Sanitar
+crescent-rank-marshallie = Marshal
+crescent-rank-ordnance = Munitions Sgt.
+crescent-rank-minuteman = Minuteman
+crescent-rank-machinist = Engineer Cpl.
+crescent-rank-watchmaster = Watchmaster
+crescent-rank-2ic = 2nd Marshal
+
+#4fams
+
+crescent-rank-prophet = Doyen
+crescent-rank-acolytetap = Devoted

@@ -181,8 +181,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 5.5555553E+09
-      linearDamping: 555555600
+      angularDamping: 0.05
+      linearDamping: 0.05
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -3817,7 +3817,7 @@ entities:
       pos: -11.5,-34.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -124406.59
+      secondsUntilStateChange: -124443.734
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -19341,13 +19341,6 @@ entities:
     - type: Transform
       pos: 6.5,-27.5
       parent: 1
-- proto: ComputerTabletopCargoBounty
-  entities:
-  - uid: 3839
-    components:
-    - type: Transform
-      pos: 17.5,-27.5
-      parent: 1
 - proto: ComputerTabletopComms
   entities:
   - uid: 1572
@@ -19387,6 +19380,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -7.5,-19.5
+      parent: 1
+- proto: ComputerTabletopId
+  entities:
+  - uid: 3839
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,7.5
       parent: 1
 - proto: ComputerTabletopMassMedia
   entities:
@@ -19467,8 +19468,7 @@ entities:
   - uid: 319
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 3.5,7.5
+      pos: 17.5,-27.5
       parent: 1
     - type: ContainerContainer
       containers:
