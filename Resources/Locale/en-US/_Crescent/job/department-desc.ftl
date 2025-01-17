@@ -4,3 +4,4 @@ department-DSM-description = Carry out the will of the Crown. Stamp out the Revo
 department-SRM-description = Carry out the divine will of the fallen Saint. Restore natural order.
 department-SHI-description = Wholesale and profit.
 department-CMM-description = Protect the little folk.
+department-TAP-description = A family of nomadic starfarers.

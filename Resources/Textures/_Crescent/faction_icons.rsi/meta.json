@@ -6,24 +6,27 @@
     "x": 281,
     "y": 53
   },
-  "states": [
-    {
-      "name": "dsm"
-    },
-    {
-      "name": "ncwl"
-    },
-    {
-      "name": "shi"
-    },
-    {
-      "name": "srm"
-    },
-    {
-      "name": "tfsc"
-    },
-    {
-      "name": "tsp"
-    }
-  ]
+    "states": [
+        {
+            "name": "dsm"
+        },
+        {
+            "name": "ncwl"
+        },
+        {
+            "name": "shi"
+        },
+        {
+            "name": "srm"
+        },
+        {
+            "name": "tfsc"
+        },
+        {
+            "name": "fourfamilies"
+        },
+        {
+            "name": "tsp"
+        }
+    ]
 }

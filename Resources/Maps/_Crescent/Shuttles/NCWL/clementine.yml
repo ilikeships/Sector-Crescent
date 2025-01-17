@@ -113,52 +113,52 @@ entities:
             color: '#EFB34196'
             id: BoxGreyscale
           decals:
-            559: 2,15
-            560: 3,15
-            561: 3,14
-            562: 2,14
+            551: 2,15
+            552: 3,15
+            553: 3,14
+            554: 2,14
         - node:
             color: '#EFB34196'
             id: BrickTileSteelCornerNe
           decals:
-            806: -5,7
+            771: -5,7
         - node:
             color: '#EFB34196'
             id: BrickTileSteelCornerNw
           decals:
-            807: -8,7
+            772: -8,7
         - node:
             color: '#EFB34196'
             id: BrickTileSteelCornerSe
           decals:
-            805: -5,5
+            770: -5,5
         - node:
             color: '#EFB34196'
             id: BrickTileSteelCornerSw
           decals:
-            813: -8,5
+            776: -8,5
         - node:
             color: '#EFB34196'
             id: BrickTileSteelLineE
           decals:
-            812: -5,6
+            775: -5,6
         - node:
             color: '#EFB34196'
             id: BrickTileSteelLineN
           decals:
-            801: -7,7
-            802: -6,7
+            768: -7,7
+            769: -6,7
         - node:
             color: '#EFB34196'
             id: BrickTileSteelLineS
           decals:
-            808: -6,5
-            814: -7,5
+            773: -6,5
+            777: -7,5
         - node:
             color: '#EFB34196'
             id: BrickTileSteelLineW
           decals:
-            810: -8,6
+            774: -8,6
         - node:
             color: '#EFB34196'
             id: DeliveryGreyscale
@@ -173,7 +173,7 @@ entities:
             color: '#EFB34196'
             id: StandClearGreyscale
           decals:
-            791: 0,31
+            759: 0,31
         - node:
             color: '#EFB34196'
             id: WarnBox
@@ -182,8 +182,8 @@ entities:
             341: 4,15
             342: 4,17
             343: 4,17
-            680: -2,18
-            681: -2,18
+            648: -2,18
+            649: -2,18
         - node:
             color: '#EFB34196'
             id: WarnBoxGreyscale
@@ -211,14 +211,14 @@ entities:
             157: 1,5
             346: -9,-12
             347: -9,-12
-            702: -8,2
-            703: -8,-4
-            704: 8,-4
-            705: 8,2
-            706: -6,38
-            707: 6,38
-            708: 8,-1
-            709: -8,-1
+            670: -8,2
+            671: -8,-4
+            672: 8,-4
+            673: 8,2
+            674: -6,38
+            675: 6,38
+            676: 8,-1
+            677: -8,-1
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleNE
@@ -239,11 +239,11 @@ entities:
             358: -2,-13
             359: -3,-12
             466: 4,28
-            573: 3,18
-            574: 3,18
-            615: 7,10
-            623: -4,34
-            743: 2,31
+            565: 3,18
+            566: 3,18
+            599: 7,10
+            607: -4,34
+            711: 2,31
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleNW
@@ -262,10 +262,10 @@ entities:
             303: 5,-2
             315: -6,2
             467: -4,28
-            571: 2,18
-            572: 2,18
-            616: 5,10
-            742: -2,31
+            563: 2,18
+            564: 2,18
+            600: 5,10
+            710: -2,31
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleSE
@@ -287,11 +287,11 @@ entities:
             312: -5,2
             357: -2,-14
             469: 4,20
-            569: 3,16
-            570: 3,16
-            618: 7,9
-            625: -4,30
-            741: 2,30
+            561: 3,16
+            562: 3,16
+            602: 7,9
+            609: -4,30
+            709: 2,30
         - node:
             color: '#EFB34196'
             id: WarnCornerGreyscaleSW
@@ -311,37 +311,37 @@ entities:
             313: 5,2
             353: -6,-14
             468: -4,20
-            567: 2,16
-            568: 2,16
-            617: 5,9
-            624: -6,30
-            740: -2,30
+            559: 2,16
+            560: 2,16
+            601: 5,9
+            608: -6,30
+            708: -2,30
         - node:
             color: '#EFB34196'
             id: WarnCornerNE
           decals:
-            601: 7,7
-            602: 7,7
+            585: 7,7
+            586: 7,7
         - node:
             color: '#EFB34196'
             id: WarnCornerNW
           decals:
-            599: 5,7
-            600: 5,7
-            690: 5,32
-            691: 5,32
+            583: 5,7
+            584: 5,7
+            658: 5,32
+            659: 5,32
         - node:
             color: '#EFB34196'
             id: WarnCornerSE
           decals:
-            603: 7,5
-            604: 7,5
+            587: 7,5
+            588: 7,5
         - node:
             color: '#EFB34196'
             id: WarnCornerSW
           decals:
-            605: 5,5
-            606: 5,5
+            589: 5,5
+            590: 5,5
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallGreyscaleNE
@@ -396,8 +396,8 @@ entities:
             color: '#EFB34196'
             id: WarnCornerSmallNE
           decals:
-            595: 5,5
-            596: 5,5
+            579: 5,5
+            580: 5,5
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallNW
@@ -410,16 +410,16 @@ entities:
             color: '#EFB34196'
             id: WarnCornerSmallSE
           decals:
-            597: 5,7
-            598: 5,7
+            581: 5,7
+            582: 5,7
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallSW
           decals:
             286: 10,-11
             287: 10,-11
-            593: 7,7
-            594: 7,7
+            577: 7,7
+            578: 7,7
         - node:
             color: '#EFB34196'
             id: WarnEndE
@@ -434,8 +434,8 @@ entities:
             381: 3,-17
             539: 6,34
             540: 6,34
-            666: -2,14
-            667: -2,14
+            634: -2,14
+            635: -2,14
         - node:
             color: '#EFB34196'
             id: WarnEndGreyscaleN
@@ -447,22 +447,22 @@ entities:
             color: '#EFB34196'
             id: WarnEndN
           decals:
-            670: -4,18
-            671: -4,18
-            682: -6,34
-            683: -6,34
-            700: 6,31
-            701: 6,31
+            638: -4,18
+            639: -4,18
+            650: -6,34
+            651: -6,34
+            668: 6,31
+            669: 6,31
         - node:
             color: '#EFB34196'
             id: WarnEndS
           decals:
-            668: -4,15
-            669: -4,15
-            684: -6,32
-            685: -6,32
-            698: 6,30
-            699: 6,30
+            636: -4,15
+            637: -4,15
+            652: -6,32
+            653: -6,32
+            666: 6,30
+            667: 6,30
         - node:
             color: '#EFB34196'
             id: WarnEndW
@@ -475,14 +475,14 @@ entities:
             379: 2,-17
             537: 5,34
             538: 5,34
-            664: -3,14
-            665: -3,14
+            632: -3,14
+            633: -3,14
         - node:
             color: '#EFB34196'
             id: WarnFull
           decals:
-            553: 4,18
-            554: 4,18
+            545: 4,18
+            546: 4,18
         - node:
             color: '#EFB34196'
             id: WarnFullGreyscale
@@ -583,57 +583,57 @@ entities:
             403: 3,36
             404: 3,37
             405: 3,37
-            551: -4,6
-            552: -4,6
-            555: 3,31
-            556: 3,31
-            563: 1,16
-            564: 1,16
-            579: 4,8
-            580: 4,8
-            613: 7,6
-            614: 7,6
-            662: -1,16
-            663: -1,16
-            672: -4,17
-            673: -4,17
-            674: -4,16
-            675: -4,16
-            686: -6,33
-            687: -6,33
-            710: -7,-2
-            711: -7,0
-            712: -7,0
-            713: -7,-2
-            714: 7,-2
-            715: 7,-2
-            716: 7,0
-            717: 7,0
-            726: 1,38
-            729: 1,37
-            736: 1,35
-            737: 1,36
-            756: -9,27
-            757: -9,27
-            758: -9,26
-            759: -9,26
-            760: -9,25
-            761: -9,25
-            762: 9,27
-            763: 9,27
-            764: 9,26
-            765: 9,26
-            766: 9,25
-            767: 9,25
-            768: -8,22
-            780: -8,13
-            781: -7,15
-            782: -7,16
-            783: -7,18
-            784: -7,20
-            785: -8,2
-            786: -8,-1
-            787: -8,-4
+            543: -4,6
+            544: -4,6
+            547: 3,31
+            548: 3,31
+            555: 1,16
+            556: 1,16
+            571: 4,8
+            572: 4,8
+            597: 7,6
+            598: 7,6
+            630: -1,16
+            631: -1,16
+            640: -4,17
+            641: -4,17
+            642: -4,16
+            643: -4,16
+            654: -6,33
+            655: -6,33
+            678: -7,-2
+            679: -7,0
+            680: -7,0
+            681: -7,-2
+            682: 7,-2
+            683: 7,-2
+            684: 7,0
+            685: 7,0
+            694: 1,38
+            697: 1,37
+            704: 1,35
+            705: 1,36
+            724: -9,27
+            725: -9,27
+            726: -9,26
+            727: -9,26
+            728: -9,25
+            729: -9,25
+            730: 9,27
+            731: 9,27
+            732: 9,26
+            733: 9,26
+            734: 9,25
+            735: 9,25
+            736: -8,22
+            748: -8,13
+            749: -7,15
+            750: -7,16
+            751: -7,18
+            752: -7,20
+            753: -8,2
+            754: -8,-1
+            755: -8,-4
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleE
@@ -683,12 +683,12 @@ entities:
             532: 4,23
             533: 4,22
             534: 4,21
-            577: 3,17
-            578: 3,17
-            621: 7,8
-            629: -4,33
-            630: -4,32
-            631: -4,31
+            569: 3,17
+            570: 3,17
+            605: 7,8
+            613: -4,33
+            614: -4,32
+            615: -4,31
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleN
@@ -716,11 +716,11 @@ entities:
             483: -1,20
             484: 0,20
             485: 1,20
-            620: 6,10
-            628: -5,34
-            747: -1,31
-            748: 0,31
-            749: 1,31
+            604: 6,10
+            612: -5,34
+            715: -1,31
+            716: 0,31
+            717: 1,31
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleS
@@ -745,11 +745,11 @@ entities:
             486: -1,28
             487: 0,28
             488: 1,28
-            619: 6,9
-            626: -5,30
-            744: -1,30
-            745: 0,30
-            746: 1,30
+            603: 6,9
+            610: -5,30
+            712: -1,30
+            713: 0,30
+            714: 1,30
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleW
@@ -801,10 +801,10 @@ entities:
             499: -4,23
             500: -4,22
             501: -4,21
-            575: 2,17
-            576: 2,17
-            622: 5,8
-            627: -6,31
+            567: 2,17
+            568: 2,17
+            606: 5,8
+            611: -6,31
         - node:
             color: '#EFB34196'
             id: WarnLineN
@@ -859,30 +859,30 @@ entities:
             427: -6,23
             428: 6,23
             429: 6,23
-            591: 6,7
-            592: 6,7
-            609: 6,5
-            610: 6,5
-            652: -6,15
-            653: -6,15
-            654: 6,15
-            655: 6,15
-            656: -3,19
-            657: -3,19
-            730: -1,32
-            731: -1,32
-            732: 0,32
-            733: 0,32
-            734: 1,32
-            735: 1,32
-            792: -8,8
-            793: -8,8
-            794: -7,8
-            795: -7,8
-            796: -6,8
-            797: -6,8
-            798: -5,8
-            799: -5,8
+            575: 6,7
+            576: 6,7
+            593: 6,5
+            594: 6,5
+            620: -6,15
+            621: -6,15
+            622: 6,15
+            623: 6,15
+            624: -3,19
+            625: -3,19
+            698: -1,32
+            699: -1,32
+            700: 0,32
+            701: 0,32
+            702: 1,32
+            703: 1,32
+            760: -8,8
+            761: -8,8
+            762: -7,8
+            763: -7,8
+            764: -6,8
+            765: -6,8
+            766: -5,8
+            767: -5,8
         - node:
             color: '#EFB34196'
             id: WarnLineS
@@ -935,60 +935,60 @@ entities:
             401: 5,36
             535: -3,31
             536: -3,31
-            549: -4,6
-            550: -4,6
-            557: 3,31
-            558: 3,31
-            565: 1,16
-            566: 1,16
-            581: 4,8
-            582: 4,8
-            611: 5,6
-            612: 5,6
-            660: -1,16
-            661: -1,16
-            676: -4,17
-            677: -4,17
-            678: -4,16
-            679: -4,16
-            688: -6,33
-            689: -6,33
-            692: 5,31
-            693: 5,31
-            694: 5,30
-            695: 5,30
-            718: -7,0
-            719: -7,0
-            720: -7,-2
-            721: -7,-2
-            722: 7,-2
-            723: 7,-2
-            724: 7,0
-            725: 7,0
-            727: -1,38
-            728: -1,37
-            738: -1,36
-            739: -1,35
-            750: -9,25
-            751: -9,25
-            752: -9,26
-            753: -9,26
-            754: -9,27
-            755: -9,27
-            769: 9,27
-            770: 9,27
-            771: 9,26
-            772: 9,26
-            773: 9,25
-            774: 9,25
-            775: 8,22
-            776: 7,20
-            777: 7,18
-            778: 7,16
-            779: 8,13
-            788: 8,-4
-            789: 8,-1
-            790: 8,2
+            541: -4,6
+            542: -4,6
+            549: 3,31
+            550: 3,31
+            557: 1,16
+            558: 1,16
+            573: 4,8
+            574: 4,8
+            595: 5,6
+            596: 5,6
+            628: -1,16
+            629: -1,16
+            644: -4,17
+            645: -4,17
+            646: -4,16
+            647: -4,16
+            656: -6,33
+            657: -6,33
+            660: 5,31
+            661: 5,31
+            662: 5,30
+            663: 5,30
+            686: -7,0
+            687: -7,0
+            688: -7,-2
+            689: -7,-2
+            690: 7,-2
+            691: 7,-2
+            692: 7,0
+            693: 7,0
+            695: -1,38
+            696: -1,37
+            706: -1,36
+            707: -1,35
+            718: -9,25
+            719: -9,25
+            720: -9,26
+            721: -9,26
+            722: -9,27
+            723: -9,27
+            737: 9,27
+            738: 9,27
+            739: 9,26
+            740: 9,26
+            741: 9,25
+            742: 9,25
+            743: 8,22
+            744: 7,20
+            745: 7,18
+            746: 7,16
+            747: 8,13
+            756: 8,-4
+            757: 8,-1
+            758: 8,2
         - node:
             color: '#EFB34196'
             id: WarnLineW
@@ -1045,16 +1045,16 @@ entities:
             423: -6,23
             424: 6,23
             425: 6,23
-            607: 6,7
-            608: 6,7
-            648: -6,15
-            649: -6,15
-            650: 6,15
-            651: 6,15
-            658: -3,19
-            659: -3,19
-            696: 6,32
-            697: 6,32
+            591: 6,7
+            592: 6,7
+            616: -6,15
+            617: -6,15
+            618: 6,15
+            619: 6,15
+            626: -3,19
+            627: -3,19
+            664: 6,32
+            665: 6,32
     - type: RadiationGridResistance
     - type: GridAtmosphere
       version: 2
@@ -1297,7 +1297,7 @@ entities:
       pos: 0.5,34.5
       parent: 1
     - type: Battery
-      startingCharge: 976000
+      startingCharge: 970000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6041,120 +6041,54 @@ entities:
     - type: Transform
       pos: -0.5,26.5
       parent: 1
-- proto: CargoTelepad
-  entities:
   - uid: 731
     components:
     - type: Transform
-      pos: -0.5,23.5
+      rot: -1.5707963267948966 rad
+      pos: -0.5,21.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 732
     components:
     - type: Transform
-      pos: 0.5,23.5
+      rot: -1.5707963267948966 rad
+      pos: 0.5,21.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 733
     components:
     - type: Transform
-      pos: 1.5,23.5
+      rot: -1.5707963267948966 rad
+      pos: 1.5,21.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 734
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
       pos: 1.5,22.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 735
     components:
     - type: Transform
-      pos: 1.5,21.5
+      rot: -1.5707963267948966 rad
+      pos: 1.5,23.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 736
     components:
     - type: Transform
-      pos: 0.5,21.5
+      rot: -1.5707963267948966 rad
+      pos: 0.5,23.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
   - uid: 737
     components:
     - type: Transform
-      pos: -0.5,21.5
+      rot: -1.5707963267948966 rad
+      pos: -0.5,23.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
-  - uid: 738
+  - uid: 791
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
       pos: -0.5,22.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 791
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          ents: []
-        machine_parts: !type:Container
-          ents: []
 - proto: CartridgeRailHighExplosive
   entities:
   - uid: 746
@@ -7578,36 +7512,6 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ComputerCargoOrders
-  entities:
-  - uid: 791
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -0.5,24.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        731:
-        - OrderSender: OrderReceiver
-        732:
-        - OrderSender: OrderReceiver
-        733:
-        - OrderSender: OrderReceiver
-        738:
-        - OrderSender: OrderReceiver
-        737:
-        - OrderSender: OrderReceiver
-        736:
-        - OrderSender: OrderReceiver
-        735:
-        - OrderSender: OrderReceiver
-        734:
-        - OrderSender: OrderReceiver
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          ents: []
 - proto: ComputerCloningConsole
   entities:
   - uid: 583
@@ -7622,6 +7526,18 @@ entities:
         - CloningPodSender: CloningPodReceiver
         581:
         - MedicalScannerSender: MedicalScannerReceiver
+- proto: ComputerPalletConsoleNFLowMarket
+  entities:
+  - uid: 738
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -0.5,24.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          ents: []
 - proto: ComputerPalletConsoleNFVeryLowMarket
   entities:
   - uid: 792
@@ -9937,21 +9853,24 @@ entities:
   - uid: 1117
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1118
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1120
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -10051,28 +9970,32 @@ entities:
   - uid: 1119
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1121
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1122
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1123
     components:
     - type: Transform
-      parent: 1116
+      pos: 0.43312198,0.6560955
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
