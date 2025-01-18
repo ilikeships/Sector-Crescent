@@ -320,7 +320,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.AddIFFFlag(depotUid6s[0], IFFFlags.HideLabel);
         //  }
 
-       /* if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
+        if (_map.TryLoad(mapId, hayes, out var depotUid7s, new MapLoadOptions
         {
             Offset = new Vector2(-3000, 6500f)
         }))
@@ -328,7 +328,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             var meta = EnsureComp<MetaDataComponent>(depotUid7s[0]);
             _meta.SetEntityName(depotUid7s[0], "Derelict Waystation", meta);
             _shuttle.SetIFFColor(depotUid7s[0], lpbravoColor);
-        }*/
+        }
 
      //   if (_map.TryLoad(mapId, lpramzi, out var depotUid8s, new MapLoadOptions
      //   {
