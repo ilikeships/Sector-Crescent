@@ -3817,7 +3817,7 @@ entities:
       pos: -11.5,-34.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -124443.734
+      secondsUntilStateChange: -124494.76
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4664,6 +4664,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 23.41338,-32.422104
       parent: 1
+- proto: ApproachSource
+  entities:
+  - uid: 6886
+    components:
+    - type: Transform
+      pos: 0.298858,-25.368338
+      parent: 1
 - proto: AtmosDeviceFanTiny
   entities:
   - uid: 475
@@ -5294,6 +5301,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -14.5,1.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 482
   - uid: 506
     components:
     - type: Transform
@@ -33980,6 +33990,10 @@ entities:
       rot: 3.141592653589793 rad
       pos: -12.5,-2.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        479:
+        - Pressed: Toggle
   - uid: 483
     components:
     - type: Transform

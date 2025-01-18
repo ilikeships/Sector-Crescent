@@ -1317,6 +1317,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,4.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 99
   - uid: 96
     components:
     - type: Transform
@@ -1370,6 +1373,8 @@ entities:
         96:
         - Pressed: Toggle
         97:
+        - Pressed: Toggle
+        95:
         - Pressed: Toggle
 - proto: SpawnPointChemcook
   entities:

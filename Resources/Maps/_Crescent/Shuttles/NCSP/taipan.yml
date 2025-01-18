@@ -586,6 +586,7 @@ entities:
       pos: -0.5,3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 245
       obstructedRanges:
       - 3.8222710618675815 rad: 4.458180891047525 rad
   - uid: 428
@@ -595,6 +596,7 @@ entities:
       pos: 11.5,3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 245
       obstructedRanges:
       - 1.2686810147477143 rad: 4.333825884154083 rad
 - proto: BlastDoor
@@ -1598,13 +1600,20 @@ entities:
     - type: Transform
       pos: 5.5,4.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        424:
+        - Group1: Toggle
+        - Group2: SpaceArtilleryToggleSafety
     - type: NamedModules
       buttonNames:
       - Fire Artillery
       - Artillery Safety [Toggle]
-      - Module C
-      - Module D
-      - Module E
+      - N/A
+      - N/A
+      - N/A
+    - type: PointLight
+      enabled: True
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -1628,6 +1637,21 @@ entities:
     - type: Transform
       pos: 8.5,8.5
       parent: 1
+    - type: TargetingConsole
+      cannonGroups:
+        all:
+        - 435
+        - 146
+        - 428
+        - 243
+        - 240
+        machinegun:
+        - 435
+        - 146
+        - 240
+        lancer:
+        - 428
+        - 243
 - proto: FaxMachineShip
   entities:
   - uid: 184
@@ -2052,6 +2076,7 @@ entities:
       pos: 4.5,16.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 245
       obstructedRanges:
       - 2.251474735072685 rad: 3.4341733957175538 rad
   - uid: 240
@@ -2060,6 +2085,7 @@ entities:
       pos: 11.5,-6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 245
       obstructedRanges:
       - 0.6806784082777885 rad: 3.814679763405596 rad
   - uid: 435
@@ -2069,6 +2095,7 @@ entities:
       pos: 10.5,10.5
       parent: 1
     - type: PointCannon
+      linkedConsoleId: 245
       obstructedRanges:
       - 2.1683335031842437 rad: 3.4341733957175538 rad
 - proto: PowerCellRecharger
@@ -2285,7 +2312,10 @@ entities:
       pos: 9.5,8.5
       parent: 1
     - type: Battery
-      startingCharge: 199500
+      startingCharge: 199000
+    - type: DeviceLinkSink
+      links:
+      - 187
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
