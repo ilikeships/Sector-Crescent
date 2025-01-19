@@ -71,7 +71,10 @@ job-description-marshal = Coordinate the Minutemen. Oversee martial and civil co
 
 job-description-prophet = Lead your flock into the light. Ensure order within the Families.
 job-description-acolytetap = Follow your Prophet. Ensure their safety.
-
-#misc
-
-job-description-antiquarian = Fulfill the system's blackmarketing needs.
+job-description-tinkerer = Tend to the always-ailing Aasim. Ensure things are always operational. Research new technologies.
+job-description-hangartech = Tend to the Thukker storefront, move freight, mind the cargo hold of the Aasim.
+job-description-techminer = Go scavenging for scrap. Find artifacts and lost technology for the Tinkerers.
+job-description-beltrunner = Move the Izdari product from the Aasim to relevant parties. Ensure the security of your family's operations.
+job-description-draugr = Assert your superiority over the Serviles. Protect the war-freighter. Listen to the Prophet. Their word is law.
+job-description-servile = Listen to your Draugrs - earn your stay in the family. Make a name for yourself.
+job-description-antiquarian = Fulfill the system's blackmarketing needs. Make sure your office stays in one piece.

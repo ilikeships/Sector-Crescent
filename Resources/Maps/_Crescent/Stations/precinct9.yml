@@ -2458,7 +2458,7 @@ entities:
       pos: -5.5,-0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5877.4634
+      secondsUntilStateChange: -5892.1055
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10384,6 +10384,13 @@ entities:
           showEnts: False
           occludes: True
           ent: null
+- proto: CrateLancerAmmo
+  entities:
+  - uid: 3210
+    components:
+    - type: Transform
+      pos: 8.5,7.5
+      parent: 1
 - proto: CrateVendingMachineRestockBoozeFilled
   entities:
   - uid: 1457

@@ -71,7 +71,13 @@ job-name-marshal = Colonial Marshal
 
 job-name-prophet = Arabet Prophet
 job-name-acolytetap = Arabet Devoted
+job-name-techminer = Thukker Techminer
+job-name-tinkerer = Thukker Machinist
+job-name-hangartech = Thukker Hangar Technician
+job-name-beltrunner = Izdari Beltrunner
+job-name-draugr = Al'Seik Draugr
+job-name-servile = Al'Seik Servile
 
 #misc
 
-job-name-antiquarian = Antiquarian
+job-name-antiquarian = Izdari Antiquarian

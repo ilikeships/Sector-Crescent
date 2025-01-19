@@ -50,3 +50,10 @@ crescent-rank-2ic = 2nd Marshal
 
 crescent-rank-prophet = Doyen
 crescent-rank-acolytetap = Devoted
+crescent-rank-tinkerer = Qaatib
+crescent-rank-techminer = Zibaal
+crescent-rank-hangartech = Hangar Technician
+crescent-rank-beltrunner = Beltrunner
+crescent-rank-antiquarian = Antiquarian
+crescent-rank-draugr = Draugr
+crescent-rank-servile = Servile

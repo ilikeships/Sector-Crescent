@@ -915,6 +915,20 @@ entities:
         - Group5: Toggle
         140:
         - Group5: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 105
@@ -937,59 +951,19 @@ entities:
         - 90
         - 87
         - 88
-- proto: CrateGenericSteel
+- proto: CrateLancerAmmo
   entities:
   - uid: 162
     components:
     - type: Transform
       pos: -1.5,-1.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 192
-          - 191
-          - 190
-          - 189
-          - 188
-          - 187
-          - 186
-          - 185
-          - 184
-          - 183
-          - 182
-          - 181
-          - 180
-          - 179
-          - 178
-          - 177
-          - 176
-          - 175
-          - 174
-          - 173
-          - 172
-          - 171
-          - 170
-          - 169
-          - 168
-          - 167
-          - 166
-          - 165
-          - 164
-          - 163
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: CrateSlugthrowerAmmo
   entities:
   - uid: 145
     components:
     - type: Transform
-      pos: 2.5,-1.5
+      pos: -1.5,-2.5
       parent: 1
 - proto: FaxMachineShip
   entities:
@@ -1014,6 +988,13 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-4.5
+      parent: 1
+- proto: FoodDonutJellySlugcat
+  entities:
+  - uid: 163
+    components:
+    - type: Transform
+      pos: 2.5606306,-1.4940044
       parent: 1
 - proto: GasPassiveVent
   entities:
@@ -1151,218 +1132,6 @@ entities:
     - type: Transform
       pos: 5.7263103,-2.392717
       parent: 1
-- proto: LanceRocketCartridge
-  entities:
-  - uid: 163
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 164
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 165
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 166
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 167
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 168
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 169
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 170
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 171
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 172
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 173
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 174
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 175
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 176
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 177
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 178
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 179
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 180
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 181
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 182
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 183
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 184
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 185
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 186
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 187
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 188
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 189
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 190
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 191
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 192
-    components:
-    - type: Transform
-      parent: 162
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: PaperBin20
   entities:
   - uid: 123
@@ -1456,7 +1225,7 @@ entities:
       pos: 0.5,-0.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 104
