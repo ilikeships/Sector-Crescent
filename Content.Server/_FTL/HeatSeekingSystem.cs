@@ -87,8 +87,9 @@ public sealed class HeatSeekingSystem : EntitySystem
                     {
                         continue;
                     }
-
-                    component.TargetEntity = hitEntity;
+                    component.TargetEntity = hitTransform.GridUid;
+                    //if(component.TargetEntity is not null)
+                    //    Log.Error($"Locked on {MetaData(component.TargetEntity.Value).EntityName}");
                     break;
                 }
             }
