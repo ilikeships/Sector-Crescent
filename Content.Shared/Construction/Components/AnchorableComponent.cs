@@ -6,7 +6,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared.Construction.Components
 {
-    [RegisterComponent, Access(typeof(AnchorableSystem)), NetworkedComponent, AutoGenerateComponentState]
+    [RegisterComponent,  NetworkedComponent, AutoGenerateComponentState]
     public sealed partial class AnchorableComponent : Component
     {
         [DataField]
