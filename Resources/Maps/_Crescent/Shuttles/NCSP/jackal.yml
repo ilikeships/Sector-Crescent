@@ -671,7 +671,8 @@ entities:
           4,-7:
             1: 13107
           4,-6:
-            0: 65291
+            0: 63243
+            3: 2048
             1: 4
           5,-6:
             1: 16400
@@ -700,7 +701,8 @@ entities:
           -2,-12:
             0: 64750
           -2,-11:
-            0: 65295
+            0: 61199
+            3: 4096
           -2,-10:
             0: 65279
           -2,-9:
@@ -712,7 +714,9 @@ entities:
           -1,-10:
             0: 63679
           -1,-13:
-            0: 52733
+            3: 1
+            0: 52476
+            4: 256
           0,-12:
             0: 61901
           0,-11:
@@ -773,7 +777,9 @@ entities:
           -2,-14:
             0: 1632
           -2,-13:
-            0: 3822
+            0: 2790
+            3: 1024
+            4: 8
           -2,-17:
             1: 8416
             0: 32768
@@ -842,7 +848,8 @@ entities:
             0: 12288
             1: 49152
           -6,-15:
-            0: 61152
+            0: 60960
+            3: 192
           -6,-14:
             1: 63248
             0: 142
@@ -903,6 +910,36 @@ entities:
           - 0
         - volume: 2500
           temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 21.6852
+          - 81.57766
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
           moles:
           - 20.078888
           - 75.53487
@@ -2305,28 +2342,32 @@ entities:
   - uid: 568
     components:
     - type: Transform
-      parent: 567
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 579
     components:
     - type: Transform
-      parent: 567
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 583
     components:
     - type: Transform
-      parent: 567
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 596
     components:
     - type: Transform
-      parent: 567
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -8258,210 +8299,165 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: CartridgeShellEmp
-  entities:
-  - uid: 2059
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2063
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2064
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2073
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2074
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2075
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2076
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2077
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 2082
-    components:
-    - type: Transform
-      parent: 2052
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: CartridgeShellHighExplosive
   entities:
   - uid: 1263
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1289
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1290
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1291
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1292
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1293
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1294
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1295
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1296
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1297
     components:
     - type: Transform
-      parent: 1262
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1299
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1300
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1301
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1302
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1303
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1304
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1305
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1306
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1307
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 1308
     components:
     - type: Transform
-      parent: 1298
+      pos: 0.5222931,0.5817642
+      parent: 2
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -9836,8 +9832,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -9854,36 +9850,27 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 2078
-          - 2077
-          - 2076
-          - 2075
-          - 2074
-          - 2073
-          - 2072
-          - 2071
-          - 2070
+          - 2065
           - 2069
           - 2068
-          - 2067
-          - 2066
-          - 2065
-          - 2064
-          - 2063
-          - 2062
-          - 2061
-          - 2060
-          - 2059
           - 2058
           - 2057
           - 2056
-          - 2055
           - 2054
-          - 2053
+          - 2055
           - 2079
-          - 2080
+          - 2053
           - 2081
-          - 2082
+          - 2080
+          - 2067
+          - 2066
+          - 2062
+          - 2061
+          - 2060
+          - 2078
+          - 2072
+          - 2071
+          - 2070
 - proto: ClothingHandsGlovesColorYellow
   entities:
   - uid: 2366
@@ -10255,6 +10242,33 @@ entities:
     - type: Transform
       pos: 5.3360515,-48.968494
       parent: 2
+    - type: GroupExamine
+      group:
+      - hoverMessage: ""
+        contextText: verb-examine-group-other
+        icon: /Textures/Interface/examine-star.png
+        components:
+        - Armor
+        - ClothingSpeedModifier
+        entries:
+        - message: >-
+            It provides the following protection:
+
+            - [color=yellow]Blunt[/color] damage reduced by [color=lightblue]10%[/color].
+
+            - [color=yellow]Slash[/color] damage reduced by [color=lightblue]10%[/color].
+
+            - [color=yellow]Piercing[/color] damage reduced by [color=lightblue]10%[/color].
+
+            - [color=yellow]Heat[/color] damage reduced by [color=lightblue]25%[/color].
+
+            - [color=orange]Explosion[/color] damage reduced by [color=lightblue]85%[/color].
+          priority: 0
+          component: Armor
+        - message: This decreases your speed by [color=yellow]20%[/color].
+          priority: 0
+          component: ClothingSpeedModifier
+        title: null
 - proto: ClothingShoesBootsCombatFilled
   entities:
   - uid: 1190
@@ -10577,11 +10591,39 @@ entities:
         - Group1: SpaceArtilleryFire
         1982: []
         1988: []
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 1525
     components:
     - type: Transform
       pos: 6.5,-38.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationAdminBankATM
   entities:
   - uid: 1216
@@ -11043,14 +11085,16 @@ entities:
     - type: Transform
       pos: -3.5,-49.5
       parent: 2
+    - type: Lock
+      locked: False
     - type: EntityStorage
       air:
         volume: 200
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 3.4919806
+        - 13.136498
         - 0
         - 0
         - 0
@@ -11067,36 +11111,36 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1758
-          - 1757
-          - 1756
-          - 1755
-          - 1754
-          - 1753
-          - 1752
-          - 1733
-          - 1734
-          - 1735
-          - 1736
-          - 1737
-          - 1738
-          - 1739
-          - 1740
-          - 1741
-          - 1742
-          - 1743
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
           - 1744
-          - 1745
-          - 1746
-          - 1747
-          - 1748
-          - 1749
-          - 1750
-          - 1751
-          - 1759
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
           - 1760
-          - 1761
-          - 1762
+          - invalid
+          - invalid
+          - 1752
+          - 1753
+          - 1754
+          - 1755
+          - 1756
+          - 1757
+          - 1758
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -11117,8 +11161,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -11136,6 +11180,7 @@ entities:
           occludes: True
           ents:
           - 1796
+          - 1823
           - 1797
           - 1798
           - 1799
@@ -11162,7 +11207,6 @@ entities:
           - 1820
           - 1821
           - 1822
-          - 1823
           - 1824
           - 1825
         paper_label: !type:ContainerSlot
@@ -11179,6 +11223,8 @@ entities:
     - type: Transform
       pos: -6.5,-50.5
       parent: 2
+    - type: Lock
+      locked: False
     - type: EntityStorage
       air:
         volume: 200
@@ -11197,42 +11243,40 @@ entities:
         - 0
         - 0
         - 0
+      open: True
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 1856
-          - 1855
-          - 1854
-          - 1849
-          - 1848
-          - 1847
-          - 1846
-          - 1845
-          - 1844
-          - 1843
-          - 1842
-          - 1841
-          - 1840
-          - 1839
-          - 1838
-          - 1837
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
           - 1836
-          - 1835
-          - 1834
+          - invalid
+          - invalid
           - 1833
-          - 1832
-          - 1831
-          - 1830
-          - 1829
-          - 1828
-          - 1827
-          - 1850
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
           - 1851
-          - 1852
-          - 1853
+          - invalid
+          - invalid
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -11247,14 +11291,16 @@ entities:
     - type: Transform
       pos: -4.5,-51.5
       parent: 2
+    - type: Lock
+      locked: False
     - type: EntityStorage
       air:
         volume: 200
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 3.4919806
+        - 13.136498
         - 0
         - 0
         - 0
@@ -11265,28 +11311,29 @@ entities:
         - 0
         - 0
         - 0
+      open: True
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 1858
-          - 1859
-          - 1860
-          - 1861
-          - 1862
-          - 1863
-          - 1864
-          - 1865
-          - 1866
-          - 1867
-          - 1868
-          - 1869
-          - 1870
-          - 1871
-          - 1872
-          - 1873
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
+          - invalid
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -11307,8 +11354,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -11325,26 +11372,26 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1891
-          - 1890
-          - 1889
-          - 1888
-          - 1887
-          - 1886
-          - 1885
-          - 1884
-          - 1883
-          - 1882
-          - 1881
-          - 1880
-          - 1879
-          - 1878
-          - 1877
-          - 1876
-          - 1875
-          - 1892
-          - 1893
           - 1894
+          - 1893
+          - 1892
+          - 1875
+          - 1876
+          - 1877
+          - 1878
+          - 1879
+          - 1880
+          - 1881
+          - 1882
+          - 1883
+          - 1884
+          - 1885
+          - 1886
+          - 1887
+          - 1888
+          - 1889
+          - 1890
+          - 1891
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -11364,8 +11411,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -11382,12 +11429,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 3643
-          - 3644
-          - 3645
-          - 3646
-          - 3647
           - 3648
+          - 3647
+          - 3646
+          - 3645
+          - 3644
+          - 3643
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -11740,24 +11787,18 @@ entities:
   - uid: 1854
     components:
     - type: Transform
-      parent: 1826
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: -6.5,-50.5
+      parent: 2
   - uid: 1855
     components:
     - type: Transform
-      parent: 1826
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: -6.5,-50.5
+      parent: 2
   - uid: 1856
     components:
     - type: Transform
-      parent: 1826
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: -6.5,-50.5
+      parent: 2
 - proto: FaxMachineBase
   entities:
   - uid: 614
@@ -15938,7 +15979,7 @@ entities:
       pos: 17.5,-17.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 3368.9540076
+      nextDrop: 4895.000281
 - proto: PosterContrabandInterdyne
   entities:
   - uid: 1235
@@ -18916,8 +18957,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -18934,10 +18975,10 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1311
-          - 1312
-          - 1313
           - 1314
+          - 1313
+          - 1312
+          - 1311
   - uid: 1485
     components:
     - type: Transform
@@ -19098,8 +19139,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -19116,10 +19157,10 @@ entities:
           showEnts: False
           occludes: True
           ents:
+          - 2051
+          - 2050
           - 2048
           - 2049
-          - 2050
-          - 2051
     - type: Physics
       canCollide: False
 - proto: SurveillanceCameraCommand
@@ -20371,7 +20412,10 @@ entities:
       pos: -20.5,-60.5
       parent: 2
     - type: Thruster
+      enabled: False
       originalPowerLoad: 1500
+    - type: ApcPowerReceiver
+      powerLoad: 1
   - uid: 1721
     components:
     - type: Transform
@@ -20432,7 +20476,7 @@ entities:
       pos: 18.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 943000
+      startingCharge: 940000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20465,7 +20509,7 @@ entities:
       pos: 20.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 943000
+      startingCharge: 940000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20498,7 +20542,7 @@ entities:
       pos: -20.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 943000
+      startingCharge: 940000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20532,7 +20576,7 @@ entities:
       pos: -22.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 943000
+      startingCharge: 940000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
