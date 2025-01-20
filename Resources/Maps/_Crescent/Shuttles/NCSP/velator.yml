@@ -1182,31 +1182,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 6.23013,2.516393
       parent: 1
-- proto: CartridgeShellEmp
-  entities:
-  - uid: 106
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 10.276349,2.5877507
-      parent: 1
-  - uid: 149
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 10.436859,2.5877507
-      parent: 1
-  - uid: 150
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 10.633038,2.5877507
-      parent: 1
-  - uid: 155
-    components:
-    - type: Transform
-      pos: 10.526031,2.427196
-      parent: 1
 - proto: ChairFolding
   entities:
   - uid: 230
