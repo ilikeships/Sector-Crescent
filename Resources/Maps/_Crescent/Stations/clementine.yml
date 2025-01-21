@@ -7079,7 +7079,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: ComputerTabletopStationAdminBankATM
+- proto: StationAdminBankATMNCWL
   entities:
   - uid: 133
     components:

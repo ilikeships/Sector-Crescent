@@ -20019,7 +20019,7 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopStationAdminBankATM
+- proto: StationAdminBankATMSyndicate
   entities:
   - uid: 2637
     components:

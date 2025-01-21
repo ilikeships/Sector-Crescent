@@ -19959,7 +19959,7 @@ entities:
     - type: Transform
       pos: 29.5,-61.5
       parent: 1
-- proto: ComputerTabletopStationAdminBankATM
+- proto: StationAdminBankATMNCWL
   entities:
   - uid: 1489
     components:
