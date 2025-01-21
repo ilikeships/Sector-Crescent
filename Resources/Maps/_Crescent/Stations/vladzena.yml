@@ -19959,24 +19959,6 @@ entities:
     - type: Transform
       pos: 29.5,-61.5
       parent: 1
-- proto: ComputerTabletopStationAdminBankATM
-  entities:
-  - uid: 1489
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 13.5,-19.5
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        station-bank-ATM-cashSlot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 1140
@@ -34799,6 +34781,24 @@ entities:
       rot: 3.141592653589793 rad
       pos: 18.5,-65.5
       parent: 1
+- proto: StationAdminBankATMNCWL
+  entities:
+  - uid: 1489
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 13.5,-19.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        station-bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: SteelBench
   entities:
   - uid: 5382
@@ -36390,11 +36390,6 @@ entities:
     components:
     - type: Transform
       pos: 13.5,-20.5
-      parent: 1
-  - uid: 1497
-    components:
-    - type: Transform
-      pos: 13.5,-19.5
       parent: 1
   - uid: 1937
     components:

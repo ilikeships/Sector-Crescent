@@ -174,8 +174,8 @@ entities:
     - type: Broadphase
     - type: Physics
       bodyStatus: InAir
-      angularDamping: 55555
-      linearDamping: 55555
+      angularDamping: 0.05
+      linearDamping: 0.05
       fixedRotation: False
       bodyType: Dynamic
     - type: Fixtures
@@ -3905,7 +3905,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -99658.39
+      secondsUntilStateChange: -99678.445
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4026,7 +4026,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -19788.348
+      secondsUntilStateChange: -19808.398
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -20019,24 +20019,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopStationAdminBankATM
-  entities:
-  - uid: 2637
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.5,11.5
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        station-bank-ATM-cashSlot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 2477
@@ -33466,6 +33448,24 @@ entities:
       rot: 3.141592653589793 rad
       pos: -14.5,61.5
       parent: 1
+- proto: StationAdminBankATMSyndicate
+  entities:
+  - uid: 2637
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,11.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        station-bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: Stool
   entities:
   - uid: 672
@@ -34745,12 +34745,6 @@ entities:
     components:
     - type: Transform
       pos: -4.5,14.5
-      parent: 1
-  - uid: 2604
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 0.5,11.5
       parent: 1
   - uid: 3738
     components:
