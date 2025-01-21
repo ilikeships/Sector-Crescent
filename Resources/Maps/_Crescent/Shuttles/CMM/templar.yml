@@ -3310,7 +3310,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 241
+          ents: []
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -3350,7 +3350,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 632
+          ents: []
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
