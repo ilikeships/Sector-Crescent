@@ -33,8 +33,6 @@ public sealed class PointCannonSystem : EntitySystem
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    private const int MaxCollisionCheckDistance = 10;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -266,16 +264,18 @@ public sealed class PointCannonSystem : EntitySystem
         return true;
     }
 
-    public void RefreshFiringRanges(EntityUid uid, TransformComponent? form = null, GunComponent? gun = null, PointCannonComponent? cannon = null)
+    public void RefreshFiringRanges(EntityUid uid, TransformComponent? form = null, GunComponent? gun = null, PointCannonComponent? cannon = null, int? range = null)
     {
         if (!Resolve(uid, ref form) || !Resolve(uid, ref gun) || !Resolve(uid, ref cannon))
             return;
+        // 10 meters the default if one is not provided
+        range ??= 10;
 
-        cannon.ObstructedRanges = CalculateFiringRanges(form, gun, cannon);
+        cannon.ObstructedRanges = CalculateFiringRanges(form, gun, cannon, range.Value);
         Dirty(uid, cannon);
     }
 
-    private List<(Angle, Angle)> CalculateFiringRanges(TransformComponent form, GunComponent gun, PointCannonComponent cannon)
+    private List<(Angle, Angle)> CalculateFiringRanges(TransformComponent form, GunComponent gun, PointCannonComponent cannon, int range)
     {
         if (form.GridUid == null)
             return new();
@@ -289,7 +289,7 @@ public sealed class PointCannonSystem : EntitySystem
             TransformComponent otherForm = Transform(childUid);
             Vector2 dir = otherForm.LocalPosition - form.LocalPosition;
             float dist = dir.Length();
-            if (dist > MaxCollisionCheckDistance || dist < 1)
+            if (dist > range || dist < 1)
                 continue;
 
             //checking that obstacle is anchored and solid
