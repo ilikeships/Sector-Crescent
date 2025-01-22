@@ -22,8 +22,16 @@ public sealed class GenerateCannonSafetyRangesCommand : IConsoleCommand
             return;
         }
 
+        if (args.Length < 2)
+        {
+            shell.WriteError("Please specify radius of check (1 = 1 meter ingame)");
+            return;
+        }
+
         if (EntityUid.TryParse(args[0], out EntityUid gridUid))
         {
+            if (!int.TryParse(args[1], out int number))
+                return;
             int count = 0;
             IEntityManager entMan = IoCManager.Resolve<IEntityManager>();
             PointCannonSystem cannonSys = entMan.System<PointCannonSystem>();
@@ -36,7 +44,7 @@ public sealed class GenerateCannonSafetyRangesCommand : IConsoleCommand
                 if (form.ParentUid == gridUid)
                 {
                     count++;
-                    cannonSys.RefreshFiringRanges(uid, form, gun, cannon);
+                    cannonSys.RefreshFiringRanges(uid, form, gun, cannon, number);
                 }
             }
 

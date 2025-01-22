@@ -8,6 +8,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
+using Serilog;
 
 namespace Content.Shared.Roles
 {
@@ -93,6 +94,16 @@ namespace Content.Shared.Roles
         [DataField("factionID")] public string FactionID = "";
     }
 
+    [UsedImplicitly]
+    [Serializable, NetSerializable]
+    public sealed partial class WealthRequirement : JobRequirement
+    {
+        [DataField("below")] public int below = int.MaxValue;
+        [DataField("above")] public int above = 0;
+    }
+
+
+
 
     public static class JobRequirements
     {
@@ -105,7 +116,8 @@ namespace Content.Shared.Roles
             bool isWhitelisted,
             string? species,
             Sex sex,
-            string faction)
+            string faction,
+            int wealth)
         {
             reason = null;
             if (job.Requirements == null)
@@ -113,7 +125,7 @@ namespace Content.Shared.Roles
 
             foreach (var requirement in job.Requirements)
             {
-                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex, faction))
+                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex, faction, wealth))
                     return false;
             }
 
@@ -132,7 +144,8 @@ namespace Content.Shared.Roles
             bool isWhitelisted,
             string? species,
             Sex sex,
-            string faction)
+            string faction,
+            int wealth)
         {
             reason = null;
 
@@ -144,6 +157,7 @@ namespace Content.Shared.Roles
                         reason = FormattedMessage.FromMarkup($"Your faction is not {factRequirement.FactionID}");
                         return false;
                     }
+
                     return true;
 
                 case DepartmentTimeRequirement deptRequirement:
@@ -213,15 +227,16 @@ namespace Content.Shared.Roles
                             return true;
 
                         reason = FormattedMessage.FromMarkup(Loc.GetString(
-                              "role-timer-overall-insufficient",
-                              ("time", Math.Ceiling(overallDiff))));
+                            "role-timer-overall-insufficient",
+                            ("time", Math.Ceiling(overallDiff))));
                         return false;
                     }
                     else
                     {
                         if (overallDiff <= 0 || overallTime >= overallRequirement.Time)
                         {
-                            reason = FormattedMessage.FromMarkup(Loc.GetString("role-timer-overall-too-high", ("time", -overallDiff)));
+                            reason = FormattedMessage.FromMarkup(Loc.GetString("role-timer-overall-too-high",
+                                ("time", -overallDiff)));
                             return false;
                         }
 
@@ -305,7 +320,8 @@ namespace Content.Shared.Roles
                         return true;
                     }
 
-                    reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-species-not-allowed", ("species", species)));
+                    reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-species-not-allowed",
+                        ("species", species)));
                     return false;
 
                 case SexRequirement sexRequirement: // Crescent: Sex restriction
@@ -314,6 +330,22 @@ namespace Content.Shared.Roles
 
                     reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-sex"));
                     return false;
+                case WealthRequirement wealthRequirement: // Crescent: Wealth restriction
+                    if (wealth <= wealthRequirement.above && wealthRequirement.above != 0)
+                    {
+                        reason = FormattedMessage.FromMarkup(
+                            $"Your wealth is not above the minimum of {wealthRequirement.above}");
+                        return false;
+                    }
+
+                    if (wealth >= wealthRequirement.below && wealthRequirement.below != int.MaxValue)
+                    {
+                        reason = FormattedMessage.FromMarkup(
+                        $"Your wealth is not below the maximum of {wealthRequirement.below}");
+                        return false;
+                    }
+                    return true;
+
                 default:
                     throw new NotImplementedException();
             }

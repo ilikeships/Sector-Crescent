@@ -26,6 +26,7 @@ public sealed partial class JobRequirementLoadoutEffect : LoadoutEffect
             true, // Frontier: for now we just let assume whitelist? TODO: implement white list
             null,
             Sex.Unsexed,
-            ""); // What the fuck is this retarded codeblock where it skips half the checks?
+            "",
+            0); // What the fuck is this retarded codeblock where it skips half the checks?
     }
 }

@@ -200,11 +200,13 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
         string species;
         string faction = "";
+        int wealth = 0;
         var sex = Sex.Unsexed;
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            wealth = selectedCharacter.BankBalance;
             if (selectedCharacter.Faction is not null)
                 faction = selectedCharacter.Faction;
         }
@@ -213,7 +215,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             species = string.Empty;
         }
 
-        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction);
+        return JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction, wealth);
     }
 
     public HashSet<string> GetDisallowedJobs(ICommonSession player)
@@ -234,12 +236,14 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
         string species;
         string faction = "";
+        int wealth = 0;
         var sex = Sex.Unsexed;
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
-            if (selectedCharacter.Faction is not null)
+            wealth = selectedCharacter.BankBalance;
+            if (selectedCharacter.Faction is not null && selectedCharacter.Faction != "")
                 faction = selectedCharacter.Faction;
         }
         else
@@ -253,7 +257,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             {
                 foreach (var requirement in job.Requirements)
                 {
-                    if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction))
+                    if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction, wealth))
                         continue;
 
                     goto NoRole;
@@ -285,12 +289,14 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
         string species;
         string faction = "";
+        int wealth = 0;
         var sex = Sex.Unsexed;
 
         if (_preferencesManager.GetPreferences(player.UserId).SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            wealth = selectedCharacter.BankBalance;
             if (selectedCharacter.Faction is not null)
                 faction = selectedCharacter.Faction;
         }
@@ -310,7 +316,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
             foreach (var requirement in jobber.Requirements)
             {
-                if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction))
+                if (JobRequirements.TryRequirementMet(requirement, playTimes, out _, EntityManager, _prototypes, isWhitelisted, species, sex, faction, wealth))
                     continue;
 
                 jobs.RemoveSwap(i);
