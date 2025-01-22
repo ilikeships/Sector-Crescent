@@ -111,11 +111,13 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
 
         string species;
         string faction = "";
+        int wealth = 0;
         Sex sex = Sex.Unsexed;
         if (_preferencesManager.Preferences?.SelectedCharacter is HumanoidCharacterProfile selectedCharacter)
         {
             species = selectedCharacter.Species;
             sex = selectedCharacter.Sex;
+            wealth = selectedCharacter.BankBalance;
             if (selectedCharacter.Faction is not null)
                 faction = selectedCharacter.Faction;
 
@@ -130,7 +132,7 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         foreach (var requirement in requirements)
         {
             if (JobRequirements.TryRequirementMet(requirement, _cfg.GetCVar(CCVars.GameRoleTimers) ? _roles : null, out var jobReason, _entManager,
-                    _prototypes, !_cfg.GetCVar(CrescentCVars.RoleWhitelist) || _whitelisted, species, sex, faction))
+                    _prototypes, !_cfg.GetCVar(CrescentCVars.RoleWhitelist) || _whitelisted, species, sex, faction, wealth))
                 continue;
 
             reasons.Add(jobReason.ToMarkup());
