@@ -93,6 +93,16 @@ namespace Content.Shared.Roles
         [DataField("factionID")] public string FactionID = "";
     }
 
+    [UsedImplicitly]
+    [Serializable, NetSerializable]
+    public sealed partial class WealthRequirement : JobRequirement
+    {
+        [DataField("below")] public int below = 999999999;
+        [DataField("above")] public int above = 0;
+    }
+
+
+
 
     public static class JobRequirements
     {
@@ -105,7 +115,8 @@ namespace Content.Shared.Roles
             bool isWhitelisted,
             string? species,
             Sex sex,
-            string faction)
+            string faction,
+            int wealth)
         {
             reason = null;
             if (job.Requirements == null)
@@ -113,7 +124,7 @@ namespace Content.Shared.Roles
 
             foreach (var requirement in job.Requirements)
             {
-                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex, faction))
+                if (!TryRequirementMet(requirement, playTimes, out reason, entManager, prototypes, isWhitelisted, species, sex, faction, wealth))
                     return false;
             }
 
@@ -132,7 +143,8 @@ namespace Content.Shared.Roles
             bool isWhitelisted,
             string? species,
             Sex sex,
-            string faction)
+            string faction,
+            int wealth)
         {
             reason = null;
 
@@ -314,6 +326,9 @@ namespace Content.Shared.Roles
 
                     reason = FormattedMessage.FromMarkup(Loc.GetString("job-requirement-sex"));
                     return false;
+                case WealthRequirement wealthRequirement: // Crescent: Wealth restriction
+                    if()
+
                 default:
                     throw new NotImplementedException();
             }
