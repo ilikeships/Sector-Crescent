@@ -342,26 +342,26 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                         Y = -labelDimensions.Y / 2f
                     };
 
-                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, UIScale, color);
+                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, 1f, color);
 
                     if (iff != null && relations.TryGetValue(iff.Faction, out var relation))
                     {
                         if (relation == Relations.Ally)
                         {
                             var allyText = Loc.GetString("shuttle-console-iff-ally");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, allyText, UIScale, Color.Blue);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, allyText, 1f, Color.Blue);
                         }
 
                         if (relation == Relations.ColdWar)
                         {
                             var coldWarText = Loc.GetString("shuttle-console-iff-cold-war");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, coldWarText, UIScale, Color.Yellow);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, coldWarText, 1f, Color.Yellow);
                         }
 
                         if (relation == Relations.War)
                         {
                             var warText = Loc.GetString("shuttle-console-iff-war");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, warText, UIScale, Color.Red);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, warText, 1f, Color.Red);
                         }
                     }
                 }
