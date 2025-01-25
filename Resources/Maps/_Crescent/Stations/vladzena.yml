@@ -3084,7 +3084,8 @@ entities:
           6,-5:
             0: 62127
           6,-3:
-            0: 57582
+            0: 49390
+            2: 8192
           7,-4:
             0: 1
             1: 8228
@@ -3198,7 +3199,7 @@ entities:
             0: 60655
           3,-6:
             0: 28239
-            2: 32768
+            3: 32768
           3,-5:
             0: 3822
           5,-7:
@@ -3347,15 +3348,15 @@ entities:
           -1,-17:
             0: 65343
           -1,-16:
-            3: 61152
+            4: 61152
           -1,-14:
-            3: 61152
+            4: 61152
           0,-16:
-            3: 65520
+            4: 65520
           0,-15:
             0: 65520
           0,-14:
-            3: 65520
+            4: 65520
           0,-17:
             0: 65485
           1,-15:
@@ -3691,6 +3692,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 21.6852
+          - 81.57766
           - 0
           - 0
           - 0
@@ -26156,8 +26172,8 @@ entities:
         immutable: False
         temperature: 293.14926
         moles:
-        - 1.7459903
-        - 6.568249
+        - 1.8856695
+        - 7.0937095
         - 0
         - 0
         - 0
@@ -26174,16 +26190,15 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1363
-          - 1366
-          - 781
-          - 1367
-          - 1365
-          - 1370
-          - 1368
-          - 1369
-          - 1371
           - 1362
+          - 1371
+          - 1369
+          - 1368
+          - 1370
+          - 1365
+          - 781
+          - 1366
+          - 1363
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -26747,17 +26762,6 @@ entities:
     - type: Transform
       pos: 2.5,-0.5
       parent: 1
-- proto: NCWLIDCardAdministrator
-  entities:
-  - uid: 1367
-    components:
-    - type: MetaData
-      name: kommissar's spare ID card
-    - type: Transform
-      parent: 1361
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: NCWLMothershipComputer
   entities:
   - uid: 1299
@@ -29705,38 +29709,32 @@ entities:
   - uid: 1300
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.858307,-2.3773098
+      pos: 26.808985,-2.211217
       parent: 1
   - uid: 1301
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.694826,-2.407042
+      pos: 26.572874,-2.1973276
       parent: 1
   - uid: 1302
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.516481,-2.421908
+      pos: 26.447874,-2.1417723
       parent: 1
   - uid: 1303
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.338137,-2.3475776
+      pos: 26.35065,-2.1834388
       parent: 1
   - uid: 1304
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.605654,-2.3773098
+      pos: 26.73954,-2.1973276
       parent: 1
   - uid: 1305
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 26.234102,-2.4367747
+      pos: 26.142317,-2.1834388
       parent: 1
   - uid: 1534
     components:
@@ -36677,6 +36675,58 @@ entities:
     components:
     - type: Transform
       pos: 22.619436,-28.454348
+      parent: 1
+- proto: TrackingImplanterNCWL
+  entities:
+  - uid: 1367
+    components:
+    - type: Transform
+      pos: 26.128443,-2.6662135
+      parent: 1
+  - uid: 1497
+    components:
+    - type: Transform
+      pos: 26.197887,-2.6662135
+      parent: 1
+  - uid: 3995
+    components:
+    - type: Transform
+      pos: 26.322887,-2.6801028
+      parent: 1
+  - uid: 3996
+    components:
+    - type: Transform
+      pos: 26.433998,-2.6801028
+      parent: 1
+  - uid: 3997
+    components:
+    - type: Transform
+      pos: 26.572887,-2.6801028
+      parent: 1
+  - uid: 3998
+    components:
+    - type: Transform
+      pos: 26.683998,-2.6939917
+      parent: 1
+  - uid: 4005
+    components:
+    - type: Transform
+      pos: 26.892332,-2.6939917
+      parent: 1
+  - uid: 4006
+    components:
+    - type: Transform
+      pos: 26.975666,-2.6939917
+      parent: 1
+  - uid: 4012
+    components:
+    - type: Transform
+      pos: 25.461775,-5.2244515
+      parent: 1
+  - uid: 4507
+    components:
+    - type: Transform
+      pos: 13.522214,-17.331053
       parent: 1
 - proto: TradeGoodAlcohol
   entities:
