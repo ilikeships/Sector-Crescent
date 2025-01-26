@@ -24,13 +24,13 @@ public sealed class PassiveRegenerationSystem : EntitySystem
     EntityQuery<PassiveRegenerationComponent> _componentQuery;
 
     private float accumulator = 0f;
-  
+
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
         accumulator += frameTime;
-        if (accumulator > 15f)
+        if (accumulator > 10f)
         {
             accumulator = 0f;
             var query = EntityQueryEnumerator<PassiveRegenerationComponent>();
