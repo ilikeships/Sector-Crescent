@@ -10,7 +10,7 @@ namespace Content.Server.Factory.Components
         public string ID { get; private set; } = default!;
 
         [DataField("name")]
-        public string Name = "";
+        public string name = "";
 
         [DataField("inputs")]
         public Dictionary<string, int> Inputs = new();
