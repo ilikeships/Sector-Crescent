@@ -1,9 +1,17 @@
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
+
 namespace Content.Server.Factory.Components
 {
-    [Serializable]
-    [DataDefinition]
-    public sealed partial class FactoryRecipe
+    [Prototype("factoryRecipe"), Serializable, NetSerializable] 
+    public sealed partial class FactoryRecipe : IPrototype
     {
+        [IdDataField]
+        public string ID { get; private set; } = default!;
+
+        [DataField("name")]
+        public string Name = "";
+
         [DataField("inputs")]
         public Dictionary<string, int> Inputs = new();
 

@@ -53,6 +53,10 @@ namespace Content.Server.Factory.Components
         ///         OutpustList
         /// </summary>
         [DataField("recipes")]
-        public Dictionary<string, FactoryRecipe> Recipes = new();
+        public List<ProtoId<FactoryRecipe>> Recipes = new();
+
+        public ProtoId<FactoryRecipe>? ChosenRecipe;
+
+
     }
 }
