@@ -142,9 +142,6 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 32
 - proto: APCBasic
   entities:
   - uid: 35
@@ -378,80 +375,62 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,3.5
       parent: 1
-- proto: ComputerShuttle
+- proto: ComputerShuttleAntag
   entities:
-  - uid: 32
+  - uid: 69
     components:
     - type: Transform
       pos: 0.5,4.5
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        71:
+        10:
+        - Group2: Trigger
+        - Group3: Trigger
+        32:
         - Group1: Trigger
-        75:
-        - Group1: Trigger
-        17: []
-- proto: ShuttleGunKurosawaNCWL
-  entities:
-  - uid: 71
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,5.5
-      parent: 1
+        - Group3: Trigger
+    - type: NamedModules
+      buttonNames:
+      - Left-Hand Torpedo
+      - Right-Hand Torpedo
+      - Fire both torpedos.
+      - --/--
+      - --/--
     - type: ContainerContainer
       containers:
-        machine_board: !type:Container
+        board: !type:Container
           showEnts: False
           occludes: True
           ents: []
-        machine_parts: !type:Container
+        disk_slot: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ents: []
-        ballistic-ammo: !type:Container
+          ent: null
+        id_slot: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ents:
-          - 73
-          - 74
-    - type: BallisticAmmoProvider
-      entities:
-      - 73
-      - 74
-    - type: DeviceLinkSink
-      links:
-      - 32
-  - uid: 75
+          ent: null
+- proto: ShuttleGunKurosawa
+  entities:
+  - uid: 10
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,5.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        ballistic-ammo: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 76
-          - 77
-    - type: BallisticAmmoProvider
-      entities:
-      - 76
-      - 77
     - type: DeviceLinkSink
       links:
-      - 32
+      - 69
+  - uid: 32
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,5.5
+      parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 69
 - proto: SmallGyroscope
   entities:
   - uid: 72

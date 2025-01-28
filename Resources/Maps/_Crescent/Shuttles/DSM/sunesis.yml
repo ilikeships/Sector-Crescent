@@ -2408,22 +2408,17 @@ entities:
   - uid: 786
     components:
     - type: Transform
-      pos: 10.5,1.5
+      pos: 12.5,2.5
       parent: 1
   - uid: 787
     components:
     - type: Transform
-      pos: 11.5,1.5
+      pos: 10.5,2.5
       parent: 1
   - uid: 788
     components:
     - type: Transform
-      pos: 12.5,1.5
-      parent: 1
-  - uid: 789
-    components:
-    - type: Transform
-      pos: 13.5,1.5
+      pos: 10.5,1.5
       parent: 1
   - uid: 790
     components:
@@ -2433,7 +2428,7 @@ entities:
   - uid: 791
     components:
     - type: Transform
-      pos: 10.5,2.5
+      pos: 11.5,2.5
       parent: 1
 - proto: CableMV
   entities:
@@ -2786,6 +2781,14 @@ entities:
     components:
     - type: Transform
       pos: -4.5,12.5
+      parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 789
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 10.5,1.5
       parent: 1
 - proto: CarpetPurple
   entities:
@@ -3301,6 +3304,9 @@ entities:
     - type: Transform
       pos: -2.5,0.5
       parent: 1
+    - type: Door
+      secondsUntilStateChange: -138.11624
+      state: Closing
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 147
@@ -3316,6 +3322,22 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -3.5,0.5
       parent: 1
+    - type: Storage
+      storedItems:
+        1040:
+          position: 0,2
+          _rotation: South
+        1042:
+          position: 2,2
+          _rotation: South
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 1042
+          - 1040
 - proto: DrinkBeerCan
   entities:
   - uid: 582
@@ -4366,6 +4388,20 @@ entities:
     - type: DeviceLinkSink
       links:
       - 465
+- proto: MagazinePistol
+  entities:
+  - uid: 1041
+    components:
+    - type: Transform
+      parent: 1040
+    - type: Physics
+      canCollide: False
+  - uid: 1042
+    components:
+    - type: Transform
+      parent: 571
+    - type: Physics
+      canCollide: False
 - proto: MedkitAdvancedFilled
   entities:
   - uid: 203
@@ -7197,6 +7233,26 @@ entities:
     - type: Transform
       pos: 4.439865,16.377438
       parent: 1
+- proto: WeaponPistolComplianceImperial
+  entities:
+  - uid: 1040
+    components:
+    - type: Transform
+      parent: 571
+    - type: ChamberMagazineAmmoProvider
+      boltClosed: True
+    - type: ContainerContainer
+      containers:
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 1041
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: Physics
+      canCollide: False
 - proto: WeaponPistolNeoVolker
   entities:
   - uid: 772
