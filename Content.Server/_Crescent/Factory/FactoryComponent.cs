@@ -29,7 +29,7 @@ namespace Content.Server.Factory.Components
 
 
         [ViewVariables(VVAccess.ReadWrite)]
-        [DataField("sound", required: true)]
+        [DataField("sound")]
         public SoundSpecifier? SoundOnProduce;
 
         [DataField]
