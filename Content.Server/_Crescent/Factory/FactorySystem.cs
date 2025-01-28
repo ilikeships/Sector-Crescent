@@ -29,6 +29,7 @@ using System.Collections.Generic;
 using Content.Server.Chat.Systems;
 using Content.Server.Verbs;
 using Content.Shared.Examine;
+using Content.Shared.Factory.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Popups;
 using Robust.Shared.Utility;
@@ -93,6 +94,17 @@ namespace Content.Server.Factory.EntitySystems
 
         private void OnRequestVerbs(EntityUid uid, FactoryComponent component, GetVerbsEvent<ActivationVerb> args)
         {
+            {
+                ActivationVerb verb = new()
+                {
+                    Text = $"Toggle factory power",
+                    Act = () =>
+                    {
+                        component.Active = !component.Active;
+                    }
+                };
+                args.Verbs.Add(verb);
+            }
             if (component.ChosenRecipe is not null)
             {
                 ActivationVerb verb = new()
@@ -112,6 +124,7 @@ namespace Content.Server.Factory.EntitySystems
                     Logger.Error($"Invalid factory recipe index : {recipeIndex.Id}");
                     continue;
                 }
+
                 ActivationVerb verb = new()
                 {
                     Text = $"Force recipe to {recipe.name} only",
@@ -127,28 +140,33 @@ namespace Content.Server.Factory.EntitySystems
 
         private void OnExamination(EntityUid uid, FactoryComponent component, ExaminedEvent args)
         {
+            args.PushMessage(FormattedMessage.FromMarkup($"The factory's active status shows {component.Active}"), 2);
             if (component.ChosenRecipe is null)
             {
-                args.PushMessage(FormattedMessage.FromMarkup($"The factory is on recipe auto-seek mode. It can't show inputs and outputs"));
+                args.PushMessage(FormattedMessage.FromMarkup($"The factory is on recipe auto-seek mode. It can't show inputs and outputs"), 4);
                 return;
             }
 
             if (!_proto.TryIndex(component.ChosenRecipe, out var recipe))
                 return;
 
-            args.PushMessage(FormattedMessage.FromMarkup("Takes in the following items:"));
             foreach (var prototypeId in recipe.Inputs)
             {
-                if (!_proto.TryIndex(prototypeId.Key, out var itemProt))
+                if (!_proto.TryIndex(prototypeId.Key, out var itemProt, false))
+                {
+                    args.PushMessage(FormattedMessage.FromMarkup($"IN: {prototypeId.Value} of {prototypeId.Key}"), 5);
                     continue;
-                args.PushMessage(FormattedMessage.FromMarkup($"{prototypeId.Value} of {itemProt.Name}"));
+                }
+
+                args.PushMessage(FormattedMessage.FromMarkup($"IN: {prototypeId.Value} of {itemProt.Name}"), 5);
             }
-            args.PushMessage(FormattedMessage.FromMarkup("Outputs the following items:"));
+            // This doesn't work because ??? SPCR 2025 
+            //args.PushMessage(FormattedMessage.FromUnformatted("Outputs the following items:"));
             foreach (var prototypeId in recipe.Outputs)
             {
                 if (!_proto.TryIndex(prototypeId.Key, out var itemProt))
                     continue;
-                args.PushMessage(FormattedMessage.FromMarkup($"{prototypeId.Value} of {itemProt.Name}"));
+                args.PushMessage(FormattedMessage.FromMarkup($"OUT: {prototypeId.Value} of {itemProt.Name}"), 6);
             }
 
         }
@@ -242,9 +260,9 @@ namespace Content.Server.Factory.EntitySystems
 
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
-                    if (comp.ChosenRecipe is null)
-                        continue;
                     if (comp.Powered == false)
+                        continue;
+                    if (comp.Active == false)
                         continue;
                     /// SETUP                   
                     TransformComponent? factoryTransform;
@@ -290,14 +308,14 @@ namespace Content.Server.Factory.EntitySystems
 
                         /// RECIPE SEEKING
                         FactoryRecipe? chosenRecipe = null;
-                        if (!_proto.TryIndex(comp.ChosenRecipe, out chosenRecipe))
+                        if (comp.ChosenRecipe is null)
                         {
                             foreach (var factoryRecipe in comp.Recipes)
                             {
                                 if (!_proto.TryIndex(factoryRecipe, out var recipe))
                                     continue;
                                 bool fulfilled = true;
-                                foreach (KeyValuePair<string, int> recipePair in recipe.Inputs)
+                                foreach (var recipePair in recipe.Inputs)
                                 {
                                     if (!itemCounts.ContainsKey(recipePair.Key))
                                     {
@@ -318,13 +336,20 @@ namespace Content.Server.Factory.EntitySystems
                                 break;
                             }
                         }
+                        else
+                        {
+                            _proto.TryIndex(comp.ChosenRecipe, out chosenRecipe);
+                        }
+
+
+
 
                         if (chosenRecipe == null)
                             break;
                     
                             /// RECIPE INPUT
                         comp.Produced++;
-                        foreach (KeyValuePair<string, int> recipePair in chosenRecipe.Inputs)
+                        foreach (var recipePair in chosenRecipe.Inputs)
                         {
                             var amount = recipePair.Value;
                             if (!recipeEntities.ContainsKey(recipePair.Key))

@@ -1,9 +1,9 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Server.Factory.Components
+namespace Content.Shared.Factory.Components
 {
-    [Prototype("factoryRecipe"), Serializable, NetSerializable] 
+    [Prototype("factoryRecipe"), Serializable, NetSerializable]
     public sealed partial class FactoryRecipe : IPrototype
     {
         [IdDataField]
