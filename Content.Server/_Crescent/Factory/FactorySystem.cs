@@ -26,6 +26,13 @@ using Content.Server.Sound;
 using Content.Shared.Sound;
 using Robust.Server.Audio;
 using System.Collections.Generic;
+using Content.Server.Chat.Systems;
+using Content.Server.Verbs;
+using Content.Shared.Examine;
+using Content.Shared.Factory.Components;
+using Content.Shared.Verbs;
+using Content.Shared.Popups;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Factory.EntitySystems
 {
@@ -40,6 +47,8 @@ namespace Content.Server.Factory.EntitySystems
         [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly PhysicsSystem _physics = default!;
         [Dependency] private readonly AudioSystem _sounds = default!;
+        [Dependency] private readonly VerbSystem _verbs = default!;
+        [Dependency] private readonly IPrototypeManager _proto = default!;
 
 
         const string FactoryFixture = "FactoryFixture";
@@ -59,6 +68,9 @@ namespace Content.Server.Factory.EntitySystems
 
             SubscribeLocalEvent<FactoryComponent, SignalReceivedEvent>(OnSignalReceived);
             SubscribeLocalEvent<FactoryComponent, PowerChangedEvent>(OnPowerChanged);
+
+            SubscribeLocalEvent<FactoryComponent, GetVerbsEvent<ActivationVerb>>(OnRequestVerbs);
+            SubscribeLocalEvent<FactoryComponent, ExaminedEvent>(OnExamination);
         }
 
         private void OnInit(EntityUid uid, FactoryComponent component, ComponentInit args)
@@ -75,8 +87,89 @@ namespace Content.Server.Factory.EntitySystems
                                            CollisionGroup.Impassable), hard: false, body: physics);
 
             }
+
+
+
         }
 
+        private void OnRequestVerbs(EntityUid uid, FactoryComponent component, GetVerbsEvent<ActivationVerb> args)
+        {
+            {
+                ActivationVerb verb = new()
+                {
+                    Text = $"Toggle factory power",
+                    Act = () =>
+                    {
+                        component.Active = !component.Active;
+                    }
+                };
+                args.Verbs.Add(verb);
+            }
+            if (component.ChosenRecipe is not null)
+            {
+                ActivationVerb verb = new()
+                {
+                    Text = $"Set to auto-seek recipe",
+                    Act = () =>
+                    {
+                        component.ChosenRecipe = null;
+                    }
+                };
+                args.Verbs.Add(verb);
+            }
+            foreach (var recipeIndex in component.Recipes)
+            {
+                if (!_proto.TryIndex(recipeIndex, out var recipe))
+                {
+                    Logger.Error($"Invalid factory recipe index : {recipeIndex.Id}");
+                    continue;
+                }
+
+                ActivationVerb verb = new()
+                {
+                    Text = $"Force recipe to {recipe.name} only",
+                    Act = () =>
+                    {
+                        component.ChosenRecipe = recipe;
+                    }
+                };
+                args.Verbs.Add(verb);
+            }
+
+        }
+
+        private void OnExamination(EntityUid uid, FactoryComponent component, ExaminedEvent args)
+        {
+            args.PushMessage(FormattedMessage.FromMarkup($"The factory's active status shows {component.Active}"), 2);
+            if (component.ChosenRecipe is null)
+            {
+                args.PushMessage(FormattedMessage.FromMarkup($"The factory is on recipe auto-seek mode. It can't show inputs and outputs"), 4);
+                return;
+            }
+
+            if (!_proto.TryIndex(component.ChosenRecipe, out var recipe))
+                return;
+
+            foreach (var prototypeId in recipe.Inputs)
+            {
+                if (!_proto.TryIndex(prototypeId.Key, out var itemProt, false))
+                {
+                    args.PushMessage(FormattedMessage.FromMarkup($"IN: {prototypeId.Value} of {prototypeId.Key}"), 5);
+                    continue;
+                }
+
+                args.PushMessage(FormattedMessage.FromMarkup($"IN: {prototypeId.Value} of {itemProt.Name}"), 5);
+            }
+            // This doesn't work because ??? SPCR 2025 
+            //args.PushMessage(FormattedMessage.FromUnformatted("Outputs the following items:"));
+            foreach (var prototypeId in recipe.Outputs)
+            {
+                if (!_proto.TryIndex(prototypeId.Key, out var itemProt))
+                    continue;
+                args.PushMessage(FormattedMessage.FromMarkup($"OUT: {prototypeId.Value} of {itemProt.Name}"), 6);
+            }
+
+        }
         private void OnDel(EntityUid uid, FactoryComponent component, ComponentShutdown args)
         {
             if (!TryComp<PhysicsComponent>(uid, out var physics))
@@ -167,6 +260,10 @@ namespace Content.Server.Factory.EntitySystems
 
                 while (query.MoveNext(out var uid, out var _, out var comp))
                 {
+                    if (comp.Powered == false)
+                        continue;
+                    if (comp.Active == false)
+                        continue;
                     /// SETUP                   
                     TransformComponent? factoryTransform;
                     if (!TryComp(uid, out factoryTransform))
@@ -181,7 +278,8 @@ namespace Content.Server.Factory.EntitySystems
                             comp.Inserted.RemoveAt(i);
                             i--;
                         }
-                    foreach(EntityUid entity in comp.Inserted)
+
+                    foreach (EntityUid entity in comp.Inserted)
                     {
                         MetaDataComponent entityData = EntityManager.GetComponent<MetaDataComponent>(entity);
                         string entityString = MetaData(entity).EntityPrototype!.ID;
@@ -189,52 +287,69 @@ namespace Content.Server.Factory.EntitySystems
                         {
                             entityString = myStack.StackTypeId;
                         }
+
                         if (!itemCounts.ContainsKey(entityString))
                         {
                             itemCounts.Add(entityString, 0);
                             recipeEntities.Add(entityString, new List<EntityUid> { entity });
                         }
-                        if(myStack is not null)
+
+                        if (myStack is not null)
                             itemCounts[entityString] += myStack.Count;
                         else
                             itemCounts[entityString]++;
                         recipeEntities[entityString].Add(entity);
                     }
-                    ///
 
                     /// FABRICATION
-                    while(comp.Produced < comp.ProductionCap)
+                    while (comp.Produced < comp.ProductionCap)
                     {
+
+
                         /// RECIPE SEEKING
                         FactoryRecipe? chosenRecipe = null;
-                        foreach (KeyValuePair<string, FactoryRecipe> factoryPair in comp.Recipes)
+                        if (comp.ChosenRecipe is null)
                         {
-                            bool fulfilled = true;
-                            foreach (KeyValuePair<string, int> recipePair in factoryPair.Value.Inputs)
+                            foreach (var factoryRecipe in comp.Recipes)
                             {
-                                if(!itemCounts.ContainsKey(recipePair.Key))
+                                if (!_proto.TryIndex(factoryRecipe, out var recipe))
+                                    continue;
+                                bool fulfilled = true;
+                                foreach (var recipePair in recipe.Inputs)
                                 {
-                                    fulfilled = false;
-                                    break;
-                                }
-                                if(itemCounts[recipePair.Key] < recipePair.Value)
-                                {
-                                    fulfilled = false;
-                                    break;
-                                }
-                            }
-                            if (!fulfilled)
-                                continue;
-                            chosenRecipe = factoryPair.Value;
-                            break;
-                        }
-                        if (chosenRecipe is null)
-                            break;
-                        ///
+                                    if (!itemCounts.ContainsKey(recipePair.Key))
+                                    {
+                                        fulfilled = false;
+                                        break;
+                                    }
 
-                        /// RECIPE INPUT
+                                    if (itemCounts[recipePair.Key] < recipePair.Value)
+                                    {
+                                        fulfilled = false;
+                                        break;
+                                    }
+                                }
+
+                                if (!fulfilled)
+                                    continue;
+                                chosenRecipe = recipe;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            _proto.TryIndex(comp.ChosenRecipe, out chosenRecipe);
+                        }
+
+
+
+
+                        if (chosenRecipe == null)
+                            break;
+                    
+                            /// RECIPE INPUT
                         comp.Produced++;
-                        foreach (KeyValuePair<string,int> recipePair in chosenRecipe.Inputs)
+                        foreach (var recipePair in chosenRecipe.Inputs)
                         {
                             var amount = recipePair.Value;
                             if (!recipeEntities.ContainsKey(recipePair.Key))
@@ -242,6 +357,7 @@ namespace Content.Server.Factory.EntitySystems
                                 chosenRecipe = null;
                                 break;
                             }
+
                             List<EntityUid> delete = recipeEntities[recipePair.Key];
                             while (amount > 0 && delete.Count > 0)
                             {
@@ -272,14 +388,16 @@ namespace Content.Server.Factory.EntitySystems
 
                         var factoryRot = factoryTransform.LocalRotation;
                         /// RECIPE OUTPUT
-                        if(comp.SoundOnProduce is not null)
+                        if (comp.SoundOnProduce is not null)
                             _sounds.PlayPvs(comp.SoundOnProduce, uid);
-                        foreach (KeyValuePair<string,int> factoryPair in chosenRecipe.Outputs)
+                        foreach (KeyValuePair<string, int> factoryPair in chosenRecipe.Outputs)
                         {
                             var amount = factoryPair.Value;
                             while (amount > 0)
                             {
-                                EntityUid product = EntityManager.SpawnAtPosition(factoryPair.Key, new EntityCoordinates(uid, (float)Math.Sin((Math.PI / 180) * factoryRot) * 0.8f, (float)Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
+                                EntityUid product = EntityManager.SpawnAtPosition(factoryPair.Key,
+                                    new EntityCoordinates(uid, (float) Math.Sin((Math.PI / 180) * factoryRot) * 0.8f,
+                                        (float) Math.Cos((Math.PI / 180) * factoryRot) * 0.8f));
                                 if (TryComp<StackComponent>(product, out var productComp))
                                 {
                                     _stacks.SetCount(product, amount, productComp);
@@ -291,8 +409,8 @@ namespace Content.Server.Factory.EntitySystems
                                 }
                             }
                         }
-
                     }
+
                     /// END OF FABRICATION
                     comp.Produced = 0;
 
