@@ -1,9 +1,11 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration;
+using Content.Server.Construction.Conditions;
 using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared.Body.Components;
 using Content.Shared.Crescent.Radar;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -15,7 +17,10 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Shuttles.Components;
 using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 
@@ -44,11 +49,21 @@ public sealed class PointCannonSystem : EntitySystem
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleGroupChangedMessage>(OnConsoleGroupChanged);
 
         SubscribeLocalEvent<PointCannonComponent, EntityTerminatingEvent>(OnCannonTerminating);
+        SubscribeLocalEvent<PointCannonComponent, EntParentChangedMessage>(OnCannonParentChange);
+        SubscribeLocalEvent<PointCannonComponent, ReAnchorEvent>(OnCannonReanchor);
+
+        SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
 
         SubscribeLocalEvent<PointCannonLinkToolComponent, UseInHandEvent>(OnLinkToolHandUse);
         SubscribeLocalEvent<PointCannonComponent, InteractUsingEvent>(OnLinkToolUse);
     }
 
+    public void OnFixtureAnchor(EntityUid uid, FixturesComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (args.Transform.GridUid is null)
+            return;
+        Logger.Error($"new BB detected on {MetaData(args.Transform.GridUid.Value).EntityName}");
+    }
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -100,6 +115,20 @@ public sealed class PointCannonSystem : EntitySystem
     {
         if (_playerMan.TryGetSessionByEntity(args.Actor, out var session))
             TogglePvsOverride(uid.Comp.CurrentGroup, [session], false);
+    }
+
+    private void OnCannonParentChange(Entity<PointCannonComponent> uid, ref EntParentChangedMessage args)
+    {
+        if (uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
+            UnlinkCannon(uid, (EntityUid) uid.Comp.LinkedConsoleId, console);
+
+    }
+
+    private void OnCannonReanchor(Entity<PointCannonComponent> uid, ref ReAnchorEvent args)
+    {
+        if (uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
+            UnlinkCannon(uid, (EntityUid) uid.Comp.LinkedConsoleId, console);
+
     }
 
     private void OnCannonTerminating(Entity<PointCannonComponent> uid, ref EntityTerminatingEvent args)
