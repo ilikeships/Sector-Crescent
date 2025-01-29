@@ -42,7 +42,9 @@ namespace Content.Server.Rotatable
         {
             if (!args.CanAccess
                 || !args.CanInteract
-                || Transform(uid).NoLocalRotation) // Good ol prototype inheritance, eh?
+                || Transform(uid).NoLocalRotation // Good ol prototype inheritance, eh?
+                || Transform(uid).Anchored)
+            
                 return;
 
             // Check if the object is anchored, and whether we are still allowed to rotate it.
