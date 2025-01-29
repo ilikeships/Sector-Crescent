@@ -2818,7 +2818,8 @@ entities:
           0,3:
             0: 56781
           -1,3:
-            0: 28175
+            0: 28171
+            2: 4
           0,4:
             0: 56797
           1,0:
@@ -2949,7 +2950,8 @@ entities:
           4,4:
             0: 63345
           5,1:
-            0: 3855
+            0: 3599
+            3: 256
           5,2:
             0: 32767
           5,3:
@@ -3155,15 +3157,15 @@ entities:
             0: 56541
           0,14:
             0: 52445
-            2: 4096
+            4: 4096
           -1,14:
             0: 6367
-            2: 49152
+            4: 49152
           0,15:
-            2: 17
+            4: 17
             0: 56524
           -1,15:
-            2: 204
+            4: 204
             0: 55601
           0,16:
             0: 63708
@@ -3189,7 +3191,7 @@ entities:
             0: 65500
           3,15:
             0: 4361
-            2: 3264
+            4: 3264
           3,16:
             0: 2049
           4,12:
@@ -3440,6 +3442,36 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 21.813705
+          - 82.06108
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
           - 0
           - 0
           - 0
@@ -3905,7 +3937,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -99678.445
+      secondsUntilStateChange: -100159.64
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4026,7 +4058,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -19808.398
+      secondsUntilStateChange: -20289.596
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -7853,20 +7885,6 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
-  - uid: 2642
-    components:
-    - type: Transform
-      pos: 6.5,16.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
-  - uid: 2660
-    components:
-    - type: Transform
-      pos: 11.5,16.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
   - uid: 3762
     components:
     - type: Transform
@@ -7877,13 +7895,6 @@ entities:
       bodyType: Static
 - proto: BenchSteelRight
   entities:
-  - uid: 753
-    components:
-    - type: Transform
-      pos: 7.5,16.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
   - uid: 1018
     components:
     - type: Transform
@@ -7905,13 +7916,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,10.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
-  - uid: 2646
-    components:
-    - type: Transform
-      pos: 12.5,16.5
       parent: 1
     - type: Physics
       bodyType: Static
@@ -8455,6 +8459,11 @@ entities:
     components:
     - type: Transform
       pos: -0.5,49.5
+      parent: 1
+  - uid: 3069
+    components:
+    - type: Transform
+      pos: 43.5,-0.5
       parent: 1
   - uid: 4070
     components:
@@ -12406,11 +12415,6 @@ entities:
     - type: Transform
       pos: 41.5,-0.5
       parent: 1
-  - uid: 5048
-    components:
-    - type: Transform
-      pos: 43.5,-0.5
-      parent: 1
   - uid: 5049
     components:
     - type: Transform
@@ -13730,11 +13734,6 @@ entities:
     components:
     - type: Transform
       pos: 42.5,0.5
-      parent: 1
-  - uid: 3275
-    components:
-    - type: Transform
-      pos: 42.5,-0.5
       parent: 1
   - uid: 3276
     components:
@@ -16927,6 +16926,9 @@ entities:
     - type: Transform
       pos: 14.5,9.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 659
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -16938,6 +16940,9 @@ entities:
     - type: Transform
       pos: 18.5,8.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 659
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -16949,6 +16954,9 @@ entities:
     - type: Transform
       pos: 14.5,8.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 659
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -16960,6 +16968,9 @@ entities:
     - type: Transform
       pos: 18.5,9.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 659
     - type: ContainerContainer
       containers:
         machine_board: !type:Container
@@ -17347,6 +17358,12 @@ entities:
     - type: Transform
       pos: 12.5,7.5
       parent: 1
+  - uid: 2642
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 43.5,-0.5
+      parent: 1
   - uid: 2647
     components:
     - type: Transform
@@ -17371,6 +17388,12 @@ entities:
     components:
     - type: Transform
       pos: 11.5,7.5
+      parent: 1
+  - uid: 2660
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 38.5,-0.5
       parent: 1
   - uid: 2813
     components:
@@ -17532,17 +17555,11 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 44.5,-0.5
       parent: 1
-  - uid: 3069
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 43.5,-0.5
-      parent: 1
   - uid: 3070
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 42.5,-0.5
+      pos: 36.5,-0.5
       parent: 1
   - uid: 3071
     components:
@@ -17566,19 +17583,13 @@ entities:
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 38.5,-0.5
+      pos: 37.5,-0.5
       parent: 1
   - uid: 3075
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 37.5,-0.5
-      parent: 1
-  - uid: 3076
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 36.5,-0.5
+      pos: 42.5,-0.5
       parent: 1
   - uid: 3077
     components:
@@ -18741,6 +18752,24 @@ entities:
     - type: Transform
       pos: 20.5,6.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
   - uid: 2862
     components:
     - type: Transform
@@ -19845,6 +19874,16 @@ entities:
       rot: 3.141592653589793 rad
       pos: 16.5,6.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        551:
+        - OrderSender: OrderReceiver
+        555:
+        - OrderSender: OrderReceiver
+        552:
+        - OrderSender: OrderReceiver
+        550:
+        - OrderSender: OrderReceiver
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -27652,7 +27691,7 @@ entities:
   - uid: 2607
     components:
     - type: Transform
-      pos: -1.5,12.5
+      pos: -1.5004528,12.5
       parent: 1
     - type: EntityStorage
       air:
@@ -27660,8 +27699,8 @@ entities:
         immutable: False
         temperature: 293.14923
         moles:
-        - 1.8856695
-        - 7.0937095
+        - 1.8968438
+        - 7.1357465
         - 0
         - 0
         - 0
@@ -27672,18 +27711,20 @@ entities:
         - 0
         - 0
         - 0
+    - type: Physics
+      fixedRotation: False
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 2613
-          - 2612
-          - 2611
-          - 2610
-          - 2609
           - 2608
+          - 2609
+          - 2610
+          - 2611
+          - 2612
+          - 2613
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -28965,6 +29006,13 @@ entities:
     components:
     - type: Transform
       pos: -6.5,11.5
+      parent: 1
+- proto: PottedPlant30
+  entities:
+  - uid: 753
+    components:
+    - type: Transform
+      pos: 12.5,16.5
       parent: 1
 - proto: PottedPlantRandom
   entities:
@@ -35235,6 +35283,20 @@ entities:
     components:
     - type: Transform
       pos: -10.5,46.5
+      parent: 1
+- proto: VendingMachineSovietSoda
+  entities:
+  - uid: 2604
+    components:
+    - type: Transform
+      pos: 7.5,16.5
+      parent: 1
+- proto: VendingMachineTankDispenserEngineering
+  entities:
+  - uid: 2646
+    components:
+    - type: Transform
+      pos: 6.5,16.5
       parent: 1
 - proto: VendingMachineVendomat
   entities:
