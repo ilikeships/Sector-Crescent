@@ -1894,6 +1894,21 @@ entities:
     - type: Transform
       pos: 6.5,-7.5
       parent: 1
+  - uid: 774
+    components:
+    - type: Transform
+      pos: 6.5,-8.5
+      parent: 1
+  - uid: 775
+    components:
+    - type: Transform
+      pos: 5.5,-8.5
+      parent: 1
+  - uid: 776
+    components:
+    - type: Transform
+      pos: 4.5,-8.5
+      parent: 1
 - proto: CableHV
   entities:
   - uid: 345
@@ -1935,11 +1950,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,-13.5
-      parent: 1
-  - uid: 370
-    components:
-    - type: Transform
-      pos: 2.5,-13.5
       parent: 1
   - uid: 371
     components:
@@ -2025,6 +2035,46 @@ entities:
     components:
     - type: Transform
       pos: 7.5,-9.5
+      parent: 1
+  - uid: 777
+    components:
+    - type: Transform
+      pos: 2.5,-12.5
+      parent: 1
+  - uid: 778
+    components:
+    - type: Transform
+      pos: 1.5,-12.5
+      parent: 1
+  - uid: 779
+    components:
+    - type: Transform
+      pos: 1.5,-13.5
+      parent: 1
+  - uid: 780
+    components:
+    - type: Transform
+      pos: 7.5,-10.5
+      parent: 1
+  - uid: 781
+    components:
+    - type: Transform
+      pos: 7.5,-11.5
+      parent: 1
+  - uid: 782
+    components:
+    - type: Transform
+      pos: 6.5,-11.5
+      parent: 1
+  - uid: 783
+    components:
+    - type: Transform
+      pos: 5.5,-11.5
+      parent: 1
+  - uid: 784
+    components:
+    - type: Transform
+      pos: 4.5,-11.5
       parent: 1
 - proto: CableMV
   entities:
@@ -2272,6 +2322,20 @@ entities:
     components:
     - type: Transform
       pos: 6.5,9.5
+      parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 370
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-13.5
+      parent: 1
+  - uid: 773
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 6.5,-9.5
       parent: 1
 - proto: Catwalk
   entities:
@@ -2559,6 +2623,20 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 433
