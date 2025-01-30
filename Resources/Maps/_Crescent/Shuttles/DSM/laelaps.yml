@@ -922,6 +922,9 @@ entities:
       pos: 7.5,22.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 75
+      - 241
       linkedConsoleId: 241
       obstructedRanges:
       - 1.640748774999482 rad: 3.123776896935956 rad
@@ -949,6 +952,9 @@ entities:
       pos: -6.5,22.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 75
+      - 241
       linkedConsoleId: 241
       obstructedRanges:
       - 4.660252288833941 rad: 3.1237768969359574 rad
@@ -976,6 +982,9 @@ entities:
       pos: 4.5,33.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 75
+      - 241
       linkedConsoleId: 241
       obstructedRanges:
       - 1.7878271354962012 rad: 3.8146797634055964 rad
@@ -1003,6 +1012,9 @@ entities:
       pos: -3.5,33.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 75
+      - 241
       linkedConsoleId: 241
       obstructedRanges:
       - 3.8222710618675815 rad: 3.8146797634055964 rad
@@ -3317,6 +3329,11 @@ entities:
         - 92
         - 48
         - 366
+        60mm 'Needler' heavy precision autogun:
+        - 72
+        - 76
+        - 90
+        - 94
   - uid: 241
     components:
     - type: Transform
@@ -3343,6 +3360,11 @@ entities:
         - 92
         - 48
         - 366
+        60mm 'Needler' heavy precision autogun:
+        - 72
+        - 76
+        - 90
+        - 94
 - proto: CrateEngineeringAMEJar
   entities:
   - uid: 135
@@ -4225,6 +4247,64 @@ entities:
     - type: Transform
       pos: -4.584167,6.7938027
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 981
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 982
+    components:
+    - type: Transform
+      pos: 9.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 983
+    components:
+    - type: Transform
+      pos: -6.5,22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 984
+    components:
+    - type: Transform
+      pos: 7.5,22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 985
+    components:
+    - type: Transform
+      pos: 5.5,30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 986
+    components:
+    - type: Transform
+      pos: 4.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 987
+    components:
+    - type: Transform
+      pos: -3.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 988
+    components:
+    - type: Transform
+      pos: -4.5,30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 353
@@ -5487,7 +5567,7 @@ entities:
       pos: 0.5,22.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 967000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

@@ -1083,6 +1083,9 @@ entities:
       pos: 1.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 419
+      linkedConsoleId: 419
       obstructedRanges:
       - 2.715122334649169 rad: 3.475387170722554 rad
     - type: ContainerContainer
@@ -1106,6 +1109,9 @@ entities:
       pos: -0.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 419
+      linkedConsoleId: 419
       obstructedRanges:
       - 3.2342684553976557 rad: 3.4753871707225548 rad
     - type: ContainerContainer
@@ -3526,6 +3532,20 @@ entities:
         211:
         - Group2: On
         - Group3: Off
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 348
@@ -3582,6 +3602,9 @@ entities:
         - 495
         - 259
         - 470
+        60mm 'Needler' heavy precision autogun:
+        - 463
+        - 472
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 431
@@ -4166,6 +4189,113 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5409976,-14.452088
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 613
+    components:
+    - type: Transform
+      pos: 8.5,-27.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 616
+    components:
+    - type: Transform
+      pos: 5.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 617
+    components:
+    - type: Transform
+      pos: 2.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 618
+    components:
+    - type: Transform
+      pos: -1.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 622
+    components:
+    - type: Transform
+      pos: -0.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 623
+    components:
+    - type: Transform
+      pos: 1.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 624
+    components:
+    - type: Transform
+      pos: 12.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 625
+    components:
+    - type: Transform
+      pos: 12.5,-12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 626
+    components:
+    - type: Transform
+      pos: 11.5,-19.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 627
+    components:
+    - type: Transform
+      pos: 3.5,-26.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1051
+    components:
+    - type: Transform
+      pos: 0.5,-26.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1054
+    components:
+    - type: Transform
+      pos: -4.5,-27.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1055
+    components:
+    - type: Transform
+      pos: -7.5,-19.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1056
+    components:
+    - type: Transform
+      pos: -7.5,-13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1057
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 439
@@ -6812,7 +6942,7 @@ entities:
     - type: PointCannon
       obstructedRanges:
       - 1.7878271354962012 rad: 5.385476090200493 rad
-- proto: WeaponTurretPDTCMM
+- proto: WeaponTurretPDTNCWL
   entities:
   - uid: 211
     components:

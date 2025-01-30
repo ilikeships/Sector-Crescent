@@ -3305,7 +3305,7 @@ entities:
       pos: -2.5,0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -138.11624
+      secondsUntilStateChange: -169.34015
       state: Closing
 - proto: DefibrillatorCabinetFilled
   entities:
@@ -4280,6 +4280,50 @@ entities:
     - type: Transform
       pos: -5.5337596,25.475395
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 1043
+    components:
+    - type: Transform
+      pos: -9.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1044
+    components:
+    - type: Transform
+      pos: 10.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1045
+    components:
+    - type: Transform
+      pos: 8.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1046
+    components:
+    - type: Transform
+      pos: -7.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1047
+    components:
+    - type: Transform
+      pos: -3.5,30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1048
+    components:
+    - type: Transform
+      pos: 6.5,27.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 439

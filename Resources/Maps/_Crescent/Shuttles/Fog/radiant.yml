@@ -465,6 +465,8 @@ entities:
       pos: -7.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 462
       linkedConsoleId: 462
       obstructedRanges:
       - 4.1810417247387806 rad: 3.520335946350477 rad
@@ -485,6 +487,8 @@ entities:
       pos: 10.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 462
       linkedConsoleId: 462
       obstructedRanges:
       - 1.7234002896801222 rad: 3.520335946350477 rad
@@ -2262,6 +2266,9 @@ entities:
         - 247
         - 246
         - 244
+        heavy 'Hephaeustus' assault artillery platform:
+        - 62
+        - 70
 - proto: CyborgEndoskeleton
   entities:
   - uid: 468
@@ -2386,6 +2393,92 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 731
+    components:
+    - type: Transform
+      pos: 9.5,-18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 732
+    components:
+    - type: Transform
+      pos: 10.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 733
+    components:
+    - type: Transform
+      pos: 8.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 734
+    components:
+    - type: Transform
+      pos: 5.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 775
+    components:
+    - type: Transform
+      pos: -2.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 776
+    components:
+    - type: Transform
+      pos: -5.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 777
+    components:
+    - type: Transform
+      pos: -7.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 778
+    components:
+    - type: Transform
+      pos: -10.5,-10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 814
+    components:
+    - type: Transform
+      pos: -10.5,-12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 815
+    components:
+    - type: Transform
+      pos: -6.5,-18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 816
+    components:
+    - type: Transform
+      pos: 13.5,-12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 817
+    components:
+    - type: Transform
+      pos: 13.5,-10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HeavyMortarCartridge
   entities:
   - uid: 63
@@ -3165,7 +3258,7 @@ entities:
       pos: 2.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 584
@@ -3205,7 +3298,7 @@ entities:
       pos: 3.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 584
@@ -3245,7 +3338,7 @@ entities:
       pos: 0.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 584
@@ -3285,7 +3378,7 @@ entities:
       pos: -0.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 584
@@ -3735,7 +3828,7 @@ entities:
       pos: -3.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -3765,7 +3858,7 @@ entities:
       pos: 6.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

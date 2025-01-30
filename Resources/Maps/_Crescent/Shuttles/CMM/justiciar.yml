@@ -356,6 +356,9 @@ entities:
       pos: -1.5,7.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 127
+      linkedConsoleId: 127
       obstructedRanges:
       - 3.8222710618675815 rad: 2.70753106557254 rad
   - uid: 126
@@ -365,6 +368,9 @@ entities:
       pos: 2.5,7.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 127
+      linkedConsoleId: 127
       obstructedRanges:
       - 2.894975833329257 rad: 2.7075310655725406 rad
   - uid: 232
@@ -374,6 +380,9 @@ entities:
       pos: -3.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 127
+      linkedConsoleId: 127
       obstructedRanges:
       - 4.805064782192553 rad: 3.939034770299038 rad
   - uid: 240
@@ -383,6 +392,9 @@ entities:
       pos: 4.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 127
+      linkedConsoleId: 127
       obstructedRanges:
       - 0.6806784082777885 rad: 3.939034770299038 rad
 - proto: BoriaticGeneratorHerculesShuttle
@@ -840,6 +852,20 @@ entities:
       - Blank
       - Reinforce bridge
       - Docking port lockdown
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 140
@@ -871,6 +897,11 @@ entities:
         missiles rear:
         - 240
         - 232
+        light 'Lancer' swarmrocket platform:
+        - 124
+        - 126
+        - 232
+        - 240
 - proto: CrateGenericSteel
   entities:
   - uid: 89
@@ -1107,26 +1138,59 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 44
+    components:
+    - type: Transform
+      pos: 2.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 246
+    components:
+    - type: Transform
+      pos: -1.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 268
+    components:
+    - type: Transform
+      pos: 4.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 269
+    components:
+    - type: Transform
+      pos: -3.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: JugBoriaticFuel
   entities:
   - uid: 45
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 46
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 47
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -1261,217 +1325,248 @@ entities:
   - uid: 97
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 98
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 100
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 101
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 102
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 103
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 104
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 105
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 106
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 107
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 108
     components:
     - type: Transform
-      parent: 44
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 247
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 248
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 249
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 250
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 251
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 252
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 253
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 254
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 255
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 256
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 257
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 258
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 259
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 260
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 261
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 262
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 263
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 264
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 265
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 266
     components:
     - type: Transform
-      parent: 246
+      pos: 0.61146545,0.64122903
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage

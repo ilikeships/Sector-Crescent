@@ -291,6 +291,9 @@ entities:
       pos: 6.5,3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 215
+      linkedConsoleId: 215
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
 - proto: BoriaticGeneratorHerculesShuttle
@@ -894,6 +897,20 @@ entities:
         - Group2: Toggle
         33:
         - Group2: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 215
@@ -904,6 +921,8 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
+        - 74
+        light 'Lancer' swarmrocket platform:
         - 74
 - proto: FaxMachineShip
   entities:
@@ -1043,6 +1062,15 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-2.5
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 189
+    components:
+    - type: Transform
+      pos: 6.5,3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: JetpackMiniFilled
   entities:
   - uid: 169

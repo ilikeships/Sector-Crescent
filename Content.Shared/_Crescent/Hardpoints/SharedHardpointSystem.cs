@@ -1,0 +1,136 @@
+using Content.Shared.Construction;
+using Content.Shared.Construction.Components;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+
+namespace Content.Shared._Crescent.Hardpoints;
+
+/// <summary>
+/// This handles...
+/// </summary>
+public class SharedHardpointSystem : EntitySystem
+{
+    [Dependency] public readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] public readonly EntityLookupSystem _lookupSystem = default!;
+    [Dependency] public readonly SharedMapSystem _mapSystem = default!;
+    /// <inheritdoc/>
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorStateChangedEvent>(OnAnchorChange);
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, MapInitEvent>(OnMapLoad);
+        SubscribeLocalEvent<HardpointComponent, AnchorStateChangedEvent>(OnHardpointAnchor);
+    }
+
+    public void OnMapLoad(EntityUid uid, HardpointAnchorableOnlyComponent comp, ref MapInitEvent args)
+    {
+        if (Transform(uid).MapUid == null)
+            return;
+        if (TryAnchorToAnyHardpoint(uid, comp))
+            return;
+        Logger.Error(
+            $"Hardpoint-only weapon had no hardpoint under itself at mapInit. {uid} , {MetaData(uid).EntityName}");
+    }
+    public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
+    {
+        if (args.Anchored)
+            return;
+        if (component.anchoredTo is null)
+        {
+            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            return;
+        }
+
+        var gridUid = Transform(component.anchoredTo.Value).GridUid;
+        if (gridUid is null)
+            return;
+        Deanchor(uid, component.anchoredTo.Value, gridUid.Value, component);
+    }
+
+    public void OnHardpointAnchor(EntityUid target, HardpointComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (args.Anchored)
+            return;
+        if (comp.anchoring is null)
+            return;
+        var gridUid = Transform(comp.anchoring.Value).GridUid;
+        _transformSystem.Unanchor(comp.anchoring.Value);
+        if (gridUid is null)
+            return;
+        Deanchor(comp.anchoring.Value, target, gridUid.Value,
+            Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
+
+
+
+    }
+
+    public void Deanchor(EntityUid target, EntityUid anchor, EntityUid grid, HardpointAnchorableOnlyComponent component)
+    {
+        if (component.anchoredTo is null)
+        {
+            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            return;
+        }
+        var hardpointComp = Comp<HardpointComponent>(component.anchoredTo.Value);
+        var hardpointUid = component.anchoredTo.Value;
+        hardpointComp.anchoring = null;
+        HardpointCannonDeanchoredEvent arg = new();
+        arg.CannonUid = target;
+        arg.gridUid = grid;
+        RaiseLocalEvent(component.anchoredTo.Value, arg);
+        component.anchoredTo = null;
+        Dirty(target, component);
+        Dirty(hardpointUid, hardpointComp);
+    }
+    public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
+    {
+        if (TryAnchorToAnyHardpoint(uid, component))
+            return;
+        args.Cancel();
+    }
+
+    public bool TryAnchorToAnyHardpoint(EntityUid uid, HardpointAnchorableOnlyComponent component)
+    {
+        var gridUid = Transform(uid).GridUid;
+        if (gridUid is null)
+            return false;
+        if (!TryComp<MapGridComponent>(gridUid, out var gridComp))
+            return false;
+        if (!_transformSystem.TryGetGridTilePosition(uid, out var indice, gridComp))
+        {
+            return false;
+        }
+
+        foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp), indice))
+        {
+            Logger.Error($"checking {MetaData(entity).EntityName} at indices X: {indice.X} and Y: {indice.Y} , --- {indice}");
+            if (!TryComp<HardpointComponent>(entity, out var hardComp))
+                continue;
+            Logger.Error($"1");
+            if (hardComp.anchoring is not null)
+                continue;
+            Logger.Error($"2");
+            if ((hardComp.CompatibleTypes & component.CompatibleTypes) == 0)
+                continue;
+            Logger.Error($"3");
+            if (hardComp.CompatibleSizes < component.CompatibleSizes)
+                continue;
+            AnchorEntityToHardpoint(uid, entity, component, hardComp, gridUid.Value);
+            return true;
+        }
+
+        return false;
+    }
+
+    public void AnchorEntityToHardpoint(EntityUid target, EntityUid anchor,HardpointAnchorableOnlyComponent targetComp, HardpointComponent hardpoint, EntityUid grid)
+    {
+        hardpoint.anchoring = target;
+        targetComp.anchoredTo = anchor;
+        HardpointCannonAnchoredEvent arg = new();
+        arg.cannonUid = target;
+        arg.gridUid = grid;
+        RaiseLocalEvent(anchor, arg);
+        Dirty(target, targetComp);
+        Dirty(anchor, hardpoint);
+    }
+}

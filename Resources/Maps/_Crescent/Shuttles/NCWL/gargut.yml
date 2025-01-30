@@ -1105,6 +1105,8 @@ entities:
       pos: 16.5,5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 1.6634721286027596 rad: 3.939034770299038 rad
@@ -1132,6 +1134,8 @@ entities:
       pos: -17.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 5.3930673886624785 rad: 3.814679763405596 rad
@@ -1158,6 +1162,8 @@ entities:
       pos: -12.5,-5.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 4.929419789085995 rad: 4.402682369875522 rad
@@ -1184,6 +1190,8 @@ entities:
       pos: 14.5,-6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 0.6806784082777885 rad: 3.3510321638291125 rad
@@ -1213,6 +1221,8 @@ entities:
       pos: -8.5,13.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 3.147530122935145 rad: 3.901418082076422 rad
@@ -1226,6 +1236,8 @@ entities:
       pos: -12.5,12.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 570
       linkedConsoleId: 570
       obstructedRanges:
       - 3.4040467472661273 rad: 3.4707575483937365 rad
@@ -1412,21 +1424,24 @@ entities:
   - uid: 469
     components:
     - type: Transform
-      parent: 468
+      pos: 0.49257025,0.5520318
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 470
     components:
     - type: Transform
-      parent: 468
+      pos: 0.49257025,0.5520318
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 471
     components:
     - type: Transform
-      parent: 468
+      pos: 0.49257025,0.5520318
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -3942,6 +3957,20 @@ entities:
         305:
         - Group4: On
         - Group5: Off
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopStationRecords
   entities:
   - uid: 610
@@ -4029,6 +4058,14 @@ entities:
         - 313
         - 1149
         - 297
+        60mm 'Needler' heavy precision autogun:
+        - 297
+        - 298
+        - 312
+        - 1149
+        NCWL 'Pilum' smartbomb missile rack:
+        - 856
+        - 1147
 - proto: ConveyorBelt
   entities:
   - uid: 278
@@ -4663,6 +4700,120 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 468
+    components:
+    - type: Transform
+      pos: -18.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 472
+    components:
+    - type: Transform
+      pos: -12.5,12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 613
+    components:
+    - type: Transform
+      pos: -8.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 654
+    components:
+    - type: Transform
+      pos: 5.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 655
+    components:
+    - type: Transform
+      pos: -10.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1190
+    components:
+    - type: Transform
+      pos: -6.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1196
+    components:
+    - type: Transform
+      pos: 9.5,15.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1197
+    components:
+    - type: Transform
+      pos: 10.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1198
+    components:
+    - type: Transform
+      pos: 14.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1199
+    components:
+    - type: Transform
+      pos: 16.5,5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1200
+    components:
+    - type: Transform
+      pos: 16.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1201
+    components:
+    - type: Transform
+      pos: 14.5,-6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1202
+    components:
+    - type: Transform
+      pos: -4.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1203
+    components:
+    - type: Transform
+      pos: -17.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1204
+    components:
+    - type: Transform
+      pos: -12.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1205
+    components:
+    - type: Transform
+      pos: -14.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 547
@@ -6329,7 +6480,7 @@ entities:
       pos: 12.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 979000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6360,7 +6511,7 @@ entities:
       pos: -16.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 979000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6391,7 +6542,7 @@ entities:
       pos: -14.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 982000
+      startingCharge: 979000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

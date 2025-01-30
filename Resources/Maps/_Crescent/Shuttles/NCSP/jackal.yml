@@ -2110,6 +2110,11 @@ entities:
       pos: 23.5,-52.5
       parent: 2
     - type: PointCannon
+      linkedConsoleIds:
+      - 1154
+      - 1225
+      - 1226
+      linkedConsoleId: 1226
       obstructedRanges:
       - 1.3241795065343607 rad: 4.8663299988373625 rad
 - proto: Bed
@@ -10624,23 +10629,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: StationAdminBankATMSyndicate
-  entities:
-  - uid: 1216
-    components:
-    - type: Transform
-      pos: 3.5,-4.5
-      parent: 2
-    - type: ContainerContainer
-      containers:
-        station-bank-ATM-cashSlot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 1046
@@ -10738,6 +10726,8 @@ entities:
         - 122
         - 1156
         - 196
+        heavy 'Hephaeustus' assault artillery platform:
+        - 669
   - uid: 1225
     components:
     - type: Transform
@@ -10808,6 +10798,8 @@ entities:
         - 122
         - 1156
         - 196
+        heavy 'Hephaeustus' assault artillery platform:
+        - 669
   - uid: 1226
     components:
     - type: Transform
@@ -10878,6 +10870,8 @@ entities:
         - 122
         - 1156
         - 196
+        heavy 'Hephaeustus' assault artillery platform:
+        - 669
 - proto: ComputerWallmountBankATM
   entities:
   - uid: 986
@@ -15099,6 +15093,141 @@ entities:
     - type: Transform
       pos: 8.46677,-31.355055
       parent: 2
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 554
+    components:
+    - type: Transform
+      pos: -10.5,-39.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 567
+    components:
+    - type: Transform
+      pos: -9.5,-3.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1262
+    components:
+    - type: Transform
+      pos: -16.5,-35.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1298
+    components:
+    - type: Transform
+      pos: -11.5,-50.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1733
+    components:
+    - type: Transform
+      pos: -10.5,-63.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1734
+    components:
+    - type: Transform
+      pos: -24.5,-55.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1735
+    components:
+    - type: Transform
+      pos: -23.5,-60.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1736
+    components:
+    - type: Transform
+      pos: -16.5,-61.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1737
+    components:
+    - type: Transform
+      pos: 23.5,-52.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1738
+    components:
+    - type: Transform
+      pos: 0.5,-69.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1739
+    components:
+    - type: Transform
+      pos: 11.5,-63.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1740
+    components:
+    - type: Transform
+      pos: 17.5,-61.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1741
+    components:
+    - type: Transform
+      pos: 24.5,-60.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1742
+    components:
+    - type: Transform
+      pos: 25.5,-55.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1743
+    components:
+    - type: Transform
+      pos: 12.5,-50.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1745
+    components:
+    - type: Transform
+      pos: 11.5,-45.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1746
+    components:
+    - type: Transform
+      pos: 22.5,-16.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1747
+    components:
+    - type: Transform
+      pos: 19.5,-23.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 1748
+    components:
+    - type: Transform
+      pos: 6.5,-0.5
+      parent: 2
+    - type: Physics
+      canCollide: False
 - proto: HeavyMortarCartridge
   entities:
   - uid: 670
@@ -15979,7 +16108,7 @@ entities:
       pos: 17.5,-17.5
       parent: 2
     - type: DeadDrop
-      nextDrop: 4895.000281
+      nextDrop: 5926.2311803
 - proto: PosterContrabandInterdyne
   entities:
   - uid: 1235
@@ -18688,6 +18817,23 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,-10.5
       parent: 2
+- proto: StationAdminBankATMSyndicate
+  entities:
+  - uid: 1216
+    components:
+    - type: Transform
+      pos: 3.5,-4.5
+      parent: 2
+    - type: ContainerContainer
+      containers:
+        station-bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: StationMap
   entities:
   - uid: 1522
@@ -20476,7 +20622,7 @@ entities:
       pos: 18.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 937000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20509,7 +20655,7 @@ entities:
       pos: 20.5,-15.5
       parent: 2
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 937000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20542,7 +20688,7 @@ entities:
       pos: -20.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 937000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -20576,7 +20722,7 @@ entities:
       pos: -22.5,-51.5
       parent: 2
     - type: Battery
-      startingCharge: 940000
+      startingCharge: 937000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

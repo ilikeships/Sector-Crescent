@@ -3937,7 +3937,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -100159.64
+      secondsUntilStateChange: -100342.336
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4058,7 +4058,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -20289.596
+      secondsUntilStateChange: -20472.291
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -7580,6 +7580,9 @@ entities:
       pos: -4.5,73.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 2478
+      linkedConsoleId: 2478
       obstructedRanges:
       - 3.2941966164750185 rad: 2.836384727819342 rad
   - uid: 236
@@ -7589,6 +7592,8 @@ entities:
       pos: 45.5,47.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 2478
       linkedConsoleId: 2478
       obstructedRanges:
       - 2.251474735072685 rad: 3.814679763405596 rad
@@ -7599,6 +7604,9 @@ entities:
       pos: 61.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 2478
+      linkedConsoleId: 2478
       obstructedRanges:
       - 1.640748774999482 rad: 3.0016877571806218 rad
 - proto: BaseWeaponTurretGargoyle
@@ -7610,6 +7618,8 @@ entities:
       pos: 19.5,61.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 2478
       linkedConsoleId: 2478
       obstructedRanges:
       - 1.870968342307374 rad: 3.731538556594424 rad
@@ -7619,6 +7629,8 @@ entities:
       pos: 25.5,-9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 2478
       linkedConsoleId: 2478
       obstructedRanges:
       - 0.2170308087013046 rad: 4.547494863234134 rad
@@ -20088,9 +20100,6 @@ entities:
         - 6283
         - 2149
         - 1007
-        - 6290
-        - 133
-        - 236
         - 6291
         - 1006
         - 1052
@@ -20101,15 +20110,17 @@ entities:
         - 6287
         - 2261
         - 6292
+        - 147
+        - 236
+        - 2260
+        - 133
+        - 6290
         flak:
         - 6283
         - 2149
         - 1007
-        gargoyle:
-        - 6290
-        - 133
-        artillery:
-        - 236
+        gargoyle: []
+        artillery: []
         machinegun:
         - 6291
         - 1006
@@ -20121,6 +20132,13 @@ entities:
         - 6287
         - 2261
         - 6292
+        heavy 'Hephaeustus' assault artillery platform:
+        - 147
+        - 236
+        - 2260
+        heavy 'Gargoyle' cruise missile launcher:
+        - 133
+        - 6290
 - proto: ComputerWallmountBankATM
   entities:
   - uid: 359
@@ -27059,6 +27077,134 @@ entities:
     - type: Transform
       pos: -11.482789,40.129753
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 3076
+    components:
+    - type: Transform
+      pos: 3.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3275
+    components:
+    - type: Transform
+      pos: -13.5,70.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 5048
+    components:
+    - type: Transform
+      pos: -6.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6356
+    components:
+    - type: Transform
+      pos: -16.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6357
+    components:
+    - type: Transform
+      pos: -12.5,26.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6358
+    components:
+    - type: Transform
+      pos: -20.5,44.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6359
+    components:
+    - type: Transform
+      pos: -18.5,54.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6360
+    components:
+    - type: Transform
+      pos: -4.5,73.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6361
+    components:
+    - type: Transform
+      pos: 15.5,66.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6362
+    components:
+    - type: Transform
+      pos: 19.5,61.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6363
+    components:
+    - type: Transform
+      pos: 52.5,36.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6364
+    components:
+    - type: Transform
+      pos: 45.5,47.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6365
+    components:
+    - type: Transform
+      pos: 48.5,27.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6366
+    components:
+    - type: Transform
+      pos: 25.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6367
+    components:
+    - type: Transform
+      pos: 13.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6368
+    components:
+    - type: Transform
+      pos: 61.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6369
+    components:
+    - type: Transform
+      pos: 59.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6370
+    components:
+    - type: Transform
+      pos: 59.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtains
   entities:
   - uid: 1832
@@ -35291,7 +35437,7 @@ entities:
     - type: Transform
       pos: 7.5,16.5
       parent: 1
-- proto: VendingMachineTankDispenserEngineering
+- proto: VendingMachineTankDispenserEVA
   entities:
   - uid: 2646
     components:

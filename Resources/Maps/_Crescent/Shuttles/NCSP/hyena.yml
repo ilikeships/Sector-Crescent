@@ -864,6 +864,9 @@ entities:
       pos: -5.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 94
+      - 159
       linkedConsoleId: 159
       obstructedRanges:
       - 4.202777454632893 rad: 4.541322097858697 rad
@@ -888,6 +891,9 @@ entities:
       pos: -5.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 94
+      - 159
       linkedConsoleId: 159
       obstructedRanges:
       - 3.3586234622910975 rad: 4.921828471775364 rad
@@ -912,6 +918,9 @@ entities:
       pos: 9.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 94
+      - 159
       linkedConsoleId: 159
       obstructedRanges:
       - 1.0394490711489877 rad: 4.56305782775281 rad
@@ -936,6 +945,9 @@ entities:
       pos: 9.5,2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 94
+      - 159
       linkedConsoleId: 159
       obstructedRanges:
       - 0.6806784082777885 rad: 4.458180872198882 rad
@@ -3233,6 +3245,20 @@ entities:
       - Blank
       - Arm turrets
       - Disarm turrets
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 94
@@ -3264,6 +3290,11 @@ entities:
         - 973
         - 158
         boltgun:
+        - 909
+        - 910
+        - 911
+        - 912
+        60mm 'Needler' heavy precision autogun:
         - 909
         - 910
         - 911
@@ -3311,6 +3342,11 @@ entities:
         - 980
         - 981
         boltgun:
+        - 909
+        - 910
+        - 911
+        - 912
+        60mm 'Needler' heavy precision autogun:
         - 909
         - 910
         - 911
@@ -4149,6 +4185,85 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 65
+    components:
+    - type: Transform
+      pos: 10.5,18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 160
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 397
+    components:
+    - type: Transform
+      pos: -5.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 913
+    components:
+    - type: Transform
+      pos: -5.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 923
+    components:
+    - type: Transform
+      pos: -6.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 924
+    components:
+    - type: Transform
+      pos: -0.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 925
+    components:
+    - type: Transform
+      pos: 11.5,5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 926
+    components:
+    - type: Transform
+      pos: 9.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 927
+    components:
+    - type: Transform
+      pos: 9.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 928
+    components:
+    - type: Transform
+      pos: 4.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 929
+    components:
+    - type: Transform
+      pos: -0.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HolofanProjector
   entities:
   - uid: 818
@@ -5868,7 +5983,7 @@ entities:
       pos: 6.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 967000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5899,7 +6014,7 @@ entities:
       pos: 3.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 967000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6930,6 +7045,10 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 10.557233,12.475455
       parent: 1
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          ents: []
 - proto: WeaponRevolverSnubnose
   entities:
   - uid: 360

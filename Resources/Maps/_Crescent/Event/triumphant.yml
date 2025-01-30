@@ -899,6 +899,183 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 743
+    components:
+    - type: Transform
+      pos: 7.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 746
+    components:
+    - type: Transform
+      pos: -4.5,41.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 749
+    components:
+    - type: Transform
+      pos: 0.5,49.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1360
+    components:
+    - type: Transform
+      pos: 4.5,43.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1361
+    components:
+    - type: Transform
+      pos: 4.5,42.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1362
+    components:
+    - type: Transform
+      pos: 4.5,41.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1363
+    components:
+    - type: Transform
+      pos: 4.5,40.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1364
+    components:
+    - type: Transform
+      pos: 6.5,39.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1365
+    components:
+    - type: Transform
+      pos: 8.5,36.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1366
+    components:
+    - type: Transform
+      pos: -5.5,34.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1367
+    components:
+    - type: Transform
+      pos: -5.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1368
+    components:
+    - type: Transform
+      pos: -5.5,32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1369
+    components:
+    - type: Transform
+      pos: -5.5,31.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1370
+    components:
+    - type: Transform
+      pos: -6.5,19.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1371
+    components:
+    - type: Transform
+      pos: -6.5,18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1372
+    components:
+    - type: Transform
+      pos: -6.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1373
+    components:
+    - type: Transform
+      pos: -6.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1374
+    components:
+    - type: Transform
+      pos: -6.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1375
+    components:
+    - type: Transform
+      pos: -13.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1376
+    components:
+    - type: Transform
+      pos: -14.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1377
+    components:
+    - type: Transform
+      pos: -6.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1378
+    components:
+    - type: Transform
+      pos: 7.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1379
+    components:
+    - type: Transform
+      pos: 15.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1380
+    components:
+    - type: Transform
+      pos: 14.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1381
+    components:
+    - type: Transform
+      pos: 8.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 1318
@@ -1288,6 +1465,9 @@ entities:
       pos: 0.5,49.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 4.555086161696119 rad: 0.3146056373771412 rad
       - 2.251474735072685 rad: 2.4749741098582 rad
@@ -1299,6 +1479,9 @@ entities:
       pos: -4.5,41.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 4.285918661444065 rad: 3.994533291471042 rad
 - proto: BaseWeaponTurretGargoyle
@@ -1310,6 +1493,9 @@ entities:
       pos: -13.5,6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.3586234622910975 rad: 4.278327362982081 rad
   - uid: 418
@@ -1319,6 +1505,9 @@ entities:
       pos: 14.5,6.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 1.7878271354962012 rad: 4.27832736298208 rad
   - uid: 427
@@ -1328,6 +1517,9 @@ entities:
       pos: 6.5,39.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 1.7234002896801222 rad: 4.342754208798159 rad
 - proto: BaseWeaponTurretNeedlerSRM
@@ -1339,6 +1531,9 @@ entities:
       pos: -5.5,34.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1362,6 +1557,9 @@ entities:
       pos: -5.5,33.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1385,6 +1583,9 @@ entities:
       pos: -5.5,32.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1408,6 +1609,9 @@ entities:
       pos: -5.5,31.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -1431,6 +1635,9 @@ entities:
       pos: 4.5,40.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 0.6806784082777885 rad: 5.509831097093935 rad
     - type: ContainerContainer
@@ -1454,6 +1661,9 @@ entities:
       pos: 4.5,41.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 0.6806784082777885 rad: 5.166807153750874 rad
     - type: ContainerContainer
@@ -1477,6 +1687,9 @@ entities:
       pos: 4.5,42.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -1500,6 +1713,9 @@ entities:
       pos: 4.5,43.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -1523,6 +1739,9 @@ entities:
       pos: -6.5,19.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1546,6 +1765,9 @@ entities:
       pos: -6.5,18.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1569,6 +1791,9 @@ entities:
       pos: -6.5,17.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.921828490624009 rad
     - type: ContainerContainer
@@ -1592,6 +1817,9 @@ entities:
       pos: -6.5,16.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 542
+      linkedConsoleId: 542
       obstructedRanges:
       - 3.8222710618675815 rad: 4.9218284906240095 rad
     - type: ContainerContainer
@@ -4560,6 +4788,20 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopComms
   entities:
   - uid: 577
@@ -4656,6 +4898,26 @@ entities:
         - 424
         - 419
         - 426
+        heavy 'Hephaeustus' assault artillery platform:
+        - 210
+        - 377
+        heavy 'Gargoyle' cruise missile launcher:
+        - 417
+        - 418
+        - 427
+        60mm 'Needler' heavy precision autogun:
+        - 405
+        - 406
+        - 407
+        - 408
+        - 409
+        - 410
+        - 411
+        - 412
+        - 413
+        - 414
+        - 415
+        - 416
 - proto: CrateFreezer
   entities:
   - uid: 726

@@ -1800,6 +1800,15 @@ entities:
     - type: Transform
       pos: 5.487581,-2.404159
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 370
+    components:
+    - type: Transform
+      pos: -0.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 86

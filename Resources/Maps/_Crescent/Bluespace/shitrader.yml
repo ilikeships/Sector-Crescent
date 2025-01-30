@@ -2058,6 +2058,36 @@ entities:
     - type: Transform
       pos: -0.95633316,12.534542
       parent: 1
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 470
+    components:
+    - type: Transform
+      pos: -7.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 471
+    components:
+    - type: Transform
+      pos: 8.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 472
+    components:
+    - type: Transform
+      pos: -7.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 473
+    components:
+    - type: Transform
+      pos: 8.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 302
