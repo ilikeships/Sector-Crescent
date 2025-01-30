@@ -899,7 +899,7 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 743
     components:

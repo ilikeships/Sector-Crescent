@@ -1948,7 +1948,7 @@ entities:
     - type: Transform
       pos: 1.4429123,10.561487
       parent: 1
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 223
     components:

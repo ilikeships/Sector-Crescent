@@ -4700,7 +4700,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 468
     components:
