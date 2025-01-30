@@ -2540,7 +2540,7 @@ entities:
       pos: -5.5,-0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -9832.232
+      secondsUntilStateChange: -9872.3955
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3756,6 +3756,9 @@ entities:
       pos: 12.5,11.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 2.251474735072685 rad: 3.3510321638291125 rad
@@ -3765,6 +3768,9 @@ entities:
       pos: -21.5,-20.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 4.929419789085995 rad: 4.27832736298208 rad
@@ -3774,6 +3780,9 @@ entities:
       pos: 9.5,-20.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 0.005937469345352039 rad: 4.613775709231475 rad
@@ -3784,6 +3793,9 @@ entities:
       pos: 13.5,-10.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 1.1443260267029163 rad: 0.35651785188739515 rad
@@ -3795,6 +3807,9 @@ entities:
       pos: -17.5,26.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 3.147530122935145 rad: 4.489420702338033 rad
@@ -3805,6 +3820,9 @@ entities:
       pos: 0.5,28.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 368
+      - 365
       linkedConsoleId: 365
       obstructedRanges:
       - 2.251474735072685 rad: 3.939034770299038 rad
@@ -10204,6 +10222,13 @@ entities:
         - 645
         - 716
         - 731
+        heavy 'Gargoyle' cruise missile launcher:
+        - 2072
+        - 2217
+        - 2218
+        - 2220
+        - 2240
+        - 2245
     - type: ApcPowerReceiver
       needsPower: False
     - type: PointLight
@@ -10261,6 +10286,13 @@ entities:
         - 645
         - 716
         - 731
+        heavy 'Gargoyle' cruise missile launcher:
+        - 2072
+        - 2217
+        - 2218
+        - 2220
+        - 2240
+        - 2245
 - proto: ComputerWallmountBankATM
   entities:
   - uid: 3176
@@ -13955,6 +13987,127 @@ entities:
     - type: Transform
       pos: 10.569023,0.7337936
       parent: 1
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 3213
+    components:
+    - type: Transform
+      pos: 12.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3214
+    components:
+    - type: Transform
+      pos: -23.5,0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3215
+    components:
+    - type: Transform
+      pos: -23.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3216
+    components:
+    - type: Transform
+      pos: -25.5,-14.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3217
+    components:
+    - type: Transform
+      pos: -21.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3218
+    components:
+    - type: Transform
+      pos: -8.5,-29.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3219
+    components:
+    - type: Transform
+      pos: -1.5,-29.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3220
+    components:
+    - type: Transform
+      pos: 9.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3221
+    components:
+    - type: Transform
+      pos: 13.5,-19.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3222
+    components:
+    - type: Transform
+      pos: 13.5,-10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3223
+    components:
+    - type: Transform
+      pos: 15.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3224
+    components:
+    - type: Transform
+      pos: 12.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3225
+    components:
+    - type: Transform
+      pos: 0.5,28.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3226
+    components:
+    - type: Transform
+      pos: -10.5,28.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3227
+    components:
+    - type: Transform
+      pos: -17.5,26.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3228
+    components:
+    - type: Transform
+      pos: -21.5,25.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 3229
+    components:
+    - type: Transform
+      pos: -18.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 67

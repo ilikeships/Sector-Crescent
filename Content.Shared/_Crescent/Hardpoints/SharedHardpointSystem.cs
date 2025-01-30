@@ -24,6 +24,8 @@ public class SharedHardpointSystem : EntitySystem
 
     public void OnMapLoad(EntityUid uid, HardpointAnchorableOnlyComponent comp, ref MapInitEvent args)
     {
+        if (Transform(uid).MapUid == null)
+            return;
         if (TryAnchorToAnyHardpoint(uid, comp))
             return;
         Logger.Error(

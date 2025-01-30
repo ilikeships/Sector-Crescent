@@ -25639,6 +25639,155 @@ entities:
     - type: Transform
       pos: -2.505621,-11.847983
       parent: 1
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 4913
+    components:
+    - type: Transform
+      pos: -5.5,5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6881
+    components:
+    - type: Transform
+      pos: -1.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6882
+    components:
+    - type: Transform
+      pos: 67.5,-65.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6883
+    components:
+    - type: Transform
+      pos: -7.5,-30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6884
+    components:
+    - type: Transform
+      pos: -7.5,-37.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6885
+    components:
+    - type: Transform
+      pos: -7.5,-45.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6886
+    components:
+    - type: Transform
+      pos: -7.5,-52.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6887
+    components:
+    - type: Transform
+      pos: -7.5,-59.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6888
+    components:
+    - type: Transform
+      pos: 6.5,-79.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6889
+    components:
+    - type: Transform
+      pos: 15.5,-86.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6890
+    components:
+    - type: Transform
+      pos: 22.5,-86.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6891
+    components:
+    - type: Transform
+      pos: 29.5,-79.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6892
+    components:
+    - type: Transform
+      pos: 52.5,-78.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6893
+    components:
+    - type: Transform
+      pos: 52.5,-52.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6894
+    components:
+    - type: Transform
+      pos: 36.5,-41.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6895
+    components:
+    - type: Transform
+      pos: 34.5,-36.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6896
+    components:
+    - type: Transform
+      pos: 25.5,-29.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6897
+    components:
+    - type: Transform
+      pos: 31.5,-18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6898
+    components:
+    - type: Transform
+      pos: 29.5,0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6899
+    components:
+    - type: Transform
+      pos: 29.5,-11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6900
+    components:
+    - type: Transform
+      pos: 20.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HeadHuman
   entities:
   - uid: 4184

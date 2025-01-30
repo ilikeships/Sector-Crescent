@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Crescent.Hardpoints;
 
@@ -18,15 +19,16 @@ public sealed partial class HardpointComponent : Component
     public weaponSizes CompatibleSizes = weaponSizes.Small;
 }
 
-[Flags]
+[Flags, Serializable, NetSerializable]
 public enum weaponTypes
 {
     Energy = 1<<1,
     Ballistic = 1<<2,
     Missile = 1<<3,
-    Universal = Energy | Ballistic | Missile,
+    Universal = 14,
 
 }
+[Serializable, NetSerializable]
 public enum weaponSizes
 {
     Small = 1,
