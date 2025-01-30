@@ -8,9 +8,13 @@ namespace Content.Shared._Crescent.Hardpoints;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HardpointComponent : Component
 {
+    [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? anchoring;
+    [ViewVariables(VVAccess.ReadWrite), DataField("range")]
     public int CannonRangeCheckRange = 25;
+    [ViewVariables(VVAccess.ReadWrite), DataField("class")]
     public weaponTypes CompatibleTypes = weaponTypes.Ballistic;
+    [ViewVariables(VVAccess.ReadWrite), DataField("size")]
     public weaponSizes CompatibleSizes = weaponSizes.Small;
 }
 

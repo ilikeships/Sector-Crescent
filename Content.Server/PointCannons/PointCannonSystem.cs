@@ -81,7 +81,7 @@ public class PointCannonSystem : EntitySystem
 
     private void OnGridShapeChange(EntityUid gridUid, MapGridComponent grid, ref GridFixtureChangeEvent args)
     {
-        Logger.Error($"Running grid fixture change on {MetaData(gridUid).EntityName}, NUMBER {gridUid}");
+        //Logger.Error($"Running grid fixture change on {MetaData(gridUid).EntityName}, NUMBER {gridUid}");
         HashSet<Entity<TargetingConsoleComponent>> targetingConsoles = new();
         _lookup.GetGridEntities(gridUid, targetingConsoles);
         foreach (var console in targetingConsoles)

@@ -18,8 +18,16 @@ public class SharedHardpointSystem : EntitySystem
     {
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorStateChangedEvent>(OnAnchorChange);
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, MapInitEvent>(OnMapLoad);
     }
 
+    public void OnMapLoad(EntityUid uid, HardpointAnchorableOnlyComponent comp, ref MapInitEvent args)
+    {
+        if (TryAnchorToAnyHardpoint(uid, comp))
+            return;
+        Logger.Error(
+            $"Hardpoint-only weapon had no hardpoint under itself at mapInit. {uid} , {MetaData(uid).EntityName}");
+    }
     public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
     {
         if (args.Anchored == true)
@@ -46,18 +54,24 @@ public class SharedHardpointSystem : EntitySystem
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
+        if (TryAnchorToAnyHardpoint(uid, component))
+            return;
+        args.Cancel();
+    }
+
+    public bool TryAnchorToAnyHardpoint(EntityUid uid, HardpointAnchorableOnlyComponent component)
+    {
         var gridUid = Transform(uid).GridUid;
         if (gridUid is null)
-            return;
+            return false;
         if (!TryComp<MapGridComponent>(gridUid, out var gridComp))
-            return;
+            return false;
         if (!_transformSystem.TryGetGridTilePosition(uid, out var indice, gridComp))
         {
-            args.Cancel();
-            return;
+            return false;
         }
 
-        foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp ), indice))
+        foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp), indice))
         {
             if (!TryComp<HardpointComponent>(entity, out var hardComp))
                 continue;
@@ -67,11 +81,11 @@ public class SharedHardpointSystem : EntitySystem
                 continue;
             if (hardComp.CompatibleSizes < component.CompatibleSizes)
                 continue;
-            AnchorEntityToHardpoint(uid, entity,component ,hardComp, gridUid.Value);
-            return;
+            AnchorEntityToHardpoint(uid, entity, component, hardComp, gridUid.Value);
+            return true;
         }
 
-        args.Cancel();
+        return false;
     }
 
     public void AnchorEntityToHardpoint(EntityUid target, EntityUid anchor,HardpointAnchorableOnlyComponent targetComp, HardpointComponent hardpoint, EntityUid grid)
