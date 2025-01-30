@@ -4212,7 +4212,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -2.769576,11.588678
       parent: 1
-- proto: HardpointLargeUniversal
+- proto: AHardpointLargeUniversal
   entities:
   - uid: 280
     components:

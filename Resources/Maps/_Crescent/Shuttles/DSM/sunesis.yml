@@ -4280,7 +4280,7 @@ entities:
     - type: Transform
       pos: -5.5337596,25.475395
       parent: 1
-- proto: HardpointLargeUniversal
+- proto: AHardpointLargeUniversal
   entities:
   - uid: 1043
     components:

@@ -899,6 +899,183 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+- proto: AHardpointLargeUniversal
+  entities:
+  - uid: 743
+    components:
+    - type: Transform
+      pos: 7.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 746
+    components:
+    - type: Transform
+      pos: -4.5,41.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 749
+    components:
+    - type: Transform
+      pos: 0.5,49.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1360
+    components:
+    - type: Transform
+      pos: 4.5,43.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1361
+    components:
+    - type: Transform
+      pos: 4.5,42.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1362
+    components:
+    - type: Transform
+      pos: 4.5,41.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1363
+    components:
+    - type: Transform
+      pos: 4.5,40.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1364
+    components:
+    - type: Transform
+      pos: 6.5,39.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1365
+    components:
+    - type: Transform
+      pos: 8.5,36.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1366
+    components:
+    - type: Transform
+      pos: -5.5,34.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1367
+    components:
+    - type: Transform
+      pos: -5.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1368
+    components:
+    - type: Transform
+      pos: -5.5,32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1369
+    components:
+    - type: Transform
+      pos: -5.5,31.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1370
+    components:
+    - type: Transform
+      pos: -6.5,19.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1371
+    components:
+    - type: Transform
+      pos: -6.5,18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1372
+    components:
+    - type: Transform
+      pos: -6.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1373
+    components:
+    - type: Transform
+      pos: -6.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1374
+    components:
+    - type: Transform
+      pos: -6.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1375
+    components:
+    - type: Transform
+      pos: -13.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1376
+    components:
+    - type: Transform
+      pos: -14.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1377
+    components:
+    - type: Transform
+      pos: -6.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1378
+    components:
+    - type: Transform
+      pos: 7.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1379
+    components:
+    - type: Transform
+      pos: 15.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1380
+    components:
+    - type: Transform
+      pos: 14.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1381
+    components:
+    - type: Transform
+      pos: 8.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 1318
@@ -5646,183 +5823,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: HardpointLargeUniversal
-  entities:
-  - uid: 743
-    components:
-    - type: Transform
-      pos: 7.5,10.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 746
-    components:
-    - type: Transform
-      pos: -4.5,41.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 749
-    components:
-    - type: Transform
-      pos: 0.5,49.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1360
-    components:
-    - type: Transform
-      pos: 4.5,43.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1361
-    components:
-    - type: Transform
-      pos: 4.5,42.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1362
-    components:
-    - type: Transform
-      pos: 4.5,41.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1363
-    components:
-    - type: Transform
-      pos: 4.5,40.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1364
-    components:
-    - type: Transform
-      pos: 6.5,39.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1365
-    components:
-    - type: Transform
-      pos: 8.5,36.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1366
-    components:
-    - type: Transform
-      pos: -5.5,34.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1367
-    components:
-    - type: Transform
-      pos: -5.5,33.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1368
-    components:
-    - type: Transform
-      pos: -5.5,32.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1369
-    components:
-    - type: Transform
-      pos: -5.5,31.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1370
-    components:
-    - type: Transform
-      pos: -6.5,19.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1371
-    components:
-    - type: Transform
-      pos: -6.5,18.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1372
-    components:
-    - type: Transform
-      pos: -6.5,17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1373
-    components:
-    - type: Transform
-      pos: -6.5,16.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1374
-    components:
-    - type: Transform
-      pos: -6.5,10.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1375
-    components:
-    - type: Transform
-      pos: -13.5,6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1376
-    components:
-    - type: Transform
-      pos: -14.5,-1.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1377
-    components:
-    - type: Transform
-      pos: -6.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1378
-    components:
-    - type: Transform
-      pos: 7.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1379
-    components:
-    - type: Transform
-      pos: 15.5,-1.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1380
-    components:
-    - type: Transform
-      pos: 14.5,6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1381
-    components:
-    - type: Transform
-      pos: 8.5,16.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HeavyMortarCartridge
   entities:
   - uid: 842

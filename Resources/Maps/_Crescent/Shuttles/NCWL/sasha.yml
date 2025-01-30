@@ -4022,7 +4022,7 @@ entities:
     - type: Transform
       pos: 6.5530076,-8.431362
       parent: 2
-- proto: HardpointLargeUniversal
+- proto: AHardpointLargeUniversal
   entities:
   - uid: 307
     components:

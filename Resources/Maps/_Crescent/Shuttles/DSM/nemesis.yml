@@ -7456,7 +7456,7 @@ entities:
     - type: BatterySelfRecharger
       autoRechargeRate: -600
       autoRecharge: True
-- proto: HardpointLargeUniversal
+- proto: AHardpointLargeUniversal
   entities:
   - uid: 153
     components:
