@@ -33,12 +33,16 @@ public class SharedHardpointSystem : EntitySystem
         var gridUid = Transform(component.anchoredTo.Value).GridUid;
         if (gridUid is null)
             return;
-        Comp<HardpointComponent>(component.anchoredTo.Value).anchoring = null;
+        var hardpointComp = Comp<HardpointComponent>(component.anchoredTo.Value);
+        var hardpointUid = component.anchoredTo.Value;
+        hardpointComp.anchoring = null;
         HardpointCannonDeanchoredEvent arg = new();
         arg.CannonUid = uid;
         arg.gridUid = gridUid.Value;
         RaiseLocalEvent(component.anchoredTo.Value, arg);
         component.anchoredTo = null;
+        Dirty(uid, component);
+        Dirty(hardpointUid, hardpointComp);
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
@@ -59,6 +63,10 @@ public class SharedHardpointSystem : EntitySystem
                 continue;
             if (hardComp.anchoring is not null)
                 continue;
+            if ((hardComp.CompatibleTypes & component.CompatibleTypes) == 0)
+                continue;
+            if (hardComp.CompatibleSizes < component.CompatibleSizes)
+                continue;
             AnchorEntityToHardpoint(uid, entity,component ,hardComp, gridUid.Value);
             return;
         }
@@ -74,5 +82,7 @@ public class SharedHardpointSystem : EntitySystem
         arg.cannonUid = target;
         arg.gridUid = grid;
         RaiseLocalEvent(anchor, arg);
+        Dirty(target, targetComp);
+        Dirty(anchor, hardpoint);
     }
 }
