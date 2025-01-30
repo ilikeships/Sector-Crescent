@@ -52,6 +52,7 @@ public class SharedHardpointSystem : EntitySystem
         if (comp.anchoring is null)
             return;
         var gridUid = Transform(comp.anchoring.Value).GridUid;
+        _transformSystem.Unanchor(comp.anchoring.Value);
         if (gridUid is null)
             return;
         Deanchor(comp.anchoring.Value, target, gridUid.Value,
