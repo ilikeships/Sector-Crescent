@@ -1,5 +1,6 @@
 using Content.Shared.Construction.Components;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
 
 namespace Content.Shared._Crescent.Hardpoints;
 
@@ -15,6 +16,14 @@ public sealed class SharedHardpointSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
+        SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
+    }
+
+    public void OnFixtureAnchor(EntityUid uid, FixturesComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (args.Transform.GridUid is null)
+            return;
+        Logger.Error($"new BB detected on {MetaData(args.Transform.GridUid.Value).EntityName}");
     }
 
     private void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)

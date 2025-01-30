@@ -26,7 +26,7 @@ using Robust.Shared.Player;
 
 namespace Content.Server.PointCannons;
 
-public sealed class PointCannonSystem : EntitySystem
+public class PointCannonSystem : EntitySystem
 {
     [Dependency] private readonly ISharedPlayerManager _playerMan = default!;
     [Dependency] private readonly TransformSystem _formSys = default!;
@@ -52,17 +52,8 @@ public sealed class PointCannonSystem : EntitySystem
         SubscribeLocalEvent<PointCannonComponent, EntParentChangedMessage>(OnCannonParentChange);
         SubscribeLocalEvent<PointCannonComponent, ReAnchorEvent>(OnCannonReanchor);
 
-        SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
-
         SubscribeLocalEvent<PointCannonLinkToolComponent, UseInHandEvent>(OnLinkToolHandUse);
         SubscribeLocalEvent<PointCannonComponent, InteractUsingEvent>(OnLinkToolUse);
-    }
-
-    public void OnFixtureAnchor(EntityUid uid, FixturesComponent comp, ref AnchorStateChangedEvent args)
-    {
-        if (args.Transform.GridUid is null)
-            return;
-        Logger.Error($"new BB detected on {MetaData(args.Transform.GridUid.Value).EntityName}");
     }
     public override void Update(float frameTime)
     {
