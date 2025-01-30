@@ -23,6 +23,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
+using System;
 
 namespace Content.Server.PointCannons;
 
@@ -37,6 +38,8 @@ public class PointCannonSystem : EntitySystem
     [Dependency] private readonly ShuttleConsoleSystem _shuttleConSys = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly MapSystem _maps = default!;
 
     public override void Initialize()
     {
@@ -47,10 +50,12 @@ public class PointCannonSystem : EntitySystem
         SubscribeLocalEvent<TargetingConsoleComponent, BoundUIClosedEvent>(OnConsoleClosed);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleFireMessage>(OnConsoleFire);
         SubscribeLocalEvent<TargetingConsoleComponent, TargetingConsoleGroupChangedMessage>(OnConsoleGroupChanged);
+        SubscribeLocalEvent<TargetingConsoleComponent, ComponentRemove>(OnConsoleDelete);
+        SubscribeLocalEvent<TargetingConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchor);
 
-        SubscribeLocalEvent<PointCannonComponent, EntityTerminatingEvent>(OnCannonTerminating);
-        SubscribeLocalEvent<PointCannonComponent, EntParentChangedMessage>(OnCannonParentChange);
-        SubscribeLocalEvent<PointCannonComponent, ReAnchorEvent>(OnCannonReanchor);
+        SubscribeLocalEvent<PointCannonComponent, EntityTerminatingEvent>(OnCannonDetach);
+        SubscribeLocalEvent<PointCannonComponent, EntParentChangedMessage>(OnCannonDetach);
+        SubscribeLocalEvent<PointCannonComponent, ReAnchorEvent>(OnCannonDetach);
 
         SubscribeLocalEvent<PointCannonLinkToolComponent, UseInHandEvent>(OnLinkToolHandUse);
         SubscribeLocalEvent<PointCannonComponent, InteractUsingEvent>(OnLinkToolUse);
@@ -68,9 +73,68 @@ public class PointCannonSystem : EntitySystem
         }
     }
 
+    private void OnConsoleDelete<T>(EntityUid console, TargetingConsoleComponent comp, ref T args)
+    {
+        foreach (var (group, cannons) in comp.CannonGroups)
+        {
+            foreach (var cannon in cannons)
+            {
+                UnlinkConsole(cannon, console, comp);
+            }
+        }
+    }
+
+    private void OnConsoleAnchor(EntityUid console, TargetingConsoleComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+        {
+            OnConsoleDelete(console, comp, ref args);
+            return;
+        }
+
+        LinkAllCannonsToConsole(console, comp);
+    }
+
+    public void LinkAllCannonsToConsole(EntityUid console, TargetingConsoleComponent comp)
+    {
+        var gridUid = Transform(console).GridUid;
+        if (gridUid is null)
+            return;
+        HashSet<Entity<PointCannonComponent>> cannonList = new();
+        _lookup.GetGridEntities(gridUid.Value, cannonList);
+        foreach (var cannon in cannonList)
+        {
+            if (Transform(cannon.Owner).Anchored == false)
+                continue;
+            LinkCannon(cannon.Owner, console, comp, MetaData(cannon.Owner).EntityName);
+        }
+    }
+
+    public void LinkCannonToAllConsoles(EntityUid cannon)
+    {
+        var gridUid = Transform(cannon).GridUid;
+        if (gridUid is null)
+            return;
+        HashSet<Entity<TargetingConsoleComponent>> consoleList = new();
+        _lookup.GetGridEntities(gridUid.Value, consoleList);
+        foreach (var console in consoleList)
+        {
+            if (Transform(console.Owner).Anchored == false)
+                continue;
+            LinkCannon(cannon, console.Owner, console.Comp, MetaData(cannon).EntityName);
+        }
+    }
+
     private void OnConsoleOpenAttempt(EntityUid uid, TargetingConsoleComponent component, ActivatableUIOpenAttemptEvent args)
     {
         var uis = _uiSys.GetActorUis(args.User);
+
+        var ourGridUid = Transform(uid).GridUid;
+        if (ourGridUid is null)
+        {
+            args.Cancel();
+            return;
+        }
 
         foreach (var (_, key) in uis)
         {
@@ -108,26 +172,12 @@ public class PointCannonSystem : EntitySystem
             TogglePvsOverride(uid.Comp.CurrentGroup, [session], false);
     }
 
-    private void OnCannonParentChange(Entity<PointCannonComponent> uid, ref EntParentChangedMessage args)
+    private void OnCannonDetach<T>(Entity<PointCannonComponent> uid,ref T args)
     {
-        if (uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
-            UnlinkCannon(uid, (EntityUid) uid.Comp.LinkedConsoleId, console);
-
+        UnlinkCannon(uid);
     }
 
-    private void OnCannonReanchor(Entity<PointCannonComponent> uid, ref ReAnchorEvent args)
-    {
-        if (uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
-            UnlinkCannon(uid, (EntityUid) uid.Comp.LinkedConsoleId, console);
 
-    }
-
-    private void OnCannonTerminating(Entity<PointCannonComponent> uid, ref EntityTerminatingEvent args)
-    {
-        if(uid.Comp.LinkedConsoleId is not null && TryComp<TargetingConsoleComponent>(uid.Comp.LinkedConsoleId, out var console))
-            UnlinkCannon(uid, (EntityUid)uid.Comp.LinkedConsoleId, console );
-       
-    }
 
     private void OnLinkToolUse(Entity<PointCannonComponent> uid, ref InteractUsingEvent args)
     {
@@ -180,14 +230,44 @@ public class PointCannonSystem : EntitySystem
 
         console.RegenerateCannons = true;
         cannonComponent.LinkedConsoleId = consoleUid;
+        cannonComponent.LinkedConsoleIds.Add(consoleUid);
 
 
         if (group == console.CurrentGroupName)
             TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), true);
     }
 
-    public void UnlinkCannon(EntityUid cannonUid, EntityUid consoleUid, TargetingConsoleComponent console)
+    public void UnlinkCannon(EntityUid cannonUid)
     {
+        if (!TryComp<PointCannonComponent>(cannonUid, out var cannonComp))
+            return;
+        foreach (var consoleUid in cannonComp.LinkedConsoleIds)
+        {
+            cannonComp.LinkedConsoleIds.Remove(consoleUid);
+            var console = Comp<TargetingConsoleComponent>(consoleUid);
+            foreach (string group in console.CannonGroups.Keys.ToList())
+            {
+                console.CannonGroups[group].Remove(cannonUid);
+                if (console.CannonGroups[group].Count == 0 && console.CurrentGroupName != "all")
+                {
+                    console.CannonGroups.Remove(group);
+                    if (console.CurrentGroupName == group)
+                        console.CurrentGroupName = "all";
+                }
+            }
+
+            console.RegenerateCannons = true;
+
+            TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), false);
+        }
+    }
+
+    public void UnlinkConsole(EntityUid cannonUid, EntityUid consoleUid, TargetingConsoleComponent comp)
+    {
+        if (!TryComp<PointCannonComponent>(cannonUid, out var cannonComp))
+            return;
+        cannonComp.LinkedConsoleIds.Remove(consoleUid);
+        var console = Comp<TargetingConsoleComponent>(consoleUid);
         foreach (string group in console.CannonGroups.Keys.ToList())
         {
             console.CannonGroups[group].Remove(cannonUid);
@@ -198,6 +278,7 @@ public class PointCannonSystem : EntitySystem
                     console.CurrentGroupName = "all";
             }
         }
+
         console.RegenerateCannons = true;
 
         TogglePvsOverride([cannonUid], GetUiSessions(consoleUid, TargetingConsoleUiKey.Key), false);

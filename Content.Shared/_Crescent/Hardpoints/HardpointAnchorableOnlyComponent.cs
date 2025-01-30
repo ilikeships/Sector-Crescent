@@ -6,6 +6,6 @@ namespace Content.Shared._Crescent.Hardpoints;
 [RegisterComponent]
 public sealed partial class HardpointAnchorableOnlyComponent : Component
 {
-    
+    public EntityUid? anchoredTo;
 }
 

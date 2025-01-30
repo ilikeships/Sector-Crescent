@@ -7,26 +7,39 @@ namespace Content.Shared._Crescent.Hardpoints;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class SharedHardpointSystem : EntitySystem
+public class SharedHardpointSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] public readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] public readonly EntityLookupSystem _lookupSystem = default!;
+    [Dependency] public readonly SharedMapSystem _mapSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
-        SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorStateChangedEvent>(OnAnchorChange);
     }
 
-    public void OnFixtureAnchor(EntityUid uid, FixturesComponent comp, ref AnchorStateChangedEvent args)
+    public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
     {
-        if (args.Transform.GridUid is null)
+        if (args.Anchored == true)
             return;
-        Logger.Error($"new BB detected on {MetaData(args.Transform.GridUid.Value).EntityName}");
-    }
+        if (component.anchoredTo is null)
+        {
+            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            return;
+        }
 
-    private void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
+        var gridUid = Transform(component.anchoredTo.Value).GridUid;
+        if (gridUid is null)
+            return;
+        Comp<HardpointComponent>(component.anchoredTo.Value).anchoring = null;
+        HardpointCannonDeanchoredEvent arg = new();
+        arg.CannonUid = uid;
+        arg.gridUid = gridUid.Value;
+        RaiseLocalEvent(component.anchoredTo.Value, arg);
+        component.anchoredTo = null;
+    }
+    public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
         var gridUid = Transform(uid).GridUid;
         if (gridUid is null)
@@ -45,14 +58,20 @@ public sealed class SharedHardpointSystem : EntitySystem
                 continue;
             if (hardComp.anchoring is not null)
                 continue;
+            AnchorEntityToHardpoint(uid, entity,component ,hardComp, gridUid.Value);
             return;
         }
 
         args.Cancel();
     }
 
-    private void AnchorEntityToHardpoint(EntityUid target, EntityUid anchor, HardpointComponent hardpoint)
+    public void AnchorEntityToHardpoint(EntityUid target, EntityUid anchor,HardpointAnchorableOnlyComponent targetComp, HardpointComponent hardpoint, EntityUid grid)
     {
-
+        hardpoint.anchoring = target;
+        targetComp.anchoredTo = anchor;
+        HardpointCannonAnchoredEvent arg = new();
+        arg.cannonUid = target;
+        arg.gridUid = grid;
+        RaiseLocalEvent(anchor, arg);
     }
 }
