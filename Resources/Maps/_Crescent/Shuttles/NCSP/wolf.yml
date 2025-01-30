@@ -195,30 +195,30 @@ entities:
             color: '#EFB34196'
             id: WarnEndE
           decals:
-            159: 1,12
-            160: 1,12
+            151: 1,12
+            152: 1,12
         - node:
             color: '#EFB34196'
             id: WarnEndN
           decals:
-            171: -2,10
-            172: -2,10
-            173: 2,10
-            174: 2,10
+            163: -2,10
+            164: -2,10
+            165: 2,10
+            166: 2,10
         - node:
             color: '#EFB34196'
             id: WarnEndS
           decals:
-            167: 2,9
-            168: 2,9
-            169: -2,9
-            170: -2,9
+            159: 2,9
+            160: 2,9
+            161: -2,9
+            162: -2,9
         - node:
             color: '#EFB34196'
             id: WarnEndW
           decals:
-            161: -1,12
-            162: -1,12
+            153: -1,12
+            154: -1,12
         - node:
             color: '#DE3A3A96'
             id: WarnFull
@@ -237,8 +237,8 @@ entities:
             139: -5,29
             140: 5,30
             141: 5,29
-            157: 7,22
-            158: -7,22
+            149: 7,22
+            150: -7,22
         - node:
             color: '#DE3A3A96'
             id: WarnFullGreyscale
@@ -266,7 +266,7 @@ entities:
             145: -8,7
             146: -9,7
             147: -9,6
-            156: 7,22
+            148: 7,22
         - node:
             color: '#DE3A3A96'
             id: WarnLineE
@@ -335,8 +335,8 @@ entities:
             color: '#EFB34196'
             id: WarnLineN
           decals:
-            165: 0,12
-            166: 0,12
+            157: 0,12
+            158: 0,12
         - node:
             color: '#DE3A3A96'
             id: WarnLineS
@@ -373,8 +373,8 @@ entities:
             color: '#EFB34196'
             id: WarnLineW
           decals:
-            163: 0,12
-            164: 0,12
+            155: 0,12
+            156: 0,12
     - type: GridAtmosphere
       version: 2
       data:
@@ -1050,14 +1050,16 @@ entities:
   - uid: 491
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 492
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -3168,6 +3170,20 @@ entities:
         674:
         - Group4: On
         - Group5: Off
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 398
@@ -4130,6 +4146,78 @@ entities:
     - type: Transform
       pos: -4.584167,6.7938027
       parent: 1
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 487
+    components:
+    - type: Transform
+      pos: -8.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 488
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 568
+    components:
+    - type: Transform
+      pos: 9.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1042
+    components:
+    - type: Transform
+      pos: 9.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1043
+    components:
+    - type: Transform
+      pos: 4.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1044
+    components:
+    - type: Transform
+      pos: -6.5,22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1045
+    components:
+    - type: Transform
+      pos: -4.5,30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1046
+    components:
+    - type: Transform
+      pos: -3.5,33.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1047
+    components:
+    - type: Transform
+      pos: 5.5,30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1048
+    components:
+    - type: Transform
+      pos: 7.5,22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 353
@@ -4147,28 +4235,32 @@ entities:
   - uid: 489
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 490
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 493
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 494
     components:
     - type: Transform
-      parent: 488
+      pos: 0.49257025,0.5966301
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -5712,7 +5804,7 @@ entities:
       pos: 0.5,22.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 967000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

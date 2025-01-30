@@ -616,14 +616,16 @@ entities:
   - uid: 374
     components:
     - type: Transform
-      parent: 325
+      pos: -0.090477645,0.73442686
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 375
     components:
     - type: Transform
-      parent: 325
+      pos: -0.090477645,0.73442686
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -683,6 +685,8 @@ entities:
       pos: 0.5,11.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 274
       linkedConsoleId: 274
       obstructedRanges:
       - 2.251474735072685 rad: 4.9218284906240095 rad
@@ -695,6 +699,8 @@ entities:
       pos: 11.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 274
       linkedConsoleId: 274
       obstructedRanges:
       - 1.6634721286027596 rad: 3.062976716328125 rad
@@ -705,6 +711,8 @@ entities:
       pos: -10.5,-0.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 274
       linkedConsoleId: 274
       obstructedRanges:
       - 4.6983291158384946 rad: 3.062976716328125 rad
@@ -2213,6 +2221,20 @@ entities:
         - Group1: Toggle
         167:
         - Group1: Toggle
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopAdvancedRadar
   entities:
   - uid: 282
@@ -2275,6 +2297,11 @@ entities:
         - 165
         gargoyle:
         - 182
+        heavy 'Gargoyle' cruise missile launcher:
+        - 182
+        light 'Lancer' swarmrocket platform:
+        - 151
+        - 165
 - proto: CrewMonitoringServer
   entities:
   - uid: 261
@@ -2605,6 +2632,71 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 325
+    components:
+    - type: Transform
+      pos: -2.5,-11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 344
+    components:
+    - type: Transform
+      pos: 0.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 626
+    components:
+    - type: Transform
+      pos: 9.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 627
+    components:
+    - type: Transform
+      pos: 11.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 628
+    components:
+    - type: Transform
+      pos: 10.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 629
+    components:
+    - type: Transform
+      pos: 3.5,-11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 630
+    components:
+    - type: Transform
+      pos: -10.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 631
+    components:
+    - type: Transform
+      pos: -9.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 632
+    components:
+    - type: Transform
+      pos: -8.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 299
@@ -3053,7 +3145,7 @@ entities:
       pos: 3.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 200
@@ -3093,7 +3185,7 @@ entities:
       pos: -2.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 200

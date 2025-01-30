@@ -579,7 +579,7 @@ entities:
       pos: -0.5,2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5423.6094
+      secondsUntilStateChange: -5457.5786
       state: Opening
     - type: DeviceLinkSink
       invokeCounter: 2
@@ -594,7 +594,7 @@ entities:
       pos: -2.5,2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5423.6094
+      secondsUntilStateChange: -5457.5786
       state: Opening
     - type: DeviceLinkSink
       invokeCounter: 2
@@ -2738,6 +2738,64 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 73
+    components:
+    - type: Transform
+      pos: -14.5,-14.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 74
+    components:
+    - type: Transform
+      pos: -16.5,-18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 922
+    components:
+    - type: Transform
+      pos: -14.5,-22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 940
+    components:
+    - type: Transform
+      pos: 9.5,-22.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 941
+    components:
+    - type: Transform
+      pos: 9.5,-18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 942
+    components:
+    - type: Transform
+      pos: 8.5,-11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 943
+    components:
+    - type: Transform
+      pos: 8.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 944
+    components:
+    - type: Transform
+      pos: 8.5,-7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HeavyReinforcedPlasmaWindow
   entities:
   - uid: 3
@@ -4749,7 +4807,7 @@ entities:
     - type: Anchorable
       flags: Anchorable
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 28
@@ -4762,7 +4820,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 73
+          ent: invalid
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -4791,7 +4849,7 @@ entities:
     - type: Anchorable
       flags: Anchorable
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
       - 28
@@ -4804,7 +4862,7 @@ entities:
         gun_magazine: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 74
+          ent: invalid
         gun_chamber: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -5414,7 +5472,7 @@ entities:
     - type: Anchorable
       flags: Anchorable
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: BallisticAmmoProvider
       entities:
       - 170
@@ -5454,7 +5512,7 @@ entities:
     - type: Anchorable
       flags: Anchorable
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: BallisticAmmoProvider
       entities:
       - 194
@@ -5928,7 +5986,7 @@ entities:
     - type: Transform
       pos: 3.36654,-13.836048
       parent: 1
-- proto: WeaponTurretPDTCMM
+- proto: WeaponTurretPDTNCWL
   entities:
   - uid: 94
     components:

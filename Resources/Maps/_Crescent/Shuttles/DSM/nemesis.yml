@@ -713,7 +713,7 @@ entities:
       pos: 4.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 976000
+      startingCharge: 970000
     - type: BallisticAmmoProvider
       entities:
       - 1672
@@ -980,7 +980,7 @@ entities:
       pos: 0.5,-10.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1751.0955
+      secondsUntilStateChange: -1794.4618
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1080,7 +1080,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -8989.809
+      secondsUntilStateChange: -9033.175
       state: Opening
   - uid: 403
     components:
@@ -1402,6 +1402,9 @@ entities:
       pos: -12.5,-15.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 3.8222710618675815 rad: 3.8701782806894722 rad
     - type: DeviceLinkSink
@@ -1414,6 +1417,9 @@ entities:
       pos: 8.5,-2.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 1.518659635244148 rad: 4.464353656422961 rad
     - type: DeviceLinkSink
@@ -1426,6 +1432,9 @@ entities:
       pos: -6.5,11.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 3.8222710618675815 rad: 3.814679763405596 rad
     - type: DeviceLinkSink
@@ -1438,6 +1447,9 @@ entities:
       pos: 13.5,-20.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 0.6806784082777885 rad: 4.0257731027615495 rad
     - type: DeviceLinkSink
@@ -1449,6 +1461,9 @@ entities:
       pos: -6.5,-32.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 5.3930673886624785 rad: 3.814679763405596 rad
     - type: DeviceLinkSink
@@ -1461,6 +1476,9 @@ entities:
       pos: -8.5,-9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 3.2342684553976557 rad: 4.866329998837363 rad
     - type: DeviceLinkSink
@@ -1472,6 +1490,9 @@ entities:
       pos: 7.5,-32.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 390
+      linkedConsoleId: 390
       obstructedRanges:
       - 0.2170308087013046 rad: 3.8146797634055964 rad
     - type: DeviceLinkSink
@@ -5750,6 +5771,20 @@ entities:
       - Blank
       - Arm turrets
       - Disarm turrets
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerStationRecords
   entities:
   - uid: 590
@@ -5849,6 +5884,14 @@ entities:
         - 102
         - 391
         - 189
+        DSM 'Flare' depth mining laser:
+        - 42
+        - 102
+        - 189
+        - 391
+        - 586
+        - 1378
+        - 1736
 - proto: CoolantCartridge30
   entities:
   - uid: 501
@@ -7366,7 +7409,7 @@ entities:
       pos: 2.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 147600
+      startingCharge: 147000
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -7393,7 +7436,7 @@ entities:
       pos: 6.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 147600
+      startingCharge: 147000
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -7413,6 +7456,120 @@ entities:
     - type: BatterySelfRecharger
       autoRechargeRate: -600
       autoRecharge: True
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      pos: 5.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 748
+    components:
+    - type: Transform
+      pos: 8.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1756
+    components:
+    - type: Transform
+      pos: 11.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1757
+    components:
+    - type: Transform
+      pos: 3.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1758
+    components:
+    - type: Transform
+      pos: -6.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1759
+    components:
+    - type: Transform
+      pos: -7.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1760
+    components:
+    - type: Transform
+      pos: -8.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1761
+    components:
+    - type: Transform
+      pos: -10.5,-13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1762
+    components:
+    - type: Transform
+      pos: -12.5,-15.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1763
+    components:
+    - type: Transform
+      pos: -12.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1764
+    components:
+    - type: Transform
+      pos: -8.5,-30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1765
+    components:
+    - type: Transform
+      pos: -6.5,-32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1766
+    components:
+    - type: Transform
+      pos: 11.5,-17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1767
+    components:
+    - type: Transform
+      pos: 7.5,-32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1768
+    components:
+    - type: Transform
+      pos: 9.5,-30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1769
+    components:
+    - type: Transform
+      pos: 13.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 676
@@ -7579,42 +7736,48 @@ entities:
   - uid: 154
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 155
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 156
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 165
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 166
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
   - uid: 206
     components:
     - type: Transform
-      parent: 153
+      pos: 0.578125,0.609375
+      parent: 1
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -11413,7 +11576,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.484877,-24.409588
       parent: 1
-- proto: WeaponTurretPDTDSM
+- proto: WeaponTurretPDTNCWL
   entities:
   - uid: 112
     components:

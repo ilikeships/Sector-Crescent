@@ -869,6 +869,8 @@ entities:
       pos: 10.5,9.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 320
       linkedConsoleId: 320
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
@@ -893,6 +895,8 @@ entities:
       pos: 10.5,4.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 320
       linkedConsoleId: 320
       obstructedRanges:
       - 0.6806784082777885 rad: 4.9218284906240095 rad
@@ -2672,6 +2676,9 @@ entities:
         - 748
         - 749
         - 756
+        60mm 'Needler' heavy precision autogun:
+        - 548
+        - 602
 - proto: ConveyorBelt
   entities:
   - uid: 61
@@ -3321,6 +3328,57 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 785
+    components:
+    - type: Transform
+      pos: -3.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 786
+    components:
+    - type: Transform
+      pos: 10.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 787
+    components:
+    - type: Transform
+      pos: 10.5,4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 788
+    components:
+    - type: Transform
+      pos: 9.5,-3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 789
+    components:
+    - type: Transform
+      pos: 0.5,-15.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 790
+    components:
+    - type: Transform
+      pos: -7.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 791
+    components:
+    - type: Transform
+      pos: -7.5,3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: JugBoriaticFuel
   entities:
   - uid: 465

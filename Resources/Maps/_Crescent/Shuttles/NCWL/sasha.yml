@@ -899,6 +899,9 @@ entities:
       pos: -7.5,-2.5
       parent: 2
     - type: PointCannon
+      linkedConsoleIds:
+      - 7
+      linkedConsoleId: 7
       obstructedRanges:
       - 4.285918661444065 rad: 3.994533291471042 rad
   - uid: 171
@@ -908,6 +911,9 @@ entities:
       pos: 8.5,-2.5
       parent: 2
     - type: PointCannon
+      linkedConsoleIds:
+      - 7
+      linkedConsoleId: 7
       obstructedRanges:
       - 1.1443260078542725 rad: 3.9945332914710416 rad
 - proto: BedsheetMedical
@@ -3077,6 +3083,20 @@ entities:
         1060:
         - Group4: Off
         - Group5: On
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: ComputerTabletopPowerMonitoring
   entities:
   - uid: 276
@@ -3137,6 +3157,9 @@ entities:
         - 361
         - 199
         - 1059
+        heavy 'Hephaeustus' assault artillery platform:
+        - 47
+        - 171
 - proto: CrateMaterials
   entities:
   - uid: 429
@@ -3999,6 +4022,92 @@ entities:
     - type: Transform
       pos: 6.5530076,-8.431362
       parent: 2
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 307
+    components:
+    - type: Transform
+      pos: -7.5,6.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 308
+    components:
+    - type: Transform
+      pos: -4.5,13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 309
+    components:
+    - type: Transform
+      pos: -5.5,11.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 310
+    components:
+    - type: Transform
+      pos: -7.5,-2.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 311
+    components:
+    - type: Transform
+      pos: -6.5,-13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 312
+    components:
+    - type: Transform
+      pos: -1.5,-20.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 313
+    components:
+    - type: Transform
+      pos: 2.5,-20.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 314
+    components:
+    - type: Transform
+      pos: 7.5,-13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 315
+    components:
+    - type: Transform
+      pos: 8.5,-2.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 316
+    components:
+    - type: Transform
+      pos: 8.5,6.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 317
+    components:
+    - type: Transform
+      pos: 6.5,11.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 318
+    components:
+    - type: Transform
+      pos: 5.5,13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
 - proto: HeavyMortarCartridge
   entities:
   - uid: 11
@@ -4801,7 +4910,7 @@ entities:
       pos: -2.5,13.5
       parent: 2
     - type: Battery
-      startingCharge: 194500
+      startingCharge: 194000
     - type: DeviceLinkSink
       links:
       - 353
@@ -4839,7 +4948,7 @@ entities:
       pos: 3.5,13.5
       parent: 2
     - type: Battery
-      startingCharge: 194500
+      startingCharge: 194000
     - type: DeviceLinkSink
       links:
       - 353

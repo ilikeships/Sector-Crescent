@@ -586,6 +586,8 @@ entities:
       pos: -0.5,3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 245
       linkedConsoleId: 245
       obstructedRanges:
       - 3.8222710618675815 rad: 4.458180891047525 rad
@@ -596,6 +598,8 @@ entities:
       pos: 11.5,3.5
       parent: 1
     - type: PointCannon
+      linkedConsoleIds:
+      - 245
       linkedConsoleId: 245
       obstructedRanges:
       - 1.2686810147477143 rad: 4.333825884154083 rad
@@ -1652,6 +1656,9 @@ entities:
         lancer:
         - 428
         - 243
+        light 'Lancer' swarmrocket platform:
+        - 243
+        - 428
 - proto: FaxMachineShip
   entities:
   - uid: 184
@@ -1941,6 +1948,43 @@ entities:
     - type: Transform
       pos: 1.4429123,10.561487
       parent: 1
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 223
+    components:
+    - type: Transform
+      pos: 10.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 225
+    components:
+    - type: Transform
+      pos: -0.5,3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 436
+    components:
+    - type: Transform
+      pos: 4.5,16.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 437
+    components:
+    - type: Transform
+      pos: 11.5,3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 438
+    components:
+    - type: Transform
+      pos: 11.5,-6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 212
@@ -2312,7 +2356,7 @@ entities:
       pos: 9.5,8.5
       parent: 1
     - type: Battery
-      startingCharge: 199000
+      startingCharge: 198500
     - type: DeviceLinkSink
       links:
       - 187
