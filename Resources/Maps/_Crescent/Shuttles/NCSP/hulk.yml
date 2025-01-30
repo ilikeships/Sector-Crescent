@@ -6146,7 +6146,7 @@ entities:
     - type: Transform
       pos: 9.487167,8.55894
       parent: 1
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 1506
     components:

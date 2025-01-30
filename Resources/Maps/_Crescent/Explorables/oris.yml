@@ -1800,7 +1800,7 @@ entities:
     - type: Transform
       pos: 5.487581,-2.404159
       parent: 1
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 370
     components:

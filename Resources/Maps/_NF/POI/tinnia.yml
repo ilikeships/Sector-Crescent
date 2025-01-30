@@ -5365,7 +5365,7 @@ entities:
     - type: Transform
       pos: -11.386714,-2.288639
       parent: 1
-- proto: AHardpointLargeUniversal
+- proto: AAAHardpointLargeUniversal
   entities:
   - uid: 282
     components:
