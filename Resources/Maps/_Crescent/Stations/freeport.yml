@@ -3937,7 +3937,7 @@ entities:
       pos: 19.5,13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -100265.44
+      secondsUntilStateChange: -100342.336
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4058,7 +4058,7 @@ entities:
       pos: 40.5,42.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -20395.395
+      secondsUntilStateChange: -20472.291
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -20100,9 +20100,6 @@ entities:
         - 6283
         - 2149
         - 1007
-        - 6290
-        - 133
-        - 236
         - 6291
         - 1006
         - 1052
@@ -20114,16 +20111,16 @@ entities:
         - 2261
         - 6292
         - 147
+        - 236
         - 2260
+        - 133
+        - 6290
         flak:
         - 6283
         - 2149
         - 1007
-        gargoyle:
-        - 6290
-        - 133
-        artillery:
-        - 236
+        gargoyle: []
+        artillery: []
         machinegun:
         - 6291
         - 1006
@@ -27184,6 +27181,27 @@ entities:
     components:
     - type: Transform
       pos: 13.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6368
+    components:
+    - type: Transform
+      pos: 61.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6369
+    components:
+    - type: Transform
+      pos: 59.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 6370
+    components:
+    - type: Transform
+      pos: 59.5,7.5
       parent: 1
     - type: Physics
       canCollide: False

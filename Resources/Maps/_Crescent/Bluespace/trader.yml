@@ -4427,6 +4427,36 @@ entities:
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+- proto: HardpointLargeUniversal
+  entities:
+  - uid: 1029
+    components:
+    - type: Transform
+      pos: 10.5,-17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1030
+    components:
+    - type: Transform
+      pos: -9.5,-17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1031
+    components:
+    - type: Transform
+      pos: 10.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1032
+    components:
+    - type: Transform
+      pos: -9.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 376
