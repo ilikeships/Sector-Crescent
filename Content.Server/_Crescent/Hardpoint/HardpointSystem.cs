@@ -31,8 +31,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
     {
         if (args.Transform.GridUid is null)
             return;
-        var targetCoords = _transformSystem.GetGridTilePositionOrDefault(uid);
-        updateAllHardointsOnGridNearPoint(args.Transform.GridUid.Value, targetCoords);
+        updateAllHardpointsOnGrid(args.Transform.GridUid.Value);
     }
 
     public void QueueHardpointRefresh(EntityUid cannon, EntityUid grid)
@@ -54,20 +53,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
             QueueHardpointRefresh(entity, gridUid);
         }
     }
-
-    public void updateAllHardointsOnGridNearPoint(EntityUid gridUid, Vector2i targetCoords)
-    {
-        HashSet<Entity<HardpointComponent>> lookupList = new();
-        _lookupSystem.GetGridEntities(gridUid, lookupList);
-        foreach (var entity in lookupList)
-        {
-            if (entity.Comp.anchoring is null)
-                continue;
-            var ourCoords = targetCoords - _transformSystem.GetGridTilePositionOrDefault(entity.Owner);
-            if (ourCoords.Length < entity.Comp.CannonRangeCheckRange)
-                QueueHardpointRefresh(entity, gridUid);
-        }
-    }
+    
     public void OnCannonAnchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonAnchoredEvent args)
     {
         _cannonSystem.LinkCannonToAllConsoles(args.cannonUid);
