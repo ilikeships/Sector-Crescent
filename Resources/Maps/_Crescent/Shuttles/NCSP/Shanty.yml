@@ -166,7 +166,8 @@ entities:
             0: 35020
             1: 25088
           1,0:
-            0: 13104
+            0: 9008
+            2: 4096
             1: 34952
           1,1:
             0: 4403
@@ -202,6 +203,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 21.824879
+          - 82.10312
           - 0
           - 0
           - 0
@@ -254,6 +270,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,0.5
       parent: 1
+    - type: Door
+      secondsUntilStateChange: -7.9463353
+      state: Opening
+    - type: DeviceLinkSource
+      lastSignals:
+        DoorStatus: True
 - proto: AirTankFilled
   entities:
   - uid: 87
@@ -656,6 +678,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,0.5
       parent: 1
+- proto: CigarSpent
+  entities:
+  - uid: 103
+    components:
+    - type: Transform
+      pos: -0.3181107,-0.3637923
+      parent: 1
 - proto: ClothingHeadHatSyndicatePilot
   entities:
   - uid: 170
@@ -710,21 +739,20 @@ entities:
       linkedPorts:
         61:
         - Group1: Toggle
-- proto: ComputerStationRecords
-  entities:
-  - uid: 55
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,-0.5
-      parent: 1
-- proto: CrateMaterialPlasma
-  entities:
-  - uid: 103
-    components:
-    - type: Transform
-      pos: 4.5,3.5
-      parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        disk_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        id_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: FaxMachineShip
   entities:
   - uid: 57
@@ -1043,6 +1071,11 @@ entities:
           - 89
 - proto: TableReinforced
   entities:
+  - uid: 55
+    components:
+    - type: Transform
+      pos: -0.5,-0.5
+      parent: 1
   - uid: 56
     components:
     - type: Transform
