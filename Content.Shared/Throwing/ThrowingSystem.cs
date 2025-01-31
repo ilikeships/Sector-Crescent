@@ -145,7 +145,7 @@ public sealed class ThrowingSystem : EntitySystem
         if (TryComp<HandsComponent>(comp.Thrower, out var hands) && strength > hands.ThrowForceMultiplier)
             comp.LandTime = comp.ThrownTime + TimeSpan.FromSeconds(time);
         else
-            comp.LandTime = time < FlyTime ? TimeSpan.Zero : comp.ThrownTime + TimeSpan.FromSeconds(time - FlyTime);
+            comp.LandTime = time < FlyTime ? default : comp.ThrownTime + TimeSpan.FromSeconds(time - FlyTime);
         comp.PlayLandSound = playSound;
         AddComp(uid, comp, true);
 
