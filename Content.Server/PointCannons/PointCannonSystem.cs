@@ -27,6 +27,7 @@ using System;
 using Content.Server._Crescent.Hardpoint;
 using Content.Shared._Crescent.Hardpoints;
 using Content.Shared.Communications;
+using Content.Shared.Physics;
 
 namespace Content.Server.PointCannons;
 
@@ -419,7 +420,7 @@ public class PointCannonSystem : EntitySystem
                 continue;
 
             //checking that obstacle is anchored and solid
-            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) || !body.Hard)
+            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) || !body.Hard || (body.CollisionLayer & (int)CollisionGroup.BulletImpassable) == 0)
                 continue;
 
             //calculating circular sector that obstacle occupies relative to the cannon
