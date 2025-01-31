@@ -37,7 +37,8 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (component.anchoredTo is null)
         {
-            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
+            //Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
 
@@ -79,8 +80,10 @@ public class SharedHardpointSystem : EntitySystem
         arg.gridUid = grid;
         RaiseLocalEvent(component.anchoredTo.Value, arg);
         component.anchoredTo = null;
-        Dirty(target, component);
-        Dirty(hardpointUid, hardpointComp);
+        DirtyEntity(target);
+        DirtyEntity(anchor);
+        //Dirty(target, component);
+        //Dirty(hardpointUid, hardpointComp);
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
@@ -126,7 +129,9 @@ public class SharedHardpointSystem : EntitySystem
         arg.cannonUid = target;
         arg.gridUid = grid;
         RaiseLocalEvent(anchor, arg);
-        Dirty(target, targetComp);
-        Dirty(anchor, hardpoint);
+        DirtyEntity(target);
+        DirtyEntity(anchor);
+        //Dirty(target, targetComp);
+        //Dirty(anchor, hardpoint);
     }
 }
