@@ -15,7 +15,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
     [Dependency] private readonly PointCannonSystem _cannonSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     // Explosions can cause a lot of lookups and events to fire. So we time-limit it based on grids
-    private const float UpdateDelay = 30f;
+    private const float UpdateDelay = 60f;
     private float InternalTimer = 0f;
     private HashSet<EntityUid> NeedsFiringRangeUpdate = new();
     private HashSet<EntityUid> QueuedGrids = new();
@@ -57,7 +57,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
     public void OnCannonAnchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonAnchoredEvent args)
     {
         _cannonSystem.LinkCannonToAllConsoles(args.cannonUid);
-        _cannonSystem.RefreshFiringRanges(args.cannonUid, null, null, null, comp.CannonRangeCheckRange);
+        updateAllHardpointsOnGrid(args.gridUid);
     }
 
     public void OnCannonDeanchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonDeanchoredEvent args)
