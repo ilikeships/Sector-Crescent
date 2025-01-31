@@ -6,16 +6,16 @@ namespace Content.Shared._Crescent.Hardpoints;
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class HardpointComponent : Component
 {
-    [ViewVariables(VVAccess.ReadOnly)]
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
     public EntityUid? anchoring;
     [ViewVariables(VVAccess.ReadWrite), DataField("range")]
     public int CannonRangeCheckRange = 25;
-    [ViewVariables(VVAccess.ReadWrite), DataField("class")]
+    [ViewVariables(VVAccess.ReadWrite), DataField("class"), AutoNetworkedField]
     public weaponTypes CompatibleTypes = weaponTypes.Ballistic;
-    [ViewVariables(VVAccess.ReadWrite), DataField("size")]
+    [ViewVariables(VVAccess.ReadWrite), DataField("size"), AutoNetworkedField]
     public weaponSizes CompatibleSizes = weaponSizes.Small;
 }
 

@@ -27,6 +27,7 @@ using System;
 using Content.Server._Crescent.Hardpoint;
 using Content.Shared._Crescent.Hardpoints;
 using Content.Shared.Communications;
+using Content.Shared.Physics;
 
 namespace Content.Server.PointCannons;
 
@@ -397,11 +398,11 @@ public class PointCannonSystem : EntitySystem
         // 10 meters the default if one is not provided
         range ??= 10;
 
-        cannon.ObstructedRanges = CalculateFiringRanges(form, gun, cannon, range.Value);
+        cannon.ObstructedRanges = CalculateFiringRanges(uid, form, gun, cannon, range.Value);
         Dirty(uid, cannon);
     }
 
-    private List<(Angle, Angle)> CalculateFiringRanges(TransformComponent form, GunComponent gun, PointCannonComponent cannon, int range)
+    private List<(Angle, Angle)> CalculateFiringRanges(EntityUid uid, TransformComponent form, GunComponent gun, PointCannonComponent cannon, int range)
     {
         if (form.GridUid == null)
             return new();
@@ -409,17 +410,15 @@ public class PointCannonSystem : EntitySystem
         TransformComponent gridForm = Transform(form.GridUid.Value);
         List<(Angle, Angle)> ranges = new();
         TransformChildrenEnumerator enumerate = gridForm.ChildEnumerator;
-        while(enumerate.MoveNext(out var childUid))
+        HashSet<EntityUid> entities = _lookup.GetEntitiesInRange(uid, (float) range, LookupFlags.Static);
+        foreach(var childUid in entities)
         {
             //checking if obstacle is not too far/close to the cannon
             TransformComponent otherForm = Transform(childUid);
             Vector2 dir = otherForm.LocalPosition - form.LocalPosition;
-            float dist = dir.Length();
-            if (dist > range || dist < 1)
-                continue;
 
             //checking that obstacle is anchored and solid
-            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) || !body.Hard)
+            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) || !body.Hard || (body.CollisionLayer & (int)CollisionGroup.BulletImpassable) == 0)
                 continue;
 
             //calculating circular sector that obstacle occupies relative to the cannon

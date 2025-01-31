@@ -103,16 +103,12 @@ public class SharedHardpointSystem : EntitySystem
 
         foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp), indice))
         {
-            Logger.Error($"checking {MetaData(entity).EntityName} at indices X: {indice.X} and Y: {indice.Y} , --- {indice}");
             if (!TryComp<HardpointComponent>(entity, out var hardComp))
                 continue;
-            Logger.Error($"1");
             if (hardComp.anchoring is not null)
                 continue;
-            Logger.Error($"2");
             if ((hardComp.CompatibleTypes & component.CompatibleTypes) == 0)
                 continue;
-            Logger.Error($"3");
             if (hardComp.CompatibleSizes < component.CompatibleSizes)
                 continue;
             AnchorEntityToHardpoint(uid, entity, component, hardComp, gridUid.Value);
