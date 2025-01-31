@@ -38,7 +38,7 @@ public class SharedHardpointSystem : EntitySystem
         if (component.anchoredTo is null)
         {
             // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
-            //Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
 
@@ -54,15 +54,7 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (comp.anchoring is null)
             return;
-        var gridUid = Transform(comp.anchoring.Value).GridUid;
         _transformSystem.Unanchor(comp.anchoring.Value);
-        if (gridUid is null)
-            return;
-        Deanchor(comp.anchoring.Value, target, gridUid.Value,
-            Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
-
-
-
     }
 
     public void Deanchor(EntityUid target, EntityUid anchor, EntityUid grid, HardpointAnchorableOnlyComponent component)

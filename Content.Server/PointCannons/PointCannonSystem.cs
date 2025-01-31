@@ -272,7 +272,7 @@ public class PointCannonSystem : EntitySystem
             foreach (string group in console.CannonGroups.Keys.ToList())
             {
                 console.CannonGroups[group].Remove(cannonUid);
-                if (console.CannonGroups[group].Count == 0 && console.CurrentGroupName != "all")
+                if (console.CannonGroups[group].Count == 0 && group != "all")
                 {
                     console.CannonGroups.Remove(group);
                     if (console.CurrentGroupName == group)
@@ -297,7 +297,7 @@ public class PointCannonSystem : EntitySystem
         foreach (string group in console.CannonGroups.Keys.ToList())
         {
             console.CannonGroups[group].Remove(cannonUid);
-            if (console.CannonGroups[group].Count == 0 && console.CurrentGroupName != "all")
+            if (console.CannonGroups[group].Count == 0  && group != "all")
             {
                 console.CannonGroups.Remove(group);
                 if (console.CurrentGroupName == group)
