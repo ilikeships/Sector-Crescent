@@ -149,7 +149,8 @@ public abstract partial class SharedGunSystem
         var ejectMag = (component.AutoEject || component.OneUseOnly) && count == 0 || component.Used;
         if (ejectMag)
         {
-            component.Used = true;
+            if(component.OneUseOnly)
+                component.Used = true;
             EjectMagazine(uid, component);
             Audio.PlayPredicted(component.SoundAutoEject, uid, user);
         }
