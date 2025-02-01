@@ -129,6 +129,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
+        var aasim = "/Maps/_Crescent/Stations/aasim.yml";
         var stranded = "/Maps/_Crescent/Explorables/stranded.yml";
         var fighter1 = "/Maps/_Crescent/Explorables/ruinedfightereast.yml";
         var fighter2 = "/Maps/_Crescent/Explorables/ruinedfighterwest.yml";
@@ -191,6 +192,23 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
         }
 
+
+        if (_map.TryLoad(mapId, aasim, out var famUids, new MapLoadOptions
+            {
+                Offset = new Vector2(4500f, 1500f)
+            }))
+        {
+            //   We should figure out if it is possible to add this grid to the latejoin listing.
+            //   Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Aasim", out var stationProto))
+            {
+                _station.InitializeNewStation(stationProto.Stations["Aasim"], famUids);
+            }
+
+            var meta = EnsureComp<MetaDataComponent>(famUids[0]);
+            _meta.SetEntityName(famUids[0], "TAP Qiwa Aasim", meta);
+            _shuttle.SetIFFColor(famUids[0], civilianColor);
+        }
 
         if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
         {

@@ -8,6 +8,26 @@ research-discipline-empire = Imperial
 
 research-discipline-shi = Corporate
 
+research-discipline-families = Pacter
+
+#families
+
+research-technology-clothwork = Tribal Clothwork
+
+research-technology-armorsfam = Tribal Hardsuits
+
+research-technology-evafam = Tribal Vacsuits
+
+research-technology-meleefam = Tribal Plasma
+
+research-technology-lasergun = Tribal Basic Laser Munitions
+
+research-technology-xrayfam = Tribal Genetic Manipulation
+
+research-technology-pulsefam = Tribal Advanced Laser Munitions
+
+research-technology-tesla = Tribal Electric Manipulation
+
 #precursor
 
 research-technology-weaponsnanolarge = NanoTrasen Large Armaments
