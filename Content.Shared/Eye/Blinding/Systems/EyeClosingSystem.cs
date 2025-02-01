@@ -124,7 +124,7 @@ public sealed class EyeClosingSystem : EntitySystem
         if (_entityManager.TryGetComponent<EyeClosingComponent>(blindable, out var eyelids) && !eyelids.NaturallyCreated)
             return;
 
-        if (ev.Blur < BlurryVisionComponent.MaxMagnitude || ev.Blur >= BlindableComponent.MaxDamage)
+        if (ev.Blur < BlurryVisionComponent.MaxMagnitude || ev.Blur >= blindable.Comp.MaxDamage)
         {
             RemCompDeferred<EyeClosingComponent>(blindable);
             return;
