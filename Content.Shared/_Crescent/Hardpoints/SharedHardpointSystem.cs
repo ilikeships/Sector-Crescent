@@ -37,6 +37,7 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (component.anchoredTo is null)
         {
+            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
             Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
@@ -53,15 +54,7 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (comp.anchoring is null)
             return;
-        var gridUid = Transform(comp.anchoring.Value).GridUid;
         _transformSystem.Unanchor(comp.anchoring.Value);
-        if (gridUid is null)
-            return;
-        Deanchor(comp.anchoring.Value, target, gridUid.Value,
-            Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
-
-
-
     }
 
     public void Deanchor(EntityUid target, EntityUid anchor, EntityUid grid, HardpointAnchorableOnlyComponent component)
@@ -79,8 +72,10 @@ public class SharedHardpointSystem : EntitySystem
         arg.gridUid = grid;
         RaiseLocalEvent(component.anchoredTo.Value, arg);
         component.anchoredTo = null;
-        Dirty(target, component);
-        Dirty(hardpointUid, hardpointComp);
+        DirtyEntity(target);
+        DirtyEntity(anchor);
+        //Dirty(target, component);
+        //Dirty(hardpointUid, hardpointComp);
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
@@ -103,16 +98,12 @@ public class SharedHardpointSystem : EntitySystem
 
         foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp), indice))
         {
-            Logger.Error($"checking {MetaData(entity).EntityName} at indices X: {indice.X} and Y: {indice.Y} , --- {indice}");
             if (!TryComp<HardpointComponent>(entity, out var hardComp))
                 continue;
-            Logger.Error($"1");
             if (hardComp.anchoring is not null)
                 continue;
-            Logger.Error($"2");
             if ((hardComp.CompatibleTypes & component.CompatibleTypes) == 0)
                 continue;
-            Logger.Error($"3");
             if (hardComp.CompatibleSizes < component.CompatibleSizes)
                 continue;
             AnchorEntityToHardpoint(uid, entity, component, hardComp, gridUid.Value);
@@ -130,7 +121,9 @@ public class SharedHardpointSystem : EntitySystem
         arg.cannonUid = target;
         arg.gridUid = grid;
         RaiseLocalEvent(anchor, arg);
-        Dirty(target, targetComp);
-        Dirty(anchor, hardpoint);
+        DirtyEntity(target);
+        DirtyEntity(anchor);
+        //Dirty(target, targetComp);
+        //Dirty(anchor, hardpoint);
     }
 }

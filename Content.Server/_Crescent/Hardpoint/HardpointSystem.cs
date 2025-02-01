@@ -3,6 +3,7 @@ using Content.Shared._Crescent.Hardpoints;
 using Content.Shared.Construction.Components;
 using Content.Shared.PointCannons;
 using Robust.Shared.Physics;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Crescent.Hardpoint;
 
@@ -12,6 +13,12 @@ namespace Content.Server._Crescent.Hardpoint;
 public sealed class HardpointSystem : SharedHardpointSystem
 {
     [Dependency] private readonly PointCannonSystem _cannonSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    // Explosions can cause a lot of lookups and events to fire. So we time-limit it based on grids
+    private const float UpdateDelay = 60f;
+    private float InternalTimer = 0f;
+    private HashSet<EntityUid> NeedsFiringRangeUpdate = new();
+    private HashSet<EntityUid> QueuedGrids = new();
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -24,43 +31,65 @@ public sealed class HardpointSystem : SharedHardpointSystem
     {
         if (args.Transform.GridUid is null)
             return;
-        var targetCoords = _transformSystem.GetGridTilePositionOrDefault(uid);
-        updateAllHardointsOnGridNearPoint(args.Transform.GridUid.Value, targetCoords);
+        updateAllHardpointsOnGrid(args.Transform.GridUid.Value);
+    }
+
+    public void QueueHardpointRefresh(EntityUid cannon, EntityUid grid)
+    {
+        QueuedGrids.Add(grid);
+        NeedsFiringRangeUpdate.Add(cannon);
     }
 
     public void updateAllHardpointsOnGrid(EntityUid gridUid)
     {
+        if (QueuedGrids.Contains(gridUid))
+            return;
         HashSet<Entity<HardpointComponent>> lookupList = new();
         _lookupSystem.GetGridEntities(gridUid, lookupList);
         foreach (var entity in lookupList)
         {
             if (entity.Comp.anchoring is null)
                 continue;
-            _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, null, entity.Comp.CannonRangeCheckRange);
+            QueueHardpointRefresh(entity, gridUid);
         }
     }
-
-    public void updateAllHardointsOnGridNearPoint(EntityUid gridUid, Vector2i targetCoords)
-    {
-        HashSet<Entity<HardpointComponent>> lookupList = new();
-        _lookupSystem.GetGridEntities(gridUid, lookupList);
-        foreach (var entity in lookupList)
-        {
-            if (entity.Comp.anchoring is null)
-                continue;
-            var ourCoords = targetCoords - _transformSystem.GetGridTilePositionOrDefault(entity.Owner);
-            if (ourCoords.Length < entity.Comp.CannonRangeCheckRange)
-                _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, null, entity.Comp.CannonRangeCheckRange);
-        }
-    }
+    
     public void OnCannonAnchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonAnchoredEvent args)
     {
         _cannonSystem.LinkCannonToAllConsoles(args.cannonUid);
-        _cannonSystem.RefreshFiringRanges(args.cannonUid, null, null, null, comp.CannonRangeCheckRange);
+        updateAllHardpointsOnGrid(args.gridUid);
     }
 
     public void OnCannonDeanchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonDeanchoredEvent args)
     {
         _cannonSystem.UnlinkCannon(args.CannonUid);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_gameTiming.IsFirstTimePredicted)
+            return;
+
+        InternalTimer += frameTime;
+        if (InternalTimer < UpdateDelay)
+            return;
+        InternalTimer = 0;
+        EntityQuery<HardpointComponent> hardpointQuery = GetEntityQuery<HardpointComponent>();
+        foreach(var entity in NeedsFiringRangeUpdate)
+        {
+            if (TerminatingOrDeleted(entity))
+                continue;
+            var hardpoint = hardpointQuery.GetComponent(entity);
+            if (hardpoint.anchoring is null)
+                continue;
+            if (TerminatingOrDeleted(hardpoint.anchoring.Value))
+                continue;
+            _cannonSystem.RefreshFiringRanges(hardpoint.anchoring.Value, null, null, null, hardpoint.CannonRangeCheckRange);
+
+        }
+        QueuedGrids.Clear();
+        NeedsFiringRangeUpdate.Clear();
     }
 }
