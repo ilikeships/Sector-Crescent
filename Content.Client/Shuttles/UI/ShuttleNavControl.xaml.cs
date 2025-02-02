@@ -332,7 +332,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 if (!isOutsideRadarCircle || isDistantPOI || isMouseOver)
                 {
                     // Calculate unscaled offsets.
-                    var labelDimensions = handle.GetDimensions(Font, labelText, 1f);
+                    var trueMapScale = (MaxRadarRange * 2 / (MaxRadarRange + ActualRadarRange)) / 2;
+                    var labelDimensions = handle.GetDimensions(Font, labelText, trueMapScale);
                     var blipSize = RadarBlipSize * 0.7f;
                     var labelOffset = new Vector2()
                     {
@@ -343,26 +344,26 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                     };
                     //var logger = _logs.GetSawmill("ui");
                     //logger.Debug($"ActualRange : {ActualRadarRange} , MaxRange : {MaxRadarRange} , Ratio : {ActualRadarRange/MaxRadarRange}");
-                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, (MaxRadarRange*2 / (MaxRadarRange + ActualRadarRange))/2, color);
+                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, trueMapScale, color);
 
                     if (iff != null && relations.TryGetValue(iff.Faction, out var relation))
                     {
                         if (relation == Relations.Ally)
                         {
                             var allyText = Loc.GetString("shuttle-console-iff-ally");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, allyText, 1f, Color.Blue);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, allyText, trueMapScale, Color.Blue);
                         }
 
                         if (relation == Relations.ColdWar)
                         {
                             var coldWarText = Loc.GetString("shuttle-console-iff-cold-war");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, coldWarText, 1f, Color.Yellow);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, coldWarText, trueMapScale, Color.Yellow);
                         }
 
                         if (relation == Relations.War)
                         {
                             var warText = Loc.GetString("shuttle-console-iff-war");
-                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, warText, 1f, Color.Red);
+                            handle.DrawString(FactionFont, (uiPosition + labelOffset - new Vector2(0, labelOffset.Y - 6)) * UIScale, warText, trueMapScale, Color.Red);
                         }
                     }
                 }
