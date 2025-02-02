@@ -185,7 +185,8 @@ entities:
             0: 52447
             1: 4096
           0,-1:
-            0: 7629
+            0: 7373
+            2: 256
           -1,0:
             0: 138
           0,1:
@@ -193,12 +194,14 @@ entities:
           0,2:
             1: 32
           1,0:
-            0: 14131
+            0: 1843
+            2: 12288
             1: 34944
           1,1:
             0: 340
           1,-1:
-            0: 39743
+            3: 1
+            0: 39742
           1,2:
             1: 32
           0,-2:
@@ -249,6 +252,36 @@ entities:
           - 0
           - 0
           - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 23.57087
+          - 88.67137
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
@@ -257,6 +290,22 @@ entities:
     - type: CrescentEMPTechnologyTier
       powerLossMarkiplier: 1.2
       eMPMultiplier: 0.6
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 142
+    components:
+    - type: Transform
+      pos: 7.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 143
+    components:
+    - type: Transform
+      pos: 0.5,3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 325
@@ -1145,6 +1194,13 @@ entities:
         - Group1: SpaceArtilleryFire
         - Group2: SpaceArtilleryOnSafety
         - Group3: SpaceArtilleryOffSafety
+    - type: NamedModules
+      buttonNames:
+      - Fire Artillery
+      - Artillery safety ON
+      - Artillery safety OFF
+      - Fire Sumitmoso
+      - Module E
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -1159,18 +1215,8 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopStationRecords
-  entities:
-  - uid: 130
-    components:
-    - type: Transform
-      anchored: False
-      rot: -4.712393391128403 rad
-      pos: -0.5,0.5
-      parent: 1
-    - type: Physics
-      fixedRotation: False
-      bodyType: Dynamic
+    - type: ApcPowerReceiver
+      needsPower: False
 - proto: ComputerTabletopTargeting
   entities:
   - uid: 186
@@ -1186,43 +1232,6 @@ entities:
         missiles:
         - 26
         - 178
-- proto: CrateMaterialUranium
-  entities:
-  - uid: 140
-    components:
-    - type: Transform
-      pos: 4.5,-3.5
-      parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 24
-          - 25
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: FaxMachineShip
   entities:
   - uid: 131
@@ -1472,22 +1481,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 2.4947538,3.4083977
       parent: 1
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 142
-    components:
-    - type: Transform
-      pos: 7.5,1.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 143
-    components:
-    - type: Transform
-      pos: 0.5,3.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: JetpackMiniFilled
   entities:
   - uid: 152
@@ -1516,17 +1509,13 @@ entities:
   - uid: 24
     components:
     - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: 3.5313497,-3.505763
+      parent: 1
   - uid: 25
     components:
     - type: Transform
-      parent: 140
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: 3.5313497,-3.505763
+      parent: 1
 - proto: PlastitaniumWindow
   entities:
   - uid: 19
@@ -1815,38 +1804,92 @@ entities:
     - type: Transform
       pos: 0.5,-1.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
   - uid: 165
     components:
     - type: Transform
       pos: 5.5,3.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 166
-          - 167
-          - 168
-          - 169
           - 170
+          - 169
+          - 168
+          - 167
+          - 166
   - uid: 171
     components:
     - type: Transform
       pos: 4.5,3.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 172
-          - 173
-          - 174
-          - 175
           - 176
+          - 175
+          - 174
+          - 173
+          - 172
 - proto: SuitStorageWallmount
   entities:
   - uid: 151
@@ -2026,7 +2069,7 @@ entities:
       pos: 3.5,6.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 967000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

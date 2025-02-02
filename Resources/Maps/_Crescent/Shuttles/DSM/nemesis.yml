@@ -704,6 +704,120 @@ entities:
     - type: BecomesStation
       id: Nemesis
     - type: CrescentEMPTechnologyTier
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 153
+    components:
+    - type: Transform
+      pos: 5.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 748
+    components:
+    - type: Transform
+      pos: 8.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1756
+    components:
+    - type: Transform
+      pos: 11.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1757
+    components:
+    - type: Transform
+      pos: 3.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1758
+    components:
+    - type: Transform
+      pos: -6.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1759
+    components:
+    - type: Transform
+      pos: -7.5,7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1760
+    components:
+    - type: Transform
+      pos: -8.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1761
+    components:
+    - type: Transform
+      pos: -10.5,-13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1762
+    components:
+    - type: Transform
+      pos: -12.5,-15.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1763
+    components:
+    - type: Transform
+      pos: -12.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1764
+    components:
+    - type: Transform
+      pos: -8.5,-30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1765
+    components:
+    - type: Transform
+      pos: -6.5,-32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1766
+    components:
+    - type: Transform
+      pos: 11.5,-17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1767
+    components:
+    - type: Transform
+      pos: 7.5,-32.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1768
+    components:
+    - type: Transform
+      pos: 9.5,-30.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1769
+    components:
+    - type: Transform
+      pos: 13.5,-20.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AcceleratorCannon
   entities:
   - uid: 1671
@@ -713,7 +827,7 @@ entities:
       pos: 4.5,11.5
       parent: 1
     - type: Battery
-      startingCharge: 970000
+      startingCharge: 964000
     - type: BallisticAmmoProvider
       entities:
       - 1672
@@ -980,7 +1094,7 @@ entities:
       pos: 0.5,-10.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -1794.4618
+      secondsUntilStateChange: -1893.9264
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1080,7 +1194,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -9033.175
+      secondsUntilStateChange: -9132.64
       state: Opening
   - uid: 403
     components:
@@ -4042,6 +4156,11 @@ entities:
     - type: Transform
       pos: -6.5,-30.5
       parent: 1
+  - uid: 1771
+    components:
+    - type: Transform
+      pos: -5.5,-28.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 941
@@ -4783,6 +4902,14 @@ entities:
     components:
     - type: Transform
       pos: -0.5,-30.5
+      parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 1770
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,-28.5
       parent: 1
 - proto: CarpetBlack
   entities:
@@ -5845,19 +5972,19 @@ entities:
         - invalid
         - invalid
         - 1659
-        - 1736
-        - 586
         - 1660
         - 228
-        - 42
         - 478
-        - 1378
         - invalid
         - 1711
         - 871
+        - 42
+        - 102
         - 189
         - 391
-        - 102
+        - 586
+        - 1378
+        - 1736
         ballistic:
         - 112
         - invalid
@@ -5876,14 +6003,7 @@ entities:
         - 871
         plasmas:
         - invalid
-        - 1736
-        - 586
-        - 42
-        - 1378
         - invalid
-        - 102
-        - 391
-        - 189
         DSM 'Flare' depth mining laser:
         - 42
         - 102
@@ -7409,7 +7529,7 @@ entities:
       pos: 2.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 147000
+      startingCharge: 146400
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -7436,7 +7556,7 @@ entities:
       pos: 6.5,14.5
       parent: 1
     - type: Battery
-      startingCharge: 147000
+      startingCharge: 146400
     - type: ContainerContainer
       containers:
         SpaceArtillery-CoolantSlot: !type:ContainerSlot
@@ -7456,120 +7576,6 @@ entities:
     - type: BatterySelfRecharger
       autoRechargeRate: -600
       autoRecharge: True
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 153
-    components:
-    - type: Transform
-      pos: 5.5,17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 748
-    components:
-    - type: Transform
-      pos: 8.5,-2.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1756
-    components:
-    - type: Transform
-      pos: 11.5,-4.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1757
-    components:
-    - type: Transform
-      pos: 3.5,17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1758
-    components:
-    - type: Transform
-      pos: -6.5,11.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1759
-    components:
-    - type: Transform
-      pos: -7.5,7.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1760
-    components:
-    - type: Transform
-      pos: -8.5,-9.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1761
-    components:
-    - type: Transform
-      pos: -10.5,-13.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1762
-    components:
-    - type: Transform
-      pos: -12.5,-15.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1763
-    components:
-    - type: Transform
-      pos: -12.5,-20.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1764
-    components:
-    - type: Transform
-      pos: -8.5,-30.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1765
-    components:
-    - type: Transform
-      pos: -6.5,-32.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1766
-    components:
-    - type: Transform
-      pos: 11.5,-17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1767
-    components:
-    - type: Transform
-      pos: 7.5,-32.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1768
-    components:
-    - type: Transform
-      pos: 9.5,-30.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1769
-    components:
-    - type: Transform
-      pos: 13.5,-20.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 676
