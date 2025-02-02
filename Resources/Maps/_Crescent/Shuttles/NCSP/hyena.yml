@@ -419,6 +419,85 @@ entities:
     - type: CrescentEMPTechnologyTier
       powerLossMarkiplier: 1.2
       eMPMultiplier: 0.6
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 65
+    components:
+    - type: Transform
+      pos: 10.5,18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 160
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 397
+    components:
+    - type: Transform
+      pos: -5.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 913
+    components:
+    - type: Transform
+      pos: -5.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 923
+    components:
+    - type: Transform
+      pos: -6.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 924
+    components:
+    - type: Transform
+      pos: -0.5,17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 925
+    components:
+    - type: Transform
+      pos: 11.5,5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 926
+    components:
+    - type: Transform
+      pos: 9.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 927
+    components:
+    - type: Transform
+      pos: 9.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 928
+    components:
+    - type: Transform
+      pos: 4.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 929
+    components:
+    - type: Transform
+      pos: -0.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 899
@@ -2104,6 +2183,26 @@ entities:
     - type: Transform
       pos: -1.5,-2.5
       parent: 1
+  - uid: 932
+    components:
+    - type: Transform
+      pos: -2.5,-2.5
+      parent: 1
+  - uid: 933
+    components:
+    - type: Transform
+      pos: -2.5,-3.5
+      parent: 1
+  - uid: 934
+    components:
+    - type: Transform
+      pos: -2.5,-4.5
+      parent: 1
+  - uid: 935
+    components:
+    - type: Transform
+      pos: -2.5,-5.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 596
@@ -2360,6 +2459,20 @@ entities:
     components:
     - type: Transform
       pos: 0.5,3.5
+      parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 930
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-4.5
+      parent: 1
+  - uid: 931
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-2.5
       parent: 1
 - proto: CargoPallet
   entities:
@@ -3289,11 +3402,6 @@ entities:
         - 131
         - 973
         - 158
-        boltgun:
-        - 909
-        - 910
-        - 911
-        - 912
         60mm 'Needler' heavy precision autogun:
         - 909
         - 910
@@ -3317,10 +3425,10 @@ entities:
         - 158
         - 973
         - 131
-        - 912
-        - 911
         - 909
         - 910
+        - 911
+        - 912
         missiles:
         - 981
         - 980
@@ -3332,20 +3440,10 @@ entities:
         - 131
         gatling:
         - 131
-        boltguns:
-        - 912
-        - 911
-        - 909
-        - 910
         missile:
         - 976
         - 980
         - 981
-        boltgun:
-        - 909
-        - 910
-        - 911
-        - 912
         60mm 'Needler' heavy precision autogun:
         - 909
         - 910
@@ -4185,85 +4283,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 65
-    components:
-    - type: Transform
-      pos: 10.5,18.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 160
-    components:
-    - type: Transform
-      pos: -6.5,-2.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 397
-    components:
-    - type: Transform
-      pos: -5.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 913
-    components:
-    - type: Transform
-      pos: -5.5,2.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 923
-    components:
-    - type: Transform
-      pos: -6.5,17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 924
-    components:
-    - type: Transform
-      pos: -0.5,17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 925
-    components:
-    - type: Transform
-      pos: 11.5,5.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 926
-    components:
-    - type: Transform
-      pos: 9.5,2.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 927
-    components:
-    - type: Transform
-      pos: 9.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 928
-    components:
-    - type: Transform
-      pos: 4.5,-8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 929
-    components:
-    - type: Transform
-      pos: -0.5,-8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HolofanProjector
   entities:
   - uid: 818
@@ -5983,7 +6002,7 @@ entities:
       pos: 6.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 967000
+      startingCharge: 964000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6014,7 +6033,7 @@ entities:
       pos: 3.5,15.5
       parent: 1
     - type: Battery
-      startingCharge: 967000
+      startingCharge: 964000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

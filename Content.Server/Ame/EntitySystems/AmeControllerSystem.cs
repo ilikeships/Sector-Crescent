@@ -347,10 +347,17 @@ public sealed class AmeControllerSystem : EntitySystem
                 ToggleInjecting(uid, user: user, controller: comp);
                 break;
             case UiButton.IncreaseFuel:
-                AdjustInjectionAmount(uid, +2, user: user, controller: comp);
+                if (comp.LastInjectionClick > _gameTiming.CurTime)
+                {
+                    break;
+                }
+
+                comp.LastInjectionClick = _gameTiming.CurTime + TimeSpan.FromMilliseconds(200);
+
+                AdjustInjectionAmount(uid, +1, user: user, controller: comp);
                 break;
             case UiButton.DecreaseFuel:
-                AdjustInjectionAmount(uid, -2, user: user, controller: comp);
+                AdjustInjectionAmount(uid, -1, user: user, controller: comp);
                 break;
         }
 

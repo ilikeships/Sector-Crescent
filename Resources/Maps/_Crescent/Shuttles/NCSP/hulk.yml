@@ -875,7 +875,8 @@ entities:
           -1,-4:
             0: 45838
           -1,-3:
-            0: 47295
+            0: 47279
+            2: 16
           -1,-2:
             0: 35775
           -1,-5:
@@ -940,6 +941,21 @@ entities:
           - 0
           - 0
           - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 20.078888
+          - 75.53487
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
@@ -947,6 +963,50 @@ entities:
       id: Hulk
     - type: CrescentEMPTechnologyTier
       eMPMultiplier: 1.9
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 1506
+    components:
+    - type: Transform
+      pos: -8.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1507
+    components:
+    - type: Transform
+      pos: -9.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1508
+    components:
+    - type: Transform
+      pos: 0.5,-17.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1509
+    components:
+    - type: Transform
+      pos: 13.5,-3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1510
+    components:
+    - type: Transform
+      pos: 9.5,12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1511
+    components:
+    - type: Transform
+      pos: -10.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 1462
@@ -4769,13 +4829,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopStationRecords
-  entities:
-  - uid: 485
-    components:
-    - type: Transform
-      pos: 3.5,15.5
-      parent: 1
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 544
@@ -4877,6 +4930,24 @@ entities:
     - type: Transform
       pos: -3.5,-10.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: CrateFreezer
   entities:
   - uid: 398
@@ -6146,50 +6217,6 @@ entities:
     - type: Transform
       pos: 9.487167,8.55894
       parent: 1
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 1506
-    components:
-    - type: Transform
-      pos: -8.5,-4.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1507
-    components:
-    - type: Transform
-      pos: -9.5,13.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1508
-    components:
-    - type: Transform
-      pos: 0.5,-17.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1509
-    components:
-    - type: Transform
-      pos: 13.5,-3.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1510
-    components:
-    - type: Transform
-      pos: 9.5,12.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1511
-    components:
-    - type: Transform
-      pos: -10.5,6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HoloparasiteInjector
   entities:
   - uid: 1066

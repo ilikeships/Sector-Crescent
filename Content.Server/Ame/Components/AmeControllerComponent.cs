@@ -57,6 +57,9 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     [ViewVariables(VVAccess.ReadWrite)]
     public SoundSpecifier InjectSound = new SoundCollectionSpecifier("MetalThud");
 
+    // used for click-limiting the AME
+    public TimeSpan LastInjectionClick = default!;
+
     /// <summary>
     /// The last time this could have injected fuel into the AME.
     /// </summary>

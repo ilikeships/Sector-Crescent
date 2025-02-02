@@ -66,7 +66,7 @@ public partial class MapGridControl : LayoutContainer
     /// <summary>
     /// Controls the maximum distance that will display.
     /// </summary>
-    public float MaxRadarRange { get; private set; } = 256f * 10f;
+    public float MaxRadarRange = 256f * 10f;
 
     public Vector2 MaxRadarRangeVector => new Vector2(MaxRadarRange, MaxRadarRange);
 
@@ -89,6 +89,7 @@ public partial class MapGridControl : LayoutContainer
         RectClipContent = true;
         MouseFilter = MouseFilterMode.Stop;
         ActualRadarRange = WorldRange;
+        MaxRadarRange = maxRange;
         WorldMinRange = minRange;
         WorldMaxRange = maxRange;
         WorldRange = range;

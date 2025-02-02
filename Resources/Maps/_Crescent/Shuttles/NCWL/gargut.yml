@@ -648,6 +648,120 @@ entities:
     - type: CrescentEMPTechnologyTier
       powerLossMarkiplier: 1.2
       eMPMultiplier: 0.7
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 468
+    components:
+    - type: Transform
+      pos: -18.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 472
+    components:
+    - type: Transform
+      pos: -12.5,12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 613
+    components:
+    - type: Transform
+      pos: -8.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 654
+    components:
+    - type: Transform
+      pos: 5.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 655
+    components:
+    - type: Transform
+      pos: -10.5,9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1190
+    components:
+    - type: Transform
+      pos: -6.5,10.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1196
+    components:
+    - type: Transform
+      pos: 9.5,15.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1197
+    components:
+    - type: Transform
+      pos: 10.5,13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1198
+    components:
+    - type: Transform
+      pos: 14.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1199
+    components:
+    - type: Transform
+      pos: 16.5,5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1200
+    components:
+    - type: Transform
+      pos: 16.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1201
+    components:
+    - type: Transform
+      pos: 14.5,-6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1202
+    components:
+    - type: Transform
+      pos: -4.5,-9.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1203
+    components:
+    - type: Transform
+      pos: -17.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1204
+    components:
+    - type: Transform
+      pos: -12.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 1205
+    components:
+    - type: Transform
+      pos: -14.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 705
@@ -2948,6 +3062,11 @@ entities:
     - type: Transform
       pos: -10.5,-4.5
       parent: 1
+  - uid: 1206
+    components:
+    - type: Transform
+      pos: -9.5,-3.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 735
@@ -3314,6 +3433,13 @@ entities:
     components:
     - type: Transform
       pos: 14.5,5.5
+      parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 610
+    components:
+    - type: Transform
+      pos: -8.5,-3.5
       parent: 1
 - proto: CarpetBlack
   entities:
@@ -3971,13 +4097,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopStationRecords
-  entities:
-  - uid: 610
-    components:
-    - type: Transform
-      pos: 10.5,-2.5
-      parent: 1
 - proto: ComputerTabletopSurveillanceCameraMonitor
   entities:
   - uid: 612
@@ -4003,28 +4122,25 @@ entities:
         - invalid
         - 381
         - 435
-        - 1147
-        - 856
         - 302
         - 303
         - 314
         - 313
         - 474
         - 305
-        - 297
-        - 1149
-        - 312
-        - 298
         - 273
         - 272
+        - 297
+        - 298
+        - 312
+        - 1149
+        - 856
+        - 1147
         mortars:
         - invalid
         - invalid
         - 381
         - 435
-        missiles:
-        - 1147
-        - 856
         ballistics:
         - 302
         - 303
@@ -4032,15 +4148,10 @@ entities:
         - 313
         - 474
         - 305
-        autoguns:
-        - 297
-        - 1149
-        - 312
-        - 298
         flak:
         - 273
         - 272
-        smartbomb:
+        NCWL 'Pilum' smartbomb missile rack:
         - 856
         - 1147
         artillery:
@@ -4053,19 +4164,12 @@ entities:
         - 314
         - 303
         boltgun:
-        - 298
-        - 312
         - 313
-        - 1149
-        - 297
         60mm 'Needler' heavy precision autogun:
         - 297
         - 298
         - 312
         - 1149
-        NCWL 'Pilum' smartbomb missile rack:
-        - 856
-        - 1147
 - proto: ConveyorBelt
   entities:
   - uid: 278
@@ -4700,120 +4804,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 468
-    components:
-    - type: Transform
-      pos: -18.5,9.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 472
-    components:
-    - type: Transform
-      pos: -12.5,12.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 613
-    components:
-    - type: Transform
-      pos: -8.5,13.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 654
-    components:
-    - type: Transform
-      pos: 5.5,-9.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 655
-    components:
-    - type: Transform
-      pos: -10.5,9.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1190
-    components:
-    - type: Transform
-      pos: -6.5,10.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1196
-    components:
-    - type: Transform
-      pos: 9.5,15.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1197
-    components:
-    - type: Transform
-      pos: 10.5,13.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1198
-    components:
-    - type: Transform
-      pos: 14.5,8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1199
-    components:
-    - type: Transform
-      pos: 16.5,5.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1200
-    components:
-    - type: Transform
-      pos: 16.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1201
-    components:
-    - type: Transform
-      pos: 14.5,-6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1202
-    components:
-    - type: Transform
-      pos: -4.5,-9.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1203
-    components:
-    - type: Transform
-      pos: -17.5,-2.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1204
-    components:
-    - type: Transform
-      pos: -12.5,-5.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 1205
-    components:
-    - type: Transform
-      pos: -14.5,-4.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 547
@@ -6480,7 +6470,7 @@ entities:
       pos: 12.5,9.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6511,7 +6501,7 @@ entities:
       pos: -16.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -6542,7 +6532,7 @@ entities:
       pos: -14.5,7.5
       parent: 1
     - type: Battery
-      startingCharge: 979000
+      startingCharge: 976000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
