@@ -905,6 +905,99 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Zhipov
+- proto: AAAHardpointLargeUniversal
+  entities:
+  - uid: 323
+    components:
+    - type: Transform
+      pos: -6.5,10.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 947
+    components:
+    - type: Transform
+      pos: 7.5,10.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 948
+    components:
+    - type: Transform
+      pos: 0.5,-51.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 949
+    components:
+    - type: Transform
+      pos: -8.5,-31.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 964
+    components:
+    - type: Transform
+      pos: -8.5,-35.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 965
+    components:
+    - type: Transform
+      pos: -9.5,-46.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 966
+    components:
+    - type: Transform
+      pos: 10.5,-46.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 967
+    components:
+    - type: Transform
+      pos: 9.5,-35.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 968
+    components:
+    - type: Transform
+      pos: 9.5,-31.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 969
+    components:
+    - type: Transform
+      pos: -3.5,-13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 970
+    components:
+    - type: Transform
+      pos: -3.5,-7.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 971
+    components:
+    - type: Transform
+      pos: 4.5,-13.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+  - uid: 972
+    components:
+    - type: Transform
+      pos: 4.5,-7.5
+      parent: 2
+    - type: Physics
+      canCollide: False
 - proto: AirAlarm
   entities:
   - uid: 1824
@@ -1225,76 +1318,6 @@ entities:
           ent: 569
 - proto: AmeJar
   entities:
-  - uid: 58
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 59
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 60
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 61
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 62
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 63
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 64
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 69
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 74
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 75
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 569
     components:
     - type: Transform
@@ -1969,29 +1992,6 @@ entities:
     - type: Transform
       pos: 8.536088,-21.642496
       parent: 2
-- proto: BoxT3SuperCapacitor
-  entities:
-  - uid: 1027
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1028
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1029
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ButtonFrameCaution
   entities:
   - uid: 703
@@ -6106,63 +6106,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: CratePartsT3
-  entities:
-  - uid: 1026
-    components:
-    - type: Transform
-      pos: 0.5,-13.5
-      parent: 2
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.8977377
-        - 7.139109
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 69
-          - 64
-          - 63
-          - 62
-          - 61
-          - 58
-          - 59
-          - 60
-          - 1027
-          - 1028
-          - 1065
-          - 1029
-          - 74
-          - 75
-          - 1064
-          - 1063
-          - 1062
-          - 1061
-          - 1060
-          - 738
-          - 1058
-          - 1059
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: CrateSecurityNonlethal
   entities:
   - uid: 1030
@@ -7515,99 +7458,6 @@ entities:
     - type: Transform
       pos: 2.5498984,0.60536677
       parent: 2
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 323
-    components:
-    - type: Transform
-      pos: -6.5,10.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 947
-    components:
-    - type: Transform
-      pos: 7.5,10.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 948
-    components:
-    - type: Transform
-      pos: 0.5,-51.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 949
-    components:
-    - type: Transform
-      pos: -8.5,-31.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 964
-    components:
-    - type: Transform
-      pos: -8.5,-35.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 965
-    components:
-    - type: Transform
-      pos: -9.5,-46.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 966
-    components:
-    - type: Transform
-      pos: 10.5,-46.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 967
-    components:
-    - type: Transform
-      pos: 9.5,-35.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 968
-    components:
-    - type: Transform
-      pos: 9.5,-31.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 969
-    components:
-    - type: Transform
-      pos: -3.5,-13.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 970
-    components:
-    - type: Transform
-      pos: -3.5,-7.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 971
-    components:
-    - type: Transform
-      pos: 4.5,-13.5
-      parent: 2
-    - type: Physics
-      canCollide: False
-  - uid: 972
-    components:
-    - type: Transform
-      pos: 4.5,-7.5
-      parent: 2
-    - type: Physics
-      canCollide: False
 - proto: Hypospray
   entities:
   - uid: 267
@@ -7617,13 +7467,6 @@ entities:
       parent: 2
 - proto: JugBoriaticFuel
   entities:
-  - uid: 738
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 1040
     components:
     - type: Transform
@@ -7642,62 +7485,6 @@ entities:
     components:
     - type: Transform
       parent: 1037
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1058
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1059
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1060
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1061
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1062
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1063
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1064
-    components:
-    - type: Transform
-      parent: 1026
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 1065
-    components:
-    - type: Transform
-      parent: 1026
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
