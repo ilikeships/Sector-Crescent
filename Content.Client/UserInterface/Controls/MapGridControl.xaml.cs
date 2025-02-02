@@ -89,7 +89,6 @@ public partial class MapGridControl : LayoutContainer
         RectClipContent = true;
         MouseFilter = MouseFilterMode.Stop;
         ActualRadarRange = WorldRange;
-        MaxRadarRange = maxRange;
         WorldMinRange = minRange;
         WorldMaxRange = maxRange;
         WorldRange = range;
