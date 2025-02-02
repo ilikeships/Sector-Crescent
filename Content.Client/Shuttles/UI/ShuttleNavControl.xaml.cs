@@ -117,11 +117,11 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     {
         if (_coordinates == null || _rotation == null)
             return EntityCoordinates.Invalid;
-        var logger = _logs.GetSawmill("ui");
         var trueSize = Size;
         var a = ((pos - (trueSize/2))*2)/Size * ActualRadarRange;
         var relativePos = a with { Y = -a.Y };
-        logger.Debug($"Pos: {pos.X}, {pos.Y}   , relativePos: {relativePos.X}, {relativePos.Y}");
+        //var logger = _logs.GetSawmill("ui");
+        //logger.Debug($"Pos: {pos.X}, {pos.Y}   , relativePos: {relativePos.X}, {relativePos.Y}");
         relativePos = _rotation.Value.RotateVec(relativePos);
         return _coordinates.Value.Offset(relativePos); 
     }
@@ -341,8 +341,9 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                             : blipSize, // left align the text to the right of the blip
                         Y = -labelDimensions.Y / 2f
                     };
-
-                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, 1f, color);
+                    //var logger = _logs.GetSawmill("ui");
+                    //logger.Debug($"ActualRange : {ActualRadarRange} , MaxRange : {MaxRadarRange} , Ratio : {ActualRadarRange/MaxRadarRange}");
+                    handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, labelText, (MaxRadarRange*2 / (MaxRadarRange + ActualRadarRange))/2, color);
 
                     if (iff != null && relations.TryGetValue(iff.Faction, out var relation))
                     {
