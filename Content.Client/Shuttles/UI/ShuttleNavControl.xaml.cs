@@ -332,7 +332,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 if (!isOutsideRadarCircle || isDistantPOI || isMouseOver)
                 {
                     // Calculate unscaled offsets.
-                    var trueMapScale = (MaxRadarRange * 2 / (MaxRadarRange + ActualRadarRange)) / 2;
+                    var trueMapScale = (WorldMaxRange * 2 / (WorldMaxRange + WorldRange)) / 1.3f;
                     var labelDimensions = handle.GetDimensions(Font, labelText, trueMapScale);
                     var blipSize = RadarBlipSize * 0.7f;
                     var labelOffset = new Vector2()
