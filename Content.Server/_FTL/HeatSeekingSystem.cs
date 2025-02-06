@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Interaction;
+using Content.Server.Shuttles.Components;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
@@ -17,91 +18,123 @@ public sealed class HeatSeekingSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    Angle oldAngle;
+    float oldDistance;
+    Vector2 oldPosition;
+    float timeToImpact;
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<HeatSeekingComponent, TransformComponent>();
+        var query = EntityQueryEnumerator<HeatSeekingComponent, TransformComponent>(); // get all heat seeking missiles
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
-            if (comp.TargetEntity is not null)
+            if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
-                var entXform = Transform(comp.TargetEntity.Value);
-                var originalAngle = _transform.GetWorldRotation(xform);
-                var angle = (
-                    _transform.ToMapCoordinates(entXform.Coordinates).Position -
-                    _transform.ToMapCoordinates(xform.Coordinates).Position
-                ).ToWorldAngle();
-                var trueRotationSpeed = comp.RotationSpeed;
-                if(trueRotationSpeed is null)
-                    trueRotationSpeed = 999;
-                trueRotationSpeed *= frameTime;
-
-                if (angle > originalAngle + trueRotationSpeed.Value)
-                {
-                    angle = originalAngle + trueRotationSpeed.Value;
-                }
-                else if (angle < originalAngle - trueRotationSpeed.Value)
-                {
-                    angle = originalAngle - trueRotationSpeed.Value;
-                }
-
-                _transform.SetLocalRotationNoLerp(uid, angle, xform);
-
-                _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue,
-                    xform);
-                _physics.SetLinearVelocity(uid, angle.ToWorldVec() * comp.Acceleration);
-                //_physics.ApplyForce(uid, xform.LocalRotation.RotateVec(new Vector2(0, 1)) * comp.Acceleration);
+                if (comp.GuidanceAlgorithm == "PredictiveGuidance") { PredictiveGuidance(uid, comp, xform, frameTime); }
+                else if (comp.GuidanceAlgorithm == "PurePursuit") { PurePursuit(uid, comp, xform, frameTime); }
+                else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
             }
             else
+            {
                 GetNewTarget(uid, comp, xform);
-            
+            }
         }
     }
 
-    public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform)
+    public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform) // Get the closest valid target
     {
-        var ray = new CollisionRay(_transform.GetMapCoordinates(uid, transform).Position,
-            transform.LocalRotation.ToWorldVec(),
-            (int) (CollisionGroup.Impassable | CollisionGroup.BulletImpassable));
-
-        var results = _physics.IntersectRay(transform.MapID, ray, component.DefaultSeekingRange, uid).ToList();
-
-        if (results.Count <= 0)
-            return; // nothing to heatseek ykwim
-
-        if (component is { LockedIn: true, TargetEntity: not null })
-            return; // Don't reassign target entity if we have one AND we have the LockedIn property
-
-        if (TryComp<ProjectileComponent>(uid, out var projectile)
-            && TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform))
+        var closestDistance = float.MaxValue;
+        EntityUid? closestGrid = null;
+        var shipQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>(); // get all shuttle consoles
+        while (shipQuery.MoveNext(out var shipUid, out var shipComp, out var shipXform)) // go through each grid with a shuttle console to find the closest valid target
         {
-            var shooterGridUid = shooterTransform.GridUid;
-            for (int i = 0; i < results.Count; i++)
-            {
-                var hitEntity = results[i].HitEntity;
-                if (TryComp<TransformComponent>(hitEntity, out var hitTransform))
-                {
-                    if (shooterGridUid == hitTransform.GridUid)
-                    {
-                        continue;
-                    }
+            var angle = (
+                _transform.ToMapCoordinates(shipXform.Coordinates).Position -
+                _transform.ToMapCoordinates(transform.Coordinates).Position
+            ).ToWorldAngle(); // current angle towards target
+            var distance = Vector2.Distance(
+                _transform.ToMapCoordinates(transform.Coordinates).Position,
+                _transform.ToMapCoordinates(shipXform.Coordinates).Position
+            ); // current distance from target
 
-                    if (hitEntity == uid)
+            if (angle > _transform.GetWorldRotation(transform) + component.FOV * Math.PI / 180f
+            || angle < _transform.GetWorldRotation(transform) - component.FOV * Math.PI / 180f) // if target is out of FOV, skip it.
+            {
+                continue;
+            }
+            if (distance > component.DefaultSeekingRange) // if target is out of range, skip it.
+            {
+                continue;
+            }
+
+            if (TryComp<ProjectileComponent>(uid, out var projectile) && TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform)) // get the shooter of the missile
+            {
+                var shooterGridUid = shooterTransform.GridUid;
+                if (TryComp<TransformComponent>(shipXform.GridUid, out var hitTransform))
+                {
+                    if (shooterGridUid == hitTransform.GridUid) // if target is the shooter of the missile, skip it.
                     {
                         continue;
                     }
-                    component.TargetEntity = hitTransform.GridUid;
-                    //if(component.TargetEntity is not null)
-                    //    Log.Error($"Locked on {MetaData(component.TargetEntity.Value).EntityName}");
-                    break;
                 }
             }
+            if (closestDistance > distance) // if this target is the closest target checked so far, save it.
+            {
+                closestDistance = distance;
+                closestGrid = shipXform.GridUid;
+            }
         }
-        else
+        if (closestGrid.HasValue) // after checking all valid targets, pick the closest one.
         {
-            component.TargetEntity = results[0].HitEntity;
+            component.TargetEntity = closestGrid;
+        }
+    }
+    public void PredictiveGuidance(EntityUid uid, HeatSeekingComponent comp, TransformComponent xform, float frameTime) // Predictive Guidance, predicts targets position at impact time.
+    {
+        if (comp.TargetEntity.HasValue)
+        {
+            var EntXform = Transform(comp.TargetEntity.Value); // get target transform
+            var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
+            var distance = Vector2.Distance(
+                _transform.ToMapCoordinates(xform.Coordinates).Position,
+                _transform.ToMapCoordinates(EntXform.Coordinates).Position
+            ); // current distance from target
+
+            var targetVelocity = _transform.ToMapCoordinates(EntXform.Coordinates).Position - oldPosition; // get target velocity
+            timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target
+            if (timeToImpact < 0.1) { timeToImpact = 0.1f; } // prevent negative time to impact, that messes up guidance
+            var predictedPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position + (targetVelocity * timeToImpact); // predict target position at impact time
+
+            Angle targetAngle = (predictedPosition - _transform.ToMapCoordinates(xform.Coordinates).Position).ToWorldAngle(); // the angle the missile will try to face
+
+            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
+            if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
+            _rotate.TryRotateTo(uid, targetAngle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
+            _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
+
+            oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
+            oldDistance = distance;
+        }
+    }
+
+    public void PurePursuit(EntityUid uid, HeatSeekingComponent comp, TransformComponent xform, float frameTime) // Pure Pursuit, points directly at target.
+    {
+        if (comp.TargetEntity.HasValue)
+        {
+            var EntXform = Transform(comp.TargetEntity.Value); // get target transform
+            var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
+
+            var angle = (
+                _transform.ToMapCoordinates(EntXform.Coordinates).Position -
+                _transform.ToMapCoordinates(xform.Coordinates).Position
+            ).ToWorldAngle(); // current angle towards target
+
+            if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
+            if (comp.Speed <= comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
+            _rotate.TryRotateTo(uid, angle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
+            _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
         }
     }
 }
