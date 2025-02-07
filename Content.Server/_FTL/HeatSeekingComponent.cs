@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Content.Server._FTL.HeatSeeking;
 
 /// <summary>
@@ -27,7 +29,7 @@ public sealed partial class HeatSeekingComponent : Component
     /// Defaults to "PredictiveGuidance".
     /// </summary>
     [DataField]
-    public string GuidanceAlgorithm = "PredictiveGuidance";
+    public GuidanceType GuidanceAlgorithm = GuidanceType.PredictiveGuidance;
 
     /// <summary>
     /// What is this entity targeting?
@@ -64,4 +66,16 @@ public sealed partial class HeatSeekingComponent : Component
     /// </summary>
     [DataField]
     public float FOV = 90f;
+
+    public float oldDistance;
+
+
+    public Vector2 oldPosition;
+}
+
+
+public enum GuidanceType
+{
+    PredictiveGuidance = 1<<1,
+    PurePursuit = 1<<2
 }

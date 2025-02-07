@@ -19,10 +19,6 @@ public sealed class HeatSeekingSystem : EntitySystem
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    Angle oldAngle;
-    float oldDistance;
-    Vector2 oldPosition;
-    float timeToImpact;
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -32,8 +28,8 @@ public sealed class HeatSeekingSystem : EntitySystem
         {
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
-                if (comp.GuidanceAlgorithm == "PredictiveGuidance") { PredictiveGuidance(uid, comp, xform, frameTime); }
-                else if (comp.GuidanceAlgorithm == "PurePursuit") { PurePursuit(uid, comp, xform, frameTime); }
+                if ((comp.GuidanceAlgorithm & GuidanceType.PredictiveGuidance) != 0) { PredictiveGuidance(uid, comp, xform, frameTime); }
+                else if ((comp.GuidanceAlgorithm & GuidanceType.PurePursuit) != 0 ){ PurePursuit(uid, comp, xform, frameTime); }
                 else { PredictiveGuidance(uid, comp, xform, frameTime); } // if yaml is invalid, default to Predictive Guidance
             }
             else
@@ -95,15 +91,17 @@ public sealed class HeatSeekingSystem : EntitySystem
     {
         if (comp.TargetEntity.HasValue)
         {
+            float oldDistance = comp.oldDistance;
+            Vector2 oldPosition = comp.oldPosition;
             var EntXform = Transform(comp.TargetEntity.Value); // get target transform
-            var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
+            //var originalAngle = _transform.GetWorldRotation(xform); // get current angle of missile
             var distance = Vector2.Distance(
                 _transform.ToMapCoordinates(xform.Coordinates).Position,
                 _transform.ToMapCoordinates(EntXform.Coordinates).Position
             ); // current distance from target
 
             var targetVelocity = _transform.ToMapCoordinates(EntXform.Coordinates).Position - oldPosition; // get target velocity
-            timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target
+            float timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target
             if (timeToImpact < 0.1) { timeToImpact = 0.1f; } // prevent negative time to impact, that messes up guidance
             var predictedPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position + (targetVelocity * timeToImpact); // predict target position at impact time
 
@@ -114,8 +112,8 @@ public sealed class HeatSeekingSystem : EntitySystem
             _rotate.TryRotateTo(uid, targetAngle, frameTime, comp.WeaponArc, comp.RotationSpeed?.Theta ?? double.MaxValue, xform); // rotate towards target angle
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
 
-            oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
-            oldDistance = distance;
+            comp.oldPosition = _transform.ToMapCoordinates(EntXform.Coordinates).Position;
+            comp.oldDistance = distance;
         }
     }
 
