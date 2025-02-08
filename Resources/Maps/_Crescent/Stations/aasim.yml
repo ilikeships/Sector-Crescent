@@ -3629,6 +3629,23 @@ entities:
           ents:
           - 2039
     - type: InsideEntityStorage
+- proto: AlseikMothershipComputer
+  entities:
+  - uid: 1685
+    components:
+    - type: Transform
+      pos: 7.5,-26.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        ShipyardConsole-targetId: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: AmeController
   entities:
   - uid: 1851
@@ -14667,11 +14684,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,-15.5
-      parent: 1
-  - uid: 1685
-    components:
-    - type: Transform
-      pos: 7.5,-26.5
       parent: 1
 - proto: ComputerCargoBounty
   entities:
