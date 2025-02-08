@@ -13,8 +13,6 @@ namespace Content.Server._Crescent.ShipBalanceEnforcement;
 /// </summary>
 public sealed class ShipSpeedByMassAdjusterSystem : EntitySystem
 {
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedGridFixtureSystem _grids = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
