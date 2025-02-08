@@ -50,6 +50,7 @@ using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
 using Content.Shared._Crescent;
+using Content.Shared._Crescent.ShipBalanceEnforcement;
 using Content.Shared.Shuttles.BUIStates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -221,6 +222,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         int sellValue = 0;
         if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
+
+        EnsureComp<ShipSpeedByMassAdjusterComponent>(shuttle.Owner);
 
         SendPurchaseMessage(uid, player, name, channel, false);
 
@@ -734,6 +737,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         int sellValue = 0;
         if (TryComp<ShuttleDeedComponent>(product, out var deed))
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
+
+        EnsureComp<ShipSpeedByMassAdjusterComponent>(shuttle.Owner);
 
 
         SendPurchaseMessage(uid, user, name, channel, false);
