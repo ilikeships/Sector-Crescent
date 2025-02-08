@@ -90,7 +90,7 @@ public class PointCannonSystem : EntitySystem
             UnlinkAllCannonsFromConsole(console.Owner, console.Comp);
             LinkAllCannonsToConsole(console.Owner, console.Comp);
         }
-        _hardpoint.updateAllHardpointsOnGrid(gridUid);
+        _hardpoint.QueueHardpointRefresh(gridUid);
     }
 
     private void UnlinkAllCannonsFromConsole(EntityUid console, TargetingConsoleComponent comp)
