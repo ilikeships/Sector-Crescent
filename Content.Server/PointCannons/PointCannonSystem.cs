@@ -377,17 +377,16 @@ public class PointCannonSystem : EntitySystem
             return false;
         if (!powerComp.Powered)
             return false;
-
+        EntityCoordinates entPos = new(uid, Transform(uid).LocalRotation.ToWorldVec());
         if (!TryComp<HardpointFixedMountComponent>(anchorComp.anchoredTo, out var fixedComp))
         {
             Vector2 cannonPos = _formSys.GetWorldPosition(form);
             _formSys.SetWorldRotation(uid, Angle.FromWorldVec(pos - cannonPos));
+            entPos = new(form.MapUid.Value, pos);
         }
 
         if (!SafetyCheck(form.LocalRotation - Math.PI / 2, cannon))
             return false;
-
-        EntityCoordinates entPos = new(form.MapUid.Value, pos);
         _gunSys.AttemptShoot(uid, uid, gun, entPos);
         return true;
     }
