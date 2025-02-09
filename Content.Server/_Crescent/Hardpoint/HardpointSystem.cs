@@ -17,7 +17,6 @@ public sealed class HardpointSystem : SharedHardpointSystem
     // Explosions can cause a lot of lookups and events to fire. So we time-limit it based on grids
     private const float UpdateDelay = 60f;
     private float InternalTimer = 0f;
-    private HashSet<EntityUid> NeedsFiringRangeUpdate = new();
     private HashSet<EntityUid> QueuedGrids = new();
     /// <inheritdoc/>
     public override void Initialize()
@@ -31,37 +30,31 @@ public sealed class HardpointSystem : SharedHardpointSystem
     {
         if (args.Transform.GridUid is null)
             return;
-        updateAllHardpointsOnGrid(args.Transform.GridUid.Value);
+        QueueHardpointRefresh(args.Transform.GridUid.Value);
     }
 
-    public void QueueHardpointRefresh(EntityUid cannon, EntityUid grid)
+    public void QueueHardpointRefresh(EntityUid grid)
     {
-        QueuedGrids.Add(grid);
-        NeedsFiringRangeUpdate.Add(cannon);
-    }
-
-    public void updateAllHardpointsOnGrid(EntityUid gridUid)
-    {
-        if (QueuedGrids.Contains(gridUid))
+        if (QueuedGrids.Contains(grid))
             return;
-        HashSet<Entity<HardpointComponent>> lookupList = new();
-        _lookupSystem.GetGridEntities(gridUid, lookupList);
-        foreach (var entity in lookupList)
-        {
-            if (entity.Comp.anchoring is null)
-                continue;
-            QueueHardpointRefresh(entity, gridUid);
-        }
+        QueuedGrids.Add(grid);
     }
-    
+
+
     public void OnCannonAnchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonAnchoredEvent args)
     {
+        // This is just for turret-cannons!
+        if (!TryComp<PointCannonComponent>(args.cannonUid, out var compx))
+            return;
         _cannonSystem.LinkCannonToAllConsoles(args.cannonUid);
-        updateAllHardpointsOnGrid(args.gridUid);
+        QueueHardpointRefresh(args.gridUid);
     }
 
     public void OnCannonDeanchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonDeanchoredEvent args)
     {
+        // This is just for turret-cannons!
+        if (!TryComp<PointCannonComponent>(args.CannonUid, out var compx))
+            return;
         _cannonSystem.UnlinkCannon(args.CannonUid);
     }
 
@@ -77,19 +70,24 @@ public sealed class HardpointSystem : SharedHardpointSystem
             return;
         InternalTimer = 0;
         EntityQuery<HardpointComponent> hardpointQuery = GetEntityQuery<HardpointComponent>();
-        foreach(var entity in NeedsFiringRangeUpdate)
+        foreach(var grid in QueuedGrids)
         {
-            if (TerminatingOrDeleted(entity))
+            if (TerminatingOrDeleted(grid))
                 continue;
-            var hardpoint = hardpointQuery.GetComponent(entity);
-            if (hardpoint.anchoring is null)
-                continue;
-            if (TerminatingOrDeleted(hardpoint.anchoring.Value))
-                continue;
-            _cannonSystem.RefreshFiringRanges(hardpoint.anchoring.Value, null, null, null, hardpoint.CannonRangeCheckRange);
-
+            HashSet<Entity<HardpointComponent>> lookupList = new();
+            _lookupSystem.GetGridEntities(grid, lookupList);
+            foreach (var entity in lookupList)
+            {
+                if (entity.Comp.anchoring is null)
+                    continue;
+                if (TerminatingOrDeleted(entity.Comp.anchoring.Value))
+                    continue;
+                // This is just for turret-cannons!
+                if (!TryComp<PointCannonComponent>(entity.Comp.anchoring.Value, out var compx))
+                    return;
+                _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, null, entity.Comp.CannonRangeCheckRange);
+            }
         }
         QueuedGrids.Clear();
-        NeedsFiringRangeUpdate.Clear();
     }
 }
