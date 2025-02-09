@@ -3,6 +3,16 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Shuttles.BUIStates;
 
 [Serializable, NetSerializable]
+public enum ShuttleConsoleAccesState
+{
+    // Always logged in on NotDynamic , since we dont have dynamic acces reader
+    NotDynamic,
+    NoAcces,
+    PilotAcces,
+    CaptainAcces,
+};
+
+[Serializable, NetSerializable]
 public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceMessage
 {
     public bool Visible = visible;
