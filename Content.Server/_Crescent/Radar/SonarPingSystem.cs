@@ -2,6 +2,7 @@ using System.Collections.Frozen;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Chat.Systems;
+using Content.Server.Power.Components;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Crescent.Radar;
 using Content.Shared.Shuttles.BUIStates;
@@ -25,15 +26,15 @@ public sealed class SonarPingSystem : EntitySystem
 
     private float curTime = 0f;
     private const float pingCheckInterval = 5f;
-    private TimeSpan alertCooldown = TimeSpan.FromSeconds(30);
+    private TimeSpan alertCooldown = TimeSpan.FromSeconds(10);
 
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent<RadarConsoleComponent, GetVerbsEvent<ActivationVerb>>(RequestVerbs);
+        SubscribeLocalEvent<RadarDetectorComponent, GetVerbsEvent<ActivationVerb>>(RequestVerbs);
     }
 
-    public void RequestVerbs(EntityUid owner, RadarConsoleComponent comp, ref GetVerbsEvent<ActivationVerb> args)
+    public void RequestVerbs(EntityUid owner, RadarDetectorComponent comp, ref GetVerbsEvent<ActivationVerb> args)
     {
         
         ActivationVerb verb = new()
@@ -84,7 +85,11 @@ public sealed class SonarPingSystem : EntitySystem
             var worldTime = _timer.CurTime;
             foreach(var (key, set) in receptionList)
             {
-                if (!TryComp<RadarConsoleComponent>(key, out var comp))
+                if (!TryComp<RadarDetectorComponent>(key, out var comp))
+                    continue;
+                if (!TryComp<ApcPowerReceiverComponent>(key ,out var powerComp))
+                    continue;
+                if (!powerComp.Powered)
                     continue;
                 if (worldTime - comp.lastAlert < TimeSpan.Zero)
                     continue;
@@ -100,7 +105,7 @@ public sealed class SonarPingSystem : EntitySystem
                     closest = distance;
                 }
 
-                var message = $":d Notice: Mass scanner pings detected in local space! Detecting {set.Count()} scanners! Closest scanner at {Math.Round(closest)}";
+                var message = $"Notice: Mass scanner pings detected in local space! Detecting {set.Count()} scanners! Closest scanner at {Math.Round(closest)} meters!";
                 _chatSystem.TrySendInGameICMessage(key, message, InGameICChatType.Speak, ChatTransmitRange.Normal);
                 comp.lastAlert = worldTime + alertCooldown;
             }

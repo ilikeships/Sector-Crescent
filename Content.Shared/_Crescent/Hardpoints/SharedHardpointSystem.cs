@@ -117,6 +117,7 @@ public class SharedHardpointSystem : EntitySystem
     {
         hardpoint.anchoring = target;
         targetComp.anchoredTo = anchor;
+        _transformSystem.
         HardpointCannonAnchoredEvent arg = new();
         arg.cannonUid = target;
         arg.gridUid = grid;
