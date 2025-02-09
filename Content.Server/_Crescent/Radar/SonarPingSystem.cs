@@ -6,6 +6,7 @@ using Content.Server.Radio.EntitySystems;
 using Content.Shared.Crescent.Radar;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
+using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 
@@ -18,38 +19,44 @@ public sealed class SonarPingSystem : EntitySystem
 {
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly RadioDeviceSystem _radioSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly MapSystem _maps = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timer = default!;
     private Dictionary<EntityUid, HashSet<EntityUid>> receptionList = new();
 
     private float curTime = 0f;
     private const float pingCheckInterval = 5f;
-    private TimeSpan alertCooldown = TimeSpan.FromSeconds(300);
+    private TimeSpan alertCooldown = TimeSpan.FromSeconds(30);
 
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent<RadarConsoleComponent, MapInitEvent>(OnRadarInit);
+        SubscribeLocalEvent<RadarConsoleComponent, GetVerbsEvent<ActivationVerb>>(RequestVerbs);
     }
 
-    public void OnRadarInit(EntityUid owner, RadarConsoleComponent component, ref MapInitEvent args)
+    public void RequestVerbs(EntityUid owner, RadarConsoleComponent comp, ref GetVerbsEvent<ActivationVerb> args)
     {
-        EnsureComp<RadarPingerComponent>(owner);
+        
+        ActivationVerb verb = new()
+        {
+            Text = $"Toggle Alert Pinging",
+            Act = () =>
+            {
+                comp.alertOnPing = !comp.alertOnPing;
+            }
+        };
+        args.Verbs.Add(verb);
+        
     }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
         if (_timer.IsFirstTimePredicted)
             curTime += frameTime;
-        var query = EntityQueryEnumerator<RadarConsoleComponent, RadarPingerComponent, TransformComponent>();
-        var checking = EntityManager.GetAllComponents(typeof(RadarConsoleComponent), false).ToDictionary();
+        var query = EntityQueryEnumerator<RadarConsoleComponent, RadarDetectorComponent, TransformComponent>();
+        var checking = EntityManager.GetAllComponents(typeof(RadarPingerComponent), false).ToDictionary();
         while (query.MoveNext(out var uid, out var radar, out var pinger, out var transform))
         { 
-            var ourRange = radar.MaxRange / 2;
+            var ourRange = radar.MaxRange * 0.8;
             var ourPos = _transform.GetWorldPosition(transform);
             if (!receptionList.ContainsKey(uid))
             {
@@ -79,11 +86,22 @@ public sealed class SonarPingSystem : EntitySystem
             {
                 if (!TryComp<RadarConsoleComponent>(key, out var comp))
                     continue;
-                //if (worldTime - comp.lastAlert < TimeSpan.Zero)
-                //    continue;
+                if (worldTime - comp.lastAlert < TimeSpan.Zero)
+                    continue;
                 if (!set.Any())
                     continue;
-                _chatSystem.TrySendInGameICMessage(key, $":d Notice: Mass scanner pings detected in local space!", InGameICChatType.Speak, ChatTransmitRange.Normal);
+                var closest = 9999f;
+                var ourPos = _transform.GetWorldPosition(key);
+                foreach (var entity in set)
+                {
+                    var distance = (_transform.GetWorldPosition(entity) - ourPos).Length();
+                    if (distance > closest)
+                        continue;
+                    closest = distance;
+                }
+
+                var message = $":d Notice: Mass scanner pings detected in local space! Detecting {set.Count()} scanners! Closest scanner at {Math.Round(closest)}";
+                _chatSystem.TrySendInGameICMessage(key, message, InGameICChatType.Speak, ChatTransmitRange.Normal);
                 comp.lastAlert = worldTime + alertCooldown;
             }
             receptionList.Clear();
