@@ -1,6 +1,9 @@
+using System.Collections.Frozen;
+using System.Linq;
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Radio.EntitySystems;
+using Content.Shared.Crescent.Radar;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Robust.Server.GameObjects;
@@ -20,7 +23,7 @@ public sealed class SonarPingSystem : EntitySystem
     [Dependency] private readonly MapSystem _maps = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timer = default!;
-    private Dictionary<EntityUid, Dictionary<EntityUid, TimeSpan>> receptionList = new();
+    private Dictionary<EntityUid, HashSet<EntityUid>> receptionList = new();
 
     private float curTime = 0f;
     private const float pingCheckInterval = 5f;
@@ -29,71 +32,62 @@ public sealed class SonarPingSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
-
+        SubscribeLocalEvent<RadarConsoleComponent, MapInitEvent>(OnRadarInit);
     }
 
+    public void OnRadarInit(EntityUid owner, RadarConsoleComponent component, ref MapInitEvent args)
+    {
+        EnsureComp<RadarPingerComponent>(owner);
+    }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
         if (_timer.IsFirstTimePredicted)
             curTime += frameTime;
-        {
-            var query = EntityQueryEnumerator<RadarConsoleComponent, TransformComponent>();
-
-            var checkDictionary = new Dictionary<EntityUid, TransformComponent>();
-
-            while (query.MoveNext(out var uid, out var console, out var transform))
+        var query = EntityQueryEnumerator<RadarConsoleComponent, RadarPingerComponent, TransformComponent>();
+        var checking = EntityManager.GetAllComponents(typeof(RadarConsoleComponent), false).ToDictionary();
+        while (query.MoveNext(out var uid, out var radar, out var pinger, out var transform))
+        { 
+            var ourRange = radar.MaxRange / 2;
+            var ourPos = _transform.GetWorldPosition(transform);
+            if (!receptionList.ContainsKey(uid))
             {
-                if (!_uiSystem.IsUiOpen(uid, RadarConsoleUiKey.Key))
-                {
-                    continue;
-                }
-
-                var range = console.MaxRange / 2;
-                var ourPos = _transform.GetWorldPosition(transform);
-                if (!receptionList.ContainsKey(uid))
-                    receptionList.Add(uid, new Dictionary<EntityUid, TimeSpan>());
-                var ourDict = receptionList[uid];
-                foreach (var (ent, trans) in checkDictionary)
-                {
-                    if ((_transform.GetWorldPosition(trans) - ourPos).Length() > range)
-                        continue;
-                    var targetDict = receptionList[ent];
-                    if (!ourDict.ContainsKey(ent))
-                    {
-                        ourDict.Add(ent, TimeSpan.Zero);
-                    }
-
-                    if (!targetDict.ContainsKey(uid))
-                    {
-                        targetDict.Add(uid, TimeSpan.Zero);
-                    }
-
-                    targetDict[uid] = _timer.CurTime;
-                    ourDict[ent] = _timer.CurTime;
-                }
-
-                checkDictionary.Add(uid, transform);
+                receptionList.Add(uid, new HashSet<EntityUid>());
             }
-        }
 
+            var ourHash = receptionList[uid];
+
+            foreach (var (key, _) in checking)
+            {
+                var targetTrans = Transform(key);
+                // dont care about inactives
+                if (!_uiSystem.IsUiOpen(key, RadarConsoleUiKey.Key))
+                    continue;
+                if ((_transform.GetWorldPosition(targetTrans) - ourPos).Length() > ourRange)
+                    continue;
+                ourHash.Add(key);
+            }
+
+        }
         if (curTime > pingCheckInterval)
         {
             curTime = 0f;
-            var query = EntityQueryEnumerator<RadarConsoleComponent>();
+            
             var worldTime = _timer.CurTime;
-            while (query.MoveNext(out var uid, out var comp))
+            foreach(var (key, set) in receptionList)
             {
-                if (comp.lastAlert - worldTime < TimeSpan.Zero)
+                if (!TryComp<RadarConsoleComponent>(key, out var comp))
                     continue;
-                if (!receptionList.ContainsKey(uid))
+                //if (worldTime - comp.lastAlert < TimeSpan.Zero)
+                //    continue;
+                if (!set.Any())
                     continue;
-                _chatSystem.TrySendInGameICMessage(uid, $":d Notice: Mass scanner pings detected in local space!", InGameICChatType.Speak, ChatTransmitRange.Normal);
+                _chatSystem.TrySendInGameICMessage(key, $":d Notice: Mass scanner pings detected in local space!", InGameICChatType.Speak, ChatTransmitRange.Normal);
                 comp.lastAlert = worldTime + alertCooldown;
             }
             receptionList.Clear();
-            
+
         }
 
 
