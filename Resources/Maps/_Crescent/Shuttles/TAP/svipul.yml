@@ -64,17 +64,17 @@ entities:
             id: WarnCornerSW
           decals:
             1: -2,0
-            5: 2,0
+            4: 2,0
         - node:
             color: '#EFB34196'
             id: WarnCornerSmallNE
           decals:
-            7: 2,0
+            5: 2,0
         - node:
             color: '#EFB34196'
             id: WarnEndE
           decals:
-            8: 3,0
+            6: 3,0
         - node:
             color: '#EFB34196'
             id: WarnEndN
@@ -84,7 +84,7 @@ entities:
             color: '#EFB34196'
             id: WarnLineE
           decals:
-            9: 2,1
+            7: 2,1
         - node:
             color: '#EFB34196'
             id: WarnLineS
@@ -313,6 +313,21 @@ entities:
     - type: Transform
       pos: 0.5,2.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        33:
+        - Group1: Toggle
+        32:
+        - Group1: Toggle
+        35:
+        - Group2: Toggle
+    - type: NamedModules
+      buttonNames:
+      - Fire Ion Gatlings
+      - Fire Plasma Repeater
+      - N/A
+      - N/A
+      - N/A
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -362,14 +377,20 @@ entities:
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -1.5,1.5
+      pos: 2.5,1.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 28
   - uid: 33
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 2.5,1.5
+      pos: -1.5,1.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 28
 - proto: ShuttleGunPlasmaRepeater
   entities:
   - uid: 35
@@ -378,6 +399,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,1.5
       parent: 1
+    - type: DeviceLinkSink
+      links:
+      - 28
 - proto: SmallGyroscope
   entities:
   - uid: 37
