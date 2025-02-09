@@ -85,12 +85,12 @@ public sealed class SonarPingSystem : EntitySystem
             var worldTime = _timer.CurTime;
             while (query.MoveNext(out var uid, out var comp))
             {
-                if (comp.lastAlert - worldTime < TimeSpan.FromMinutes(5))
+                if (comp.lastAlert - worldTime < TimeSpan.Zero)
                     continue;
                 if (!receptionList.ContainsKey(uid))
                     continue;
                 _chatSystem.TrySendInGameICMessage(uid, $":d Notice: Mass scanner pings detected in local space!", InGameICChatType.Speak, ChatTransmitRange.Normal);
-                comp.lastAlert = worldTime;
+                comp.lastAlert = worldTime + alertCooldown;
             }
             receptionList.Clear();
             
