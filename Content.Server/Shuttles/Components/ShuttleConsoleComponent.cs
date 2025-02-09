@@ -10,15 +10,6 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Shuttles.Components
 {
-    [Serializable, NetSerializable]
-    public enum ShuttleConsoleAccesState
-    {
-        // Always logged in on NotDynamic , since we dont have dynamic acces reader
-        NotDynamic, 
-        NoAcces,
-        PilotAcces,
-        CaptainAcces,
-    };
 
     [RegisterComponent]
     public sealed partial class ShuttleConsoleComponent : SharedShuttleConsoleComponent

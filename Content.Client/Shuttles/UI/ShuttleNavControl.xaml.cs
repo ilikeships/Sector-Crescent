@@ -196,7 +196,8 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         var posMatrix = Matrix3Helpers.CreateTransform(offset, _rotation.Value);
         var (_, ourEntRot, ourEntMatrix) = _transform.GetWorldPositionRotationMatrix(_coordinates.Value.EntityId);
         var ourWorldMatrix = Matrix3x2.Multiply(posMatrix, ourEntMatrix);
-        Matrix3x2.Invert(ourWorldMatrix, out var ourWorldMatrixInvert);
+        Matrix3x2.Invert(ourWorldMatrix, out  var ourWorldMatrixInvert);
+
 
         // Frontier Corvax: north line drawing
         var rot = ourEntRot + _rotation.Value;
@@ -332,7 +333,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
                 if (!isOutsideRadarCircle || isDistantPOI || isMouseOver)
                 {
                     // Calculate unscaled offsets.
-                    var trueMapScale = (WorldMaxRange * 2 / (WorldMaxRange + WorldRange)) / 1.3f;
+                    var trueMapScale = Math.Max(256 / (WorldRange+64) , 1.4f)/2f;
                     var labelDimensions = handle.GetDimensions(Font, labelText, trueMapScale);
                     var blipSize = RadarBlipSize * 0.7f;
                     var labelOffset = new Vector2()
@@ -567,7 +568,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         }
     }
 
-    private const int RadarBlipSize = 15;
+    private const int RadarBlipSize = 8;
     private const int RadarFontSize = 10;
 
     /**
