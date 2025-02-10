@@ -9,7 +9,11 @@ public abstract class SharedStationRecordsSystem : EntitySystem
 
     public (NetEntity, uint)? Convert(StationRecordKey? input)
     {
-        return input == null ? null : Convert(input.Value);
+        if (input is null)
+            return null;
+        if (TerminatingOrDeleted(input.Value.OriginStation))
+            return null;
+        return Convert(input.Value);
     }
 
     public StationRecordKey Convert((NetEntity, uint) input)

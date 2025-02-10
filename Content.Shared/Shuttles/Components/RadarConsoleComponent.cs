@@ -20,13 +20,6 @@ public sealed partial class RadarConsoleComponent : Component
     [DataField, AutoNetworkedField]
     public float MaxRange = 256f;
 
-    /// <summary>
-    ///  if the sonar ping system should alert this console of any readings
-    /// </summary>
-    [DataField]
-    public bool alertOnPing = true;
-
-    public TimeSpan lastAlert = TimeSpan.Zero;
 
     /// <summary>
     /// If true, the radar will be centered on the entity. If not - on the grid on which it is located.

@@ -31,7 +31,8 @@ public sealed class ShipSpeedByMassAdjusterSystem : EntitySystem
             return;
         if (!TryComp<ShuttleComponent>(owner, out var shuttle))
             return;
-        component.InitialGridMass = phys.Mass;
+        if(component.InitialGridMass == 0)
+            component.InitialGridMass = phys.Mass;
         component.InitialGridSpeed = shuttle.BaseMaxLinearVelocity;
     }
 

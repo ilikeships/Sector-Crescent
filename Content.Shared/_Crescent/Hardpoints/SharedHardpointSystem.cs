@@ -117,6 +117,7 @@ public class SharedHardpointSystem : EntitySystem
     {
         hardpoint.anchoring = target;
         targetComp.anchoredTo = anchor;
+        _transformSystem.SetLocalRotation(target, Transform(anchor).LocalRotation);
         HardpointCannonAnchoredEvent arg = new();
         arg.cannonUid = target;
         arg.gridUid = grid;
