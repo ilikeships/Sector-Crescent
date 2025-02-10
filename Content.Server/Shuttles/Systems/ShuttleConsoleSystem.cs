@@ -49,7 +49,10 @@ using System.Threading;
 using Timer = Robust.Shared.Timing.Timer;
 using System.Xml.Linq;
 using Content.Server.Maps;
+using Content.Server.Maps.NameGenerators;
 using Content.Server.Station;
+using Content.Server.Station.Components;
+using Microsoft.EntityFrameworkCore.Update;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -290,6 +293,32 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
         var uis = _ui.GetActorUis(args.User);
 
+        var tgridUid = Transform(uid).GridUid;
+        if (tgridUid is null)
+            return;
+        var gridUid = tgridUid.Value;
+
+        if (!TryComp<IFFComponent>(gridUid, out var _))
+        {
+            shuttleCounter++;
+            _shuttle.SetIFFColor(gridUid, new Color
+            {
+                R = 10,
+                G = 50,
+                B = 100,
+                A = 100
+            });
+            _shuttle.AddIFFFlag(gridUid, IFFFlags.IsPlayerShuttle);
+            EnsureComp<ShuttleDeedComponent>(gridUid, out var deedComp);
+            _meta.SetEntityName(gridUid, $"Shuttle {shuttleCounter}");
+            shuttleCounter++;
+            deedComp.ShuttleUid = gridUid;
+            deedComp.ShuttleName = MetaData(gridUid).EntityName;
+            DirtyEntity(gridUid);
+
+            
+        }
+
         foreach (var (_, key) in uis)
         {
             if (key is TargetingConsoleUiKey.Key)
@@ -363,36 +392,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (args.Anchored)
         {
-            var tgridUid = Transform(uid).GridUid;
-            if (tgridUid is null)
-                return;
-            var gridUid = tgridUid.Value;
             
-            if (!TryComp<IFFComponent>(gridUid, out var _))
-            {
-                if (_manager.TryIndex<GameMapPrototype>("Playerbuilt", out var stationProto))
-                {
-                    List<EntityUid> gridUids = new()
-                    {
-                        gridUid
-                    };
-                    _station.InitializeNewStation(stationProto.Stations["Playebuilt"], gridUids);
-                    _shuttle.SetIFFColor(gridUid, new Color
-                    {
-                        R = 10,
-                        G = 50,
-                        B = 100,
-                        A = 100
-                    });
-                    _shuttle.AddIFFFlag(gridUid, IFFFlags.IsPlayerShuttle);
-
-                    EnsureComp<ShuttleDeedComponent>(gridUid, out var deedComp);
-                    deedComp.ShuttleUid = gridUid;
-                    deedComp.ShuttleName = MetaData(gridUid).EntityName;
-
-
-                }
-            }
 
             if (
                 TryComp<GridDynamicAccesComponent>(args.Transform.GridUid, out var _comp))

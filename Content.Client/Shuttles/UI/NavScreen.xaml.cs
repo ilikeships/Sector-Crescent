@@ -195,6 +195,9 @@ public sealed partial class NavScreen : BoxContainer
     {
         _shuttleEntity = shuttle;
 
+        if (_entManager.Deleted(shuttle))
+            return;
+
         // Frontier - PR #1284 Add Shuttle Designation
         if (_entManager.TryGetComponent<MetaDataComponent>(shuttle, out var metadata))
         {
