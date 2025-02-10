@@ -8,7 +8,6 @@ namespace Content.Shared.Shuttles.Components;
 /// Handles what a grid should look like on radar.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedShuttleSystem))]
 public sealed partial class IFFComponent : Component
 {
     public static readonly Color SelfColor = Color.MediumSpringGreen;

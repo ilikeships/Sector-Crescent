@@ -37,12 +37,23 @@ using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Interaction;
+using Content.Shared.Shipyard.Components;
 using Content.Shared.StationRecords;
 using FastAccessors;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using System.Security.Policy;
+using System.Threading;
+using Timer = Robust.Shared.Timing.Timer;
+using System.Xml.Linq;
+using Content.Server.Maps;
+using Content.Server.Maps.NameGenerators;
+using Content.Server.Station;
+using Content.Server.Station.Components;
+using Microsoft.EntityFrameworkCore.Update;
+using Robust.Shared.Random;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -64,7 +75,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly AccessSystem _acces = default!;
     [Dependency] private readonly DynamicAccesSystem _dynAcces = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly MapSystem _maps = default!;
     [Dependency] private readonly ILogManager _logger = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly IPrototypeManager _manager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
@@ -160,6 +175,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             comp.accesState = ShuttleConsoleAccesState.NotDynamic;
         }
+
+
     }
 
     private void OnToggleEmployee(EntityUid uid, ShuttleConsoleComponent comp, TryMakeEmployeeMessage args)
@@ -277,6 +294,32 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
         var uis = _ui.GetActorUis(args.User);
 
+        var tgridUid = Transform(uid).GridUid;
+        if (tgridUid is null)
+            return;
+        var gridUid = tgridUid.Value;
+
+        if (!TryComp<IFFComponent>(gridUid, out var _))
+        {
+            _shuttle.SetIFFColor(gridUid, new Color
+            {
+                R = 10,
+                G = 50,
+                B = 100,
+                A = 100
+            });
+            _shuttle.AddIFFFlag(gridUid, IFFFlags.IsPlayerShuttle);
+            EnsureComp<ShuttleDeedComponent>(gridUid, out var deedComp);
+            List<string> possibleNames = new List<string> {"NX", "KXZ", "ALP", "BET", "TAN", "MV"};
+            _random.Shuffle(possibleNames);
+            _meta.SetEntityName(gridUid, $"Shuttle {possibleNames[0]}-{(int)_random.NextFloat(100f,999f)}");
+            deedComp.ShuttleUid = gridUid;
+            deedComp.ShuttleName = MetaData(gridUid).EntityName;
+            DirtyEntity(gridUid);
+
+            
+        }
+
         foreach (var (_, key) in uis)
         {
             if (key is TargetingConsoleUiKey.Key)
@@ -350,7 +393,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (args.Anchored)
         {
-            if (args.Transform.GridUid is not null &&
+            
+
+            if (
                 TryComp<GridDynamicAccesComponent>(args.Transform.GridUid, out var _comp))
             {
                 component.accesState = ShuttleConsoleAccesState.NoAcces;
@@ -360,6 +405,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             {
                 component.accesState = ShuttleConsoleAccesState.NotDynamic;
             }
+            
         }
 
         UpdateState(uid, component);

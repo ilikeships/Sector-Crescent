@@ -25,6 +25,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using System;
 using Content.Server._Crescent.Hardpoint;
+using Content.Server.Power.Components;
 using Content.Shared._Crescent.Hardpoints;
 using Content.Shared.Communications;
 using Content.Shared.Physics;
@@ -368,14 +369,24 @@ public class PointCannonSystem : EntitySystem
 
         if (form.MapUid == null || !_gunSys.CanShoot(gun))
             return false;
-
-        Vector2 cannonPos = _formSys.GetWorldPosition(form);
-        _formSys.SetWorldRotation(uid, Angle.FromWorldVec(pos - cannonPos));
+        if (!TryComp<HardpointAnchorableOnlyComponent>(uid, out var anchorComp))
+            return false;
+        if (anchorComp.anchoredTo is null)
+            return false;
+        if (!TryComp<ApcPowerReceiverComponent>(anchorComp.anchoredTo, out var powerComp))
+            return false;
+        if (!powerComp.Powered)
+            return false;
+        EntityCoordinates entPos = new EntityCoordinates(uid, new Vector2(0, -1));
+        if (!TryComp<HardpointFixedMountComponent>(anchorComp.anchoredTo, out var fixedComp))
+        {
+            Vector2 cannonPos = _formSys.GetWorldPosition(form);
+            _formSys.SetWorldRotation(uid, Angle.FromWorldVec(pos - cannonPos));
+            entPos = new(form.MapUid.Value, pos);
+        }
 
         if (!SafetyCheck(form.LocalRotation - Math.PI / 2, cannon))
             return false;
-
-        EntityCoordinates entPos = new(form.MapUid.Value, pos);
         _gunSys.AttemptShoot(uid, uid, gun, entPos);
         return true;
     }

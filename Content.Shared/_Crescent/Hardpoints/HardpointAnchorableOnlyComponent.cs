@@ -5,10 +5,10 @@ namespace Content.Shared._Crescent.Hardpoints;
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class HardpointAnchorableOnlyComponent : Component
 {
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? anchoredTo;
     [ViewVariables(VVAccess.ReadWrite), DataField("class")]
     public weaponTypes CompatibleTypes = weaponTypes.Ballistic;

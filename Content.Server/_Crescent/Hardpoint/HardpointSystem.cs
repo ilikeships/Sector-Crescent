@@ -1,7 +1,13 @@
+using Content.Server._Crescent.Hullmods;
+using Content.Server.DeviceLinking.Events;
+using Content.Server.DeviceLinking.Systems;
+using Content.Server.Factory.Components;
 using Content.Server.PointCannons;
 using Content.Shared._Crescent.Hardpoints;
 using Content.Shared.Construction.Components;
 using Content.Shared.PointCannons;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Timing;
 
@@ -14,6 +20,8 @@ public sealed class HardpointSystem : SharedHardpointSystem
 {
     [Dependency] private readonly PointCannonSystem _cannonSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
+    [Dependency] private readonly SharedGunSystem _gun = default!;
     // Explosions can cause a lot of lookups and events to fire. So we time-limit it based on grids
     private const float UpdateDelay = 60f;
     private float InternalTimer = 0f;
@@ -24,6 +32,35 @@ public sealed class HardpointSystem : SharedHardpointSystem
         SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
         SubscribeLocalEvent<HardpointComponent, HardpointCannonAnchoredEvent>(OnCannonAnchor);
         SubscribeLocalEvent<HardpointComponent, HardpointCannonDeanchoredEvent>(OnCannonDeanchor);
+        SubscribeLocalEvent<HardpointFixedMountComponent, SignalReceivedEvent>(OnSignalReceived);
+    }
+    private void OnSignalReceived(EntityUid uid, HardpointFixedMountComponent component, ref SignalReceivedEvent args)
+    {
+        if (!TryComp<HardpointComponent>(uid, out var hard))
+            return;
+        if (hard.anchoring is null)
+            return;
+        if (!TryComp<GunComponent>(hard.anchoring.Value, out var gun))
+            return;
+
+        var gridUid = Transform(uid).GridUid;
+        if (gridUid != null)
+        {
+            if (TryComp<PacifistShipHullmodComponent>(gridUid, out PacifistShipHullmodComponent? paciship))
+            {
+                return;
+
+            }
+        }
+
+        if (args.Port == component.Trigger)
+            _gun.AttemptShoot(hard.anchoring.Value, gun);
+
+        if (!TryComp<AutoShootGunComponent>(hard.anchoring.Value, out var autoShoot))
+            return;
+
+        if (args.Port == component.Toggle)
+            _gun.SetEnabled(hard.anchoring.Value, autoShoot, !autoShoot.Enabled);
     }
 
     public void OnFixtureAnchor(EntityUid uid, FixturesComponent comp, ref AnchorStateChangedEvent args)

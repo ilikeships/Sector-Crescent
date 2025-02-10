@@ -20,7 +20,7 @@ job-name-operative = Cyberdawn Asset Security
 job-name-cyberdawntech = Cyberdawn Researcher
 job-name-intelligenceofficer = Patriarch
 job-name-shipbreaker = Shipbreaker
-job-name-foreman = Foreman
+job-name-foreman = SAW Foreman
 
 #empire
 
@@ -32,7 +32,7 @@ job-name-logisticsofficer = Minister of Wealth
 job-name-adjutant = Imperial Adjutant
 job-name-archmaester = Scribe Archmaester
 job-name-governor = Lord Regent
-job-name-foremanimp = Foreman
+job-name-foremanimp = Imperial Foreman
 job-name-imperialresearch = Imperial Scribe
 job-name-surgeon = Imperial Surgeon
 job-name-wealth = Knight Logisticar

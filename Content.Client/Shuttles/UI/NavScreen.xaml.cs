@@ -195,12 +195,17 @@ public sealed partial class NavScreen : BoxContainer
     {
         _shuttleEntity = shuttle;
 
+        if (_entManager.Deleted(shuttle))
+            return;
+
         // Frontier - PR #1284 Add Shuttle Designation
+        
         if (_entManager.TryGetComponent<MetaDataComponent>(shuttle, out var metadata))
         {
             var shipNameParts = metadata.EntityName.Split(' ');
             var designation = shipNameParts[^1];
-            if (designation[2] == '-')
+
+            if (designation.Length > 3 && designation[2] == '-')
             {
                 NavDisplayLabel.Text = string.Join(' ', shipNameParts[..^1]);
                 ShuttleDesignation.Text = designation;
