@@ -65,10 +65,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly DynamicAccesSystem _dynAcces = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ILogManager _logger = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
     private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private int shuttleCounter = 1;
 
     private readonly HashSet<Entity<ShuttleConsoleComponent>> _consoles = new();
 
@@ -160,6 +162,16 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             comp.accesState = ShuttleConsoleAccesState.NotDynamic;
         }
+
+        if (!TryComp<IFFComponent>(args.Grid, out var _))
+        {
+            _meta.SetEntityName(args.Grid, $"Shuttle {shuttleCounter}");
+            shuttleCounter++;
+            EnsureComp<IFFComponent>(args.Grid, out var iff);
+            iff.Flags = IFFFlags.IsPlayerShuttle;
+        }
+
+
     }
 
     private void OnToggleEmployee(EntityUid uid, ShuttleConsoleComponent comp, TryMakeEmployeeMessage args)
