@@ -123,11 +123,6 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         if (!Resolve(gridUid, ref physics))
             return true;
 
-        if (physics.Mass < 5f) // Frontier 10<5
-        {
-            return false;
-        }
-
         if (!Resolve(gridUid, ref iffComp, false))
         {
             return true;

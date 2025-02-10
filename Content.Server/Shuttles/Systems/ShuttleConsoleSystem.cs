@@ -53,6 +53,7 @@ using Content.Server.Maps.NameGenerators;
 using Content.Server.Station;
 using Content.Server.Station.Components;
 using Microsoft.EntityFrameworkCore.Update;
+using Robust.Shared.Random;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -78,11 +79,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly ILogManager _logger = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly IPrototypeManager _manager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
-    private int shuttleCounter = 1;
 
     private readonly HashSet<Entity<ShuttleConsoleComponent>> _consoles = new();
 
@@ -300,7 +301,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (!TryComp<IFFComponent>(gridUid, out var _))
         {
-            shuttleCounter++;
             _shuttle.SetIFFColor(gridUid, new Color
             {
                 R = 10,
@@ -310,8 +310,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             });
             _shuttle.AddIFFFlag(gridUid, IFFFlags.IsPlayerShuttle);
             EnsureComp<ShuttleDeedComponent>(gridUid, out var deedComp);
-            _meta.SetEntityName(gridUid, $"Shuttle {shuttleCounter}");
-            shuttleCounter++;
+            List<string> possibleNames = new List<string> {"NX", "KXZ", "ALP", "BET", "TAN", "MV"};
+            _random.Shuffle(possibleNames);
+            _meta.SetEntityName(gridUid, $"Shuttle {possibleNames[0]}-{(int)_random.NextFloat(100f,999f)}");
             deedComp.ShuttleUid = gridUid;
             deedComp.ShuttleName = MetaData(gridUid).EntityName;
             DirtyEntity(gridUid);
