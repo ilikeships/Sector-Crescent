@@ -377,8 +377,7 @@ public class PointCannonSystem : EntitySystem
             return false;
         if (!powerComp.Powered)
             return false;
-        EntityCoordinates entPos =
-            new EntityCoordinates(uid, (float)Math.Cos(form.LocalRotation), (float)Math.Sin(form.LocalRotation));
+        EntityCoordinates entPos = new EntityCoordinates(uid, new Vector2(0, -1));
         if (!TryComp<HardpointFixedMountComponent>(anchorComp.anchoredTo, out var fixedComp))
         {
             Vector2 cannonPos = _formSys.GetWorldPosition(form);
