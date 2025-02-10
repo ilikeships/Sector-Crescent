@@ -333,7 +333,9 @@ public sealed partial class MapScreen : BoxContainer
                     Entity = grid.Owner,
                     HideButton = iffComp != null && (iffComp.Flags & IFFFlags.HideLabel) != 0x0,
                 };
-
+                // ignore grids
+                //if(gridObj.Name == "grid")
+                //   continue;
                 // Always show our shuttle immediately
                 if (grid.Owner == _shuttleEntity)
                 {
@@ -483,6 +485,8 @@ public sealed partial class MapScreen : BoxContainer
             {
                 child.Orphan();
             }
+
+
 
             _sortChildren.Sort((x, y) =>
             {

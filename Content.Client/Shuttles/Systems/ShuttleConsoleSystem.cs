@@ -49,7 +49,13 @@ namespace Content.Client.Shuttles.Systems
 
             var console = EnsureEntity<PilotComponent>(state.Console, uid);
 
-            if (console == null)
+            if (console is null)
+            {
+                component.Console = null;
+                _input.Contexts.SetActiveContext("human");
+                return;
+            }
+            if (console == EntityUid.Invalid)
             {
                 component.Console = null;
                 _input.Contexts.SetActiveContext("human");
