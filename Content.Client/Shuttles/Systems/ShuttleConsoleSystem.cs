@@ -14,6 +14,7 @@ namespace Content.Client.Shuttles.Systems
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
 
+
         public override void Initialize()
         {
             base.Initialize();
@@ -26,6 +27,8 @@ namespace Content.Client.Shuttles.Systems
             shuttle.AddFunction(ContentKeyFunctions.ShuttleRotateLeft);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleRotateRight);
             shuttle.AddFunction(ContentKeyFunctions.ShuttleBrake);
+            shuttle.AddFunction(ContentKeyFunctions.ShuttleFaceMouse);
+
             
         }
 

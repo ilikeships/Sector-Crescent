@@ -54,6 +54,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     public Action<EntityCoordinates>? OnRadarClick;
     public Action? OnRadarRelease;
     public Action<EntityCoordinates>? OnRadarMouseMove;
+    public Action<Angle>? OnRadarMouseMoveRelative;
 
 
     public ShuttleNavControl() : base(64f, 256f, 256f)
@@ -98,6 +99,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             return;
 
         OnRadarMouseMove?.Invoke(PureRelativePosition(args.RelativePosition));
+        OnRadarMouseMoveRelative?.Invoke(RelativeAngleFromFace(PureRelativePosition(args.RelativePosition)));
     }
 
     private EntityCoordinates RelativePositionToEntityCoords(Vector2 pos)
@@ -124,6 +126,15 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         //logger.Debug($"Pos: {pos.X}, {pos.Y}   , relativePos: {relativePos.X}, {relativePos.Y}");
         relativePos = _rotation.Value.RotateVec(relativePos);
         return _coordinates.Value.Offset(relativePos); 
+    }
+
+    // COnverts relative entity coordinates to relative angle. - on the left side , + on the right side.
+    public Angle RelativeAngleFromFace(EntityCoordinates relPos)
+    {
+        var args = Angle.FromWorldVec(relPos.Position);
+        return args < Angle.FromDegrees(0)
+            ? new Angle(-(Math.PI + args.Theta))
+            : (args > Angle.FromDegrees(270) ? args : (Math.PI - args));
     }
     /// <summary>
     /// Gets the entity coordinates of where the mouse position is, relative to the control.

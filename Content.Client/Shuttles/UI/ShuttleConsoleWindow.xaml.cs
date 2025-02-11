@@ -25,6 +25,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
+    public event Action<Angle>? MouseMove;
 
     public event Action<string>? idSlotButtonPressed;
 
@@ -91,6 +92,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         NavContainer.OnGroup3Pressed += () => OnGroup3Pressed?.Invoke();
         NavContainer.OnGroup4Pressed += () => OnGroup4Pressed?.Invoke();
         NavContainer.OnGroup5Pressed += () => OnGroup5Pressed?.Invoke();
+        NavContainer.OnMouseMove += (args) => MouseMove?.Invoke(args);
         NavContainer.OnRename += args => OnRename?.Invoke(args);
     }
 
