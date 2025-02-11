@@ -103,42 +103,68 @@ entities:
             color: '#DE3A3A96'
             id: WarnCornerNE
           decals:
-            38: -4,2
-            39: -4,2
+            32: -4,2
+            33: -4,2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerNW
           decals:
-            36: -5,2
-            37: -5,2
+            30: -5,2
+            31: -5,2
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSE
           decals:
-            40: -4,0
-            41: -4,0
+            34: -4,0
+            35: -4,0
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSW
           decals:
-            42: -5,0
-            43: -5,0
+            36: -5,0
+            37: -5,0
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSmallNE
           decals:
-            46: -4,1
-            47: -4,1
+            40: -4,1
+            41: -4,1
         - node:
             color: '#DE3A3A96'
             id: WarnCornerSmallSE
           decals:
-            44: -4,1
-            45: -4,1
+            38: -4,1
+            39: -4,1
         - node:
             color: '#DE3A3A96'
             id: WarnLineE
           decals:
+            42: -4,7
+            43: -4,7
+            44: -4,8
+            45: -4,8
+            46: -4,9
+            47: -4,9
+        - node:
+            color: '#DE3A3A96'
+            id: WarnLineN
+          decals:
+            10: -4,6
+            11: -4,6
+            12: 8,8
+            13: 8,8
+            22: -3,1
+            23: -3,1
+            24: -2,1
+            25: -2,1
+            26: -1,1
+            27: -1,1
+        - node:
+            color: '#DE3A3A96'
+            id: WarnLineS
+          decals:
+            28: -5,1
+            29: -5,1
             48: -4,7
             49: -4,7
             50: -4,8
@@ -147,44 +173,18 @@ entities:
             53: -4,9
         - node:
             color: '#DE3A3A96'
-            id: WarnLineN
-          decals:
-            16: -4,6
-            17: -4,6
-            18: 8,8
-            19: 8,8
-            28: -3,1
-            29: -3,1
-            30: -2,1
-            31: -2,1
-            32: -1,1
-            33: -1,1
-        - node:
-            color: '#DE3A3A96'
-            id: WarnLineS
-          decals:
-            34: -5,1
-            35: -5,1
-            54: -4,7
-            55: -4,7
-            56: -4,8
-            57: -4,8
-            58: -4,9
-            59: -4,9
-        - node:
-            color: '#DE3A3A96'
             id: WarnLineW
           decals:
-            14: -4,6
-            15: -4,6
-            20: 7,-2
-            21: 7,-2
-            22: -3,1
-            23: -3,1
-            24: -2,1
-            25: -2,1
-            26: -1,1
-            27: -1,1
+            8: -4,6
+            9: -4,6
+            14: 7,-2
+            15: 7,-2
+            16: -3,1
+            17: -3,1
+            18: -2,1
+            19: -2,1
+            20: -1,1
+            21: -1,1
     - type: GridAtmosphere
       version: 2
       data:
@@ -300,6 +300,19 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Rattler
+- proto: AAAHardpointFixed
+  entities:
+  - uid: 107
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,8.5
+      parent: 2
+    - type: DeviceLinkSink
+      links:
+      - 83
+    - type: Physics
+      canCollide: False
 - proto: AirlockExternal
   entities:
   - uid: 193
@@ -950,7 +963,7 @@ entities:
       parent: 2
     - type: DeviceLinkSource
       linkedPorts:
-        104:
+        107:
         - Group1: Toggle
     - type: NamedModules
       buttonNames:
@@ -1118,6 +1131,14 @@ entities:
       parent: 2
     - type: Thruster
       originalPowerLoad: 1500
+  - uid: 272
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,4.5
+      parent: 2
+    - type: Thruster
+      originalPowerLoad: 1500
 - proto: JugBoriaticFuel
   entities:
   - uid: 265
@@ -1281,10 +1302,7 @@ entities:
       pos: -3.5,8.5
       parent: 2
     - type: Battery
-      startingCharge: 198500
-    - type: DeviceLinkSink
-      links:
-      - 83
+      startingCharge: 198000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -1464,11 +1482,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,2.5
-      parent: 2
-  - uid: 107
-    components:
-    - type: Transform
-      pos: 2.5,2.5
       parent: 2
   - uid: 108
     components:
