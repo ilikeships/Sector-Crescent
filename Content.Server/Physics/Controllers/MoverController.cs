@@ -12,6 +12,7 @@ using DroneConsoleComponent = Content.Server.Shuttles.DroneConsoleComponent;
 using DependencyAttribute = Robust.Shared.IoC.DependencyAttribute;
 using Robust.Shared.Map.Components;
 
+
 namespace Content.Server.Physics.Controllers
 {
     public sealed class MoverController : SharedMoverController
@@ -104,7 +105,7 @@ namespace Content.Server.Physics.Controllers
             HandleShuttleMovement(frameTime);
         }
 
-        public (Vector2 Strafe, float Rotation, float Brakes) GetPilotVelocityInput(PilotComponent component)
+        public (Vector2 Strafe, float Rotation, float Brakes, float FaceMouse, Angle FaceAngle) GetPilotVelocityInput(PilotComponent component)
         {
             if (!Timing.InSimulation)
             {
@@ -113,7 +114,7 @@ namespace Content.Server.Physics.Controllers
                 // Physics system will have the correct time step anyways.
                 ResetSubtick(component);
                 ApplyTick(component, 1f);
-                return (component.CurTickStrafeMovement, component.CurTickRotationMovement, component.CurTickBraking);
+                return (component.CurTickStrafeMovement, component.CurTickRotationMovement, component.CurTickBraking, component.CurTickFaceMouse, component.FaceAngle);
             }
 
             float remainingFraction;
@@ -123,6 +124,7 @@ namespace Content.Server.Physics.Controllers
                 component.CurTickStrafeMovement = Vector2.Zero;
                 component.CurTickRotationMovement = 0f;
                 component.CurTickBraking = 0f;
+                component.CurTickFaceMouse = 0f;
                 remainingFraction = 1;
             }
             else
@@ -133,7 +135,7 @@ namespace Content.Server.Physics.Controllers
             ApplyTick(component, remainingFraction);
 
             // Logger.Info($"{curDir}{walk}{sprint}");
-            return (component.CurTickStrafeMovement, component.CurTickRotationMovement, component.CurTickBraking);
+            return (component.CurTickStrafeMovement, component.CurTickRotationMovement, component.CurTickBraking,component.CurTickFaceMouse, component.FaceAngle);
         }
 
         private void ResetSubtick(PilotComponent component)
@@ -143,6 +145,7 @@ namespace Content.Server.Physics.Controllers
             component.CurTickStrafeMovement = Vector2.Zero;
             component.CurTickRotationMovement = 0f;
             component.CurTickBraking = 0f;
+            component.CurTickFaceMouse = 0f;
             component.LastInputTick = Timing.CurTick;
             component.LastInputSubTick = 0;
         }
@@ -182,6 +185,7 @@ namespace Content.Server.Physics.Controllers
             var y = 0;
             var rot = 0;
             int brake;
+            int rotateToMouse = 0;
 
             if ((component.HeldButtons & ShuttleButtons.StrafeLeft) != 0x0)
             {
@@ -228,7 +232,11 @@ namespace Content.Server.Physics.Controllers
                 brake = 0;
             }
 
+
             component.CurTickBraking += brake * fraction;
+            if ((component.HeldButtons & ShuttleButtons.FaceMouse) != 0)
+                rotateToMouse = 1;
+            component.CurTickFaceMouse += rotateToMouse * fraction;
         }
 
         /// <summary>
@@ -314,10 +322,12 @@ namespace Content.Server.Physics.Controllers
                 var linearInput = Vector2.Zero;
                 var brakeInput = 0f;
                 var angularInput = 0f;
+                var rotate = 0f;
+                var rangle = Angle.Zero;
 
                 foreach (var (pilotUid, pilot, _, consoleXform) in pilots)
                 {
-                    var (strafe, rotation, brakes) = GetPilotVelocityInput(pilot);
+                    var (strafe, rotation, brakes, face, angle) = GetPilotVelocityInput(pilot);
 
                     if (brakes > 0f)
                     {
@@ -334,12 +344,17 @@ namespace Content.Server.Physics.Controllers
                     {
                         angularInput += rotation;
                     }
+
+                    rotate += face;
+                    rangle += angle;
                 }
 
                 var count = pilots.Count;
                 linearInput /= count;
                 angularInput /= count;
                 brakeInput /= count;
+                rotate /= count;
+                rangle /= count;
 
                 // Handle shuttle movement
                 if (brakeInput > 0f)
@@ -436,6 +451,50 @@ namespace Content.Server.Physics.Controllers
                         _thruster.SetAngularThrust(shuttle, false);
                     }
                 }
+
+                if (rotate != 0f)
+                {
+                    var direction = rangle > Angle.FromDegrees(0) ? 1 : -1;
+                    var amplitude =
+                        (float) (Math.Abs(rangle.Theta));
+                    //Logger.Error($"Angle is {rangle}, theta is {rangle.Theta}, comparison res");
+                    if (Math.Abs(amplitude) > Angle.FromDegrees(2).Theta)
+                    {
+                        angularInput = direction * amplitude / (float)Math.PI;
+                        if (direction == 1)
+                        {
+                            if (ShuttleComponent.MaxAngularVelocity * angularInput < -body.AngularVelocity)
+                                angularInput = -Math.Sign(angularInput);
+                        }
+                        else
+                        {
+                            if (ShuttleComponent.MaxAngularVelocity * angularInput > -body.AngularVelocity)
+                                angularInput = -Math.Sign(angularInput);
+                        }
+                    }
+                    else // acts like braking then
+                    {
+                        angularInput = 0f;
+                        var torque = shuttle.AngularThrust * (body.AngularVelocity > 0f ? -1f : 1f) *
+                                 ShuttleComponent.BrakeCoefficient;
+                        var torqueMul = body.InvI * frameTime;
+                        if (body.AngularVelocity > 0f)
+                        {
+                            torque = MathF.Max(-body.AngularVelocity / torqueMul, torque);
+                        }
+                        else
+                        {
+                            torque = MathF.Min(-body.AngularVelocity / torqueMul, torque);
+                        }
+
+                        if (!torque.Equals(0f))
+                        {
+                            PhysicsSystem.ApplyTorque(shuttleUid, torque, body: body);
+                            _thruster.SetAngularThrust(shuttle, true);
+                        }
+                    }
+                }
+
 
                 if (linearInput.Length().Equals(0f))
                 {
