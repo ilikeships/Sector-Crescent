@@ -28,6 +28,8 @@ research-technology-pulsefam = Tribal Advanced Laser Munitions
 
 research-technology-tesla = Tribal Electric Manipulation
 
+research-technology-compakt = Laser Gatling
+
 #precursor
 
 research-technology-weaponsnanolarge = NanoTrasen Large Armaments
