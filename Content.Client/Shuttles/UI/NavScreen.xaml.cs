@@ -19,6 +19,7 @@ namespace Content.Client.Shuttles.UI;
 public sealed partial class NavScreen : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private readonly ILogManager _logs = default!;
     private SharedTransformSystem _xformSystem;
 
     public Action? OnGroup1Pressed;
@@ -27,6 +28,7 @@ public sealed partial class NavScreen : BoxContainer
     public Action? OnGroup4Pressed;
     public Action? OnGroup5Pressed;
     public Action<List<string>>? OnRename;
+    public Action<Angle>? OnMouseMove;
 
     private EntityUid? _shuttleEntity;
 
@@ -47,6 +49,7 @@ public sealed partial class NavScreen : BoxContainer
 
         IFFToggle.OnToggled += OnIFFTogglePressed;
         IFFToggle.Pressed = NavRadar.ShowIFF;
+        NavRadar.OnRadarMouseMoveRelative += OnRadarMouse;
 
         IFFShuttleToggle.OnToggled += OnIFFShuttleTogglePressed;
         IFFShuttleToggle.Pressed = NavRadar.ShowIFFShuttles;
@@ -81,6 +84,13 @@ public sealed partial class NavScreen : BoxContainer
         IffSearchCriteria.OnTextChanged += args => OnIffSearchChanged(args.Text);
     }
 
+    public void OnRadarMouse(Angle angle)
+    {
+        var logger = _logs.GetSawmill("ui");
+        logger.Debug($"start angle : {angle}");
+        OnMouseMove?.Invoke(angle);
+    }
+
     public void ButtonsToReadyState()
     {
         UpdateButtonNames();
@@ -89,7 +99,7 @@ public sealed partial class NavScreen : BoxContainer
         {
             ButtonHolder.AddChild(button);
         }
-        
+
     }
 
     public void ButtonsToEditState()

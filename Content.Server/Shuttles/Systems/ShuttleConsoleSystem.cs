@@ -127,6 +127,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<FTLDestinationComponent, ComponentStartup>(OnFtlDestStartup);
         SubscribeLocalEvent<FTLDestinationComponent, ComponentShutdown>(OnFtlDestShutdown);
         SubscribeLocalEvent<ShuttleConsoleComponent, NavConsoleGroupPressedMessage>(OnGroupPressed);
+        SubscribeLocalEvent<ShuttleConsoleComponent, SetTargetPositionFace>(OnSetTargetPos);
         SubscribeLocalEvent<NamedModulesComponent, ModuleNamingChangeEvent>(OnNameChange);
 
         SubscribeLocalEvent<ShuttleConsoleComponent, ComponentInit>(OnComponentInit);
@@ -140,6 +141,16 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName,true);
     }
 
+    private void OnSetTargetPos(EntityUid console, ShuttleConsoleComponent component, ref SetTargetPositionFace args)
+    {
+            foreach (var actor in _ui.GetActors(console, ShuttleConsoleUiKey.Key))
+            {
+                if (!TryComp<PilotComponent>(actor, out var comp))
+                    continue;
+                comp.FaceAngle = args.TargetAngle;
+            }
+        
+    }
     private void OnComponentRemove(EntityUid uid, ShuttleConsoleComponent component, ComponentRemove args)
     {
         _itemSlotsSystem.RemoveItemSlot(uid, component.targetIdSlot);

@@ -25,6 +25,9 @@ namespace Content.Shared.Shuttles.Components
         public Vector2 CurTickStrafeMovement = Vector2.Zero;
         public float CurTickRotationMovement;
         public float CurTickBraking;
+        public float CurTickFaceMouse;
+        [ViewVariables]
+        public Angle FaceAngle = Angle.Zero;
 
         public GameTick LastInputTick = GameTick.Zero;
         public ushort LastInputSubTick = 0;
