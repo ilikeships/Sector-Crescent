@@ -78,3 +78,9 @@ job-description-beltrunner = Move the Izdari product from the Aasim to relevant 
 job-description-draugr = Assert your superiority over the Serviles. Protect the war-freighter. Listen to the Prophet. Their word is law.
 job-description-servile = Listen to your Draugrs - earn your stay in the family. Make a name for yourself.
 job-description-antiquarian = Fulfill the system's blackmarketing needs. Make sure your office stays in one piece.
+
+#misc
+
+job-description-spacer = Be an independent citizen of Taypan.
+job-description-gliess-sheriff = Keep the law in Gliess Santo.
+job-description-gliess-dockmaster = Make sure nobody blows up your station.

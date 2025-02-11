@@ -81,3 +81,6 @@ job-name-servile = Al'Seik Servile
 #misc
 
 job-name-antiquarian = Izdari Antiquarian
+job-name-spacer = Spacer
+job-name-gliess-sheriff = Gliessian Sheriff
+job-name-gliess-dockmaster = Gliessian Dockmaster

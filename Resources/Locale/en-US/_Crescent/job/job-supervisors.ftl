@@ -4,3 +4,5 @@ job-supervisors-imperial = House Olywir
 job-supervisors-shi = Shinohara Corporate Command
 job-supervisors-prophet = The Mother's Will
 job-supervisors-tap = Nomadic Law
+job-supervisors-gliess = Gliessian Dockmaster
+job-supervisors-lols = your own conscience
