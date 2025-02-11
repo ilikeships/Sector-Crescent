@@ -53,3 +53,5 @@ id-card-access-level-cmmmarshal = Colonial Marshal
 #misc
 
 id-card-access-level-antiquarian = Antiquarian
+id-card-access-level-gliess-admin = Gliessian Dockmaster
+id-card-access-level-gliess-sheriff = Gliessian Sheriff

@@ -57,3 +57,8 @@ crescent-rank-beltrunner = Beltrunner
 crescent-rank-antiquarian = Antiquarian
 crescent-rank-draugr = Draugr
 crescent-rank-servile = Servile
+
+#misc
+
+crescent-rank-sheriff = Sheriff
+crescent-rank-dockmaster = Dockmaster
