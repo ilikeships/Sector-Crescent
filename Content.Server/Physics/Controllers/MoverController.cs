@@ -454,22 +454,30 @@ namespace Content.Server.Physics.Controllers
 
                 if (rotate != 0f)
                 {
-                    var direction = rangle < Angle.FromDegrees(0) ? 1 : -1;
+                    var direction = rangle > Angle.FromDegrees(0) ? 1 : -1;
                     var amplitude =
-                        (float) (rangle.Theta);
-                    angularInput = 1f;
-                    var torque = shuttle.AngularThrust * -angularInput;
-                    var torqueMul = body.InvI * frameTime;
-                    Logger.Error($"torque is {torque}, final is {direction * amplitude * torque / (float) Math.PI / torqueMul} , shuttle is {body.AngularVelocity}");
-                    if (Math.Abs(amplitude) > Angle.FromDegrees(5).Theta)
+                        (float) (Math.Abs(rangle.Theta));
+                    //Logger.Error($"Angle is {rangle}, theta is {rangle.Theta}, comparison res");
+                    if (Math.Abs(amplitude) > Angle.FromDegrees(2).Theta)
                     {
-                        angularInput *= direction * amplitude * torque / (float)Math.PI / torqueMul;
+                        angularInput = direction * amplitude / (float)Math.PI;
+                        if (direction == 1)
+                        {
+                            if (ShuttleComponent.MaxAngularVelocity * angularInput < -body.AngularVelocity)
+                                angularInput = -Math.Sign(angularInput);
+                        }
+                        else
+                        {
+                            if (ShuttleComponent.MaxAngularVelocity * angularInput > -body.AngularVelocity)
+                                angularInput = -Math.Sign(angularInput);
+                        }
                     }
                     else // acts like braking then
                     {
                         angularInput = 0f;
-                        torque = shuttle.AngularThrust * (body.AngularVelocity > 0f ? -1f : 1f) *
+                        var torque = shuttle.AngularThrust * (body.AngularVelocity > 0f ? -1f : 1f) *
                                  ShuttleComponent.BrakeCoefficient;
+                        var torqueMul = body.InvI * frameTime;
                         if (body.AngularVelocity > 0f)
                         {
                             torque = MathF.Max(-body.AngularVelocity / torqueMul, torque);

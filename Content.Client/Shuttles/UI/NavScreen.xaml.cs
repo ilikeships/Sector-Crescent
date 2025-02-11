@@ -86,8 +86,8 @@ public sealed partial class NavScreen : BoxContainer
 
     public void OnRadarMouse(Angle angle)
     {
-        var logger = _logs.GetSawmill("ui");
-        logger.Debug($"start angle : {angle}");
+        //var logger = _logs.GetSawmill("ui");
+        //logger.Debug($"start angle : {angle}");
         OnMouseMove?.Invoke(angle);
     }
 

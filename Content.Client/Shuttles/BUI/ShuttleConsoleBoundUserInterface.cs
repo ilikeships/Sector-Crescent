@@ -44,7 +44,7 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.OnGroup3Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(3));
         _window.OnGroup4Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(4));
         _window.OnGroup5Pressed += () => SendMessage(new NavConsoleGroupPressedMessage(5));
-        _window.MouseMove += (args) => SendMessage(new SetTargetPositionFace() {TargetAngle = args < Angle.FromDegrees(0) ? new Angle(-(Math.PI + args.Theta)) : (args > Angle.FromDegrees(270) ? args : (Math.PI - args))});
+        _window.MouseMove += (args) => SendMessage(new SetTargetPositionFace() {TargetAngle = args});
         _window.OnRename += OnModuleRename;
         
     }

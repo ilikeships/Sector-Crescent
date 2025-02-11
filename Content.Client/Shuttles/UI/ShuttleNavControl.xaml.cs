@@ -128,9 +128,13 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         return _coordinates.Value.Offset(relativePos); 
     }
 
+    // COnverts relative entity coordinates to relative angle. - on the left side , + on the right side.
     public Angle RelativeAngleFromFace(EntityCoordinates relPos)
     {
-           return Angle.FromWorldVec(relPos.Position);
+        var args = Angle.FromWorldVec(relPos.Position);
+        return args < Angle.FromDegrees(0)
+            ? new Angle(-(Math.PI + args.Theta))
+            : (args > Angle.FromDegrees(270) ? args : (Math.PI - args));
     }
     /// <summary>
     /// Gets the entity coordinates of where the mouse position is, relative to the control.
