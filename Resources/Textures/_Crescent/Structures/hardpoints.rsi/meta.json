@@ -8,13 +8,16 @@
   },
   "states": [
     {
-      "name": "Medium"
+      "name": "Medium",
+      "directions": 4
     },
     {
-      "name": "Large"
+      "name": "Large",
+      "directions": 4
     },
     {
-      "name": "Small"
+      "name": "Small",
+      "directions": 4
     }
   ]
 }
