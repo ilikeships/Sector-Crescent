@@ -397,7 +397,7 @@ public abstract class SharedStorageSystem : EntitySystem
     /// </summary>
     private void OnActivate(EntityUid uid, StorageComponent storageComp, ActivateInWorldEvent args)
     {
-        if (args.Handled || !args.Complex || !storageComp.OpenOnActivate || !CanInteract(args.User, (uid, storageComp)))
+        if (args.Handled || !storageComp.OpenOnActivate || !CanInteract(args.User, (uid, storageComp)))
             return;
 
         // Toggle
@@ -935,9 +935,13 @@ public abstract class SharedStorageSystem : EntitySystem
             reason = "comp-storage-anchored-failure";
             return false;
         }
+        if (storageComp.Whitelist?.IsValid(insertEnt, EntityManager) == false)
+        {
+            reason = "comp-storage-invalid-container";
+            return false;
+        }
 
-        if (_whitelistSystem.IsWhitelistFail(storageComp.Whitelist, insertEnt) ||
-            _whitelistSystem.IsBlacklistPass(storageComp.Blacklist, insertEnt))
+        if (storageComp.Blacklist?.IsValid(insertEnt, EntityManager) == true)
         {
             reason = "comp-storage-invalid-container";
             return false;
@@ -1546,8 +1550,6 @@ public abstract class SharedStorageSystem : EntitySystem
 
     private bool CanInteract(EntityUid user, Entity<StorageComponent> storage, bool canInteract = true, bool silent = true)
     {
-        if (HasComp<BypassInteractionChecksComponent>(user))
-            return true;
 
         if (!canInteract)
             return false;

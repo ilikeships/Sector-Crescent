@@ -29,7 +29,6 @@ public sealed partial class WoolyComponent : Component
     /// <summary>
     ///     The solution to add reagent to.
     /// </summary>
-    [DataField]
     public Entity<SolutionComponent>? Solution;
 
     /// <summary>
