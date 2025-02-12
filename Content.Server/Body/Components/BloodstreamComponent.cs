@@ -149,13 +149,12 @@ namespace Content.Server.Body.Components
         /// <summary>
         ///     Internal solution for blood storage
         /// </summary>
-        [DataField]
         public Entity<SolutionComponent>? BloodSolution = null;
 
         /// <summary>
         ///     Internal solution for reagent storage
         /// </summary>
-        [DataField]
+        /// [ViewVariables]
         public Entity<SolutionComponent>? ChemicalSolution = null;
 
         /// <summary>
@@ -163,7 +162,7 @@ namespace Content.Server.Body.Components
         ///     When blood is lost, it goes to this solution, and when this
         ///     solution hits a certain cap, the blood is actually spilled as a puddle.
         /// </summary>
-        [DataField]
+        /// [ViewVariables]
         public Entity<SolutionComponent>? TemporarySolution = null;
 
         /// <summary>
