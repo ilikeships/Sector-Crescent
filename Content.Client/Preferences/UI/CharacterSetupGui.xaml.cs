@@ -164,7 +164,7 @@ namespace Content.Client.Preferences.UI
                     _humanoidProfileEditor.CharacterSlot = characterIndexCopy;
                     _factionSelector.Profile = realProfile;
                     _factionSelector.CharacterSlot = characterIndexCopy;
-                    if (realProfile.Faction!.Length > 0)
+                    if (realProfile.Faction is not null && realProfile.Faction!.Length > 0)
                     {
                         CharEditor.AddChild(_humanoidProfileEditor);
                         _humanoidProfileEditor.UpdateControls();
