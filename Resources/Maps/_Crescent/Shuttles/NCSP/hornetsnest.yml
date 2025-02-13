@@ -66,7 +66,161 @@ entities:
     - type: DecalGrid
       chunkCollection:
         version: 2
-        nodes: []
+        nodes:
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerGreyscaleNE
+          decals:
+            11: 4,-1
+            31: 2,17
+            59: -3,-2
+            71: 8,-2
+            83: -7,-1
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerGreyscaleNW
+          decals:
+            10: -1,-1
+            32: 1,17
+            60: -5,-2
+            70: 6,-2
+            82: -9,-1
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerGreyscaleSE
+          decals:
+            12: 4,-3
+            61: -3,-5
+            72: 8,-5
+            84: -7,-2
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerGreyscaleSW
+          decals:
+            13: -1,-3
+            62: -5,-5
+            73: 6,-5
+            85: -9,-2
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerSmallGreyscaleNE
+          decals:
+            50: 2,14
+            51: 2,9
+            52: 2,4
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerSmallGreyscaleNW
+          decals:
+            47: 1,4
+            48: 1,9
+            49: 1,14
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerSmallGreyscaleSE
+          decals:
+            53: 2,4
+            54: 2,9
+            55: 2,14
+            69: -4,-5
+            92: 10,-4
+        - node:
+            color: '#AB0000B6'
+            id: WarnCornerSmallGreyscaleSW
+          decals:
+            56: 1,14
+            57: 1,9
+            58: 1,4
+            68: -4,-5
+            93: 12,-4
+        - node:
+            color: '#AB0000B6'
+            id: WarnFullGreyscale
+          decals:
+            0: 1,0
+            1: 2,0
+            29: 1,18
+            30: 2,18
+            97: -5,-7
+            98: -3,-7
+        - node:
+            color: '#AB0000B6'
+            id: WarnLineGreyscaleE
+          decals:
+            14: 4,-2
+            33: 2,16
+            34: 2,15
+            36: 2,13
+            37: 2,12
+            38: 2,11
+            39: 2,10
+            40: 2,8
+            41: 2,7
+            42: 2,6
+            43: 2,5
+            44: 2,3
+            45: 2,2
+            46: 2,1
+            66: -3,-3
+            67: -3,-4
+            77: 8,-3
+            78: 8,-4
+            80: 12,-4
+            89: -7,-4
+            101: -4,-8
+            102: -4,-7
+        - node:
+            color: '#AB0000B6'
+            id: WarnLineGreyscaleN
+          decals:
+            2: 1,-1
+            3: 2,-1
+            4: 3,-1
+            5: 0,-1
+            65: -4,-2
+            76: 7,-2
+            87: -8,-1
+            88: -8,-6
+            94: 11,-6
+            95: 10,-6
+            96: 12,-6
+        - node:
+            color: '#AB0000B6'
+            id: WarnLineGreyscaleS
+          decals:
+            6: 1,-3
+            7: 0,-3
+            8: 2,-3
+            9: 3,-3
+            79: 7,-5
+            86: -8,-2
+            91: 11,-4
+        - node:
+            color: '#AB0000B6'
+            id: WarnLineGreyscaleW
+          decals:
+            15: -1,-2
+            16: 1,1
+            17: 1,2
+            18: 1,3
+            19: 1,5
+            20: 1,6
+            21: 1,7
+            22: 1,8
+            23: 1,10
+            24: 1,11
+            25: 1,12
+            26: 1,13
+            27: 1,15
+            28: 1,16
+            63: -5,-3
+            64: -5,-4
+            74: 6,-4
+            75: 6,-3
+            81: -9,-4
+            90: 10,-4
+            99: -4,-8
+            100: -4,-7
     - type: GridAtmosphere
       version: 2
       data:
@@ -2620,6 +2774,23 @@ entities:
     - type: Transform
       pos: 4.5,-6.5
       parent: 1
+- proto: SpawnPointInfanteer
+  entities:
+  - uid: 583
+    components:
+    - type: Transform
+      pos: -7.5,-5.5
+      parent: 1
+  - uid: 584
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 1
+  - uid: 585
+    components:
+    - type: Transform
+      pos: 1.5,-1.5
+      parent: 1
 - proto: SubstationBasic
   entities:
   - uid: 373
@@ -2940,7 +3111,7 @@ entities:
       pos: 0.5,22.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
