@@ -6,7 +6,7 @@ namespace Content.Shared.CCVar
 {
     // ReSharper disable once InconsistentNaming
     [CVarDefs]
-    public sealed partial class CCVars : CVars
+    public sealed class CCVars : CVars
     {
         /*
          * Server
@@ -1826,6 +1826,37 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<int> ResourceUploadingStoreDeletionDays =
             CVarDef.Create("netres.store_deletion_days", 0, CVar.SERVER | CVar.SERVERONLY);
 
+        /*
+         * Controls
+         */
+
+        /// <summary>
+        /// Deadzone for drag-drop interactions.
+        /// </summary>
+        public static readonly CVarDef<float> DragDropDeadZone =
+            CVarDef.Create("control.drag_dead_zone", 12f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+        /// <summary>
+        /// Toggles whether the walking key is a toggle or a held key.
+        /// </summary>
+        public static readonly CVarDef<bool> ToggleWalk =
+            CVarDef.Create("control.toggle_walk", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+        /*
+         * STORAGE
+         */
+
+        /// <summary>
+        /// Whether or not the storage UI is static and bound to the hotbar, or unbound and allowed to be dragged anywhere.
+        /// </summary>
+        public static readonly CVarDef<bool> StaticStorageUI =
+            CVarDef.Create("control.static_storage_ui", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+        /// <summary>
+        /// Whether or not the storage window uses a transparent or opaque sprite.
+        /// </summary>
+        public static readonly CVarDef<bool> OpaqueStorageWindow =
+            CVarDef.Create("control.opaque_storage_background", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
         /*
          * UPDATE

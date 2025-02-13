@@ -29,6 +29,7 @@ namespace Content.Server.Animals.Components
         /// <summary>
         ///     The solution to add reagent to.
         /// </summary>
+        [DataField]
         public Entity<SolutionComponent>? Solution = null;
 
         /// <summary>
