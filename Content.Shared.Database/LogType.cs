@@ -89,16 +89,14 @@ public enum LogType
     ItemConfigure = 84,
     DeviceLinking = 85,
     Tile = 86,
-    Storage = 87,
 
     /// <summary>
     /// A client has sent too many chat messages recently and is temporarily blocked from sending more.
     /// </summary>
-    ChatRateLimited = 88,
-    AtmosTemperatureChanged = 89,
-    DeviceNetwork = 90,
-    StoreRefund = 91,
-    InteractUsing = 92,
+    ChatRateLimited = 87,
+    AtmosTemperatureChanged = 88,
+    DeviceNetwork = 89,
+    StoreRefund = 90,
 
     // Frontier Station Spesific
     ATMUsage = 200,

@@ -37,7 +37,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 #pragma warning disable 618
 
@@ -859,23 +858,12 @@ namespace Content.Shared.Interaction
             return ev.Handled;
         }
 
-        private bool IsDeleted(EntityUid uid)
-        {
-            return TerminatingOrDeleted(uid) || EntityManager.IsQueuedForDeletion(uid);
-        }
-
-        private bool IsDeleted(EntityUid? uid)
-        {
-            //optional / null entities can pass this validation check. I.e., is-deleted returns false for null uids
-            return uid != null && IsDeleted(uid.Value);
-        }
-
         /// <summary>
         /// Uses a item/object on an entity
         /// Finds components with the InteractUsing interface and calls their function
         /// NOTE: Does not have an InRangeUnobstructed check
         /// </summary>
-        public bool InteractUsing(
+        public void InteractUsing(
             EntityUid user,
             EntityUid used,
             EntityUid target,
@@ -883,50 +871,34 @@ namespace Content.Shared.Interaction
             bool checkCanInteract = true,
             bool checkCanUse = true)
         {
-            if (IsDeleted(user) || IsDeleted(used) || IsDeleted(target))
-                return false;
-
             if (checkCanInteract && !_actionBlockerSystem.CanInteract(user, target))
-                return false;
+                return;
 
             if (checkCanUse && !_actionBlockerSystem.CanUseHeldEntity(user))
-                return false;
+                return;
 
-            _adminLogger.Add(
-                LogType.InteractUsing,
-                LogImpact.Low,
-                $"{ToPrettyString(user):user} interacted with {ToPrettyString(target):target} using {ToPrettyString(used):used}");
+            if (RangedInteractDoBefore(user, used, target, clickLocation, true))
+                return;
 
-            if (RangedInteractDoBefore(user, used, target, clickLocation, canReach: true))
-                return true;
-
-            DebugTools.Assert(!IsDeleted(user) && !IsDeleted(used) && !IsDeleted(target));
             // all interactions should only happen when in range / unobstructed, so no range check is needed
             var interactUsingEvent = new InteractUsingEvent(user, used, target, clickLocation);
             RaiseLocalEvent(target, interactUsingEvent, true);
             DoContactInteraction(user, used, interactUsingEvent);
             DoContactInteraction(user, target, interactUsingEvent);
-            // Contact interactions are currently only used for forensics, so we don't raise used -> target
+            DoContactInteraction(used, target, interactUsingEvent);
             if (interactUsingEvent.Handled)
-                return true;
+                return;
 
-            if (InteractDoAfter(user, used, target, clickLocation, canReach: true, checkDeletion: false))
-                return true;
-
-            DebugTools.Assert(!IsDeleted(user) && !IsDeleted(used) && !IsDeleted(target));
-            return false;
+            InteractDoAfter(user, used, target, clickLocation, canReach: true);
         }
 
         /// <summary>
         ///     Used when clicking on an entity resulted in no other interaction. Used for low-priority interactions.
         /// </summary>
-        public bool InteractDoAfter(EntityUid user, EntityUid used, EntityUid? target, EntityCoordinates clickLocation, bool canReach, bool checkDeletion = true)
+        public void InteractDoAfter(EntityUid user, EntityUid used, EntityUid? target, EntityCoordinates clickLocation, bool canReach)
         {
-            if (target is { Valid: false })
+            if (target is {Valid: false})
                 target = null;
-
-            if (checkDeletion && (IsDeleted(user) || IsDeleted(used) || IsDeleted(target)))
-                return false;
 
             var afterInteractEvent = new AfterInteractEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(used, afterInteractEvent);
@@ -934,16 +906,15 @@ namespace Content.Shared.Interaction
             if (canReach)
             {
                 DoContactInteraction(user, target, afterInteractEvent);
-                // Contact interactions are currently only used for forensics, so we don't raise used -> target
+                DoContactInteraction(used, target, afterInteractEvent);
             }
 
             if (afterInteractEvent.Handled)
-                return true;
+                return;
 
             if (target == null)
-                return false;
+                return;
 
-            DebugTools.Assert(!IsDeleted(user) && !IsDeleted(used) && !IsDeleted(target));
             var afterInteractUsingEvent = new AfterInteractUsingEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(target.Value, afterInteractUsingEvent);
 
@@ -951,10 +922,8 @@ namespace Content.Shared.Interaction
             if (canReach)
             {
                 DoContactInteraction(user, target, afterInteractUsingEvent);
-                // Contact interactions are currently only used for forensics, so we don't raise used -> target
+                DoContactInteraction(used, target, afterInteractUsingEvent);
             }
-
-            return afterInteractUsingEvent.Handled;
         }
 
         #region ActivateItemInWorld
