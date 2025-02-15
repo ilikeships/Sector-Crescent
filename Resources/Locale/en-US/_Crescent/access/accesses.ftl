@@ -50,6 +50,14 @@ id-card-access-level-cmmranking = Minutemen Officer
 id-card-access-level-cmmprison = CMM Penitentiary
 id-card-access-level-cmmmarshal = Colonial Marshal
 
+#ath
+
+id-card-access-level-authoritat-kommandant = Konteradmiral
+id-card-access-level-authoritat = 43rd Battlegroup
+id-card-access-level-authoritat-ranking = 43rd Battlegroup Officer
+id-card-access-level-authoritat-medical = 43rd Battlegroup Medical
+id-card-access-level-authoritat-cargo = 43rd Battlegroup Supply
+
 #misc
 
 id-card-access-level-antiquarian = Antiquarian

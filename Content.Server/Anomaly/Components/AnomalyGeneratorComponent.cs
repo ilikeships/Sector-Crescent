@@ -38,13 +38,13 @@ public sealed partial class AnomalyGeneratorComponent : Component
     /// The material needed to generate an anomaly
     /// </summary>
     [DataField("requiredMaterial", customTypeSerializer: typeof(PrototypeIdSerializer<MaterialPrototype>)), ViewVariables(VVAccess.ReadWrite)]
-    public string RequiredMaterial = "Bananium"; // Frontier - Plasma to Bananium
+    public string RequiredMaterial = "Plasma"; // Hullrot - bananium to plasma - fuck you checkraze you indian faggot
 
     /// <summary>
     /// The amount of material needed to generate a single anomaly
     /// </summary>
     [DataField("materialPerAnomaly"), ViewVariables(VVAccess.ReadWrite)]
-    public int MaterialPerAnomaly = 1000; // Frontier - Plasma to Bananium, 1500 to 1000
+    public int MaterialPerAnomaly = 1000;
 
     /// <summary>
     /// The random anomaly spawner entity
@@ -56,7 +56,7 @@ public sealed partial class AnomalyGeneratorComponent : Component
     /// The radio channel for science
     /// </summary>
     [DataField("scienceChannel", customTypeSerializer: typeof(PrototypeIdSerializer<RadioChannelPrototype>))]
-    public string ScienceChannel = "Science";
+    public string ScienceChannel = "Common";
 
     /// <summary>
     /// The sound looped while an anomaly generates

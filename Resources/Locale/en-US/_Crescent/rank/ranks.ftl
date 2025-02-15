@@ -58,6 +58,14 @@ crescent-rank-antiquarian = Antiquarian
 crescent-rank-draugr = Draugr
 crescent-rank-servile = Servile
 
+#authoritat
+
+crescent-rank-kommandant = Kommandant
+crescent-rank-leutnant = Lt.
+crescent-rank-soldatATH = PvT.
+crescent-rank-sanitat = PvT.
+crescent-rank-kanoneer = Cpl.
+
 #misc
 
 crescent-rank-sheriff = Sheriff

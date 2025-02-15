@@ -123,24 +123,25 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var taypanone = "/Maps/_Crescent/Explorables/taypanone.yml";
         var craster = "/Maps/_Crescent/Explorables/craster.yml";
         //var dochenskaya = "/Maps/_Crescent/Stations/dochenskaya.yml";
-        var freeport = "/Maps/_Crescent/Stations/freeport.yml";
+       // var freeport = "/Maps/_Crescent/Stations/freeport.yml";
        // var refuge = "/Maps/_Crescent/Stations/refuge.yml";
-        var vladzena = "/Maps/_Crescent/Stations/vladzena.yml";
+       // var vladzena = "/Maps/_Crescent/Stations/vladzena.yml";
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
-        var aasim = "/Maps/_Crescent/Stations/aasim.yml";
+        //var aasim = "/Maps/_Crescent/Stations/aasim.yml";
         var stranded = "/Maps/_Crescent/Explorables/stranded.yml";
         var fighter1 = "/Maps/_Crescent/Explorables/ruinedfightereast.yml";
         var fighter2 = "/Maps/_Crescent/Explorables/ruinedfighterwest.yml";
         var solarruined = "/Maps/_Crescent/Explorables/ruinedsolarsailor.yml";
         var impwreck = "/Maps/_Crescent/Explorables/impwreck.yml";
         var courthouse = "/Maps/_Crescent/Stations/kalsuzerai.yml";
+        var ardour = "/Maps/_Crescent/Stations/ardour.yml";
         // var lodge = "/Maps/_NF/POI/lodge.yml";
         var lab = "/Maps/_NF/POI/anomalouslab.yml";
         // var church = "Maps/_NF/POI/beacon.yml";
         // var grifty = "Maps/_NF/POI/grifty.yml";
-        var precinct9 = "/Maps/_Crescent/Stations/precinct9.yml";
+        //var precinct9 = "/Maps/_Crescent/Stations/precinct9.yml";
         var depotColor = new Color(55, 200, 55);
         var civilianColor = new Color(55, 55, 200);
         var lpbravoColor = new Color(200, 55, 55);
@@ -174,41 +175,41 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             _shuttle.SetIFFColor(depotUid3s[0], depotColor);
         }*/
 
-        if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
-            {
-                Offset = new Vector2(2500f,4500f)
-            }))
-        {
+       // if (_map.TryLoad(mapId, precinct9, out var nfsdUids, new MapLoadOptions
+       //     {
+       //         Offset = new Vector2(2500f,4500f)
+      //      }))
+      //  {
           //   We should figure out if it is possible to add this grid to the latejoin listing.
           //   Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Precinct9", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["Precinct9"], nfsdUids);
-            }
+      //       if (_prototypeManager.TryIndex<GameMapPrototype>("Precinct9", out var stationProto))
+          //  {
+           //     _station.InitializeNewStation(stationProto.Stations["Precinct9"], nfsdUids);
+         //   }
+         //
+         //   var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
+        //    _meta.SetEntityName(nfsdUids[0], "TSP Proctor Annalise", meta);
+        //    _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
+       //     _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
+       // }
 
-            var meta = EnsureComp<MetaDataComponent>(nfsdUids[0]);
-            _meta.SetEntityName(nfsdUids[0], "TSP Proctor Annalise", meta);
-            _shuttle.SetIFFColor(nfsdUids[0], civilianColor);
-            _shuttle.SetIFFFaction(nfsdUids[0], "TSP");
-        }
 
-
-        if (_map.TryLoad(mapId, aasim, out var famUids, new MapLoadOptions
-            {
-                Offset = new Vector2(4500f, 1500f)
-            }))
-        {
+      //  if (_map.TryLoad(mapId, aasim, out var famUids, new MapLoadOptions
+      //      {
+      //          Offset = new Vector2(4500f, 1500f)
+      //      }))
+     //   {
             //   We should figure out if it is possible to add this grid to the latejoin listing.
             //   Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Aasim", out var stationProto))
-            {
-                _station.InitializeNewStation(stationProto.Stations["Aasim"], famUids);
-            }
+      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Aasim", out var stationProto))
+      //      {
+      //          _station.InitializeNewStation(stationProto.Stations["Aasim"], famUids);
+      //      }
 
-            var meta = EnsureComp<MetaDataComponent>(famUids[0]);
-            _meta.SetEntityName(famUids[0], "TAP Qiwa Aasim", meta);
-            _shuttle.SetIFFColor(famUids[0], civilianColor);
-        }
+      //      var meta = EnsureComp<MetaDataComponent>(famUids[0]);
+      //      _meta.SetEntityName(famUids[0], "TAP Qiwa Aasim", meta);
+      //      _shuttle.SetIFFColor(famUids[0], civilianColor);
+      //  }
 
         if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
         {
@@ -379,21 +380,21 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
       //      _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
      //   }
 
-        if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
-        {
-            Offset = new Vector2(7794f, 4500f)
-        }))
-        {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
-           {
-                _station.InitializeNewStation(stationProto.Stations["Freeport"], depotUid9s);
-            }
-
-            var meta = EnsureComp<MetaDataComponent>(depotUid9s[0]);
-            _meta.SetEntityName(depotUid9s[0], "The Freeport", meta);
-            _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
-            _shuttle.SetIFFFaction(depotUid9s[0], "NCSP");
-        }
+       // if (_map.TryLoad(mapId, freeport, out var depotUid9s, new MapLoadOptions
+      //  {
+      //      Offset = new Vector2(7794f, 4500f)
+     //   }))
+     //   {
+      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Freeport", out var stationProto))
+      //     {
+      //          _station.InitializeNewStation(stationProto.Stations["Freeport"], depotUid9s);
+       //     }
+//
+       //     var meta = EnsureComp<MetaDataComponent>(depotUid9s[0]);
+        //    _meta.SetEntityName(depotUid9s[0], "The Freeport", meta);
+        //    _shuttle.SetIFFColor(depotUid9s[0], lpbravoColor);
+        //    _shuttle.SetIFFFaction(depotUid9s[0], "NCSP");
+      //  }
 
      //   if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
       //  {
@@ -457,20 +458,36 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
        //       _shuttle.AddIFFFlag(depotUid11s[0], IFFFlags.HideLabel);
       //    }
 
-        if (_map.TryLoad(mapId, vladzena, out var depotUid12s, new MapLoadOptions
+     //   if (_map.TryLoad(mapId, vladzena, out var depotUid12s, new MapLoadOptions
+      //  {
+      //      Offset = new Vector2(0f, 9000f)
+      //  }))
+      //  {
+      //      if (_prototypeManager.TryIndex<GameMapPrototype>("Vladzena", out var stationProto))
+      //      {
+       //         _station.InitializeNewStation(stationProto.Stations["Vladzena"], depotUid12s);
+       //     }
+
+       //     var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
+      //      _meta.SetEntityName(depotUid12s[0], "Port Vladzena", meta);
+       //     _shuttle.SetIFFColor(depotUid12s[0], factionColor);
+       //     _shuttle.SetIFFFaction(depotUid12s[0], "SHI");
+      //  }
+
+        if (_map.TryLoad(mapId, ardour, out var depotUid33s, new MapLoadOptions
         {
             Offset = new Vector2(0f, 9000f)
         }))
         {
-            if (_prototypeManager.TryIndex<GameMapPrototype>("Vladzena", out var stationProto))
+            if (_prototypeManager.TryIndex<GameMapPrototype>("Ardour", out var stationProto))
             {
-                _station.InitializeNewStation(stationProto.Stations["Vladzena"], depotUid12s);
+                _station.InitializeNewStation(stationProto.Stations["Ardour"], depotUid33s);
             }
 
-            var meta = EnsureComp<MetaDataComponent>(depotUid12s[0]);
-            _meta.SetEntityName(depotUid12s[0], "Port Vladzena", meta);
-            _shuttle.SetIFFColor(depotUid12s[0], factionColor);
-            _shuttle.SetIFFFaction(depotUid12s[0], "SHI");
+            var meta = EnsureComp<MetaDataComponent>(depotUid33s[0]);
+            _meta.SetEntityName(depotUid33s[0], "ATH Ardour 43BG-89", meta);
+            _shuttle.SetIFFColor(depotUid33s[0], factionColor);
+            _shuttle.SetIFFFaction(depotUid33s[0], "ATH");
         }
 
         // if (_map.TryLoad(mapId, lodge, out var lodgeUids, new MapLoadOptions
@@ -508,14 +525,14 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //    _shuttle.SetIFFColor(griftyUids[0], factionColor);
         // }
 
-         if (_map.TryLoad(mapId, courthouse, out var depotUid8s, new MapLoadOptions()))
+        if (_map.TryLoad(mapId, courthouse, out var depotUid8s, new MapLoadOptions()))
          {
              if (_prototypeManager.TryIndex<GameMapPrototype>("Kal", out var stationProto))
              {
                  _station.InitializeNewStation(stationProto.Stations["Kal"], depotUid8s);
              }
             var meta = EnsureComp<MetaDataComponent>(depotUid8s[0]);
-             _meta.SetEntityName(depotUid8s[0], "Kal Suzerai", meta);
+             _meta.SetEntityName(depotUid8s[0], "Kal Surezai", meta);
              _shuttle.SetIFFColor(depotUid8s[0], factionColor);
              _shuttle.SetIFFFaction(depotUid8s[0], "DSM");
          }

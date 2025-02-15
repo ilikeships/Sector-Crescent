@@ -8,3 +8,4 @@ chat-radio-syndiegorlex = Gorlex Security Consulting
 chat-radio-syndieipm = Interdyne Pharmaceuticals
 chat-radio-syndiecyberdawn = Cyberdawn Technologies
 chat-radio-pact = The Atyrian Pact
+chat-radio-authoritat = 43rd Battlegroup

@@ -79,6 +79,14 @@ job-description-draugr = Assert your superiority over the Serviles. Protect the 
 job-description-servile = Listen to your Draugrs - earn your stay in the family. Make a name for yourself.
 job-description-antiquarian = Fulfill the system's blackmarketing needs. Make sure your office stays in one piece.
 
+#ath
+
+job-description-kommandant = Command the 43rd Battlegroup. Ensure total integration of this system.
+job-description-leutnant = Lead the 43rd Battlegroup's battle fleets.
+job-description-kanoneer = Tend to repairs and maintenance of the armaments and shuttles of the 43rd Battlegroup.
+job-description-soldat = Be the boots on the ground of the 43rd Battlegroup. Patrol the sector. Vanquish psionicists.
+job-description-sanitat = Tend to the wounded and the sickly of the 43rd Battlegroup. Diagnose the many mental illnesses of your peers.
+
 #misc
 
 job-description-spacer = Be an independent citizen of Taypan.
