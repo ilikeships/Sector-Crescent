@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Crescent;
 using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
@@ -417,6 +418,9 @@ public sealed class PricingSystem : EntitySystem
                 afterPredicate?.Invoke(child, subPrice);
             }
         }
+
+        if (TryComp<ShipPriceMultiplierComponent>(grid, out var comp))
+            price *= comp.priceMultiplier;
 
         return price;
     }

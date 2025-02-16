@@ -36,6 +36,7 @@ using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
+using Content.Server._Crescent;
 using Content.Server._Crescent.DynamicAcces;
 using Content.Server._Crescent.Helpers;
 using Content.Shared.Popups;
@@ -690,6 +691,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 A = 100
             });
             _shuttle.AddIFFFlag(shuttle.Owner, IFFFlags.IsPlayerShuttle);
+            var comp = EnsureComp<ShipPriceMultiplierComponent>(shuttle.Owner);
+            comp.priceMultiplier = 0.25f;
 
             // match our IFF faction with our spawner's
             if (TryComp<IFFComponent>(Transform(uid).GridUid, out var stationIFF))
