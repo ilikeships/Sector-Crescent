@@ -5,3 +5,4 @@ department-SRM-description = Carry out the divine will of the fallen Saint. Rest
 department-SHI-description = Wholesale and profit.
 department-CMM-description = Protect the little folk.
 department-TAP-description = A family of nomadic starfarers.
+department-ATH-description = A fascist regime from Sol.

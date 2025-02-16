@@ -78,6 +78,13 @@ job-name-beltrunner = Izdari Beltrunner
 job-name-draugr = Al'Seik Draugr
 job-name-servile = Al'Seik Servile
 
+#ath
+job-name-kommandant = Konteradmiral
+job-name-leutnant = Leutnant
+job-name-soldat = Jaeger
+job-name-sanitatATH = Sanitat
+job-name-kanoneer = Kanoneer
+
 #misc
 
 job-name-antiquarian = Izdari Antiquarian

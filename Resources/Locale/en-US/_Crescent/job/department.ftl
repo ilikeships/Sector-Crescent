@@ -5,3 +5,4 @@ department-SRM = Sixth St. Romaine's Militia
 department-SHI = Shinohara Heavy Industries
 department-CMM = Colonial Minutemen
 department-TAP = Taypani-Atyrian Pact
+department-ATH = Central Sol Authority
