@@ -14,7 +14,7 @@ public sealed partial class DispenserComponent : Component
     /// Used by the client to determine how long the dispense animation should be played.
     /// </summary>
     [DataField("dispenseTime")]
-    public float DispenseTime = 1f;
+    public float DispenseTime = 0.25f;
 
     /// <summary>
     /// Default item that is dispensed when the player activates with empty hand
