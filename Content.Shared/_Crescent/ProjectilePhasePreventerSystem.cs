@@ -1,11 +1,11 @@
 using System.Linq;
 using Content.Shared.Projectiles;
-using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Systems;
 
-namespace Content.Server._Crescent;
+namespace Content.Shared._Crescent;
 
 /// <summary>
 /// This handles...
@@ -18,8 +18,8 @@ public sealed partial class ProjectilePhasePreventComponent : Component
 }
 public sealed class ProjectilePhasePreventerSystem : EntitySystem
 {
-    [Dependency] private readonly PhysicsSystem _phys = default!;
-    [Dependency] private readonly TransformSystem _trans = default!;
+    [Dependency] private readonly SharedPhysicsSystem _phys = default!;
+    [Dependency] private readonly SharedTransformSystem _trans = default!;
     /// <inheritdoc/>
     public override void Initialize()
 
