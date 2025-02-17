@@ -34,6 +34,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
             return;
         if (!TryComp<ProjectileComponent>(uid, out var projComp))
             return;
+        if (TerminatingOrDeleted(uid))
+            return;
         var map = _trans.GetMapId(args.OldPosition);
         var start = _trans.ToMapCoordinates(args.OldPosition).Position;
         var end = _trans.ToMapCoordinates(args.NewPosition).Position;
@@ -42,6 +44,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         foreach (var obj in _phys.IntersectRay(map, ray, angle.Length(), uid, false))
         {
             if (obj.HitEntity == projComp.Shooter)
+                continue;
+            if (TerminatingOrDeleted(obj.HitEntity))
                 continue;
             if (!TryComp<PhysicsComponent>(obj.HitEntity, out var targPhysComp))
                 continue;

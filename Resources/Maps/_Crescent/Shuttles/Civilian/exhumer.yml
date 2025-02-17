@@ -1518,6 +1518,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,5.5
       parent: 1
+    - type: Physics
+      bodyType: Static
 - proto: PaperBin20
   entities:
   - uid: 153
@@ -1717,12 +1719,6 @@ entities:
       parent: 1
 - proto: TableReinforced
   entities:
-  - uid: 111
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 5.5,1.5
-      parent: 1
   - uid: 112
     components:
     - type: Transform

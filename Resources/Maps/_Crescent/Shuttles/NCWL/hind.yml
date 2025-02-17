@@ -473,60 +473,72 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Hind
-- proto: AAAHardpointLargeUniversal
+- proto: AAAardpointMediumMissile
   entities:
-  - uid: 325
+  - uid: 182
     components:
     - type: Transform
-      pos: -2.5,-11.5
+      rot: -1.5707963267948966 rad
+      pos: 11.5,-0.5
       parent: 1
     - type: Physics
       canCollide: False
-  - uid: 344
+  - uid: 255
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+- proto: AAAHardpointLargeMissile
+  entities:
+  - uid: 63
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
       pos: 0.5,11.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+- proto: AAAHardpointSmallBallistic
+  entities:
+  - uid: 151
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 10.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 188
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -8.5,2.5
       parent: 1
     - type: Physics
       canCollide: False
   - uid: 626
     components:
     - type: Transform
-      pos: 9.5,2.5
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-11.5
       parent: 1
     - type: Physics
       canCollide: False
   - uid: 627
     components:
     - type: Transform
-      pos: 11.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 628
-    components:
-    - type: Transform
-      pos: 10.5,-5.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 629
-    components:
-    - type: Transform
-      pos: 3.5,-11.5
+      rot: 1.5707963267948966 rad
+      pos: 9.5,2.5
       parent: 1
     - type: Physics
       canCollide: False
   - uid: 630
     components:
     - type: Transform
-      pos: -10.5,-0.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 631
-    components:
-    - type: Transform
+      rot: 1.5707963267948966 rad
       pos: -9.5,-5.5
       parent: 1
     - type: Physics
@@ -534,7 +546,8 @@ entities:
   - uid: 632
     components:
     - type: Transform
-      pos: -8.5,2.5
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-11.5
       parent: 1
     - type: Physics
       canCollide: False
@@ -817,44 +830,26 @@ entities:
       parent: 1
 - proto: BaseWeaponTurretGargoyle
   entities:
-  - uid: 182
+  - uid: 628
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,11.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleIds:
-      - 274
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 2.251474735072685 rad: 4.9218284906240095 rad
 - proto: BaseWeaponTurretLancer
   entities:
-  - uid: 151
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 11.5,-0.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleIds:
-      - 274
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 1.6634721286027596 rad: 3.062976716328125 rad
   - uid: 165
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,-0.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleIds:
-      - 274
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 4.6983291158384946 rad: 3.062976716328125 rad
+  - uid: 325
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 11.5,-0.5
+      parent: 1
 - proto: Bed
   entities:
   - uid: 262
@@ -2347,27 +2342,19 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 189
-        - 255
-        - 254
-        - 188
-        - 63
-        - 51
-        - 182
-        - 151
-        - 165
+        - invalid
+        - invalid
+        - invalid
+        - invalid
+        - invalid
+        - invalid
         machinegun:
-        - 189
-        - 255
-        - 254
-        - 188
-        - 63
-        - 51
-        light 'Lancer' swarmrocket platform:
-        - 151
-        - 165
-        heavy 'Gargoyle' cruise missile launcher:
-        - 182
+        - invalid
+        - invalid
+        - invalid
+        - invalid
+        - invalid
+        - invalid
 - proto: CrewMonitoringServer
   entities:
   - uid: 261
@@ -3130,7 +3117,7 @@ entities:
       pos: 3.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 197500
+      startingCharge: 197000
     - type: DeviceLinkSink
       links:
       - 200
@@ -3170,7 +3157,7 @@ entities:
       pos: -2.5,5.5
       parent: 1
     - type: Battery
-      startingCharge: 197500
+      startingCharge: 197000
     - type: DeviceLinkSink
       links:
       - 200
@@ -4273,57 +4260,35 @@ entities:
     - type: Transform
       pos: -2.5,-11.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 5.3930673886624785 rad: 3.6293318286235396 rad
-  - uid: 63
+  - uid: 189
     components:
     - type: Transform
       pos: 3.5,-11.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 0.40237874348336217 rad: 3.6293318286235388 rad
-  - uid: 188
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 9.5,2.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 2.0064960719458207 rad: 4.059658426532461 rad
-  - uid: 189
+  - uid: 254
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -8.5,2.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 3.3586234622910975 rad: 4.059658426532461 rad
-  - uid: 254
+  - uid: 344
     components:
     - type: Transform
-      pos: 10.5,-5.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 1.1443260078542725 rad: 3.052533220880558 rad
-  - uid: 255
-    components:
-    - type: Transform
+      rot: -1.5707963267948966 rad
       pos: -9.5,-5.5
       parent: 1
-    - type: PointCannon
-      linkedConsoleId: 274
-      obstructedRanges:
-      - 5.227918732034549 rad: 3.0525332208805582 rad
+  - uid: 629
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 9.5,2.5
+      parent: 1
+  - uid: 631
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 10.5,-5.5
+      parent: 1
 - proto: WindoorSecure
   entities:
   - uid: 288
