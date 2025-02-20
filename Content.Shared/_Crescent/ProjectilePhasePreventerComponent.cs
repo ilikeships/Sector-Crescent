@@ -20,4 +20,6 @@ public sealed partial class ProjectilePhasePreventComponent : Component
 {
     public Vector2 start = Vector2.Zero;
     public Vector2 end = Vector2.Zero;
+
+    public bool MayCollide = false;
 }

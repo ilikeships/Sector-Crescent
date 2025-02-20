@@ -88,7 +88,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         else
             comp.end = Vector2.Zero;
     }
-    ValueTask ProcessBucketAsync(RaycastThreadBucketHolder bucket, CancellationToken cancellationToken)
+    private void ProcessBucket(RaycastThreadBucketHolder bucket, ParallelLoopState state, long indexer)
     {
         foreach (var raycast in bucket.buckets)
         {
@@ -127,7 +127,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
             raycast.phaseComp.start = end;
         }
-        return ValueTask.CompletedTask;
+
     }
 
     public override void Update(float frametime)
@@ -138,6 +138,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         var fixtureQuery = GetEntityQuery<FixturesComponent>();
         var physQuery = GetEntityQuery<PhysicsComponent>();
         var metaQuery = GetEntityQuery<MetaDataComponent>();
+        var phaseQuery = GetEntityQuery<ProjectilePhasePreventComponent>();
         var threadBuckets = new List<RaycastThreadBucketHolder>();
         var fillingBucket = new RaycastThreadBucketHolder();
         fillingBucket.fixtureQuery = fixtureQuery;
@@ -190,12 +191,16 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         eventQueue = new();
         //Logger.Error($"Processing {threadBuckets.Count} buckets");
-        Parallel.ForEachAsync(threadBuckets, ProcessBucketAsync);
-        Logger.Error($"Processing {eventQueue.Count} events!");
+        Parallel.ForEach(threadBuckets, ProcessBucket);
+        if(eventQueue.Count != 0)
+            Logger.Error($"Processing {eventQueue.Count} events!");
         while (eventQueue.TryDequeue(out var eventData))
         {
+            var comp = phaseQuery.GetComponent(eventData.owner);
+            comp.MayCollide = true;
             RaiseLocalEvent(ref eventData.collideEvent);
-            RemComp<ProjectilePhasePreventComponent>(eventData.owner);
+            //Logger.Error($"Tried to collide with {MetaData(eventData.collideEvent.OtherEntity).EntityName}");
+            comp.MayCollide = false;
         }
 
 
