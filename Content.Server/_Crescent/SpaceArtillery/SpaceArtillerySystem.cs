@@ -385,6 +385,7 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
     private void OnProjectileHit(EntityUid uid, ShipWeaponProjectileComponent component, ProjectileHitEvent hitEvent)
     {
+        
         var grid = Transform(hitEvent.Target).GridUid;
         if (grid == null)
             return;
@@ -401,5 +402,6 @@ public sealed partial class SpaceArtillerySystem : EntitySystem
 
             _recoilSystem.KickCamera(playerEnt, vector.Normalized() * (float) hitEvent.Damage.GetTotal() / BIG_DAMAGE * BIG_DAMGE_KICK);
         }
+        
     }
 }
