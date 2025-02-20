@@ -285,7 +285,7 @@ public abstract partial class SharedGunSystem : EntitySystem
                 shots = Math.Min(shots, 1 - gun.ShotCounter);
                 break;
             case SelectiveFire.Burst:
-                shots = Math.Min(shots, gun.ShotsPerBurstModified - gun.ShotCounter);
+                shots = gun.ShotsPerBurstModified;
                 break;
             case SelectiveFire.FullAuto:
                 break;
@@ -348,18 +348,48 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
         }
 
-        // Shoot confirmed - sounds also played here in case it's invalid (e.g. cartridge already spent).
-        Shoot(gunUid, gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
-        var shotEv = new GunShotEvent(user, ev.Ammo);
-        RaiseLocalEvent(gunUid, ref shotEv);
-
-        if (userImpulse && TryComp<PhysicsComponent>(user, out var userPhysics))
+        if (ev.Ammo.Count > 0 && gun.SelectedMode == SelectiveFire.Burst)
         {
-            if (_gravity.IsWeightless(user, userPhysics))
-                CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
-        }
+            var shotCounter = 0;
+            gun.NextFire = TimeSpan.FromSeconds(curTime.TotalSeconds + gun.BurstNextFireCooldown.TotalSeconds);
+            foreach (var ammo in ev.Ammo)
+            {
+                shotCounter++;
+                Timer.Spawn(TimeSpan.FromMilliseconds(gun.BurstShotCooldown.TotalMilliseconds*shotCounter), () =>
+                {
+                    var tempList = new List<(EntityUid? Entity, IShootable Shootable)>();
+                    tempList.Add(ammo);
 
-        Dirty(gunUid, gun);
+                    Shoot(gunUid, gun, tempList, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
+                    var shotEv = new GunShotEvent(user, tempList);
+                    RaiseLocalEvent(gunUid, ref shotEv);
+
+                    if (userImpulse && TryComp<PhysicsComponent>(user, out var userPhysics))
+                    {
+                        if (_gravity.IsWeightless(user, userPhysics))
+                            CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
+                    }
+                });
+            }
+            Dirty(gunUid, gun);
+        }
+        else
+        {
+
+            // Shoot confirmed - sounds also played here in case it's invalid (e.g. cartridge already spent).
+            Shoot(gunUid, gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user,
+                throwItems: attemptEv.ThrowItems);
+            var shotEv = new GunShotEvent(user, ev.Ammo);
+            RaiseLocalEvent(gunUid, ref shotEv);
+
+            if (userImpulse && TryComp<PhysicsComponent>(user, out var userPhysics))
+            {
+                if (_gravity.IsWeightless(user, userPhysics))
+                    CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
+            }
+
+            Dirty(gunUid, gun);
+        }
     }
 
     public void Shoot(

@@ -232,6 +232,12 @@ public sealed partial class GunComponent : Component
     /// </summary>
     [DataField]
     public bool ClumsyProof = false;
+
+    [DataField]
+    public TimeSpan BurstShotCooldown = TimeSpan.FromMilliseconds(100);
+
+    [DataField]
+    public TimeSpan BurstNextFireCooldown = TimeSpan.FromMilliseconds(500);
 }
 
 [Flags]
