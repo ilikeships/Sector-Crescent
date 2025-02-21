@@ -6,7 +6,7 @@ where the code is present.
 
 You are granted permission to copy, modify, or make derivates solely for the purpose of submitting 
 those changes back to the Hullrot repository via Pull Requests.
-You are not permitted to distribute, publish, sublicense or sell copies unless given explicit permission 
+You are not permitted to distribute, publish, sublicense , relicense or sell copies unless given explicit permission 
 through mail from The Hullrot Development team.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
