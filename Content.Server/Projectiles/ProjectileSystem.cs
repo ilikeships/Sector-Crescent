@@ -1,6 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Effects;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared._Crescent;
 using Content.Shared.Camera;
 using Content.Shared.Damage;
 using Content.Shared.Database;
@@ -27,10 +28,10 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
     private void OnStartCollide(EntityUid uid, ProjectileComponent component, ref StartCollideEvent args)
     {
-        // This is so entities that shouldn't get a collision are ignored.
         if (args.OurFixtureId != ProjectileFixture || !args.OtherFixture.Hard
             || component.DamagedEntity || component is { Weapon: null, OnlyCollideWhenShot: true })
             return;
+        
 
         // Delete ship weapons before they can do anything to stations
         if (HasComp<ShipWeaponProjectileComponent>(uid) && HasComp<BlockShipWeaponProjectileGridComponent>(Transform(args.OtherEntity).GridUid))
@@ -38,6 +39,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             QueueDel(uid);
             return;
         }
+
 
         var target = args.OtherEntity;
         // it's here so this check is only done once before possible hit
@@ -48,7 +50,6 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             SetShooter(uid, component, target);
             return;
         }
-
         var ev = new ProjectileHitEvent(component.Damage, target, component.Shooter);
         RaiseLocalEvent(uid, ref ev);
 
