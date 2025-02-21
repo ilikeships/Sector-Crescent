@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Content.Server._FTL.HeatSeeking;
+namespace Content.Server._Crescent.HeatSeeking;
 
 /// <summary>
 /// This is used for...
@@ -21,11 +21,11 @@ public sealed partial class HeatSeekingComponent : Component
     /// If null it will default to 100.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public Angle? RotationSpeed = 100f;
+    public Angle? RotationSpeed = 50f;
 
     /// <summary>
     /// What guidance algorithm should this missile use?
-    /// Options are "ProportionalNavigation" and "PurePursuit".
+    /// Options are "PredictiveGuidance" and "PurePursuit".
     /// Defaults to "PredictiveGuidance".
     /// </summary>
     [DataField]
@@ -69,10 +69,8 @@ public sealed partial class HeatSeekingComponent : Component
 
     public float oldDistance;
 
-
     public Vector2 oldPosition;
 }
-
 
 public enum GuidanceType
 {
