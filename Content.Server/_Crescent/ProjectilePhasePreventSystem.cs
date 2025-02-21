@@ -6,10 +6,12 @@ using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Shared._Crescent;
+using Content.Shared.Physics;
 using Content.Shared.Projectiles;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 public sealed class ProjectilePhasePreventerSystem : EntitySystem
@@ -17,7 +19,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _phys = default!;
     [Dependency] private readonly SharedTransformSystem _trans = default!;
     // im so sorry , SPCR 2025
-    ConcurrentQueue<CollisionEventArgsHolder> eventQueue = new();
+    ConcurrentQueue<StartCollideEvent> eventQueue = new();
 
     internal sealed class RaycastBucket
     {
@@ -41,26 +43,6 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         }
     }
 
-    internal sealed class CollisionEventArgsHolder
-    {
-        public EntityUid owner;
-        public EntityUid target;
-        public string ownerFixtureKey;
-        public string targetFixtureKey;
-        public Robust.Shared.Physics.Dynamics.Fixture ownerFixture;
-        public Robust.Shared.Physics.Dynamics.Fixture targetFixture;
-        public Vector2 hitPosition;
-        public StartCollideEvent collideEvent;
-
-        public CollisionEventArgsHolder(string ownerKey,string targetKey, Robust.Shared.Physics.Dynamics.Fixture ownerFix, Robust.Shared.Physics.Dynamics.Fixture targetFix)
-        {
-            ownerFixtureKey = ownerKey;
-            targetFixtureKey = targetKey;
-            ownerFixture = ownerFix;
-            targetFixture = targetFix;
-        }
-
-    }
     internal sealed class RaycastThreadBucketHolder
     {
         public float medianCastArea;
@@ -93,21 +75,19 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         foreach (var raycast in bucket.buckets)
         {
             var owner = raycast.owner;
-            if (TerminatingOrDeleted(owner))
-                continue;
             var start = raycast.start;
             var end = raycast.end;
-            var angle = (end - start);
+            var angle = (end - start).Normalized();
             var map = raycast.map;
             var physComp = raycast.physComp;
-            CollisionRay ray = new CollisionRay(start, angle, physComp.CollisionMask);
+            CollisionRay ray = new CollisionRay(start, angle, (int)(CollisionGroup.BulletImpassable | CollisionGroup.Impassable));
 
-            foreach (var obj in _phys.IntersectRay(map, ray, angle.Length(), owner, false))
+            foreach (var obj in _phys.IntersectRay(map, ray, (end - start).Length(), owner, false))
             {
                 if (obj.HitEntity == raycast.shooter)
                     continue;
-                //if (TerminatingOrDeleted(obj.HitEntity))
-                //    continue;
+                if (TerminatingOrDeleted(obj.HitEntity))
+                    continue;
                 if (!bucket.physQuery.TryGetComponent(obj.HitEntity, out var targPhysComp))
                     continue;
                 if (!bucket.fixtureQuery.TryGetComponent(obj.HitEntity, out var targFixtComp))
@@ -115,13 +95,12 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                 var ev = new StartCollideEvent(owner, obj.HitEntity, raycast.fixtureKey,
                     targFixtComp.Fixtures.Keys.First(), raycast.fixture, targFixtComp.Fixtures.Values.First(), physComp,
                     targPhysComp, obj.HitPos);
-                CollisionEventArgsHolder holder = new(raycast.fixtureKey, targFixtComp.Fixtures.Keys.First(),
-                    raycast.fixture, targFixtComp.Fixtures.Values.First());
-                holder.owner = owner;
-                holder.target = obj.HitEntity;
-                holder.hitPosition = obj.HitPos;
-                holder.collideEvent = ev;
-                eventQueue.Enqueue(holder);
+                var revEv = new StartCollideEvent(obj.HitEntity, owner, ev.OtherFixtureId, ev.OurFixtureId,
+                    ev.OtherFixture, ev.OurFixture, targPhysComp, physComp, obj.HitPos);
+                
+
+                eventQueue.Enqueue(ev);
+                eventQueue.Enqueue(revEv);
             }
 
 
@@ -147,11 +126,9 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         while (enumerator.MoveNext(out var owner, out var phaseComp, out var physComp, out var fixtComp,
                    out var projComp))
         {
-
             var map = _trans.GetMapId(owner);
             if (map == MapId.Nullspace)
             {
-                RemComp<ProjectilePhasePreventComponent>(owner);
                 continue;
             }
 
@@ -167,9 +144,9 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
             var start = phaseComp.start;
             var end = phaseComp.end;
-            var angle = (end - start);
-            var length = angle.Length();
-            var surfaceArea = length * length;
+            if (start == end)
+                continue;
+            var surfaceArea = (end - start).Length()*5;
             //Logger.Error($"Processing path: starting at {start.X}, {start.Y} and ending at {end.X}, {end.Y}");
             var bucket = new RaycastBucket(fixtComp.Fixtures.Keys.First(), fixtComp.Fixtures.Values.First(), physComp, phaseComp)
             { end = end, start = start };
@@ -190,17 +167,14 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         }
 
         eventQueue = new();
-        //Logger.Error($"Processing {threadBuckets.Count} buckets");
+        Logger.Error($"Processing {threadBuckets.Count} buckets");
         Parallel.ForEach(threadBuckets, ProcessBucket);
-        if(eventQueue.Count != 0)
-            Logger.Error($"Processing {eventQueue.Count} events!");
+        //if(eventQueue.Count != 0)
+        //    Logger.Error($"Processing {eventQueue.Count} events!. Actual bullet count {eventQueue.Count/2}");
         while (eventQueue.TryDequeue(out var eventData))
         {
-            var comp = phaseQuery.GetComponent(eventData.owner);
-            comp.MayCollide = true;
-            RaiseLocalEvent(ref eventData.collideEvent);
+            RaiseLocalEvent(eventData.OurEntity,ref eventData, true);
             //Logger.Error($"Tried to collide with {MetaData(eventData.collideEvent.OtherEntity).EntityName}");
-            comp.MayCollide = false;
         }
 
 
