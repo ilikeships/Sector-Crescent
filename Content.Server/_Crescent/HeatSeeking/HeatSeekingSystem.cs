@@ -23,7 +23,7 @@ public sealed class HeatSeekingSystem : EntitySystem
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
             if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
-            if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } else { comp.Speed = comp.TopSpeed; } // accelerate to top speed once target is locked
+            if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } // accelerate to top speed once target is locked
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
             if (comp.TargetEntity.HasValue) // if the missile has a target, run its guidance algorithm
             {
