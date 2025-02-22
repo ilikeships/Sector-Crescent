@@ -25,8 +25,6 @@ public sealed class HeatSeekingSystem : EntitySystem
             if (TryComp<ProjectileComponent>(uid, out var projectile) && TryComp<GunComponent>(projectile.Shooter, out var shooterGunComp))
             {
                 comp.InitialSpeed = shooterGunComp.ProjectileSpeed;
-                if (TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform)) { Console.WriteLine($"ShooterID: ", shooterTransform.GridUid); }
-                
             }
             if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
             if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } // accelerate to top speed once target is locked
