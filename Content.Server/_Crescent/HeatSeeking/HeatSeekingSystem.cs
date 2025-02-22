@@ -3,7 +3,7 @@ using Content.Shared.Interaction;
 using Content.Server.Shuttles.Components;
 using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
-
+using Content.Shared.Weapons.Ranged.Components;
 
 namespace Content.Server._Crescent.HeatSeeking;
 
@@ -22,6 +22,12 @@ public sealed class HeatSeekingSystem : EntitySystem
         var query = EntityQueryEnumerator<HeatSeekingComponent, TransformComponent>(); // get all heat seeking missiles
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
+            if (TryComp<ProjectileComponent>(uid, out var projectile) && TryComp<GunComponent>(projectile.Shooter, out var shooterGunComp))
+            {
+                comp.InitialSpeed = shooterGunComp.ProjectileSpeed;
+                if (TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform)) { Console.WriteLine($"ShooterID: ", shooterTransform.GridUid); }
+                
+            }
             if (comp.Speed < comp.InitialSpeed) { comp.Speed = comp.InitialSpeed; } // start at initial speed
             if (comp.Speed < comp.TopSpeed) { comp.Speed += comp.Acceleration * frameTime; } // accelerate to top speed once target is locked
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * comp.Speed); // move missile forward at current speed
@@ -38,12 +44,12 @@ public sealed class HeatSeekingSystem : EntitySystem
         }
     }
 
-    public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform) // Get the closest valid target
+    public void GetNewTarget(EntityUid uid, HeatSeekingComponent component, TransformComponent transform) // Get the best valid target
     {
         Angle closestAngle = 4;
         EntityUid? bestGrid = null;
         var shipQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>(); // get all shuttle consoles
-        while (shipQuery.MoveNext(out var shipUid, out var shipComp, out var shipXform)) // go through each grid with a shuttle console to find the closest valid target
+        while (shipQuery.MoveNext(out var shipUid, out var shipComp, out var shipXform)) // go through each existing thruster component to find the best valid target
         {
             var angle = (
                 _transform.ToMapCoordinates(shipXform.Coordinates).Position -

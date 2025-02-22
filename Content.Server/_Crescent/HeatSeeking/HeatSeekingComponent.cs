@@ -53,7 +53,7 @@ public sealed partial class HeatSeekingComponent : Component
     /// What is the missiles initial speed in m/s?
     /// </summary>
     [DataField]
-    public float InitialSpeed = 10f;
+    public float InitialSpeed = 30f;
 
     /// <summary>
     /// What is the missiles current speed in m/s?
