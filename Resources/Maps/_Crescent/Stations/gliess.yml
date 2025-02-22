@@ -8306,23 +8306,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ComputerBankATM
-  entities:
-  - uid: 1054
-    components:
-    - type: Transform
-      pos: 0.5,17.5
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        bank-ATM-cashSlot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-        board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
 - proto: ComputerPalletConsoleNFLowMarket
   entities:
   - uid: 1052
@@ -8349,6 +8332,23 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,17.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        ShipyardConsole-targetId: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+- proto: ComputerShipyardScrap
+  entities:
+  - uid: 1061
+    components:
+    - type: Transform
+      pos: -7.5,21.5
       parent: 1
     - type: ContainerContainer
       containers:
@@ -8467,15 +8467,15 @@ entities:
     - type: TargetingConsole
       cannonGroups:
         all:
-        - 717
-        - 721
-        - 954
         - 956
+        - 954
+        - 721
+        - 717
         light 'Lancer' swarmrocket platform:
-        - 717
-        - 721
-        - 954
         - 956
+        - 954
+        - 721
+        - 717
 - proto: ComputerWallmountBankATM
   entities:
   - uid: 1039
@@ -8519,6 +8519,24 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 0.5,35.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+    - type: Physics
+      canCollide: False
+  - uid: 2471
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,13.5
       parent: 1
     - type: ContainerContainer
       containers:
@@ -11222,11 +11240,6 @@ entities:
     - type: Transform
       pos: -5.5,21.5
       parent: 1
-  - uid: 1732
-    components:
-    - type: Transform
-      pos: -7.5,21.5
-      parent: 1
 - proto: PowerCellRecharger
   entities:
   - uid: 1068
@@ -12584,6 +12597,13 @@ entities:
     - type: Transform
       pos: -2.4636433,43.750423
       parent: 1
+- proto: SalvageTechfabNF
+  entities:
+  - uid: 1063
+    components:
+    - type: Transform
+      pos: 2.5,21.5
+      parent: 1
 - proto: ShinoharaBudgetVendor
   entities:
   - uid: 865
@@ -13744,13 +13764,6 @@ entities:
     - type: Transform
       pos: -6.5,-18.5
       parent: 1
-- proto: SuitStorageBasic
-  entities:
-  - uid: 1061
-    components:
-    - type: Transform
-      pos: 2.5,21.5
-      parent: 1
 - proto: SurveillanceCameraRouterGeneral
   entities:
   - uid: 1078
@@ -14006,6 +14019,13 @@ entities:
     - type: Transform
       pos: -4.5,9.5
       parent: 1
+- proto: VendingMachineSalvage
+  entities:
+  - uid: 2470
+    components:
+    - type: Transform
+      pos: 2.5,18.5
+      parent: 1
 - proto: VendingMachineSec
   entities:
   - uid: 1672
@@ -14015,7 +14035,7 @@ entities:
       parent: 1
 - proto: VendingMachineSnack
   entities:
-  - uid: 860
+  - uid: 1732
     components:
     - type: Transform
       pos: -3.5,32.5
@@ -14041,10 +14061,10 @@ entities:
       parent: 1
 - proto: VendingMachineYouTool
   entities:
-  - uid: 1063
+  - uid: 1054
     components:
     - type: Transform
-      pos: 2.5,18.5
+      pos: 0.5,17.5
       parent: 1
 - proto: WallReinforced
   entities:
