@@ -25,7 +25,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     private EntityQuery<PhysicsComponent> physQuery;
     private EntityQuery<MetaDataComponent> metaQuery;
     private EntityQuery<FixturesComponent> fixtureQuery;
-    private ISawmill sawLogs;
+    public required ISawmill sawLogs;
 
     internal sealed class RaycastBucket
     {
