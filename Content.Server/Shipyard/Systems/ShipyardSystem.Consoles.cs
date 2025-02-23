@@ -77,7 +77,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly CrescentHelperSystem _crescent = default!;
-    [Dependency] private readonly DynamicAccesSystem _dynamicAcces = default!;
 
     public void InitializeConsole()
     {
@@ -90,7 +89,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
 
         if (!_crescent.GetPlayerIdEntity(args.Actor, out var idCardUid) ||
-            !TryComp<AccessComponent>(idCardUid, out var accesComp) ||
             !TryComp<IdCardComponent>(idCardUid, out var idCardComponent))
             
         {
@@ -190,26 +188,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if (deedID.ShuttleNameSuffix is not null)
-        {
-            var dynamicAcces =
-                AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
-            foreach(var accesCode in dynamicAcces.dynamicAccesCodes)
-                _dynamicAcces.AddAcces(accesCode, accesComp);
+        var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
+        HashSet<DynamicCodeHolderComponent> replicate = new();
+        replicate.Add(idCodeHolder);
+        InitializeDynamicAcces(shuttle.Owner, replicate);
 
-
-            if (idCardComponent.FullName != null)
-            {
-                var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-                while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
-                {
-                    if (xform.GridUid != shuttle.Owner)
-                        continue;
-                    consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
-                    consoleComponent.keyToAccesMapping = dynamicAcces.keyToAccesMapping;
-                }
-            }
-        }
+        
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);

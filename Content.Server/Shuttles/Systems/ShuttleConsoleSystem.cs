@@ -1,3 +1,4 @@
+
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using Content.Server._Crescent.DynamicAcces;
@@ -80,6 +81,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly IPrototypeManager _manager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly DynamicCodeSystem _codes = default!;
 
     private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
@@ -178,7 +180,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     private void OnConsoleReAnchor(EntityUid uid, ShuttleConsoleComponent comp, ReAnchorEvent args)
     {
-        if (TryComp<GridDynamicAccesComponent>(args.Grid, out var accesComp))
+        if (TryComp<DynamicCodeHolderComponent>(args.Grid, out var accesComp))
         {
             comp.accesState = ShuttleConsoleAccesState.NoAcces;
         }
@@ -196,22 +198,22 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (comp.targetIdSlot.Item is null)
             return;
-        if (comp.keyToAccesMapping is null)
+        var grid = _transform.GetGrid(uid);
+        if (grid is null)
+            return;
+        if (!TryComp<DynamicCodeHolderComponent>(grid, out var dynCodes))
             return;
         if (!TryComp<AccessComponent>(comp.targetIdSlot.Item, out var accesComp))
             return;
-        var accesKey = _crescent.EnumEmployeeToString(args.chosenOption);
-        if (!comp.keyToAccesMapping.ContainsKey(accesKey))
+        if (!dynCodes.mappedCodes.ContainsKey(args.chosenOption))
             return;
-        var accesCode = comp.keyToAccesMapping[accesKey];
-#pragma warning disable CA1868 // Unnecessary call to 'Contains(item)'
-        if (accesComp.Tags.Contains(accesCode))
+        var accesCodes = dynCodes.mappedCodes[args.chosenOption];
+        var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(comp.targetIdSlot.Item.Value);
+        foreach (var key in accesCodes)
         {
-            accesComp.Tags.Remove(accesCode);
+            _codes.AddKeyToComponent(dynIdComp, key, args.chosenOption);
         }
-        else
-            accesComp.Tags.Add(accesCode);
-#pragma warning restore CA1868 // Unnecessary call to 'Contains(item)'
+
         EntityManager.DirtyEntity(comp.targetIdSlot.Item.Value);
         UpdateState(uid, comp);
     }
@@ -359,13 +361,15 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (!_crescent.getGridOfEntity(uid, out var gridId))
             return;
-        if (!TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAccesComponent))
+        if (!TryComp<DynamicCodeHolderComponent>(gridId, out var dynamicAccesComponent))
+            return;
+        if(!TryComp<DynamicCodeHolderComponent>(args.Used, out var dynIdComp))
             return;
 
         if (!TryComp<IdCardComponent>(args.Used, out var id) || !TryComp<AccessComponent>(args.Used, out var acces))
             return;
 
-        if (_dynAcces.hasSpecificAcces(dynamicAccesComponent.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], acces))
+        if (dynamicAccesComponent.mappedCodes[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], acces))
         {
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);

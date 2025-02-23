@@ -17,18 +17,11 @@ public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceM
 {
     public bool Visible = visible;
 }
-[Serializable, NetSerializable]
-public enum EmployeeOptions
-{
-    Crew,
-    Pilot,
-    Captain,
-}
 
 [Serializable, NetSerializable]
-public sealed class TryMakeEmployeeMessage(EmployeeOptions option) : BoundUserInterfaceMessage
+public sealed class TryMakeEmployeeMessage(string option) : BoundUserInterfaceMessage
 {
-    public EmployeeOptions chosenOption = option;
+    public string chosenOption = option;
 }
 
 [Serializable, NetSerializable]

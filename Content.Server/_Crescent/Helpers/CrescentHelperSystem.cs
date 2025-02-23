@@ -14,8 +14,6 @@ public sealed class CrescentHelperSystem : EntitySystem
 {
 
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
-
-    public readonly List<string> EmployeeAccesNamesList = new List<string> { "Captain", "Pilot", "Crew" };
     // Used for getting ID off any entity
     public bool GetPlayerId(EntityUid uid,[NotNullWhen(true)] out IdCardComponent? idCardUid)
     {
@@ -64,21 +62,6 @@ public sealed class CrescentHelperSystem : EntitySystem
     }
 
 
-
-    // Converting shuttle-related enums to strings.
-    public string EnumEmployeeToString(EmployeeOptions chosen)
-    {
-        switch (chosen)
-        {
-            case EmployeeOptions.Captain:
-                return "Captain";
-            case EmployeeOptions.Pilot:
-                return "Pilot";
-            case EmployeeOptions.Crew:
-                return "Crew";
-        }
-        return "Not implemented. Add a new case for EnumEmployeeToString switch(chosen)";
-    }
 
 
     public bool getGridOfEntity(EntityUid target, [NotNullWhen(true)]out EntityUid? gridId)
