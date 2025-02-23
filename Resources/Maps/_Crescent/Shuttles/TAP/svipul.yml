@@ -425,6 +425,7 @@ entities:
   - uid: 12
     components:
     - type: Transform
+      anchored: True
       rot: 3.141592653589793 rad
       pos: -1.5,0.5
       parent: 1
@@ -433,6 +434,7 @@ entities:
   - uid: 13
     components:
     - type: Transform
+      anchored: True
       rot: 1.5707963267948966 rad
       pos: -2.5,0.5
       parent: 1
@@ -441,6 +443,7 @@ entities:
   - uid: 14
     components:
     - type: Transform
+      anchored: True
       rot: 3.141592653589793 rad
       pos: 2.5,0.5
       parent: 1
@@ -449,25 +452,34 @@ entities:
   - uid: 15
     components:
     - type: Transform
+      anchored: True
       rot: -1.5707963267948966 rad
       pos: 3.5,0.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+    - type: ApcPowerReceiver
+      powerLoad: 1
   - uid: 16
     components:
     - type: Transform
+      anchored: True
       pos: -0.5,1.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+    - type: ApcPowerReceiver
+      powerLoad: 1
   - uid: 17
     components:
     - type: Transform
+      anchored: True
       pos: 1.5,1.5
       parent: 1
     - type: Thruster
       originalPowerLoad: 1500
+    - type: ApcPowerReceiver
+      powerLoad: 1
 - proto: WallReinforced
   entities:
   - uid: 8
