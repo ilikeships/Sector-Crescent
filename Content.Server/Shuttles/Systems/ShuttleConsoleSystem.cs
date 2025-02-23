@@ -366,10 +366,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if(!TryComp<DynamicCodeHolderComponent>(args.Used, out var dynIdComp))
             return;
 
-        if (!TryComp<IdCardComponent>(args.Used, out var id) || !TryComp<AccessComponent>(args.Used, out var acces))
-            return;
-
-        if (dynamicAccesComponent.mappedCodes[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], acces))
+        if (dynamicAccesComponent.mappedCodes[_crescent.EmployeeAccesNamesList.]
         {
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
