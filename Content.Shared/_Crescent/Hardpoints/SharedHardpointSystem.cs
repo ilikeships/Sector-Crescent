@@ -28,8 +28,8 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (TryAnchorToAnyHardpoint(uid, comp))
             return;
-        Logger.Error(
-            $"Hardpoint-only weapon had no hardpoint under itself at mapInit. {uid} , {MetaData(uid).EntityName}");
+        //Logger.Error(
+        //    $"Hardpoint-only weapon had no hardpoint under itself at mapInit. {uid} , {MetaData(uid).EntityName}");
     }
     public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
     {
@@ -37,7 +37,7 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (component.anchoredTo is null)
         {
-            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
+            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids(nullable) properly , SPCR 2025
             Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
