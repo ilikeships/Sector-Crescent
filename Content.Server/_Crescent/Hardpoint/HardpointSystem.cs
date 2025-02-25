@@ -110,7 +110,10 @@ public sealed class HardpointSystem : SharedHardpointSystem
         foreach(var grid in QueuedGrids)
         {
             if (TerminatingOrDeleted(grid))
+            {
+                QueuedGrids.Remove(grid);
                 continue;
+            }
             HashSet<Entity<HardpointComponent>> lookupList = new();
             _lookupSystem.GetGridEntities(grid, lookupList);
             foreach (var entity in lookupList)
@@ -121,8 +124,8 @@ public sealed class HardpointSystem : SharedHardpointSystem
                     continue;
                 // This is just for turret-cannons!
                 if (!TryComp<PointCannonComponent>(entity.Comp.anchoring.Value, out var compx))
-                    return;
-                _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, null, entity.Comp.CannonRangeCheckRange);
+                    continue;
+                _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, compx, entity.Comp.CannonRangeCheckRange);
             }
         }
         QueuedGrids.Clear();
