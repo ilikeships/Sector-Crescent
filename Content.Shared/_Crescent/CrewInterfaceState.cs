@@ -27,19 +27,14 @@ public sealed class TryMakeEmployeeMessage(string option) : BoundUserInterfaceMe
 [Serializable, NetSerializable]
 public sealed class CrewInterfaceState
 {
-    public string IdName;
     public bool hasId;
-    public bool isCrew;
-    public bool isPilot;
-    public bool isCaptain;
+    public string IdName;
+    public HashSet<string>? IdCodes;
 
 
-    public CrewInterfaceState(bool isCrew, bool isPilot, bool isCaptain, bool hasId,string name)
+    public CrewInterfaceState(string name, HashSet<string>? codes)
     {
-        this.hasId = hasId;
         IdName = name;
-        this.isCaptain = isCaptain;
-        this.isCrew = isCrew;
-        this.isPilot = isPilot;
+        IdCodes = codes;
     }
 }

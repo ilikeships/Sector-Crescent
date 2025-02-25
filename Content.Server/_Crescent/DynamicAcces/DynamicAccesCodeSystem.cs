@@ -1,7 +1,11 @@
 using System.Linq;
 using Content.Server._Crescent.Helpers;
 using Content.Shared._Crescent;
+using Content.Shared._Crescent.DynamicCodes;
 using FastAccessors;
+using Microsoft.CodeAnalysis;
+using Robust.Server.GameObjects;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -10,10 +14,13 @@ namespace Content.Server._Crescent.DynamicAcces;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class DynamicCodeSystem : EntitySystem
+public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 {
     [Dependency] private readonly CrescentHelperSystem _helpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly TransformSystem _transforms = default!;
     public required Random _randomGenerator;
     // Keeps track of instances for every key. If you do not implement support keys wont be recycled.
     private Dictionary<int, int> instancesPerKey = new();
@@ -27,38 +34,39 @@ public sealed class DynamicCodeSystem : EntitySystem
         _randomGenerator = _random.GetRandom();
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentAdd>(onAdd);
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
+        SubscribeLocalEvent<DynamicAccesGridInitializer, ComponentAdd>(onAdd);
     }
 
-    public bool hasKey(int key, DynamicCodeHolderComponent component)
-    {
-        if (component.codes.Contains(key))
-            return true;
-        return false;
-    }
 
-    public bool hasKey(HashSet<int> keys, DynamicCodeHolderComponent component)
+    private void onAdd(EntityUid grid, DynamicAccesGridInitializer component, ComponentAdd eventHandler)
     {
-        foreach (var key in keys)
+        var prototype = _prototypes.Index(component.accesMapping);
+        var codeHolder= new DynamicCodeHolderComponent();
+        HashSet<Entity<DynamicCodeHolderComponent>> targets = new();
+        foreach(var (key, targetProtos) in prototype.accesIdentifierToEntity)
         {
-            if (component.codes.Contains(key))
-                return true;
+            var code = retrieveKey();
+            AddKeyToComponent(codeHolder, code, key);
+            foreach (var prototypeId in targetProtos)
+            {
+                if (!_prototypes.TryIndex(prototypeId, out var _))
+                {
+                    Logger.Error($"Could not find prototype {prototypeId} for AccesMapping {component.accesMapping}");
+                    continue;
+                }
+
+                foreach (var target in targets)
+                {
+                    var meta = MetaData(target);
+                    if (meta.EntityPrototype is not null && meta.EntityPrototype != prototypeId)
+                        continue;
+                    AddKeyToComponent(target.Comp, code, null);
+                }
+            }
+
         }
+        RemComp<DynamicAccesGridInitializer>(grid);
 
-        return false;
-    }
-
-    public bool hasKey(int key, EntityUid owner)
-    {
-        if(!TryComp<DynamicCodeHolderComponent>(owner, out var codeHolder))
-            return false;
-        return hasKey(key, codeHolder);
-    }
-
-    public bool hasKey(HashSet<int> keys, EntityUid owner)
-    {
-        if (!TryComp<DynamicCodeHolderComponent>(owner, out var codeHolder))
-            return false;
-        return hasKey(keys, codeHolder);
     }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentAdd args)
     {
@@ -67,7 +75,7 @@ public sealed class DynamicCodeSystem : EntitySystem
             if (!instancesPerKey.ContainsKey(key))
                 instancesPerKey.Add(key, 0);
             if (!existingKeys.Contains(key))
-                continue;
+                existingKeys.Add(key);
             instancesPerKey[key]++;
         }
     }
@@ -80,14 +88,16 @@ public sealed class DynamicCodeSystem : EntitySystem
             if (instancesPerKey[key] <= 0)
             {
                 instancesPerKey.Remove(key);
-
+                freeKeys.Add(key);
             }
         }
     }
 
-    public void AddKeyToComponent(DynamicCodeHolderComponent component, int key, string identifier)
+    public void AddKeyToComponent(DynamicCodeHolderComponent component, int key, string? identifier)
     {
         component.codes.Add(key);
+        if (identifier is null)
+            return;
         if(!component.mappedCodes.ContainsKey(identifier))
             component.mappedCodes.Add(identifier, new HashSet<int>());
         component.mappedCodes[identifier].Add(key);

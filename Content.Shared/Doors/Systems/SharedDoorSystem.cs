@@ -1,5 +1,7 @@
 using System.Linq;
+using Content.Server._Crescent.Helpers;
 using Content.Shared._Crescent;
+using Content.Shared._Crescent.DynamicCodes;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
@@ -43,6 +45,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
     [Dependency] private readonly PryingSystem _pryingSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] private readonly SharedDynamicCodeSystem _codes = default!;
+    [Dependency] protected readonly CrescentHelperSystem _helpers = default!;
 
     [ValidatePrototypeId<TagPrototype>]
     public const string DoorBumpTag = "DoorBumpOpener";
@@ -655,16 +659,12 @@ public abstract partial class SharedDoorSystem : EntitySystem
         var isExternal = access.AccessLists.Any(list => list.Contains("External"));
 
         var gridId = Transform(uid).GridUid;
-
-        if(gridId is not null && TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces) && dynamicAcces.dynamicAccesCodes.Count != 0)
+        if(TryComp<DynamicCodeHolderComponent>(uid, out var codeHolder))
         {
-            var userAccesTags = _accessReaderSystem.FindAccessTags(user.Value);
-            if ((dynamicAcces.dynamicAccesCodes.Intersect(userAccesTags)).Any())
-                return true;
-            
-            return false;
+            if (!_helpers.GetPlayerIdEntity(user.Value, out var playerId))
+                return false;
+            return _codes.hasAllKeys(codeHolder.codes, playerId.Value);
         }
-
         return AccessType switch
         {
             // Some game modes modify access rules.

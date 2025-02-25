@@ -8,7 +8,7 @@ using Content.Shared.Shuttles.BUIStates;
 namespace Content.Server._Crescent.Helpers;
 
 /// <summary>
-/// This handles... helpers! 
+/// This handles... helpers!
 /// </summary>
 public sealed class CrescentHelperSystem : EntitySystem
 {
