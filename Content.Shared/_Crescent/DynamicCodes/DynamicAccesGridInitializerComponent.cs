@@ -7,8 +7,8 @@ namespace Content.Shared._Crescent.DynamicCodes;
 /// Uses the mapping to add the dynamic codes to each relevant entity along with the component needed
 /// </summary>
 [RegisterComponent]
-public sealed partial class DynamicAccesGridInitializer : Component
+public sealed partial class DynamicAccesGridInitializerComponent : Component
 {
     [DataField("accesMapping", customTypeSerializer: typeof(PrototypeIdSerializer<ShipDynamicAccesMappingPrototype>))]
-    public ProtoId<ShipDynamicAccesMappingPrototype> accesMapping = default!;
+    public string accesMapping = default!;
 }

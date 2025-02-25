@@ -34,13 +34,13 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
         _randomGenerator = _random.GetRandom();
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentAdd>(onAdd);
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
-        SubscribeLocalEvent<DynamicAccesGridInitializer, ComponentAdd>(onAdd);
+        SubscribeLocalEvent<DynamicAccesGridInitializerComponent, ComponentAdd>(onAdd);
     }
 
 
-    private void onAdd(EntityUid grid, DynamicAccesGridInitializer component, ComponentAdd eventHandler)
+    private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, ComponentAdd eventHandler)
     {
-        var prototype = _prototypes.Index(component.accesMapping);
+        var prototype = _prototypes.Index<ShipDynamicAccesMappingPrototype>(component.accesMapping);
         var codeHolder= new DynamicCodeHolderComponent();
         HashSet<Entity<DynamicCodeHolderComponent>> targets = new();
         foreach(var (key, targetProtos) in prototype.accesIdentifierToEntity)
@@ -65,7 +65,7 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
             }
 
         }
-        RemComp<DynamicAccesGridInitializer>(grid);
+        RemComp<DynamicAccesGridInitializerComponent>(grid);
 
     }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentAdd args)
