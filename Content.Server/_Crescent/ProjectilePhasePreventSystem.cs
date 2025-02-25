@@ -99,6 +99,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                 if (!fixtureQuery.TryGetComponent(obj.HitEntity, out var targFixtComp))
                     continue;
                 var targetGrid = _trans.GetGrid(obj.HitEntity);
+                if (targetGrid is not null && targetGrid == raycast.projectileGrid)
+                    continue;
                 var ev = new StartCollideEvent(owner, obj.HitEntity, raycast.fixtureKey,
                     targFixtComp.Fixtures.Keys.First(), raycast.fixture, targFixtComp.Fixtures.Values.First(), physComp,
                     targPhysComp, obj.HitPos);
@@ -153,6 +155,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
             bucket.start = phaseComp.start;
             bucket.end = phaseComp.end;
             bucket.map = map;
+            if(projComp.Shooter is not null)
+                bucket.projectileGrid = Transform(projComp.Shooter.Value).GridUid;
             //Logger.Error($"Surface area is {surfaceArea}");
             fillingBucket.rayCount++;
             rayCount++;
