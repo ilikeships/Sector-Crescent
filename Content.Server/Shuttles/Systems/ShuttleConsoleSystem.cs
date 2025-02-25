@@ -384,7 +384,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Authorized to console as pilot.", uid, args.User);
             UpdateState(uid, component);
-            return;
         }
 
 
