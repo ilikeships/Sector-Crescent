@@ -168,7 +168,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         eventQueue = new();
         //Logger.Error($"Processing {threadBuckets.Count} buckets");
-        if(rayCount > 500)
+        if(rayCount > 150)
             sawLogs.Info($"Processing {rayCount} raycasts.");
         Parallel.ForEach(threadBuckets, ProcessBucket);
         

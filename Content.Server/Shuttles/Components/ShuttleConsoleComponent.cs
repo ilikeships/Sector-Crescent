@@ -52,5 +52,9 @@ namespace Content.Server.Shuttles.Components
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public ShuttleConsoleAccesState accesState = ShuttleConsoleAccesState.NotDynamic;
 
+        // For dynamic ID indexing and shit.
+        public string? captainIdentifier;
+        public string? pilotIdentifier;
+
     }
 }

@@ -1,5 +1,6 @@
 
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Xml;
 using Content.Server._Crescent.DynamicAcces;
 using Content.Server._Crescent.Helpers;
@@ -361,12 +362,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (!_crescent.getGridOfEntity(uid, out var gridId))
             return;
-        if (!TryComp<DynamicCodeHolderComponent>(gridId, out var dynamicAccesComponent))
+        if (!TryComp<DynamicCodeHolderComponent>(uid, out var dynamicAccesComponent))
             return;
         if(!TryComp<DynamicCodeHolderComponent>(args.Used, out var dynIdComp))
             return;
+        if (component.captainIdentifier is null || component.pilotIdentifier is null)
+            return;
 
-        if (dynamicAccesComponent.mappedCodes[_crescent.EmployeeAccesNamesList.]
+        if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.captainIdentifier],dynIdComp))
         {
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
@@ -375,8 +378,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         }
 
-        if (_dynAcces.hasSpecificAcces(
-                dynamicAccesComponent.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], acces))
+        if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.pilotIdentifier], dynIdComp))
         {
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);

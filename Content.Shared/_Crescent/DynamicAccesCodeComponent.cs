@@ -14,7 +14,4 @@ public sealed partial class DynamicCodeHolderComponent : Component
     [AutoNetworkedField]
     public Dictionary<string, HashSet<int>> mappedCodes = new();
 
-    [AutoNetworkedField]
-    public Dictionary<int, string> keyToMap = new();
-
 }

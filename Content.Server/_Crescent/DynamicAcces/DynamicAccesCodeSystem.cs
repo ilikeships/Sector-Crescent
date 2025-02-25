@@ -29,14 +29,45 @@ public sealed class DynamicCodeSystem : EntitySystem
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
     }
 
+    public bool hasKey(int key, DynamicCodeHolderComponent component)
+    {
+        if (component.codes.Contains(key))
+            return true;
+        return false;
+    }
+
+    public bool hasKey(HashSet<int> keys, DynamicCodeHolderComponent component)
+    {
+        foreach (var key in keys)
+        {
+            if (component.codes.Contains(key))
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool hasKey(int key, EntityUid owner)
+    {
+        if(!TryComp<DynamicCodeHolderComponent>(owner, out var codeHolder))
+            return false;
+        return hasKey(key, codeHolder);
+    }
+
+    public bool hasKey(HashSet<int> keys, EntityUid owner)
+    {
+        if (!TryComp<DynamicCodeHolderComponent>(owner, out var codeHolder))
+            return false;
+        return hasKey(keys, codeHolder);
+    }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentAdd args)
     {
         foreach (var key in component.codes)
         {
             if (!instancesPerKey.ContainsKey(key))
                 instancesPerKey.Add(key, 0);
-            if(!existingKeys.Contains(key))
-                existingKeys.Add(key);
+            if (!existingKeys.Contains(key))
+                continue;
             instancesPerKey[key]++;
         }
     }
@@ -49,7 +80,6 @@ public sealed class DynamicCodeSystem : EntitySystem
             if (instancesPerKey[key] <= 0)
             {
                 instancesPerKey.Remove(key);
-                releaseKey(key);
 
             }
         }
