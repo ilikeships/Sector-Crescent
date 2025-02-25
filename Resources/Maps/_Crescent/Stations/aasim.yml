@@ -11080,6 +11080,21 @@ entities:
     - type: Transform
       pos: -1.5,-80.5
       parent: 1
+  - uid: 4650
+    components:
+    - type: Transform
+      pos: -4.5,-80.5
+      parent: 1
+  - uid: 4651
+    components:
+    - type: Transform
+      pos: -4.5,-81.5
+      parent: 1
+  - uid: 4652
+    components:
+    - type: Transform
+      pos: -4.5,-82.5
+      parent: 1
   - uid: 4657
     components:
     - type: Transform
@@ -11314,6 +11329,11 @@ entities:
     components:
     - type: Transform
       pos: 6.5,-1.5
+      parent: 1
+  - uid: 4704
+    components:
+    - type: Transform
+      pos: -5.5,-82.5
       parent: 1
 - proto: CableMV
   entities:
