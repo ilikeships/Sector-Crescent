@@ -9,6 +9,7 @@ namespace Content.Shared._Crescent.DynamicCodes;
 [RegisterComponent]
 public sealed partial class DynamicAccesGridInitializerComponent : Component
 {
-    [DataField("accesMapping", customTypeSerializer: typeof(PrototypeIdSerializer<ShipDynamicAccesMappingPrototype>))]
-    public string accesMapping = default!;
+    [DataField("accesMapping"), ViewVariables(VVAccess.ReadWrite)]
+    public string accesMapping = "";
+
 }

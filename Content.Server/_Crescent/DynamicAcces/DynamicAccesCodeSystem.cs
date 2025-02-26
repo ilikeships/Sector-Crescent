@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Crescent.Helpers;
+using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent;
 using Content.Shared._Crescent.DynamicCodes;
 using FastAccessors;
@@ -32,21 +33,30 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
     {
         base.Initialize();
         _randomGenerator = _random.GetRandom();
-        SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentAdd>(onAdd);
+        SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentInit>(onAdd);
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
-        SubscribeLocalEvent<DynamicAccesGridInitializerComponent, ComponentAdd>(onAdd);
+        SubscribeLocalEvent<DynamicAccesGridInitializerComponent, ComponentInit>(onAdd);
     }
 
 
-    private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, ComponentAdd eventHandler)
+    private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, ComponentInit eventHandler)
     {
-        var prototype = _prototypes.Index<ShipDynamicAccesMappingPrototype>(component.accesMapping);
+        if (!_prototypes.TryIndex<ShipDynamicAccesMappingPrototype>(component.accesMapping, out var prototype))
+        {
+            Logger.Error($"Failed to instanciate mapping template for {component.accesMapping}");
+            return;
+        }
+
+        Logger.Error($"Instanciating");
         var codeHolder= new DynamicCodeHolderComponent();
         HashSet<Entity<DynamicCodeHolderComponent>> targets = new();
+        _lookup.GetGridEntities(grid, targets);
         foreach(var (key, targetProtos) in prototype.accesIdentifierToEntity)
         {
             var code = retrieveKey();
             AddKeyToComponent(codeHolder, code, key);
+            Logger.Error($"Instanciated key : {key} with numeric code {code}");
+            Logger.Error($"Len of targets list is {targets.Count}");
             foreach (var prototypeId in targetProtos)
             {
                 if (!_prototypes.TryIndex(prototypeId, out var _))
@@ -58,17 +68,28 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
                 foreach (var target in targets)
                 {
                     var meta = MetaData(target);
-                    if (meta.EntityPrototype is not null && meta.EntityPrototype != prototypeId)
+                    Logger.Error($"Checking {meta.EntityName}");
+                    if (meta.EntityPrototype is not null && meta.EntityPrototype.ID != prototypeId)
                         continue;
                     AddKeyToComponent(target.Comp, code, null);
+                    Logger.Error($"Added to {meta.EntityName} the key {key} with code {code}");
                 }
             }
 
         }
-        RemComp<DynamicAccesGridInitializerComponent>(grid);
+        AddComp(grid, codeHolder);
+
+        HashSet<Entity<ShuttleConsoleComponent>> consoles = new();
+        _lookup.GetGridEntities(grid, consoles);
+        foreach (var console in consoles)
+        {
+            console.Comp.captainIdentifier = prototype.captainKey;
+            console.Comp.pilotIdentifier = prototype.pilotKey;
+        }
+        //RemComp<DynamicAccesGridInitializerComponent>(grid);
 
     }
-    private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentAdd args)
+    private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentInit args)
     {
         foreach (var key in component.codes)
         {

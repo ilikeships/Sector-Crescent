@@ -8,13 +8,21 @@ namespace Content.Shared._Crescent.DynamicCodes;
 /// <summary>
 /// This is a prototype for...
 /// </summary>
-[Prototype("ShipDynamicAccesMapping")]
+[Prototype("shipDynamicAccesMapping")]
 public sealed partial class ShipDynamicAccesMappingPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
     public string ID { get; } = default!;
 
-    [DataField]
-    public Dictionary<string, HashSet<ProtoId<EntityPrototype>>> accesIdentifierToEntity = default!;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public Dictionary<string, HashSet<string>> accesIdentifierToEntity = default!;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    // this key will be considered the captain key for the shuttle consoles on the grid
+    public string captainKey = "captain";
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    // this key will be considered the pilot key for the shuttle consoles on the grid
+    public string pilotKey = "pilot";
 }

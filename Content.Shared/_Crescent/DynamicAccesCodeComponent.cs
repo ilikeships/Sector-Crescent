@@ -8,10 +8,10 @@ namespace Content.Shared._Crescent;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DynamicCodeHolderComponent : Component
 {
-    [AutoNetworkedField]
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public HashSet<int> codes = new();
 
-    [AutoNetworkedField]
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public Dictionary<string, HashSet<int>> mappedCodes = new();
 
 }
