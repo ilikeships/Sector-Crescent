@@ -1,4 +1,6 @@
+
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Xml;
 using Content.Server._Crescent.DynamicAcces;
 using Content.Server._Crescent.Helpers;
@@ -73,13 +75,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly DeviceLinkSystem _link = default!;
     [Dependency] private readonly CrescentHelperSystem _crescent = default!;
     [Dependency] private readonly AccessSystem _acces = default!;
-    [Dependency] private readonly DynamicAccesSystem _dynAcces = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly MapSystem _maps = default!;
     [Dependency] private readonly ILogManager _logger = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly IPrototypeManager _manager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly DynamicCodeSystem _codes = default!;
 
     private ISawmill? logging;
     private EntityQuery<MetaDataComponent> _metaQuery;
@@ -149,7 +151,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                     continue;
                 comp.FaceAngle = args.TargetAngle;
             }
-        
+
     }
     private void OnComponentRemove(EntityUid uid, ShuttleConsoleComponent component, ComponentRemove args)
     {
@@ -163,14 +165,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             _itemSlotsSystem.TryEject(uid, comp.targetIdSlot, null, out var item);
         _itemSlotsSystem.SetLock(uid, SharedShuttleConsoleComponent.IdSlotName, !args.Visible);
         UpdateState(uid, comp);
-        
+
     }
     private void OnNameChange(EntityUid consoleUid, NamedModulesComponent comp, ModuleNamingChangeEvent args)
     {
         comp.ButtonNames = args.NewNames;
         Dirty(consoleUid, comp);
     }
-    
+
     private void UpdateUI(EntityUid console, ShuttleConsoleComponent comp, object args)
     {
        UpdateState(console, comp);
@@ -178,7 +180,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     private void OnConsoleReAnchor(EntityUid uid, ShuttleConsoleComponent comp, ReAnchorEvent args)
     {
-        if (TryComp<GridDynamicAccesComponent>(args.Grid, out var accesComp))
+        if (TryComp<DynamicCodeHolderComponent>(args.Grid, out var accesComp))
         {
             comp.accesState = ShuttleConsoleAccesState.NoAcces;
         }
@@ -196,22 +198,28 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (comp.targetIdSlot.Item is null)
             return;
-        if (comp.keyToAccesMapping is null)
+        var grid = _transform.GetGrid(uid);
+        if (grid is null)
             return;
-        if (!TryComp<AccessComponent>(comp.targetIdSlot.Item, out var accesComp))
+        if (!TryComp<DynamicCodeHolderComponent>(grid, out var dynCodes))
             return;
-        var accesKey = _crescent.EnumEmployeeToString(args.chosenOption);
-        if (!comp.keyToAccesMapping.ContainsKey(accesKey))
+        if (!dynCodes.mappedCodes.ContainsKey(args.chosenOption))
             return;
-        var accesCode = comp.keyToAccesMapping[accesKey];
-#pragma warning disable CA1868 // Unnecessary call to 'Contains(item)'
-        if (accesComp.Tags.Contains(accesCode))
+        var accesCodes = dynCodes.mappedCodes[args.chosenOption];
+        var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(comp.targetIdSlot.Item.Value);
+        if (_codes.hasAllKeys(accesCodes, dynIdComp))
         {
-            accesComp.Tags.Remove(accesCode);
+            foreach(var key in accesCodes)
+                _codes.RemoveKeyFromComponent(dynIdComp, key, args.chosenOption);
         }
         else
-            accesComp.Tags.Add(accesCode);
-#pragma warning restore CA1868 // Unnecessary call to 'Contains(item)'
+        {
+            foreach (var key in accesCodes)
+            {
+                _codes.AddKeyToComponent(dynIdComp, key, args.chosenOption);
+            }
+        }
+
         EntityManager.DirtyEntity(comp.targetIdSlot.Item.Value);
         UpdateState(uid, comp);
     }
@@ -328,7 +336,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             deedComp.ShuttleName = MetaData(gridUid).EntityName;
             DirtyEntity(gridUid);
 
-            
+
         }
 
         foreach (var (_, key) in uis)
@@ -359,13 +367,14 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (!_crescent.getGridOfEntity(uid, out var gridId))
             return;
-        if (!TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAccesComponent))
+        if (!TryComp<DynamicCodeHolderComponent>(gridId, out var dynamicAccesComponent))
+            return;
+        if(!TryComp<DynamicCodeHolderComponent>(args.Used, out var dynIdComp))
+            return;
+        if (component.captainIdentifier is null || component.pilotIdentifier is null)
             return;
 
-        if (!TryComp<IdCardComponent>(args.Used, out var id) || !TryComp<AccessComponent>(args.Used, out var acces))
-            return;
-
-        if (_dynAcces.hasSpecificAcces(dynamicAccesComponent.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], acces))
+        if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.captainIdentifier],dynIdComp))
         {
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
@@ -374,14 +383,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         }
 
-        if (_dynAcces.hasSpecificAcces(
-                dynamicAccesComponent.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], acces))
+        if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.pilotIdentifier], dynIdComp))
         {
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Authorized to console as pilot.", uid, args.User);
             UpdateState(uid, component);
-            return;
         }
 
 
@@ -404,19 +411,17 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (args.Anchored)
         {
-            
 
-            if (
-                TryComp<GridDynamicAccesComponent>(args.Transform.GridUid, out var _comp))
+
+            if (HasComp<DynamicCodeHolderComponent>(args.Transform.GridUid))
             {
                 component.accesState = ShuttleConsoleAccesState.NoAcces;
-                component.keyToAccesMapping = _comp.keyToAccesMapping;
             }
             else
             {
                 component.accesState = ShuttleConsoleAccesState.NotDynamic;
             }
-            
+
         }
 
         UpdateState(uid, component);
@@ -484,7 +489,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 Entity = GetNetEntity(uid),
                 GridDockedWith =
                     _xformQuery.TryGetComponent(comp.DockedWith, out var otherDockXform) ?
-                    GetNetEntity(otherDockXform.GridUid) :
+                    GetNetEntity(otherDockXform.GridUid):
                     null,
             };
 
@@ -745,25 +750,29 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     public CrewInterfaceState GetCrewState(EntityUid consoleUid, ShuttleConsoleComponent shuttleConsole)
     {
-        var State = new CrewInterfaceState(false,false, false, false, "");
+        var State = new CrewInterfaceState("", null);
         if (_itemSlotsSystem.TryGetSlot(consoleUid, SharedShuttleConsoleComponent.IdSlotName, out var itemSlot) &&
             itemSlot.Item is not null)
         {
             if (!TryComp<IdCardComponent>(itemSlot.Item.Value, out var comp))
                 return State;
-            if (!TryComp<AccessComponent>(itemSlot.Item.Value, out var accesComp))
+            if (!TryComp<DynamicCodeHolderComponent>(itemSlot.Item.Value, out var dynamicAcces))
                 return State;
-            if (!_crescent.getGridOfEntity(consoleUid, out var gridId) ||
-                !TryComp<GridDynamicAccesComponent>(gridId, out var dynamicAcces))
+            var gridId = Transform(consoleUid).GridUid;
+            if (gridId is null)
+                return State;
+            if (!TryComp<DynamicCodeHolderComponent>(gridId, out var gridDynAcces))
                 return State;
             if(comp.FullName is not null)
                 State.IdName = comp.FullName;
-            State.isCaptain = _dynAcces.hasSpecificAcces(
-                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Captain)], accesComp);
-            State.isPilot = _dynAcces.hasSpecificAcces(
-                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Pilot)], accesComp);
-            State.isCrew = _dynAcces.hasSpecificAcces(
-                dynamicAcces.keyToAccesMapping[_crescent.EnumEmployeeToString(EmployeeOptions.Crew)], accesComp);
+            State.IdCodes = gridDynAcces.mappedCodes.Keys.ToHashSet();
+            State.Pressed = new HashSet<string>();
+            foreach (var key in State.IdCodes)
+            {
+                if (!_codes.hasAllKeys(gridDynAcces.mappedCodes[key], dynamicAcces))
+                    continue;
+                State.Pressed.Add(key);
+            }
             State.hasId = true;
         }
 

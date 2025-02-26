@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="NewFolder\" />
     <Folder Include="Objectives\Interfaces\" />
-    <Folder Include="_Crescent\DynamicAcces\" />
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
 </Project>

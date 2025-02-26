@@ -51,6 +51,7 @@ using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
 using Content.Shared._Crescent;
+using Content.Shared._Crescent.DynamicCodes;
 using Content.Shared._Crescent.ShipBalanceEnforcement;
 using Content.Shared.Shuttles.BUIStates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -77,7 +78,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly CrescentHelperSystem _crescent = default!;
-    [Dependency] private readonly DynamicAccesSystem _dynamicAcces = default!;
+    [Dependency] private readonly DynamicCodeSystem _codes = default!;
 
     public void InitializeConsole()
     {
@@ -90,9 +91,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
 
         if (!_crescent.GetPlayerIdEntity(args.Actor, out var idCardUid) ||
-            !TryComp<AccessComponent>(idCardUid, out var accesComp) ||
             !TryComp<IdCardComponent>(idCardUid, out var idCardComponent))
-            
+
         {
             ConsolePopup(args.Actor, Loc.GetString("shipyard-console-no-idcard"));
             PlayDenySound(uid, component);
@@ -183,34 +183,26 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
             }
+
         }
+        // dynamic grid acces initializing automatically if none is mapped in
+        if (!HasComp<DynamicCodeHolderComponent>(shuttle.Owner))
+        {
+            EnsureComp<DynamicAccesGridInitializerComponent>(shuttle.Owner);
+        }
+
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name, player);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
-        _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if (deedID.ShuttleNameSuffix is not null)
+        _metadata.SetEntityDescription(product,
+            $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
+        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
         {
-            var dynamicAcces =
-                AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList, deedID.ShuttleNameSuffix);
-            foreach(var accesCode in dynamicAcces.dynamicAccesCodes)
-                _dynamicAcces.AddAcces(accesCode, accesComp);
-
-
-            if (idCardComponent.FullName != null)
-            {
-                var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-                while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
-                {
-                    if (xform.GridUid != shuttle.Owner)
-                        continue;
-                    consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
-                    consoleComponent.keyToAccesMapping = dynamicAcces.keyToAccesMapping;
-                }
-            }
+            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
+            idCodeHolder.codes = shuttleCodes.codes;
         }
-
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
 
@@ -700,36 +692,22 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
             }
         }
-
+        // dynamic grid acces initializing automatically if none is mapped in
+        if (!HasComp<DynamicCodeHolderComponent>(shuttle.Owner))
+        {
+            EnsureComp<DynamicAccesGridInitializerComponent>(shuttle.Owner);
+        }
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name,  user);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if (deedID.ShuttleNameSuffix is not null)
+        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
         {
-            
-            var dynamicAcces = AddDynamicAccesCodes(shuttle.Owner, _crescent.EmployeeAccesNamesList,
-                deedID.ShuttleNameSuffix);
-            foreach (var accesCode in dynamicAcces.dynamicAccesCodes)
-                _dynamicAcces.AddAcces(accesCode, accesComp);
-            
-
-
-            if (idCardComponent.FullName != null)
-            {
-                var consoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-                while (consoleQuery.MoveNext(out var consoleUid, out var consoleComponent, out var xform))
-                {
-                    if (xform.GridUid != shuttle.Owner)
-                        continue;
-                    consoleComponent.accesState = ShuttleConsoleAccesState.NoAcces;
-                    consoleComponent.keyToAccesMapping = dynamicAcces.keyToAccesMapping;
-                }
-            }
+            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
+            idCodeHolder.codes = shuttleCodes.codes;
         }
-
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);

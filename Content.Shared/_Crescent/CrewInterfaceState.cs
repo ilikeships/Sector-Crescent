@@ -17,36 +17,25 @@ public sealed class SwitchedToCrewHudMessage(bool visible) : BoundUserInterfaceM
 {
     public bool Visible = visible;
 }
-[Serializable, NetSerializable]
-public enum EmployeeOptions
-{
-    Crew,
-    Pilot,
-    Captain,
-}
 
 [Serializable, NetSerializable]
-public sealed class TryMakeEmployeeMessage(EmployeeOptions option) : BoundUserInterfaceMessage
+public sealed class TryMakeEmployeeMessage(string option) : BoundUserInterfaceMessage
 {
-    public EmployeeOptions chosenOption = option;
+    public string chosenOption = option;
 }
 
 [Serializable, NetSerializable]
 public sealed class CrewInterfaceState
 {
-    public string IdName;
     public bool hasId;
-    public bool isCrew;
-    public bool isPilot;
-    public bool isCaptain;
+    public string IdName;
+    public HashSet<string>? IdCodes;
+    public HashSet<string>? Pressed;
 
 
-    public CrewInterfaceState(bool isCrew, bool isPilot, bool isCaptain, bool hasId,string name)
+    public CrewInterfaceState(string name, HashSet<string>? codes)
     {
-        this.hasId = hasId;
         IdName = name;
-        this.isCaptain = isCaptain;
-        this.isCrew = isCrew;
-        this.isPilot = isPilot;
+        IdCodes = codes;
     }
 }

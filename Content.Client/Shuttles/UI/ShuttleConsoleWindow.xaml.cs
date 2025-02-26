@@ -31,7 +31,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     public event Action<bool>? crewHudVisChange;
 
-    public event Action<EmployeeOptions>? employToggleButtonClicked;
+    public event Action<string>? employToggleButtonClicked;
 
     public Action? OnGroup1Pressed;
     public Action? OnGroup2Pressed;

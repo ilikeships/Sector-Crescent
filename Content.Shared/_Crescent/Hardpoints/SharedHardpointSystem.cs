@@ -37,8 +37,8 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (component.anchoredTo is null)
         {
-            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids(nullable) properly , SPCR 2025
-            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
+            //Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
 
@@ -61,7 +61,7 @@ public class SharedHardpointSystem : EntitySystem
     {
         if (component.anchoredTo is null)
         {
-            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
+            //Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
             return;
         }
         var hardpointComp = Comp<HardpointComponent>(component.anchoredTo.Value);
@@ -70,7 +70,7 @@ public class SharedHardpointSystem : EntitySystem
         HardpointCannonDeanchoredEvent arg = new();
         arg.CannonUid = target;
         arg.gridUid = grid;
-        RaiseLocalEvent(component.anchoredTo.Value, arg);
+        RaiseLocalEvent(hardpointUid, arg);
         component.anchoredTo = null;
         DirtyEntity(target);
         DirtyEntity(anchor);

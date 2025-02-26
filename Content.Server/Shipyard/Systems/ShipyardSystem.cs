@@ -26,7 +26,7 @@ using Content.Shared.Access;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Shipyard.Systems;
-    
+
 public sealed partial class ShipyardSystem : SharedShipyardSystem
 {
     [Dependency] private readonly IConfigurationManager _configManager = default!;
@@ -39,7 +39,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly MapLoaderSystem _map = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedMapSystem _mapping = default!;
-    [Dependency] private readonly DynamicAccesSystem _gridAcces = default!;
+    [Dependency] private readonly DynamicCodeSystem _gridAcces = default!;
 
     public MapId? ShipyardMap { get; private set; }
     private float _shuttleIndex;
@@ -63,23 +63,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeLocalEvent<StationDeedSpawnerComponent, MapInitEvent>(OnInitDeedSpawner);
         SubscribeLocalEvent<ShipyardConsoleComponent, InteractUsingEvent>(OnInteractUsing);
-    }
-
-    public GridDynamicAccesComponent AddDynamicAccesCodes(EntityUid gridUid, List<string> accesCodeNames, string shipSuffix)
-    {
-        EntityManager.EnsureComponent(gridUid, out GridDynamicAccesComponent accesComponent);
-        var accesCodeList = new List<string>();
-        foreach(var name in accesCodeNames)
-            accesCodeList.Add($"{shipSuffix} {name}");
-        var accesKeys = _gridAcces.AddNewAcces(accesCodeList);
-        for (var i = 0; i < accesKeys.Count; i++)
-        {
-            var AccesPrototype = new ProtoId<AccessLevelPrototype>(accesKeys[i]);
-            accesComponent.keyToAccesMapping.Add(accesCodeNames[i], AccesPrototype );
-            accesComponent.dynamicAccesCodes.Add(AccesPrototype);
-        }
-        EntityManager.Dirty(gridUid, accesComponent);
-        return accesComponent;
     }
 
     public override void Shutdown()
