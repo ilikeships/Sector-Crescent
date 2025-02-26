@@ -11,5 +11,5 @@ public sealed partial class ProximityFuseComponent : Component
 
     public float Fuse = 0.05f;
 
-    public float SafetyTime = 0.25f;
+    public float SafetyTime = 0f;
 }
