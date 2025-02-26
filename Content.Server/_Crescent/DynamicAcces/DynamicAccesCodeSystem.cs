@@ -15,7 +15,7 @@ namespace Content.Server._Crescent.DynamicAcces;
 // Written by SPCR/MLGTASTICa. All rights reserved. ak9bc10d@yahoo.com for inquiries
 /// <summary>
 /// This handles dynamic code generation & initialization for grids
-/// 
+///
 /// </summary>
 public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 {
@@ -68,7 +68,7 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 
         //Logger.Error($"Found entity {MetaData(targ).EntityName} WITH THE CHILD ENUMERATOR");
         //_lookup.GetGridEntities(grid, targets);
-        
+
         foreach(var (key, targetProtos) in prototype.accesIdentifierToEntity)
         {
             var code = retrieveKey();
@@ -90,6 +90,7 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
                     if (meta.EntityPrototype is not null && meta.EntityPrototype.ID != prototypeId)
                         continue;
                     AddKeyToComponent(codeHolderQuery.GetComponent(target), code, null);
+                    DirtyEntity(target);
                     //Logger.Error($"Added to {meta.EntityName} the key {key} with code {code}");
                 }
             }
@@ -114,8 +115,10 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
             comp.captainIdentifier = prototype.captainKey;
             comp.pilotIdentifier = prototype.pilotKey;
             comp.accesState = ShuttleConsoleAccesState.NoAcces;
+            DirtyEntity(console);
         }
         RemComp<DynamicAccesGridInitializerComponent>(grid);
+        DirtyEntity(grid);
 
     }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentInit args)
