@@ -3,6 +3,7 @@ using Content.Server._Crescent.Helpers;
 using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent;
 using Content.Shared._Crescent.DynamicCodes;
+using Content.Shared.Shuttles.BUIStates;
 using FastAccessors;
 using Microsoft.CodeAnalysis;
 using Robust.Server.GameObjects;
@@ -11,9 +12,10 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Server._Crescent.DynamicAcces;
-
+// Written by SPCR/MLGTASTICa. All rights reserved. ak9bc10d@yahoo.com for inquiries
 /// <summary>
-/// This handles...
+/// This handles dynamic code generation & initialization for grids
+/// 
 /// </summary>
 public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 {
@@ -35,28 +37,44 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
         _randomGenerator = _random.GetRandom();
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentInit>(onAdd);
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
-        SubscribeLocalEvent<DynamicAccesGridInitializerComponent, ComponentInit>(onAdd);
+        SubscribeLocalEvent<DynamicAccesGridInitializerComponent, MapInitEvent>(onAdd);
     }
 
 
-    private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, ComponentInit eventHandler)
+    private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, MapInitEvent eventHandler)
     {
         if (!_prototypes.TryIndex<ShipDynamicAccesMappingPrototype>(component.accesMapping, out var prototype))
         {
             Logger.Error($"Failed to instanciate mapping template for {component.accesMapping}");
             return;
         }
+        //Logger.Error($"Instanciated on {MetaData(grid).EntityName}");
 
-        Logger.Error($"Instanciating");
+        //Logger.Error($"Instanciating");
         var codeHolder= new DynamicCodeHolderComponent();
-        HashSet<Entity<DynamicCodeHolderComponent>> targets = new();
-        _lookup.GetGridEntities(grid, targets);
+        var codeHolderQuery = GetEntityQuery<DynamicCodeHolderComponent>();
+        var consoleQuery = GetEntityQuery<ShuttleConsoleComponent>();
+        HashSet<EntityUid> targets = new();
+        /// gridUids and other stuffi snt initialized when this is called but the componetns o nthe targets are.
+        var trans = Transform(grid).ChildEnumerator;
+        var consoles = new List<EntityUid>();
+        while (trans.MoveNext(out var targ))
+        {
+            if(codeHolderQuery.HasComp(targ))
+                targets.Add(targ);
+            if (consoleQuery.HasComp(targ))
+                consoles.Add(targ);
+        }
+
+        //Logger.Error($"Found entity {MetaData(targ).EntityName} WITH THE CHILD ENUMERATOR");
+        //_lookup.GetGridEntities(grid, targets);
+        
         foreach(var (key, targetProtos) in prototype.accesIdentifierToEntity)
         {
             var code = retrieveKey();
             AddKeyToComponent(codeHolder, code, key);
-            Logger.Error($"Instanciated key : {key} with numeric code {code}");
-            Logger.Error($"Len of targets list is {targets.Count}");
+            //Logger.Error($"Instanciated key : {key} with numeric code {code}");
+            //Logger.Error($"Len of targets list is {targets.Count}");
             foreach (var prototypeId in targetProtos)
             {
                 if (!_prototypes.TryIndex(prototypeId, out var _))
@@ -68,25 +86,36 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
                 foreach (var target in targets)
                 {
                     var meta = MetaData(target);
-                    Logger.Error($"Checking {meta.EntityName}");
+                    //Logger.Error($"Checking {meta.EntityName}");
                     if (meta.EntityPrototype is not null && meta.EntityPrototype.ID != prototypeId)
                         continue;
-                    AddKeyToComponent(target.Comp, code, null);
-                    Logger.Error($"Added to {meta.EntityName} the key {key} with code {code}");
+                    AddKeyToComponent(codeHolderQuery.GetComponent(target), code, null);
+                    //Logger.Error($"Added to {meta.EntityName} the key {key} with code {code}");
                 }
             }
 
         }
+
+        if (!codeHolder.mappedCodes.ContainsKey(prototype.captainKey))
+        {
+            var key = retrieveKey();
+            AddKeyToComponent(codeHolder, key, prototype.captainKey);
+        }
+        if (!codeHolder.mappedCodes.ContainsKey(prototype.pilotKey))
+        {
+            var key = retrieveKey();
+            AddKeyToComponent(codeHolder, key, prototype.pilotKey);
+        }
         AddComp(grid, codeHolder);
 
-        HashSet<Entity<ShuttleConsoleComponent>> consoles = new();
-        _lookup.GetGridEntities(grid, consoles);
         foreach (var console in consoles)
         {
-            console.Comp.captainIdentifier = prototype.captainKey;
-            console.Comp.pilotIdentifier = prototype.pilotKey;
+            var comp = consoleQuery.GetComponent(console);
+            comp.captainIdentifier = prototype.captainKey;
+            comp.pilotIdentifier = prototype.pilotKey;
+            comp.accesState = ShuttleConsoleAccesState.NoAcces;
         }
-        //RemComp<DynamicAccesGridInitializerComponent>(grid);
+        RemComp<DynamicAccesGridInitializerComponent>(grid);
 
     }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentInit args)
@@ -140,6 +169,14 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 
     public void RemoveKeyFromComponent(DynamicCodeHolderComponent component, int key, string? identifier)
     {
+        component.codes.Remove(key);
+        instancesPerKey[key]--;
+        if (instancesPerKey[key] <= 0)
+        {
+            instancesPerKey.Remove(key);
+            releaseKey(key);
+
+        }
         string? containedIn = null;
         if (identifier is not null && component.mappedCodes[identifier].Contains(key))
             containedIn = identifier;
@@ -156,17 +193,7 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 
         if (containedIn is null)
             return;
-
-        component.codes.Remove(key);
         component.mappedCodes[containedIn].Remove(key);
-
-        instancesPerKey[key]--;
-        if (instancesPerKey[key] <= 0)
-        {
-            instancesPerKey.Remove(key);
-            releaseKey(key);
-
-        }
 
     }
     public bool isKeyValid(int key)

@@ -10,6 +10,7 @@ namespace Content.Shared._Crescent.DynamicCodes;
 public sealed partial class DynamicAccesGridInitializerComponent : Component
 {
     [DataField("accesMapping"), ViewVariables(VVAccess.ReadWrite)]
-    public string accesMapping = "";
+    // this is the default initialization mapping for ships. If you change this make sure its valid SPCR 2025
+    public string accesMapping = "GeneralShipAccesMapping";
 
 }

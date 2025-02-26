@@ -30,6 +30,7 @@ public sealed class CrewInterfaceState
     public bool hasId;
     public string IdName;
     public HashSet<string>? IdCodes;
+    public HashSet<string>? Pressed;
 
 
     public CrewInterfaceState(string name, HashSet<string>? codes)

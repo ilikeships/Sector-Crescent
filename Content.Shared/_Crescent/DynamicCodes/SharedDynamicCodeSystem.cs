@@ -8,7 +8,7 @@ namespace Content.Shared._Crescent.DynamicCodes;
 public class SharedDynamicCodeSystem : EntitySystem
 {
 
-    public static bool hasAllKeys(HashSet<int> keys, DynamicCodeHolderComponent holder)
+    public bool hasAllKeys(HashSet<int> keys, DynamicCodeHolderComponent holder)
     {
         return holder.codes.Intersect(keys).Count() == keys.Count;
     }

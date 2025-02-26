@@ -203,15 +203,21 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (!TryComp<DynamicCodeHolderComponent>(grid, out var dynCodes))
             return;
-        if (!TryComp<AccessComponent>(comp.targetIdSlot.Item, out var accesComp))
-            return;
         if (!dynCodes.mappedCodes.ContainsKey(args.chosenOption))
             return;
         var accesCodes = dynCodes.mappedCodes[args.chosenOption];
         var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(comp.targetIdSlot.Item.Value);
-        foreach (var key in accesCodes)
+        if (_codes.hasAllKeys(accesCodes, dynIdComp))
         {
-            _codes.AddKeyToComponent(dynIdComp, key, args.chosenOption);
+            foreach(var key in accesCodes)
+                _codes.RemoveKeyFromComponent(dynIdComp, key, args.chosenOption);
+        }
+        else
+        {
+            foreach (var key in accesCodes)
+            {
+                _codes.AddKeyToComponent(dynIdComp, key, args.chosenOption);
+            }
         }
 
         EntityManager.DirtyEntity(comp.targetIdSlot.Item.Value);
@@ -760,6 +766,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             if(comp.FullName is not null)
                 State.IdName = comp.FullName;
             State.IdCodes = gridDynAcces.mappedCodes.Keys.ToHashSet();
+            State.Pressed = new HashSet<string>();
+            foreach (var key in State.IdCodes)
+            {
+                if (!_codes.hasAllKeys(gridDynAcces.mappedCodes[key], dynamicAcces))
+                    continue;
+                State.Pressed.Add(key);
+            }
             State.hasId = true;
         }
 

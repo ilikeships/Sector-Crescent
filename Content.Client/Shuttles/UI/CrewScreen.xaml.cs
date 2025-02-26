@@ -41,9 +41,9 @@ public sealed partial class CrewScreen : BoxContainer
 
     public void UpdateState(CrewInterfaceState state)
     {
-        if (state.IdCodes is null)
+        accesButtons.RemoveAllChildren();
+        if (state.IdCodes is null || state.Pressed is null)
         {
-            accesButtons.RemoveAllChildren();
             targetIdButton.Text = "Insert Employee ID";
             return;
         }
@@ -55,16 +55,14 @@ public sealed partial class CrewScreen : BoxContainer
                 var button = new Button()
                 {
                     Text = identifier,
+                    ToggleMode = true,
+                    Pressed = state.Pressed.Contains(identifier),
+                    
                 };
                 button.OnButtonDown += (args) => toggleEmployeeClicked?.Invoke(identifier);
                 accesButtons.AddChild(button);
             }
-        }
 
-        else
-        {
-            accesButtons.RemoveAllChildren();
-            targetIdButton.Text = "Insert Employee ID";
         }
 
 

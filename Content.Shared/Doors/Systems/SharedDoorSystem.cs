@@ -659,7 +659,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         var isExternal = access.AccessLists.Any(list => list.Contains("External"));
 
         var gridId = Transform(uid).GridUid;
-        if(TryComp<DynamicCodeHolderComponent>(uid, out var codeHolder))
+        if(TryComp<DynamicCodeHolderComponent>(uid, out var codeHolder) && codeHolder.codes.Count != 0)
         {
             if (!_helpers.GetPlayerIdEntity(user.Value, out var playerId))
                 return false;

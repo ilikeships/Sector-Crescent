@@ -51,6 +51,7 @@ using Robust.Shared.Map;
 using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
 using Content.Shared._Crescent;
+using Content.Shared._Crescent.DynamicCodes;
 using Content.Shared._Crescent.ShipBalanceEnforcement;
 using Content.Shared.Shuttles.BUIStates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -182,7 +183,14 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             {
                 _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
             }
+
         }
+        // dynamic grid acces initializing automatically if none is mapped in
+        if (!HasComp<DynamicCodeHolderComponent>(shuttle.Owner))
+        {
+            EnsureComp<DynamicAccesGridInitializerComponent>(shuttle.Owner);
+        }
+
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
@@ -684,7 +692,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 _shuttle.SetIFFFaction(shuttle.Owner, stationIFF.Faction);
             }
         }
-
+        // dynamic grid acces initializing automatically if none is mapped in
+        if (!HasComp<DynamicCodeHolderComponent>(shuttle.Owner))
+        {
+            EnsureComp<DynamicAccesGridInitializerComponent>(shuttle.Owner);
+        }
 
         EntityUid product = EntityManager.SpawnAtPosition("ShuttleOwnershipChip", new EntityCoordinates(uid, 0, 0));
         var deedID = EnsureComp<ShuttleDeedComponent>(product);
