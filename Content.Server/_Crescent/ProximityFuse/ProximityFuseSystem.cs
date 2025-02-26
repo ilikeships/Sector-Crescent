@@ -28,7 +28,7 @@ public sealed class ProximityFuseSystem : EntitySystem
                 float closestSpeed = float.MaxValue;
                 float collisionSpeedMagnitude = shooterGunComp.ProjectileSpeed;
                 var shipQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
-                while (shipQuery.MoveNext(out var tUid, out var tComp, out var tXform))
+                while (shipQuery.MoveNext(out var tUid, out var tComp, out var tXform)) // output the closest grid and relative velocities
                 {
                     if (shooterTransform.GridUid == tUid)
                         return;
@@ -54,7 +54,7 @@ public sealed class ProximityFuseSystem : EntitySystem
                 if (comp.SafetyTime >= 0.5f)
                 {
                     if (closestDistance >= comp.MaxRange)
-                        comp.Fuse = comp.MaxRange / collisionSpeedMagnitude * _random.NextFloat(0.6f, 1.5f);
+                        comp.Fuse = comp.MaxRange / collisionSpeedMagnitude * _random.NextFloat(0.6f, 1.5f); // calculate how long it will take to get to the target then add some noise
                     else
                         comp.Fuse -= frameTime;
                     if (closestDistance <= comp.MinRange)
@@ -68,7 +68,7 @@ public sealed class ProximityFuseSystem : EntitySystem
             }
         }
     }
-    public void Detonate(EntityUid uid)
+    public void Detonate(EntityUid uid) // if object has an explosive component then explode it, otherwise delete the object
     {
         if (TryComp<ExplosiveComponent>(uid, out var explosiveComp))
             _entMan.System<ExplosionSystem>().TriggerExplosive(uid);
