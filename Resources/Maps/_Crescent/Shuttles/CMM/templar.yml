@@ -21,7 +21,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Shuttle ALP-527
     - type: Transform
       pos: -0.5520172,-0.6560955
       parent: invalid
@@ -473,6 +473,71 @@ entities:
     - type: CrescentEMPTechnologyTier
       powerLossMarkiplier: 1.2
       eMPMultiplier: 0.7
+    - type: IFF
+      relations: {}
+      color: '#F6CE9C9C'
+      flags: IsPlayerShuttle
+    - type: ShuttleDeed
+      shuttleName: Shuttle ALP-527
+      shuttleUid: 1
+- proto: AAAHardpointSmallBallistic
+  entities:
+  - uid: 305
+    components:
+    - type: Transform
+      pos: -5.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 632
+    components:
+    - type: Transform
+      pos: 6.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 642
+    components:
+    - type: Transform
+      pos: 6.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 672
+    components:
+    - type: Transform
+      pos: -5.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 683
+    components:
+    - type: Transform
+      pos: 7.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 694
+    components:
+    - type: Transform
+      pos: -3.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 696
+    components:
+    - type: Transform
+      pos: -6.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 700
+    components:
+    - type: Transform
+      pos: 4.5,-8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirlockCMMLocked
   entities:
   - uid: 12
@@ -1806,6 +1871,41 @@ entities:
     - type: Transform
       pos: -2.5,-6.5
       parent: 1
+  - uid: 703
+    components:
+    - type: Transform
+      pos: -2.5,-5.5
+      parent: 1
+  - uid: 704
+    components:
+    - type: Transform
+      pos: -2.5,-4.5
+      parent: 1
+  - uid: 705
+    components:
+    - type: Transform
+      pos: -2.5,-3.5
+      parent: 1
+  - uid: 706
+    components:
+    - type: Transform
+      pos: -2.5,-2.5
+      parent: 1
+  - uid: 707
+    components:
+    - type: Transform
+      pos: -1.5,-2.5
+      parent: 1
+  - uid: 708
+    components:
+    - type: Transform
+      pos: -0.5,-2.5
+      parent: 1
+  - uid: 709
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
 - proto: CableMV
   entities:
   - uid: 420
@@ -1978,6 +2078,14 @@ entities:
     - type: Transform
       pos: -1.5,3.5
       parent: 1
+- proto: CableTerminal
+  entities:
+  - uid: 702
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -1.5,-6.5
+      parent: 1
 - proto: CartridgeShellArmorPiercing
   entities:
   - uid: 136
@@ -2053,6 +2161,12 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 3.5,14.5
+      parent: 1
+  - uid: 701
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,4.5
       parent: 1
 - proto: ClothingHeadHelmetEVA
   entities:
@@ -2170,37 +2284,28 @@ entities:
       parent: 1
 - proto: ComputerShuttle
   entities:
-  - uid: 203
+  - uid: 78
     components:
     - type: Transform
-      rot: 6.283185307179586 rad
       pos: 3.5,15.5
       parent: 1
     - type: DeviceLinkSource
-      range: 300
       linkedPorts:
-        75:
-        - Group1: SpaceArtilleryFire
         216:
         - Group1: SpaceArtilleryFire
-        305:
-        - Group4: On
-        - Group5: Off
-        680:
-        - Group4: On
-        - Group5: Off
-        672:
-        - Group4: On
-        - Group5: Off
-        242:
-        - Group4: On
-        - Group5: Off
+        75:
+        - Group1: SpaceArtilleryFire
         631:
         - Group2: Toggle
-        - Group3: SpaceArtilleryToggleSafety
         240:
         - Group2: Toggle
-        - Group3: SpaceArtilleryToggleSafety
+    - type: NamedModules
+      buttonNames:
+      - Fire 120mm
+      - Fire 50cal
+      - Module C
+      - Module D
+      - Module E
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -2215,8 +2320,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-    - type: Physics
-      fixedRotation: False
 - proto: ComputerSurveillanceCameraMonitor
   entities:
   - uid: 218
@@ -2273,45 +2376,31 @@ entities:
       parent: 1
 - proto: ComputerTargeting
   entities:
-  - uid: 220
+  - uid: 158
     components:
-    - type: MetaData
-      desc: Allows access to the shuttle's armaments.
-      name: gunnery terminal
     - type: Transform
       pos: -0.5,5.5
       parent: 1
     - type: TargetingConsole
       cannonGroups:
         all:
+        - 241
+        - 699
+        - 203
+        - 698
+        - 242
         - 680
-        - 672
-        - 696
         - 697
-        - 698
+        - 220
+        CMM 20mm automated turret:
+        - 241
         - 699
-        - 305
+        - 203
+        - 698
         - 242
-        ballistic:
         - 680
-        - 672
-        missile:
-        - 696
         - 697
-        - 698
-        - 699
-        boltguns:
-        - 305
-        - 242
-        broadsides:
-        - 242
-        - 305
-        - 696
-        - 697
-        - 698
-        - 699
-    - type: Physics
-      fixedRotation: False
+        - 220
 - proto: CrateFoodMRE
   entities:
   - uid: 389
@@ -2820,64 +2909,6 @@ entities:
     - type: Transform
       pos: -3.261439,10.328395
       parent: 1
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 78
-    components:
-    - type: Transform
-      pos: 6.5,-4.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 158
-    components:
-    - type: Transform
-      pos: -3.5,-8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 241
-    components:
-    - type: Transform
-      pos: 4.5,-8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 632
-    components:
-    - type: Transform
-      pos: -5.5,-4.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 642
-    components:
-    - type: Transform
-      pos: -6.5,6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 683
-    components:
-    - type: Transform
-      pos: -5.5,8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 694
-    components:
-    - type: Transform
-      pos: 6.5,8.5
-      parent: 1
-    - type: Physics
-      canCollide: False
-  - uid: 700
-    components:
-    - type: Transform
-      pos: 7.5,6.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 68
@@ -2907,42 +2938,32 @@ entities:
   - uid: 82
     components:
     - type: Transform
-      pos: 0.5520172,0.6560955
+      pos: 3.0532856,3.1453207
       parent: 1
-    - type: Physics
-      canCollide: False
     - type: InsideEntityStorage
   - uid: 83
     components:
     - type: Transform
-      pos: 0.5520172,0.6560955
+      pos: 3.0830097,3.1453207
       parent: 1
-    - type: Physics
-      canCollide: False
     - type: InsideEntityStorage
   - uid: 87
     components:
     - type: Transform
-      pos: 0.5520172,0.6560955
+      pos: 4.049039,3.4723768
       parent: 1
-    - type: Physics
-      canCollide: False
     - type: InsideEntityStorage
   - uid: 98
     components:
     - type: Transform
-      pos: 0.5520172,0.6560955
+      pos: 3.172181,3.323715
       parent: 1
-    - type: Physics
-      canCollide: False
     - type: InsideEntityStorage
   - uid: 99
     components:
     - type: Transform
-      pos: 0.5520172,0.6560955
+      pos: 3.499145,3.8588986
       parent: 1
-    - type: Physics
-      canCollide: False
     - type: InsideEntityStorage
 - proto: MechaniteAutoinjector
   entities:
@@ -3372,10 +3393,10 @@ entities:
       pos: -4.5,17.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
-      - 203
+      - 78
     - type: ChamberMagazineAmmoProvider
       boltClosed: True
     - type: ContainerContainer
@@ -3412,10 +3433,10 @@ entities:
       pos: 5.5,16.5
       parent: 1
     - type: Battery
-      startingCharge: 198500
+      startingCharge: 198000
     - type: DeviceLinkSink
       links:
-      - 203
+      - 78
     - type: ChamberMagazineAmmoProvider
       boltClosed: True
     - type: ContainerContainer
@@ -4074,7 +4095,7 @@ entities:
       pos: -0.5,16.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: BallisticAmmoProvider
       entities:
       - 136
@@ -4097,7 +4118,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
-      - 203
+      - 78
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -4110,7 +4131,7 @@ entities:
       pos: 0.5,16.5
       parent: 1
     - type: Battery
-      startingCharge: 991000
+      startingCharge: 988000
     - type: BallisticAmmoProvider
       entities:
       - 217
@@ -4133,7 +4154,7 @@ entities:
           ents: []
     - type: DeviceLinkSink
       links:
-      - 203
+      - 78
     - type: ApcPowerReceiver
       powerLoad: 5000
     - type: BatterySelfRecharger
@@ -4915,67 +4936,113 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.328359,-0.47270155
       parent: 1
-- proto: WeaponTurretPDTNCWL
+- proto: WeaponTurretVulcanCMM
   entities:
-  - uid: 242
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 6.5,8.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 1.5248323946097162 rad: 4.077674504292082 rad
-    - type: DeviceLinkSink
-      links:
-      - 203
-  - uid: 305
+  - uid: 203
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,8.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 3.8222710618675815 rad: 4.083847263657651 rad
-    - type: DeviceLinkSink
-      links:
-      - 203
-  - uid: 672
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -6.5,6.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 3.8222710618675815 rad: 3.9798284556672665 rad
-    - type: DeviceLinkSink
-      links:
-      - 203
-  - uid: 680
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 7.5,6.5
-      parent: 1
-    - type: PointCannon
-      obstructedRanges:
-      - 1.622678443234531 rad: 3.9798284556672665 rad
-    - type: DeviceLinkSink
-      links:
-      - 203
-- proto: WeaponTurretSwarmerCMM
-  entities:
-  - uid: 696
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 220
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -5.5,-4.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 4.929419770237351 rad: 3.8146797822542395 rad
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 241
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 7.5,6.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 242
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 6.5,-4.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        gun_magazine: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        gun_chamber: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 680
+    components:
+    - type: Transform
+      pos: 4.5,-8.5
+      parent: 1
+    - type: PointCannon
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -4993,12 +5060,12 @@ entities:
   - uid: 697
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: -3.5,-8.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 4.929419789085995 rad: 3.814679763405596 rad
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5016,12 +5083,13 @@ entities:
   - uid: 698
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 4.5,-8.5
+      rot: -1.5707963267948966 rad
+      pos: -6.5,6.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 0.6806784082777885 rad: 3.814679763405596 rad
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -5039,12 +5107,13 @@ entities:
   - uid: 699
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 6.5,-4.5
+      rot: 3.141592653589793 rad
+      pos: 6.5,8.5
       parent: 1
     - type: PointCannon
-      obstructedRanges:
-      - 0.6806784082777885 rad: 3.8146797822542404 rad
+      linkedConsoleIds:
+      - 158
+      linkedConsoleId: 158
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
