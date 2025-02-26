@@ -26,22 +26,21 @@ public sealed class ProximityFuseSystem : EntitySystem
                 float distance = float.MaxValue;
                 float closestDistance = float.MaxValue;
                 float closestSpeed = float.MaxValue;
+                float collisionSpeedMagnitude = shooterGunComp.ProjectileSpeed;
                 var shipQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
                 while (shipQuery.MoveNext(out var tUid, out var tComp, out var tXform))
                 {
-                    if (shooterTransform.GridUid == uid)
+                    if (shooterTransform.GridUid == tUid)
                         return;
 
-                    if (!TryComp<PhysicsComponent>(Transform(uid).GridUid, out var ourPhysics) || !TryComp<PhysicsComponent>(tXform.GridUid, out var theirPhysics))
+                    if (!TryComp<PhysicsComponent>(uid, out var ourPhysics) || !TryComp<PhysicsComponent>(tXform.GridUid, out var theirPhysics))
                         return;
 
                     var ourVelocity = ourPhysics.LinearVelocity;
                     var velocity = theirPhysics.LinearVelocity;
 
                     var speedVector = Vector2.Subtract(ourVelocity, velocity);
-
-                    float collisionSpeedMagnitude = (float) Math.Sqrt(speedVector.X * speedVector.X + speedVector.Y * speedVector.Y);
-
+                    collisionSpeedMagnitude = (float) Math.Abs(speedVector.Length());
                     distance = Vector2.Distance(
                         _transform.ToMapCoordinates(xform.Coordinates).Position,
                         _transform.ToMapCoordinates(tXform.Coordinates).Position
@@ -54,10 +53,10 @@ public sealed class ProximityFuseSystem : EntitySystem
                 }
                 if (comp.SafetyTime >= 0.5f)
                 {
-                    if (closestDistance <= comp.MaxRange)
-                        comp.Fuse -= frameTime;
+                    if (closestDistance >= comp.MaxRange)
+                        comp.Fuse = comp.MaxRange / collisionSpeedMagnitude * _random.NextFloat(0.6f, 1.5f);
                     else
-                        comp.Fuse = (comp.MaxRange / shooterGunComp.ProjectileSpeed) * _random.NextFloat(0.5f, 1.5f);
+                        comp.Fuse -= frameTime;
                     if (closestDistance <= comp.MinRange)
                         Detonate(uid);
 
