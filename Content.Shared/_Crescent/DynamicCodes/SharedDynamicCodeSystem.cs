@@ -1,4 +1,7 @@
+using Robust.Shared.GameStates;
 using System.Linq;
+using Robust.Shared.Serialization;
+using static Content.Shared.Disposal.Components.SharedDisposalUnitComponent;
 
 namespace Content.Shared._Crescent.DynamicCodes;
 
@@ -7,7 +10,12 @@ namespace Content.Shared._Crescent.DynamicCodes;
 /// </summary>
 public class SharedDynamicCodeSystem : EntitySystem
 {
-
+    [Serializable, NetSerializable]
+    public sealed class DynamicCodeHolderComponentState : ComponentState
+    {
+        public HashSet<int> codes = new();
+        public Dictionary<string, HashSet<int>> mappedCodes = new();
+    }
     public bool hasAllKeys(HashSet<int> keys, DynamicCodeHolderComponent holder)
     {
         return holder.codes.Intersect(keys).Count() == keys.Count;
