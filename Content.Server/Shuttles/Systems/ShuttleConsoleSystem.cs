@@ -216,11 +216,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             foreach (var key in accesCodes)
             {
-                _codes.AddKeyToComponent(dynIdComp, key, args.chosenOption);
+                _codes.AddKeyToComponent(dynIdComp, key, null);
             }
         }
-
-        EntityManager.DirtyEntity(comp.targetIdSlot.Item.Value);
+        Logger.Error($"Trying to dirty {MetaData(comp.targetIdSlot.Item.Value).EntityName}");
+        Dirty(comp.targetIdSlot.Item.Value, dynIdComp);
+        //irtyEntity(comp.targetIdSlot.Item.Value);
         UpdateState(uid, comp);
     }
 

@@ -191,7 +191,7 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
 
         }
         string? containedIn = null;
-        if (identifier is not null && component.mappedCodes[identifier].Contains(key))
+        if (identifier is not null && component.mappedCodes.ContainsKey(identifier) && component.mappedCodes[identifier].Contains(key))
             containedIn = identifier;
         else
         {
