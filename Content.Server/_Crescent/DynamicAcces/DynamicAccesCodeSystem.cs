@@ -7,6 +7,7 @@ using Content.Shared.Shuttles.BUIStates;
 using FastAccessors;
 using Microsoft.CodeAnalysis;
 using Robust.Server.GameObjects;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -38,8 +39,17 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentInit>(onAdd);
         SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentRemove>(onRemove);
         SubscribeLocalEvent<DynamicAccesGridInitializerComponent, MapInitEvent>(onAdd);
+        SubscribeLocalEvent<DynamicCodeHolderComponent, ComponentGetState>(OnGetState);
     }
 
+    private void OnGetState(EntityUid uid, DynamicCodeHolderComponent component, ref ComponentGetState args)
+    {
+        args.State = new DynamicCodeHolderComponentState
+        {
+            codes = component.codes,
+            mappedCodes = component.mappedCodes,
+        };
+    }
 
     private void onAdd(EntityUid grid, DynamicAccesGridInitializerComponent component, MapInitEvent eventHandler)
     {
@@ -89,8 +99,9 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
                     //Logger.Error($"Checking {meta.EntityName}");
                     if (meta.EntityPrototype is not null && meta.EntityPrototype.ID != prototypeId)
                         continue;
-                    AddKeyToComponent(codeHolderQuery.GetComponent(target), code, null);
-                    DirtyEntity(target);
+                    var comp = codeHolderQuery.GetComponent(target);
+                    AddKeyToComponent(comp, code, null);
+                    Dirty(target, comp);
                     //Logger.Error($"Added to {meta.EntityName} the key {key} with code {code}");
                 }
             }
@@ -115,11 +126,10 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
             comp.captainIdentifier = prototype.captainKey;
             comp.pilotIdentifier = prototype.pilotKey;
             comp.accesState = ShuttleConsoleAccesState.NoAcces;
-            DirtyEntity(console);
+            Dirty(console, comp);
         }
         RemComp<DynamicAccesGridInitializerComponent>(grid);
-        DirtyEntity(grid);
-
+        Dirty(grid, codeHolder);
     }
     private void onAdd(EntityUid owner, DynamicCodeHolderComponent component, ref ComponentInit args)
     {
