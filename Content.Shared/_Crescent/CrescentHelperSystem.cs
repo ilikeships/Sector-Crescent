@@ -8,14 +8,49 @@ using Content.Shared.Shuttles.BUIStates;
 namespace Content.Server._Crescent.Helpers;
 
 /// <summary>
-/// This handles... helpers! 
+/// This handles... helpers!
 /// </summary>
 public sealed class CrescentHelperSystem : EntitySystem
 {
 
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
 
-    public readonly List<string> EmployeeAccesNamesList = new List<string> { "Captain", "Pilot", "Crew" };
+    public const string ShuttleCaptain = "Shuttle Captain";
+
+    public const string ShuttlePilot = "Shuttle Pilot";
+
+    public const string ShuttleCrew = "Shuttle Crew";
+
+    public const string ShuttleEngineer = "Shuttle Engineer";
+
+    public const string ShuttleMedic = "Shuttle Medic";
+
+    public const string ShuttleCargo = "Shuttle Cargo";
+
+    public const string ShuttleMining = "Shuttle Mining";
+
+    public const string ShuttleSecurity = "Shuttle Security";
+
+    public const string ShuttleResearch = "Shuttle Research";
+
+    public readonly HashSet<string> ShuttlePreset = new HashSet<string>()
+    {
+        ShuttleCaptain,
+        ShuttlePilot,
+        ShuttleCrew,
+        ShuttleEngineer,
+        ShuttleMedic,
+        ShuttleCargo,
+        ShuttleMining,
+        ShuttleSecurity,
+        ShuttleResearch,
+
+    };
+
+
+
+
+
     // Used for getting ID off any entity
     public bool GetPlayerId(EntityUid uid,[NotNullWhen(true)] out IdCardComponent? idCardUid)
     {
@@ -64,21 +99,6 @@ public sealed class CrescentHelperSystem : EntitySystem
     }
 
 
-
-    // Converting shuttle-related enums to strings.
-    public string EnumEmployeeToString(EmployeeOptions chosen)
-    {
-        switch (chosen)
-        {
-            case EmployeeOptions.Captain:
-                return "Captain";
-            case EmployeeOptions.Pilot:
-                return "Pilot";
-            case EmployeeOptions.Crew:
-                return "Crew";
-        }
-        return "Not implemented. Add a new case for EnumEmployeeToString switch(chosen)";
-    }
 
 
     public bool getGridOfEntity(EntityUid target, [NotNullWhen(true)]out EntityUid? gridId)

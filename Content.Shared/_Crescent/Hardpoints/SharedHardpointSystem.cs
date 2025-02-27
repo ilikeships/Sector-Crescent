@@ -70,12 +70,10 @@ public class SharedHardpointSystem : EntitySystem
         HardpointCannonDeanchoredEvent arg = new();
         arg.CannonUid = target;
         arg.gridUid = grid;
-        RaiseLocalEvent(component.anchoredTo.Value, arg);
+        RaiseLocalEvent(hardpointUid, arg);
         component.anchoredTo = null;
-        DirtyEntity(target);
-        DirtyEntity(anchor);
-        //Dirty(target, component);
-        //Dirty(hardpointUid, hardpointComp);
+        Dirty(hardpointUid, hardpointComp);
+        Dirty(arg.CannonUid, component);
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
@@ -122,9 +120,7 @@ public class SharedHardpointSystem : EntitySystem
         arg.cannonUid = target;
         arg.gridUid = grid;
         RaiseLocalEvent(anchor, arg);
-        DirtyEntity(target);
-        DirtyEntity(anchor);
-        //Dirty(target, targetComp);
-        //Dirty(anchor, hardpoint);
+        Dirty(anchor, hardpoint);
+        Dirty(target, targetComp);
     }
 }

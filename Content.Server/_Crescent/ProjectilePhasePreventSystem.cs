@@ -23,7 +23,6 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     // im so sorry , SPCR 2025
     ConcurrentQueue<Tuple<StartCollideEvent, StartCollideEvent>> eventQueue = new();
     private EntityQuery<PhysicsComponent> physQuery;
-    private EntityQuery<MetaDataComponent> metaQuery;
     private EntityQuery<FixturesComponent> fixtureQuery;
     public required ISawmill sawLogs;
 
@@ -37,7 +36,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         public Robust.Shared.Physics.Dynamics.Fixture fixture;
         public PhysicsComponent physComp;
         public ProjectilePhasePreventComponent phaseComp;
-        public int collisionMask;
+        public EntityUid? projectileGrid;
         public MapId map;
 
         public RaycastBucket(string key, Robust.Shared.Physics.Dynamics.Fixture fix, PhysicsComponent component, ProjectilePhasePreventComponent phase)
@@ -99,12 +98,15 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                     continue;
                 if (!fixtureQuery.TryGetComponent(obj.HitEntity, out var targFixtComp))
                     continue;
+                var targetGrid = _trans.GetGrid(obj.HitEntity);
+                if (targetGrid is not null && targetGrid == raycast.projectileGrid)
+                    continue;
                 var ev = new StartCollideEvent(owner, obj.HitEntity, raycast.fixtureKey,
                     targFixtComp.Fixtures.Keys.First(), raycast.fixture, targFixtComp.Fixtures.Values.First(), physComp,
                     targPhysComp, obj.HitPos);
                 var revEv = new StartCollideEvent(obj.HitEntity, owner, ev.OtherFixtureId, ev.OurFixtureId,
                     ev.OtherFixture, ev.OurFixture, targPhysComp, physComp, obj.HitPos);
-                
+
                 eventQueue.Enqueue(new Tuple<StartCollideEvent, StartCollideEvent>(ev, revEv));
             }
 
@@ -121,7 +123,6 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                 ProjectileComponent>();
         fixtureQuery = GetEntityQuery<FixturesComponent>();
         physQuery = GetEntityQuery<PhysicsComponent>();
-        metaQuery = GetEntityQuery<MetaDataComponent>();
         var threadBuckets = new List<RaycastThreadBucketHolder>();
         var fillingBucket = new RaycastThreadBucketHolder();
         var rayCount = 0;
@@ -154,6 +155,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
             bucket.start = phaseComp.start;
             bucket.end = phaseComp.end;
             bucket.map = map;
+            if(projComp.Shooter is not null)
+                bucket.projectileGrid = Transform(projComp.Shooter.Value).GridUid;
             //Logger.Error($"Surface area is {surfaceArea}");
             fillingBucket.rayCount++;
             rayCount++;
@@ -168,10 +171,10 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         eventQueue = new();
         //Logger.Error($"Processing {threadBuckets.Count} buckets");
-        if(rayCount > 500)
+        if(rayCount > 150)
             sawLogs.Info($"Processing {rayCount} raycasts.");
         Parallel.ForEach(threadBuckets, ProcessBucket);
-        
+
         //if(eventQueue.Count != 0)
         //    Logger.Error($"Processing {eventQueue.Count} events!. Actual bullet count {eventQueue.Count/2}");
         while (eventQueue.TryDequeue(out var eventData))

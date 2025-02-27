@@ -29,49 +29,43 @@ public sealed partial class CrewScreen : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
 
-    public Action<EmployeeOptions>? toggleEmployeeClicked;
+    public Action<string>? toggleEmployeeClicked;
     public bool HasID = false;
-    
+
     public CrewScreen()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        switchCrew.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Crew);
-        switchPilot.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Pilot);
-        switchCaptain.OnPressed += _ => toggleEmployeeClicked?.Invoke(EmployeeOptions.Captain);
-
         OnVisibilityChanged += OnVisChange;
     }
 
     public void UpdateState(CrewInterfaceState state)
     {
+        accesButtons.RemoveAllChildren();
+        if (state.IdCodes is null || state.Pressed is null)
+        {
+            targetIdButton.Text = "Insert Employee ID";
+            return;
+        }
         if (state.hasId)
         {
             targetIdButton.Text = state.IdName;
-            if (state.isCaptain)
-                switchCaptain.Text = "Demote from Captain";
-            else
-                switchCaptain.Text = "Promote to Captain";
-            if (state.isPilot)
-                switchPilot.Text = "Demote from Pilot";
-            else
-                switchPilot.Text = "Promote to Pilot";
-            if (state.isCrew)
-                switchCrew.Text = "Demote from Crew";
-            else
-                switchCrew.Text = "Promote to Crew";
+            foreach (var identifier in state.IdCodes)
+            {
+                var button = new Button()
+                {
+                    Text = identifier,
+                    ToggleMode = true,
+                    Pressed = state.Pressed.Contains(identifier),
+                    
+                };
+                button.OnButtonDown += (args) => toggleEmployeeClicked?.Invoke(identifier);
+                accesButtons.AddChild(button);
+            }
 
         }
 
-        else
-        {
-            targetIdButton.Text = "Insert Employee ID";
-            switchCrew.Text = "Waiting for ID";
-            switchCaptain.Text = "Waiting for ID";
-            switchPilot.Text = "Waiting for ID";
-        }
 
-        
     }
 
 

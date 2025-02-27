@@ -52,9 +52,9 @@ namespace Content.Server.Shuttles.Components
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public ShuttleConsoleAccesState accesState = ShuttleConsoleAccesState.NotDynamic;
 
-        [ViewVariables(VVAccess.ReadOnly)]
-        [AutoNetworkedField]
-        [DataField]
-        public Dictionary<string, ProtoId<AccessLevelPrototype>>? keyToAccesMapping = new();
+        // For dynamic ID indexing and shit.
+        public string? captainIdentifier;
+        public string? pilotIdentifier;
+
     }
 }
