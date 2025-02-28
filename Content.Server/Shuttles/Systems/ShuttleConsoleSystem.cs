@@ -370,8 +370,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (!TryComp<DynamicCodeHolderComponent>(gridId, out var dynamicAccesComponent))
             return;
-        if(!TryComp<DynamicCodeHolderComponent>(args.Used, out var dynIdComp))
+        if (!TryComp<IdCardComponent>(args.Used, out var _))
             return;
+        var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(args.Used);
         if (component.captainIdentifier is null || component.pilotIdentifier is null)
             return;
 
