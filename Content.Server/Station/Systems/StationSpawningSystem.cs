@@ -307,16 +307,24 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         {
             var data = Comp<StationJobsComponent>(station.Value);
             extendedAccess = data.ExtendedAccess;
-            if (TryComp<GridDynamicCodeOnSpawnGiverComponent>(station, out var component))
+            if (TryComp<StationDataComponent>(station.Value, out var stationData))
             {
-                if (TryComp<DynamicCodeHolderComponent>(station, out var gridCodes))
+                foreach (var grid in stationData.Grids)
                 {
-                    var codes = EnsureComp<DynamicCodeHolderComponent>(cardId);
-                    foreach (var key in component.DynamicCodesOnWakeUp)
+                    if (grid != Transform(entity).GridUid)
+                        continue;
+                    if (TryComp<GridDynamicCodeOnSpawnGiverComponent>(grid, out var component))
                     {
-                        if (gridCodes.mappedCodes.ContainsKey(key))
+                        if (TryComp<DynamicCodeHolderComponent>(grid, out var gridCodes))
                         {
-                            _codes.AddKeyToComponent(codes, gridCodes.mappedCodes[key], key);
+                            var codes = EnsureComp<DynamicCodeHolderComponent>(cardId);
+                            foreach (var key in component.DynamicCodesOnWakeUp)
+                            {
+                                if (gridCodes.mappedCodes.ContainsKey(key))
+                                {
+                                    _codes.AddKeyToComponent(codes, gridCodes.mappedCodes[key], key);
+                                }
+                            }
                         }
                     }
                 }
