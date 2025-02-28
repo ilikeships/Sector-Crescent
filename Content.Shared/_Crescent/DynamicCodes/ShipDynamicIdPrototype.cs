@@ -20,9 +20,13 @@ public sealed partial class ShipDynamicAccesMappingPrototype : IPrototype
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     // this key will be considered the captain key for the shuttle consoles on the grid
-    public string captainKey = "captain";
+    public string captainKey = "Captain";
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     // this key will be considered the pilot key for the shuttle consoles on the grid
-    public string pilotKey = "pilot";
+    public string pilotKey = "Pilot";
+
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public HashSet<string>  = "Crew";
 }
