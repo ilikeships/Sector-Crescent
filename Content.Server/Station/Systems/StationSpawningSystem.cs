@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Crescent.DynamicAcces;
 using Content.Server.Access.Systems;
 using Content.Server.DetailExaminable;
 using Content.Server.Humanoid;
@@ -30,6 +31,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Server.Spawners.Components;
+using Content.Shared._Crescent;
+using Content.Shared._Crescent.DynamicCodes;
 using Content.Shared.Bank.Components; // DeltaV
 
 namespace Content.Server.Station.Systems;
@@ -53,6 +56,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
     [Dependency] private readonly ArrivalsSystem _arrivalsSystem = default!;
     [Dependency] private readonly ContainerSpawnPointSystem _containerSpawnPointSystem = default!;
+    [Dependency] private readonly DynamicCodeSystem _codes = default!;
 
     private bool _randomizeCharacters;
 
@@ -303,6 +307,20 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         {
             var data = Comp<StationJobsComponent>(station.Value);
             extendedAccess = data.ExtendedAccess;
+            if (TryComp<GridDynamicCodeOnSpawnGiverComponent>(station, out var component))
+            {
+                if (TryComp<DynamicCodeHolderComponent>(station, out var gridCodes))
+                {
+                    var codes = EnsureComp<DynamicCodeHolderComponent>(cardId);
+                    foreach (var key in component.DynamicCodesOnWakeUp)
+                    {
+                        if (gridCodes.mappedCodes.ContainsKey(key))
+                        {
+                            _codes.AddKeyToComponent(codes, gridCodes.mappedCodes[key], key);
+                        }
+                    }
+                }
+            }
         }
 
         _accessSystem.SetAccessToJob(cardId, jobPrototype, extendedAccess);

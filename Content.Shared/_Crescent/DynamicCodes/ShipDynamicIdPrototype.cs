@@ -26,7 +26,6 @@ public sealed partial class ShipDynamicAccesMappingPrototype : IPrototype
     // this key will be considered the pilot key for the shuttle consoles on the grid
     public string pilotKey = "Pilot";
 
-
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public HashSet<string>  = "Crew";
+    public HashSet<string> CryoKeys = new (){"Crew"};
 }
