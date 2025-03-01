@@ -40,12 +40,18 @@ public sealed class AbyssalDiskSystem : EntitySystem
         SubscribeLocalEvent<ItemSlotsComponent, ItemSlotInsertAttemptEvent>(OnDiskInserted);
     }
 
+    private void FTLIntoCoords(EntityUid? ent, EntityCoordinates coords)
+    {
+        _transform.SetCoordinates((ent, Transform(ent), MetaData(ent)), coords);
+    }
+
     private void OnDiskInserted(EntityUid uid, ItemSlotsComponent component, ref ItemSlotInsertAttemptEvent args)
     {
-        
-        var shipUid = Transform(uid).GridUid;
-        var gridTransform = Transform(shipUid);
-        var shipMeta = MetaData(shipUid);
+        if (!TryComp<TransformComponent>(Transform(uid).GridUid, out var shipTransform) || !TryComp<MetaDataComponent>(Transform(uid).GridUid, out var shipMeta))
+            return;
+        var shipUid = shipTransform.GridUid;
+        if (shipUid is null)
+            return;
         if (TryComp<FTLComponent>(uid, out var FTLComp)) { FTLComp.State = FTLState.Arriving; }
         if (TryComp<ShuttleComponent>(Transform(uid).GridUid, out var shuttleComp))
         {
@@ -66,13 +72,12 @@ public sealed class AbyssalDiskSystem : EntitySystem
                 {
                     return;
                 }
-                     
                 targetCoordinates = xForm.Coordinates;
 
 
-                if (tComp.Enabled == false)
+                if (tComp.Enabled == false && shipUid is not null)
                 {
-                    _transform.SetCoordinates((shipUid, gridTransform, shipMeta), targetCoordinates, gridTransform.LocalRotation);
+                    FTLIntoCoords(shipTransform.GridUid, targetCoordinates);
                 }
                     
             }
