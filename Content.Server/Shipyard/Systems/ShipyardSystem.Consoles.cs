@@ -216,7 +216,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
         {
             var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
-            idCodeHolder.codes = shuttleCodes.codes;
+            _codes.AddKeyToComponent(idCodeHolder, shuttleCodes.codes, null);
             Dirty(idCardUid.Value, idCodeHolder);
         }
         SendPurchaseMessage(uid, player, name, channel, false);
@@ -719,7 +719,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
         {
             var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
-            idCodeHolder.codes = shuttleCodes.codes;
+            _codes.AddKeyToComponent(idCodeHolder, shuttleCodes.codes, null);
             Dirty(idCardUid.Value, idCodeHolder);
         }
 
