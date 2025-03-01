@@ -5,7 +5,7 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Shuttles.BUIStates;
 
-namespace Content.Server._Crescent.Helpers;
+namespace Content.Shared._Crescent.Helpers;
 
 /// <summary>
 /// This handles... helpers!
@@ -14,43 +14,6 @@ public sealed class CrescentHelperSystem : EntitySystem
 {
 
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
-
-    public const string ShuttleCaptain = "Shuttle Captain";
-
-    public const string ShuttlePilot = "Shuttle Pilot";
-
-    public const string ShuttleCrew = "Shuttle Crew";
-
-    public const string ShuttleEngineer = "Shuttle Engineer";
-
-    public const string ShuttleMedic = "Shuttle Medic";
-
-    public const string ShuttleCargo = "Shuttle Cargo";
-
-    public const string ShuttleMining = "Shuttle Mining";
-
-    public const string ShuttleSecurity = "Shuttle Security";
-
-    public const string ShuttleResearch = "Shuttle Research";
-
-    public readonly HashSet<string> ShuttlePreset = new HashSet<string>()
-    {
-        ShuttleCaptain,
-        ShuttlePilot,
-        ShuttleCrew,
-        ShuttleEngineer,
-        ShuttleMedic,
-        ShuttleCargo,
-        ShuttleMining,
-        ShuttleSecurity,
-        ShuttleResearch,
-
-    };
-
-
-
-
-
     // Used for getting ID off any entity
     public bool GetPlayerId(EntityUid uid,[NotNullWhen(true)] out IdCardComponent? idCardUid)
     {

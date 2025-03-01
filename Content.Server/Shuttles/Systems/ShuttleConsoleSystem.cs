@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml;
 using Content.Server._Crescent.DynamicAcces;
-using Content.Server._Crescent.Helpers;
+using Content.Shared._Crescent.Helpers;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
