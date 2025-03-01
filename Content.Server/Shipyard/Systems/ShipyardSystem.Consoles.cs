@@ -38,7 +38,7 @@ using Content.Server.Station.Components;
 using System.Text.RegularExpressions;
 using Content.Server._Crescent;
 using Content.Server._Crescent.DynamicAcces;
-using Content.Server._Crescent.Helpers;
+using Content.Shared._Crescent.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Audio;
@@ -52,6 +52,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Server.Database;
 using Content.Shared._Crescent;
 using Content.Shared._Crescent.DynamicCodes;
+using Content.Shared._Crescent.Helpers;
 using Content.Shared._Crescent.ShipBalanceEnforcement;
 using Content.Shared.Shuttles.BUIStates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -198,11 +199,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product,
             $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
-        {
-            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
-            idCodeHolder.codes = shuttleCodes.codes;
-        }
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, player);
 
@@ -217,7 +213,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
 
         EnsureComp<ShipSpeedByMassAdjusterComponent>(shuttle.Owner);
-
+        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
+        {
+            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
+            idCodeHolder.codes = shuttleCodes.codes;
+            Dirty(idCardUid.Value, idCodeHolder);
+        }
         SendPurchaseMessage(uid, player, name, channel, false);
 
         ChatPurchaseLocation(uid, station, config);
@@ -703,11 +704,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         AssignShuttleDeedProperties(deedID, shuttle.Owner, name,  user);
         _metadata.SetEntityName(product, $"{MetaData(product).EntityName} - {deedID.ShuttleName} {deedID.ShuttleNameSuffix}");
         _metadata.SetEntityDescription(product, $"{MetaData(product).EntityDescription} It is owned by {idCardComponent.FullName}.");
-        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
-        {
-            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
-            idCodeHolder.codes = shuttleCodes.codes;
-        }
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttle.Owner);
         AssignShuttleDeedProperties(deedShuttle, shuttle.Owner, name, user);
@@ -720,6 +716,12 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             sellValue = (int) _pricing.AppraiseGrid((EntityUid) (deed?.ShuttleUid!));
 
         EnsureComp<ShipSpeedByMassAdjusterComponent>(shuttle.Owner);
+        if (TryComp<DynamicCodeHolderComponent>(shuttle.Owner, out var shuttleCodes))
+        {
+            var idCodeHolder = EnsureComp<DynamicCodeHolderComponent>(idCardUid.Value);
+            idCodeHolder.codes = shuttleCodes.codes;
+            Dirty(idCardUid.Value, idCodeHolder);
+        }
 
 
         SendPurchaseMessage(uid, user, name, channel, false);
