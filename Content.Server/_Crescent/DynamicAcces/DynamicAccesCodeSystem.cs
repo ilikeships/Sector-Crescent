@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Server._Crescent.Helpers;
+using Content.Shared._Crescent.Helpers;
 using Content.Server.Shuttles.Components;
 using Content.Shared._Crescent;
 using Content.Shared._Crescent.DynamicCodes;
@@ -128,6 +128,9 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
             comp.accesState = ShuttleConsoleAccesState.NoAcces;
             Dirty(console, comp);
         }
+
+        var accesGivingComp = EnsureComp<GridDynamicCodeOnSpawnGiverComponent>(grid);
+        accesGivingComp.DynamicCodesOnWakeUp = prototype.CryoKeys;
         RemComp<DynamicAccesGridInitializerComponent>(grid);
         Dirty(grid, codeHolder);
     }
@@ -164,6 +167,12 @@ public sealed class DynamicCodeSystem : SharedDynamicCodeSystem
         if(!component.mappedCodes.ContainsKey(identifier))
             component.mappedCodes.Add(identifier, new HashSet<int>());
         component.mappedCodes[identifier].Add(key);
+    }
+
+    public void AddKeyToComponent(DynamicCodeHolderComponent component, HashSet<int> keys, string? identifier)
+    {
+        foreach(var key in keys)
+            AddKeyToComponent(component, key, identifier);
     }
 
     public Dictionary<string, int> addDynamicCodes(HashSet<string> identifiers, EntityUid entity)
