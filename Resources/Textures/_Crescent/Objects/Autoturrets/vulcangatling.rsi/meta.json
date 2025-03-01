@@ -8,19 +8,16 @@
   },
   "states": [
     {
-      "name": "syndie_off",
-      "directions": 8
+      "name": "syndie_off"
     },
     {
-      "name": "syndie_lethal",
-      "directions": 8
+      "name": "syndie_lethal"
     },
     {
       "name": "syndie_broken"
     },
     {
-      "name": "syndie_stun",
-      "directions": 8
+      "name": "syndie_stun"
     }
   ]
 }
