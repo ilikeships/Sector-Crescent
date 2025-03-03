@@ -20,16 +20,15 @@ public sealed class DegradeableArmorSystem : EntitySystem
     {
         if (component.armorHealth == 0)
             return;
-        DamageSpecifier adjustedDamage = new();
-        adjustedDamage.DamageDict.EnsureCapacity(args.Args.Damage.DamageDict.Count);
         var armorDamage = 0f;
 
 
-
+        Dictionary<string, FixedPoint2> adjustedDamage = new();
+        adjustedDamage.EnsureCapacity(args.Args.Damage.DamageDict.Count);
         foreach (var (type, value) in args.Args.Damage.DamageDict)
         {
-            if (!adjustedDamage.DamageDict.TryGetValue(type, out var _))
-                continue;
+            adjustedDamage.Add(type, value );
+            
             var trueReduction = component.InitialModifiers.FlatReduction[type];
             var adjustedValue = value;
             if (trueReduction == 0)
@@ -60,11 +59,11 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 }
             }
 
-            adjustedDamage.DamageDict[type] = adjustedValue;
+            adjustedDamage[type] = adjustedValue;
 
         }
 
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);
-        args.Args.Damage = adjustedDamage;
+        args.Args.Damage.DamageDict = adjustedDamage;
     }
 }
