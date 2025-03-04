@@ -76,9 +76,9 @@ public sealed class HeatSeekingSystem : EntitySystem
                     continue;
                 }
             }
-            if (closestAngle > Math.Abs(angle - _transform.GetWorldRotation(transform))) // if this target is the best target checked so far, save it.
+            if (closestAngle > Math.Abs(angle - _transform.GetWorldRotation(transform) + distance / component.DefaultSeekingRange)) // if this target is the best target checked so far, save it.
             {
-                closestAngle = Math.Abs(angle - _transform.GetWorldRotation(transform));
+                closestAngle = Math.Abs(angle - _transform.GetWorldRotation(transform) + distance / component.DefaultSeekingRange);
                 bestGrid = shipUid;
             }
         }
