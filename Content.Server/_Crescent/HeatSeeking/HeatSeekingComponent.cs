@@ -9,9 +9,9 @@ namespace Content.Server._Crescent.HeatSeeking;
 public sealed partial class HeatSeekingComponent : Component
 {
     /// <summary>
-    /// How far does this fire a raycast onto?
+    /// How far away can this missile see targets
     /// </summary>
-    [DataField("seekRange")]
+    [DataField]
     public float DefaultSeekingRange = 300f;
 
     [DataField]
