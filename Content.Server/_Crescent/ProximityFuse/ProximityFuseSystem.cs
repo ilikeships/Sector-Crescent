@@ -30,7 +30,7 @@ public sealed class ProximityFuseSystem : EntitySystem
                 var shipQuery = EntityQueryEnumerator<ThrusterComponent, TransformComponent>();
                 while (shipQuery.MoveNext(out var tUid, out var tComp, out var tXform)) // output the closest grid and relative velocities
                 {
-                    if (shooterTransform.GridUid == tUid)
+                    if (shooterTransform.GridUid == tXform.GridUid)
                         return;
 
                     if (!TryComp<PhysicsComponent>(uid, out var ourPhysics) || !TryComp<PhysicsComponent>(tXform.GridUid, out var theirPhysics))
