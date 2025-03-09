@@ -1,22 +1,28 @@
 using Content.Shared.Damage;
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Crescent.DegradeableArmor;
 
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DegradeableArmorComponent : Component
 {
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float armorDegradationCoefficient = 1;
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float armorMaxHealth = 500;
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float armorHealth = 500;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public ArmorDegradation armorType = ArmorDegradation.Plastic;
 
-    [DataField]
-    public DamageModifierSet InitialModifiers = default!;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public DamageModifierSet initialModifiers = default!;
 }
-
+[Serializable, NetSerializable]
 public enum ArmorDegradation
 {
     Ceramic = 1, // blocks damage but decay is exponential to the damage. 

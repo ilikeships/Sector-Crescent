@@ -18,6 +18,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
 
     private void OnDamageModify(EntityUid uid, DegradeableArmorComponent component, InventoryRelayedEvent<DamageModifyEvent> args)
     {
+        Logger.Error("-----------------------------------");
         if (component.armorHealth == 0)
             return;
         var armorDamage = 0f;
@@ -27,9 +28,11 @@ public sealed class DegradeableArmorSystem : EntitySystem
         adjustedDamage.EnsureCapacity(args.Args.Damage.DamageDict.Count);
         foreach (var (type, value) in args.Args.Damage.DamageDict)
         {
+            if (!component.initialModifiers.FlatReduction.ContainsKey(type))
+                continue;
             adjustedDamage.Add(type, value );
             
-            var trueReduction = component.InitialModifiers.FlatReduction[type];
+            var trueReduction = component.initialModifiers.FlatReduction[type];
             var adjustedValue = value;
             if (trueReduction == 0)
                 continue;
@@ -37,33 +40,34 @@ public sealed class DegradeableArmorSystem : EntitySystem
             {
                 case ArmorDegradation.Ceramic:
                 {
-                    trueReduction = component.armorHealth / component.armorMaxHealth;
-                    trueReduction *= trueReduction;
-                    armorDamage += (float) value * (float) value / (6f + 1f/Math.Min(0.10f,1f - trueReduction));
-                    adjustedValue -= FixedPoint2.Abs(trueReduction * adjustedValue);
+                    trueReduction *= component.armorHealth / component.armorMaxHealth;
+                    trueReduction *= component.armorHealth / component.armorMaxHealth;
+                    armorDamage += (float) value * (float) value / 8f;
                     break;
                 }
                 case ArmorDegradation.Metallic:
                 {
-                    trueReduction = component.armorHealth / component.armorMaxHealth;
-                    armorDamage += (float) value * component.armorHealth / (component.armorHealth + component.armorMaxHealth) - trueReduction / 2f * (float)value;
-                    adjustedValue -= FixedPoint2.Abs(trueReduction * adjustedValue);
+                    trueReduction *= component.armorHealth / component.armorMaxHealth;
+                    armorDamage +=  (float) value * (float) value * (float) value * args.Args.armorDamageMultiplier /
+                                   ((float)(value) + component.armorMaxHealth);
                     break;
                 }
                 case ArmorDegradation.Plastic:
                 {
-                    trueReduction = (component.armorHealth + (float) value*2) / component.armorMaxHealth;
+                    trueReduction *= (component.armorHealth + (float) value*2) / component.armorMaxHealth;
                     armorDamage += trueReduction * (float) value * 1.1f;
-                    adjustedValue -= FixedPoint2.Abs(trueReduction * value);
                     break;
                 }
             }
-
+            adjustedValue = Math.Max(0f, (float) value - trueReduction);
+            Logger.Error(
+                $"Damage adjusted for type {type}, old {value} , new {adjustedValue}. Armor damage {armorDamage}. Armor Health {component.armorHealth}");
             adjustedDamage[type] = adjustedValue;
 
         }
 
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);
         args.Args.Damage.DamageDict = adjustedDamage;
+        Dirty(uid, component);
     }
 }
