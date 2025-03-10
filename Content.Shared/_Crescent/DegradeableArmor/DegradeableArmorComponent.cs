@@ -1,0 +1,85 @@
+using Content.Shared.Damage;
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
+
+namespace Content.Shared._Crescent.DegradeableArmor;
+
+/// <summary>
+/// This is used for...
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class DegradeableArmorComponent : Component
+{
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public float armorMaxHealth = 500f;
+    /// <summary>
+    /// Leave at 0 for it to get automatically set to armor max health(unless you want it hardset at lower or higher)
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public float armorHealth;
+
+    /// <summary>
+    /// percentage of blocked damage that gets converted into stamina damage
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public Dictionary<string, float> staminaConversions = new Dictionary<string, float>()
+    {
+        {"Blunt", 0.2f},
+        {"Slash", 0.2f},
+        {"Piercing", 0.05f},
+        {"Heat", 0f},
+        {"Caustic", 0f}
+    };
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public Dictionary<string, float> armorDamageCoefficients = new Dictionary<string, float>()
+    {
+        {"Blunt", 1.4f},
+        {"Slash", 1.7f},
+        {"Piercing", 1f},
+        {"Heat", 1f},
+        {"Caustic", 5f}
+    };
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public Dictionary<string, float> maxBlockCoefficients = new Dictionary<string, float>()
+    {
+        {"Blunt", 0.7f},
+        {"Slash", 0.9f},
+        {"Piercing", 1f},
+        {"Heat", 1f},
+        {"Caustic", 1f}
+    };
+
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public ArmorDegradation armorType = ArmorDegradation.Plastic;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public ArmorRepairMaterial armorRepair = ArmorRepairMaterial.PlasteelPlate;
+
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public DamageModifierSet initialModifiers = default!;
+}
+[Serializable, NetSerializable]
+public enum ArmorDegradation
+{
+    Ceramic = 1, // blocks damage but decay is exponential to the damage. 
+    Metallic = 1<<1, // Linear damaage , linear scaling of protection
+    Plastic = 1<<2, // Complicated
+}
+
+[Serializable, NetSerializable]
+public enum ArmorRepairMaterial
+{
+    PlasteelPlate = 1<<0,
+    NTPolymer = 1<<1,
+    CeramicPlate = 1<<2,
+    SteelPlate = 1<<3,
+    DuraThread = 1<<4,
+    PlasmaGlass = 1<<5,
+    Plastic = 1<<6,
+    HomelandAlloy = 1<<7,
+    Kevlar = 1<<8,
+    PlasteelEncasedKevlar = 1<<9,
+    NTCeramic = 1<<10
+
+}

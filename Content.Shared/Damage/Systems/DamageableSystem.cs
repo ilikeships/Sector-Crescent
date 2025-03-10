@@ -112,20 +112,8 @@ namespace Content.Shared.Damage
             RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin));
         }
 
-        /// <summary>
-        ///     Applies damage specified via a <see cref="DamageSpecifier"/>.
-        /// </summary>
-        /// <remarks>
-        ///     <see cref="DamageSpecifier"/> is effectively just a dictionary of damage types and damage values. This
-        ///     function just applies the container's resistances (unless otherwise specified) and then changes the
-        ///     stored damage data. Division of group damage into types is managed by <see cref="DamageSpecifier"/>.
-        /// </remarks>
-        /// <returns>
-        ///     Returns a <see cref="DamageSpecifier"/> with information about the actual damage changes. This will be
-        ///     null if the user had no applicable components that can take damage.
-        /// </returns>
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
-            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null)
+            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null, float? armorMultiplier = null)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -156,6 +144,8 @@ namespace Content.Shared.Damage
                 }
 
                 var ev = new DamageModifyEvent(damage, origin);
+                if(armorMultiplier is not null)
+                    ev.armorDamageMultiplier = armorMultiplier.Value;
                 RaiseLocalEvent(uid.Value, ev);
                 damage = ev.Damage;
 
@@ -191,6 +181,8 @@ namespace Content.Shared.Damage
 
             return delta;
         }
+
+        
 
         /// <summary>
         ///     Sets all damage types supported by a <see cref="DamageableComponent"/> to the specified value.
@@ -302,6 +294,7 @@ namespace Content.Shared.Damage
 
         public readonly DamageSpecifier OriginalDamage;
         public DamageSpecifier Damage;
+        public float armorDamageMultiplier = 1f;
         public EntityUid? Origin;
 
         public DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null)
