@@ -1,9 +1,11 @@
+using Content.Shared.ArachnidChaos;
 using Content.Shared.Armor;
 using Content.Shared.Chasm;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -28,6 +30,11 @@ public enum ArmorRepairMaterial
     NTCeramic = 1 << 10
 
 }
+[Serializable, NetSerializable]
+public partial class ArmorRepairDoAfterEvent : SimpleDoAfterEvent
+{
+    
+}
 /// <summary>
 /// This handles...
 /// </summary>
@@ -35,30 +42,36 @@ public sealed class DegradeableArmorSystem : EntitySystem
 {
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doing = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<DegradeableArmorComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<DegradeableArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamageModify);
         SubscribeLocalEvent<ArmorRepairKitComponent, AfterInteractEvent>(OnArmorKitUse);
+        SubscribeLocalEvent<ArmorRepairKitComponent, ArmorRepairDoAfterEvent>(OnArmorDoAfter);
     }
 
-    private void OnArmorKitUse(EntityUid uid, ArmorRepairKitComponent component, ref AfterInteractEvent args)
+    private void OnArmorDoAfter(EntityUid uid, ArmorRepairKitComponent component, ref ArmorRepairDoAfterEvent args)
     {
+        Logger.Error($"Target  is {args.Target}");
+        if (args.Cancelled || args.Handled)
+            return;
+        Logger.Error($"Target  is {args.Target}");
         if (!TryComp<DegradeableArmorComponent>(args.Target, out var targetComponent))
             return;
-        if (targetComponent.armorRepair != component.materialType)
-        {
-            _popup.PopupClient("You can't use this material to repair this!", args.User, PopupType.Medium);
-            return;
-        }
-
         if (targetComponent.armorHealth >= targetComponent.armorMaxHealth)
         {
-            _popup.PopupClient("This is already in pristine condition!", args.User, PopupType.Medium);
+            _popup.PopupClient("This is already in pristine condition!", args.User, args.User, PopupType.Medium);
             return;
         }
 
+        if (_inventory.TryGetContainingSlot(args.Target.Value, out var def))
+        {
+            _popup.PopupClient("You can't repair this piece whilst wearing it!", args.User, args.User, PopupType.Medium);
+            return;
+        }
         var usedArmor = Math.Min(component.repairHealth, targetComponent.armorMaxHealth - targetComponent.armorHealth);
         component.repairHealth -= usedArmor;
         if (component.repairHealth <= 0)
@@ -67,10 +80,43 @@ public sealed class DegradeableArmorSystem : EntitySystem
         }
 
         targetComponent.armorHealth += usedArmor;
-        _popup.PopupClient($"You use the armor kit. The armor on the target is now at {(int)targetComponent.armorHealth/targetComponent.armorMaxHealth}% health", args.User, PopupType.Medium);
+        _popup.PopupClient(
+            $"You use the armor kit. The armor on the target is now at {100 * (int) targetComponent.armorHealth / targetComponent.armorMaxHealth}% health",
+            args.User, args.User, PopupType.Medium);
+    }
+    private void OnArmorKitUse(EntityUid uid, ArmorRepairKitComponent component, ref AfterInteractEvent args)
+    {
+        if (!TryComp<DegradeableArmorComponent>(args.Target, out var targetComponent))
+            return;
+        if (targetComponent.armorRepair != component.materialType)
+        {
+            _popup.PopupClient("You can't use this material to repair this!", args.User, args.User, PopupType.Medium);
+            return;
+        }
+
+        if (targetComponent.armorHealth >= targetComponent.armorMaxHealth)
+        {
+            _popup.PopupClient("This is already in pristine condition!", args.User, args.User, PopupType.Medium);
+            return;
+        }
+
+        if (_inventory.TryGetContainingSlot(args.Target.Value, out var def))
+        {
+            _popup.PopupClient("You can't repair this piece whilst wearing it!",args.User,args.User, PopupType.Medium);
+            return;
+        }
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, 5f, new ArmorRepairDoAfterEvent(), uid, target: args.Target, used: uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            BlockDuplicate = true
+        };
+        _doing.TryStartDoAfter(doAfterEventArgs);
 
 
     }
+
+
     private void OnInit(EntityUid uid, DegradeableArmorComponent component, ref MapInitEvent args)
     {
         if(component.armorHealth == 0)
