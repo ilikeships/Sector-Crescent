@@ -6,11 +6,13 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Crescent.DegradeableArmor;
 
@@ -51,14 +53,37 @@ public sealed class DegradeableArmorSystem : EntitySystem
         SubscribeLocalEvent<DegradeableArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamageModify);
         SubscribeLocalEvent<ArmorRepairKitComponent, AfterInteractEvent>(OnArmorKitUse);
         SubscribeLocalEvent<ArmorRepairKitComponent, ArmorRepairDoAfterEvent>(OnArmorDoAfter);
+        SubscribeLocalEvent<DegradeableArmorComponent, ExaminedEvent>(OnArmorExamine);
+    }
+
+    private void OnArmorExamine(EntityUid owner, DegradeableArmorComponent component, ref ExaminedEvent args)
+    {
+        args.PushMessage(GetArmorExamine(component));
+    }
+    private FormattedMessage GetArmorExamine(DegradeableArmorComponent component)
+    {
+        var msg = new FormattedMessage();
+
+        msg.AddMarkup(Loc.GetString("armor-examine"));
+
+        foreach (var flatArmor in component.initialModifiers.FlatReduction)
+        {
+            msg.PushNewline();
+
+            var armorType = Loc.GetString("armor-damage-type-" + flatArmor.Key.ToLower());
+            msg.AddMarkup(Loc.GetString("armor-reduction-value",
+                ("type", armorType),
+                ("value", (int)(flatArmor.Value * (component.armorHealth+000.1f)/component.armorMaxHealth))
+            ));
+        }
+
+        return msg;
     }
 
     private void OnArmorDoAfter(EntityUid uid, ArmorRepairKitComponent component, ref ArmorRepairDoAfterEvent args)
     {
-        Logger.Error($"Target  is {args.Target}");
         if (args.Cancelled || args.Handled)
             return;
-        Logger.Error($"Target  is {args.Target}");
         if (!TryComp<DegradeableArmorComponent>(args.Target, out var targetComponent))
             return;
         if (targetComponent.armorHealth >= targetComponent.armorMaxHealth)
@@ -81,7 +106,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
 
         targetComponent.armorHealth += usedArmor;
         _popup.PopupClient(
-            $"You use the armor kit. The armor on the target is now at {100 * (int) targetComponent.armorHealth / targetComponent.armorMaxHealth}% health",
+            $"You use the armor kit. The armor on the target is now at {100 * (FixedPoint2) targetComponent.armorHealth / targetComponent.armorMaxHealth}% health",
             args.User, args.User, PopupType.Medium);
     }
     private void OnArmorKitUse(EntityUid uid, ArmorRepairKitComponent component, ref AfterInteractEvent args)
