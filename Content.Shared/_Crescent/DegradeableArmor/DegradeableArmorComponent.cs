@@ -67,19 +67,3 @@ public enum ArmorDegradation
     Plastic = 1<<2, // Complicated
 }
 
-[Serializable, NetSerializable]
-public enum ArmorRepairMaterial
-{
-    PlasteelPlate = 1<<0,
-    NTPolymer = 1<<1,
-    CeramicPlate = 1<<2,
-    SteelPlate = 1<<3,
-    DuraThread = 1<<4,
-    PlasmaGlass = 1<<5,
-    Plastic = 1<<6,
-    HomelandAlloy = 1<<7,
-    Kevlar = 1<<8,
-    PlasteelEncasedKevlar = 1<<9,
-    NTCeramic = 1<<10
-
-}
