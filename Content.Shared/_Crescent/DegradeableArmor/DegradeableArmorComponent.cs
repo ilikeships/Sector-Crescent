@@ -26,7 +26,7 @@ public sealed partial class DegradeableArmorComponent : Component
     {
         {"Blunt", 0.2f},
         {"Slash", 0.2f},
-        {"Piercing", 0.05f},
+        {"Piercing", 0.1f},
         {"Heat", 0f},
         {"Caustic", 0f}
     };
