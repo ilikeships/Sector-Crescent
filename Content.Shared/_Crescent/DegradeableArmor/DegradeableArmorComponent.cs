@@ -62,6 +62,14 @@ public sealed partial class DegradeableArmorComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public DamageModifierSet initialModifiers = default!;
+
+    /// <summary>
+    ///  This is shitty but there is no wizden implementation for getting the wearer of a piece of clothing
+    /// </summary>
+    ///
+    [ViewVariables(VVAccess.ReadWrite)] 
+    public EntityUid wearer = EntityUid.Invalid;
+
 }
 [Serializable, NetSerializable]
 public enum ArmorDegradation

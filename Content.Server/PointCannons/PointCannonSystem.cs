@@ -418,18 +418,19 @@ public class PointCannonSystem : EntitySystem
         if (form.GridUid == null)
             return new();
 
-        TransformComponent gridForm = Transform(form.GridUid.Value);
         List<(Angle, Angle)> ranges = new();
-        TransformChildrenEnumerator enumerate = gridForm.ChildEnumerator;
         HashSet<EntityUid> entities = _lookup.GetEntitiesInRange(uid, (float) range, LookupFlags.Static);
         foreach(var childUid in entities)
         {
             //checking if obstacle is not too far/close to the cannon
             TransformComponent otherForm = Transform(childUid);
+            // dont care about other grids
+            if (otherForm.GridUid != form.GridUid)
+                continue;
             Vector2 dir = otherForm.LocalPosition - form.LocalPosition;
 
             //checking that obstacle is anchored and solid
-            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) || !body.Hard || (body.CollisionLayer & (int)CollisionGroup.BulletImpassable) == 0)
+            if (!otherForm.Anchored || !TryComp<PhysicsComponent>(childUid, out var body) ||  !body.Hard || (body.CollisionLayer & (int)CollisionGroup.BulletImpassable) == 0)
                 continue;
 
             //calculating circular sector that obstacle occupies relative to the cannon
