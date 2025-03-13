@@ -26,9 +26,10 @@ public sealed partial class DegradeableArmorComponent : Component
     {
         {"Blunt", 0.2f},
         {"Slash", 0.2f},
-        {"Piercing", 0.05f},
+        {"Piercing", 0.1f},
         {"Heat", 0f},
-        {"Caustic", 0f}
+        {"Caustic", 0f},
+        {"Radiation", 0f}
     };
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public Dictionary<string, float> armorDamageCoefficients = new Dictionary<string, float>()
@@ -37,7 +38,8 @@ public sealed partial class DegradeableArmorComponent : Component
         {"Slash", 1.7f},
         {"Piercing", 1f},
         {"Heat", 1f},
-        {"Caustic", 5f}
+        {"Caustic", 5f},
+        {"Radiation", 0.1f}
     };
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public Dictionary<string, float> maxBlockCoefficients = new Dictionary<string, float>()
@@ -46,7 +48,9 @@ public sealed partial class DegradeableArmorComponent : Component
         {"Slash", 0.9f},
         {"Piercing", 1f},
         {"Heat", 1f},
-        {"Caustic", 1f}
+        {"Caustic", 1f},
+        {"Radiation", 1f}
+
     };
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
