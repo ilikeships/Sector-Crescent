@@ -1,12 +1,28 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from Shiptest and modified.",
+    "copyright": "Taken from Shiptest and modified for use.",
     "size": {
-        "x": 32,
+        "x": 48,
         "y": 32
     },
     "states": [
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "wielded-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "wielded-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
         {
             "name": "icon"
         },
@@ -18,18 +34,6 @@
         },
         {
             "name": "mag-0"
-        },
-        {
-            "name": "inhand-left",
-            "directions": 4
-        },
-        {
-            "name": "inhand-right",
-            "directions": 4
-        },
-        {
-            "name": "equipped-BACKPACK",
-            "directions": 4
         }
     ]
 }
