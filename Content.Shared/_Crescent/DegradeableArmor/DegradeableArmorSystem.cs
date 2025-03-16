@@ -2,6 +2,9 @@ using Content.Shared.ArachnidChaos;
 using Content.Shared.Armor;
 using Content.Shared.Chasm;
 using Content.Shared.Chat;
+using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
+using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
@@ -11,6 +14,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
+using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -46,16 +50,29 @@ public sealed class DegradeableArmorSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedDoAfterSystem _doing = default!;
+    [Dependency] private readonly ClothingSystem _cloth = default!;
+    [Dependency] private readonly SharedContainerSystem _containers = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
         SubscribeLocalEvent<DegradeableArmorComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<DegradeableArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamageModify);
+        SubscribeLocalEvent<DegradeableArmorComponent, ClothingGotEquippedEvent>(afterEquipped);
+        SubscribeLocalEvent<DegradeableArmorComponent, ClothingGotUnequippedEvent>(afterDeequip);
         SubscribeLocalEvent<ArmorRepairKitComponent, AfterInteractEvent>(OnArmorKitUse);
         SubscribeLocalEvent<ArmorRepairKitComponent, ArmorRepairDoAfterEvent>(OnArmorDoAfter);
         SubscribeLocalEvent<DegradeableArmorComponent, ExaminedEvent>(OnArmorExamine);
     }
 
+    private void afterEquipped(EntityUid owner, DegradeableArmorComponent comp, ref ClothingGotEquippedEvent args)
+    {
+        comp.wearer = args.Wearer;
+    }
+
+    private void afterDeequip(EntityUid owner, DegradeableArmorComponent comp, ref ClothingGotUnequippedEvent args)
+    {
+        comp.wearer = EntityUid.Invalid;
+    }
     private void OnArmorExamine(EntityUid owner, DegradeableArmorComponent component, ref ExaminedEvent args)
     {
         args.PushMessage(GetArmorExamine(component));
@@ -151,7 +168,6 @@ public sealed class DegradeableArmorSystem : EntitySystem
     {
         if (component.armorHealth == 0)
             return;
-        //Logger.Error("-----------------------------------");
         var armorDamage = 0f;
 
 
@@ -185,13 +201,12 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 }
             }
 
-            trueReduction = Math.Clamp(trueReduction, 0, component.maxBlockCoefficients[type] * component.initialModifiers.FlatReduction[type]);
-            _stamina.TakeStaminaDamage(uid, trueReduction * component.staminaConversions[type]);
-            armorDamage += trueReduction * args.Args.armorDamageMultiplier * component.armorDamageCoefficients[type]; 
+            trueReduction = Math.Clamp(trueReduction, 0f, component.maxBlockCoefficients[type] * component.initialModifiers.FlatReduction[type]);
+            _stamina.TakeStaminaDamage(component.wearer, trueReduction * component.staminaConversions[type]);
+            armorDamage += (float) value * args.Args.armorDamageMultiplier * component.armorDamageCoefficients[type]; 
             //Logger.Error(
-            //    $"Damage adjusted for type {type}, old {value} , new {Math.Max(0f, (float) value - trueReduction)}. Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
-            damageDictionary[type] = Math.Max(0f, (float) value - trueReduction);
-
+            //    $"Damage adjusted for type {type}, old {value} , new {Math.Max(0f, Math.Max((float) value * component.passthroughCoefficients[type], (float) value - trueReduction))}. Minimum passthrough {Math.Max(0f, (float) value * component.passthroughCoefficients[type])}.  Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
+            damageDictionary[type] = Math.Max(0f, Math.Max((float) value * component.passthroughCoefficients[type], (float) value - trueReduction));
         }
 
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);
