@@ -105,7 +105,8 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
         deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
 
-        _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
+        // instead of reflecting the projectile, just delete it. this works better for gameplay and intuiting what is going on in a fight.
+        //_gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
 
         if (component.Source != null)
         {
