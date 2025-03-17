@@ -66,7 +66,7 @@ public partial class ShipShieldsSystem
 
         if (TryComp<ExplosiveComponent>(args.Deflected, out var exp))
         {
-            component.Damage += exp.TotalIntensity * 2f;
+            component.Damage += exp.TotalIntensity;
             QueueDel(args.Deflected);
             return;
         }
