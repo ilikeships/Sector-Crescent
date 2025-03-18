@@ -92,18 +92,18 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         if (Math.Abs(collisionSpeedVector.Length()) < CollisionThreshold)
             return;
 
-        if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
-            despawn.Lifetime += despawn.Lifetime;
+        //if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
+        //    despawn.Lifetime += despawn.Lifetime;
 
         // I originally tried reflection but the math is too hard with the fucked coordinate system in this game (WorldRotation can be negative. Vector to Angle conversion loses information. Etc etc.)
         // Might try again at some point using just vector math with this (https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector)
-        var deflectionVector = Transform(args.OtherEntity).WorldPosition - Transform(uid).WorldPosition;
-        var angle = _random.NextFloat(DeflectionSpread);
+        //var deflectionVector = Transform(args.OtherEntity).WorldPosition - Transform(uid).WorldPosition;
+        //var angle = _random.NextFloat(DeflectionSpread);
 
-        if (_random.Prob(0.5f))
-            angle = -angle;
+        //if (_random.Prob(0.5f))
+        //    angle = -angle;
 
-        deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
+        //deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
 
         // instead of reflecting the projectile, just delete it. this works better for gameplay and intuiting what is going on in a fight.
         //_gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());

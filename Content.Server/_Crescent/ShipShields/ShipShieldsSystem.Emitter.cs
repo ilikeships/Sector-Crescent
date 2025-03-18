@@ -68,7 +68,6 @@ public partial class ShipShieldsSystem
         {
             component.Damage += exp.TotalIntensity;
             QueueDel(args.Deflected);
-            return;
         }
 
         if (TryComp<ProjectileComponent>(args.Deflected, out var proj))
