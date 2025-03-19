@@ -8,6 +8,7 @@ using Content.Server.Station.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Audio;
 using Content.Shared.Examine;
+using Content.Server.Explosion.Components;
 
 namespace Content.Server._Crescent.ShipShields;
 public partial class ShipShieldsSystem
@@ -61,6 +62,12 @@ public partial class ShipShieldsSystem
             _trigger.Trigger(args.Deflected);
             QueueDel(args.Deflected);
             return;
+        }
+
+        if (TryComp<ExplosiveComponent>(args.Deflected, out var exp))
+        {
+            component.Damage += exp.TotalIntensity;
+            QueueDel(args.Deflected);
         }
 
         if (TryComp<ProjectileComponent>(args.Deflected, out var proj))
