@@ -18,34 +18,26 @@ public class SharedHardpointSystem : EntitySystem
     {
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorStateChangedEvent>(OnAnchorChange);
-        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, MapInitEvent>(OnMapLoad);
         SubscribeLocalEvent<HardpointComponent, AnchorStateChangedEvent>(OnHardpointAnchor);
-    }
-
-    public void OnMapLoad(EntityUid uid, HardpointAnchorableOnlyComponent comp, ref MapInitEvent args)
-    {
-        if (Transform(uid).MapUid == null)
-            return;
-        if (TryAnchorToAnyHardpoint(uid, comp))
-            return;
-        Logger.Error(
-            $"Hardpoint-only weapon had no hardpoint under itself at mapInit. {uid} , {MetaData(uid).EntityName}");
     }
     public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
     {
         if (args.Anchored)
-            return;
-        if (component.anchoredTo is null)
         {
-            // Fuck my chungus life just ignore this error. Auto-generated component states can't transmit entity uids properly , SPCR 2025
-            Logger.Error($"SharedHardpointSystem had a anchored entity that wasn't attached to a hardpoint!");
-            return;
+            if (!TryAnchorToAnyHardpoint(uid, component))
+            {
+                _transformSystem.Unanchor(uid);
+            }
         }
-
-        var gridUid = Transform(component.anchoredTo.Value).GridUid;
-        if (gridUid is null)
-            return;
-        Deanchor(uid, component.anchoredTo.Value, gridUid.Value, component);
+        else
+        {
+            if (component.anchoredTo is null)
+                return;
+            var gridUid = Transform(component.anchoredTo.Value).GridUid;
+            if (gridUid is null)
+                return;
+            Deanchor(uid, component.anchoredTo.Value, gridUid.Value, component);
+        }
     }
 
     public void OnHardpointAnchor(EntityUid target, HardpointComponent comp, ref AnchorStateChangedEvent args)
@@ -54,7 +46,12 @@ public class SharedHardpointSystem : EntitySystem
             return;
         if (comp.anchoring is null)
             return;
+        var gridUid = Transform(target).GridUid;
+        if (gridUid is null)
+            return;
         _transformSystem.Unanchor(comp.anchoring.Value);
+        //Deanchor(comp.anchoring.Value, target, gridUid.Value, Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
+        
     }
 
     public void Deanchor(EntityUid target, EntityUid anchor, EntityUid grid, HardpointAnchorableOnlyComponent component)
@@ -77,9 +74,36 @@ public class SharedHardpointSystem : EntitySystem
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {
-        if (TryAnchorToAnyHardpoint(uid, component))
+        if (hasHardpointAtPosition(uid, component))
             return;
         args.Cancel();
+    }
+
+    public bool hasHardpointAtPosition(EntityUid uid, HardpointAnchorableOnlyComponent component)
+    {
+        var gridUid = Transform(uid).GridUid;
+        if (gridUid is null)
+            return false;
+        if (!TryComp<MapGridComponent>(gridUid, out var gridComp))
+            return false;
+        if (!_transformSystem.TryGetGridTilePosition(uid, out var indice, gridComp))
+        {
+            return false;
+        }
+
+        foreach (var entity in _mapSystem.GetAnchoredEntities(new Entity<MapGridComponent>(gridUid.Value, gridComp), indice))
+        {
+            if (!TryComp<HardpointComponent>(entity, out var hardComp))
+                continue;
+            if (hardComp.anchoring is not null)
+                continue;
+            if ((hardComp.CompatibleTypes & component.CompatibleTypes) == 0)
+                continue;
+            if (hardComp.CompatibleSizes < component.CompatibleSizes)
+                continue;
+            return true;
+        }
+        return false;
     }
 
     public bool TryAnchorToAnyHardpoint(EntityUid uid, HardpointAnchorableOnlyComponent component)

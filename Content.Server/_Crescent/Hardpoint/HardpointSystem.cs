@@ -32,6 +32,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
         SubscribeLocalEvent<FixturesComponent, AnchorStateChangedEvent>(OnFixtureAnchor);
         SubscribeLocalEvent<HardpointComponent, HardpointCannonAnchoredEvent>(OnCannonAnchor);
         SubscribeLocalEvent<HardpointComponent, HardpointCannonDeanchoredEvent>(OnCannonDeanchor);
+        SubscribeLocalEvent<TargetingConsoleComponent, MapInitEvent>(InitConsole);
         SubscribeLocalEvent<HardpointFixedMountComponent, SignalReceivedEvent>(OnSignalReceived);
     }
     private void OnSignalReceived(EntityUid uid, HardpointFixedMountComponent component, ref SignalReceivedEvent args)
@@ -78,6 +79,10 @@ public sealed class HardpointSystem : SharedHardpointSystem
     }
 
 
+    public void InitConsole(EntityUid uid, TargetingConsoleComponent comp, ref MapInitEvent args)
+    {
+        _cannonSystem.LinkAllCannonsToConsole(uid, comp);
+    }
     public void OnCannonAnchor(EntityUid uid, HardpointComponent comp, ref HardpointCannonAnchoredEvent args)
     {
         // This is just for turret-cannons!
@@ -126,6 +131,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
                 if (!TryComp<PointCannonComponent>(entity.Comp.anchoring.Value, out var compx))
                     continue;
                 _cannonSystem.RefreshFiringRanges(entity.Comp.anchoring.Value, null, null, compx, entity.Comp.CannonRangeCheckRange);
+                _cannonSystem.LinkCannonToAllConsoles(entity.Comp.anchoring.Value);
             }
         }
         QueuedGrids.Clear();
