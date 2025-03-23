@@ -5,13 +5,15 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from Shiptest 13 and modified.",
+    "copyright": "Taken from Shiptest and modified.",
     "states": [
         {
-            "name": "state0"
+            "name": "state0",
+            "directions": 4
         },
         {
-            "name": "state1"
+            "name": "state1",
+            "directions": 4
         }
     ]
 }
