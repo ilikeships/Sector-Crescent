@@ -3646,14 +3646,14 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: AmeController
+- proto: AmeControllerSmallExplosion
   entities:
   - uid: 1851
     components:
     - type: Transform
       pos: 0.5,-81.5
       parent: 1
-    - type: AmeController
+    - type: AmeControllerSmallExplosion
       injectionAmount: 10
       injecting: True
     - type: ContainerContainer

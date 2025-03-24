@@ -4767,14 +4767,14 @@ entities:
       rot: 3.141592653589793 rad
       pos: -5.5,12.5
       parent: 1
-- proto: AmeController
+- proto: AmeControllerSmallExplosion
   entities:
   - uid: 2435
     components:
     - type: Transform
       pos: 18.5,22.5
       parent: 1
-    - type: AmeController
+    - type: AmeControllerSmallExplosion
       injectionAmount: 4
       injecting: True
     - type: ContainerContainer

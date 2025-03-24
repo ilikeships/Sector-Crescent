@@ -2462,14 +2462,14 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: AmeController
+- proto: AmeControllerSmallExplosion
   entities:
   - uid: 3570
     components:
     - type: Transform
       pos: 12.5,-43.5
       parent: 1
-    - type: AmeController
+    - type: AmeControllerSmallExplosion
       injectionAmount: 18
       injecting: True
     - type: ContainerContainer

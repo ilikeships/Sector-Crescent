@@ -4528,14 +4528,14 @@ entities:
           ents:
           - 2170
     - type: InsideEntityStorage
-- proto: AmeController
+- proto: AmeControllerSmallExplosion
   entities:
   - uid: 1200
     components:
     - type: Transform
       pos: 7.5,-19.5
       parent: 1
-    - type: AmeController
+    - type: AmeControllerSmallExplosion
       injectionAmount: 8
       injecting: True
     - type: ContainerContainer
