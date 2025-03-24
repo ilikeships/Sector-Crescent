@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Ame.Components;
 using Content.Server.Ame.EntitySystems;
 using Content.Server.Chat.Managers;
+using Content.Server.Explosion.Components;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
@@ -191,13 +192,25 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         if (_cores.Count < 1
         || !_entMan.TryGetComponent<AmeControllerComponent>(MasterController, out var controller))
             return;
+        if (!_entMan.TryGetComponent<ExplosiveComponent>(MasterController, out var exp))
+            return;
 
         /*
             * todo: add an exact to the shielding and make this find the core closest to the controller
             * so they chain explode, after helpers have been added to make it not cancer
         */
-        var radius = Math.Min((controller.InjectionAmount / CoreCount) * 5, CoreCount * CoreCount + 7);
-        var intensity = (controller.InjectionAmount - CoreCount * 2) * 3000 + 15000;
-        _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, radius: radius, totalIntensity:intensity, delete: false);
+        
+        if (controller.BigExplosion)
+        {
+            var radius = Math.Min((controller.InjectionAmount / CoreCount) * 5, CoreCount * CoreCount + 7);
+            var intensity = (controller.InjectionAmount - CoreCount * 2) * 3000 + 15000;
+            _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, radius: radius, totalIntensity: intensity, delete: false);
+        }
+        else
+        {
+            var radius = Math.Min(2 * CoreCount * controller.InjectionAmount, 8f);
+            var intensity = CoreCount * 1000;
+            _entMan.System<ExplosionSystem>().TriggerExplosive(MasterController.Value, radius: radius, totalIntensity: intensity, delete: false);
+        }
     }
 }
