@@ -4535,7 +4535,7 @@ entities:
     - type: Transform
       pos: 7.5,-19.5
       parent: 1
-    - type: AmeControllerSmallExplosion
+    - type: AmeController
       injectionAmount: 8
       injecting: True
     - type: ContainerContainer
