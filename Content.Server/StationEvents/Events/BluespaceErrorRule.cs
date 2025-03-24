@@ -55,7 +55,7 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
             return;
         component.startingValue = _pricing.AppraiseGrid(gridUid);
         _shuttle.SetIFFColor(gridUid, component.Color);
-        var offset = _random.NextVector2(1350f, 2200f);
+        var offset = _random.NextVector2Box(-7000f, -7000f, 7000f, 7000f); // Hullrot - fix random event spawns being only around kal
         var mapId = GameTicker.DefaultMap;
         var mapUid = _mapManager.GetMapEntityId(mapId);
         if (TryComp<ShuttleComponent>(component.GridUid, out var shuttle))
