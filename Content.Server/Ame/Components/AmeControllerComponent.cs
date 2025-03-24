@@ -101,4 +101,10 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// </summary>
     [DataField]
     public TimeSpan CooldownDuration = TimeSpan.FromSeconds(10f);
+
+    /// <summary>
+    /// Whether the AME should do a big or small explosion.
+    /// </summary>
+    [DataField]
+    public bool BigExplosion = true;
 }

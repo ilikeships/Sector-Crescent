@@ -3646,7 +3646,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-- proto: AmeController
+- proto: AmeControllerSmallExplosion
   entities:
   - uid: 1851
     components:
