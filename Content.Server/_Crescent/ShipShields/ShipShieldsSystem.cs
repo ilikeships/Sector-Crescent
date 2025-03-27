@@ -22,8 +22,8 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 10f;
     private const float CollisionThreshold = 50f;
-    private const float DeflectionSpread = 25f;
-    private const float EmitterUpdateRate = 10f;
+    //private const float DeflectionSpread = 25f;
+    private const float EmitterUpdateRate = 1f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
