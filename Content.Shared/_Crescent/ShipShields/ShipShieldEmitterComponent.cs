@@ -20,13 +20,13 @@ public sealed partial class ShipShieldEmitterComponent : Component
     public float DamageExp = 1.2f;
 
     [DataField]
-    public float HealPerSecond = 200f;
+    public float HealPerSecond = 300f;
 
     [DataField]
     public float UnpoweredBonus = 2f;
 
     [DataField]
-    public float BaseDraw = 50000f;
+    public float BaseDraw = 60000f;
 
     /// <summary>
     /// On power up, players for all on vessel, pitched down.
