@@ -34,7 +34,7 @@ public static class ProjectileIFFVisuals
             ];
         }
     }
-    public sealed class FilledSquare : Square
+    public sealed class SolidSquare : Square
     {
         public override DrawPrimitiveTopology Topology => DrawPrimitiveTopology.TriangleFan;
     }
@@ -59,7 +59,7 @@ public static class ProjectileIFFVisuals
             return verts;
         }
     }
-    public sealed class FilledCircle : Circle
+    public sealed class SolidCircle : Circle
     {
         public override DrawPrimitiveTopology Topology => DrawPrimitiveTopology.TriangleFan;
     }
@@ -80,7 +80,7 @@ public static class ProjectileIFFVisuals
             ];
         }
     }
-    public sealed class FilledTriangle : Triangle
+    public sealed class SolidTriangle : Triangle
     {
         public override DrawPrimitiveTopology Topology => DrawPrimitiveTopology.TriangleFan;
     }
@@ -102,7 +102,7 @@ public static class ProjectileIFFVisuals
             ];
         }
     }
-    public sealed class FilledDiamond : Diamond
+    public sealed class SolidDiamond : Diamond
     {
         public override DrawPrimitiveTopology Topology => DrawPrimitiveTopology.TriangleFan;
     }

@@ -13,10 +13,10 @@ public sealed partial class ProjectileIFFSystem : SharedProjectileIFFSystem
         new ProjectileIFFVisuals.Circle(),              // Circle
         new ProjectileIFFVisuals.Triangle(),            // Triangle
         new ProjectileIFFVisuals.Diamond(),             // Diamond
-        new ProjectileIFFVisuals.FilledSquare(),        // FilledSquare
-        new ProjectileIFFVisuals.FilledCircle(),        // FilledCircle
-        new ProjectileIFFVisuals.FilledTriangle(),      // FilledTriangle
-        new ProjectileIFFVisuals.FilledDiamond(),       // FilledDiamond
+        new ProjectileIFFVisuals.SolidSquare(),         // SolidSquare
+        new ProjectileIFFVisuals.SolidCircle(),         // SolidCircle
+        new ProjectileIFFVisuals.SolidTriangle(),       // SolidTriangle
+        new ProjectileIFFVisuals.SolidDiamond(),        // SolidDiamond
         new ProjectileIFFVisuals.SquareReticle(),       // SquareReticle
     ];
 

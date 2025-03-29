@@ -23,10 +23,10 @@ public enum ProjectileIFFVisualType : int
     Circle = 1,
     Triangle = 2,
     Diamond = 3,
-    FilledSquare = 4,
-    FilledCircle = 5,
-    FilledTriangle = 6,
-    FilledDiamond = 7,
+    SolidSquare = 4,
+    SolidCircle = 5,
+    SolidTriangle = 6,
+    SolidDiamond = 7,
     SquareReticle = 8,
 }
 
