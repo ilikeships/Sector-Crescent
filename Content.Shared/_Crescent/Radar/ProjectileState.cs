@@ -10,4 +10,6 @@ namespace Content.Shared.Crescent.Radar;
 public sealed class ProjectileState
 {
     public NetCoordinates Coordinates;
+    public int VisualTypeIndex;
+    public int ColorIndex;
 }
