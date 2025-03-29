@@ -18,6 +18,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Physics.Collision.Shapes;
 using Content.Shared._Crescent.Diplomacy;
 using Content.Shared._Crescent.ShipShields;
+using Content.Client.Crescent.Radar;
 
 namespace Content.Client.Shuttles.UI;
 
@@ -30,6 +31,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _transform;
     private readonly FixtureSystem _fixtures;
+    private readonly ProjectileIFFSystem _projectileIFF;
 
     /// <summary>
     /// Used to transform all of the radar objects. Typically is a shuttle console parented to a grid.
@@ -63,6 +65,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         _shuttles = EntManager.System<SharedShuttleSystem>();
         _transform = EntManager.System<SharedTransformSystem>();
         _fixtures = EntManager.System<FixtureSystem>();
+        _projectileIFF = EntManager.System<ProjectileIFFSystem>();
     }
 
     public void SetMatrix(EntityCoordinates? coordinates, Angle? angle)
@@ -448,30 +451,19 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
     private void DrawProjectiles(DrawingHandleScreen handle, Matrix3x2 matrix)
     {
-        const float scale = 0.4f;
-
-        var color = ProjectileIFFComponent.DefaultColor;
-
         foreach (var projectile in _projectiles)
         {
-            var position = projectile.Coordinates.Position;
-
-            var verts = new[]
-            {
-                position + new Vector2(-scale, -scale),
-                position + new Vector2(scale, -scale),
-                position + new Vector2(scale, scale),
-                position + new Vector2(-scale, scale),
-            };
-
+            var visual = _projectileIFF.GetVisual(projectile.VisualTypeIndex);
+            var verts = visual.GetVertice(projectile.Coordinates.Position, matrix);
             for (var i = 0; i < verts.Length; i++)
             {
-                var vert = Vector2.Transform(verts[i], matrix);
+                var vert = verts[i];
                 vert.Y = -vert.Y;
                 verts[i] = ScalePosition(vert);
             }
 
-            handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, verts, color);
+            var color = _projectileIFF.GetColor(projectile.ColorIndex);
+            handle.DrawPrimitives(visual.Topology, verts, color);
         }
     }
 
