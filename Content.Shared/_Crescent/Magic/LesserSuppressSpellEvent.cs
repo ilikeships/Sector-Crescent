@@ -4,7 +4,7 @@ using Content.Shared.Magic;
 using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Crescent.Magic;
-public sealed partial class SuppressMindSpellEvent : WorldTargetActionEvent, ISpeakSpell
+public sealed partial class LesserSuppressSpellEvent : WorldTargetActionEvent, ISpeakSpell
 {
     /// <summary>
     /// Sound effect for the spell.
@@ -19,13 +19,13 @@ public sealed partial class SuppressMindSpellEvent : WorldTargetActionEvent, ISp
     public float Volume = 5f;
 
     [DataField("range")]
-    public float Range = 2f;
+    public float Range = 4f;
 
     [DataField("bleedStacks")]
     public float BleedStacks = 10f;
 
     [DataField("flashTime")]
-    public float FlashTime = 10f;
+    public int FlashTime = 2;
 
     [DataField("speech")]
     public string? Speech { get; private set; }
