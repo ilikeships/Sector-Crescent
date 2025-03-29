@@ -810,7 +810,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                 continue;
             }
 
-            var projectile = new ProjectileState { Coordinates = GetNetCoordinates(_transform.GetMoverCoordinates(uid, transform)) };
+            var projectile = new ProjectileState
+            {
+                Coordinates = GetNetCoordinates(_transform.GetMoverCoordinates(uid, transform)),
+                VisualTypeIndex = (int) projectileIFF.VisualType,
+                ColorIndex = (int) projectileIFF.Color
+            };
             projectiles.Add(projectile);
         }
 
