@@ -9,7 +9,7 @@ ghost-respawn-rules-window-rules = You are about to be recloned:
     as your character was respooled from an emergency DNA
     sample, not live tissue.
 
-    Be aware that respooling deducts 20% of your current bank
+    Be aware that respooling deducts 5% of your current bank
     account. Try to sit it out and get recloned normally if
     you can!
 ## COMMMANDS
