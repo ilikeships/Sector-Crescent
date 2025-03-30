@@ -15,6 +15,8 @@ using Content.Shared.Damage.Components;
 using Content.Server.Medical;
 using Content.Shared.Eye.Blinding.Components;
 using System.Threading.Tasks;
+using Content.Shared.Ghost;
+using Content.Server.Ghost;
 
 namespace Content.Server._Crescent.Magic;
 
@@ -35,12 +37,12 @@ public sealed class CrescentMagicSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HackSpellEvent>(OnHackSpell);
-        SubscribeLocalEvent<KnockdownSpellEvent>(OnKnockdownSpell);
-        SubscribeLocalEvent<SuppressMindSpellEvent>(OnSuppressMindSpell);
+        SubscribeLocalEvent<LesserHackSpellEvent>(OnLesserHackSpell);
+        SubscribeLocalEvent<LesserKnockdownSpellEvent>(OnLesserKnockdownSpell);
+        SubscribeLocalEvent<LesserSuppressSpellEvent>(OnLesserSuppressSpell);
     }
 
-    public void OnHackSpell(HackSpellEvent args)
+    public void OnLesserHackSpell(LesserHackSpellEvent args)
     {
         if (args.Handled)
             return;
@@ -60,7 +62,7 @@ public sealed class CrescentMagicSystem : EntitySystem
         args.Handled = true;
     }
 
-    public void OnKnockdownSpell(KnockdownSpellEvent args)
+    public void OnLesserKnockdownSpell(LesserKnockdownSpellEvent args)
     {
         if (args.Handled)
             return;
@@ -69,7 +71,7 @@ public sealed class CrescentMagicSystem : EntitySystem
 
         foreach (var entity in _lookup.GetEntitiesInRange(args.Target, args.Range))
         {
-            if (entity == args.Performer || !TryComp<PhysicsComponent>(entity, out var physics) || Transform(entity).Anchored)
+            if (entity == args.Performer || !TryComp<PhysicsComponent>(entity, out var physics) || Transform(entity).Anchored || TryComp<ObserverRoleComponent>(entity, out var ghost))
                 continue;
 
             Vector2 targetVector = Vector2.Normalize(Transform(entity).Coordinates.Position - args.Target.Position);
@@ -83,7 +85,7 @@ public sealed class CrescentMagicSystem : EntitySystem
         _magic.Speak(args);
     }
 
-    public void OnSuppressMindSpell(SuppressMindSpellEvent args)
+    public void OnLesserSuppressSpell(LesserSuppressSpellEvent args)
     {
         if (args.Handled)
             return;
@@ -92,8 +94,8 @@ public sealed class CrescentMagicSystem : EntitySystem
 
         foreach (var entity in _lookup.GetEntitiesInRange(args.Target, args.Range))
         {
-            //if (entity == args.Performer)
-                //continue;
+            if (entity == args.Performer)
+                continue;
 
             if (TryComp<BloodstreamComponent>(entity, out var bloodstream))
                 _bloodstream.TryModifyBleedAmount(entity, args.BleedStacks, bloodstream);
@@ -106,7 +108,7 @@ public sealed class CrescentMagicSystem : EntitySystem
                 AddComp<TemporaryBlindnessComponent>(entity);
                 var t = Task.Factory.StartNew(() =>
                 {
-                    Task.Delay(5000).Wait();
+                    Task.Delay(args.FlashTime * 1000).Wait();
                     _entityManager.RemoveComponent<TemporaryBlindnessComponent>(entity);
                 });
                 t.Start();
