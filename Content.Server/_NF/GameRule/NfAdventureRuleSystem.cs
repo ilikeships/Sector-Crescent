@@ -330,7 +330,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
 
         if (_map.TryLoad(mapId, fogwalker, out var depotfogs, new MapLoadOptions
         {
-            Offset = new Vector2(17730f, 5920f)
+            Offset = new Vector2(1730f, 9920f)
         }))
         {
             var meta = EnsureComp<MetaDataComponent>(depotUid21s[0]);
