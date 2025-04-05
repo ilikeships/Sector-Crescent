@@ -19,7 +19,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: TCS Hearth DS-2103 [SOS]
+      name: TCS Hearth DS-2103
     - type: Transform
       pos: -0.40339786,-0.52229947
       parent: invalid
