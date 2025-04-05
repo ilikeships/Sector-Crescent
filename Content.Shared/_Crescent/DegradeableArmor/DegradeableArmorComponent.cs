@@ -25,7 +25,7 @@ public sealed partial class DegradeableArmorComponent : Component
     public Dictionary<string, float> staminaConversions = new Dictionary<string, float>()
     {
         {"Blunt", 0.25f},
-        {"Slash", 0.05f},
+        {"Slash", 0.15f},
         {"Piercing", 0.15f},
         {"Heat", 0f},
         {"Caustic", 0f},
@@ -38,28 +38,18 @@ public sealed partial class DegradeableArmorComponent : Component
         {"Slash", 1.7f},
         {"Piercing", 1f},
         {"Heat", 1f},
-        {"Caustic", 5f},
+        {"Caustic", 10f},
         {"Radiation", 0.1f}
     };
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public Dictionary<string, float> maxBlockCoefficients = new Dictionary<string, float>()
     {
-        {"Blunt", 0.7f},
-        {"Slash", 0.9f},
-        {"Piercing", 1f},
-        {"Heat", 1f},
-        {"Caustic", 1f},
+        {"Blunt", 0.8f},
+        {"Slash", 0.8f},
+        {"Piercing", 0.8f},
+        {"Heat", 0.8f},
+        {"Caustic", 0.8f},
         {"Radiation", 1f}
-    };
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public Dictionary<string, float> passthroughCoefficients = new Dictionary<string, float>() // what percent of damage to let through even if the armor can fully block the round (kinetic energy is a bitch)
-    {
-        {"Blunt", 0.2f},
-        {"Slash", 0.2f},
-        {"Piercing", 0.2f},
-        {"Heat", 0.2f},
-        {"Caustic", 0f},
-        {"Radiation", 0f}
     };
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
