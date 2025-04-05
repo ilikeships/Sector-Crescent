@@ -333,7 +333,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
             Offset = new Vector2(1730f, 9920f)
         }))
         {
-            var meta = EnsureComp<MetaDataComponent>(depotUid21s[0]);
+            var meta = EnsureComp<MetaDataComponent>(depotfogs[0]);
             _meta.SetEntityName(depotfogs[0], "Fogwrecked Derelict", meta);
             _shuttle.SetIFFColor(depotfogs[0], coveColor);
             _shuttle.AddIFFFlag(depotfogs[0], IFFFlags.HideLabel);
