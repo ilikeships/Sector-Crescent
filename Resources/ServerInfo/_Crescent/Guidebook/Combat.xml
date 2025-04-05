@@ -4,7 +4,7 @@
 Warfare on the Taypani frontier is typically done via the means of [color=#ebb72a]ship gunnery[/color] systems and there are very little laws of engagement in place.
 
 <Box>
-<GuideEntityEmbed Entity="BaseWeaponTurretPDT"/>
+<GuideEntityEmbed Entity="WeaponTurretPDTNCWL"/>
 <GuideEntityEmbed Entity="BaseWeaponTurretSolaris"/>
 </Box>
 
@@ -12,7 +12,7 @@ Turret systems are operated using a [color=#ebb72a]targeting console[/color], wh
 
 #Fixedpoint Weaponry
 
-While [color=#ebb72a]turret[/color] weapons use [color=#ebb72a]hardpoints[/color], [color=#ebb72a]fixedpoint[/color] weaponry that are operated using remote signallers or your ship's shuttle console require such no infrastructure, and can be wrenched on or off your vessel at any time with only it's power draw requirements to be mindful of. Sacrificing mobility and agility, such weapons are often able to use higher calibers of munitions or fire faster to compensate, and are more commonly found on smaller class of ships - although larger vessel sport capital-class armaments like the [color=#ebb72a]320mm accelerator carronade[/color].
+While [color=#ebb72a]turret[/color] weapons use [color=#ebb72a]hardpoints[/color], [color=#ebb72a]fixedpoint[/color] weaponry that are operated using remote signallers or your ship's shuttle console require such no infrastructure, and can be wrenched on or off your vessel at any time with only its power draw requirements to be mindful of. Sacrificing mobility and agility, such weapons are often able to use higher calibers of munitions or fire faster to compensate, and are more commonly found on smaller class of ships - although larger vessels sport capital-class armaments like the [color=#ebb72a]320mm accelerator carronade[/color].
 
 
 <Box>
@@ -32,7 +32,6 @@ Hardpoints are always built into the hull - and more cannot be built, moved in f
 
 <Box>
 <GuideEntityEmbed Entity="ShieldEmitterMedium"/>
-<GuideEntityEmbed Entity="ShieldEmitterSmall"/>
 </Box>
 
 Some ships may be outfitted with deflector emitters, capable of deflecting projectiles and blocking explosions. When damaged, deflector bubbles use the ship's power grid to repair themselves -- be wary of your shield, if it takes too much damage, it'll end up cannibalizing the entire powergrid in an attempt to turn itself back on, disabling every other module onboard!
