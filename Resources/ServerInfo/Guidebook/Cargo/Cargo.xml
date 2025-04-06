@@ -1,15 +1,20 @@
 <Document>
-  # Cargo and Supply
-  Shinohara Heavy Industries, more commonly known simply as SHI, is in charge of keeping the system stocked up on necessary resources, such as fuel and raw materials. Though, they are not restricted to simple goods, and can order a wide variety of different items from off-system. The point is, it's SHI's job to get the rest of the station what they need.
+  # Frontier Economics
+  Considering [color=#ebb72a]Taypan[/color] is a contested frontier system, goods have to be imported from commercial systems within the Sector such as Chengridz or Domain. While you can manufacture what you need domestically most of the time using microforges and manufactories, it is simply more time and cost efficient to order supplies from off-world to use later, as opposed to spending time gathering materials to build equipment. Not all things can be manufactured or bought from station cargo commissionaries, though - specialized corporate trader vessels often come into the Sector offer their wares. Right now, only the [color=#ebb72a]Shinohara Heavy Industries[/color], [color=#ebb72a]Pang Tai Arms[/color], and [color=#ebb72a]Ihejirika Civilian Manufacturing[/color] corporations are represented ingame with coded events, not accounting for the civilian traders that deal in scrap, fuel and spare machinery.
+
+  <Box>
+    <GuideEntityEmbed Entity="CratePangtaiTakemura"/>
+    <GuideEntityEmbed Entity="CrateShinoharaHammerhead"/>
+  </Box>
 
   ## Ordering
   <Box>
     <GuideEntityEmbed Entity="ComputerCargoOrders"/>
   </Box>
-  Every transaction you make will begin at a [color=#a4885c]cargo request computer[/color], from which you can make orders for specific products. Making any order requires [color=#118C4F]credits[/color], the currency of the Sector. To make an order, click the "request" button next to whatever you need, type an appropriate reason for why you're ordering it, and hit "approve" when it appears below the request list.
+  Every transaction you make will begin at a [color=#ebb72a]cargo request computer[/color], from which you can make orders for specific products. Making any order requires [color=#ebb72a]credits[/color], the currency of the Sector. To make an order, click the "request" button next to whatever you need, type an appropriate reason for why you're ordering it, and hit "approve" when it appears below the request list.
 
   ## Selling
-  So, you want to order something, but don't have the money for it? You just need to sell something. A lot of things in the system has economic value, which an [color=#a4885c]appraisal tool[/color] can read out to you.
+  So, you want to order something, but don't have the money for it? You just need to sell something. A lot of things in the system has economic value, which an [color=#ebb72a]appraisal tool[/color] can read out to you.
   <Box>
     <GuideEntityEmbed Entity="AppraisalTool"/>
     <GuideEntityEmbed Entity="CargoPallet"/>

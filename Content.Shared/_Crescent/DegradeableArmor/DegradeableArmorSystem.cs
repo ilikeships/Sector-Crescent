@@ -196,17 +196,16 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 }
                 case ArmorDegradation.Plastic:
                 {
-                    trueReduction *= (component.armorHealth + (float) value*2) / component.armorMaxHealth;
+                    trueReduction *= (component.armorHealth + (float) value * 2) / component.armorMaxHealth;
                     break;
                 }
             }
 
-            trueReduction = Math.Clamp(trueReduction, 0f, component.maxBlockCoefficients[type] * component.initialModifiers.FlatReduction[type]);
+            trueReduction = Math.Clamp(trueReduction, 0f, component.maxBlockCoefficients[type] * (float) value);
             _stamina.TakeStaminaDamage(component.wearer, trueReduction * component.staminaConversions[type]);
             armorDamage += (float) value * args.Args.armorDamageMultiplier * component.armorDamageCoefficients[type]; 
-            //Logger.Error(
-            //    $"Damage adjusted for type {type}, old {value} , new {Math.Max(0f, Math.Max((float) value * component.passthroughCoefficients[type], (float) value - trueReduction))}. Minimum passthrough {Math.Max(0f, (float) value * component.passthroughCoefficients[type])}.  Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
-            damageDictionary[type] = Math.Max(0f, Math.Max((float) value * component.passthroughCoefficients[type], (float) value - trueReduction));
+            //Logger.Error($"Damage adjusted for type {type}, old {value}, new {Math.Max(0f, (float) value - trueReduction)}  Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
+            damageDictionary[type] = Math.Max(0f, (float) value - trueReduction);
         }
 
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);

@@ -120,6 +120,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
        // var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         var oris = "/Maps/_Crescent/Explorables/oris.yml";
+        var fogwalker = "/Maps/_Crescent/Explorables/fogexplorer.yml";
         var borealis = "/Maps/_Crescent/Stations/borealis.yml";
         var cometevent = "/Maps/_Crescent/Stations/cometevent.yml";
         var taypanone = "/Maps/_Crescent/Explorables/taypanone.yml";
@@ -327,7 +328,18 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
            _shuttle.AddIFFFlag(depotUid21s[0], IFFFlags.HideLabel);
           }
 
-          if (_map.TryLoad(mapId, fighter2, out var depotUid22s, new MapLoadOptions
+        if (_map.TryLoad(mapId, fogwalker, out var depotfogs, new MapLoadOptions
+        {
+            Offset = new Vector2(1730f, 9920f)
+        }))
+        {
+            var meta = EnsureComp<MetaDataComponent>(depotfogs[0]);
+            _meta.SetEntityName(depotfogs[0], "Fogwrecked Derelict", meta);
+            _shuttle.SetIFFColor(depotfogs[0], coveColor);
+            _shuttle.AddIFFFlag(depotfogs[0], IFFFlags.HideLabel);
+        }
+
+        if (_map.TryLoad(mapId, fighter2, out var depotUid22s, new MapLoadOptions
          {
               Offset = new Vector2(7721f, 5950f)
          }))
