@@ -28,3 +28,4 @@ vessel-designation-destroyer = destroyer
 vessel-designation-stealth-boarder = stealth boarder
 vessel-designation-lightcorvette = light corvette
 vessel-desgination-lightfrigate = patrol frigate
+vessel-designation-outpost = Mobile Outpost
