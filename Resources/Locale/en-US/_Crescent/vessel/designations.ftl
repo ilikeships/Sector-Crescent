@@ -1,6 +1,5 @@
 vessel-designation-warship = warship
 vessel-designation-headquarters = headquarters
-vessel-designation-outpost = outpost
 vessel-designation-mining = mining vessel
 vessel-designation-colony = colony ship
 vessel-designation-expeditions = expedition vessel
