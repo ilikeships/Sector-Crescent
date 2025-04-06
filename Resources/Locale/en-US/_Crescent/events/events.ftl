@@ -8,6 +8,6 @@ station-event-bluespace-probe = Naval Command advises all spaceborne pilots that
 
 station-event-bluespace-probe-end = Naval Command informs all spaceborne pilots that the derelict NanoTrasen surveyor probe has been towed into a secure location; participant groups have been rewarded for their diligence in clearing the vessel.
 
-station-event-infestation = Naval Command informs all spaceborne pilots that an unaffiliated Hearth-class mobile outpost has experienced a contamination field failure and is now broadcasting for help. Navcomm will reward all sovereign groups who interfere.
+station-event-bluespace-infestation = Naval Command informs all spaceborne pilots that an unaffiliated Hearth-class mobile outpost has experienced a contamination field failure and is now broadcasting for help. Navcomm will reward all sovereign groups who interfere.
 
-station-event-infestation-end = Naval Command informs all spaceborne pilots that the Hearth-class mobile outpost has been towed into unstable bluespace for deconstruction and decontamination. Participants have been rewarded.
+station-event-bluespace-infestation-end = Naval Command informs all spaceborne pilots that the Hearth-class mobile outpost has been towed into unstable bluespace for deconstruction and decontamination. Participants have been rewarded.
