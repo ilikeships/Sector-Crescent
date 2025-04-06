@@ -23,7 +23,7 @@ public sealed partial class ShipShieldEmitterComponent : Component
     public float HealPerSecond = 300f;
 
     [DataField]
-    public float UnpoweredBonus = 2f;
+    public float UnpoweredBonus = 0.75f;
 
     [DataField]
     public float BaseDraw = 60000f;
