@@ -13,7 +13,7 @@ public sealed partial class ProjectileIFFComponent : Component
     public ProjectileIFFVisualType VisualType = ProjectileIFFVisualType.Square;
 
     [DataField("color")]
-    public ProjectileIFFColor Color = ProjectileIFFColor.White;
+    public ProjectileIFFColor Color = ProjectileIFFColor.Red;
 }
 
 [Serializable, NetSerializable]
