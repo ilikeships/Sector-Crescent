@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Net.Sockets;
@@ -8,7 +10,11 @@ using System.Threading.Tasks;
 using Content.Shared._Crescent;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
+using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
+using Robust.Shared.Log;
 using Robust.Shared.Map;
+using Robust.Shared.Maths;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Dynamics;
@@ -24,6 +30,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     ConcurrentQueue<Tuple<StartCollideEvent, StartCollideEvent>> eventQueue = new();
     private EntityQuery<PhysicsComponent> physQuery;
     private EntityQuery<FixturesComponent> fixtureQuery;
+
     public required ISawmill sawLogs;
 
     internal sealed class RaycastBucket
@@ -76,6 +83,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     }
     private void ProcessBucket(RaycastThreadBucketHolder bucket, ParallelLoopState state, long indexer)
     {
+        Queue<Tuple<StartCollideEvent, StartCollideEvent>> localQueue = new();
         foreach (var raycast in bucket.buckets)
         {
             var owner = raycast.owner;
@@ -106,14 +114,11 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                     targPhysComp, obj.HitPos);
                 var revEv = new StartCollideEvent(obj.HitEntity, owner, ev.OtherFixtureId, ev.OurFixtureId,
                     ev.OtherFixture, ev.OurFixture, targPhysComp, physComp, obj.HitPos);
-
-                eventQueue.Enqueue(new Tuple<StartCollideEvent, StartCollideEvent>(ev, revEv));
+                localQueue.Enqueue(new Tuple<StartCollideEvent, StartCollideEvent>(ev, revEv));
             }
-
-
+            eventQueue.Concat(localQueue);
             raycast.phaseComp.start = end;
         }
-
     }
 
     public override void Update(float frametime)
@@ -177,14 +182,26 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         //if(eventQueue.Count != 0)
         //    Logger.Error($"Processing {eventQueue.Count} events!. Actual bullet count {eventQueue.Count/2}");
-        while (eventQueue.TryDequeue(out var eventData))
+
+        // whilst i'd prefer this to be a HashSet, there has to be order in processing these.
+        List<Tuple<StartCollideEvent, StartCollideEvent>> processingQueue = eventQueue.ToList();
+        foreach(var eventData in processingQueue)
         {
             if (TerminatingOrDeleted(eventData.Item1.OurEntity) || TerminatingOrDeleted(eventData.Item2.OurEntity))
                 continue;
             var fEv = eventData.Item1;
-            RaiseLocalEvent(eventData.Item1.OurEntity,ref fEv, true);
             var sEv = eventData.Item2;
-            RaiseLocalEvent(eventData.Item2.OurEntity, ref sEv, true);
+            try
+            {
+                RaiseLocalEvent(eventData.Item1.OurEntity, ref fEv, true);
+                RaiseLocalEvent(eventData.Item2.OurEntity, ref sEv, true);
+            }
+            catch (Exception e)
+            {
+                sawLogs.Error(e.Message);
+            }
+
+
             //Logger.Error($"Tried to collide with {MetaData(eventData.collideEvent.OtherEntity).EntityName}");
         }
 
