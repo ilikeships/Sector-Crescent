@@ -83,7 +83,6 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     }
     private void ProcessBucket(RaycastThreadBucketHolder bucket, ParallelLoopState state, long indexer)
     {
-        Queue<Tuple<StartCollideEvent, StartCollideEvent>> localQueue = new();
         foreach (var raycast in bucket.buckets)
         {
             var owner = raycast.owner;
@@ -114,10 +113,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                     targPhysComp, obj.HitPos);
                 var revEv = new StartCollideEvent(obj.HitEntity, owner, ev.OtherFixtureId, ev.OurFixtureId,
                     ev.OtherFixture, ev.OurFixture, targPhysComp, physComp, obj.HitPos);
-                localQueue.Enqueue(new Tuple<StartCollideEvent, StartCollideEvent>(ev, revEv));
+                eventQueue.Enqueue(new Tuple<StartCollideEvent, StartCollideEvent>(ev, revEv));
             }
-            eventQueue.Concat(localQueue);
-            raycast.phaseComp.start = end;
         }
     }
 
