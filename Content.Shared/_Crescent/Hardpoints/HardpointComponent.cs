@@ -6,10 +6,10 @@ namespace Content.Shared._Crescent.Hardpoints;
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, AutoGenerateComponentState, NetworkedComponent]
 public sealed partial class HardpointComponent : Component
 {
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? anchoring;
     [ViewVariables(VVAccess.ReadWrite), DataField("range")]
     public int CannonRangeCheckRange = 25;
