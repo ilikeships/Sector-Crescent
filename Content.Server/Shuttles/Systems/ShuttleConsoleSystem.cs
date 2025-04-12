@@ -802,10 +802,10 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var consolePosition = _transform.GetMapCoordinates(consoleTransform);
         var range = SharedRadarConsoleSystem.DefaultMaxRange;
 
-        var query = EntityQueryEnumerator<ProjectileIFFComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        var query = EntityQueryEnumerator<ProjectileIFFComponent, MetaDataComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var metadata, out var transform))
         {
-            if (!consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
+            if (metadata.EntityLastModifiedTick <= metadata.LastModifiedTick || !consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
             {
                 continue;
             }
