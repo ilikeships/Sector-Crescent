@@ -16,13 +16,26 @@ public class SharedHardpointSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<HardpointAnchorableOnlyComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorAttemptEvent>(OnAnchorTry);
         SubscribeLocalEvent<HardpointAnchorableOnlyComponent, AnchorStateChangedEvent>(OnAnchorChange);
         SubscribeLocalEvent<HardpointComponent, AnchorStateChangedEvent>(OnHardpointAnchor);
     }
+
+    public void OnMapInit(EntityUid uid, HardpointAnchorableOnlyComponent component, MapInitEvent args)
+    {
+        if (Transform(uid).Anchored && component.anchoredTo is null)
+        {
+            if (!TryAnchorToAnyHardpoint(uid, component))
+            {
+                _transformSystem.Unanchor(uid);
+            }
+        }
+    }
+
     public void OnAnchorChange(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorStateChangedEvent args)
     {
-        if (args.Anchored)
+        if (args.Anchored && component.anchoredTo is null)
         {
             if (!TryAnchorToAnyHardpoint(uid, component))
             {
@@ -49,9 +62,8 @@ public class SharedHardpointSystem : EntitySystem
         var gridUid = Transform(target).GridUid;
         if (gridUid is null)
             return;
-        _transformSystem.Unanchor(comp.anchoring.Value);
-        //Deanchor(comp.anchoring.Value, target, gridUid.Value, Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
-        
+        Deanchor(comp.anchoring.Value, target, gridUid.Value, Comp<HardpointAnchorableOnlyComponent>(comp.anchoring.Value));
+
     }
 
     public void Deanchor(EntityUid target, EntityUid anchor, EntityUid grid, HardpointAnchorableOnlyComponent component)
@@ -70,7 +82,7 @@ public class SharedHardpointSystem : EntitySystem
         RaiseLocalEvent(hardpointUid, arg);
         component.anchoredTo = null;
         Dirty(hardpointUid, hardpointComp);
-        Dirty(arg.CannonUid, component);
+        Dirty(target, component);
     }
     public void OnAnchorTry(EntityUid uid, HardpointAnchorableOnlyComponent component, ref AnchorAttemptEvent args)
     {

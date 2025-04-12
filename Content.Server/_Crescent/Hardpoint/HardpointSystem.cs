@@ -47,7 +47,7 @@ public sealed class HardpointSystem : SharedHardpointSystem
         var gridUid = Transform(uid).GridUid;
         if (gridUid != null)
         {
-            if (TryComp<PacifistShipHullmodComponent>(gridUid, out PacifistShipHullmodComponent? paciship))
+            if (HasComp<PacifistShipHullmodComponent>(gridUid))
             {
                 return;
 
@@ -111,7 +111,6 @@ public sealed class HardpointSystem : SharedHardpointSystem
         if (InternalTimer < UpdateDelay)
             return;
         InternalTimer = 0;
-        EntityQuery<HardpointComponent> hardpointQuery = GetEntityQuery<HardpointComponent>();
         foreach(var grid in QueuedGrids)
         {
             if (TerminatingOrDeleted(grid))
