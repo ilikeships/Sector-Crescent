@@ -83,6 +83,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     }
     private void ProcessBucket(RaycastThreadBucketHolder bucket, ParallelLoopState state, long indexer)
     {
+
         foreach (var raycast in bucket.buckets)
         {
             var owner = raycast.owner;
