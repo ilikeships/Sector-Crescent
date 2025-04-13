@@ -111,9 +111,13 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                     continue;
                 if (!fixtureQuery.TryGetComponent(obj.HitEntity, out var targFixtComp))
                     continue;
-                var targetGrid = _trans.GetGrid(obj.HitEntity);
-                if (targetGrid is not null && targetGrid == raycast.projectileGrid)
-                    continue;
+                if (raycast.projectileGrid is not null)
+                {
+                    var targetGrid = _trans.GetGrid(obj.HitEntity);
+                    if (targetGrid is not null && targetGrid == raycast.projectileGrid)
+                        continue;
+                }
+
                 var ev = new StartCollideEvent(owner, obj.HitEntity, raycast.fixtureKey,
                     targFixtComp.Fixtures.Keys.First(), raycast.fixture, targFixtComp.Fixtures.Values.First(), physComp,
                     targPhysComp, obj.HitPos);
