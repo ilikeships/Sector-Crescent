@@ -359,12 +359,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (component.accesState == ShuttleConsoleAccesState.NotDynamic)
             return;
-        if (component.accesState != ShuttleConsoleAccesState.NoAcces)
-        {
-            component.accesState = ShuttleConsoleAccesState.NoAcces;
-            _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
-            return;
-        }
 
         if (!_crescent.getGridOfEntity(uid, out var gridId))
             return;
@@ -372,6 +366,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (!TryComp<IdCardComponent>(args.Used, out var _))
             return;
+        if (component.accesState != ShuttleConsoleAccesState.NoAcces)
+        {
+            component.accesState = ShuttleConsoleAccesState.NoAcces;
+            _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+            return;
+        }
         var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(args.Used);
         if (component.captainIdentifier is null || component.pilotIdentifier is null)
             return;
