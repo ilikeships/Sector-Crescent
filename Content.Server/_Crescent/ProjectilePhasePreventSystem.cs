@@ -8,8 +8,10 @@ using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Shared._Crescent;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
+using Robust.Server.GameObjects;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
@@ -69,6 +71,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        UpdatesBefore.Add(typeof(PhysicsSystem));
         SubscribeLocalEvent<ProjectilePhasePreventComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<ProjectilePhasePreventComponent, MoveEvent>(OnMove);
         sawLogs = _logs.GetSawmill("Phase-Prevention");
