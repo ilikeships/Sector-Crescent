@@ -20,16 +20,20 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
+
 public sealed class ProjectilePhasePreventerSystem : EntitySystem
 {
     [Dependency] private readonly SharedPhysicsSystem _phys = default!;
     [Dependency] private readonly SharedTransformSystem _trans = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     [Dependency] private readonly ILogManager _logs = default!;
     // im so sorry , SPCR 2025
     ConcurrentQueue<Tuple<StartCollideEvent, StartCollideEvent>> eventQueue = new();
     private EntityQuery<PhysicsComponent> physQuery;
     private EntityQuery<FixturesComponent> fixtureQuery;
+    private EntityQuery<ProjectileComponent> projectileQuery;
 
     public required ISawmill sawLogs;
 
@@ -86,13 +90,17 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         foreach (var raycast in bucket.buckets)
         {
+
             var owner = raycast.owner;
+            if (TerminatingOrDeleted(owner))
+                continue;
             var start = raycast.start;
             var end = raycast.end;
             var angle = (end - start).Normalized();
             var map = raycast.map;
             var physComp = raycast.physComp;
-            CollisionRay ray = new CollisionRay(start, angle, (int)(CollisionGroup.BulletImpassable | CollisionGroup.Impassable));
+            CollisionRay ray = new CollisionRay(start, angle, (int)(CollisionGroup.BulletImpassable));
+            if (TerminatingOrDeleted(owner))
 
             foreach (var obj in _phys.IntersectRay(map, ray, (end - start).Length(), owner, false))
             {
@@ -100,8 +108,6 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                     continue;
                 if (TerminatingOrDeleted(obj.HitEntity))
                     continue;
-                if (TerminatingOrDeleted(owner))
-                    break;
                 if (!physQuery.TryGetComponent(obj.HitEntity, out var targPhysComp))
                     continue;
                 if (!fixtureQuery.TryGetComponent(obj.HitEntity, out var targFixtComp))
@@ -121,18 +127,20 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
     public override void Update(float frametime)
     {
-        var enumerator =
-            EntityQueryEnumerator<ProjectilePhasePreventComponent, PhysicsComponent, FixturesComponent,
-                ProjectileComponent>();
         fixtureQuery = GetEntityQuery<FixturesComponent>();
         physQuery = GetEntityQuery<PhysicsComponent>();
+        projectileQuery = GetEntityQuery<ProjectileComponent>();
         var threadBuckets = new List<RaycastThreadBucketHolder>();
         var fillingBucket = new RaycastThreadBucketHolder();
         var rayCount = 0;
-
-        while (enumerator.MoveNext(out var owner, out var phaseComp, out var physComp, out var fixtComp,
-                   out var projComp))
+        foreach (var (owner,uncasted) in EntityManager.GetAllComponents(typeof(ProjectilePhasePreventComponent), false))
         {
+            if (!fixtureQuery.HasComponent(owner) || !physQuery.HasComponent(owner) || !projectileQuery.HasComponent(owner))
+                continue;
+            var phaseComp = (ProjectilePhasePreventComponent)uncasted;
+            var physComp = physQuery.Comp(owner);
+            var fixtComp = fixtureQuery.Comp(owner);
+            var projComp = projectileQuery.Comp(owner);
             var map = _trans.GetMapId(owner);
             if (map == MapId.Nullspace)
             {
