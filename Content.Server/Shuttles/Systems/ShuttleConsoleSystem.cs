@@ -366,18 +366,19 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             return;
         if (!TryComp<IdCardComponent>(args.Used, out var _))
             return;
-        if (component.accesState != ShuttleConsoleAccesState.NoAcces)
-        {
-            component.accesState = ShuttleConsoleAccesState.NoAcces;
-            _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
-            return;
-        }
         var dynIdComp = EnsureComp<DynamicCodeHolderComponent>(args.Used);
         if (component.captainIdentifier is null || component.pilotIdentifier is null)
             return;
 
         if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.captainIdentifier],dynIdComp))
         {
+            if (component.accesState != ShuttleConsoleAccesState.NoAcces)
+            {
+                component.accesState = ShuttleConsoleAccesState.NoAcces;
+                _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+                return;
+            }
+
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Console unlocked. Welcome onboard, captain.", uid, args.User);
@@ -387,6 +388,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.pilotIdentifier], dynIdComp))
         {
+            if (component.accesState != ShuttleConsoleAccesState.NoAcces)
+            {
+                component.accesState = ShuttleConsoleAccesState.NoAcces;
+                _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+                return;
+            }
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Authorized to console as pilot.", uid, args.User);
