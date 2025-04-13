@@ -99,8 +99,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
             var angle = (end - start).Normalized();
             var map = raycast.map;
             var physComp = raycast.physComp;
-            CollisionRay ray = new CollisionRay(start, angle, (int)(CollisionGroup.BulletImpassable));
-            if (TerminatingOrDeleted(owner))
+            CollisionRay ray = new CollisionRay(start, angle, (int)(CollisionGroup.BulletImpassable | CollisionGroup.Impassable));
 
             foreach (var obj in _phys.IntersectRay(map, ray, (end - start).Length(), owner, false))
             {
