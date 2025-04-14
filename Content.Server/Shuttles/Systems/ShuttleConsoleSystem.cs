@@ -359,12 +359,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (component.accesState == ShuttleConsoleAccesState.NotDynamic)
             return;
-        if (component.accesState != ShuttleConsoleAccesState.NoAcces)
-        {
-            component.accesState = ShuttleConsoleAccesState.NoAcces;
-            _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
-            return;
-        }
 
         if (!_crescent.getGridOfEntity(uid, out var gridId))
             return;
@@ -378,6 +372,13 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.captainIdentifier],dynIdComp))
         {
+            if (component.accesState != ShuttleConsoleAccesState.NoAcces)
+            {
+                component.accesState = ShuttleConsoleAccesState.NoAcces;
+                _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+                return;
+            }
+
             component.accesState = ShuttleConsoleAccesState.CaptainAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Console unlocked. Welcome onboard, captain.", uid, args.User);
@@ -387,6 +388,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         if (_codes.hasKey(dynamicAccesComponent.mappedCodes[component.pilotIdentifier], dynIdComp))
         {
+            if (component.accesState != ShuttleConsoleAccesState.NoAcces)
+            {
+                component.accesState = ShuttleConsoleAccesState.NoAcces;
+                _popup.PopupEntity("Console locked", uid, args.User, PopupType.Small);
+                return;
+            }
             component.accesState = ShuttleConsoleAccesState.PilotAcces;
             _audio.PlayPvs("/Audio/Machines/high_tech_confirm.ogg", uid, AudioParams.Default);
             _popup.PopupEntity("Authorized to console as pilot.", uid, args.User);
@@ -802,10 +809,10 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         var consolePosition = _transform.GetMapCoordinates(consoleTransform);
         var range = SharedRadarConsoleSystem.DefaultMaxRange;
 
-        var query = EntityQueryEnumerator<ProjectileIFFComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var projectileIFF, out var transform))
+        var query = EntityQueryEnumerator<ProjectileIFFComponent, MetaDataComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var projectileIFF, out var metadata, out var transform))
         {
-            if (!consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
+            if (metadata.EntityLastModifiedTick <= metadata.LastModifiedTick || !consolePosition.InRange(_transform.GetMapCoordinates(transform), range))
             {
                 continue;
             }
