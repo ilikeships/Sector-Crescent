@@ -6,8 +6,8 @@ using Content.Server.Emp;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Station.Systems;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Audio;
 using Content.Shared.Examine;
+using Content.Server.Explosion.Components;
 
 namespace Content.Server._Crescent.ShipShields;
 public partial class ShipShieldsSystem
@@ -18,39 +18,8 @@ public partial class ShipShieldsSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     public void InitializeEmitters()
     {
-        SubscribeLocalEvent<ShipShieldEmitterComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<ShipShieldEmitterComponent, ShieldDeflectedEvent>(OnShieldDeflected);
         SubscribeLocalEvent<ShipShieldEmitterComponent, ExaminedEvent>(OnExamined);
-    }
-
-    private void OnPowerChanged(EntityUid uid, ShipShieldEmitterComponent component, PowerChangedEvent args)
-    {
-        var parent = Transform(uid).GridUid;
-
-        if (parent == null)
-            return;
-
-        var filter = _station.GetInOwningStation(uid);
-
-        if (args.Powered)
-        {
-            var shield = ShieldEntity(parent.Value, source: uid);
-            if (shield != EntityUid.Invalid)
-            {
-                component.Shield = shield;
-                component.Shielded = parent.Value;
-            }
-
-            _audio.PlayGlobal(component.PowerUpSound, filter, true, component.PowerUpSound.Params);
-        }
-        else
-        {
-            UnshieldEntity(parent.Value);
-            component.Shield = null;
-            component.Shielded = null;
-
-            _audio.PlayGlobal(component.PowerDownSound, filter, true, component.PowerUpSound.Params);
-        }
     }
 
     private void OnShieldDeflected(EntityUid uid, ShipShieldEmitterComponent component, ShieldDeflectedEvent args)
@@ -59,14 +28,19 @@ public partial class ShipShieldsSystem
         {
             component.Damage += Math.Clamp(emp.EnergyConsumption, 0f, MAX_EMP_DAMAGE);
             _trigger.Trigger(args.Deflected);
-            QueueDel(args.Deflected);
-            return;
+        }
+
+        if (TryComp<ExplosiveComponent>(args.Deflected, out var exp))
+        {
+            component.Damage += exp.TotalIntensity;
+
         }
 
         if (TryComp<ProjectileComponent>(args.Deflected, out var proj))
             component.Damage += (float) proj.Damage.GetTotal();
         else if (TryComp<PhysicsComponent>(args.Deflected, out var phys))
             component.Damage += phys.FixturesMass;
+        QueueDel(args.Deflected);
     }
 
     private void OnExamined(EntityUid uid, ShipShieldEmitterComponent component, ExaminedEvent args)
@@ -80,7 +54,7 @@ public partial class ShipShieldsSystem
             return;
         }
 
-        var additionalLoad = (float) Math.Pow(component.Damage, component.DamageExp);
+        var additionalLoad = (float) Math.Clamp(Math.Pow(component.Damage, component.DamageExp), 0f, component.MaxDraw);
         var ratio = additionalLoad / component.BaseDraw;
         ratio = (float) Math.Ceiling(ratio * 100);
 
@@ -93,7 +67,7 @@ public partial class ShipShieldsSystem
             return;
 
         /// Raise damage to the power of the growth exponent
-        var additionalLoad = (float) Math.Pow(emitter.Damage, emitter.DamageExp);
+        var additionalLoad = (float) Math.Clamp(Math.Pow(emitter.Damage, emitter.DamageExp), 0f, emitter.MaxDraw);
 
         receiver.Load = emitter.BaseDraw + additionalLoad;
     }

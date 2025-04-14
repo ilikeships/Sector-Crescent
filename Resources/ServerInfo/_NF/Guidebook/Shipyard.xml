@@ -1,17 +1,17 @@
 <Document>
-# New Frontiers Shipyards
+# Shipyards
 
-Shuttle insurance technology has been standardized to allow all citizens to purchase, pilot, and operate space-faring craft throughout the Frontier regions.
+Shuttle insurance technology has been standardized to allow all citizens to purchase, pilot, and operate space-faring craft throughout Taypan.
 
 ## Shipyard Console
 <Box>
-<GuideEntityEmbed Entity="PassengerIDCard"/>
+<GuideEntityEmbed Entity="ShuttleOwnershipChip"/>
 <GuideEntityEmbed Entity="SpaceCash1000"/>
 <GuideEntityEmbed Entity="ComputerShipyard"/>
 </Box>
-Purchasing a ship will register it onto a personal ID card inserted into the [color=#cccc00]Shipyard Console[/color].
+Purchasing a ship will register it onto a shuttle ownership chip (SOC) inserted into the [color=#cccc00]Shipyard Console[/color].
 
-This ID card can then be used to sell the ship back to the shipyard, for the resulting value of the ship.
+This SOC can then be used to sell the ship back to the shipyard, for the resulting value of the ship.
 
 ## Provisions
 <Box>

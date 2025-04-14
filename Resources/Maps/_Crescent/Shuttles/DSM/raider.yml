@@ -282,20 +282,6 @@ entities:
     - type: Transform
       pos: 2.5,4.5
       parent: 1
-- proto: BaseWeaponTurretLancer
-  entities:
-  - uid: 74
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 6.5,3.5
-      parent: 1
-    - type: PointCannon
-      linkedConsoleIds:
-      - 215
-      linkedConsoleId: 215
-      obstructedRanges:
-      - 0.6806784082777885 rad: 4.9218284906240095 rad
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 100
@@ -879,11 +865,8 @@ entities:
   - uid: 42
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 5.5,-1.5
+      pos: 5.5,-0.5
       parent: 1
-    - type: Physics
-      fixedRotation: False
 - proto: ComputerTabletopShuttle
   entities:
   - uid: 65
@@ -911,19 +894,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTabletopTargeting
-  entities:
-  - uid: 215
-    components:
-    - type: Transform
-      pos: 5.5,-0.5
-      parent: 1
-    - type: TargetingConsole
-      cannonGroups:
-        all:
-        - 74
-        light 'Lancer' swarmrocket platform:
-        - 74
 - proto: FaxMachineShip
   entities:
   - uid: 82
@@ -1062,15 +1032,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-2.5
       parent: 1
-- proto: AAAHardpointLargeUniversal
-  entities:
-  - uid: 189
-    components:
-    - type: Transform
-      pos: 6.5,3.5
-      parent: 1
-    - type: Physics
-      canCollide: False
 - proto: JetpackMiniFilled
   entities:
   - uid: 169

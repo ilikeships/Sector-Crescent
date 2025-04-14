@@ -58,8 +58,8 @@ public sealed class HeatSeekingSystem : EntitySystem
                 _transform.ToMapCoordinates(shipXform.Coordinates).Position
             ); // current distance from target
 
-            if (angle > _transform.GetWorldRotation(transform) + component.FOV * Math.PI / 180f
-            || angle < _transform.GetWorldRotation(transform) - component.FOV * Math.PI / 180f) // if target is out of FOV, skip it.
+            if (angle > _transform.GetWorldRotation(transform) + component.FOV / 2 * Math.PI / 180f
+            || angle < _transform.GetWorldRotation(transform) - component.FOV / 2 * Math.PI / 180f) // if target is out of FOV, skip it.
             {
                 continue;
             }
@@ -76,9 +76,9 @@ public sealed class HeatSeekingSystem : EntitySystem
                     continue;
                 }
             }
-            if (closestAngle > Math.Abs(angle - _transform.GetWorldRotation(transform))) // if this target is the best target checked so far, save it.
+            if (closestAngle > Math.Abs(angle - _transform.GetWorldRotation(transform) + distance / component.DefaultSeekingRange)) // if this target is the best target checked so far, save it.
             {
-                closestAngle = Math.Abs(angle - _transform.GetWorldRotation(transform));
+                closestAngle = Math.Abs(angle - _transform.GetWorldRotation(transform) + distance / component.DefaultSeekingRange);
                 bestGrid = shipUid;
             }
         }
@@ -98,6 +98,17 @@ public sealed class HeatSeekingSystem : EntitySystem
                 _transform.ToMapCoordinates(xform.Coordinates).Position,
                 _transform.ToMapCoordinates(entXform.Coordinates).Position
             ); // current distance from target
+            var angle = (
+                _transform.ToMapCoordinates(entXform.Coordinates).Position -
+                _transform.ToMapCoordinates(xform.Coordinates).Position
+            ).ToWorldAngle(); // current angle towards target
+
+            if (angle > _transform.GetWorldRotation(xform) + comp.FOV * Math.PI / 180f
+            || angle < _transform.GetWorldRotation(xform) - comp.FOV * Math.PI / 180f) // if missile missed, lose lock.
+            {
+                comp.TargetEntity = null;
+                return;
+            }
 
             var targetVelocity = _transform.ToMapCoordinates(entXform.Coordinates).Position - oldPosition; // get target velocity
             float timeToImpact = distance / (oldDistance - distance); // time it will take for the missile to reach the target

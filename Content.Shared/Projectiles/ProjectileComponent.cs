@@ -44,6 +44,9 @@ public sealed partial class ProjectileComponent : Component
     [DataField(required: true)] [ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier Damage = new();
 
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float armorDamageMultiplier = 1f;
+
     /// <summary>
     ///     If the projectile should be deleted on collision.
     /// </summary>

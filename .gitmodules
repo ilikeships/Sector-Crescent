@@ -4,4 +4,5 @@
 	branch = master
 [submodule "Resources/Prototypes"]
 	path = Resources/Prototypes
-	url = https://github.com/MLGTASTICa/Hullrot-YAML-Prototypes.git
+	url = https://github.com/ilikeships/Hullrot-YAML-Prototypes.git
+	branch = master

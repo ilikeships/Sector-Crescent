@@ -21,7 +21,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Fogwrecked Derelict
     - type: Transform
       pos: -0.49257025,-0.5520318
       parent: invalid
@@ -541,7 +541,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Fogexplorer
+      id: fogwalker
 - proto: AbyssalSurvey
   entities:
   - uid: 410

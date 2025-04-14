@@ -15,3 +15,6 @@ station-event-bluespace-syndicate-ftl-interception-end-announcement = In complia
 
 station-event-bluespace-wizardfederation-scout-start-announcement = Attention all available personnel! Union Naval Command detected a Bluespace Anomaly in your sector with the signature indicative of the imminent arrival of a St. Romaine's Militia corvette-class vessel. Code: Intercept, Detain, Incarcerate. Arrest the intruders and prepare them for transportation to Chengridz for interrogation.
 station-event-bluespace-wizardfederation-scout-end-announcement = In compliance with NCWL FTL traffic patterns, the raider vessel has been dissipated to ensure non-collision.
+
+station-event-bluespace-shinohara-ded = Attention all available naval forces! A Shinohara research outpost has suffered catastrophic IFF muffler failure and is now broadcasting an SoS signal - Union Command recommends diverting course to offer aid.
+station-event-bluespace-shinohara-ded-end = In compliance with Union air traffic patterns, the Shinohara outpost has been towed to a secure location.

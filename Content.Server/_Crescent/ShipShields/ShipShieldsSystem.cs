@@ -9,11 +9,9 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
-using Robust.Shared.Spawners;
 using Robust.Server.GameStates;
 using Content.Server.Power.Components;
 using Robust.Shared.Physics;
-using Content.Shared.Projectiles;
 using Content.Shared._Crescent.SpaceArtillery;
 
 namespace Content.Server._Crescent.ShipShields;
@@ -22,8 +20,8 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const string ShipShieldPrototype = "ShipShield";
     private const float Padding = 10f;
     private const float CollisionThreshold = 50f;
-    private const float DeflectionSpread = 25f;
-    private const float EmitterUpdateRate = 10f;
+    //private const float DeflectionSpread = 25f;
+    private const float EmitterUpdateRate = 1.5f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -31,10 +29,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
     [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
 
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Update(float frameTime)
     {
@@ -48,19 +43,53 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             if (emitter.Accumulator < EmitterUpdateRate)
                 continue;
 
+            if ((float) Math.Pow(emitter.Damage, emitter.DamageExp) >= emitter.MaxDraw)
+                emitter.Recharging = true;
+            if (!power.Powered)
+                emitter.Recharging = true;
+
             emitter.Accumulator -= EmitterUpdateRate;
 
             float healed = emitter.HealPerSecond * EmitterUpdateRate;
 
-            if (!power.Powered)
+            if (emitter.Recharging)
                 healed *= emitter.UnpoweredBonus;
 
             emitter.Damage -= healed;
 
             if (emitter.Damage < 0)
+            {
                 emitter.Damage = 0;
+                if (power.Powered)
+                    emitter.Recharging = false;
+            }
 
             AdjustEmitterLoad(uid, emitter, power);
+
+            var parent = Transform(uid).GridUid;
+
+            if (parent == null)
+                return;
+
+            var filter = _station.GetInOwningStation(uid);
+
+            if (!emitter.Recharging && emitter.Shield is null)
+            {
+                var shield = ShieldEntity(parent.Value, source: uid);
+                if (shield != EntityUid.Invalid)
+                {
+                    emitter.Shield = shield;
+                    emitter.Shielded = parent.Value;
+                }
+                _audio.PlayGlobal(emitter.PowerUpSound, filter, true, emitter.PowerUpSound.Params);
+            }
+            else if (emitter.Recharging && emitter.Shield is not null)
+            {
+                UnshieldEntity(parent.Value);
+                emitter.Shield = null;
+                emitter.Shielded = null;
+                _audio.PlayGlobal(emitter.PowerDownSound, filter, true, emitter.PowerUpSound.Params);
+            }
         }
     }
     public override void Initialize()
@@ -92,20 +121,21 @@ public sealed partial class ShipShieldsSystem : EntitySystem
         if (Math.Abs(collisionSpeedVector.Length()) < CollisionThreshold)
             return;
 
-        if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
-            despawn.Lifetime += despawn.Lifetime;
+        //if (TryComp<TimedDespawnComponent>(args.OtherEntity, out var despawn))
+        //    despawn.Lifetime += despawn.Lifetime;
 
         // I originally tried reflection but the math is too hard with the fucked coordinate system in this game (WorldRotation can be negative. Vector to Angle conversion loses information. Etc etc.)
         // Might try again at some point using just vector math with this (https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector)
-        var deflectionVector = Transform(args.OtherEntity).WorldPosition - Transform(uid).WorldPosition;
-        var angle = _random.NextFloat(DeflectionSpread);
+        //var deflectionVector = Transform(args.OtherEntity).WorldPosition - Transform(uid).WorldPosition;
+        //var angle = _random.NextFloat(DeflectionSpread);
 
-        if (_random.Prob(0.5f))
-            angle = -angle;
+        //if (_random.Prob(0.5f))
+        //    angle = -angle;
 
-        deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
+        //deflectionVector = new Vector2((float) (Math.Cos(angle) * deflectionVector.X - Math.Sin(angle) * deflectionVector.Y), (float) (Math.Sin(angle) * deflectionVector.X - Math.Cos(angle) * deflectionVector.Y));
 
-        _gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
+        // instead of reflecting the projectile, just delete it. this works better for gameplay and intuiting what is going on in a fight.
+        //_gun.ShootProjectile(args.OtherEntity, deflectionVector, _physicsSystem.GetMapLinearVelocity(uid), uid, null, velocity.Length());
 
         if (component.Source != null)
         {
