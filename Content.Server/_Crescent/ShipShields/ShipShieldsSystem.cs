@@ -9,11 +9,9 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
-using Robust.Shared.Spawners;
 using Robust.Server.GameStates;
 using Content.Server.Power.Components;
 using Robust.Shared.Physics;
-using Content.Shared.Projectiles;
 using Content.Shared._Crescent.SpaceArtillery;
 
 namespace Content.Server._Crescent.ShipShields;
@@ -23,7 +21,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
     private const float Padding = 10f;
     private const float CollisionThreshold = 50f;
     //private const float DeflectionSpread = 25f;
-    private const float EmitterUpdateRate = 1f;
+    private const float EmitterUpdateRate = 1.5f;
 
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -31,10 +29,7 @@ public sealed partial class ShipShieldsSystem : EntitySystem
 
     [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
 
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-
     [Dependency] private readonly PvsOverrideSystem _pvsSys = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Update(float frameTime)
     {
@@ -48,19 +43,53 @@ public sealed partial class ShipShieldsSystem : EntitySystem
             if (emitter.Accumulator < EmitterUpdateRate)
                 continue;
 
+            if ((float) Math.Pow(emitter.Damage, emitter.DamageExp) >= emitter.MaxDraw)
+                emitter.Recharging = true;
+            if (!power.Powered)
+                emitter.Recharging = true;
+
             emitter.Accumulator -= EmitterUpdateRate;
 
             float healed = emitter.HealPerSecond * EmitterUpdateRate;
 
-            if (!power.Powered)
+            if (emitter.Recharging)
                 healed *= emitter.UnpoweredBonus;
 
             emitter.Damage -= healed;
 
             if (emitter.Damage < 0)
+            {
                 emitter.Damage = 0;
+                if (power.Powered)
+                    emitter.Recharging = false;
+            }
 
             AdjustEmitterLoad(uid, emitter, power);
+
+            var parent = Transform(uid).GridUid;
+
+            if (parent == null)
+                return;
+
+            var filter = _station.GetInOwningStation(uid);
+
+            if (!emitter.Recharging && emitter.Shield is null)
+            {
+                var shield = ShieldEntity(parent.Value, source: uid);
+                if (shield != EntityUid.Invalid)
+                {
+                    emitter.Shield = shield;
+                    emitter.Shielded = parent.Value;
+                }
+                _audio.PlayGlobal(emitter.PowerUpSound, filter, true, emitter.PowerUpSound.Params);
+            }
+            else if (emitter.Recharging && emitter.Shield is not null)
+            {
+                UnshieldEntity(parent.Value);
+                emitter.Shield = null;
+                emitter.Shielded = null;
+                _audio.PlayGlobal(emitter.PowerDownSound, filter, true, emitter.PowerUpSound.Params);
+            }
         }
     }
     public override void Initialize()
