@@ -15,3 +15,9 @@ materials-chemphoron = deactivated phoron isotopes
 materials-engine = shuttle engine components
 materials-hull = shuttle hull plating
 materials-electronicship = shuttle electronics
+
+#craftparts
+
+materials-basicelectronics = basic electronic parts
+materials-advancedelectronics = advanced electronic parts
+materials-precursorelectronics = precursor electronic parts

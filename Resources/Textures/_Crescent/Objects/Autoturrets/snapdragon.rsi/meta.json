@@ -4,11 +4,11 @@
   "copyright": "Sprited by the Sector Crescent team.",
   "size": {
     "x": 32,
-    "y": 32
+    "y": 632
   },
   "states": [
     {
-      "name": "swarmer"
+      "name": "catapult"
     }
   ]
 }
