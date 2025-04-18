@@ -73,20 +73,12 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     {
         UpdatesBefore.Add(typeof(PhysicsSystem));
         SubscribeLocalEvent<ProjectilePhasePreventComponent, MapInitEvent>(OnInit);
-        SubscribeLocalEvent<ProjectilePhasePreventComponent, MoveEvent>(OnMove);
         sawLogs = _logs.GetSawmill("Phase-Prevention");
     }
 
     private void OnInit(EntityUid uid, ProjectilePhasePreventComponent comp, ref MapInitEvent args)
     {
         comp.start = _trans.GetWorldPosition(uid);
-    }
-    private void OnMove(EntityUid uid, ProjectilePhasePreventComponent comp, ref MoveEvent args)
-    {
-        if (args.NewPosition != EntityCoordinates.Invalid)
-            comp.end = _trans.ToMapCoordinates(args.NewPosition).Position;
-        else
-            comp.end = Vector2.Zero;
     }
     private void ProcessBucket(RaycastThreadBucketHolder bucket, ParallelLoopState state, long indexer)
     {
@@ -144,6 +136,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
             if (!fixtureQuery.HasComponent(owner) || !physQuery.HasComponent(owner) || !projectileQuery.HasComponent(owner))
                 continue;
             var phaseComp = (ProjectilePhasePreventComponent)uncasted;
+            phaseComp.end = _trans.GetWorldPosition(owner);
             var physComp = physQuery.Comp(owner);
             var fixtComp = fixtureQuery.Comp(owner);
             var projComp = projectileQuery.Comp(owner);
