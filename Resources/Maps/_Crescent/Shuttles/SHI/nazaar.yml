@@ -15,7 +15,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Shuttle TAN-979
     - type: Transform
       pos: -0.52229434,-0.5668977
       parent: invalid
@@ -113,14 +113,14 @@ entities:
       data:
         tiles:
           0,0:
-            0: 1309
+            0: 17693
             1: 10240
           0,-1:
             0: 62353
             1: 2
           -1,0:
             1: 33296
-            0: 1030
+            0: 17414
           0,1:
             1: 2
           1,0:
@@ -168,6 +168,29 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: IFF
+      relations: {}
+      color: '#F6CE9C9C'
+      flags: IsPlayerShuttle
+    - type: ShuttleDeed
+      shuttleName: Shuttle TAN-979
+      shuttleUid: 1
+- proto: AAAardpointMediumMissile
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      pos: -2.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 141
+    components:
+    - type: Transform
+      pos: 3.5,2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: AirlockCommand
   entities:
   - uid: 59
@@ -213,23 +236,29 @@ entities:
   - uid: 78
     components:
     - type: Transform
+      anchored: False
       rot: 3.141592653589793 rad
       pos: -2.5,2.5
       parent: 1
     - type: PointCannon
-      linkedConsoleId: 48
+      linkedConsoleId: invalid
       obstructedRanges:
       - 3.3586234622910975 rad: 4.27832736298208 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 140
     components:
     - type: Transform
+      anchored: False
       rot: 3.141592653589793 rad
       pos: 3.5,2.5
       parent: 1
     - type: PointCannon
-      linkedConsoleId: 48
+      linkedConsoleId: invalid
       obstructedRanges:
       - 1.7878271354962012 rad: 4.27832736298208 rad
+    - type: Physics
+      bodyType: Dynamic
 - proto: BoriaticGeneratorHerculesShuttle
   entities:
   - uid: 57
@@ -552,25 +581,26 @@ entities:
           ents:
           - 85
           - 84
-- proto: ComputerTabletopShuttle
+- proto: ComputerShuttle
   entities:
   - uid: 67
     components:
     - type: Transform
-      pos: 0.5,2.5
+      pos: -2.5,0.5
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        80:
-        - Group1: Toggle
         139:
         - Group1: Toggle
-        74:
-        - Group2: Toggle
-        81:
-        - Group3: Toggle
-        47:
-        - Group3: Toggle
+        80:
+        - Group1: Toggle
+    - type: NamedModules
+      buttonNames:
+      - Fire Vulcans
+      - N/A
+      - N/A
+      - N/A
+      - N/A
     - type: ContainerContainer
       containers:
         board: !type:Container
@@ -585,21 +615,15 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-- proto: ComputerTargeting
+    - type: ApcPowerReceiver
+      needsPower: False
+- proto: ComputerTabletopTargeting
   entities:
   - uid: 48
     components:
     - type: Transform
-      pos: -2.5,0.5
+      pos: 0.5,2.5
       parent: 1
-    - type: TargetingConsole
-      cannonGroups:
-        all:
-        - 140
-        - 78
-        lancer:
-        - 140
-        - 78
 - proto: FaxMachineShip
   entities:
   - uid: 63
@@ -632,7 +656,7 @@ entities:
       pos: 2.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 67
@@ -672,7 +696,7 @@ entities:
       pos: -1.5,3.5
       parent: 1
     - type: Battery
-      startingCharge: 198000
+      startingCharge: 197500
     - type: DeviceLinkSink
       links:
       - 67
@@ -792,7 +816,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 72
-      - 67
   - uid: 81
     components:
     - type: Transform
@@ -801,7 +824,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 72
-      - 67
 - proto: ShuttersNormalOpen
   entities:
   - uid: 74
@@ -812,7 +834,6 @@ entities:
     - type: DeviceLinkSink
       links:
       - 71
-      - 67
 - proto: SignalButton
   entities:
   - uid: 71

@@ -118,7 +118,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
        // var lpbravo = "/Maps/_NF/POI/lpbravo.yml";
         var hayes = "/Maps/_Crescent/Explorables/hayeswreck.yml";
         //var lpramzi = "/Maps/_Crescent/Stations/lpramzi.yml";
-       // var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
+        var tatsumoto = "/Maps/_Crescent/Stations/tatsumoto.yml";
         var oris = "/Maps/_Crescent/Explorables/oris.yml";
         var fogwalker = "/Maps/_Crescent/Explorables/fogexplorer.yml";
         var borealis = "/Maps/_Crescent/Stations/borealis.yml";
@@ -132,7 +132,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var defensebattery = "/Maps/_Crescent/Stations/defensebatteryimperial.yml";
         // var northpole = "/Maps/_NF/POI/northpole.yml";
         var arena = "/Maps/_Crescent/Explorables/zhipovwreck.yml";
-        var aasim = "/Maps/_Crescent/Stations/aasim.yml";
+       // var aasim = "/Maps/_Crescent/Stations/aasim.yml";
         var stranded = "/Maps/_Crescent/Explorables/stranded.yml";
         var fighter1 = "/Maps/_Crescent/Explorables/ruinedfightereast.yml";
         var fighter2 = "/Maps/_Crescent/Explorables/ruinedfighterwest.yml";
@@ -233,22 +233,22 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
       //      _shuttle.SetIFFFaction(cometUids[0], "NCWL");
      //   }
 
-         if (_map.TryLoad(mapId, aasim, out var famUids, new MapLoadOptions
-             {
-                 Offset = new Vector2(4500f, 1500f)
-             }))
-          {
+      //   if (_map.TryLoad(mapId, aasim, out var famUids, new MapLoadOptions
+      //       {
+      //           Offset = new Vector2(4500f, 1500f)
+      //       }))
+      //    {
          //  We should figure out if it is possible to add this grid to the latejoin listing.
           // Hey turns out we can! (This is kinda copypasted from the lodge with some values filled in.)
-             if (_prototypeManager.TryIndex<GameMapPrototype>("Aasim", out var stationProto))
-             {
-                 _station.InitializeNewStation(stationProto.Stations["Aasim"], famUids);
-            }
+       //      if (_prototypeManager.TryIndex<GameMapPrototype>("Aasim", out var stationProto))
+       //      {
+      //           _station.InitializeNewStation(stationProto.Stations["Aasim"], famUids);
+       //     }
         
-             var meta = EnsureComp<MetaDataComponent>(famUids[0]);
-            _meta.SetEntityName(famUids[0], "TAP Qiwa Aasim", meta);
-            _shuttle.SetIFFColor(famUids[0], civilianColor);
-         }
+        //     var meta = EnsureComp<MetaDataComponent>(famUids[0]);
+        //    _meta.SetEntityName(famUids[0], "TAP Qiwa Aasim", meta);
+       //     _shuttle.SetIFFColor(famUids[0], civilianColor);
+       //  }
 
            if (_map.TryLoad(mapId, tinnia, out var depotUid2s, new MapLoadOptions
             {
@@ -462,21 +462,21 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
            _shuttle.SetIFFFaction(depotUid92s[0], "NCSP");
            }
 
-        //   if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
-        //  {
-        //      Offset = new Vector2(6000f, 1000f)
-        //    }))
-        //   {
-        //       if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
-        //       {
-        //            _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
-        //        }
-        //
-        //        var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
-        //        _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
-        //        _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
-        //        _shuttle.SetIFFFaction(depotUid10s[0], "SHI");
-        //    }
+           if (_map.TryLoad(mapId, tatsumoto, out var depotUid10s, new MapLoadOptions
+          {
+              Offset = new Vector2(6000f, 1000f)
+            }))
+           {
+               if (_prototypeManager.TryIndex<GameMapPrototype>("Tatsumoto", out var stationProto))
+               {
+                    _station.InitializeNewStation(stationProto.Stations["Tatsumoto"], depotUid10s);
+                }
+        
+                var meta = EnsureComp<MetaDataComponent>(depotUid10s[0]);
+                _meta.SetEntityName(depotUid10s[0], "Taypan Shipworks", meta);
+                _shuttle.SetIFFColor(depotUid10s[0], tatsumotoColor);
+                _shuttle.SetIFFFaction(depotUid10s[0], "SHI");
+            }
 
           if (_map.TryLoad(mapId, oris, out var orisUids, new MapLoadOptions
           {

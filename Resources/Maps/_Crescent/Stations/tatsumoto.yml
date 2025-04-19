@@ -2759,6 +2759,106 @@ entities:
     - type: RadiationGridResistance
     - type: BecomesStation
       id: Tatsumoto
+- proto: AAAHardpointMediumBallistic
+  entities:
+  - uid: 4266
+    components:
+    - type: Transform
+      pos: 32.5,21.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4335
+    components:
+    - type: Transform
+      pos: 56.5,14.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4336
+    components:
+    - type: Transform
+      pos: 59.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4337
+    components:
+    - type: Transform
+      pos: 53.5,-6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4338
+    components:
+    - type: Transform
+      pos: 0.5,-12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4339
+    components:
+    - type: Transform
+      pos: 42.5,-24.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4340
+    components:
+    - type: Transform
+      pos: 32.5,-25.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4341
+    components:
+    - type: Transform
+      pos: -38.5,18.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4342
+    components:
+    - type: Transform
+      pos: -31.5,-13.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4343
+    components:
+    - type: Transform
+      pos: -42.5,-7.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4344
+    components:
+    - type: Transform
+      pos: -47.5,-5.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4345
+    components:
+    - type: Transform
+      pos: -47.5,6.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4346
+    components:
+    - type: Transform
+      pos: -45.5,8.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+  - uid: 4347
+    components:
+    - type: Transform
+      pos: 0.5,12.5
+      parent: 1
+    - type: Physics
+      canCollide: False
 - proto: ActionToggleLight
   entities:
   - uid: 843
@@ -27793,11 +27893,12 @@ entities:
     - type: Transform
       pos: -38.464867,10.454103
       parent: 1
-- proto: WeaponTurretCoilgunSHI
+- proto: WeaponTurretCoilgunNCSP
   entities:
   - uid: 638
     components:
     - type: Transform
+      anchored: False
       rot: 1.5707963267948966 rad
       pos: 59.5,6.5
       parent: 1
@@ -27805,9 +27906,12 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 1.6928754264304586 rad: 3.909631472471339 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 2035
     components:
     - type: Transform
+      anchored: False
       rot: -1.5707963267948966 rad
       pos: -47.5,6.5
       parent: 1
@@ -27815,9 +27919,12 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 3.8222710618675815 rad: 3.783439934984155 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3304
     components:
     - type: Transform
+      anchored: False
       rot: -1.5707963267948966 rad
       pos: -45.5,8.5
       parent: 1
@@ -27825,9 +27932,12 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 3.5772923987407172 rad: 4.1840134334259025 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3305
     components:
     - type: Transform
+      anchored: False
       rot: -1.5707963267948966 rad
       pos: -38.5,18.5
       parent: 1
@@ -27835,18 +27945,24 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 3.4635003989963824 rad: 3.7098028267003116 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3306
     components:
     - type: Transform
+      anchored: False
       pos: -42.5,-7.5
       parent: 1
     - type: PointCannon
       linkedConsoleId: 3307
       obstructedRanges:
       - 5.148088725535614 rad: 4.115156943816337 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3308
     components:
     - type: Transform
+      anchored: False
       rot: 3.141592653589793 rad
       pos: 32.5,21.5
       parent: 1
@@ -27854,27 +27970,36 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 1.6928754264304586 rad: 4.6424465722998765 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3309
     components:
     - type: Transform
+      anchored: False
       pos: 42.5,-24.5
       parent: 1
     - type: PointCannon
       linkedConsoleId: 3307
       obstructedRanges:
       - 0.15260396288522549 rad: 4.12408527234854 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3310
     components:
     - type: Transform
+      anchored: False
       pos: 32.5,-25.5
       parent: 1
     - type: PointCannon
       linkedConsoleId: 3307
       obstructedRanges:
       - 5.3930673886624785 rad: 5.166807153750874 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3311
     components:
     - type: Transform
+      anchored: False
       rot: 1.5707963267948966 rad
       pos: 53.5,-6.5
       parent: 1
@@ -27882,9 +28007,12 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 0.4356997451509244 rad: 4.224807118794131 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3312
     components:
     - type: Transform
+      anchored: False
       rot: 3.141592653589793 rad
       pos: 0.5,12.5
       parent: 1
@@ -27892,9 +28020,12 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 1.952975805035855 rad: 5.518826350697671 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3313
     components:
     - type: Transform
+      anchored: False
       rot: -1.5707963267948966 rad
       pos: -47.5,-5.5
       parent: 1
@@ -27902,27 +28033,36 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 5.572920877145771 rad: 3.171178675345819 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3315
     components:
     - type: Transform
+      anchored: False
       pos: -31.5,-13.5
       parent: 1
     - type: PointCannon
       linkedConsoleId: 3307
       obstructedRanges:
       - 4.7642710968243245 rad: 4.5384277643094935 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3819
     components:
     - type: Transform
+      anchored: False
       pos: 0.5,-12.5
       parent: 1
     - type: PointCannon
       linkedConsoleId: 3307
       obstructedRanges:
       - 5.094568458625648 rad: 5.51882635069767 rad
+    - type: Physics
+      bodyType: Dynamic
   - uid: 3820
     components:
     - type: Transform
+      anchored: False
       rot: 3.141592653589793 rad
       pos: 56.5,14.5
       parent: 1
@@ -27930,6 +28070,8 @@ entities:
       linkedConsoleId: 3307
       obstructedRanges:
       - 2.0064960719458207 rad: 3.5960108269559767 rad
+    - type: Physics
+      bodyType: Dynamic
 - proto: WeldingFuelTankFull
   entities:
   - uid: 2104
@@ -28078,7 +28220,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -38415.484
+      secondsUntilStateChange: -38527.586
       state: Opening
   - uid: 1972
     components:

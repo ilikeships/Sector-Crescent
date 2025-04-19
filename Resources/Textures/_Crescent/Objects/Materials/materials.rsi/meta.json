@@ -11,6 +11,18 @@
             "name": "basicelectronics"
         },
         {
+            "name": "weaklaserlocus"
+        },
+        {
+            "name": "hardlightgenerator"
+        },
+        {
+            "name": "tubeloaderrobotics"
+        },
+        {
+            "name": "gascycler"
+        },
+        {
             "name": "advancedelectronics"
         },
         {
@@ -18,6 +30,18 @@
         },
         {
             "name": "basicmechanic"
+        },
+        {
+            "name": "empulser"
+        },
+        {
+            "name": "hardsuitelectronics"
+        },
+        {
+            "name": "bluespacemechatronics"
+        },
+        {
+            "name": "laserlocus"
         },
         {
             "name": "advancedmechanic"
