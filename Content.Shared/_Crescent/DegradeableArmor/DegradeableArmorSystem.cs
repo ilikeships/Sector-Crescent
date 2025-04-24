@@ -39,7 +39,7 @@ public enum ArmorRepairMaterial
 [Serializable, NetSerializable]
 public partial class ArmorRepairDoAfterEvent : SimpleDoAfterEvent
 {
-    
+
 }
 /// <summary>
 /// This handles...
@@ -47,6 +47,7 @@ public partial class ArmorRepairDoAfterEvent : SimpleDoAfterEvent
 public sealed class DegradeableArmorSystem : EntitySystem
 {
     [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedDoAfterSystem _doing = default!;
@@ -154,8 +155,6 @@ public sealed class DegradeableArmorSystem : EntitySystem
             BlockDuplicate = true
         };
         _doing.TryStartDoAfter(doAfterEventArgs);
-
-
     }
 
 
@@ -176,7 +175,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
         {
             if (!component.initialModifiers.FlatReduction.ContainsKey(type))
                 continue;
-            
+
             var trueReduction = component.initialModifiers.FlatReduction[type];
             if (trueReduction == 0)
                 continue;
@@ -186,7 +185,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
                 {
                     trueReduction *= component.armorHealth / component.armorMaxHealth;
                     trueReduction *= component.armorHealth / component.armorMaxHealth;
-                    
+
                     break;
                 }
                 case ArmorDegradation.Metallic:
@@ -203,11 +202,10 @@ public sealed class DegradeableArmorSystem : EntitySystem
 
             trueReduction = Math.Clamp(trueReduction, 0f, component.maxBlockCoefficients[type] * (float) value);
             _stamina.TakeStaminaDamage(component.wearer, trueReduction * component.staminaConversions[type]);
-            armorDamage += (float) value * args.Args.armorDamageMultiplier * component.armorDamageCoefficients[type]; 
+            armorDamage += (float) value * args.Args.armorDamageMultiplier * component.armorDamageCoefficients[type];
             //Logger.Error($"Damage adjusted for type {type}, old {value}, new {Math.Max(0f, (float) value - trueReduction)}  Armor damage {armorDamage}. Armor Health {component.armorHealth}. Stamina damage {trueReduction * component.staminaConversions[type]}");
             damageDictionary[type] = Math.Max(0f, (float) value - trueReduction);
         }
-
         component.armorHealth = Math.Max(0, component.armorHealth - armorDamage);
         Dirty(uid, component);
     }
