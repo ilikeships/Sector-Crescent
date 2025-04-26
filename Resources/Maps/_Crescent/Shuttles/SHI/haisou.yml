@@ -39,6 +39,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      baseMaxLinearVelocity: 30
     - type: GridPathfinding
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
@@ -51,20 +52,20 @@ entities:
             color: '#FFFFFFFF'
             id: TechW
           decals:
-            7: -1,1
-            8: -1,2
+            4: -1,1
+            5: -1,2
         - node:
             color: '#FFFFFFCD'
             id: WarnLineN
           decals:
-            1: -1,0
-            2: -2,0
+            0: -1,0
+            1: -2,0
         - node:
             color: '#FFFFFFCD'
             id: WarnLineW
           decals:
-            3: -1,0
-            4: -2,0
+            2: -1,0
+            3: -2,0
     - type: GridAtmosphere
       version: 2
       data:
@@ -339,6 +340,13 @@ entities:
     components:
     - type: Transform
       pos: -2.5,2.5
+      parent: 1
+- proto: WarpPointShip
+  entities:
+  - uid: 38
+    components:
+    - type: Transform
+      pos: -1.5,1.5
       parent: 1
 - proto: WindowDirectional
   entities:
