@@ -6062,15 +6062,6 @@ entities:
     - type: Transform
       pos: -13.5,5.5
       parent: 2
-- proto: PrizeCounter
-  entities:
-  - uid: 1116
-    components:
-    - type: Transform
-      pos: 5.5,-1.5
-      parent: 2
-    - type: PointLight
-      enabled: False
 - proto: Rack
   entities:
   - uid: 406
@@ -7474,13 +7465,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 8.5,9.5
-      parent: 2
-- proto: VendingMachineCuddlyCritterVend
-  entities:
-  - uid: 1028
-    components:
-    - type: Transform
-      pos: 5.5,1.5
       parent: 2
 - proto: VendingMachineGames
   entities:

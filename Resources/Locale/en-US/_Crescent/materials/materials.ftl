@@ -15,3 +15,19 @@ materials-chemphoron = deactivated phoron isotopes
 materials-engine = shuttle engine components
 materials-hull = shuttle hull plating
 materials-electronicship = shuttle electronics
+
+#craftparts
+
+materials-basicelectronics = basic electronic parts
+materials-advancedelectronics = advanced electronic parts
+materials-precursorelectronics = precursor electronic parts
+materials-basicmechanics = basic mechatronic parts
+materials-advancedmechanics = advanced mechatronic parts
+materials-precursormechanics = precursor mechatronic parts
+materials-laserlocus = focused laser locus
+materials-gascycler = ballistic gas cycler
+materials-tubeloader = tube loader robotics
+materials-weaklaserlocus = weak laser locus
+materials-hardlightgenerator = hardlight generator conduit
+materials-hardsuitelectronics = hardsuit electronics
+materials-plastitaniumfibrealloy = plastitanium fibre alloy

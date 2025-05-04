@@ -182,7 +182,7 @@ namespace Content.Shared.Damage
             return delta;
         }
 
-        
+
 
         /// <summary>
         ///     Sets all damage types supported by a <see cref="DamageableComponent"/> to the specified value.
